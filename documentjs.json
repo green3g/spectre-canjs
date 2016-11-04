@@ -1,0 +1,13 @@
+{
+  "siteDefaults": {
+  },
+  "sites": {
+    "docs": {
+      "glob": {
+        "ignore": "{docs,dist,node_modules}/**/*"
+      },
+      "parent": "spectre",
+      "dest": "./docs"
+    }
+  }
+}

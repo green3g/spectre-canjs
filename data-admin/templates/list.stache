@@ -1,0 +1,74 @@
+<div class="object-metadata">
+    <span class="text-bold">{{view.title}}</span>:
+    {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
+    | <a class="inline-block badge" ($click)="toggle('filterVisible')"><i class="fa fa-search"></i> Search</a> |
+    {{#if selectedObjects.length}}
+        <a class="inline-block selected-objects badge" data-badge="{{selectedObjects.length}}" ($click)="toggle('selectMenu')">
+    With Selected...
+        {{#selectMenu}}
+        <ul class="menu">
+          {{#if view.manageButtons.length}}
+            <!-- menu header -->
+            <li class="menu-header">
+                <span class="menu-header-text">
+                  Tasks
+              </span>
+            </li>
+            {{#each view.manageButtons}}
+              {{#unless disabled}}
+                <li class="menu-item">
+                    <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
+                </li>
+              {{/unless}}
+            {{/each}}
+          {{/if}}
+    <!-- menu divider -->
+    <li class="divider"></li>
+    <li class="menu-header">
+        <span class="menu-header-text">
+                  Modify
+              </span>
+    </li>
+    <li class="menu-item">
+        <a ($click)="deleteMultiple(false)">
+            <span class="icon icon-link"></span> Delete
+        </a>
+    </li>
+    </ul>
+    {{/selectMenu}}
+  </a> |
+    {{/if}}
+    <a ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
+</div>
+
+{{#filterVisible}}
+    <div class="column col-lg-8">
+        <filter-widget {(filters)}="parameters.filters" {fields}="_fields" {object-template}="view.ObjectTemplate" />
+    </div>
+{{/filterVisible}}
+
+{{#if objects.length}}
+    <list-table {objects}="objects" {buttons}="buttons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
+{{else}}
+    {{#unless objectsPromise.isPending}}
+        <p>{{view.noDataMessage}}</p>
+    {{/unless}}
+{{/if}}
+
+<div class="hidden-print">
+    {{#if showPaginate}}
+        <paginate-widget {(active-page-index)}="parameters.page" {pages}="totalPages" />
+    {{/if}}
+    {{#if perPageOptions.length}}
+        <div class="per-page-form">
+            <div class="form-group">
+                <label class="form-label perPageSelect">Items per page:</label>
+                <select {($value)}="parameters.perPage" class="form-select form-control">
+                    {{#each perPageOptions}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    {{/if}}
+</div>

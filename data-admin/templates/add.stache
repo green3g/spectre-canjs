@@ -1,0 +1,5 @@
+{{#if view.disableAdd}}
+    <p>{{view.addDisabledMessage}}</p>
+{{else}}
+    <form-widget {form-object}="getNewObject()" show-saving (submit)="saveObject" (cancel)="setPage('list')" {fields}="_fields" />
+{{/if}}

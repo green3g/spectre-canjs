@@ -1,0 +1,56 @@
+<script type="text/stache" id="demo-html">
+    <h1>Navigation Demo</h1>
+
+    <h2>Default Style</h2>
+    <nav-container>
+      <nav-page label="test">
+        <p> some content and stuff</p>
+      </nav-page>
+      <nav-page label="Another Test">
+        <p>This is a test</p>
+      </nav-page>
+      <nav-page label="A final Test">
+        <div class="card">
+          <div class="card-image">
+              <img src="img/osx-el-capitan.jpg" class="img-responsive" />
+          </div>
+          <div class="card-header">
+              <h4 class="card-title">Microsoft</h4>
+              <h6 class="card-meta">Software and hardware</h6>
+          </div>
+          <div class="card-body">
+              To make a contribution to the world by making tools for the mind that advance humankind.
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-primary">Do</button>
+          </div>
+        </div>
+      </nav-page>
+
+    </nav-container>
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
+<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
+    import 'font-awesome/css/font-awesome.min.css';
+    import 'nav-container/';
+
+    import stache from 'can-stache';
+    import DefineMap from 'can-define/map/map';
+
+    var render = stache(document.getElementById('demo-html').innerHTML);
+
+    var viewModel = new DefineMap({
+        pages: [{
+          label: 'List'
+        }, {
+          label:'Create',
+          active: true
+        }, {
+          label: 'Other Options'
+        }]
+    });
+
+    document.body.appendChild(render(viewModel));
+</script>

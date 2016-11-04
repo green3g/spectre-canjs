@@ -1,0 +1,104 @@
+<div id="demo-app"></div>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
+<script type="text/stache" id="demo-html" can-autorender="can-autorender">
+    <p>Current form values: </p>
+    <ul>
+        <li>{{formObject.field1}}</li>
+        <li>{{formObject.field2}}</li>
+        <li>{{formObject.field3}}</li>
+        <li>{{formObject.field4}}</li>
+        <li>{{formObject.field5}}</li>
+    </ul>
+
+    <h1>Form Widget Demo</h1>
+    <form-widget {(form-object)}="formObject" {fields}="fields" (submit)="onSubmit" />
+</script>
+<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
+    // import 'bootstrap/dist/css/bootstrap.min.css!';
+    // import 'bootstrap/dist/css/bootstrap-theme.min.css!';
+    import 'font-awesome/css/font-awesome.min.css';
+
+    //import our form component
+    import 'form-widget/';
+
+    //import our fields that we're using
+    import 'form-widget/field-components/text-field/';
+    import 'form-widget/field-components/select-field/';
+    import 'form-widget/field-components/file-field/';
+    import 'form-widget/field-components/json-field/';
+    import 'form-widget/field-components/date-field/';
+
+    //import canjs stuff
+    import fixture from 'can-fixture';
+    import stache from 'can-stache';
+    import DefineMap from 'can-define/map/map';
+
+    //this example uses fixtures to catch requests and simulate
+    //file upload experience
+    fixture({ method: 'POST', url: '/upload' }, function(request) {
+        return {
+            uploads: ['fake_upload_' + request.data.entries().next().value[1].name]
+        };
+    });
+
+    fixture({ method: 'DELETE', url: '/upload' }, function() {
+        return {
+            result: 'Success'
+        };
+    });
+
+    let template = DefineMap.extend({
+        field1: {value: 'test-value'},
+        field2: {value: 'another value'},
+        field3: {value: 1},
+        field4: {
+          value(){
+            var date = new Date('2010-10-11T00:00:00+05:30');
+            return (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+        }
+      },
+        field5: {value: ''}
+    });
+
+    let render = stache(document.getElementById('demo-html').innerHTML);
+
+    let frag = render({
+        onSubmit: function() {
+            alert('Form submitted! See the console for details');
+            console.log(arguments);
+        },
+        formObject: new template(),
+        fields: ['field1', {
+            name: 'field2',
+            alias: 'A basic textarea field',
+            type: 'text',
+            properties: {
+                textarea: true
+            }
+        }, {
+            name: 'field3',
+            alias: 'A select dropdown',
+            fieldType: 'select',
+            options: [{
+                value: 1,
+                label: 'Option 1'
+            }, {
+                value: 2,
+                label: 'Option 2'
+            }]
+        }, {
+            name: 'field4',
+            alias: 'A date field',
+            fieldType: 'text',
+            textType: 'date'
+        }, {
+            name: 'field5',
+            alias: 'A file field',
+            fieldType: 'file',
+            url: '/upload'
+        }]
+    });
+
+    document.body.appendChild(frag);
+</script>

@@ -1,0 +1,41 @@
+data-admin {
+  list-table th {
+    cursor: pointer;
+  }
+  .object-metadata {
+    font-size: smaller;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  .selected-objects ul.menu {
+      position:absolute;
+  }
+
+  paginate-widget {
+    float        : left;
+    padding-right: 40px;
+  }
+
+  .per-page-form {
+    float      : left;
+    padding-top: 0;
+
+    @media (min-width: 768px) {
+      padding-top: 20px;
+    }
+  }
+
+  .progress {
+    width   : 250px;
+    position: absolute;
+    right   : 45%;
+    top     : 50%;
+  }
+
+  .progress > div {
+    width: 100%;
+  }
+}

@@ -1,0 +1,83 @@
+<style type="text/css">
+  toast-container {
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left:50%;
+    right:0;
+    bottom:0;
+  }
+
+  toast-container toast-item {
+    margin-bottom: 10px;
+  }
+</style>
+
+<script type="text/stache" id="demo-html">
+    <h1>Growler Demo</h1>
+    <toast-container id="toast-container"></toast-container>
+
+    <p>Heading:
+        <input type="text" {($value)}="heading" />
+    </p>
+    <p>Detail:
+        <input type="text" {($value)}="body" />
+    </p>
+    <p>Timeout:
+        <input type="text" {($value)}="autoHide" />
+    </p>
+    <p>Severity:
+        <select {($value)}="severity">
+            <option value="">None</option>
+                <option value="success">success</option>
+            <option value="danger">danger</option>
+            <option value="primary">info</option>
+        </select>
+    </p>
+    <p>Dismissable:
+        <select {($value)}="dismissable">
+            <option value="true">true</option>
+            <option value="false">false</option>
+        </select>{{dismissable}}
+    </p>
+    <button class="btn btn-secondary" ($click)="add">Add Alert</button>
+</script>
+<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
+    import 'toast-container/';
+    import 'animate.css/animate.css!';
+    import 'spectre.css/dist/spectre.css!';
+    import DefineMap from 'can-define/map/map';
+    import stache from 'can-stache';
+    import canViewModel from 'can-view-model';
+
+    window.vm = canViewModel
+
+
+    let AppViewModel = new DefineMap({
+        heading: 'Title Here',
+        details: 'Details',
+        autoHide: 5000,
+        severity: 'info',
+        dismissable: true,
+        add() {
+            console.log({
+                heading: this.heading,
+                body: this.body,
+                severity: this.severity,
+                autoHide: this.autoHide,
+                dismissable: this.dismissable
+            });
+            canViewModel(document.getElementById('toast-container')).addToast({
+                heading: this.heading,
+                body: this.body,
+                severity: this.severity,
+                autoHide: this.autoHide,
+                dismissable: this.dismissable
+            });
+        }
+    });
+
+    let render = stache.from('demo-html');
+    document.body.appendChild(render(AppViewModel));
+
+</script>

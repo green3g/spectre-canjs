@@ -1,0 +1,12 @@
+<div class="form-group">
+  <div class="col-4">
+    <label class="form-label" {{#inline}}class="sr-only" {{/inline}}for="{{properties.name}}">{{properties.alias}}</label>
+  </div>
+  <div class="col-8">
+    <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
+      {{#each properties.options}}
+        <option value="{{value}}">{{label}}</option>
+      {{/each}}
+    </select>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<nav-container {(active-id)}="page">
+    <nav-page label="List" page-id="list" {{#if objectsPromise.isPending}} loading {{/if}}>
+        {{>view.listTemplate}}
+    </nav-page>
+
+    {{#unless view.disableCreate}}
+        <nav-page label="Create" page-id="add">
+            {{>view.addTemplate}}
+        </nav-page>
+    {{/unless}}
+
+    <nav-page label="Details" page-id="details" {{#if focusObjectPromise.isPending}} loading {{/if}}>
+        {{>view.detailsTemplate}}
+    </nav-page>
+
+    {{#unless view.disableEdit}}
+        <nav-page label="Edit" page-id="edit">
+                {{>view.editTemplate}}
+        </nav-page>
+    {{/unless}}
+</nav-container>

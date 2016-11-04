@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<script type="text/stache" id="demo-html">
+
+    <data-admin {view}="view" />
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
+<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
+    // import 'bootstrap/dist/css/bootstrap.min.css!';
+    // import 'bootstrap/dist/css/bootstrap-theme.min.css!';
+    import 'font-awesome/css/font-awesome.min.css';
+    import 'data-admin/data-admin';
+
+    import SuperMap from 'can-connect/can/super-map/';
+    import DefineMap from 'can-define/map/map';
+    import DefineList from 'can-define/list/list';
+    // import data from 'test/data/posts.json';
+    // import 'test/data/fixtures';
+    import stache from 'can-stache';
+
+    // additional field proeprties can be included here to customize the
+    // tables and forms for this object
+    const PostMap = DefineMap.extend({
+      'id': {type: 'number', excludeForm: true},
+      userId: 'number',
+      title: 'string',
+      body: 'string'
+    });
+
+    const PostList = DefineList.extend({
+        map: PostMap
+    });
+
+    const Connection = SuperMap({
+        idProp: "id",
+        Map: PostMap,
+        List: PostList,
+        url: "http://jsonplaceholder.typicode.com/posts",
+        name: "post",
+        metadata: {
+          // total: data.length
+        }
+    });
+
+    let viewModel = new DefineMap({
+        view: {
+            title: 'Posts',
+            connection: Connection,
+            manageButtons: [{
+                textClass: 'text-success',
+                buttonClass: 'btn btn-success',
+                text: 'Complete',
+                iconClass: 'fa fa-fw fa-check-square-o',
+                onClick(objs) {
+                    if (!objs.length) {
+                        objs = [objs];
+                    }
+                    objs.forEach(obj => {
+                        obj.completed= true;
+                        Connection.save(obj);
+                    });
+                }
+            }]
+        }
+    })
+
+
+    let frag = stache.from('demo-html')(viewModel);
+
+    document.body.appendChild(frag);
+</script>

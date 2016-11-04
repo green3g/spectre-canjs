@@ -1,0 +1,7 @@
+.tool-buttons i {
+  cursor: pointer;
+}
+
+td.tool-buttons {
+  width: 55px;
+}

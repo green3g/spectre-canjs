@@ -1,0 +1,13 @@
+# Dependency directory
+node_modules/
+
+#custom apps and modules
+custom/
+
+#docs and build output
+dist/
+docs/
+
+.directory
+
+*.log

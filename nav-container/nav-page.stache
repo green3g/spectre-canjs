@@ -1,0 +1,5 @@
+{{#active}}
+<div class="container">
+  <content />
+</div>
+{{/active}}

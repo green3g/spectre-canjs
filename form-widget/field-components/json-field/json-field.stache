@@ -1,0 +1,6 @@
+<div class="form-group">
+  <fieldset>
+    <legend>{{properties.alias}}</legend>
+    <form-widget {form-object}="properties.jsonFormObject" (field-change)="saveField" {fields}="properties.formFields" show-buttons="false" />
+  </fieldset>
+</div>

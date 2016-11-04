@@ -432,6 +432,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
 
         }).catch((e) => {
+            this.set({
+                viewId: null,
+                page: 'list',
+                objectsRefreshCount: this.objectsRefreshCount + 1
+            });
             this.onEvent({
                 obj: obj,
                 error: e

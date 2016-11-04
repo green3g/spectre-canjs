@@ -1,7 +1,7 @@
 {
   "name": "spectre-canjs",
   "version": "0.7.3",
-  "description": "Data management and spectre operation components built using CanJS",
+  "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": "https://github.com/roemhildtg/spectre-canjs",
   "main": "index.js",
   "watch": {

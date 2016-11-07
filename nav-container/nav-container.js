@@ -16,7 +16,7 @@ export const PageViewModel = DefineMap.extend('NavPage', {
     loading: {type: 'htmlbool', value: false},
     pageId: {
         value: function () {
-            return 'page-' + pageId ++;
+            return 'page-' + pageId++;
         }
     },
     parent: '*'
@@ -35,62 +35,65 @@ export const PageList = DefineList.extend('NavPageList', {
  * @description A `<tab-container />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('NavContainer', {
-	// Contains a list of all page scopes within the
-	// tabs element.
+    // Contains a list of all page scopes within the
+    // tabs element.
     pages: {Value: PageList},
-    activePage: DefineMap,
-    activeId: {
-        set (id) {
-            const pages = this.pages.filter((p) => {
-                return p.pageId === id;
+    activePage: {
+        get () {
+
+            let active;
+
+            if (!this.pages.length) {
+                return null;
+            }
+
+            // lookup active page id
+            active = this.pages.filter((p) => {
+                return p.pageId === this.activeId;
             });
-            if (pages.length) {
-                this.makeActive(pages[0]);
+
+            if (active.length) {
+                active = active[0];
+            } else {
+                active = this.pages[0];
             }
-        },
-        get (val) {
-            if (this.activePage) {
-                return this.activePage.pageId;
-            }
-            return null;
+
+            return active;
         }
     },
-	// When a `<page>` element is inserted into the document,
-	// it calls this method to add the page's scope to the
-	// pages array.
+    activeId: 'string',
+    // When a `<page>` element is inserted into the document,
+    // it calls this method to add the page's scope to the
+    // pages array.
     addPage (page) {
-		// If this is the first page, activate it.
-        if (this.pages.length === 0) {
-            this.makeActive(page);
-        }
         this.pages.push(page);
     },
-	// When a `<page>` element is removed from the document,
-	// it calls this method to remove the page's scope from
-	// the pages array.
+    // When a `<page>` element is removed from the document,
+    // it calls this method to remove the page's scope from
+    // the pages array.
     removePage (page) {
         var pages = this.pages;
-        batch.start();
         pages.splice(pages.indexOf(page), 1);
-		// if the page was active, make the first item active
+        // if the page was active, make the first item active
         if (page === this.active) {
             if (pages.length) {
-                this.makeActive(pages[0]);
+                this.activeId = pages[0].pageId;
             } else {
-                this.active = null;
+                this.activeId = null;
             }
         }
-        batch.stop();
     },
     makeActive (page) {
         if (page === this.activePage) {
             return;
         }
-        this.activePage = page;
-        this.pages.each((p) => {
-            p.active = false;
-        });
-        page.active = true;
+        this.activeId = page.pageId;
+    },
+    isActive (page) {
+        if (!page) {
+            return false;
+        }
+        return page === this.activePage;
     }
 });
 

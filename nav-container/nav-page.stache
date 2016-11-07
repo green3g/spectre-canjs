@@ -1,5 +1,5 @@
-{{#active}}
-<div class="container">
-  <content />
-</div>
-{{/active}}
+{{#if parent.isActive(this)}}
+    <div class="container">
+        <content />
+    </div>
+{{/if}}

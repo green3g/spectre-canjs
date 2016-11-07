@@ -69,26 +69,6 @@ export const ViewMap = DefineMap.extend('ViewMap', {
      * @property {Array<util/field.Field>} fields
      */
     fields: DefineList,
-  /**
-   * The message to display when an object is updated
-   * @property {String} saveSuccessMessage
-   */
-    saveSuccessMessage: {value: 'Object saved.'},
-  /**
-   * The message to display when an object fails to save
-   * @property {String} saveFailMessage
-   */
-    saveFailMessage: {value: 'Object could not be saved.'},
-  /**
-   * The message to display when an object is deleted
-   * @property {String} deleteSuccessMessage
-   */
-    deleteSuccessMessage: {value: 'Object removed.'},
-  /**
-   * The message to display when an object fails to be deleted
-   * @property {String} deleteFailMessage
-   */
-    deleteFailMessage: {value: 'Object could not be removed.'},
     /**
      * The message to display when adding new items is disabled
      * @property {String} deleteFailMessage
@@ -162,8 +142,18 @@ export const ViewMap = DefineMap.extend('ViewMap', {
    * @property {funtion} afterDelete
    */
     afterDelete: {value: undefined},
+    /**
+     * called when an error occurs on delete
+     * @property {function} errorDelete
+     */
+    errorDelete: {value: undefined},
+    /**
+     * called when an errror occurs on saved
+     * @property {function} errorSave
+     */
+    errorSave: {value: undefined},
   /**
-   * Additional buttons to display when items are checked in the table. Buttotns
+   * Additional buttons to display when items are checked in the table. Buttons
    * can have an icon, text an an on click event handler
    * @property {Array<ManageButton>}
    *   ```

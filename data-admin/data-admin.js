@@ -507,7 +507,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
             deferred.catch((result) => {
                 //add a message
-                this.onEvent(result, 'failDelete');
+                this.onEvent(result, 'errorDelete');
                 console.error(result);
             });
             return deferred;

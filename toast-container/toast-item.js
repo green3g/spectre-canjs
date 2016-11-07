@@ -1,6 +1,6 @@
 
 import template from './toast-item.stache!';
-// import './toast-item.less!';
+import './toast-item.less!';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
@@ -38,7 +38,7 @@ export const ViewModel = DefineMap.extend('ToastItem', {
     severity: {
         value: 'info',
         type: function (val) {
-            var allowed = ['primary', 'success', 'danger'],
+            var allowed = ['primary', 'info', 'success', 'warning', 'danger'],
                 isValid = allowed.indexOf(val);
 
             return isValid ? val : allowed[0];

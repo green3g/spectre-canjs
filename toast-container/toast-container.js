@@ -33,7 +33,6 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
         this.toasts.push(toast);
     },
     removeToast: function (toast) {
-        console.log('toast hidden event');
         var index = this.toasts.indexOf(toast);
         this.toasts.splice(index, 1);
     }

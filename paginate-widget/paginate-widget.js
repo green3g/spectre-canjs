@@ -89,6 +89,26 @@ export const ViewModel = DefineMap.extend('PaginateWidget', {
             return arr;
         }
     },
+    hideFirst: {
+        type: 'htmlbool',
+        value: false
+    },
+    hideLast: {
+        type: 'htmlbool',
+        value: false
+    },
+    hidePrevious: {
+        type: 'htmlbool',
+        value: false
+    },
+    hideNext: {
+        type: 'htmlbool',
+        value: false
+    },
+    hidePages: {
+        type: 'htmlbool',
+        value: false
+    },
   /**
    * @function gotoNext
    * Navigates to the next page

@@ -1,5 +1,5 @@
 import q from 'steal-qunit';
-import can from 'can';
+import can 
 
 import {
   ViewModel

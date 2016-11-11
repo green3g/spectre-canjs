@@ -15,7 +15,7 @@ import {ViewModel as Toast} from './toast-item';
 export const ViewModel = DefineMap.extend('ToastContainer', {
     /**
      * An array of alert toasts
-     * @property {Array<cGrowl>} can-boot.growler
+     * @property {Array<cGrowl>} spectre-canjs.props.toasts
      */
     toasts: {
         Value: DefineList.extend('ToastList', {

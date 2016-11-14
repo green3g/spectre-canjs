@@ -49,7 +49,7 @@
             <nav-container>
                 {{#each view.relatedViews as relView}}
                     <nav-page label="{{#if relView.title}}relView.title{{else}}{{relView.view.title}}{{/if}}">
-                        <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{rfocusObject[elView.foreignKey]}}" />
+                        <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
                     </nav-page>
                 {{/each}}
             </nav-container>

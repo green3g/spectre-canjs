@@ -272,7 +272,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
    * @param  {filterObject} filterObj The object to add. This is the only argument used by the function, the rest may be null.
    */
     addFilter (filterObj) {
-        console.log(this.operatorField);
         filterObj.opField = deepAssign({}, this.operatorField);
         const name = filterObj.name;
         let filters;
@@ -287,26 +286,26 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
             return f.name === name;
         })[0] : null;
 
-    //get the filters
-    //try a filterFactory on the field object
-    //which should return one or an array of filters
+        //get the filters
+        //try a filterFactory on the field object
+        //which should return one or an array of filters
         if (field && typeof field.filterFactory === 'function') {
             filters = field.filterFactory(filterObj);
         }
 
-    //otherwise just use the filter as is
+        //otherwise just use the filter as is
         if (!filters) {
             filters = [filterObj];
         }
 
-      //start batch process
-      //concat array doesn't seem to update correctly
+        //start batch process
+        //concat array doesn't seem to update correctly
         batch.start();
         filters.forEach((f) => {
             this.filters.push(f);
         });
         this.formObject = null;
-      //end batch process
+        //end batch process
         batch.stop();
     },
     noOp (vm, form, event) {

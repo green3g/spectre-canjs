@@ -19,7 +19,7 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
      */
     toasts: {
         Value: DefineList.extend('ToastList', {
-            Map: Toast
+            '#': Toast
         })
     },
   /**

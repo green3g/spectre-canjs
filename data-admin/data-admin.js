@@ -306,7 +306,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             this.parameters.filters.push({
                 name: this.relatedField,
                 operator: 'equals',
-                value: this.relatedValue
+                value: val
             });
         }
     },
@@ -567,23 +567,25 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @signature
    * @param  {Boolean} val (Optional) whether or not to display the dialog
    */
-    toggle (val, visible) {
+    toggle (val, visible, e) {
+        this.noop(e);
         if (typeof visible !== 'undefined') {
             this[val] = Boolean(visible);
         } else {
             this[val] = !this[val];
         }
+        return false;
     },
-  /**
-   * @function getRelatedValue
-   * Retrieves a value from an object based on the key provided
-   * @signature
-   * @param  {String} foreignKey  The name of the field to retrieve from the object
-   * @param  {can.Map} focusObject The object to retrieve the property from
-   * @return {*} The object's property
-   */
-    getRelatedValue (foreignKey, focusObject) {
-        return focusObject[foreignKey];
+    /**
+     * prevents the default event from triggering
+     * @param  {[type]} event [description]
+     * @return {[type]}       [description]
+     */
+    noop (event) {
+        if (event) {
+            event.preventDefault();
+        }
+        return false;
     },
   /**
    * @function onEvent

@@ -3,7 +3,7 @@
     {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
     | <a class="inline-block badge" ($click)="toggle('filterVisible')"><i class="fa fa-search"></i> Search</a> |
     {{#if selectedObjects.length}}
-        <a class="inline-block selected-objects badge" data-badge="{{selectedObjects.length}}" ($click)="toggle('selectMenu')">
+        <a href="" class="inline-block dropdown badge" data-badge="{{selectedObjects.length}}" ($focus)="toggle('selectMenu', true, %event)" ($blur)="toggle('selectMenu', false, %event)" ($click)="noop(%event)">
     With Selected...
         {{#selectMenu}}
         <ul class="menu">

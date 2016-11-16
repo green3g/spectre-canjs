@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
 <script type="text/stache" id="demo-html" can-autorender="can-autorender">
+  <div class="container">
+    <h1>Form Widget Demo</h1>
     <p>Current form values: </p>
     <ul>
         <li>{{formObject.field1}}</li>
@@ -11,8 +13,8 @@
         <li>{{formObject.field5}}</li>
     </ul>
 
-    <h1>Form Widget Demo</h1>
     <form-widget {(form-object)}="formObject" {fields}="fields" (submit)="onSubmit" />
+  </div>
 </script>
 <script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
     // import 'bootstrap/dist/css/bootstrap.min.css!';
@@ -38,7 +40,7 @@
     //file upload experience
     fixture({ method: 'POST', url: '/upload' }, function(request) {
         return {
-            uploads: ['fake_upload_' + request.data.entries().next().value[1].name]
+            uploads: ['fake_upload_filename']
         };
     });
 
@@ -48,7 +50,7 @@
         };
     });
 
-    let template = DefineMap.extend({
+    let Template = DefineMap.extend({
         field1: {value: 'test-value'},
         field2: {value: 'another value'},
         field3: {value: 1},
@@ -68,14 +70,12 @@
             alert('Form submitted! See the console for details');
             console.log(arguments);
         },
-        formObject: new template(),
+        formObject: new Template(),
         fields: ['field1', {
             name: 'field2',
             alias: 'A basic textarea field',
             type: 'text',
-            properties: {
-                textarea: true
-            }
+            textarea: true
         }, {
             name: 'field3',
             alias: 'A select dropdown',

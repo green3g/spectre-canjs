@@ -1,29 +1,22 @@
 <div class="form-group">
-  <div class="input-group">
-    <label {{#inline}}class="sr-only" {{/inline}}for="{{properties.name}}">{{properties.alias}}</label>
-    <input ($change)="onChange(%element)" type="file" class="form-control" id="{{properties.name}}" name="{{properties.name}}" {{#if properties.multiple}} multiple {{/if}} />
-  </div>
+    <div class="input-group">
+        <label {{#inline}} class="sr-only" {{/inline}} for="{{properties.name}}">{{properties.alias}}</label>
+        <button type="button" class="upload-button btn btn-default">Upload</button>
+        <input ($change)="onChange(%element)" type="file" class="form-control" id="{{properties.name}}" name="{{properties.name}}" {{#if properties.multiple}} multiple {{/if}} />
 
-  {{#if state.isPending}}
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-  {{/if}}
-
-  {{#if currentFiles.length}}
-    <div class="file-field file-list">
-      <p>Current Files: </p>
-      <ul class="list-group">
         {{#each currentFiles}}
-          <li class="list-group-item">
-            <span ($click)="removeFile(.)" class="badge pull-right">
-              <i class="fa fa-trash"></i></span>
-            <a target="_blank" href="{{.}}">{{.}}</a>
-          </li>
+            <div class="chip-sm current-files">
+                <span class="chip-name"><a target="_blank" href="{{.}}">Crime{{.}}</a></span>
+                <button class="btn btn-clear" ($click)="removeFile(.)"></button>
+            </div>
         {{/each}}
-      </ul>
     </div>
-  {{/if}}
+
+    {{#if state.isPending}}
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    {{/if}}
 </div>

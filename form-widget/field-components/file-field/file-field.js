@@ -2,8 +2,9 @@ import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import ajax from 'can-util/dom/ajax/ajax';
+import $ from 'jquery';
 
+import './file-field.less';
 import template from './file-field.stache!';
 
 /**
@@ -53,18 +54,16 @@ export const ViewModel = DefineMap.extend('FileField', {
     },
     uploadFiles (files) {
         var data = new FormData();
-        console.log(files);
         for (var i = 0; i < files.length; i++) {
             data.append(i, files.item(i));
         }
-        this.state = ajax({
+        this.state = $.ajax({
             url: this.properties.url,
             type: 'POST',
             data: data,
-            cache: false,
             dataType: 'json',
-            processData: false, // Don't process the files
-            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+            processData: false,
+            contentType: false,
             success: this.uploadSuccess.bind(this),
             error: this.uploadError.bind(this)
         });
@@ -92,7 +91,7 @@ export const ViewModel = DefineMap.extend('FileField', {
     // STOP LOADING SPINNER
     },
     removeFile (file) {
-        this.state = ajax({
+        this.state = $.ajax({
             url: this.properties.url,
             type: 'DELETE',
             data: {

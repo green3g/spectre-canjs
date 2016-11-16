@@ -9,11 +9,10 @@ import assign from 'can-util/js/assign/assign';
 
 
 const TEMPLATES = {
-    text: '<text-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" />',
-    select: '<select-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" />',
-    file: '<file-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" />',
-    json: '<json-field {properties}="." (change)="setField" {value}="getFieldValue(.)" />',
-    date: '<date-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" />'
+    text: '<text-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
+    select: '<select-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
+    file: '<file-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
+    json: '<json-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />'
 };
 
 //precompile templates
@@ -115,6 +114,13 @@ export const Field = DefineMap.extend('Field', {
     formatter: {
         value: null
     },
+    /**
+     * Validates a property and returns a string if the field is invalid
+     * @property {Function}
+     */
+    validate: {
+        value: null
+    },
     getFormattedValue (obj) {
         return this.formatter ?
       this.formatter(obj[this.name], obj) : obj[this.name];
@@ -129,13 +135,20 @@ export const Field = DefineMap.extend('Field', {
  * @return {Array<Field>} The array of fields
  */
 export function parseFieldArray (fields) {
+    // create field objects
     return fields.map((f) => {
+        // if we have a string give it a default name
         if (typeof f === 'string') {
             f = {
                 name: f
             };
         }
+        // add additional props with field constructor
         return new Field(f);
+
+    // filter fields to exclude any '__' hidden props
+    }).filter((f) => {
+        return f.name.indexOf('__') === -1;
     });
 }
 

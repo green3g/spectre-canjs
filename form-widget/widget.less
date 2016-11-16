@@ -5,4 +5,19 @@ form-widget {
   file-field:not(:last-child) .form-group {
     margin-bottom: 1rem;
   }
+
+  /* add hint text TODO: Remove at next spectre version */
+  .form-input-hint {
+    color: #888;
+    display: inline-block;
+    margin-top: .4rem;
+  }
+  .has-success .form-input-hint,
+  .is-success + .form-input-hint {
+    color: #32b643;
+  }
+  .has-danger .form-input-hint,
+  .is-danger + .form-input-hint {
+    color: #e85600;
+  }
 }

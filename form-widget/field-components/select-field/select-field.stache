@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
   <div class="col-4">
     <label class="form-label" {{#inline}}class="sr-only" {{/inline}}for="{{properties.name}}">{{properties.alias}}</label>
   </div>
@@ -9,4 +9,5 @@
       {{/each}}
     </select>
   </div>
+  {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}
 </div>

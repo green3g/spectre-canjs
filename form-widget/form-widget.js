@@ -102,6 +102,42 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         value: false
     },
     /**
+     * an object consisting of validation error strings
+     * @property {Object} form-widget.ViewModel.props.validationErrors
+     * @parent form-widget.ViewModel.props
+     */
+    validationErrors: {
+        get (val) {
+            if (val) {
+                return val;
+            }
+            var define = {};
+            this.fields.forEach((f) => {
+                define[f.name] = '*';
+            });
+            const Validation = DefineMap.extend(define);
+            return new Validation();
+        }
+    },
+    /**
+     * Whether or not this form is valid and can be submitted. If this is
+     * false, the form will not emit the submit event when it is submitted.
+     * Instead, it will emit a `submit-fail` event
+     * @property {Boolean} form-widget.ViewModel.props.isValid
+     * @parent form-widget.ViewModel.props
+     */
+    isValid: {
+        get () {
+            let isValid = true;
+            this.fields.forEach((f) => {
+                if (!this.validate(f, this.formObject[f.name])) {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+    },
+    /**
      * This property is set to true when the save button is clicked.
      * It sets the save button to a loading state
      * @property {Boolean} form-widget.ViewModel.props.isSaving
@@ -135,6 +171,10 @@ export const ViewModel = DefineMap.extend('FormWidget', {
    */
     submitForm (vm, form, event) {
         event.preventDefault();
+        if (!this.isValid) {
+            this.dispatch('submit-fail', [formObject, this.validationErrors]);
+            return false;
+        }
         if (this.showSaving) {
             this.isSaving = true;
         }
@@ -154,9 +194,32 @@ export const ViewModel = DefineMap.extend('FormWidget', {
    * @param  {Object | Number | String} value  The value that was passed from the field component
    */
     setField (field, domElement, event, value) {
-        var obj = this.formObject;
-        obj[field.name] = value;
-        this.dispatch('field-change', [obj]);
+
+        // check for valid field value and don't update if it's not
+        if (!this.validate(field, value)) {
+            return;
+        }
+
+        // update and dispatch field change event
+        this.formObject[field.name] = value;
+        this.dispatch('field-change', [this.formObject]);
+    },
+    /**
+     * Validates a field with a value if the field has a validate property
+     * @param  {Object} field The field object to validate
+     * @param  {value} value The value of the field to validate
+     * @return {boolean}       Whether or not the field is valid
+     */
+    validate (field, value) {
+
+        if (!field.validate) {
+            return true;
+        }
+
+        // validate the field, store the error, and return a boolean
+        this.validationErrors[field.name] = field.validate(value);
+        return !this.validationErrors[field.name];
+
     },
   /**
    * @typedef {can.Event} form-widget.events.formCancel cancel

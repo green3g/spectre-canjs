@@ -14,6 +14,7 @@ import {mapToFields, parseFieldArray} from '../../../../util/field';
  */
 export const ViewModel = DefineMap.extend('JSONField', {
     properties: DefineMap,
+    errors: '*',
     jsonFormObject: {
         get: function () {
             const Template = this.properties.ObjectTemplate;

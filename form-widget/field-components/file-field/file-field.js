@@ -16,6 +16,7 @@ import template from './file-field.stache!';
  */
 export const ViewModel = DefineMap.extend('FileField', {
     properties: DefineMap,
+    errors: '*',
     currentFiles: {
         get: function initCurrentFiles (val, set) {
             if (!val) {

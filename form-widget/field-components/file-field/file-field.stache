@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
     <div class="input-group">
         <label {{#inline}} class="sr-only" {{/inline}} for="{{properties.name}}">{{properties.alias}}</label>
         <button type="button" class="upload-button btn btn-default">Upload</button>
@@ -7,7 +7,7 @@
         {{#each currentFiles}}
             <div class="chip-sm current-files">
                 <span class="chip-name"><a target="_blank" href="{{.}}">Crime{{.}}</a></span>
-                <button class="btn btn-clear" ($click)="removeFile(.)"></button>
+                <button type="button" class="btn btn-clear" ($click)="removeFile(.)"></button>
             </div>
         {{/each}}
     </div>
@@ -19,4 +19,5 @@
             </div>
         </div>
     {{/if}}
+    {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}
 </div>

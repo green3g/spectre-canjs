@@ -13,6 +13,7 @@ import template from './select-field.stache!';
  */
 export const ViewModel = DefineMap.extend('SelectField', {
     properties: DefineMap,
+    errors: '*',
     onChange (value) {
     //we could perform some other logic here
         this.dispatch('change', [value]);

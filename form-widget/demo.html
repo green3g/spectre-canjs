@@ -1,17 +1,10 @@
 <div id="demo-app"></div>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
 <script type="text/stache" id="demo-html" can-autorender="can-autorender">
   <div class="container">
     <h1>Form Widget Demo</h1>
     <p>Current form values: </p>
-    <ul>
-        <li>{{formObject.field1}}</li>
-        <li>{{formObject.field2}}</li>
-        <li>{{formObject.field3}}</li>
-        <li>{{formObject.field4}}</li>
-        <li>{{formObject.field5}}</li>
-    </ul>
+    <pre>{{stringify}}</pre>
 
     <form-widget {(form-object)}="formObject" {fields}="fields" (submit)="onSubmit" />
   </div>
@@ -20,6 +13,7 @@
     // import 'bootstrap/dist/css/bootstrap.min.css!';
     // import 'bootstrap/dist/css/bootstrap-theme.min.css!';
     import 'font-awesome/css/font-awesome.min.css';
+    import 'spectre.css/dist/spectre.css!';
 
     //import our form component
     import 'form-widget/';
@@ -51,7 +45,9 @@
     });
 
     let Template = DefineMap.extend({
-        field1: {value: 'test-value'},
+        field1: {
+          value: 'test-value'
+         },
         field2: {value: 'another value'},
         field3: {value: 1},
         field4: {
@@ -71,11 +67,23 @@
             console.log(arguments);
         },
         formObject: new Template(),
-        fields: ['field1', {
+        fields: [{
+          name: 'field1',
+          validate(val){
+            return val.length < 50 ? 'This field must contain at least 50 characters' : false;
+          }
+        }, {
             name: 'field2',
             alias: 'A basic textarea field',
             type: 'text',
-            textarea: true
+            textarea: true,
+             placeholder: 'Enter the text: "hello"',
+             validate(val){
+               if(val !== 'hello'){
+                 return 'This field must contain the text, "hello"';
+               }
+               return false
+             }
         }, {
             name: 'field3',
             alias: 'A select dropdown',
@@ -97,7 +105,10 @@
             alias: 'A file field',
             fieldType: 'file',
             url: '/upload'
-        }]
+        }],
+        stringify(){
+          return JSON.stringify(this.formObject.serialize());
+        }
     });
 
     document.body.appendChild(frag);

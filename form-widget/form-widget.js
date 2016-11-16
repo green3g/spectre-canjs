@@ -217,7 +217,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         }
 
         // validate the field, store the error, and return a boolean
-        this.validationErrors[field.name] = field.validate(value);
+        this.validationErrors[field.name] = field.validate(value, this.formObject);
         return !this.validationErrors[field.name];
 
     },

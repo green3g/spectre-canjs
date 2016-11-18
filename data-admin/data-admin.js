@@ -390,7 +390,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    */
     saveObject () {
         let obj;
-    //accept 4 params from the template or just one
+        //accept 4 params from the template or just one
         if (arguments.length === 4) {
             obj = arguments[3];
         } else {
@@ -398,8 +398,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
         const isNew = obj.isNew();
 
-    // trigger events beforeCreate/beforeSave depending on if we're adding or
-    // updating an object
+        // trigger events beforeCreate/beforeSave depending on if we're adding or
+        // updating an object
+        let val;
         if (isNew) {
             val = this.onEvent(obj, 'beforeCreate');
         } else {

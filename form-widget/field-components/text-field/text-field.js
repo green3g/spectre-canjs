@@ -11,8 +11,9 @@ import template from './text-field.stache!';
  */
 export const ViewModel = DefineMap.extend('TextField', {
     properties: DefineMap,
-    value: 'string',
+    value: {type: 'string', value: ''},
     errors: '*',
+    inline: 'htmlbool',
   /**
    * Checks for the enter keypress and triggers a change event on the input
    * The enter key press triggers a submit event on the form, but before the

@@ -6,7 +6,7 @@
 
         {{#each currentFiles}}
             <div class="chip-sm current-files">
-                <span class="chip-name"><a target="_blank" href="{{.}}">Crime{{.}}</a></span>
+                <span class="chip-name"><a target="_blank" href="{{.}}">{{.}}</a></span>
                 <button type="button" class="btn btn-clear" ($click)="removeFile(.)"></button>
             </div>
         {{/each}}

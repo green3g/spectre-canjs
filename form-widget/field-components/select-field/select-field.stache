@@ -1,13 +1,21 @@
 <div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
-  <div class="col-4">
-    <label class="form-label" {{#inline}}class="sr-only" {{/inline}}for="{{properties.name}}">{{properties.alias}}</label>
-  </div>
-  <div class="col-8">
-    <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
-      {{#each properties.options}}
-        <option value="{{value}}">{{label}}</option>
-      {{/each}}
-    </select>
-  </div>
-  {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}
+    {{#if inline}}
+        <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
+            {{#each properties.options}}
+                <option value="{{value}}">{{label}}</option>
+            {{/each}}
+        </select>
+    {{else}}
+        <div class="col-4">
+            <label class="form-label" for="{{properties.name}}">{{properties.alias}}</label>
+        </div>
+        <div class="col-8">
+            <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
+                {{#each properties.options}}
+                    <option value="{{value}}">{{label}}</option>
+                {{/each}}
+            </select>
+        </div>
+    {{/if}}
+    {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}
 </div>

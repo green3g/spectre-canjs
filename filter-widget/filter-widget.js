@@ -1,4 +1,3 @@
-import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import batch from 'can-event/batch/batch';
@@ -13,7 +12,7 @@ import '../form-widget/field-components/text-field/';
 import '../form-widget/field-components/select-field/';
 
 import {parseFieldArray} from '../util/field';
-import {Filter, FilterOptions} from './Filter';
+import {Filter, FilterList, FilterOptions} from './Filter';
 
 /**
  * @constructor filter-widget.ViewModel ViewModel
@@ -46,6 +45,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                     return !f.excludeFilter;
                 });
             }
+            return [];
         }
     },
     /**
@@ -69,7 +69,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     filters: {
-        Value: DefineList
+        Value: FilterList
     },
     /**
      * The model-like object to render in the form
@@ -111,7 +111,12 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      */
     formFields: {
         get () {
-            const nameField = this.fieldOptions ? {
+            return parseFieldArray([this.nameField, this.operatorField, this.valueField]);
+        }
+    },
+    nameField: {
+        get () {
+            return this.fieldOptions ? {
                 formatter: makeSentenceCase,
                 name: 'name',
                 alias: 'Field Name',
@@ -122,7 +127,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                 alias: 'Field Name',
                 placeholder: 'Enter fieldname'
             };
-            return parseFieldArray([nameField, this.operatorField, this.valueField]);
         }
     },
     /**
@@ -225,23 +229,27 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     fieldOptions: {
         value: null,
         get () {
+            const fields = [{
+                value: '',
+                label: 'Add a filter'
+            }];
             if (this.fields) {
-                return this.fields.map((f) => {
+                return fields.concat(this.fields.map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
-                });
+                }).serialize());
             }
-            return this.ObjectTemplate ?
-                Object.keys(this.ObjectTemplate()).map((key) => {
-                    return {
-                        value: key,
-                        label: makeSentenceCase(key)
-                    };
-                }) : null;
+            return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
+                return {
+                    value: key,
+                    label: makeSentenceCase(key)
+                };
+            })) : null;
         }
     },
+    fieldValue: 'string',
   /**
    * @function removeFilter
    * Removes a filter from the list of filters
@@ -270,12 +278,18 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
    * @param  {event} dom   The dom event
    * @param  {event} event The can event
    * @param  {filterObject} filterObj The object to add. This is the only argument used by the function, the rest may be null.
+   * @return {Boolean} returns false to prevent event propagation from links
    */
-    addFilter (filterObj) {
-        filterObj.opField = deepAssign({}, this.operatorField);
-        const name = filterObj.name;
+    addFilter () {
+        const name = arguments.length === 4 ? arguments[3] : arguments[0];
+        const filterObj = new Filter({
+            name: name
+        });
+        this.fieldValue = '';
+        filterObj.operatorField = deepAssign({}, this.operatorField);
+        filterObj.valueField = deepAssign({}, this.valueField);
         let filters;
-        if (!name || !filterObj.value) {
+        if (!name) {
             return false;
         }
         // const fields = this.fields;
@@ -299,14 +313,18 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
         }
 
         //start batch process
-        //concat array doesn't seem to update correctly
         batch.start();
         filters.forEach((f) => {
             this.filters.push(f);
         });
+        // can-define bug
+        // this.filters = this.filters.concat(filters);
         this.formObject = null;
+
         //end batch process
         batch.stop();
+
+        return false;
     },
     noOp (vm, form, event) {
         event.preventDefault();

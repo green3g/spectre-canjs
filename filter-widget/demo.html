@@ -1,12 +1,14 @@
 <script type="text/stache" id="demo-html">
+  <div class="container">
   <h1>Filter Widget Demo</h1>
 
   <p><button class="btn" type="button" ($click)="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
 
-  <filter-widget {fields}="fields" {^filters}="filters" {{#disableAdd}}disableAdd{{/disableAdd}} />
+  <filter-widget {fields}="fields" {^filters}="filters" {{#disableAdd}}disable-add{{/disableAdd}} />
 
   <h2>Current filters: </h2>
-  {{stringify(filters)}}
+  <pre>{{stringify(filters)}}</pre>
+  </div>
 
 </script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
@@ -22,7 +24,6 @@
   let render = stache.from('demo-html');
   document.body.appendChild(render(new DefineMap({
     fields: parseFieldArray( ['field1', 'field_2', 'field 3'] ),
-    filters: [],
     disableAdd: false,
     stringify(data){
       return JSON.stringify(data.serialize());

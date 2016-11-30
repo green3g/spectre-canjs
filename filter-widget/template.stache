@@ -1,18 +1,19 @@
 <div class="filter-widget container-fluid">
 
     {{#unless disableAdd}}
-        <form-widget inline="true" {fields}="formFields" {(form-object)}="formObject" (submit)="addFilter(formObject)" />
+        <select-field {properties}="nameField" (change)="addFilter" ({$value})="fieldValue" inline />
+        <!-- <form-widget inline="true" {fields}="formFields" {(form-object)}="formObject" (submit)="addFilter(formObject)" /> -->
     {{/unless}}
 
     <br />
 
     {{#each filters}}
-        <form class="form-horizontal" ($submit)="noOp">
-            <div class="form-group">
-                <button type="button" class="btn" ($click)="removeFilter(this)"><i class="fa fa-trash"></i> {{name}}</button>
-                <select-field {properties}="opField" {(value)}="operator" />
-                <text-field {(value)}="value" />
-            </div>
-        </form>
+        <div class="clearfix">
+            <form class="form" ($submit)="noOp">
+                <button type="button" class="btn block float-left" ($click)="removeFilter(this)"><i class="fa fa-trash"></i> {{name}}</button>
+                <select-field class="pl-10 block float-left" {properties}="operatorField" {(value)}="operator" inline />
+                <text-field class="pl-10 block float-left" {(value)}="value" {properties}="valueField" inline />
+            </form>
+        </div>
     {{/each}}
 </div>

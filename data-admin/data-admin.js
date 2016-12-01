@@ -275,13 +275,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     _fields: {
         get () {
 
-        //try a fields propety first
+            //try a fields propety first
             if (this.view.fields) {
                 return parseFieldArray(this.view.fields);
             }
 
-        //if that doesn't exist, use the objectTemplate or Map to create fields
-            const Template = this.view.objectTemplate || this.view.connection.Map;
+            //if that doesn't exist, use the ObjectTemplate or Map to create fields
+            const Template = this.view.ObjectTemplate || this.view.connection.Map;
             return mapToFields(Template);
         }
     },

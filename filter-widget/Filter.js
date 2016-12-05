@@ -57,8 +57,8 @@ export const Filter = DefineMap.extend('Filter', {
 });
 
 export const FilterList = DefineList.extend('FilterList', {
-    '#': Filter
-});
+    DefineMap: Filter
+}, {});
 
 export const FilterOptions = [{
     label: 'Does not contain',

@@ -261,10 +261,15 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * Whether or not the filter popup is visible
-     * @property {Boolean} data-admin.ViewModel.props.buttons
+     * @property {Boolean} data-admin.ViewModel.props.filterVisible
      * @parent data-admin.ViewModel.props
      */
     filterVisible: {type: 'boolean', value: false},
+    /**
+     * whether or not the select menu is currently visible
+     * @type {Boolean} data-admin.ViewModel.props.selectMenu
+     * @parent data-admin.ViewModel.props
+     */
     selectMenu: {type: 'boolean', value: false},
     /**
      * The internal field array that define the display of data and field types

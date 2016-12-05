@@ -1,19 +1,48 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 
+/**
+ * @constructor filter-widget.Filter Filter
+ * @parent filter-widget
+ * @group filter-widget.Filter.props Properties
+ *
+ * @description Creates a new filter object
+ * @signature `new Filter(properties)`
+ */
 export const Filter = DefineMap.extend('Filter', {
+    /**
+     * A value to filter on. Can be any primitive type
+     * @property {*} Filter.value
+     */
     value: {
         type: '*'
     },
+    /**
+     * The name of the field to filter on
+     * @property {String} Filter.name
+     * @parent Filter.props
+     */
     name: {
         type: 'string',
         value: ''
     },
+    /**
+     * The operator to filter with. The default is `like`.
+     *
+     * @property {String} Filter.operator
+     * @parent Filter.props
+     */
     operator: {
         type: 'string',
         value: 'like'
     },
-    opField: {
+    /**
+     * A field object that defines the available operator options and properties.
+     * This is used to create the dropdown choice for each filter in the filter-widget
+     * @property {Object} Filter.operatorField
+     * @parent Filter.props
+     */
+    operatorField: {
         serialize: false
     }
 });

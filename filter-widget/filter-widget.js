@@ -312,17 +312,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
             filters = [filterObj];
         }
 
-        //start batch process
-        batch.start();
-        filters.forEach((f) => {
-            this.filters.push(f);
+        this.set({
+            filters: this.filters.concat(filters),
+            formObject: null
         });
-        // can-define bug
-        // this.filters = this.filters.concat(filters);
-        this.formObject = null;
-
-        //end batch process
-        batch.stop();
 
         return false;
     },

@@ -44,6 +44,15 @@ export const Filter = DefineMap.extend('Filter', {
      */
     operatorField: {
         serialize: false
+    },
+    /**
+     * A field object that defines the value field properties.
+     * This is used to create the value field for each filter in the filter-widget
+     * @property {Object} Filter.valueField
+     * @parent Filter.props
+     */
+    valueField: {
+        serialize: false
     }
 });
 

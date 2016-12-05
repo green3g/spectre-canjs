@@ -132,12 +132,32 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         Value: ParameterMap,
         Type: ParameterMap,
         get (params) {
+
+            // mixin view parameters
             if (this.view.parameters) {
-                assign(params, this.view.parameters);
+                this.view.parameters.forEach((p, key) => {
+
+                    // deep copy filters
+                    if (key === 'filters') {
+                        p.forEach((f) => {
+                            if (params.filters.indexOf(f) < 0) {
+                                params.filters.push(f);
+                            }
+                        });
+                    } else {
+                        params[key] = p;
+                    }
+                });
             }
             return params;
         }
     },
+    /**
+     * A simple counter that forces a refresh on the promise when set. Used
+     * to manually refresh the data list
+     * @property {Number} data-admin.ViewModel.props.objectsRefreshCount
+     * @parent data-admin.ViewModel.props
+     */
     objectsRefreshCount: {
         value: 0,
         type: 'number'
@@ -301,11 +321,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * Initializes filters and other parameters
    */
     init () {
-    //set up related filters which are typically numbers
+        //set up related filters which are typically numbers
         if (this.relatedField) {
             let val = parseFloat(this.relatedValue);
             if (!val) {
-        //if we can't force numeric type, just use default value
+                //if we can't force numeric type, just use default value
                 val = this.relatedValue;
             }
             this.parameters.filters.push({

@@ -32,7 +32,7 @@
     "animate.css": "^3.5.2",
     "can-component": "^3.0.1",
     "can-connect": "^1.0.4",
-    "can-define": "^1.0.0",
+    "can-define": "^1.0.5",
     "can-event": "^3.0.1",
     "can-fixture": "^1.0.1",
     "can-route": "^3.0.2",

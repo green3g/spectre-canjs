@@ -4,7 +4,7 @@ import {ViewModel} from './data-admin';
 import {Connection, TaskMap} from '../../test/data/connection';
 import {TOPICS} from './data-admin';
 import PubSub from 'pubsub-js';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 let vm;
 
 import DefineList from 'can-define/list/list';

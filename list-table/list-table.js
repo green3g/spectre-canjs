@@ -7,7 +7,7 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import CanEvent from 'can-event';
 import CanBatch from 'can-event/batch/batch';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 /**
  * @constructor list-table.ViewModel ViewModel

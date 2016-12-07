@@ -1,7 +1,7 @@
 import data from './tasks.json';
 import fixture from 'can-fixture';
 import DefineList from 'can-define/list/list';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 
 let index = 1000;

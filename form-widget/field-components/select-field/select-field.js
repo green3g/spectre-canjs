@@ -3,6 +3,7 @@ import CanEvent from 'can-event';
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import template from './select-field.stache!';
+import assign from 'object-assign';
 
 /**
  * @constructor form-widget/field-components/select-field.ViewModel ViewModel
@@ -26,7 +27,7 @@ export const ViewModel = DefineMap.extend('SelectField', {
         return value == this.value;
     }
 });
-Object.assign(ViewModel.prototype, CanEvent);
+assign(ViewModel.prototype, CanEvent);
 
 Component.extend({
     tag: 'select-field',

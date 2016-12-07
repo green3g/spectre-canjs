@@ -5,7 +5,7 @@
 import {makeSentenceCase} from './string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 
 const TEMPLATES = {
@@ -169,7 +169,7 @@ export function mapToFields (defineMap) {
     for (var prop in define) {
         if (define.hasOwnProperty(prop)) {
             const type = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
-            fields.push(Object.assign({}, {
+            fields.push(assign({}, {
                 name: prop,
                 type: 'string',
                 fieldType: 'text'

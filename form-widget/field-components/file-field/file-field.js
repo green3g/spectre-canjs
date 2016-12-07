@@ -3,6 +3,7 @@ import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
 import $ from 'jquery';
+import assign from 'object-assign';
 
 import './file-field.less';
 import template from './file-field.stache!';
@@ -116,7 +117,7 @@ export const ViewModel = DefineMap.extend('FileField', {
     }
 });
 
-Object.assign(ViewModel.prototype, CanEvent);
+assign(ViewModel.prototype, CanEvent);
 
 Component.extend({
     tag: 'file-field',

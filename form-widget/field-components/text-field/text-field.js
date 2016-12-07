@@ -2,6 +2,7 @@ import canEvent from 'can-event';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import template from './text-field.stache!';
+import assign from 'object-assign';
 /**
  * @constructor form-widget/field-components/text-field.ViewModel ViewModel
  * @parent form-widget/text-date-field
@@ -28,7 +29,7 @@ export const ViewModel = DefineMap.extend('TextField', {
         }
     }
 });
-Object.assign(ViewModel.prototype, canEvent);
+assign(ViewModel.prototype, canEvent);
 
 Component.extend({
     tag: 'text-field',

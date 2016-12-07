@@ -4,6 +4,7 @@ import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import template from './json-field.stache!';
 import {mapToFields, parseFieldArray} from '../../../../util/field';
+import assign from 'object-assign';
 
 /**
  * @constructor form-widget/field-components/json-field.ViewModel ViewModel
@@ -39,7 +40,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
         this.dispatch('change', [json]);
     }
 });
-Object.assign(ViewModel.prototype, CanEvent);
+assign(ViewModel.prototype, CanEvent);
 
 Component.extend({
     tag: 'json-field',

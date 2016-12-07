@@ -4,7 +4,7 @@ import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
 import {parseFieldArray, Field} from '../../util/field';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 /**
  * @constructor property-table.ViewModel ViewModel

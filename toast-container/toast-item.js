@@ -5,7 +5,7 @@ import './toast-item.less!';
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 
 /**

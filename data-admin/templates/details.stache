@@ -3,43 +3,43 @@
         <div class="column {{#if view.relatedViews}}col-sm-12 col-4{{else}}col-12{{/if}}">
             <h3 class="float-left">{{view.title}}: {{viewId}}</h3>
 
-            <button type="button" class="inline dropdown btn btn-primary float-right" ($blur)="toggle('selectMenu', false, %event)" ($focus)="toggle('selectMenu', true, %event)" ($click)="noop(%event)">
-                Manage Item <i class="fa fa-caret-down"></i>
-                {{#if selectMenu}}
-                    <ul class="menu details-menu">
-                        {{#if view.manageButtons.length}}
-                            <!-- menu header -->
-                            <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
-                            {{#each view.manageButtons as button}}
-                                {{#unless disabled}}
-                                    <li class="menu-item">
-                                        <a ($click)="manageObject(focusObject, button)"><span class="{{iconClass}}"></span>{{text}}</a>
-                                    </li>
-                                {{/unless}}
-                            {{/each}}
-                        {{/if}}
-                        <!-- menu divider -->
-                        <li class="divider"></li>
-                        <li class="menu-header">
-                            <span class="menu-header-text">Modify</span>
+            <div class="dropdown float-right">
+                <a href="#" class="dropdown btn btn-primary dropdown-toggle" ($click)="noop(%event)">
+                  Manage Item <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="menu dropdown-menu">
+                    {{#if view.manageButtons.length}}
+                        <!-- menu header -->
+                        <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
+                        {{#each view.manageButtons as button}}
+                            {{#unless disabled}}
+                                <li class="menu-item">
+                                    <a ($click)="manageObject(focusObject, button)"><span class="{{iconClass}}"></span>{{text}}</a>
+                                </li>
+                            {{/unless}}
+                        {{/each}}
+                    {{/if}}
+                    <!-- menu divider -->
+                    <li class="divider"></li>
+                    <li class="menu-header">
+                        <span class="menu-header-text">Modify</span>
+                    </li>
+                    {{#unless view.disableEdit}}
+                        <li class="menu-item">
+                            <a ($click)="editObject(focusObject)">
+                                <span class="fa fa-pencil fa-fw"></span> Edit
+                            </a>
                         </li>
-                        {{#unless view.disableEdit}}
-                            <li class="menu-item">
-                                <a ($click)="editObject(focusObject)">
-                                    <span class="fa fa-pencil fa-fw"></span> Edit
-                                </a>
-                            </li>
-                        {{/unless}}
-                        {{#unless view.disableDelete}}
-                            <li class="menu-item">
-                                <a ($click)="deleteObject(focusObject)">
-                                    <span class="fa fa-trash fa-fw"></span> Delete
-                                </a>
-                            </li>
-                        {{/unless}}
-                    </ul>
-                {{/if}}
-            </button>
+                    {{/unless}}
+                    {{#unless view.disableDelete}}
+                        <li class="menu-item">
+                            <a ($click)="deleteObject(focusObject)">
+                                <span class="fa fa-trash fa-fw"></span> Delete
+                            </a>
+                        </li>
+                    {{/unless}}
+                </ul>
+            </div>
 
             <div class="clearfix"></div>
 

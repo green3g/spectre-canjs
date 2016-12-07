@@ -2,9 +2,9 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import template from './template.stache!';
-import assign from 'can-util/js/assign/assign';
 import './widget.less!';
 
+import '../dropdown-menu/';
 import '../list-table/';
 import '../property-table/';
 import '../form-widget/';

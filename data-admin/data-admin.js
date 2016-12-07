@@ -588,10 +588,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
     },
   /**
-   * @function toggleFilter
-   * Toggles the display of the filter dialog
+   * @function toggle
+   * Toggles the display of menus
    * @signature
-   * @param  {Boolean} val (Optional) whether or not to display the dialog
+   * @param {String} val The value to toggle
+   * @param  {Boolean} visible (Optional) whether or not to display the dialog
+   * @param {Event} e (optional) the event to toggle
    */
     toggle (val, visible, e) {
         this.noop(e);

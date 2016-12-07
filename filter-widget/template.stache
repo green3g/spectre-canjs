@@ -8,7 +8,7 @@
     <br />
 
     {{#each filters}}
-        <div class="clearfix">
+        <div class="clearfix pt-10">
             <form class="form" ($submit)="noOp">
                 <button type="button" class="btn block float-left" ($click)="removeFilter(this)"><i class="fa fa-trash"></i> {{name}}</button>
                 <select-field class="pl-10 block float-left" {properties}="operatorField" {(value)}="operator" inline />

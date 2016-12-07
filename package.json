@@ -23,9 +23,10 @@
     "documentjs": "^0.4.4",
     "eslint": "^3.8.1",
     "npm-watch": "^0.1.x",
-    "steal-qunit": "^0.1.x",
-    "steal-tools": "^1.0.0-rc.2",
-    "testee": "^0.3.0-pre.2"
+    "steal-css": "^1.0.0-rc.0",
+    "steal-less": "^1.0.0-rc.3",
+    "steal-stache": "^3.0.3",
+    "steal-tools": "^1.0.0-rc2"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
@@ -42,8 +43,14 @@
     "date-selector": "^2.0.x",
     "font-awesome": "^4.5.x",
     "jquery": "^3.1.1",
-    "spectre.css": "^0.1.27",
-    "steal": "^1.0.0-rc.5",
-    "steal-stache": "^3.0.0"
+    "spectre.css": "^0.1.29",
+    "steal": "^1.0.0-rc2"
+  },
+  "steal": {
+    "plugins": [
+      "steal-css",
+      "steal-less",
+      "steal-stache"
+    ]
   }
 }

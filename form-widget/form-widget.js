@@ -2,7 +2,10 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import template from './template.stache!';
-import {Field, parseFieldArray} from '../util/field';
+import {
+    Field,
+    parseFieldArray
+} from '../util/field';
 import './widget.less!';
 
 /**
@@ -14,40 +17,40 @@ import './widget.less!';
  * @description A `<form-widget />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('FormWidget', {
-  /**
-   * @prototype
-   */
-  /**
-   * Whether or not to show the submit/cancel buttons
-   * @property {Boolean} form-widget.ViewModel.props.showButtons
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * @prototype
+     */
+    /**
+     * Whether or not to show the submit/cancel buttons
+     * @property {Boolean} form-widget.ViewModel.props.showButtons
+     * @parent form-widget.ViewModel.props
+     */
     showButtons: {
         type: 'boolean',
         value: true
     },
-  /**
-   * Whether or not this form should be a bootstrap inline form
-   * @property {Boolean} form-widget.ViewModel.props.inline
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * Whether or not this form should be a bootstrap inline form
+     * @property {Boolean} form-widget.ViewModel.props.inline
+     * @parent form-widget.ViewModel.props
+     */
     inline: {
         type: 'boolean',
         value: false
     },
-  /**
-   * The connection info for this form's data. If this is provided, the object will be fetched using the objectId property
-   * @property {connectInfoObject} form-widget.ViewModel.props.connection
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * The connection info for this form's data. If this is provided, the object will be fetched using the objectId property
+     * @property {connectInfoObject} form-widget.ViewModel.props.connection
+     * @parent form-widget.ViewModel.props
+     */
     connection: {
         value: null
     },
-  /**
-   * The object id of the item to retrieve. If this is provided, a request will be made to the connection object with the specified id.
-   * @property {Number} form-widget.ViewModel.props.objectId
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * The object id of the item to retrieve. If this is provided, a request will be made to the connection object with the specified id.
+     * @property {Number} form-widget.ViewModel.props.objectId
+     * @parent form-widget.ViewModel.props
+     */
     objectId: {
         type: 'number',
         set: function (id) {
@@ -56,27 +59,27 @@ export const ViewModel = DefineMap.extend('FormWidget', {
             return id;
         }
     },
-  /**
-   * The pending promise if the object is being retrieved or null
-   * @property {Promise}  form-widget.ViewModel.props.promise
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * The pending promise if the object is being retrieved or null
+     * @property {Promise}  form-widget.ViewModel.props.promise
+     * @parent form-widget.ViewModel.props
+     */
     promise: {
         value: null
     },
-  /**
-   * An object representing a can.Map or similar object. This object should have
-   * a `save` method like a `can.Model` or `can-connect.superMap`. This object is
-   * updated and its `save` method is called when the form is submitted.
-   * @property {can.Map} form-widget.ViewModel.props.formObject
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * An object representing a can.Map or similar object. This object should have
+     * a `save` method like a `can.Model` or `can-connect.superMap`. This object is
+     * updated and its `save` method is called when the form is submitted.
+     * @property {can.Map} form-widget.ViewModel.props.formObject
+     * @parent form-widget.ViewModel.props
+     */
     formObject: DefineMap,
-  /**
-   * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the FormFieldObject
-   * @property {Array<String|spectre.types.FormFieldObject>} form-widget.ViewModel.props.fields
-   * @parent form-widget.ViewModel.props
-   */
+    /**
+     * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the FormFieldObject
+     * @property {Array<String|spectre.types.FormFieldObject>} form-widget.ViewModel.props.fields
+     * @parent form-widget.ViewModel.props
+     */
     fields: {
         Value: DefineList,
         get (fields) {
@@ -143,15 +146,18 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @property {Boolean} form-widget.ViewModel.props.isSaving
      * @parent form-widget.ViewModel.props
      */
-    isSaving: {value: false, type: 'boolean'},
-  /**
-   * @function fetchObject
-   * Fetches and replaces the formObject with a new formObject
-   * @signature
-   * @param  {superMap} con The supermap connection to the api service
-   * @param  {Number} id  The id number of the object to fetch
-   * @returns {Promise}
-   */
+    isSaving: {
+        value: false,
+        type: 'boolean'
+    },
+    /**
+     * Fetches and replaces the formObject with a new formObject
+     * @function fetchObject
+     * @signature
+     * @param  {superMap} con The supermap connection to the api service
+     * @param  {Number} id  The id number of the object to fetch
+     * @returns {Promise}
+     */
     fetchObject (con, id) {
         if (!con || !id) {
             return null;
@@ -164,13 +170,15 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         });
         return promise;
     },
-  /**
-   * @function submitForm
-   * Called when the form is submitted. The object is updated by calling it's `save` method. The event `submit` is dispatched.
-   * @signature
-   */
+    /**
+     * Called when the form is submitted. The object is updated by calling it's `save` method. The event `submit` is dispatched.
+     * @function submitForm
+     * @signature
+     */
     submitForm (vm, form, event) {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
         if (!this.isValid) {
             this.dispatch('submit-fail', [formObject, this.validationErrors]);
             return false;
@@ -182,17 +190,17 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         this.dispatch('submit', [formObject]);
         return false;
     },
-  /**
-   * @function setField
-   * Sets the formObject value when a field changes. This will allow for future
-   * functionality where the form is much more responsive to values changing, like
-   * cascading dropdowns.
-   * @signature
-   * @param  {formFieldObject} field  The field object properties
-   * @param  {domElement} domElement The form element that dispatched the event
-   * @param  {Event} event  The event object and type
-   * @param  {Object | Number | String} value  The value that was passed from the field component
-   */
+    /**
+     * Sets the formObject value when a field changes. This will allow for future
+     * functionality where the form is much more responsive to values changing, like
+     * cascading dropdowns.
+     * @function setField
+     * @signature
+     * @param  {formFieldObject} field  The field object properties
+     * @param  {domElement} domElement The form element that dispatched the event
+     * @param  {Event} event  The event object and type
+     * @param  {Object | Number | String} value  The value that was passed from the field component
+     */ 
     setField (field, domElement, event, value) {
 
         // check for valid field value and don't update if it's not
@@ -221,26 +229,26 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         return !this.validationErrors[field.name];
 
     },
-  /**
-   * @typedef {can.Event} form-widget.events.formCancel cancel
-   * @parent form-widget.events
-   * An event dispatched when the cancel button is clicked. No arguments are passed.
-   */
-  /**
-   * @function cancelForm
-   * Called when the form cancel button is clicked. Dispatches the `cancel` event.
-   * @signature
-   */
+    /**
+     * @typedef {can.Event} form-widget.events.formCancel cancel
+     * @parent form-widget.events
+     * An event dispatched when the cancel button is clicked. No arguments are passed.
+     */
+    /**
+     * @function cancelForm
+     * Called when the form cancel button is clicked. Dispatches the `cancel` event.
+     * @signature
+     */
     cancelForm () {
         this.dispatch('cancel');
     },
-  /**
-   * @function getFieldValue
-   * Fetches a value from the formObject
-   * @signature
-   * @param  {String} fieldName The name of the field to return
-   * @return {*} The value of the object's property
-   */
+    /**
+     * @function getFieldValue
+     * Fetches a value from the formObject
+     * @signature
+     * @param  {String} fieldName The name of the field to return
+     * @return {*} The value of the object's property
+     */
     getFieldValue (field) {
         return this.formObject[field.name];
     }

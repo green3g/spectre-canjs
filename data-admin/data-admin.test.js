@@ -1,9 +1,10 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
 
 import {ViewModel} from './data-admin';
 import {Connection, TaskMap} from '../../test/data/connection';
 import {TOPICS} from './data-admin';
-import PubSub from 'pubsub-js';
 import assign from 'object-assign';
 let vm;
 
@@ -22,7 +23,6 @@ q.module('data-admin.ViewModel', {
     },
     afterEach: () => {
         vm = null;
-        PubSub.clearAllSubscriptions();
         localStorage.clear();
     }
 });
@@ -100,7 +100,8 @@ test('focusObject get()', (assert) => {
 test('buttons get()', (assert) => {
     assert.equal(vm.buttons.length, 3, 'buttons should be edit buttons');
     vm.view = {
-        disableEdit: true
+        disableEdit: true,
+        disableDelete: true
     };
 
     assert.equal(vm.buttons.length, 1, 'buttons should be default buttons');
@@ -157,11 +158,7 @@ test('viewObject(scope, dom, event, obj)', (assert) => {
 });
 
 test('saveObject(obj) success', (assert) => {
-    const done = assert.async(3);
-    const token = PubSub.subscribe(TOPICS.ADD_MESSAGE, (name, message) => {
-        assert.ok(message.message, 'message should be published');
-        done();
-    });
+    const done = assert.async(1);
 
     let id = 6;
     const obj = Connection.get({id: id}).then((obj) => {
@@ -233,11 +230,7 @@ test('getNewObject()', (assert) => {
 
 test('deleteObject(obj, skipConfirm) ', (assert) => {
     const id = 11;
-    const done = assert.async(5);
-    const token = PubSub.subscribe(TOPICS.ADD_MESSAGE, (name, message) => {
-        assert.ok(message.message, 'message should be published');
-        done();
-    });
+    const done = assert.async(4);
 
     assign(vm.view, {
         beforeDelete (obj) {
@@ -264,21 +257,12 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
 });
 
 test('deleteMmultiple()', (assert) => {
-    const done = assert.async(4);
-    const view = {
-        connection: Connection
-    };
-    const token = PubSub.subscribe(TOPICS.ADD_MESSAGE, (name, message) => {
-        assert.ok(message.message, 'message should be published');
-        done();
-    });
-
-    const id = 11;
-    vm.selectedObjects = new DefineList([new TaskMap({
+    const done = assert.async(2);
+    vm.selectedObjects = [{
         id: 11
-    }), new TaskMap({
+    }, {
         id: 1
-    })]);
+    }];
     const defs = vm.deleteMultiple(true);
     defs.forEach((def) => {
         def.then((r) => {
@@ -300,11 +284,4 @@ test('toggle(prop, val)', (assert) => {
 
     vm.toggle('filterVisible', false);
     assert.notOk(vm.filterVisible, 'filter should not be visible after toggling to false');
-});
-
-test('getRelatedValue(foreignKey, focusObject)', (assert) => {
-    const map = new TaskMap({
-        test: 'testValue'
-    });
-    assert.equal(vm.getRelatedValue('test', map), 'testValue', 'related value should be returned');
 });

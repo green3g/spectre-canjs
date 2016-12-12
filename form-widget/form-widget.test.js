@@ -1,3 +1,5 @@
+/* eslint-env qunit, browser */
+
 import {ViewModel} from './form-widget';
 import q from 'steal-qunit';
 
@@ -18,27 +20,27 @@ q.module('form-widget.ViewModel', {
 test('objectId set()', (assert) => {
     const done = assert.async();
     const id = 6;
-    vm.attr({
+    vm.set({
         connection: Connection,
         objectId: id
     });
-    vm.attr('promise').then(function () {
-        assert.equal(vm.attr('formObject.id'), id, 'formObject should be retrieved correctly');
+    vm.promise.then(() => {
+        assert.equal(vm.formObject.id, id, 'formObject should be retrieved correctly');
         done();
     });
 });
 
 test('fields get()', (assert) => {
-    vm.attr('fields', ['yes', {excludeForm: true, name: 'no'}]);
-    assert.equal(vm.attr('fields').length, 1, 'fields with excludeForm:true should not be included');
+    vm.fields = ['yes', {excludeForm: true, name: 'no'}];
+    assert.equal(vm.fields.length, 1, 'fields with excludeForm:true should not be included');
 });
 
 test('fetchObject(con, id)', (assert) => {
     const id = 6;
     const done = assert.async();
     const promise = vm.fetchObject(Connection, id);
-    promise.then(function (item) {
-        assert.equal(vm.attr('formObject.id'), id, 'form object should be loaded asynchronously');
+    promise.then(() => {
+        assert.equal(vm.formObject.id, id, 'form object should be loaded asynchronously');
         done();
     });
 });
@@ -46,10 +48,10 @@ test('fetchObject(con, id)', (assert) => {
 test('submitForm()', (assert) => {
     const done = assert.async();
     const object = {test: 'hello'};
-    vm.attr('formObject', object);
+    vm.formObject = object;
 
     vm.on('submit', function (ev, item) {
-        assert.deepEqual(item.attr(), object, 'item dispatched from submit event should be the object');
+        assert.deepEqual(item.serialize(), object, 'item dispatched from submit event should be the object');
         done();
     });
     vm.submitForm();
@@ -57,10 +59,10 @@ test('submitForm()', (assert) => {
 
 test('setField(field, domElement, event, value)', (assert) => {
     const object = {test: 'hello'};
-    vm.attr('formObject', object);
+    vm.formObject = object;
 
     vm.setField('test', null, null, 'dummy');
-    assert.deepEqual(vm.attr('formObject').attr(), object, 'setting a field value should change the formObject');
+    assert.deepEqual(vm.formObject.serialize(), object, 'setting a field value should change the formObject');
 });
 
 test('cancelForm()', (assert) => {
@@ -75,9 +77,9 @@ test('cancelForm()', (assert) => {
 
 test('getFieldValue(field)', (assert) => {
     const field = new Field({name: 'label'});
-    vm.attr('formObject', {
+    vm.formObject = {
         label: 'test'
-    });
+    };
 
     assert.equal(vm.getFieldValue(field), 'test', 'field value should be equal to the property value');
 });

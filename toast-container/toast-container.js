@@ -24,7 +24,7 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
     },
   /**
    * adds a new toast
-   * @param {Growl}
+   * @param {Toast} toast the toast options or toast object to add
    */
     addToast (toast) {
         if (!(toast instanceof Toast)) {
@@ -32,6 +32,10 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
         }
         this.toasts.push(toast);
     },
+    /**
+     * removes a toast
+     * @param  {Toast} toast the toast object to remove 
+     */
     removeToast: function (toast) {
         var index = this.toasts.indexOf(toast);
         this.toasts.splice(index, 1);

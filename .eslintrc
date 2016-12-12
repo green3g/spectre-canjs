@@ -32,7 +32,10 @@
         "no-unexpected-multiline": 2,
         "no-unreachable": 2,
         "use-isnan": 2,
-        "valid-jsdoc": 2,
+        "valid-jsdoc": [2, {
+          "requireReturn": false,
+          "requireReturnDescription": false
+        }],
         "valid-typeof": 2,
 
         // ignored possible errors

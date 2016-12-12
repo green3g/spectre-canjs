@@ -1,6 +1,9 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import {Field, parseFieldArray} from '../util/field';
+import {
+    Field,
+    parseFieldArray
+} from '../util/field';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
@@ -17,15 +20,15 @@ import assign from 'object-assign';
  * @description A `<list-table />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('ListTable', {
-  /**
-   * @prototype
-   */
-  /**
-   * Optional promise or deferred object that will resolve to an object. Once
-   * the promise resolves, the objects list will be replaced with the promise result
-   * @parent list-table.ViewModel.props
-   * @property {can.Deferred | Promise} list-table.ViewModel.props.promise
-   */
+    /**
+     * @prototype
+     */
+    /**
+     * Optional promise or deferred object that will resolve to an object. Once
+     * the promise resolves, the objects list will be replaced with the promise result
+     * @parent list-table.ViewModel.props
+     * @property {can.Deferred | Promise} list-table.ViewModel.props.promise
+     */
     promise: {
         set (newVal) {
             newVal.then((objects) => {
@@ -34,34 +37,39 @@ export const ViewModel = DefineMap.extend('ListTable', {
             return newVal;
         }
     },
-  /**
-   * A list of objects to display. These objects should generally be can.Model
-   * objects but may be any can.Map or javascript object.
-   * @parent list-table.ViewModel.props
-   * @property {Array.<can.Model | can.Map | Object>} list-table.ViewModel.props.objects
-   */
+    /**
+     * A list of objects to display. These objects should generally be can.Model
+     * objects but may be any can.Map or javascript object.
+     * @parent list-table.ViewModel.props
+     * @property {Array.<can.Model | can.Map | Object>} list-table.ViewModel.props.objects
+     */
     objects: {
         Value: DefineList
     },
-  /**
-   * Id property name for the rows of objects. The default is `id`. This value
-   * is used to determine whether objects are selected or not.
-   * @parent list-table.ViewModel.props
-   * @property {String} list-table.ViewModel.props.idProp
-   */
-    idProp: {value: 'id'},
-  /**
-   * A list of the currently selected objects in the table
-   * @parent list-table.ViewModel.props
-   * @property {Array.<can.Map>} list-table.ViewModel.props.selectedObjects
-   */
-    selectedObjects: {Type: DefineList, Value: DefineList},
-  /**
-   * An array of ids for the selected objects. This is a virtual property
-   * and cannot be set.
-   * @parent list-table.ViewModel.props
-   * @property {Array<Number>} list-table.ViewModel.props.selectedIds
-   */
+    /**
+     * Id property name for the rows of objects. The default is `id`. This value
+     * is used to determine whether objects are selected or not.
+     * @parent list-table.ViewModel.props
+     * @property {String} list-table.ViewModel.props.idProp
+     */
+    idProp: {
+        value: 'id'
+    },
+    /**
+     * A list of the currently selected objects in the table
+     * @parent list-table.ViewModel.props
+     * @property {Array.<can.Map>} list-table.ViewModel.props.selectedObjects
+     */
+    selectedObjects: {
+        Type: DefineList,
+        Value: DefineList
+    },
+    /**
+     * An array of ids for the selected objects. This is a virtual property
+     * and cannot be set.
+     * @parent list-table.ViewModel.props
+     * @property {Array<Number>} list-table.ViewModel.props.selectedIds
+     */
     selectedIds: {
         get () {
             return this.selectedObjects.map((obj) => {
@@ -69,28 +77,28 @@ export const ViewModel = DefineMap.extend('ListTable', {
             });
         }
     },
-  /**
-   * A virtual property that helps the template determine whether all objects are selected
-   * @parent list-table.ViewModel.props
-   * @property {Boolean} list-table.ViewModel.props._allSelected
-   */
+    /**
+     * A virtual property that helps the template determine whether all objects are selected
+     * @parent list-table.ViewModel.props
+     * @property {Boolean} list-table.ViewModel.props._allSelected
+     */
     _allSelected: {
         type: 'boolean',
         get () {
             return this.selectedObjects.length === this.objects.length;
         }
     },
-  /**
-   * An array of buttonObjects
-   * @parent list-table.ViewModel.props
-   * @property {Array.<spectre.types.TableButtonObject>} list-table.ViewModel.props.buttons
-   */
+    /**
+     * An array of buttonObjects
+     * @parent list-table.ViewModel.props
+     * @property {Array.<spectre.types.TableButtonObject>} list-table.ViewModel.props.buttons
+     */
     buttons: DefineList,
-  /**
-   * An array of fields
-   * @parent list-table.ViewModel.props
-   * @property {can.List} list-table.ViewModel.props.fields
-   */
+    /**
+     * An array of fields
+     * @parent list-table.ViewModel.props
+     * @property {can.List} list-table.ViewModel.props.fields
+     */
     fields: {
         Value: DefineList,
         Type: DefineList,
@@ -106,11 +114,11 @@ export const ViewModel = DefineMap.extend('ListTable', {
             });
         }
     },
-  /**
-   * The current sort field
-   * @parent list-table.ViewModel.props
-   * @property {can.List} list-table.ViewModel.props.currentSort
-   */
+    /**
+     * The current sort field
+     * @parent list-table.ViewModel.props
+     * @property {can.List} list-table.ViewModel.props.currentSort
+     */
     currentSort: {
         Type: DefineMap,
         value: function () {
@@ -120,23 +128,22 @@ export const ViewModel = DefineMap.extend('ListTable', {
             };
         }
     },
-  /**
-   * @function buttonClick
-   * @static
-   * Called when a button is clicked. This dispatches the buttons event.
-   * @signature
-   * @param  {String} eventName The name of the event to dispatch
-   * @param  {can.Map} object  The row data
-   */
+    /**
+     * Called when a button is clicked. This dispatches the buttons event.
+     * @function buttonClick
+     * @signature
+     * @param  {String} eventName The name of the event to dispatch
+     * @param  {can.Map} object  The row data
+     */
     buttonClick (eventName, object) {
         this.dispatch(eventName, [object]);
     },
-  /**
-   * @function setSort
-   * Helps the template the currentSort value
-   * @signature
-   * @param  {String} field the field to set the sort on
-   */
+    /**
+     * Helps the template the currentSort value
+     * @function setSort
+     * @signature
+     * @param  {String} field the field to set the sort on
+     */
     setSort (field) {
         CanBatch.start();
         if (this.currentSort.fieldName !== field) {
@@ -150,12 +157,12 @@ export const ViewModel = DefineMap.extend('ListTable', {
         CanBatch.stop();
         this.dispatch('sort', [this.currentSort]);
     },
-  /**
-   * @function toggleSelected
-   * Toggles a row as selected or not selected
-   * @signature
-   * @param  {can.Map} obj The row to toggle
-   */
+    /**
+     * Toggles a row as selected or not selected
+     * @function toggleSelected
+     * @signature
+     * @param  {can.Map} obj The row to toggle
+     */
     toggleSelected (obj) {
         const index = this.selectedObjects.indexOf(obj);
         if (index > -1) {
@@ -164,11 +171,11 @@ export const ViewModel = DefineMap.extend('ListTable', {
             this.selectedObjects.push(obj);
         }
     },
-  /**
-   * @function toggleSelectAll
-   * Selects or unselects all of the objects in the table
-   * @signature
-   */
+    /**
+     * Selects or unselects all of the objects in the table
+     * @function toggleSelectAll
+     * @signature
+     */
     toggleSelectAll () {
         if (this.selectedObjects.length < this.objects.length) {
             this.selectedObjects.replace(this.objects);
@@ -176,26 +183,26 @@ export const ViewModel = DefineMap.extend('ListTable', {
             this.selectedObjects.replace([]);
         }
     },
-  /**
-   * @function isSelected
-   * Determines whether or not the provided object is selected by comparing
-   * it to the list of currently selected objects
-   * @signature
-   * @param  {can.Map | Object} obj The object to check if is selected
-   * @return {Boolean}     Whether or not it is selected
-   */
+    /**
+     * Determines whether or not the provided object is selected by comparing
+     * it to the list of currently selected objects
+     * @function isSelected
+     * @signature
+     * @param  {can.Map | Object} obj The object to check if is selected
+     * @return {Boolean}     Whether or not it is selected
+     */
     isSelected (obj) {
         return this.selectedIds.indexOf(obj[this.idProp]) > -1;
     },
-  /**
-   * @function getFieldValue
-   * Returns an objects formatted value for the template
-   * @signature
-   * @param  {field} field The field object. This field object has a property
-   * called  `getFormattedValue` which formats and returns a string
-   * @param  {can.Map} obj   The object to retrieve the property from
-   * @return {String}       The formatted value
-   */
+    /**
+     * Returns an objects formatted value for the template
+     * Returns an objects formatted value for the template
+     * @signature
+     * @param  {field} field The field object. This field object has a property
+     * called  `getFormattedValue` which formats and returns a string
+     * @param  {can.Map} obj   The object to retrieve the property from
+     * @return {String}       The formatted value
+     */
     getFieldValue (field, obj) {
         return field.getFormattedValue(obj);
     }

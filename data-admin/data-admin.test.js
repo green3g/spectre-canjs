@@ -4,11 +4,8 @@ import q from 'steal-qunit';
 
 import {ViewModel} from './data-admin';
 import {Connection, TaskMap} from '../../test/data/connection';
-import {TOPICS} from './data-admin';
 import assign from 'object-assign';
 let vm;
-
-import DefineList from 'can-define/list/list';
 
 q.config.testTimeout = 10000;
 
@@ -136,7 +133,7 @@ test('init() with parameters', (assert) => {
 test('editObject(scope, dom, event, obj)', (assert) => {
     const done = assert.async();
     const id = 11;
-    const obj = Connection.get({id: id}).then((obj) => {
+    Connection.get({id: id}).then((obj) => {
 
         vm.editObject(null, null, null, obj);
         assert.equal(vm.viewId, 11, 'viewId should be set correctly');
@@ -161,7 +158,7 @@ test('saveObject(obj) success', (assert) => {
     const done = assert.async(1);
 
     let id = 6;
-    const obj = Connection.get({id: id}).then((obj) => {
+    Connection.get({id: id}).then((obj) => {
         const def = vm.saveObject(obj);
         def.then((result) => {
             assert.ok(result, 'deferred should be resolved');

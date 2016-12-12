@@ -1,5 +1,6 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
-import can 
 
 import {ViewModel} from './tab-container';
 import {ViewModel as PanelViewModel} from '../panel-container/';

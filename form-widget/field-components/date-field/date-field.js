@@ -22,14 +22,19 @@ export const ViewModel = DefineMap.extend('DateField', {
    * Checks for the enter keypress and triggers a change event on the input
    * The enter key press triggers a submit event on the form, but before the
    * submit event, we need to trigger a change on the field value
+   * @signature
    * @param  {domElement} element The form input element
-   * @param  {KeyDownEvent} event
+   * @param  {KeyDownEvent} event the keyup event
    */
     beforeSubmit (element, event) {
         if (event.keyCode === 13) {
             CanEvent.trigger(element, 'change');
         }
     },
+    /**
+     * The onblur event handler, triggers a change on the field
+     * @param  {domElement} element The dom element 
+     */
     onBlur (element) {
         CanEvent.trigger(element, 'change');
     }

@@ -174,13 +174,17 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * Called when the form is submitted. The object is updated by calling it's `save` method. The event `submit` is dispatched.
      * @function submitForm
      * @signature
+     * @param {DefineMap} vm The scope of the form (this view model)
+     * @param {Form} form the dom form
+     * @param {Event} event the dom form event
+     * @returns {Boolean} returns false to prevent form submissions
      */
     submitForm (vm, form, event) {
         if (event) {
             event.preventDefault();
         }
         if (!this.isValid) {
-            this.dispatch('submit-fail', [formObject, this.validationErrors]);
+            this.dispatch('submit-fail', [this.formObject, this.validationErrors]);
             return false;
         }
         if (this.showSaving) {
@@ -200,7 +204,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {domElement} domElement The form element that dispatched the event
      * @param  {Event} event  The event object and type
      * @param  {Object | Number | String} value  The value that was passed from the field component
-     */ 
+     */
     setField (field, domElement, event, value) {
 
         // check for valid field value and don't update if it's not
@@ -235,18 +239,18 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * An event dispatched when the cancel button is clicked. No arguments are passed.
      */
     /**
-     * @function cancelForm
      * Called when the form cancel button is clicked. Dispatches the `cancel` event.
+     * @function cancelForm
      * @signature
      */
     cancelForm () {
         this.dispatch('cancel');
     },
     /**
-     * @function getFieldValue
      * Fetches a value from the formObject
+     * @function getFieldValue
      * @signature
-     * @param  {String} fieldName The name of the field to return
+     * @param  {String} field The name of the field to return
      * @return {*} The value of the object's property
      */
     getFieldValue (field) {

@@ -1,6 +1,5 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import {Field} from '../util/field';
 
 import editTemplate from './templates/edit.stache!';
 import listTemplate from './templates/list.stache!';

@@ -12,21 +12,26 @@ import assign from 'object-assign';
  */
 export const ViewModel = DefineMap.extend('TextField', {
     properties: DefineMap,
-    value: {type: 'string', value: ''},
+    value: {
+        type: 'string',
+        value: ''
+    },
     errors: '*',
     inline: 'htmlbool',
-  /**
-   * Checks for the enter keypress and triggers a change event on the input
-   * The enter key press triggers a submit event on the form, but before the
-   * submit event, we need to trigger a change on the field value
-   * @param  {domElement} element The form input element
-   * @param  {KeyDownEvent} event
-   */
+    /**
+     * Checks for the enter keypress and triggers a change event on the input
+     * The enter key press triggers a submit event on the form, but before the
+     * submit event, we need to trigger a change on the field value
+     * @param  {domElement} element The form input element
+     * @param  {KeyDownEvent} event The form submit event
+     * @returns {Boolean}
+     */
     beforeSubmit (element, event) {
         if (event.keyCode === 13) {
             canEvent.trigger(element, 'change');
             return true;
         }
+        return false;
     }
 });
 assign(ViewModel.prototype, canEvent);

@@ -1,4 +1,4 @@
-import util from 'can-util';
+import string from 'can-util/js/string/string';
 
 /**
  * Formats the field by replacing underscores with spaces and capitalizing the first letter
@@ -6,12 +6,12 @@ import util from 'can-util';
  * @param  {String} text The name of the field
  * @return {String} The formatted field string. Example: `my_field_name` will become `My field name`.
  */
-export const makeSentenceCase = (text) => {
+export function makeSentenceCase (text) {
     text = String(text);
-    return util.string.capitalize(String.prototype.trim.call(
+    return string.capitalize(String.prototype.trim.call(
     text.split('_')
     .join(' ')
     .toLowerCase()
     .replace(/ +/g, ' ')
   ));
-};
+}

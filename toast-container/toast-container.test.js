@@ -1,5 +1,6 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
-import can 
 
 import {ViewModel} from './alert-widget';
 import {Message} from './message';

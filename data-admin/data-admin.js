@@ -1,6 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Component from 'can-component';
+import dev from 'can-util/js/dev/dev';
 import template from './template.stache!';
 import './widget.less!';
 
@@ -197,7 +198,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
             // handle promise.catch for local-storage deferreds...
             promise.catch((err) => {
-                console.warn('unable to complete objects request', err);
+                dev.warn('unable to complete objects request', err);
             });
 
             // update the list data
@@ -219,7 +220,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 const promise = this.view.connection.get(params);
 
                 promise.catch((err) => {
-                    console.error('unable to complete focusObject request', err);
+                    dev.error('unable to complete focusObject request', err);
                 });
 
                 return promise;
@@ -338,6 +339,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     /**
      * Initializes filters and other parameters
      * @function init
+     * @signature
+
      */
     init () {
         //set up related filters which are typically numbers
@@ -355,10 +358,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
     },
     /**
-     * @function setPage
      * Changes the page and resets the viewId to 0
+     * @function setPage
      * @signature
      * @param {String} page The name of the page to switch to
+
      */
     setPage (page) {
         if (page === 'list') {
@@ -370,14 +374,15 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         });
     },
     /**
-     * @function editObject
      * Sets the current viewId to the object's id and sets the page to edit
      * to start editing the object provided.
+     * @function editObject
      * @signature
      * @param  {can.Map} scope The stache scope (not used)
      * @param  {domNode} dom   The domNode that triggered the event (not used)
      * @param  {Event} event The event that was triggered (not used)
      * @param  {can.Map} obj   The object to start editing
+
      */
     editObject () {
         let obj;
@@ -394,14 +399,15 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         });
     },
     /**
-     * @function viewObject
      * Sets the current viewId to the object's id and sets the page to details
      * to display a detailed view of the object provided.
+     * @function viewObject
      * @signature
      * @param  {can.Map} scope The stache scope (not used)
      * @param  {domNode} dom   The domNode that triggered the event (not used)
      * @param  {Event} event The event that was triggered (not used)
      * @param  {can.Map} obj   The object to view
+
      */
     viewObject () {
         let obj;
@@ -418,19 +424,19 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         });
     },
     /**
-     * @function saveObject
      * Saves the provided object and sets the current viewId to the object's
      * id once it is returned. We then switch the page to the detail view to
      * display the created or updated object.
+     * @function saveObject
      *
      * @signature `saveObject(obj)`
-     * @param  {can.Map} obj   The object to save
      *
      * @signature `saveObject(scope, dom, event, obj)`
-     * @param  {can.Map} scope The stache scope (not used)
-     * @param  {domNode} dom   The domNode that triggered the event (not used)
-     * @param  {Event} event The event that was triggered (not used)
+     * @param  {can.Map} scope The stache scope (optional)
+     * @param  {domNode} dom   The domNode that triggered the event (optional)
+     * @param  {Event} event The event that was triggered (optional)
      * @param  {can.Map} obj   The object to save
+     * @returns {Promise}
      */
     saveObject () {
         let obj;
@@ -486,13 +492,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 obj: obj,
                 error: e
             }, 'errorSave');
-            console.error(e);
+            dev.error(e);
         });
         return deferred;
     },
     /**
-     * @function getNewObject
      * Creates and returns a new object from the view's ObjectTemplate
+     * @function getNewObject
      * @signature
      * @return {DefineMap} A new object created from the `view.ObjectTemplate`
      */
@@ -506,20 +512,17 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return new(this.view.ObjectTemplate)(props);
     },
     /**
-     * @function deleteObject
      * Displays a confirm dialog box and if confirmed, deletes the object provided.
-     *
+     * @function deleteObject
      * @signature `deleteObject(obj, skipConfirm)`
-     * @param  {can.Map} obj   The object to delete
-     * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
-     *
      * @signature `deleteObject( scope, dom, event, obj, skipConfirm )`
-     * @param  {can.Map} scope The stache scope (not used)
-     * @param  {domNode} dom   The domNode that triggered the event (not used)
-     * @param  {Event} event The event that was triggered (not used)
+     * @param  {can.Map} scope The stache scope (optional)
+     * @param  {domNode} dom   The domNode that triggered the event (optional)
+     * @param  {Event} event The event that was triggered (optional)
      * @param  {can.Map} obj   The object to delete
      * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
      * and will immediately attempt to remove the object
+     * @returns {Promise}
      */
     deleteObject () {
         let obj, skipConfirm;
@@ -532,17 +535,18 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             obj = arguments[0];
             skipConfirm = arguments[1];
         }
-        if (obj && (skipConfirm || confirm('Are you sure you want to delete this record?'))) {
+        // eslint-disable-next-line
+        if (obj && (skipConfirm || window.confirm('Are you sure you want to delete this record?'))) {
 
             // beforeDelete handler
             // if return value is falsey, stop execution and don't delete
             if (!this.onEvent(obj, 'beforeDelete')) {
-                return;
+                return null;
             }
 
             //destroy the object using the connection
             const deferred = this.view.connection.destroy(obj);
-            deferred.then((result) => {
+            deferred.then(() => {
 
                 //afterDelete handler
                 this.onEvent(obj, 'afterDelete');
@@ -553,23 +557,26 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             deferred.catch((result) => {
                 //add a message
                 this.onEvent(result, 'errorDelete');
-                console.error(result);
+                dev.warn(result);
             });
             return deferred;
         }
+        return null;
     },
     /**
-     * @function deleteMultiple
      * Iterates through the objects in the `selectedObjects` array
      * and deletes each one individually.
      * //TODO implement batch deleting to avoid many ajax calls
+     * @function deleteMultiple
      * @signature
      * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
      * and will immediately attempt to remove the selected objects
+     * @returns {Array<Promise>}
      */
     deleteMultiple (skipConfirm) {
         const selected = this.selectedObjects;
         const defs = [];
+        //eslint-disable-next-line
         if (skipConfirm || confirm(`Are you sure you want to delete the ${selected.length} selected records?`)) {
             selected.forEach((obj) => {
                 defs.push(this.deleteObject(null, null, null, obj, true));
@@ -579,24 +586,30 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return defs;
     },
     /**
-     * @function clearSelection
      * empties the currently selected objects array
+     * @function clearSelection
+     * @signature
+
      */
     clearSelection () {
         this.selectedObjects.replace([]);
     },
     /**
      * passes an array of objects to the on click handler of a manageButton
+     * @function manageObject
+     * @signature
      * @param  {object} obj     A single object
-     * @param  {Function} onClick The function to pass array of objects to
+     * @param  {Function} button  The button object with an `onclick` property
      */
     manageObject (obj, button) {
         this.manageObjects([obj], button);
     },
     /**
      * passes an array of objects to the on click handler of a manageButton
+     * @function manageObjects
+     * @signature
      * @param  {object} objects     A single object
-     * @param  {Function} onClick The function to pass array of objects to
+     * @param  {Function} button The button object with an `onclick` property
      */
     manageObjects (objects, button) {
         const defs = button.onClick(objects);
@@ -607,12 +620,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
     },
     /**
-     * @function toggle
      * Toggles the display of menus
+     * @function toggle
      * @signature
      * @param {String} val The value to toggle
      * @param  {Boolean} visible (Optional) whether or not to display the dialog
      * @param {Event} e (optional) the event to toggle
+     * @returns {Boolean} always returns false to prevent event from changing page
      */
     toggle (val, visible, e) {
         this.noop(e);
@@ -625,8 +639,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * prevents the default event from triggering
-     * @param  {[type]} event [description]
-     * @return {[type]}       [description]
+     * @param {Event} event The event to prevent and stop from triggering
+     * @returns {Boolean} always returns false
      */
     noop (event) {
         if (event) {
@@ -635,11 +649,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return false;
     },
     /**
-     * @function onEvent
      * A helper function to trigger beforeSave, afterSave, etc events.
+     * @function onEvent
      * @signature
      * @param  {can.Map} obj       The object to dispatch with the event
      * @param  {String} eventName The name of the event to dispatch
+     * @returns {Boolean|Object}
      */
     onEvent (obj, eventName) {
 

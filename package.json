@@ -26,7 +26,8 @@
     "steal-css": "^1.0.0-rc.0",
     "steal-less": "^1.0.0-rc.3",
     "steal-stache": "^3.0.3",
-    "steal-tools": "^1.0.0-rc2"
+    "steal-tools": "^1.0.0-rc2",
+    "testee": "^0.3.0"
   },
   "dependencies": {
     "animate.css": "^3.5.2",

@@ -1,9 +1,6 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import {
-    Field,
-    parseFieldArray
-} from '../util/field';
+import {Field, parseFieldArray} from '../util/field';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';

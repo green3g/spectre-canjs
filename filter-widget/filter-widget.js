@@ -2,9 +2,7 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import deepAssign from 'can-util/js/deep-assign/deep-assign';
-import {
-    makeSentenceCase
-} from '../../util/string';
+import {makeSentenceCase} from '../../util/string';
 
 import template from './template.stache!';
 import './filter-widget.less!';
@@ -13,14 +11,8 @@ import '../form-widget/';
 import '../form-widget/field-components/text-field/';
 import '../form-widget/field-components/select-field/';
 
-import {
-    parseFieldArray
-} from '../util/field';
-import {
-    Filter,
-    FilterList,
-    FilterOptions
-} from './Filter';
+import {parseFieldArray} from '../util/field';
+import {Filter, FilterList, FilterOptions} from './Filter';
 
 /**
  * @constructor filter-widget.ViewModel ViewModel

@@ -2,10 +2,7 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import template from './template.stache!';
-import {
-    Field,
-    parseFieldArray
-} from '../util/field';
+import {Field, parseFieldArray} from '../util/field';
 import './widget.less!';
 
 /**

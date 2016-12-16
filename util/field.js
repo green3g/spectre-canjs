@@ -23,9 +23,14 @@ for (var type in TEMPLATES) {
     }
 }
 
-export {
-    TEMPLATES
-};
+export {TEMPLATES};
+
+export const RESERVED = [
+    'get',
+    'set',
+    'serialize'
+];
+
 
 /**
  * @module util/field.Field FieldDefinition
@@ -171,11 +176,18 @@ export function mapToFields (defineMap) {
     for (var prop in define) {
         if (define.hasOwnProperty(prop)) {
             const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
+
+            // remove reserved properties
+            const clone = assign({}, define[prop]);
+            RESERVED.forEach((r) => {
+                delete clone[r];
+            });
+
             fields.push(assign({}, {
                 name: prop,
                 type: 'string',
                 fieldType: 'text'
-            }, define[prop], {
+            }, clone, {
                 type: fType
             }));
         }

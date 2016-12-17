@@ -1,5 +1,6 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
-import can 
 
 import {ViewModel} from './paginate-widget';
 
@@ -15,23 +16,23 @@ q.module('paginate-widget.ViewModel', {
 });
 
 test('hasNext get()', (assert) => {
-    vm.attr('pages', 10);
-    vm.attr('activePageIndex', 0);
-    assert.equal(vm.attr('hasNext'), true, 'it should have a next page if page index is 0');
-    vm.attr('activePageIndex', 9);
-    assert.equal(vm.attr('hasNext'), false, 'it should not have a next page if page index is 9');
+    vm.pages = 10;
+    vm.activePageIndex = 0;
+    assert.equal(vm.hasNext, true, 'it should have a next page if page index is 0');
+    vm.activePageIndex = 9;
+    assert.equal(vm.hasNext, false, 'it should not have a next page if page index is 9');
 });
 
 test('hasPrevious get()', (assert) => {
-    vm.attr('pages', 10);
-    vm.attr('activePageIndex', 0);
-    assert.equal(vm.attr('hasPrevious'), false, 'it should not have a previous page if page index is 0');
-    vm.attr('activePageIndex', 9);
-    assert.equal(vm.attr('hasPrevious'), true, 'it should have a previous page if page index is 9');
+    vm.pages = 10;
+    vm.activePageIndex = 0;
+    assert.equal(vm.hasPrevious, false, 'it should not have a previous page if page index is 0');
+    vm.activePageIndex = 9;
+    assert.equal(vm.hasPrevious, true, 'it should have a previous page if page index is 9');
 });
 
 test('visiblePages get()', (assert) => {
-    vm.attr({
+    vm.set({
         'pages': 10,
         activeOffset: 3
     });
@@ -47,8 +48,8 @@ test('visiblePages get()', (assert) => {
     }];
 
     tests.forEach((test) => {
-        vm.attr('activePageIndex', test.index);
-        assert.deepEqual(vm.attr('visiblePages'), test.expected, 'visiblePages should contain the correct offset pages');
+        vm.activePageIndex = test.index;
+        assert.deepEqual(vm.visiblePages, test.expected, 'visiblePages should contain the correct offset pages');
     });
 });
 
@@ -61,8 +62,8 @@ test('pageArray get()', (assert) => {
         expected: [1, 2, 3]
     }];
     tests.forEach((test) => {
-        vm.attr('pages', test.pages);
-        assert.deepEqual(vm.attr('pageArray'), test.expected, 'it should have the expected pages in the pageArray');
+        vm.pages = test.pages;
+        assert.deepEqual(vm.pageArray, test.expected, 'it should have the expected pages in the pageArray');
     });
 });
 
@@ -77,11 +78,11 @@ test('gotoNext()', (assert) => {
         index: 9,
         expected: 9
     }];
-    vm.attr('pages', 10);
+    vm.pages = 10;
     tests.forEach((test) => {
-        vm.attr('activePageIndex', test.index);
+        vm.activePageIndex = test.index;
         vm.gotoNext();
-        assert.equal(vm.attr('activePageIndex'), test.expected, 'it should increase the page index unless its at the last page');
+        assert.equal(vm.activePageIndex, test.expected, 'it should increase the page index unless its at the last page');
     });
 });
 
@@ -96,30 +97,30 @@ test('gotoPrevious()', (assert) => {
         index: 9,
         expected: 8
     }];
-    vm.attr('pages', 10);
+    vm.pages = 10;
     tests.forEach((test) => {
-        vm.attr('activePageIndex', test.index);
+        vm.activePageIndex = test.index;
         vm.gotoPrevious();
-        assert.equal(vm.attr('activePageIndex'), test.expected, 'it should decrease the page index unless its at the first page');
+        assert.equal(vm.activePageIndex, test.expected, 'it should decrease the page index unless its at the first page');
     });
 });
 
 test('gotoFirst()', (assert) => {
-    vm.attr('activePageIndex', 5);
+    vm.activePageIndex = 5;
     vm.gotoFirst();
-    assert.equal(vm.attr('activePageIndex'), 0, 'The active page should be the first');
+    assert.equal(vm.activePageIndex, 0, 'The active page should be the first');
 });
 
 test('gotoLast()', (assert) => {
     vm.gotoLast();
-    assert.equal(vm.attr('activePageIndex'), vm.attr('pages') - 1, 'the active page should be the last');
+    assert.equal(vm.activePageIndex, vm.pages - 1, 'the active page should be the last');
 });
 
 test('gotoPage(p)', (assert) => {
     vm.gotoPage(5);
-    assert.equal(vm.attr('activePageIndex'), 4, 'the active page should be set correctly');
+    assert.equal(vm.activePageIndex, 4, 'the active page should be set correctly');
     vm.gotoPage(15);
-    assert.equal(vm.attr('activePageIndex'), 4, 'the active page should not have changed if an invalid page is passed');
+    assert.equal(vm.activePageIndex, 4, 'the active page should not have changed if an invalid page is passed');
 });
 
 test('isActive(p)', (assert) => {

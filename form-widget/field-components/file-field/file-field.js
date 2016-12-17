@@ -4,6 +4,7 @@ import Component from 'can-component';
 import CanEvent from 'can-event';
 import $ from 'jquery';
 import assign from 'object-assign';
+import dev from 'can-util/js/dev/dev';
 
 import './file-field.less';
 import template from './file-field.stache!';
@@ -76,7 +77,7 @@ export const ViewModel = DefineMap.extend('FileField', {
             this.updateValue();
         } else {
       // Handle errors here
-            console.warn('ERRORS: ', data.error);
+            dev.warn('ERRORS: ', data.error);
         }
     },
     updateValue () {
@@ -89,7 +90,7 @@ export const ViewModel = DefineMap.extend('FileField', {
     },
     uploadError (response, textStatus, errorThrown) {
     // Handle errors here
-        console.warn('ERRORS: ', response, textStatus, errorThrown);
+        dev.warn('ERRORS: ', response, textStatus, errorThrown);
     // STOP LOADING SPINNER
     },
     removeFile (file) {
@@ -110,10 +111,10 @@ export const ViewModel = DefineMap.extend('FileField', {
     },
     removeError (file, response) {
         if (response.status === 404) {
-      //file doesn't exist, remove it from this widget
+          //file doesn't exist, remove it from this widget
             this.removeSuccess(file, response);
         }
-        console.warn('Error: ', response);
+        dev.warn('Error: ', response);
     }
 });
 

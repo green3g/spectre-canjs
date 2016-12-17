@@ -1,6 +1,5 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import {Field} from '../util/field';
 
 import editTemplate from './templates/edit.stache!';
 import listTemplate from './templates/list.stache!';
@@ -22,7 +21,7 @@ import addTemplate from './templates/add.stache!';
  * A view object that controls the display and management of data in the
  * data-admin and other data components.
  */
-export const ViewMap = DefineMap.extend('ViewMap', {
+export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * A can-connect object that utilizes a miniumum of the base and constructor behaviors.
      * This includes the can-connect.SuperMap, which consists of many different behaviors.
@@ -39,6 +38,11 @@ export const ViewMap = DefineMap.extend('ViewMap', {
      * @property {can-connect} connection
      */
     connection: '*',
+    /**
+     * rest parameters that are serialized during a getList request. These
+     * parameters are typically mixed in with default parameters
+     * @type {Object}
+     */
     parameters: {Type: DefineMap, Value: DefineMap},
     /**
      * A template for creating new objects. This should be an constructor of can.Map

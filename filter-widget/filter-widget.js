@@ -1,6 +1,6 @@
 import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import Component from 'can-component';
-import batch from 'can-event/batch/batch';
 import deepAssign from 'can-util/js/deep-assign/deep-assign';
 import {makeSentenceCase} from '../../util/string';
 
@@ -22,14 +22,14 @@ import {Filter, FilterList, FilterOptions} from './Filter';
  * @description A `<filter-widget />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('FilterWidget', {
-  /**
-   * @prototype
-   */
-   /**
-    * Disabled the add new form if true
+    /**
+     * @prototype
+     */
+    /**
+     * Disabled the add new form if true
      * @property {Boolean} filter-widget.ViewModel.disableAdd
      * @parent filter-widget.ViewModel.props
-    */
+     */
     disableAdd: 'htmlbool',
     /**
      * A list of fields that will be used to create options in the field name
@@ -39,8 +39,9 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     fields: {
+        Value: DefineList,
         get (fields) {
-            if (fields) {
+            if (fields.length) {
                 return fields.filter((f) => {
                     return !f.excludeFilter;
                 });
@@ -60,7 +61,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
             if (t) {
                 return t;
             }
-            return this.connection.Map;
+            return this.connection ? this.connection.Map : null;
         }
     },
     /**
@@ -70,23 +71,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      */
     filters: {
         Value: FilterList
-    },
-    /**
-     * The model-like object to render in the form
-     * @link formFieldObject formFieldObject
-     * @property {form-widget.types.formFieldObject} filter-widget.ViewModel.formObject
-     * @parent filter-widget.ViewModel.props
-     */
-    formObject: {
-        get (obj) {
-            if (obj) {
-                return obj;
-            }
-            const filter = new Filter({
-                name: this.fieldOptions && this.fieldOptions.length ? this.fieldOptions[0].value : ''
-            });
-            return filter;
-        }
     },
     /**
      * The buttonObjects to display in the list table. This widget only uses
@@ -116,7 +100,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     },
     nameField: {
         get () {
-            return this.fieldOptions ? {
+            return this.fieldOptions.length > 1 ? {
                 formatter: makeSentenceCase,
                 name: 'name',
                 alias: 'Field Name',
@@ -184,14 +168,12 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      */
     filterOptions: {
         get () {
-            //get the name of the selected field
-            const name = this.formObject.name;
 
             //if we have fields search them for a type matching the name
             //of the selected field name
             if (this.fields && this.fields.length) {
                 const field = this.fields.filter((f) => {
-                    return f.name === name;
+                    return f.name === this.fieldValue;
                 })[0];
                 if (field && field.type) {
                     return FilterOptions.filter((f) => {
@@ -227,95 +209,78 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     fieldOptions: {
-        value: null,
         get () {
             const fields = [{
                 value: '',
                 label: 'Add a filter'
             }];
-            if (this.fields) {
-                return fields.concat(this.fields.map((f) => {
+            if (this.fields.length) {
+                return fields.concat(this.fields.serialize().map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
-                }).serialize());
+                }));
             }
             return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
                 return {
                     value: key,
                     label: makeSentenceCase(key)
                 };
-            })) : null;
+            })) : [];
         }
     },
     fieldValue: 'string',
-  /**
-   * @function removeFilter
-   * Removes a filter from the list of filters
-   * @signature
-   * @param  {spectre.types.filterObject} obj   The object to remove. This is the only argument used by the function, the rest may be null.
-   */
+    /**
+     * Removes a filter from the list of filters
+     * @function removeFilter
+     * @signature
+     * @param  {spectre.types.filterObject} obj  The object to remove. This is the only argument used by the function, the rest may be null.
+     * @returns {undefined}
+     */
     removeFilter (obj) {
         const index = this.filters.indexOf(obj);
         this.filters.splice(index, 1);
     },
-  /**
-   * @function removeFilters
-   * Replaces the filter array with an empty array, clearing all existing filters
-   * @signature
-   */
+    /**
+     * Replaces the filter array with an empty array, clearing all existing filters
+     * @function removeFilters
+     * @signature
+     * @returns {undefined}
+     */
     removeFilters () {
         this.filters.replace([]);
     },
   /**
-   * @function addFilter
-   * Adds a new filter or set of filters to the list of filters in this widget.
-   * A `filterFactory` may be defined on the field which may return one filter or an array of
-   * filters.
-   * @signature
-   * @param  {can.Map} scope The stache scope
-   * @param  {event} dom   The dom event
-   * @param  {event} event The can event
-   * @param  {filterObject} filterObj The object to add. This is the only argument used by the function, the rest may be null.
-   * @return {Boolean} returns false to prevent event propagation from links
-   */
+     * Adds a new filter or set of filters to the list of filters in this widget.
+     * A `filterFactory` may be defined on the field which may return one filter or an array of
+     * filters.
+    * @function addFilter
+     * @signature
+     * @param  {can.Map} scope The stache scope (optional)
+     * @param  {event} dom   The dom event (optional)
+     * @param  {event} event The event (optional)
+     * @param  {string} name The name of the field filter to add. This is the only argument used by the function, the rest may be null.
+     * @return {Boolean} returns false to prevent event propagation from links
+     */
     addFilter () {
+
+        // get the name
         const name = arguments.length === 4 ? arguments[3] : arguments[0];
-        const filterObj = new Filter({
-            name: name
-        });
-        this.fieldValue = '';
-        filterObj.operatorField = deepAssign({}, this.operatorField);
-        filterObj.valueField = deepAssign({}, this.valueField);
-        let filters;
         if (!name) {
             return false;
         }
-        // const fields = this.fields;
-        // const filterOption = FilterOptions.filter((f) => {
-        //     return filterObj.operator === f.value;
-        // })[0];
-        const field = this.fields ? this.fields.filter((f) => {
-            return f.name === name;
-        })[0] : null;
 
-        //get the filters
-        //try a filterFactory on the field object
-        //which should return one or an array of filters
-        if (field && typeof field.filterFactory === 'function') {
-            filters = field.filterFactory(filterObj);
-        }
-
-        //otherwise just use the filter as is
-        if (!filters) {
-            filters = [filterObj];
-        }
-
-        this.set({
-            filters: this.filters.concat(filters),
-            formObject: null
+        // make a new filter object with the fields used in the form
+        const filterObj = new Filter({
+            name: name,
+            operatorField: deepAssign({}, this.operatorField),
+            valueField: deepAssign({}, this.valueField)
         });
+
+        // reset the dropdown
+        this.fieldValue = '';
+        this.filters.push(filterObj);
 
         return false;
     },

@@ -1,8 +1,9 @@
-import q from 'steal-qunit';
-import can 
+/* eslint-env qunit, browser */
 
+import q from 'steal-qunit';
 import {ViewModel} from './';
 
+//eslint-disable-next-line
 let vm;
 
 q.module('.ViewModel', {

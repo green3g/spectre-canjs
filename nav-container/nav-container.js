@@ -1,7 +1,6 @@
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import batch from 'can-event/batch/batch';
 import viewModel from 'can-view-model';
 
 import template from './nav-container.stache!';

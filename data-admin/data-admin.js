@@ -1,6 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Component from 'can-component';
+import dev from 'can-util/js/dev/dev';
 import template from './template.stache!';
 import './widget.less!';
 
@@ -23,10 +24,24 @@ export const SortMap = DefineMap.extend('SortMap', {
 });
 
 export const ParameterMap = DefineMap.extend('ParameterMap', {
-    filters: {Type: FilterList, Value: FilterList},
-    perPage: {type: 'number', value: 10},
-    page: {type: 'number', value: 0},
-    sort: {Type: SortMap, Value: SortMap}
+    seal: false
+}, {
+    filters: {
+        Type: FilterList,
+        Value: FilterList
+    },
+    perPage: {
+        type: 'number',
+        value: 10
+    },
+    page: {
+        type: 'number',
+        value: 0
+    },
+    sort: {
+        Type: SortMap,
+        Value: SortMap
+    }
 });
 /**
  * @module data-admin
@@ -41,9 +56,9 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
  * @description A `<data-admin />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('DataAdmin', {
-  /**
-   * @prototype
-   */
+    /**
+     * @prototype
+     */
     /**
      * The view object that controls the entire setup of the data-admin.
      * Properties on the view control how each field is formatted, default values,
@@ -88,9 +103,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     totalPages: {
         get () {
-        //round up to the nearest integer
+            //round up to the nearest integer
             return Math.ceil(this.totalItems /
-          this.parameters.perPage);
+                this.parameters.perPage);
         }
     },
     /**
@@ -134,9 +149,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         get (params) {
 
             // mixin view parameters
-            if (this.view.parameters) {
+            if (this.view && this.view.parameters) {
                 this.view.parameters.forEach((p, key) => {
-
                     // deep copy filters
                     if (key === 'filters') {
                         p.forEach((f) => {
@@ -184,10 +198,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
             // handle promise.catch for local-storage deferreds...
             promise.catch((err) => {
-                console.warn('unable to complete objects request', err);
+                dev.warn('unable to complete objects request', err);
             });
 
-              // update the list data
+            // update the list data
             promise.then((data) => {
                 setAttr(data);
             });
@@ -206,7 +220,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 const promise = this.view.connection.get(params);
 
                 promise.catch((err) => {
-                    console.error('unable to complete focusObject request', err);
+                    dev.error('unable to complete focusObject request', err);
                 });
 
                 return promise;
@@ -284,13 +298,19 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @property {Boolean} data-admin.ViewModel.props.filterVisible
      * @parent data-admin.ViewModel.props
      */
-    filterVisible: {type: 'boolean', value: false},
+    filterVisible: {
+        type: 'boolean',
+        value: false
+    },
     /**
      * whether or not the select menu is currently visible
      * @type {Boolean} data-admin.ViewModel.props.selectMenu
      * @parent data-admin.ViewModel.props
      */
-    selectMenu: {type: 'boolean', value: false},
+    selectMenu: {
+        type: 'boolean',
+        value: false
+    },
     /**
      * The internal field array that define the display of data and field types
      * for editing and filtering
@@ -316,10 +336,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @parent data-admin.ViewModel.props
      */
     selectedObjects: DefineList,
-  /**
-   * @function init
-   * Initializes filters and other parameters
-   */
+    /**
+     * Initializes filters and other parameters
+     * @function init
+     * @signature
+
+     */
     init () {
         //set up related filters which are typically numbers
         if (this.relatedField) {
@@ -335,31 +357,33 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
         }
     },
-  /**
-   * @function setPage
-   * Changes the page and resets the viewId to 0
-   * @signature
-   * @param {String} page The name of the page to switch to
-   */
+    /**
+     * Changes the page and resets the viewId to 0
+     * @function setPage
+     * @signature
+     * @param {String} page The name of the page to switch to
+
+     */
     setPage (page) {
         if (page === 'list') {
-            this.objectsRefreshCount ++;
+            this.objectsRefreshCount++;
         }
         this.set({
             viewId: null,
             page: page
         });
     },
-  /**
-   * @function editObject
-   * Sets the current viewId to the object's id and sets the page to edit
-   * to start editing the object provided.
-   * @signature
-   * @param  {can.Map} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
-   * @param  {can.Map} obj   The object to start editing
-   */
+    /**
+     * Sets the current viewId to the object's id and sets the page to edit
+     * to start editing the object provided.
+     * @function editObject
+     * @signature
+     * @param  {can.Map} scope The stache scope (not used)
+     * @param  {domNode} dom   The domNode that triggered the event (not used)
+     * @param  {Event} event The event that was triggered (not used)
+     * @param  {can.Map} obj   The object to start editing
+
+     */
     editObject () {
         let obj;
         //accept 4 params from the template or just one
@@ -374,16 +398,17 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             page: 'edit'
         });
     },
-  /**
-   * @function viewObject
-   * Sets the current viewId to the object's id and sets the page to details
-   * to display a detailed view of the object provided.
-   * @signature
-   * @param  {can.Map} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
-   * @param  {can.Map} obj   The object to view
-   */
+    /**
+     * Sets the current viewId to the object's id and sets the page to details
+     * to display a detailed view of the object provided.
+     * @function viewObject
+     * @signature
+     * @param  {can.Map} scope The stache scope (not used)
+     * @param  {domNode} dom   The domNode that triggered the event (not used)
+     * @param  {Event} event The event that was triggered (not used)
+     * @param  {can.Map} obj   The object to view
+
+     */
     viewObject () {
         let obj;
         //accept 4 params from the template or just one
@@ -398,21 +423,21 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             page: 'details'
         });
     },
-  /**
-   * @function saveObject
-   * Saves the provided object and sets the current viewId to the object's
-   * id once it is returned. We then switch the page to the detail view to
-   * display the created or updated object.
-   *
-   * @signature `saveObject(obj)`
-   * @param  {can.Map} obj   The object to save
-   *
-   * @signature `saveObject(scope, dom, event, obj)`
-   * @param  {can.Map} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
-   * @param  {can.Map} obj   The object to save
-   */
+    /**
+     * Saves the provided object and sets the current viewId to the object's
+     * id once it is returned. We then switch the page to the detail view to
+     * display the created or updated object.
+     * @function saveObject
+     *
+     * @signature `saveObject(obj)`
+     *
+     * @signature `saveObject(scope, dom, event, obj)`
+     * @param  {can.Map} scope The stache scope (optional)
+     * @param  {domNode} dom   The domNode that triggered the event (optional)
+     * @param  {Event} event The event that was triggered (optional)
+     * @param  {can.Map} obj   The object to save
+     * @returns {Promise}
+     */
     saveObject () {
         let obj;
         //accept 4 params from the template or just one
@@ -467,45 +492,42 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 obj: obj,
                 error: e
             }, 'errorSave');
-            console.error(e);
+            dev.error(e);
         });
         return deferred;
     },
-  /**
-   * @function getNewObject
-   * Creates and returns a new object from the view's ObjectTemplate
-   * @signature
-   * @return {DefineMap} A new object created from the `view.ObjectTemplate`
-   */
+    /**
+     * Creates and returns a new object from the view's ObjectTemplate
+     * @function getNewObject
+     * @signature
+     * @return {DefineMap} A new object created from the `view.ObjectTemplate`
+     */
     getNewObject () {
-    //create a new empty object with the defaults provided
-    //from the ObjectTemplate property which is a map
+        //create a new empty object with the defaults provided
+        //from the ObjectTemplate property which is a map
         const props = {};
         if (this.relatedField) {
             props[this.relatedField] = this.relatedValue;
         }
-        return new (this.view.ObjectTemplate)(props);
+        return new(this.view.ObjectTemplate)(props);
     },
-  /**
-   * @function deleteObject
-   * Displays a confirm dialog box and if confirmed, deletes the object provided.
-   *
-   * @signature `deleteObject(obj, skipConfirm)`
-   * @param  {can.Map} obj   The object to delete
-   * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
-   *
-   * @signature `deleteObject( scope, dom, event, obj, skipConfirm )`
-   * @param  {can.Map} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
-   * @param  {can.Map} obj   The object to delete
-   * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
-   * and will immediately attempt to remove the object
-   */
+    /**
+     * Displays a confirm dialog box and if confirmed, deletes the object provided.
+     * @function deleteObject
+     * @signature `deleteObject(obj, skipConfirm)`
+     * @signature `deleteObject( scope, dom, event, obj, skipConfirm )`
+     * @param  {can.Map} scope The stache scope (optional)
+     * @param  {domNode} dom   The domNode that triggered the event (optional)
+     * @param  {Event} event The event that was triggered (optional)
+     * @param  {can.Map} obj   The object to delete
+     * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
+     * and will immediately attempt to remove the object
+     * @returns {Promise}
+     */
     deleteObject () {
         let obj, skipConfirm;
-    //arguments can be ( scope, dom, event, obj, skipConfirm )
-    //OR (obj, skipConfirm)
+        //arguments can be ( scope, dom, event, obj, skipConfirm )
+        //OR (obj, skipConfirm)
         if (arguments.length > 2) {
             obj = arguments[3];
             skipConfirm = arguments[4];
@@ -513,44 +535,48 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             obj = arguments[0];
             skipConfirm = arguments[1];
         }
-        if (obj && (skipConfirm || confirm('Are you sure you want to delete this record?'))) {
+        // eslint-disable-next-line
+        if (obj && (skipConfirm || window.confirm('Are you sure you want to delete this record?'))) {
 
-      // beforeDelete handler
-      // if return value is falsey, stop execution and don't delete
+            // beforeDelete handler
+            // if return value is falsey, stop execution and don't delete
             if (!this.onEvent(obj, 'beforeDelete')) {
-                return;
+                return null;
             }
 
-      //destroy the object using the connection
+            //destroy the object using the connection
             const deferred = this.view.connection.destroy(obj);
-            deferred.then((result) => {
+            deferred.then(() => {
 
                 //afterDelete handler
                 this.onEvent(obj, 'afterDelete');
 
-                this.objectsRefreshCount ++;
+                this.objectsRefreshCount++;
             });
 
             deferred.catch((result) => {
                 //add a message
                 this.onEvent(result, 'errorDelete');
-                console.error(result);
+                dev.warn(result);
             });
             return deferred;
         }
+        return null;
     },
-  /**
-   * @function deleteMultiple
-   * Iterates through the objects in the `selectedObjects` array
-   * and deletes each one individually.
-   * //TODO implement batch deleting to avoid many ajax calls
-   * @signature
-   * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
-   * and will immediately attempt to remove the selected objects
-   */
+    /**
+     * Iterates through the objects in the `selectedObjects` array
+     * and deletes each one individually.
+     * //TODO implement batch deleting to avoid many ajax calls
+     * @function deleteMultiple
+     * @signature
+     * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
+     * and will immediately attempt to remove the selected objects
+     * @returns {Array<Promise>}
+     */
     deleteMultiple (skipConfirm) {
         const selected = this.selectedObjects;
         const defs = [];
+        //eslint-disable-next-line
         if (skipConfirm || confirm(`Are you sure you want to delete the ${selected.length} selected records?`)) {
             selected.forEach((obj) => {
                 defs.push(this.deleteObject(null, null, null, obj, true));
@@ -559,42 +585,49 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
         return defs;
     },
-  /**
-   * @function clearSelection
-   * empties the currently selected objects array
-   */
+    /**
+     * empties the currently selected objects array
+     * @function clearSelection
+     * @signature
+
+     */
     clearSelection () {
         this.selectedObjects.replace([]);
     },
-  /**
-   * passes an array of objects to the on click handler of a manageButton
-   * @param  {object} obj     A single object
-   * @param  {Function} onClick The function to pass array of objects to
-   */
+    /**
+     * passes an array of objects to the on click handler of a manageButton
+     * @function manageObject
+     * @signature
+     * @param  {object} obj     A single object
+     * @param  {Function} button  The button object with an `onclick` property
+     */
     manageObject (obj, button) {
         this.manageObjects([obj], button);
     },
-  /**
-   * passes an array of objects to the on click handler of a manageButton
-   * @param  {object} objects     A single object
-   * @param  {Function} onClick The function to pass array of objects to
-   */
+    /**
+     * passes an array of objects to the on click handler of a manageButton
+     * @function manageObjects
+     * @signature
+     * @param  {object} objects     A single object
+     * @param  {Function} button The button object with an `onclick` property
+     */
     manageObjects (objects, button) {
         const defs = button.onClick(objects);
         if (defs) {
             Promise.all(defs).then(() => {
-                this.objectsRefreshCount ++;
+                this.objectsRefreshCount++;
             });
         }
     },
-  /**
-   * @function toggle
-   * Toggles the display of menus
-   * @signature
-   * @param {String} val The value to toggle
-   * @param  {Boolean} visible (Optional) whether or not to display the dialog
-   * @param {Event} e (optional) the event to toggle
-   */
+    /**
+     * Toggles the display of menus
+     * @function toggle
+     * @signature
+     * @param {String} val The value to toggle
+     * @param  {Boolean} visible (Optional) whether or not to display the dialog
+     * @param {Event} e (optional) the event to toggle
+     * @returns {Boolean} always returns false to prevent event from changing page
+     */
     toggle (val, visible, e) {
         this.noop(e);
         if (typeof visible !== 'undefined') {
@@ -606,8 +639,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * prevents the default event from triggering
-     * @param  {[type]} event [description]
-     * @return {[type]}       [description]
+     * @param {Event} event The event to prevent and stop from triggering
+     * @returns {Boolean} always returns false
      */
     noop (event) {
         if (event) {
@@ -615,13 +648,14 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
         return false;
     },
-  /**
-   * @function onEvent
-   * A helper function to trigger beforeSave, afterSave, etc events.
-   * @signature
-   * @param  {can.Map} obj       The object to dispatch with the event
-   * @param  {String} eventName The name of the event to dispatch
-   */
+    /**
+     * A helper function to trigger beforeSave, afterSave, etc events.
+     * @function onEvent
+     * @signature
+     * @param  {can.Map} obj       The object to dispatch with the event
+     * @param  {String} eventName The name of the event to dispatch
+     * @returns {Boolean|Object}
+     */
     onEvent (obj, eventName) {
 
         //get the view method

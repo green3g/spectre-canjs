@@ -1,8 +1,9 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
-import can 
 import {Connection} from 'test/data/connection';
 import {ViewModel} from './property-table';
-import DefineMap from 'can/map/';
+import DefineMap from 'can-define/map/map';
 import {Field} from '../../util/field';
 
 let vm;
@@ -18,9 +19,9 @@ q.module('property-table.ViewModel', {
 
 test('fetchObject(con, id)', (assert) => {
     const done = assert.async();
-    const def = vm.fetchObject(Connection, 6).then((data) => {
+    vm.fetchObject(Connection, 6).then(() => {
 
-        assert.ok(vm.attr('object'), 'the table should have an object after an object is fetched');
+        assert.ok(vm.object, 'the table should have an object after an object is fetched');
         done();
 
     });
@@ -29,14 +30,14 @@ test('fetchObject(con, id)', (assert) => {
 test('objectId set(id)', (assert) => {
     const done = assert.async();
     const id = 6;
-    vm.attr('connection', Connection);
-    assert.notOk(vm.attr('objectPromise'), 'objectPromise should not have a value by default');
+    vm.connection = Connection;
+    assert.notOk(vm.objectPromise, 'objectPromise should not have a value by default');
 
-    vm.attr('objectId', id);
-    assert.ok(vm.attr('objectPromise'), 'objectPromise should have a value after setting the objectId');
+    vm.objectId = id;
+    assert.ok(vm.objectPromise, 'objectPromise should have a value after setting the objectId');
 
-    vm.attr('objectPromise').then((object) => {
-        assert.equal(vm.attr('object.id'), id, 'objects id should match the id that was set');
+    vm.objectPromise.then(() => {
+        assert.equal(vm.object.id, id, 'objects id should match the id that was set');
         done();
     });
 });
@@ -45,6 +46,6 @@ test('getValue(field)', (assert) => {
     const field = new Field({name: 'test'});
     const obj = new DefineMap({test: 'value'});
 
-    vm.attr('object', obj);
+    vm.object = obj;
     assert.equal(vm.getValue(field), 'value', 'result should match the value of the object');
 });

@@ -67,27 +67,15 @@ export const FilterOptions = [{
 }, {
     label: 'Contains',
     value: 'like',
-    types: ['string'],
-    filterFactory (filter) {
-        filter.value = ['%', filter.value, '%'].join('');
-        return filter;
-    }
+    types: ['string']
 }, {
     label: 'Starts with',
     value: 'starts_with',
-    types: ['string'],
-    filterFactory (filter) {
-        filter.value = [filter.value, '%'].join('');
-        return filter;
-    }
+    types: ['string']
 }, {
     label: 'Ends with',
     value: 'ends_with',
-    types: ['string'],
-    filterFactory (filter) {
-        filter.value = ['%', filter.value].join('');
-        return filter;
-    }
+    types: ['string']
 }, {
     label: 'Exactly equal to',
     value: 'equals'
@@ -98,19 +86,11 @@ export const FilterOptions = [{
 }, {
     label: 'Greater Than',
     value: 'greater_than',
-    types: ['number'],
-    filterFactory (filter) {
-        filter.value = parseFloat(filter.value);
-        return filter;
-    }
+    types: ['number']
 }, {
     label: 'Less Than',
     value: 'less_than',
-    types: ['number'],
-    filterFactory (filter) {
-        filter.value = parseFloat(filter.value);
-        return filter;
-    }
+    types: ['number']
 }, {
     label: 'Before',
     value: 'before',

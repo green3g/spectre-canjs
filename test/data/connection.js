@@ -5,9 +5,9 @@ import DefineList from 'can-define/list/list';
 //import fake ajax services
 import './fixtures';
 
-export const TaskMap = DefineMap.extend({
-    'name': 'name of task',
-    'description': 'description of task'
+export const TaskMap = DefineMap.extend('Task', {seal: false}, {
+    'name': 'string',
+    'description': 'string'
 });
 
 export const TaskList = DefineList.extend({

@@ -1,9 +1,8 @@
+/* eslint-env qunit, browser */
+
 import q from 'steal-qunit';
-import can 
 
 import {makeSentenceCase} from './string';
-
-let vm;
 
 q.module('util/string', {
     beforeEach: () => {

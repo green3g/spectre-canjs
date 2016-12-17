@@ -10,9 +10,9 @@ import './paginate-widget.less!';
  * @description A `<paginate-widget />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('PaginateWidget', {
-  /**
-   * @prototype
-   */
+    /**
+     * @prototype
+     */
     /**
      * The number of pages to show in the widget
      * @property {Number} paginate-widget.ViewModel.props.pages
@@ -89,90 +89,120 @@ export const ViewModel = DefineMap.extend('PaginateWidget', {
             return arr;
         }
     },
+    /**
+     * Hides the first button
+     * @signature `<paginate-widget hide-first />`
+     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideFirst
+     * @parent paginate-widget.ViewModel.props
+     */
     hideFirst: {
         type: 'htmlbool',
         value: false
     },
+    /**
+     * Hides the last button
+     * @signature `<paginate-widget hide-last />`
+     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideLast
+     * @parent paginate-widget.ViewModel.props
+     */
     hideLast: {
         type: 'htmlbool',
         value: false
     },
+    /**
+     * Hides the previous button
+     * @signature `<paginate-widget hide-previous />`
+     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hidePrevious
+     * @parent paginate-widget.ViewModel.props
+     */
     hidePrevious: {
         type: 'htmlbool',
         value: false
     },
+    /**
+     * Hides the next button
+     * @signature `<paginate-widget hide-next />`
+     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideNext
+     * @parent paginate-widget.ViewModel.props
+     */
     hideNext: {
         type: 'htmlbool',
         value: false
     },
+    /**
+     * Hides the list of pages
+     * @signature `<paginate-widget hide-pages />`
+     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hidePages
+     * @parent paginate-widget.ViewModel.props
+     */
     hidePages: {
         type: 'htmlbool',
         value: false
     },
-  /**
-   * @function gotoNext
-   * Navigates to the next page
-   * @signature
-   * @return {Boolean} returns false to prevent the link from navigating to the next page
-   */
+    /**
+     * Navigates to the next page
+     * @signature
+     * @function gotoNext
+     * @return {Boolean} returns false to prevent the link from navigating to the next page
+     */
     gotoNext () {
         if (this.hasNext) {
             this.activePageIndex++;
         }
         return false;
     },
-  /**
-   * @function gotoPrevious
-   * Navigates to the previous page
-   * @signature
-   * @return {Boolean} returns false to prevent the link from navigating to the next page
-   */
+    /**
+     * Navigates to the previous page
+     * @function gotoPrevious
+     * @signature
+     * @return {Boolean} returns false to prevent the link from navigating to the next page
+     */
     gotoPrevious () {
         if (this.hasPrevious) {
             this.activePageIndex--;
         }
         return false;
     },
-  /**
-   * @function gotoFirst
-   * Navigates to the first page
-   * @signature
-   * @return {Boolean} returns false to prevent the link from navigating to the next page
-   */
+    /**
+     * Navigates to the first page
+     * @function gotoFirst
+     * @signature
+     * @return {Boolean} returns false to prevent the link from navigating to the next page
+     */
     gotoFirst () {
         this.activePageIndex = 0;
         return false;
     },
-  /**
-   * @function gotoLast
-   * Navigates to the last page
-   * @signature
-   * @return {Boolean} returns false to prevent the link from navigating to the next page
-   */
+    /**
+     * Navigates to the last page
+     * @function gotoLast
+     * @signature
+     * @return {Boolean} returns false to prevent the link from navigating to the next page
+     */
     gotoLast () {
         this.activePageIndex = this.pages - 1;
         return false;
     },
-  /**
-   * @function gotoPage
-   * Navigates to the page
-   * @signature
-   * @param {Number} p The page index to navigate to
-   * @return {Boolean} returns false to prevent the link from navigating to the next page
-   */
+    /**
+     * Navigates to the page
+     * @function gotoPage
+     * @signature
+     * @param {Number} p The page index to navigate to
+     * @return {Boolean} returns false to prevent the link from navigating to the next page
+     */
     gotoPage (p) {
         if (p > 0 && p <= this.pages) {
             this.activePageIndex = p - 1;
         }
         return false;
     },
-  /**
-   * @function isActive
-   * Checks to see if the passed page is the active page index
-   * @signature
-   * @param {Number} p The page to check
-   * @return {Boolean} Returns a boolean value that tells the template whether or not the passed page is the active page
-   */
+    /**
+     * Checks to see if the passed page is the active page index
+     * @function isActive
+     * @signature
+     * @param {Number} p The page to check
+     * @return {Boolean} Returns a boolean value that tells the template whether or not the passed page is the active page
+     */
     isActive (p) {
         return this.activePageIndex === p - 1;
     }

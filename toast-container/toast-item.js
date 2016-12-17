@@ -1,4 +1,3 @@
-
 import template from './toast-item.stache!';
 import './toast-item.less!';
 
@@ -103,11 +102,9 @@ export const ViewModel = DefineMap.extend('ToastItem', {
         value: 1000
     },
 
-  /**
-   * @function toast-item.viewModel.hide hide
-   * @parent toast-item/viewModel
-   * @description Hide the toast-item
-   */
+    /**
+     * Hide the toast-item
+     */
     hide () {
         if (!this.visible) {
             return;

@@ -7,7 +7,7 @@ import assign from 'object-assign';
 let index = 1000;
 
 //a mock ajax service
-fixture.delay = 1000;
+fixture.delay = 200;
 fixture({
     'GET /tasks' (params) {
         const perPage = params.data.perPage || 10;
@@ -15,32 +15,26 @@ fixture({
         const sortInfo = params.data.sort;
         let tempData = new DefineList(data);
 
-    //filter it
+        //filter it
         if (params.data.filters && params.data.filters.length) {
-      //lets just handle one filter for testing
+            //lets just handle one filter for testing
             const f = params.data.filters[0];
-            console.log('only the first filter is going to be used!');
+            // console.log('only the first filter is going to be used!');
             if (f.operator !== 'like') {
-                console.log(f.operator, 'operator not implemented, like will be used instead');
+                // console.log(f.operator, 'operator not implemented, like will be used instead');
             }
             tempData = tempData.filter((d) => {
                 return d[f.name].indexOf(f.value) !== -1;
             });
-            console.log('found ' + tempData.length + ' items after filtering');
+            // console.log('found ' + tempData.length + ' items after filtering');
         }
 
 
-    //sort it
+        //sort it
         if (sortInfo && sortInfo.fieldName) {
             const field = sortInfo.fieldName;
             tempData = tempData.sort((a, b) => {
-                return sortInfo.type === 'asc' ?
-          //if ascending
-          (a[field] === b[field] ? 0 :
-            a[field] > b[field] ? 1 : -1) :
-          //if descending
-          (a[field] === b[field] ? 0 :
-            a[field] > b[field] ? -1 : 1);
+                return sortInfo.type === 'asc' ? (a[field] === b[field] ? 0 : a[field] > b[field] ? 1 : -1) : (a[field] === b[field] ? 0 : a[field] > b[field] ? -1 : 1);
             });
         }
 
@@ -51,14 +45,16 @@ fixture({
         return tempData.serialize();
     },
     'POST /tasks' (params, response) {
-        const newId = index ++;
-        const newObj = assign({id: newId}, params.data);
+        const newId = index++;
+        const newObj = assign({
+            id: newId
+        }, params.data);
         data.push(newObj);
         response(data[data.length - 1]);
     },
     'GET /tasks/{id}' (params, response) {
         const items = data.filter((item) => {
-          //eslint-disable-next-line eqeqeq
+            //eslint-disable-next-line eqeqeq
             return item.id == params.data.id;
         });
         if (!items.length) {
@@ -69,7 +65,7 @@ fixture({
     },
     'PUT /tasks/{id}' (params, response) {
         let item = data.filter((i) => {
-          //eslint-disable-next-line eqeqeq
+            //eslint-disable-next-line eqeqeq
             return i.id == params.data.id;
         });
         if (!item.length) {
@@ -87,6 +83,7 @@ fixture({
     },
     'DELETE /tasks/{id}' (params, response) {
         let item = data.filter((i) => {
+            // eslint-disable-next-line eqeqeq
             return i.id == params.data.id;
         });
         if (!item.length) {
@@ -94,8 +91,8 @@ fixture({
             return;
         }
         item = item[0];
-        const index = data.indexOf(item);
-        if (index !== -1) {
+        const idx = data.indexOf(item);
+        if (idx !== -1) {
             data.splice(data.indexOf(item), 1);
             response(data);
         } else {

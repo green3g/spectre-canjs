@@ -2,7 +2,6 @@ import {ViewModel as ModalViewModel} from './modal-dialog';
 import template from './confirm-dialog.stache!';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import makePromise from 'can-util/js/make-promise/make-promise';
 import assign from 'object-assign';
 
 export const ViewModel = ModalViewModel.extend('ConfirmDialog', {

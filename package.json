@@ -45,6 +45,7 @@
     "can-view-model": "^3.0.0",
     "date-selector": "^2.0.x",
     "font-awesome": "^4.5.x",
+    "jquery": "^3.1.1",
     "object-assign": "^4.1.0",
     "spectre.css": "^0.1.29",
     "steal": "^1.0.0-rc2"

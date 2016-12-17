@@ -25,6 +25,7 @@
     "npm-watch": "^0.1.x",
     "steal-css": "^1.0.0-rc.0",
     "steal-less": "^1.0.0-rc.3",
+    "steal-qunit": "^0.1.4",
     "steal-stache": "^3.0.3",
     "steal-tools": "^1.0.0-rc2",
     "testee": "^0.3.0"
@@ -43,7 +44,6 @@
     "can-view-model": "^3.0.0",
     "date-selector": "^2.0.x",
     "font-awesome": "^4.5.x",
-    "jquery": "^3.1.1",
     "object-assign": "^4.1.0",
     "spectre.css": "^0.1.29",
     "steal": "^1.0.0-rc2"

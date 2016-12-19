@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.16.0",
+  "version": "0.15.9",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": "https://github.com/roemhildtg/spectre-canjs",
   "main": "index.js",
@@ -16,8 +16,8 @@
     "docs": "documentjs --watch -d",
     "export": "node build.js",
     "lint": "eslint . --fix",
-    "preversion": "npm run test && npm run export && npm run build",
-    "postversion": "npm publish && git push origin master && git push --tags"
+    "preversion": "npm run test",
+    "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags"
   },
   "author": "roemhildtg",
   "license": "MIT",

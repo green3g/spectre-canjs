@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.15.5",
+  "version": "0.15.6",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": "https://github.com/roemhildtg/spectre-canjs",
   "main": "index.js",
@@ -26,7 +26,7 @@
     "npm-watch": "^0.1.x",
     "steal-css": "^1.0.0-rc.0",
     "steal-less": "^1.0.0-rc.3",
-    "steal-qunit": "^0.1.4",
+    "steal-qunit": "^1.0.0",
     "steal-stache": "^3.0.3",
     "steal-tools": "^1.0.0-rc2",
     "testee": "^0.3.0"
@@ -39,7 +39,7 @@
     "can-event": "^3.0.1",
     "can-fixture": "^1.0.1",
     "can-route": "^3.0.2",
-    "can-set": "^0.5.x",
+    "can-set": "^1.0.3",
     "can-stache": "^3.0.1",
     "can-util": "^3.0.1",
     "can-view-model": "^3.0.0",

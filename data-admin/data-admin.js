@@ -548,6 +548,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             const deferred = this.view.connection.destroy(obj);
             deferred.then(() => {
 
+                this.set({
+                    viewId: null,
+                    page: 'list',
+                    objectsRefreshCount: this.objectsRefreshCount + 1
+                });
+
                 //afterDelete handler
                 this.onEvent(obj, 'afterDelete');
 
@@ -555,6 +561,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
 
             deferred.catch((result) => {
+
+                this.set({
+                    viewId: null,
+                    page: 'list',
+                    objectsRefreshCount: this.objectsRefreshCount + 1
+                });
+                  
                 //add a message
                 this.onEvent(result, 'errorDelete');
                 dev.warn(result);

@@ -1,8 +1,8 @@
 import DefineMap from 'can-define/map/map';
-import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import deepAssign from 'can-util/js/deep-assign/deep-assign';
 import {makeSentenceCase} from '../../util/string';
+import {FieldList, parseFieldArray} from '../../util/field';
 
 import template from './template.stache!';
 import './filter-widget.less!';
@@ -11,7 +11,6 @@ import '../form-widget/';
 import '../form-widget/field-components/text-field/';
 import '../form-widget/field-components/select-field/';
 
-import {parseFieldArray} from '../util/field';
 import {Filter, FilterList, FilterOptions} from './Filter';
 
 /**
@@ -39,7 +38,8 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     fields: {
-        Value: DefineList,
+        Type: FieldList,
+        Value: FieldList,
         get (fields) {
             if (fields.length) {
                 return fields.filter((f) => {
@@ -215,12 +215,12 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                 label: 'Add a filter'
             }];
             if (this.fields.length) {
-                return fields.concat(this.fields.serialize().map((f) => {
+                return fields.concat(this.fields.map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
-                }));
+                }).serialize());
             }
             return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
                 return {

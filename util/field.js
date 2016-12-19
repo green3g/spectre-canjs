@@ -5,6 +5,7 @@
 import {makeSentenceCase} from './string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
@@ -132,6 +133,10 @@ export const Field = DefineMap.extend('Field', {
     getFormattedValue (obj) {
         return this.formatter ? this.formatter(obj[this.name], obj) : obj[this.name];
     }
+});
+
+export const FieldList = DefineList.extend('FieldList', {
+    '#': Field
 });
 
 

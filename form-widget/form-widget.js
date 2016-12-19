@@ -130,8 +130,13 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         get () {
             let isValid = true;
             this.fields.forEach((f) => {
-                if (!this.validate(f, this.formObject[f.name])) {
+                if (this.validationErrors[f.name]) {
                     isValid = false;
+                } else {
+                    const error = this.validationErrors[f.name] = this.getValidationError(f, this.formObject[f.name]);
+                    if (error) {
+                        isValid = false;
+                    }
                 }
             });
             return isValid;
@@ -203,9 +208,10 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {Object | Number | String} value  The value that was passed from the field component
      */
     setField (field, domElement, event, value) {
+        const error = this.validationErrors[field.name] = this.getValidationError(field, value);
 
         // check for valid field value and don't update if it's not
-        if (!this.validate(field, value)) {
+        if (error) {
             return;
         }
 
@@ -217,18 +223,10 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * Validates a field with a value if the field has a validate property
      * @param  {Object} field The field object to validate
      * @param  {value} value The value of the field to validate
-     * @return {boolean}       Whether or not the field is valid
+     * @return {String} The validation error or null
      */
-    validate (field, value) {
-
-        if (!field.validate) {
-            return true;
-        }
-
-        // validate the field, store the error, and return a boolean
-        this.validationErrors[field.name] = field.validate(value, this.formObject);
-        return !this.validationErrors[field.name];
-
+    getValidationError (field, value) {
+        return field.validate ? field.validate(value, this.formObject) : null;
     },
     /**
      * @typedef {can.Event} form-widget.events.formCancel cancel

@@ -220,7 +220,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 const promise = this.view.connection.get(params);
 
                 promise.catch((err) => {
-                    dev.error('unable to complete focusObject request', err);
+                    dev.warn('unable to complete focusObject request', err);
                 });
 
                 return promise;
@@ -492,7 +492,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 obj: obj,
                 error: e
             }, 'errorSave');
-            dev.error(e);
+            dev.warn(e);
         });
         return deferred;
     },

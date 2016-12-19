@@ -26,11 +26,11 @@
     "documentjs": "^0.4.4",
     "eslint": "^3.8.1",
     "npm-watch": "^0.1.x",
-    "steal-css": "^1.0.0-rc.0",
-    "steal-less": "^1.0.0-rc.3",
+    "steal-css": "^1.0.0",
+    "steal-less": "^1.0.1",
     "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.3",
-    "steal-tools": "^1.0.0-rc2",
+    "steal-stache": "^3.0.4",
+    "steal-tools": "^1.0.1",
     "testee": "^0.3.0"
   },
   "dependencies": {
@@ -50,7 +50,7 @@
     "jquery": "^3.1.1",
     "object-assign": "^4.1.0",
     "spectre.css": "^0.1.29",
-    "steal": "^1.0.0-rc2"
+    "steal": "^1.0.4"
   },
   "steal": {
     "plugins": [

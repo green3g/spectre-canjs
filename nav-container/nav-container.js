@@ -27,11 +27,11 @@ export const PageList = DefineList.extend('NavPageList', {
 
 
 /**
- * @constructor tab-container.ViewModel ViewModel
- * @parent tab-container
- * @group tab-container.ViewModel.props Properties
+ * @constructor nav-container.ViewModel ViewModel
+ * @parent nav-container
+ * @group nav-container.ViewModel.props Properties
  *
- * @description A `<tab-container />` component's ViewModel
+ * @description A `<nav-container />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('NavContainer', {
     // Contains a list of all page scopes within the

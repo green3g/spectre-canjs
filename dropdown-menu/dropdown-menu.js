@@ -15,6 +15,18 @@ import canViewModel from 'can-view-model';
  */
 export const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
+     * The icon class to display next to the dropdown. The default is a font-awesome caret
+     * @property {Boolean} dropdown-menu-props.iconClass
+     * @parent dropdown-menu.ViewModel.props
+     */
+    iconClass: {value: 'fa fa-fw fa-caret-down', type: 'string'},
+    /**
+     * The text to display in the dropdown button
+     * @property {String} dropdown-menu-props.text
+     * @parent dropdown-menu.ViewModel.props
+     */
+    text: 'string',
+    /**
      * The current state of the dropdown menu
      * @property {Boolean} dropdown-menu-props.toggled
      * @parent dropdown-menu.ViewModel.props

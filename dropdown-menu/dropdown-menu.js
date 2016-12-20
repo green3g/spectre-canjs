@@ -11,7 +11,7 @@ import canViewModel from 'can-view-model';
  * @parent dropdown-menu
  * @group dropdown-menu.ViewModel.props Properties
  *
- * @description A `<tab-container />` component's ViewModel
+ * @description A `<dropdown-menu />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
@@ -26,11 +26,13 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @returns {Boolean} always returns false to prevent page navigation from occuring
      */
     toggle (val) {
-        this.hideAll();
         if (typeof val !== 'undefined') {
             this.toggled = Boolean(val);
+        } else if (!this.toggled) {
+            this.hideAll();
+            this.toggled = true;
         } else {
-            this.toggled = !this.toggled;
+            this.hideAll();
         }
         return false;
     },

@@ -37,7 +37,10 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be toggled
      * @returns {Boolean} always returns false to prevent page navigation from occuring
      */
-    toggle (val) {
+    toggle (ev, val) {
+        if (ev) {
+            ev.preventDefault();
+        }
         if (typeof val !== 'undefined') {
             this.toggled = Boolean(val);
         } else if (!this.toggled) {

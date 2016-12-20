@@ -1,5 +1,5 @@
 <div class="dropdown-wrapper">
-    <a href="#" class="btn btn-link" role="button" aria-haspopup="true" aria-expanded="false" ($click)="toggle()">
+    <a href="#" class="btn btn-link" role="button" aria-haspopup="true" aria-expanded="false" ($click)="toggle(%event)">
       {{text}} <i class="{{iconClass}}"></i>
     </a>
 

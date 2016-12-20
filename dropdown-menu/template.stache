@@ -4,11 +4,11 @@
     </a>
 
     {{#toggled}}
-      <div class="dropdown-content">
-        <content />
-      </div>
+        <div class="dropdown-content">
+            <content />
+        </div>
     {{/toggled}}
 </div>
 {{#toggled}}
-<div class="dropdown-underlay" ($click)="hideAll()"></div>
+    <div class="dropdown-underlay" ($click)="hideAll()"></div>
 {{/toggled}}

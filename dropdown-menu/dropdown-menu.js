@@ -36,6 +36,9 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
         }
         return false;
     },
+    /**
+     * queries the dom for other dropdown-menu components and hides them
+     */
     hideAll () {
         document.querySelectorAll('dropdown-menu').forEach((e) => {
             const vm = canViewModel(e);

@@ -34,6 +34,7 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
     toggled: 'boolean',
     /**
      * toggles the display of a dropdown-menu component
+     * @param {Event} ev (event) the click event to cancel
      * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be toggled
      * @returns {Boolean} always returns false to prevent page navigation from occuring
      */

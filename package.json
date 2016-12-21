@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.15.7",
+  "version": "0.15.12",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": "https://github.com/roemhildtg/spectre-canjs",
   "main": "index.js",
@@ -13,22 +13,26 @@
     "test": "testee test/index.html --reporter Spec --browsers firefox",
     "build": "steal-tools",
     "watch": "npm-watch",
-    "docs": "documentjs --watch -d",
+    "docs": "documentjs",
     "export": "node build.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "preversion": "npm run test",
+    "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags && npm run changelog",
+    "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
   },
   "author": "roemhildtg",
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.0.0",
+    "changelog": "^1.0.7",
     "documentjs": "^0.4.4",
     "eslint": "^3.8.1",
     "npm-watch": "^0.1.x",
-    "steal-css": "^1.0.0-rc.0",
-    "steal-less": "^1.0.0-rc.3",
+    "steal-css": "^1.0.0",
+    "steal-less": "^1.0.1",
     "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.3",
-    "steal-tools": "^1.0.0-rc2",
+    "steal-stache": "^3.0.4",
+    "steal-tools": "^1.0.1",
     "testee": "^0.3.0"
   },
   "dependencies": {
@@ -47,7 +51,7 @@
     "jquery": "^3.1.1",
     "object-assign": "^4.1.0",
     "spectre.css": "^0.1.29",
-    "steal": "^1.0.0-rc2"
+    "steal": "^1.0.4"
   },
   "steal": {
     "plugins": [

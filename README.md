@@ -2,6 +2,7 @@
 @page spectre Home
 @group spectre.components Components
 @group spectre.types Type Definitions
+@group spectre.util Utilities
 -->
 
 
@@ -38,4 +39,4 @@ run the tests.
 ## Contributing
 
 Issues may be opened for feature requests, problem, and suggestions. Pull requests
-with explanations may be considered. 
+with explanations may be considered.

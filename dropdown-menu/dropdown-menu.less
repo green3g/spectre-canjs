@@ -1,19 +1,21 @@
-.dropdown-menu {
-    display: none;
-    position: absolute;
-
-    a {
-      cursor: pointer;
+dropdown-menu {
+    .dropdown-wrapper {
+        position: relative;
+            z-index: 2;
     }
-}
-.dropdown-toggle:focus,
-.dropdown-toggle:active {
-    background: #f2f2f2;
-}
-.dropdown-toggle:focus+.dropdown-menu,
-.dropdown-toggle:active+.dropdown-menu {
-    display: block;
-}
-.dropdown-menu:hover {
-    display: block;
+
+    .dropdown-content {
+        position: absolute;
+        top: 3.5rem;
+        left: 1.5rem;
+    }
+
+    .dropdown-underlay {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 }

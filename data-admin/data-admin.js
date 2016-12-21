@@ -141,7 +141,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * the internal parameters object. This is prepopulated when view is set.
-     * @type {Object}
+     * @property {Object}
      */
     parameters: {
         Value: ParameterMap,
@@ -220,7 +220,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 const promise = this.view.connection.get(params);
 
                 promise.catch((err) => {
-                    dev.error('unable to complete focusObject request', err);
+                    dev.warn('unable to complete focusObject request', err);
                 });
 
                 return promise;
@@ -304,7 +304,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * whether or not the select menu is currently visible
-     * @type {Boolean} data-admin.ViewModel.props.selectMenu
+     * @property {Boolean} data-admin.ViewModel.props.selectMenu
      * @parent data-admin.ViewModel.props
      */
     selectMenu: {
@@ -314,7 +314,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     /**
      * The internal field array that define the display of data and field types
      * for editing and filtering
-     * @property {Array<Field>} data-admin.ViewModel.props._fields
+     * @property {Array<util/field.Field>} data-admin.ViewModel.props._fields
      * @parent data-admin.ViewModel.props
      */
     _fields: {
@@ -436,7 +436,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @param  {domNode} dom   The domNode that triggered the event (optional)
      * @param  {Event} event The event that was triggered (optional)
      * @param  {can.Map} obj   The object to save
-     * @returns {Promise}
+     * @return {Promise}
      */
     saveObject () {
         let obj;
@@ -492,7 +492,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 obj: obj,
                 error: e
             }, 'errorSave');
-            dev.error(e);
+            dev.warn(e);
         });
         return deferred;
     },
@@ -522,7 +522,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @param  {can.Map} obj   The object to delete
      * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
      * and will immediately attempt to remove the object
-     * @returns {Promise}
+     * @return {Promise}
      */
     deleteObject () {
         let obj, skipConfirm;
@@ -548,6 +548,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             const deferred = this.view.connection.destroy(obj);
             deferred.then(() => {
 
+                this.set({
+                    viewId: null,
+                    page: 'list',
+                    objectsRefreshCount: this.objectsRefreshCount + 1
+                });
+
                 //afterDelete handler
                 this.onEvent(obj, 'afterDelete');
 
@@ -555,6 +561,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
 
             deferred.catch((result) => {
+
+                this.set({
+                    viewId: null,
+                    page: 'list',
+                    objectsRefreshCount: this.objectsRefreshCount + 1
+                });
+
                 //add a message
                 this.onEvent(result, 'errorDelete');
                 dev.warn(result);
@@ -571,7 +584,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
      * and will immediately attempt to remove the selected objects
-     * @returns {Array<Promise>}
+     * @return {Array<Promise>}
      */
     deleteMultiple (skipConfirm) {
         const selected = this.selectedObjects;
@@ -626,7 +639,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @param {String} val The value to toggle
      * @param  {Boolean} visible (Optional) whether or not to display the dialog
      * @param {Event} e (optional) the event to toggle
-     * @returns {Boolean} always returns false to prevent event from changing page
+     * @return {Boolean} always returns false to prevent event from changing page
      */
     toggle (val, visible, e) {
         this.noop(e);
@@ -639,8 +652,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * prevents the default event from triggering
+     * @function noop
      * @param {Event} event The event to prevent and stop from triggering
-     * @returns {Boolean} always returns false
+     * @return {Boolean} always returns false
      */
     noop (event) {
         if (event) {
@@ -654,7 +668,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param  {can.Map} obj       The object to dispatch with the event
      * @param  {String} eventName The name of the event to dispatch
-     * @returns {Boolean|Object}
+     * @return {Boolean|Object}
      */
     onEvent (obj, eventName) {
 

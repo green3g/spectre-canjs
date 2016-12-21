@@ -1,9 +1,7 @@
 <!--
-
 @module {can.Component} data-admin <data-admin />
 @parent spectre.components
 @outline 3
-
 -->
 
 ## Description

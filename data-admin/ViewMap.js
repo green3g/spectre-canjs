@@ -41,12 +41,12 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * rest parameters that are serialized during a getList request. These
      * parameters are typically mixed in with default parameters
-     * @type {Object}
+     * @property {Object}
      */
     parameters: {Type: DefineMap, Value: DefineMap},
     /**
      * A template for creating new objects. This should be an constructor of can.Map
-     * created using can.Map.extend. This object defines the default properties, types,
+     * created using DefineMap.extend. This object defines the default properties, types,
      * and can be used to implement custom serialization on objects before they are saved.
      *
      * CanJS includes a powerful define plugin which can implement very powerful
@@ -56,7 +56,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * and can reused here also: `connection.Map`.
      *
      * @link https://canjs.com/docs/can.Map.prototype.define.html Define Plugin
-     * @signature `ObjectTemplate: can.Map.extend({prop: 'value'})`
+     * @signature `ObjectTemplate: DefineMap.extend({prop: 'value'})`
      * @property {Constructor<can.Map>} ObjectTemplate
      */
     ObjectTemplate: {

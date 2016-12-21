@@ -1,8 +1,7 @@
 <div class="filter-widget container-fluid">
 
     {{#unless disableAdd}}
-        <select-field {properties}="nameField" (change)="addFilter" ({$value})="fieldValue" inline />
-        <!-- <form-widget inline="true" {fields}="formFields" {(form-object)}="formObject" (submit)="addFilter(formObject)" /> -->
+        <select-field {properties}="nameField" (change)="addFilter" {($value)}="fieldValue" inline />
     {{/unless}}
 
     <br />

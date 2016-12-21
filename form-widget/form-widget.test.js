@@ -59,10 +59,11 @@ test('submitForm()', (assert) => {
 
 test('setField(field, domElement, event, value)', (assert) => {
     const object = {test: 'hello'};
+    const expected = {test: 'dummy'};
     vm.formObject = object;
 
-    vm.setField('test', null, null, 'dummy');
-    assert.deepEqual(vm.formObject.serialize(), object, 'setting a field value should change the formObject');
+    vm.setField({name: 'test'}, null, null, 'dummy');
+    assert.deepEqual(vm.formObject.serialize(), expected, 'setting a field value should change the formObject');
 });
 
 test('cancelForm()', (assert) => {

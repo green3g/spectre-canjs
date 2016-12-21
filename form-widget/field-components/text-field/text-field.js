@@ -22,9 +22,10 @@ export const ViewModel = DefineMap.extend('TextField', {
      * Checks for the enter keypress and triggers a change event on the input
      * The enter key press triggers a submit event on the form, but before the
      * submit event, we need to trigger a change on the field value
+     * @function beforeSubmit
      * @param  {domElement} element The form input element
      * @param  {KeyDownEvent} event The form submit event
-     * @returns {Boolean}
+     * @return {Boolean}
      */
     beforeSubmit (element, event) {
         if (event.keyCode === 13) {

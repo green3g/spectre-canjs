@@ -12,44 +12,42 @@
                     </div>
                 </div>
             {{/filterVisible}}
-            {{#if selectedObjects.length}}
-                <div class="btn btn-primary dropdown inline-block">
-                    <a href="#" class="btn-primary dropdown-toggle badge" data-badge="{{selectedObjects.length}}" ($click)="noop(%event)">
-                        With Selected...
-                    </a>
-                    <ul class="menu dropdown-menu">
-                        {{#if view.manageButtons.length}}
-                            <!-- menu header -->
-                            <li class="menu-header">
-                                <span class="menu-header-text">
-                          Tasks
-                      </span>
-                            </li>
-                            {{#each view.manageButtons}}
-                                {{#unless disabled}}
-                                    <li class="menu-item">
-                                        <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
-                                    </li>
-                                {{/unless}}
-                            {{/each}}
-                        {{/if}}
-                        <!-- menu divider -->
-                        <li class="divider"></li>
-                        <li class="menu-header">
-                            <span class="menu-header-text">
-                  Modify
-              </span>
-                        </li>
-                        <li class="menu-item">
-                            <a ($click)="deleteMultiple(false)">
-                                <span class="icon icon-link"></span> Delete
-                            </a>
-                        </li>
-                    </ul>
-            {{/if}}
             <a class="btn btn-primary" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
             </div>
         </div>
+        {{#if selectedObjects.length}}
+            <dropdown-menu class="inline-block float-right" text="Manage Selected...">
+                <ul class="menu dropdown-menu">
+                    {{#if view.manageButtons.length}}
+                        <!-- menu header -->
+                        <li class="menu-header">
+                            <span class="menu-header-text">
+                      Tasks
+                  </span>
+                        </li>
+                        {{#each view.manageButtons}}
+                            {{#unless disabled}}
+                                <li class="menu-item">
+                                    <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
+                                </li>
+                            {{/unless}}
+                        {{/each}}
+                    {{/if}}
+                    <!-- menu divider -->
+                    <li class="divider"></li>
+                    <li class="menu-header">
+                        <span class="menu-header-text">
+                            Modify
+                        </span>
+                    </li>
+                    <li class="menu-item">
+                        <a ($click)="deleteMultiple(false)">
+                            <span class="icon icon-link"></span> Delete
+                        </a>
+                    </li>
+                </ul>
+              </dropdown-menu>
+        {{/if}}
     </div>
 
     <div class="clearfix"></div>

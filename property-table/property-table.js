@@ -50,8 +50,11 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
         }
     },
     /**
-     * The The connection object that should be used to retrieve an object. This value along with the objectId value will be used to retrieve an object from a RESTful service
-     * @property {providers.apiProvider} property-table.ViewModel.props.connection
+     * The connection object that should be used to retrieve an object. This
+     * value along with the objectId value will be used to retrieve an object
+     * from a RESTful service
+     * @link http://canjs.com/doc/can-connect.html can-connect
+     * @property {can-connect} property-table.ViewModel.props.connection
      * @parent property-table.ViewModel.props
      */
     connection: {
@@ -61,8 +64,9 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
         }
     },
     /**
-     * A generic object to display in a tabular format. This can be used instead of providing a connection and objectId property
-     * @property {DefineMap | Object} property-table.ViewModel.props.object
+     * A generic object to display in a tabular format. This can be used instead
+     * of providing a connection and objectId property
+     * @property {Object} property-table.ViewModel.props.object
      * @parent property-table.ViewModel.props
      */
     object: DefineMap,
@@ -82,7 +86,7 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
     },
     /**
      * Array of fields to show in the table
-     * @property {Array<Field>} property-table.ViewModel.props.fields
+     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields
      */
     fields: {
         Value: DefineList,

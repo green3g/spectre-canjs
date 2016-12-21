@@ -94,7 +94,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
     /**
      * An array of fields
      * @parent list-table.ViewModel.props
-     * @property {can.List} list-table.ViewModel.props.fields
+     * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
      */
     fields: {
         Value: DefineList,
@@ -193,7 +193,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
     },
     /**
      * Returns an objects formatted value for the template
-     * Returns an objects formatted value for the template
+     * @function getFieldValue
      * @signature
      * @param  {field} field The field object. This field object has a property
      * called  `getFormattedValue` which formats and returns a string

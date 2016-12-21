@@ -3,11 +3,8 @@
         <div class="column {{#if view.relatedViews}}col-sm-12 col-4{{else}}col-12{{/if}}">
             <h3 class="float-left">{{view.title}}: {{viewId}}</h3>
 
-            <div class="dropdown float-right">
-                <a href="#" class="dropdown btn btn-primary dropdown-toggle" ($click)="noop(%event)">
-                  Manage Item <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="menu dropdown-menu">
+            <dropdown-menu text="Manage Item" class="float-right">
+                <ul class="menu">
                     {{#if view.manageButtons.length}}
                         <!-- menu header -->
                         <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
@@ -39,7 +36,7 @@
                         </li>
                     {{/unless}}
                 </ul>
-            </div>
+            </dropdown-menu>
 
             <div class="clearfix"></div>
 

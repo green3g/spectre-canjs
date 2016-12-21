@@ -17,7 +17,7 @@
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",
-    "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags",
+    "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags && npm run changelog",
     "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
   },
   "author": "roemhildtg",

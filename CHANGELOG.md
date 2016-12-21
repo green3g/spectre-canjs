@@ -1,3 +1,10 @@
+0.15.12 / 2016-12-21
+====================
+
+  * 0.15.12
+  * updating docs
+  * convert dropdowns in templates to use dropdown-menu components
+
 0.15.11 / 2016-12-20
 ====================
 

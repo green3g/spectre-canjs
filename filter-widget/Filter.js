@@ -12,15 +12,16 @@ import DefineList from 'can-define/list/list';
 export const Filter = DefineMap.extend('Filter', {
     /**
      * A value to filter on. Can be any primitive type
-     * @property {*} Filter.value
+     * @property {*} filter-widget.Filter.props.value value
+     * @parent filter-widget.Filter.props
      */
     value: {
         type: '*'
     },
     /**
      * The name of the field to filter on
-     * @property {String} Filter.name
-     * @parent Filter.props
+     * @property {String} filter-widget.Filter.props.name name
+     * @parent filter-widget.Filter.props
      */
     name: {
         type: 'string',
@@ -28,9 +29,8 @@ export const Filter = DefineMap.extend('Filter', {
     },
     /**
      * The operator to filter with. The default is `like`.
-     *
-     * @property {String} Filter.operator
-     * @parent Filter.props
+     * @property {String} Ffilter-widget.Filter.props.operator operator
+     * @parent filter-widget.Filter.props
      */
     operator: {
         type: 'string',
@@ -39,8 +39,8 @@ export const Filter = DefineMap.extend('Filter', {
     /**
      * A field object that defines the available operator options and properties.
      * This is used to create the dropdown choice for each filter in the filter-widget
-     * @property {Object} Filter.operatorField
-     * @parent Filter.props
+     * @property {Object} filter-widget.Filter.props.operatorField operatorField
+     * @parent filter-widget.Filter.props
      */
     operatorField: {
         serialize: false
@@ -48,18 +48,31 @@ export const Filter = DefineMap.extend('Filter', {
     /**
      * A field object that defines the value field properties.
      * This is used to create the value field for each filter in the filter-widget
-     * @property {Object} Filter.valueField
-     * @parent Filter.props
+     * @property {Object} filter-widget.Filter.props.valueField valueField
+     * @parent filter-widget.Filter.props
      */
     valueField: {
         serialize: false
     }
 });
 
+/**
+ * @constructor filter-widget.FilterList FilterList
+ * @parent filter-widget
+ *
+ * @description Creates a new filter list
+ * @signature `new FilterList([filters])`
+ */
 export const FilterList = DefineList.extend('FilterList', {
     '#': Filter
 });
 
+/**
+ * @property filter-widget.FilterOptions FilterOptions
+ * @parent filter-widget
+ *
+ * @description The default filter operator options
+ */
 export const FilterOptions = [{
     label: 'Does not contain',
     value: 'not_like',

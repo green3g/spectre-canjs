@@ -1,9 +1,7 @@
 <!--
-
 @module {can.Component} form-widget <form-widget />
 @parent spectre.components
 @group form-widget.fields 1 Field Types
-
 -->
 
 ## Description

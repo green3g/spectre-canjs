@@ -13,9 +13,13 @@ import {ViewModel as Toast} from './toast-item';
  * @description A `<toast-container />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('ToastContainer', {
+  /**
+   * @prototype
+   */
     /**
      * An array of alert toasts
-     * @property {Array<cGrowl>} spectre-canjs.props.toasts
+     * @property {Array<toast-item.ViewModel>} toast-container.ViewModel.props.toasts toasts
+     * @parent toast-container.ViewModel.props
      */
     toasts: {
         Value: DefineList.extend('ToastList', {
@@ -24,7 +28,9 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
     },
   /**
    * adds a new toast
-   * @param {Toast} toast the toast options or toast object to add
+   * @function addToast
+   * @signature `addToast(properties)`
+   * @param {Object} toast the toast options or toast object to add
    */
     addToast (toast) {
         if (!(toast instanceof Toast)) {
@@ -33,8 +39,10 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
         this.toasts.push(toast);
     },
     /**
-     * removes a toast
-     * @param  {Toast} toast the toast object to remove 
+     * Removes a toast
+     * @function removeToast
+     * @signature `removeToast(toast)`
+     * @param  {toast-item.ViewModel} toast the toast object to remove
      */
     removeToast: function (toast) {
         var index = this.toasts.indexOf(toast);

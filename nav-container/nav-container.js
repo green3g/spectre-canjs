@@ -34,9 +34,20 @@ export const PageList = DefineList.extend('NavPageList', {
  * @description A `<nav-container />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('NavContainer', {
-    // Contains a list of all page scopes within the
-    // tabs element.
+  /**
+   * @prototype
+   */
+    /**
+     * An array of pages currently displayed in this nav-container
+     * @parent nav-container.ViewModel.props
+     * @property {Array<nav-page.ViewModel>} nav-container.ViewModel.props.pages pages
+     */
     pages: {Value: PageList},
+    /**
+     * The currently active page
+     * @parent nav-container.ViewModel.props
+     * @property {nav-page.ViewModel} nav-container.ViewModel.props.activePage activePage
+     */
     activePage: {
         get () {
 
@@ -60,16 +71,30 @@ export const ViewModel = DefineMap.extend('NavContainer', {
             return active;
         }
     },
+    /**
+     * The id of the page that is currently active. This value should be
+     * set to change the activePage
+     * @parent nav-container.ViewModel.props
+     * @property {String} nav-container.ViewModel.props.activeId activeId
+     */
     activeId: 'string',
-    // When a `<page>` element is inserted into the document,
-    // it calls this method to add the page's scope to the
-    // pages array.
+    /**
+     *  When a `<nav-page>` element is inserted into the document, it calls this
+     *  method to add the page's scope to thepages array.
+     *  @function addPage
+     *  @param {nav-page.ViewModel} page the page view model that was added
+     *
+     */
     addPage (page) {
         this.pages.push(page);
     },
-    // When a `<page>` element is removed from the document,
-    // it calls this method to remove the page's scope from
-    // the pages array.
+    /**
+     * When a `<page>` element is removed from the document, it calls this
+     * method to remove the page's scope from the pages array.
+     * @function removePage
+     * @signature `removePage(page)`
+     * @param {nav-page.ViewModel} page the page view model to remove
+     */
     removePage (page) {
         var pages = this.pages;
         pages.splice(pages.indexOf(page), 1);
@@ -82,12 +107,25 @@ export const ViewModel = DefineMap.extend('NavContainer', {
             }
         }
     },
+    /**
+     * Sets a page to the currently selected/active page
+     * @function makeActive
+     * @signature `makeActive(page)`
+     * @param {nav-page.ViewModel} page The page to set as the active page
+     */
     makeActive (page) {
         if (page === this.activePage) {
             return;
         }
         this.activeId = page.pageId;
     },
+    /**
+     * Used to check whether the current page is the active page
+     * @function isActive
+     * @signature `isActive(page)`
+     * @param {nav-page.ViewModel} page The page to check whether is active
+     * @return {Boolean} whether or not the page is active
+     */
     isActive (page) {
         if (!page) {
             return false;

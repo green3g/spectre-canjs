@@ -63,13 +63,6 @@
         severity: 'info',
         dismissable: true,
         add() {
-            console.log({
-                heading: this.heading,
-                body: this.body,
-                severity: this.severity,
-                autoHide: this.autoHide,
-                dismissable: this.dismissable
-            });
             canViewModel(document.getElementById('toast-container')).addToast({
                 heading: this.heading,
                 body: this.body,

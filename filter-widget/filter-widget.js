@@ -90,7 +90,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * * name - the field name, which can be either a text field or select dropdown depending on the configuration
      * * operator - the operator to filter the field by (like, eq, etc)
      * * val - the value to filter the field by
-     * @property {Array.<formFieldObject>} filter-widget.ViewModel.fields
+     * @property {Array.<util/field.Field>} filter-widget.ViewModel.fields
      * @parent filter-widget.ViewModel.props
      */
     formFields: {
@@ -115,7 +115,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     },
     /**
      * The operator field properties
-     * @property {Array.<formFieldObject>} filter-widget.ViewModel.fields
+     * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
      * @parent filter-widget.ViewModel.props
      */
     operatorField: {
@@ -139,7 +139,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * A custom field type for the value field to aid in entering a value to filter on
      * For example: a date type field can be specified for the value to aid
      * the user in picking a date.
-     * @property {spectre.types.FormFieldObject} filter-widget.ViewModel.valueField
+     * @property {spectre.types.util/field.Field} filter-widget.ViewModel.valueField
      * @parent filter-widget.ViewModel.props
      */
     valueField: {
@@ -236,7 +236,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @function removeFilter
      * @signature
      * @param  {spectre.types.filterObject} obj  The object to remove. This is the only argument used by the function, the rest may be null.
-     * @returns {undefined}
+     * @return {undefined}
      */
     removeFilter (obj) {
         const index = this.filters.indexOf(obj);
@@ -246,7 +246,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * Replaces the filter array with an empty array, clearing all existing filters
      * @function removeFilters
      * @signature
-     * @returns {undefined}
+     * @return {undefined}
      */
     removeFilters () {
         this.filters.replace([]);

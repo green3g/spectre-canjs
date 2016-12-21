@@ -1,6 +1,9 @@
-/*
- * field parsing and creating utilities
+/**
+ * @module {{}} util/field field
+ * @parent spectre.util
+ * @description Field parsing and creating utilities
  */
+
 
 import {makeSentenceCase} from './string';
 import stache from 'can-stache';
@@ -8,7 +11,6 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
-
 
 const TEMPLATES = {
     text: '<text-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
@@ -34,20 +36,26 @@ export const RESERVED = [
 
 
 /**
- * @module util/field.Field FieldDefinition
- * @parent spectre.types
- *
+ * @constructor util/field.Field Field
+ * @parent util/field
+ * @group util/field.Field.props Properties
+ * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
     /**
+     * @prototype
+     */
+    /**
      * The name of the property on the object, this field's name
-     * @property {String} util/field.Field.name
+     * @property {String} util/field.Field.props.name name
+     * @parent util/field.Field.props
      */
     name: 'string',
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
-     * @property {String} util/field.Field.alias
+     * @property {String} util/field.Field.props.alias alias
+     * @parent util/field.Field.props
      */
     alias: {
         type: 'string',
@@ -61,7 +69,8 @@ export const Field = DefineMap.extend('Field', {
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
-     * @property {String} util/field.Field.alias
+     * @property {String} util/field.Field.props.alias alias
+     * @parent util/field.Field.props
      */
     type: {
         type: 'string',
@@ -70,7 +79,8 @@ export const Field = DefineMap.extend('Field', {
     /**
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant
-     * @property {String} util/field.Field.type
+     * @property {String} util/field.Field.props.type type
+     * @parent util/field.Field.props
      */
     fieldType: {
         type: 'string',
@@ -80,7 +90,8 @@ export const Field = DefineMap.extend('Field', {
      * The form field template to use when editing this field. This should be
      * a stache template renderer. By default, this value is set to the
      * template for the given `type` property.
-     * @property {Renderer}
+     * @property {Renderer} util/field.Field.props.formTemplate formTemplate
+     * @parent util/field.Field.props
      */
     formTemplate: {
         get (template) {
@@ -97,43 +108,63 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Excludes this field from the list-table
-     * @property {Boolean}
+     * @property {Boolean} util/field.Field.props.excludeListTable excludeListTable
+     * @parent util/field.Field.props
      */
     excludeListTable: {
         value: false
     },
     /**
      * Excludes this field from the property-table
-     * @property {Boolean}
+     * @property {Boolean} util/field.Field.props.excludePropertyTable excludePropertyTable
+     * @parent util/field.Field.props
      */
     excludePropertyTable: {
         value: false
     },
     /**
      * Excludes this field from the form-widget
-     * @property {Boolean}
+     * @property {Boolean} util/field.Field.props.excludeForm excludeForm
+     * @parent util/field.Field.props
      */
     excludeForm: {
         value: false
     },
     /**
      * Formats the property when it is displayed in a property or list table
-     * @property {Function}
+     * @property {Function} util/field.Field.props.formatter formatter
+     * @signature `formatter(property)`
+     * @param {Any} property The property to format, this can be whatever type the
+     * property is defined as
+     * @return {String} a formatted string
+     * @parent util/field.Field.props
      */
     formatter: {
         value: null
     },
     /**
      * Validates a property and returns a string if the field is invalid
-     * @property {Function}
+     * @property {Function} util/field.Field.props.validate validate
+     * @signature `validate(propertyValue)`
+     * @param {Any} propertyValue the value of the property to validate
+     * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
+     * @parent util/field.Field.props
      */
     validate: {
         value: null
     },
+    /**
+     * Returns the formatted value of this field, if a formatter is provided,
+     * otherwise it simply returns the property
+     * @function getFormattedValue
+     * @param {Object} obj the object to extract a formatted property from
+     * @return {String} the formatted property
+     */
     getFormattedValue (obj) {
         return this.formatter ? this.formatter(obj[this.name], obj) : obj[this.name];
     }
 });
+
 
 export const FieldList = DefineList.extend('FieldList', {
     '#': Field
@@ -142,7 +173,9 @@ export const FieldList = DefineList.extend('FieldList', {
 
 /**
  * Converts an array of strings or field json objects into Field objects
- * @function util/field.parseFieldArray
+ * @function parseFieldArray
+ * @parent util/field
+ * @signature `parseFieldArray(fields)`
  * @param  {Array<Field | String>} fields An array of either strings or JSON like objects representing Field object properties
  * @return {Array<Field>} The array of fields
  */
@@ -165,9 +198,11 @@ export function parseFieldArray (fields) {
 }
 
 /**
- * Converts a DefineMap to an array of Field objects using the define
+ * Converts a DefineMap to an array of Field objects using the property definitions
  * property or the keys
  * @function mapToFields
+ * @parent util/field
+ * @signature `mapToFields(defineMap)`
  * @param  {Constructor<DefineMap>} defineMap The extended map/constructor to parse
  * @return {Array<Field>} The array of fields
  */
@@ -182,7 +217,7 @@ export function mapToFields (defineMap) {
         if (define.hasOwnProperty(prop)) {
             const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
 
-            // remove reserved properties
+            // remove reserved properties if any
             const clone = assign({}, define[prop]);
             RESERVED.forEach((r) => {
                 delete clone[r];

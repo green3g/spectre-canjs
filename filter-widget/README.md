@@ -1,10 +1,8 @@
 <!--
-
 @module {can.Component} filter-widget <filter-widget />
 @parent spectre.components
 @group filter-widget.props Properties
 @link http://jsonapi.org/format/#fetching-filtering JSON-API
-
 -->
 
 ## Description

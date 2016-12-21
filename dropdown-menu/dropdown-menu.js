@@ -15,28 +15,35 @@ import canViewModel from 'can-view-model';
  */
 export const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
-     * The icon class to display next to the dropdown. The default is a font-awesome caret
-     * @property {Boolean} dropdown-menu-props.iconClass
+     * @prototype
+     */
+    /**
+     * The icon class to display next to the dropdown. <br />
+     * The default is a font-awesome caret
+     * `fa fa-fw fa-caret-down`
+     * @property {Boolean} dropdown-menu.ViewModel.props.iconClass
      * @parent dropdown-menu.ViewModel.props
      */
     iconClass: {value: 'fa fa-fw fa-caret-down', type: 'string'},
     /**
      * The text to display in the dropdown button
-     * @property {String} dropdown-menu-props.text
+     * @property {String} dropdown-menu.ViewModel.text text
      * @parent dropdown-menu.ViewModel.props
      */
     text: 'string',
     /**
      * The current state of the dropdown menu
-     * @property {Boolean} dropdown-menu-props.toggled
+     * @property {Boolean} dropdown-menu.ViewModel.toggled toggled
      * @parent dropdown-menu.ViewModel.props
      */
     toggled: 'boolean',
     /**
      * toggles the display of a dropdown-menu component
+     * @function toggle
+     * @signature
      * @param {Event} ev (event) the click event to cancel
      * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be toggled
-     * @returns {Boolean} always returns false to prevent page navigation from occuring
+     * @return {Boolean} always returns false to prevent page navigation from occuring
      */
     toggle (ev, val) {
         if (ev) {
@@ -53,7 +60,8 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
         return false;
     },
     /**
-     * queries the dom for other dropdown-menu components and hides them
+     * Queries the dom for other dropdown-menu components and hides them
+     * @function hideAll
      */
     hideAll () {
         document.querySelectorAll('dropdown-menu').forEach((e) => {

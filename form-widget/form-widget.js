@@ -73,8 +73,8 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      */
     formObject: DefineMap,
     /**
-     * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the FormFieldObject
-     * @property {Array<String|spectre.types.FormFieldObject>} form-widget.ViewModel.props.fields
+     * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the api docs
+     * @property {Array<String|util/field.Field>} form-widget.ViewModel.props.fields
      * @parent form-widget.ViewModel.props
      */
     fields: {
@@ -158,7 +158,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @signature
      * @param  {superMap} con The supermap connection to the api service
      * @param  {Number} id  The id number of the object to fetch
-     * @returns {Promise}
+     * @return {Promise}
      */
     fetchObject (con, id) {
         if (!con || !id) {
@@ -176,10 +176,10 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * Called when the form is submitted. The object is updated by calling it's `save` method. The event `submit` is dispatched.
      * @function submitForm
      * @signature
-     * @param {DefineMap} vm The scope of the form (this view model)
+     * @param {Object} vm The scope of the form (this view model)
      * @param {Form} form the dom form
      * @param {Event} event the dom form event
-     * @returns {Boolean} returns false to prevent form submissions
+     * @return {Boolean} returns false to prevent form submissions
      */
     submitForm (vm, form, event) {
         if (event) {
@@ -202,7 +202,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * cascading dropdowns.
      * @function setField
      * @signature
-     * @param  {formFieldObject} field  The field object properties
+     * @param  {util/field.Field} field  The field object properties
      * @param  {domElement} domElement The form element that dispatched the event
      * @param  {Event} event  The event object and type
      * @param  {Object | Number | String} value  The value that was passed from the field component
@@ -221,6 +221,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     },
     /**
      * Validates a field with a value if the field has a validate property
+     * @function getValidationError
      * @param  {Object} field The field object to validate
      * @param  {value} value The value of the field to validate
      * @return {String} The validation error or null

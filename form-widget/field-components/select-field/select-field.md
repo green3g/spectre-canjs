@@ -14,23 +14,21 @@ name: 'op',
 alias: 'is',
 placeholder: 'Choose a operator',
 type: 'select',
-properties: {
- options: [{
-   label: 'Equal to',
-   value: '=='
- }, {
-   label: 'Not equal to',
-   value: '!='
- }, {
-   label: 'Contains',
-   value: 'in'
- }, {
-   label: 'Does not contain',
-   value: 'not_in'
- }, {
-   label: 'Like',
-   value: 'like'
- }]
-}
+options: [{
+ label: 'Equal to',
+ value: '=='
+}, {
+ label: 'Not equal to',
+ value: '!='
+}, {
+ label: 'Contains',
+ value: 'in'
+}, {
+ label: 'Does not contain',
+ value: 'not_in'
+}, {
+ label: 'Like',
+ value: 'like'
+}]
 },
 ```

@@ -8,28 +8,49 @@ import assign from 'object-assign';
 
 
 /**
- * @constructor toast-container.ViewModel ViewModel
+ * @constructor toast-item.ViewModel ViewModel
  * @parent toast-item
  * @group toast-item.ViewModel.props Properties
  *
  * @description A `<toast-item />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('ToastItem', {
+  /**
+   * @prototype
+   */
+  /**
+   * whether or not to fade the toast-item out using animate.css
+   * @property {Boolean} toast-item.viewModel.props.fade fade
+   * @parent toast-item.ViewModel.props
+   *
+   */
     fade: {
         type: 'boolean',
         value: true
     },
+    /**
+     * the time to autohide this toast-item. Set to 0 to disable auto hide
+     * @property {Number} toast-item.viewModel.props.autoHide autoHide
+     * @parent toast-item.ViewModel.props
+     */
     autoHide: {
         type: 'number',
         value: 5000
     },
+    /**
+     * Whether or not to use the content tag, that will display whatever
+     * is inside the `<toast-item></toast-item>` tags. This overrides the
+     * body property of this toast-item
+     * @property {Boolean} toast-item.viewModel.props.useContentTag useContentTag
+     * @parent toast-item.ViewModel.props
+     */
     useContentTag: {
         type: 'boolean',
         value: false
     },
     /**
      * @property {string} toast-item.viewModel.severity severity
-     * @parent toast-item/viewModal
+     * @parent toast-item.ViewModel.props
      * @description The class that gives the toast-item context. Must be either
      * info, success, warning, or danger.
      * @option {string} Defaults to `info`.
@@ -46,9 +67,9 @@ export const ViewModel = DefineMap.extend('ToastItem', {
 
     /**
      * @property {boolean} toast-item.viewModel.dismissable dismissable
-     * @parent toast-item/viewModal
+     * @parent toast-item.ViewModel.props
      * @description Marks the toast-item as dismissable, which adds a "close" icon to the toast-item.
-     * @option {boolean} Defaults to `true`.
+     * The default is true
      */
     dismissable: {
         value: true,
@@ -56,10 +77,10 @@ export const ViewModel = DefineMap.extend('ToastItem', {
     },
     /**
      * @property {boolean} toast-item.viewModel.iconClass iconClass
-     * @parent toast-item/viewModal
+     * @parent toast-item.ViewModel.props
      * @description Displays a helpful icon next to the toast text
-     * Set to `null` or empty string to exclude icon completely
-     * @option {boolean} Defaults to `icon icon-error_outline`.
+     * Set to `null` or empty string to exclude icon completely. The default is
+     * `icon icon-error_outline`
      */
     iconClass: {
         type: 'string',
@@ -68,9 +89,8 @@ export const ViewModel = DefineMap.extend('ToastItem', {
 
     /**
      * @property {boolean} toast-item.viewModel.visible visible
-     * @parent toast-item/viewModal
-     * @description Toggles visiblity of the toast-item
-     * @option {boolean} Defaults to `false`.
+     * @parent toast-item.ViewModel.props
+     * @description Toggles visiblity of the toast-item. The default is false.
      */
     visible: {
         value: true,
@@ -80,30 +100,34 @@ export const ViewModel = DefineMap.extend('ToastItem', {
     /**
      * @property {string} toast-item.viewModel.toast-itemBody body
      * @parent toast-item/viewModal
-     * @description Used to programmatically change the content.
-     * @option {string} Defaults to empty string.
+     * @description Used to programmatically change the content. The default is an empty string.
      */
     body: {
         value: '',
         type: 'string'
     },
     /**
-     * @property {string} toast-item.viewModel.toast-itemTitle heading
-     * @parent toast-item/viewModal
-     * @description Optional. The title of the toast-item.
-     * @option {string} Defaults to empty string.
+     * @property {string} toast-item.viewModel.props.heading heading
+     * @parent toast-item.ViewModel.props
+     * @description Optional. The title of the toast-item. The default is an empty string.
      */
     heading: {
         value: '',
         type: 'string'
     },
+    /**
+     * Time in miliseconds to fade out this toast-item
+     * @parent toast-item.ViewModel.props
+     * @property {Number} toast-item.viewModel.props.fadeTime fadeTime
+     */
     fadeTime: {
         type: 'number',
         value: 1000
     },
-
     /**
-     * Hide the toast-item
+     * Hide this toast-item
+     * @function hide
+     * @signature `hide()`
      */
     hide () {
         if (!this.visible) {
@@ -122,6 +146,12 @@ export const ViewModel = DefineMap.extend('ToastItem', {
 
 assign(ViewModel, CanEvent);
 
+
+/**
+ * @module {can.Component} toast-item <toast-item />
+ * @parent spectre.components
+ * @outline 3
+ */
 Component.extend({
     tag: 'toast-item',
     view: template,

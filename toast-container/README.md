@@ -1,15 +1,15 @@
 <!--
 
 @module {can.Component} toast-container <toast-container />
-@parent can-boot.components
+@parent spectre.components
 @outline 3
 
 -->
 
 ## Description
 
-A configureable growler for displaying bootstrap alerts 
+A configureable container for displaying spectre toasts, which are similar to bootstrap's alerts.
 
 ## Demo
 
-@demo toast-container/demos/demo.html 800
+@demo toast-container/demo.html 800

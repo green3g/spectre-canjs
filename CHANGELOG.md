@@ -1,3 +1,12 @@
+0.15.13 / 2016-12-23
+====================
+
+  * 0.15.13
+  * updates dependencies/reformatted json
+  * minor template tweaks
+  * update postversion  script
+  * changelog
+
 0.15.12 / 2016-12-21
 ====================
 
@@ -200,11 +209,3 @@
 
   * 0.8.1
   * ignore docs on publish
-  * If error occurs on save, call error handler and reset page
-
-0.8.0 / 2016-11-04
-==================
-
-  * 0.8.0
-  * update readme
-  * init migrate from can-crud

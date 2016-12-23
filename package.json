@@ -1,64 +1,64 @@
 {
-  "name": "spectre-canjs",
-  "version": "0.15.12",
-  "description": "A js component library built on the Spectre.css framework enabled with CanJS",
-  "repository": "https://github.com/roemhildtg/spectre-canjs",
-  "main": "index.js",
-  "watch": {
-    "lint": "**/*.js",
-    "test": "**/*.js"
-  },
-  "scripts": {
-    "pretest": "npm run lint",
-    "test": "testee test/index.html --reporter Spec --browsers firefox",
-    "build": "steal-tools",
-    "watch": "npm-watch",
-    "docs": "documentjs",
-    "export": "node build.js",
-    "lint": "eslint . --fix",
-    "preversion": "npm run test",
-    "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags && npm run changelog",
-    "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
-  },
-  "author": "roemhildtg",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-eslint": "^7.0.0",
-    "changelog": "^1.0.7",
-    "documentjs": "^0.4.4",
-    "eslint": "^3.8.1",
-    "npm-watch": "^0.1.x",
-    "steal-css": "^1.0.0",
-    "steal-less": "^1.0.1",
-    "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.4",
-    "steal-tools": "^1.0.1",
-    "testee": "^0.3.0"
-  },
-  "dependencies": {
-    "animate.css": "^3.5.2",
-    "can-component": "^3.0.1",
-    "can-connect": "^1.0.4",
-    "can-define": "^1.0.5",
-    "can-event": "^3.0.1",
-    "can-fixture": "^1.0.1",
-    "can-route": "^3.0.2",
-    "can-set": "^1.0.3",
-    "can-stache": "^3.0.1",
-    "can-util": "^3.0.1",
-    "can-view-model": "^3.0.0",
-    "date-selector": "^2.0.x",
-    "font-awesome": "^4.5.x",
-    "jquery": "^3.1.1",
-    "object-assign": "^4.1.0",
-    "spectre.css": "^0.1.29",
-    "steal": "^1.0.4"
-  },
-  "steal": {
-    "plugins": [
-      "steal-css",
-      "steal-less",
-      "steal-stache"
-    ]
-  }
+    "name": "spectre-canjs",
+    "version": "0.15.12",
+    "description": "A js component library built on the Spectre.css framework enabled with CanJS",
+    "repository": "https://github.com/roemhildtg/spectre-canjs",
+    "main": "index.js",
+    "watch": {
+        "lint": "**/*.js",
+        "test": "**/*.js"
+    },
+    "scripts": {
+        "pretest": "npm run lint",
+        "test": "testee test/index.html --reporter Spec --browsers firefox",
+        "build": "steal-tools",
+        "watch": "npm-watch",
+        "docs": "documentjs",
+        "export": "node build.js",
+        "lint": "eslint . --fix",
+        "preversion": "npm run test",
+        "postversion": "npm run export && npm run build && npm publish && git push origin master && git push --tags && npm run changelog",
+        "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
+    },
+    "author": "roemhildtg",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-eslint": "^7.0.0",
+        "changelog": "^1.0.7",
+        "documentjs": "^0.4.4",
+        "eslint": "^3.8.1",
+        "npm-watch": "^0.1.x",
+        "steal-css": "^1.0.0",
+        "steal-less": "^1.0.1",
+        "steal-qunit": "^1.0.0",
+        "steal-stache": "^3.0.4",
+        "steal-tools": "^1.0.1",
+        "testee": "^0.3.0"
+    },
+    "dependencies": {
+        "animate.css": "^3.5.2",
+        "can-component": "^3.0.1",
+        "can-connect": "^1.0.4",
+        "can-define": "^1.0.5",
+        "can-event": "^3.0.1",
+        "can-fixture": "^1.0.1",
+        "can-route": "^3.0.2",
+        "can-set": "^1.0.3",
+        "can-stache": "^3.0.1",
+        "can-util": "^3.0.1",
+        "can-view-model": "^3.0.0",
+        "date-selector": "^2.0.x",
+        "font-awesome": "^4.5.x",
+        "jquery": "^3.1.1",
+        "object-assign": "^4.1.0",
+        "spectre.css": "^0.1.29",
+        "steal": "^1.0.4"
+    },
+    "steal": {
+        "plugins": [
+            "steal-css",
+            "steal-less",
+            "steal-stache"
+        ]
+    }
 }

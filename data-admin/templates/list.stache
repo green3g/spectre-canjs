@@ -17,7 +17,7 @@
         </div>
         {{#if selectedObjects.length}}
             <dropdown-menu class="inline-block float-right" text="Manage Selected...">
-                <ul class="menu dropdown-menu">
+                <ul class="menu">
                     {{#if view.manageButtons.length}}
                         <!-- menu header -->
                         <li class="menu-header">
@@ -55,9 +55,9 @@
     {{#if objects.length}}
         <list-table {objects}="objects" {buttons}="buttons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
     {{else}}
-        {{#unless objectsPromise.isPending}}
+        {{#if objectsPromise.isResolved}}
             <p>{{view.noDataMessage}}</p>
-        {{/unless}}
+        {{/if}}
     {{/if}}
 
     <div class="hidden-print">

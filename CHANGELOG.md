@@ -1,3 +1,10 @@
+0.17.1 / 2016-12-29
+===================
+
+  * 0.17.1
+  * fix display of filter-widget in data-admin
+  * changelog
+
 0.17.0 / 2016-12-29
 ===================
 
@@ -196,14 +203,3 @@
   * fix typo in related value key
   * - Use blur and focus events to show and hide menu
     - Use new [] syntax in getting "related value"
-  * toast-container - make sure toasts are coerced to type Toast
-
-0.10.0 / 2016-11-11
-===================
-
-  * add additional types to the toast item
-
-0.9.0 / 2016-11-07
-==================
-
-  * 0.9.0

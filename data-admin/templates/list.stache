@@ -3,7 +3,7 @@
     {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
 
     <div class="inline-block">
-        <div class="btn-group  btn-group-block">
+        <div class="btn-group btn-group-block display-tools">
             <button type="button" class="btn btn-primary badge" ($click)="toggle('filterVisible')" {{#if parameters.filters.length}} data-badge="{{parameters.filters.length}}" {{/if}}><i class="fa fa-search"></i> Search</button>
             {{#filterVisible}}
                 <div class="rel filter-div">

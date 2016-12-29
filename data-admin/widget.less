@@ -2,16 +2,20 @@ data-admin {
     list-table th {
         cursor: pointer;
     }
+
     .object-metadata {
         font-size: smaller;
+
         a {
             cursor: pointer;
         }
     }
+
     paginate-widget {
         float: left;
         padding-right: 40px;
     }
+
     .per-page-form {
         float: left;
         padding-top: 0;
@@ -19,35 +23,45 @@ data-admin {
             padding-top: 20px;
         }
     }
+
     .progress {
         width: 250px;
         position: absolute;
         right: 45%;
         top: 50%;
     }
+
     .progress > div {
         width: 100%;
     }
-}
-.btn-group a,
-.dropdown-toggle:active,
-.dropdown-toggle:focus {
-    background: none;
-    color: #fff;
-    text-decoration: none;
-}
-.filter-div {
-    top: 36px;
-    right:100px;
-    .btn.btn:first-child:not(:last-child) {
-        border-bottom-right-radius: 0.3rem;
-        border-top-right-radius: 0.3rem;
-        border-radius: 0.3rem;
+
+    .btn-group a,
+    .dropdown-toggle:active,
+    .dropdown-toggle:focus {
+        background: none;
+        color: #fff;
+        text-decoration: none;
     }
-}
-@media screen and (min-width: 980px) {
-    .filter-widget {
-        width: 550px;
-        display: block;
+
+    .filter-div {
+        top: 36px;
+        right: 100px;
+
+        .btn.btn:first-child:not(:last-child) {
+            border-bottom-right-radius: 0.3rem;
+            border-top-right-radius: 0.3rem;
+            border-radius: 0.3rem;
+        }
+    }
+    @media screen and (min-width: 980px) {
+        .filter-widget {
+            width: 550px;
+            display: block;
+        }
+    }
+
+    /* fix display of filter-widget */ 
+    .search-tools {
+      overflow:visible;
     }
 }

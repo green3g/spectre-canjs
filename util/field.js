@@ -16,7 +16,8 @@ const TEMPLATES = {
     text: '<text-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
     select: '<select-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
     file: '<file-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
-    json: '<json-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />'
+    json: '<json-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />',
+    date: '<date-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />'
 };
 
 //precompile templates

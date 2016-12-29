@@ -1,9 +1,9 @@
 <div class="form-group">
-    <label {{#inline}}class="sr-only" {{/inline}}for="{{name}}">{{alias}}</label>
+    <label {{#inline}} class="sr-only" {{/inline}} for="{{name}}">{{properties.alias}}</label>
     <div class="input-group">
-    <input type="text" class="form-control" name="{{name}}" id="{{name}}" ($keydown)="beforeSubmit(%element, %event)" ($blur)="onBlur(%element)" placeholder="{{properties.placeholder}}" {($value)}="value">
-    <span class="input-group-addon" data-toggle="date-selector">
-        <span class="fa fa-calendar"></span>
-    </span>
-</div>
+        <select-field {(value)}="day" {properties}="dayProperties" class="float-left" (change)="onChange" />
+        <select-field {(value)}="month" {properties}="monthProperties" class="float-left" (change)="onChange" />
+        <select-field {(value)}="year" {properties}="yearProperties" class="float-left" (change)="onChange" />
+    </div>
+    <div class="clear"></div>
 </div>

@@ -88,6 +88,9 @@ export const ViewModel = DefineMap.extend('DateField', {
         this.dispatch('change', [this.value]);
     },
     isValidDate (d) {
+        if (!d) {
+            return false;
+        }
         d = new Date(d);
         return (!isNaN(d.getTime()));
     }

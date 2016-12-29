@@ -6,3 +6,4 @@ import 'data-admin/data-admin.test';
 import 'util/string.test';
 import 'paginate-widget/paginate-widget.test';
 import 'form-widget/form-widget.test';
+import 'form-widget/field-components/date-field/date-field.test';

@@ -104,8 +104,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     totalPages: {
         get () {
             //round up to the nearest integer
-            return Math.ceil(this.totalItems /
+            const totalPages = Math.ceil(this.totalItems /
                 this.parameters.perPage);
+            return totalPages ? totalPages : 1;
         }
     },
     /**

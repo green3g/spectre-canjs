@@ -1,3 +1,10 @@
+0.17.2 / 2016-12-29
+===================
+
+  * 0.17.2
+  * fix typo in filter-widget overlay classname
+  * changelog
+
 0.17.1 / 2016-12-29
 ===================
 
@@ -199,7 +206,3 @@
   * 0.9.1
   * fix upload field and other field layout issues
   * Remove extra files
-  * add manage buttons links to 'detail' view
-  * fix typo in related value key
-  * - Use blur and focus events to show and hide menu
-    - Use new [] syntax in getting "related value"

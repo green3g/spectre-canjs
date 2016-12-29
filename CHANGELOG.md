@@ -1,3 +1,12 @@
+0.17.0 / 2016-12-29
+===================
+
+  * 0.17.0
+  * 0.16.0
+  * add tests for date-field
+  * add dependency free datepicker
+  * changelog
+
 0.15.13 / 2016-12-23
 ====================
 
@@ -198,14 +207,3 @@
 ==================
 
   * 0.9.0
-  * Don't require unneeded package
-  * Make page visibilty look up parent's isActive function
-  * Cleanup viewmap
-    - remove extra properties
-    - change error functions to error<Save|Deleve>
-
-0.8.1 / 2016-11-04
-==================
-
-  * 0.8.1
-  * ignore docs on publish

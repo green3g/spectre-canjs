@@ -157,6 +157,9 @@ export const ViewModel = DefineMap.extend('FileField', {
      * Called when an error occurs during an upload. Logs an error message
      * when in dev mode
      * @function uploadError
+     * @param {Object} response the jquery xhr response object
+     * @param {String} textStatus the status text
+     * @param {Error} errorThrown the error object 
      */
     uploadError (response, textStatus, errorThrown) {
         // Handle errors here

@@ -2,8 +2,8 @@
 @module {can.Component} form-widget/field-components/select-field <select-field />
 @parent form-widget.fields
 
-@option {String} type This should be set to `select` to use this template in the form widget
-@option {Array.<spectre.types.SelectOptionProperty>} properties.options An array of values and labels
+@option {String} fieldType This should be set to `select` to use this template in the form widget
+@option {Array.<spectre.types.SelectOptionProperty>} options An array of values and labels
 
 @description
 A select dropdown with options. See `selectFieldProperty` and `selectOptionProperty`.
@@ -13,7 +13,7 @@ A select dropdown with options. See `selectFieldProperty` and `selectOptionPrope
 name: 'op',
 alias: 'is',
 placeholder: 'Choose a operator',
-type: 'select',
+fieldType: 'select',
 options: [{
  label: 'Equal to',
  value: '=='

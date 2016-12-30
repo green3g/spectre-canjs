@@ -63,7 +63,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * The view object that controls the entire setup of the data-admin.
      * Properties on the view control how each field is formatted, default values,
      * interactions, etc.
-     * @property {spectre.types.viewMap} data-admin.ViewModel.props.view
+     * @property {data-admin/ViewMap} data-admin.ViewModel.props.view
      * @parent data-admin.ViewModel.props
      */
     view: {

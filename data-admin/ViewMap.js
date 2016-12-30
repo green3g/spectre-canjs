@@ -7,8 +7,9 @@ import detailsTemplate from './templates/details.stache!';
 import addTemplate from './templates/add.stache!';
 
 /**
- * @typedef {object} spectre.types.relatedView RelatedView
+ * @typedef {object} data-admin.relatedView RelatedView
  * related view objects that describe the relationship between a parent and child view.
+ * @parent data-admin
  * //TODO this seems wrong, the foreignKey should probably be switched to the child
  * @option {String} foreignKey - The property to lookup a value for on the parent view's selected object
  * @option {String} referenceKey - The property on child view's objects to filter on
@@ -16,8 +17,8 @@ import addTemplate from './templates/add.stache!';
  */
 
 /**
- * @module {Object} spectre.types.viewMap ViewMap
- * @parent spectre.types
+ * @module {Object} data-admin/ViewMap ViewMap
+ * @parent data-admin
  * A view object that controls the display and management of data in the
  * data-admin and other data components.
  */

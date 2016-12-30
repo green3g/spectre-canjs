@@ -55,6 +55,7 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
             this.hideAll();
             this.toggled = true;
         } else {
+            this.toggled = false;
             this.hideAll();
         }
         return false;

@@ -32,7 +32,8 @@
 
     //this example uses fixtures to catch requests and simulate
     //file upload experience
-    fixture({ method: 'POST', url: '/upload' }, function(request) {
+    fixture.delay = 2000;
+    fixture({ method: 'POST', url: '/upload' }, function(request, response, headers, ajaxSettings) {
         return {
             uploads: ['fake_upload_filename']
         };
@@ -102,6 +103,7 @@
         }, {
             name: 'field5',
             alias: 'A file field',
+            multiple: true,
             fieldType: 'file',
             url: '/upload'
         }],

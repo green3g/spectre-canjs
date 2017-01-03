@@ -9,6 +9,11 @@ import dev from 'can-util/js/dev/dev';
 import './file-field.less';
 import template from './file-field.stache!';
 
+const FileMap = DefineMap.extend({
+    path: 'string',
+    removing: 'boolean'
+});
+
 /**
  * @constructor form-widget/field-components/file-field.ViewModel ViewModel
  * @parent form-widget/field-components/file-field
@@ -39,25 +44,35 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @property {String} file-field.ViewModel.props.value value
      * @parent file-field.ViewModel.props
      */
-    value: 'string',
+    value: {
+        type: 'string',
+        value: ''
+    },
     /**
-     * A list of current files stored in this field. This is a virtual property
-     * that obtains its list by splitting the viewmodel's `value`
+     * A list of current files stored in this field. This is initialized
+     * as a list of items created splitting the comma separated list of files
+     * provided to the `value`.
+     *
+     * It is then manipulated by pushing and splicing uploaded and deleted items.
      * @property {Object}
      */
     currentFiles: {
         get (val) {
+            // create a new list and initialize it with the list of files
             if (!val) {
-                if (this.value) {
-                    val = new DefineList().concat(this.value.split(',').filter(function (file) {
-                        return file !== '';
-                    }));
-                } else {
-                    val = new DefineList();
-                }
-                this.currentFiles = val;
-            }
+                val = new DefineList(this.value.split(',').filter((file) => {
+                    return file !== '';
+                }).map((file) => {
+                    return new FileMap({
+                        path: file,
+                        removing: false
+                    });
+                }));
 
+                // when the list changes, update the value
+                val.on('add', this.updateValue.bind(this));
+                val.on('remove', this.updateValue.bind(this));
+            }
             return val;
         }
     },
@@ -108,20 +123,34 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @param {Array<File>} files the array of files to upload
      */
     uploadFiles (files) {
-        var data = new FormData();
-        for (var i = 0; i < files.length; i++) {
+        const data = new FormData();
+        for (let i = 0; i < files.length; i++) {
             data.append(i, files.item(i));
         }
-        this.state = $.ajax({
-            url: this.properties.url,
-            type: 'POST',
-            data: data,
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: this.uploadSuccess.bind(this),
-            error: this.uploadError.bind(this)
-        });
+        this.state = new Promise((resolve, reject) => {
+            $.ajax({
+                url: this.properties.url,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                processData: false,
+                // contentType: false,
+                success: resolve,
+                error: reject
+            });
+            // const req = new XMLHttpRequest();
+            // req.open('POST', this.properties.url, true);
+            // req.onload = function (event) {
+            //     if (req.status === 200) {
+            //         resolve(JSON.parse(req.responseText));
+            //     } else {
+            //         reject(req);
+            //     }
+            // };
+            // req.onerror = reject;
+            // req.send(data);
+        }).then(this.uploadSuccess.bind(this))
+            .catch(this.uploadError.bind(this));
     },
     /**
      * Called when the upload successfully completes, and adds the uploaded
@@ -133,8 +162,13 @@ export const ViewModel = DefineMap.extend('FileField', {
      */
     uploadSuccess (data) {
         if (typeof data.error === 'undefined') {
-            this.currentFiles = this.currentFiles.concat(data.uploads);
-            this.updateValue();
+            data.uploads.forEach((upload) => {
+                const file = new FileMap({
+                    path: upload,
+                    removing: false
+                });
+                this.currentFiles.push(file);
+            });
         } else {
             // Handle errors here
             dev.warn('ERRORS: ', data.error);
@@ -147,7 +181,9 @@ export const ViewModel = DefineMap.extend('FileField', {
      */
     updateValue () {
         if (this.currentFiles.length) {
-            this.value = this.currentFiles.join(',');
+            this.value = this.currentFiles.map((f) => {
+                return f.path;
+            }).join(',');
         } else {
             this.value = '';
         }
@@ -159,7 +195,7 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @function uploadError
      * @param {Object} response the jquery xhr response object
      * @param {String} textStatus the status text
-     * @param {Error} errorThrown the error object 
+     * @param {Error} errorThrown the error object
      */
     uploadError (response, textStatus, errorThrown) {
         // Handle errors here
@@ -171,19 +207,26 @@ export const ViewModel = DefineMap.extend('FileField', {
      * url.
      * @function removeFile
      * @signature
-     * @param {String} file The filepath to delete
+     * @param {Object} file The file properties and path to delete
      * @return {Promise} the promise resolved when the delete result is complete
      */
     removeFile (file) {
-        this.state = $.ajax({
-            url: this.properties.url,
-            type: 'DELETE',
-            data: {
-                file: file
-            },
-            success: this.removeSuccess.bind(this, file),
-            error: this.removeError.bind(this, file)
-        });
+        if (file.removing) {
+            return false;
+        }
+        file.removing = true;
+        this.state = new Promise((resolve, reject) => {
+            $.ajax({
+                url: this.properties.url,
+                type: 'DELETE',
+                data: {
+                    file: file.path
+                },
+                success: resolve,
+                error: reject
+            });
+        }).then(this.removeSuccess.bind(this, file))
+            .catch(this.removeError.bind(this, file));
         return this.state;
     },
     /**

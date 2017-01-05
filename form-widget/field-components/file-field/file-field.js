@@ -59,7 +59,7 @@ export const ViewModel = DefineMap.extend('FileField', {
         get (val) {
             // create a new list and initialize it with the list of files
             if (!val) {
-                val = new DefineList(this.value.split(',').filter((file) => {
+                val = this.currentFiles = new DefineList(this.value.split(',').filter((file) => {
                     return file !== '';
                 }).map((file) => {
                     return new FileMap({

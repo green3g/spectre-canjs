@@ -1,3 +1,39 @@
+0.18.0 / 2017-01-05
+===================
+
+  * 0.18.0
+  * Merge remote-tracking branch 'origin/greenkeeper/can-connect-1.1.1'
+    # Conflicts:
+    #    package.json
+  * Merge pull request [#10](https://github.com/roemhildtg/spectre-canjs/issues/10) from roemhildtg/greenkeeper/can-component-3.0.5
+    chore(package): update can-component to version 3.0.5
+  * Merge pull request [#9](https://github.com/roemhildtg/spectre-canjs/issues/9) from roemhildtg/greenkeeper/can-define-1.0.12
+    chore(package): update can-define to version 1.0.12
+  * Merge pull request [#8](https://github.com/roemhildtg/spectre-canjs/issues/8) from roemhildtg/greenkeeper/steal-1.0.8
+    chore(package): update steal to version 1.0.8
+  * Merge pull request [#7](https://github.com/roemhildtg/spectre-canjs/issues/7) from roemhildtg/greenkeeper/steal-less-1.0.2
+    chore(package): update steal-less to version 1.0.2
+  * file-field create the list in the getter and set it
+  * dropdown-menu: renames toggled to visible
+  * removes jquery dependency
+  * chore(package): update steal-less to version 1.0.2
+    https://greenkeeper.io/
+  * chore(package): update steal to version 1.0.8
+    https://greenkeeper.io/
+  * chore(package): update can-define to version 1.0.12
+    https://greenkeeper.io/
+  * chore(package): update can-connect to version 1.1.1
+    https://greenkeeper.io/
+  * chore(package): update can-component to version 3.0.5
+    https://greenkeeper.io/
+  * remove extra dep
+  * make file upload more mobile friendly
+  * update deps
+  * fix missing jsdoc
+  * add tests and docs for field-components
+  * data-admin fix NaN displayed if totalPages is 1
+  * changelog
+
 0.17.2 / 2016-12-29
 ===================
 
@@ -157,52 +193,3 @@
 
   * 0.14.1
   * fix typo view property objectTemplate to ObjectTemplate
-
-0.14.0 / 2016-11-30
-===================
-
-  * 0.14.0
-
-0.13.0 / 2016-11-30
-===================
-
-  * 0.13.0
-  * fix inline display issues
-  * fix filter widget issue use push temporarily instead of concat
-  * adds missing props to field view models
-
-0.12.0 / 2016-11-18
-===================
-
-  * 0.12.0
-  * find and replace old "can"
-  * add another example to paginate demo
-  * make ToastList coerce into toasts
-  * enable customizations on paginate to hide button parts
-
-0.11.2 / 2016-11-18
-===================
-
-  * 0.11.2
-  * fix undeclared var "val" in saveObject
-  * fixes layout issues with "manageButtons" in details page
-
-0.11.1 / 2016-11-16
-===================
-
-  * 0.11.1
-  * validations can accept a second parameter, the formObject
-
-0.11.0 / 2016-11-16
-===================
-
-  * 0.11.0
-  * 0.10.0
-  * adds validation to form fields
-
-0.9.1 / 2016-11-16
-==================
-
-  * 0.9.1
-  * fix upload field and other field layout issues
-  * Remove extra files

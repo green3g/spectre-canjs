@@ -31,7 +31,7 @@ test('uploadSuccess()', (assert) => {
 });
 
 test('updateValue()', (assert) => {
-    vm.currentFiles = ['file_1', 'file_2'];
+    vm.currentFiles = [{path: 'file_1'}, {path: 'file_2'}];
     vm.updateValue();
     assert.equal(vm.value, 'file_1,file_2', 'the value should be updated');
 
@@ -45,13 +45,13 @@ test('updateValue()', (assert) => {
 //TODO: test removeFile with fixtures
 
 test('removeSuccess(file)', (assert) => {
-    vm.currentFiles = ['file_1', 'file_2'];
+    vm.currentFiles = [{path: 'file_1'}, {path: 'file_2'}];
     vm.removeSuccess('file_1');
     assert.equal(vm.currentFiles.length, 1, 'file should be removed from currentFiles');
 });
 
 test('removeError(file, response) 404', (assert) => {
-    vm.currentFiles = ['file_1', 'file_2'];
+    vm.currentFiles = [{path: 'file_1'}, {path: 'file_2'}];
     vm.removeError('file_1', {
         status: 404
     });

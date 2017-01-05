@@ -2,7 +2,6 @@ import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import $ from 'jquery';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
@@ -128,27 +127,18 @@ export const ViewModel = DefineMap.extend('FileField', {
             data.append(i, files.item(i));
         }
         this.state = new Promise((resolve, reject) => {
-            $.ajax({
-                url: this.properties.url,
-                type: 'POST',
-                data: data,
-                dataType: 'json',
-                processData: false,
-                // contentType: false,
-                success: resolve,
-                error: reject
-            });
-            // const req = new XMLHttpRequest();
-            // req.open('POST', this.properties.url, true);
-            // req.onload = function (event) {
-            //     if (req.status === 200) {
-            //         resolve(JSON.parse(req.responseText));
-            //     } else {
-            //         reject(req);
-            //     }
-            // };
-            // req.onerror = reject;
-            // req.send(data);
+            const req = new XMLHttpRequest();
+            req.open('POST', this.properties.url, true);
+            req.send(data);
+            req.onload = function () {
+                if (req.status === 200) {
+                    resolve(JSON.parse(req.responseText));
+                } else {
+                    reject(req);
+                }
+            };
+            req.onerror = reject;
+            req.send(data);
         }).then(this.uploadSuccess.bind(this))
             .catch(this.uploadError.bind(this));
     },
@@ -216,15 +206,17 @@ export const ViewModel = DefineMap.extend('FileField', {
         }
         file.removing = true;
         this.state = new Promise((resolve, reject) => {
-            $.ajax({
-                url: this.properties.url,
-                type: 'DELETE',
-                data: {
-                    file: file.path
-                },
-                success: resolve,
-                error: reject
-            });
+            const req = new XMLHttpRequest();
+            req.open('DELETE', this.properties.url, true);
+            req.onload = function () {
+                if (req.status === 200) {
+                    resolve(JSON.parse(req.responseText));
+                } else {
+                    reject(req);
+                }
+            };
+            req.onerror = reject;
+            req.send({file: file.path});
         }).then(this.removeSuccess.bind(this, file))
             .catch(this.removeError.bind(this, file));
         return this.state;

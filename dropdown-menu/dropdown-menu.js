@@ -33,16 +33,16 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
     text: 'string',
     /**
      * The current state of the dropdown menu
-     * @property {Boolean} dropdown-menu.ViewModel.toggled toggled
+     * @property {Boolean} dropdown-menu.ViewModel.visible visible
      * @parent dropdown-menu.ViewModel.props
      */
-    toggled: 'boolean',
+    visible: 'boolean',
     /**
      * toggles the display of a dropdown-menu component
      * @function toggle
      * @signature
      * @param {Event} ev (event) the click event to cancel
-     * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be toggled
+     * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be visible
      * @return {Boolean} always returns false to prevent page navigation from occuring
      */
     toggle (ev, val) {
@@ -50,12 +50,12 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
             ev.preventDefault();
         }
         if (typeof val !== 'undefined') {
-            this.toggled = Boolean(val);
-        } else if (!this.toggled) {
+            this.visible = Boolean(val);
+        } else if (!this.visible) {
             this.hideAll();
-            this.toggled = true;
+            this.visible = true;
         } else {
-            this.toggled = false;
+            this.visible = false;
             this.hideAll();
         }
         return false;
@@ -65,12 +65,13 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @function hideAll
      */
     hideAll () {
-        document.querySelectorAll('dropdown-menu').forEach((e) => {
-            const vm = canViewModel(e);
-            if (vm.toggled) {
-                vm.toggled = false;
+        const nodes = document.querySelectorAll('dropdown-menu');
+        for (let i = 0; i < nodes.length; i ++) {
+            const vm = canViewModel(nodes[i]);
+            if (vm.visible) {
+                vm.visible = false;
             }
-        });
+        }
     }
 });
 

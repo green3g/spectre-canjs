@@ -17,20 +17,20 @@ q.module('.ViewModel', {
 
 test('toggle()', (assert) => {
     vm.toggle();
-    assert.ok(vm.toggled, 'state should be toggled');
+    assert.ok(vm.visible, 'state should be visible');
 
     vm.toggle();
-    assert.notOk(vm.toggled, 'state should not be toggled');
+    assert.notOk(vm.visible, 'state should not be visible');
 });
 
 test('toggle(null, true)', (assert) => {
     vm.toggle(null, true);
-    assert.ok(vm.toggled, 'state should be toggled when true is passed');
+    assert.ok(vm.visible, 'state should be visible when true is passed');
 });
 
 test('toggle(null, false)', (assert) => {
     vm.toggle(null, false);
-    assert.notOk(vm.toggled, 'state should not be toggled when false is passed');
+    assert.notOk(vm.visible, 'state should not be visible when false is passed');
 });
 
 //TODO: test hideAll

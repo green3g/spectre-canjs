@@ -127,6 +127,7 @@ export const ViewModel = DefineMap.extend('FileField', {
             data.append(i, files.item(i));
         }
         this.state = new Promise((resolve, reject) => {
+
             const req = new XMLHttpRequest();
             req.open('POST', this.properties.url, true);
             req.onload = function () {
@@ -215,6 +216,7 @@ export const ViewModel = DefineMap.extend('FileField', {
                 }
             };
             req.onerror = reject;
+            req.setRequestHeader('Content-type', 'application/json');
             req.send(JSON.stringify({file: file.path}));
         }).then(this.removeSuccess.bind(this, file))
             .catch(this.removeError.bind(this, file));

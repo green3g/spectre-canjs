@@ -1,9 +1,15 @@
+0.18.2 / 2017-01-06
+===================
+
+  * 0.18.2
+  * FIX: file-field:convert delete data to json before sending
+
 0.18.1 / 2017-01-06
 ===================
 
+  * changelog
   * 0.18.1
   * FIX: file-field:remove extra send function
-  * changelog
 
 0.18.0 / 2017-01-05
 ===================
@@ -186,10 +192,3 @@
 ===================
 
   * 0.14.3
-  * add missing valueField prop
-
-0.14.2 / 2016-12-05
-===================
-
-  * 0.14.2
-  * add missing docs

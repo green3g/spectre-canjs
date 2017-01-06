@@ -129,7 +129,6 @@ export const ViewModel = DefineMap.extend('FileField', {
         this.state = new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
             req.open('POST', this.properties.url, true);
-            req.send(data);
             req.onload = function () {
                 if (req.status === 200) {
                     resolve(JSON.parse(req.responseText));

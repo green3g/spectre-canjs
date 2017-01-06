@@ -1,3 +1,10 @@
+0.18.1 / 2017-01-06
+===================
+
+  * 0.18.1
+  * FIX: file-field:remove extra send function
+  * changelog
+
 0.18.0 / 2017-01-05
 ===================
 
@@ -186,10 +193,3 @@
 
   * 0.14.2
   * add missing docs
-  * fix rename property and add docs on filter
-
-0.14.1 / 2016-12-01
-===================
-
-  * 0.14.1
-  * fix typo view property objectTemplate to ObjectTemplate

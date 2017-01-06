@@ -215,7 +215,7 @@ export const ViewModel = DefineMap.extend('FileField', {
                 }
             };
             req.onerror = reject;
-            req.send({file: file.path});
+            req.send(JSON.stringify({file: file.path}));
         }).then(this.removeSuccess.bind(this, file))
             .catch(this.removeError.bind(this, file));
         return this.state;

@@ -1,23 +1,31 @@
 <div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
     <div class="input-group">
         <label {{#inline}} class="sr-only" {{/inline}} for="{{properties.name}}">{{properties.alias}}</label>
-        <button type="button" class="upload-button btn btn-default">Upload</button>
+        <button type="button" class="upload-button btn btn-default {{#if state.isPending}}loading{{/if}}">Upload</button>
         <input ($change)="onChange(%element)" type="file" class="form-control" id="{{properties.name}}" name="{{properties.name}}" {{#if properties.multiple}} multiple {{/if}} />
-
-        {{#each currentFiles}}
-            <div class="chip-sm current-files">
-                <span class="chip-name"><a target="_blank" href="{{.}}">{{.}}</a></span>
-                <button type="button" class="btn btn-clear" ($click)="removeFile(.)"></button>
-            </div>
-        {{/each}}
     </div>
 
-    {{#if state.isPending}}
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-    {{/if}}
     {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}
+    <br />
+
+    {{#if currentFiles.length}}
+        <ul class="menu">
+            <!-- menu header -->
+            <li class="menu-header">
+                <span class="menu-header-text">
+            Current Files
+        </span>
+            </li>
+            {{#each currentFiles}}
+                <!-- menu item -->
+                <li class="menu-item clear">
+                    <a href="{{path}}" target="_blank" class="float-left">
+                        <i class="icon icon-link"></i> {{path}}
+                    </a>
+                    <button type="button" class="btn ml-10 {{#if removing}}loading{{/if}}" ($click)="removeFile(.)"><i class="fa fa-trash"></i></button>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+
 </div>

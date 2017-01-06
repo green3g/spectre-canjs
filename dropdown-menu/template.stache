@@ -3,12 +3,13 @@
       {{text}} <i class="{{iconClass}}"></i>
     </a>
 
-    {{#toggled}}
+    {{#if visible}}
         <div class="dropdown-content">
             <content />
         </div>
-    {{/toggled}}
+    {{/if}}
 </div>
-{{#toggled}}
+
+{{#if visible}}
     <div class="dropdown-underlay" ($click)="hideAll()"></div>
-{{/toggled}}
+{{/if}}

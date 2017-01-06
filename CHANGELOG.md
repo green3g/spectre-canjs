@@ -1,3 +1,84 @@
+0.18.2 / 2017-01-06
+===================
+
+  * 0.18.2
+  * FIX: file-field:convert delete data to json before sending
+
+0.18.1 / 2017-01-06
+===================
+
+  * changelog
+  * 0.18.1
+  * FIX: file-field:remove extra send function
+
+0.18.0 / 2017-01-05
+===================
+
+  * 0.18.0
+  * Merge remote-tracking branch 'origin/greenkeeper/can-connect-1.1.1'
+    # Conflicts:
+    #    package.json
+  * Merge pull request [#10](https://github.com/roemhildtg/spectre-canjs/issues/10) from roemhildtg/greenkeeper/can-component-3.0.5
+    chore(package): update can-component to version 3.0.5
+  * Merge pull request [#9](https://github.com/roemhildtg/spectre-canjs/issues/9) from roemhildtg/greenkeeper/can-define-1.0.12
+    chore(package): update can-define to version 1.0.12
+  * Merge pull request [#8](https://github.com/roemhildtg/spectre-canjs/issues/8) from roemhildtg/greenkeeper/steal-1.0.8
+    chore(package): update steal to version 1.0.8
+  * Merge pull request [#7](https://github.com/roemhildtg/spectre-canjs/issues/7) from roemhildtg/greenkeeper/steal-less-1.0.2
+    chore(package): update steal-less to version 1.0.2
+  * file-field create the list in the getter and set it
+  * dropdown-menu: renames toggled to visible
+  * removes jquery dependency
+  * chore(package): update steal-less to version 1.0.2
+    https://greenkeeper.io/
+  * chore(package): update steal to version 1.0.8
+    https://greenkeeper.io/
+  * chore(package): update can-define to version 1.0.12
+    https://greenkeeper.io/
+  * chore(package): update can-connect to version 1.1.1
+    https://greenkeeper.io/
+  * chore(package): update can-component to version 3.0.5
+    https://greenkeeper.io/
+  * remove extra dep
+  * make file upload more mobile friendly
+  * update deps
+  * fix missing jsdoc
+  * add tests and docs for field-components
+  * data-admin fix NaN displayed if totalPages is 1
+  * changelog
+
+0.17.2 / 2016-12-29
+===================
+
+  * 0.17.2
+  * fix typo in filter-widget overlay classname
+  * changelog
+
+0.17.1 / 2016-12-29
+===================
+
+  * 0.17.1
+  * fix display of filter-widget in data-admin
+  * changelog
+
+0.17.0 / 2016-12-29
+===================
+
+  * 0.17.0
+  * 0.16.0
+  * add tests for date-field
+  * add dependency free datepicker
+  * changelog
+
+0.15.13 / 2016-12-23
+====================
+
+  * 0.15.13
+  * updates dependencies/reformatted json
+  * minor template tweaks
+  * update postversion  script
+  * changelog
+
 0.15.12 / 2016-12-21
 ====================
 
@@ -111,100 +192,3 @@
 ===================
 
   * 0.14.3
-  * add missing valueField prop
-
-0.14.2 / 2016-12-05
-===================
-
-  * 0.14.2
-  * add missing docs
-  * fix rename property and add docs on filter
-
-0.14.1 / 2016-12-01
-===================
-
-  * 0.14.1
-  * fix typo view property objectTemplate to ObjectTemplate
-
-0.14.0 / 2016-11-30
-===================
-
-  * 0.14.0
-
-0.13.0 / 2016-11-30
-===================
-
-  * 0.13.0
-  * fix inline display issues
-  * fix filter widget issue use push temporarily instead of concat
-  * adds missing props to field view models
-
-0.12.0 / 2016-11-18
-===================
-
-  * 0.12.0
-  * find and replace old "can"
-  * add another example to paginate demo
-  * make ToastList coerce into toasts
-  * enable customizations on paginate to hide button parts
-
-0.11.2 / 2016-11-18
-===================
-
-  * 0.11.2
-  * fix undeclared var "val" in saveObject
-  * fixes layout issues with "manageButtons" in details page
-
-0.11.1 / 2016-11-16
-===================
-
-  * 0.11.1
-  * validations can accept a second parameter, the formObject
-
-0.11.0 / 2016-11-16
-===================
-
-  * 0.11.0
-  * 0.10.0
-  * adds validation to form fields
-
-0.9.1 / 2016-11-16
-==================
-
-  * 0.9.1
-  * fix upload field and other field layout issues
-  * Remove extra files
-  * add manage buttons links to 'detail' view
-  * fix typo in related value key
-  * - Use blur and focus events to show and hide menu
-    - Use new [] syntax in getting "related value"
-  * toast-container - make sure toasts are coerced to type Toast
-
-0.10.0 / 2016-11-11
-===================
-
-  * add additional types to the toast item
-
-0.9.0 / 2016-11-07
-==================
-
-  * 0.9.0
-  * Don't require unneeded package
-  * Make page visibilty look up parent's isActive function
-  * Cleanup viewmap
-    - remove extra properties
-    - change error functions to error<Save|Deleve>
-
-0.8.1 / 2016-11-04
-==================
-
-  * 0.8.1
-  * ignore docs on publish
-  * If error occurs on save, call error handler and reset page
-
-0.8.0 / 2016-11-04
-==================
-
-  * 0.8.0
-  * update readme
-  * init migrate from can-crud

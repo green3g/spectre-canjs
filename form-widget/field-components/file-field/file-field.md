@@ -1,10 +1,10 @@
 @module {can.Component} form-widget/field-components/file-field <file-field />
 @parent form-widget.fields
 
-@option {String} type Should be set to `file` for the form to use this template
-@option {String} properties.url The url up post the file upload to
-@option {Boolean} properties.multiple Whether or not to allow multiple uploads
-@option {String} properties.accept The type of media to accept
+@option {String} fieldType Should be set to `file` for the form to use this template
+@option {String} url The url up post the file upload to
+@option {Boolean} multiple Whether or not to allow multiple uploads
+@option {String} accept The type of media to accept
 @link http://www.w3schools.com/tags/att_input_accept.asp Input Accept Types
 
 @description

@@ -3,7 +3,7 @@
     {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
 
     <div class="inline-block">
-        <div class="btn-group  btn-group-block">
+        <div class="btn-group btn-group-block display-tools">
             <button type="button" class="btn btn-primary badge" ($click)="toggle('filterVisible')" {{#if parameters.filters.length}} data-badge="{{parameters.filters.length}}" {{/if}}><i class="fa fa-search"></i> Search</button>
             {{#filterVisible}}
                 <div class="rel filter-div">
@@ -17,7 +17,7 @@
         </div>
         {{#if selectedObjects.length}}
             <dropdown-menu class="inline-block float-right" text="Manage Selected...">
-                <ul class="menu dropdown-menu">
+                <ul class="menu">
                     {{#if view.manageButtons.length}}
                         <!-- menu header -->
                         <li class="menu-header">
@@ -55,9 +55,9 @@
     {{#if objects.length}}
         <list-table {objects}="objects" {buttons}="buttons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
     {{else}}
-        {{#unless objectsPromise.isPending}}
+        {{#if objectsPromise.isResolved}}
             <p>{{view.noDataMessage}}</p>
-        {{/unless}}
+        {{/if}}
     {{/if}}
 
     <div class="hidden-print">

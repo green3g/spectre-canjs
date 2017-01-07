@@ -1,7 +1,6 @@
 <!--
 @page spectre Home
 @group spectre.components Components
-@group spectre.types Type Definitions
 @group spectre.util Utilities
 -->
 
@@ -10,8 +9,14 @@
 
 [![Build Status](https://travis-ci.org/roemhildtg/spectre-canjs.svg?branch=master)](https://travis-ci.org/roemhildtg/spectre-canjs)
 
-Spectre CSS framework crossed with CanJS to provide fast, beautiful, navigation,
+A collection of data administration and management components to enable
+the rapid developement of client side web applications. Built on the Spectre CSS
+framework crossed with CanJS to provide fast, beautiful, navigation,
 data management, and user interface web components.
+
+## Documentation
+
+You can access the projects documentation at the [Github Pages URL](https://roemhildtg.github.io/spectre-canjs/docs/index.html)
 
 ## Quick Start
 
@@ -19,6 +24,10 @@ data management, and user interface web components.
 git clone <this-repository>
 cd <this-folder>
 npm install
+
+# optional: start a web server to run the demos
+npm install -g http-server
+http-server
 ```
 
 Now open a web browser and browse each folder's `demo.html`.

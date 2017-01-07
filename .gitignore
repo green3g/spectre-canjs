@@ -9,3 +9,5 @@ custom/
 .directory
 
 *.log
+
+!dist/node_modules

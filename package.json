@@ -14,6 +14,8 @@
     "build": "steal-tools",
     "watch": "npm-watch",
     "docs": "documentjs",
+    "postdocs": "node bundle",
+    "publish-docs": "git checkout gh-pages && npm run docs && git commit . -m docs && git push origin master && git checkout master",
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",

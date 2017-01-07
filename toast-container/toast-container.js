@@ -30,7 +30,7 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
    * adds a new toast
    * @function addToast
    * @signature `addToast(properties)`
-   * @param {Object} toast the toast options or toast object to add
+   * @param {toast-item.ViewModel} toast the toast options or toast object to add
    */
     addToast (toast) {
         if (!(toast instanceof Toast)) {

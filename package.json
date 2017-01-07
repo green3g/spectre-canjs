@@ -58,6 +58,21 @@
       "steal-css",
       "steal-less",
       "steal-stache"
+    ],
+    "bundleAssets": true,
+    "___COMMENT": "These bundles are for the ghpages demo site",
+    "bundle": [
+      "spectre-canjs/data-admin/demo",
+      "spectre-canjs/dropdown-menu/demo",
+      "spectre-canjs/filter-widget/demo",
+      "spectre-canjs/form-widget/demo",
+      "can-fixture",
+      "spectre-canjs/list-table/demo",
+      "spectre-canjs/modal-dialog/demo",
+      "spectre-canjs/nav-container/demo",
+      "spectre-canjs/paginate-widget/demo",
+      "spectre-canjs/property-table/demo",
+      "spectre-canjs/toast-container/demo"
     ]
   }
 }

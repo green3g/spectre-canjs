@@ -108,35 +108,6 @@
     </confirm-dialog>
 </script>
 
-<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
-    import 'font-awesome/css/font-awesome.min.css';
-    import 'spectre.css/dist/spectre.css!';
-    import 'modal-dialog/';
-    import 'modal-dialog/confirm-dialog';
-
-    import stache from 'can-stache';
-    import DefineMap from 'can-define/map/map';
-
-    var render = stache(document.getElementById('demo-html').innerHTML);
-
-    var viewModel = new DefineMap({
-      modal1: false,
-      modal2: false,
-      modal3: false,
-      confirm1: false,
-      onAccept(){
-        console.log(arguments);
-      },
-      onReject(){
-        console.log(arguments);
-      },
-      showModal(name){
-        this[name] = true;
-      },
-      hideModal(name){
-        this[name] = false;
-      }
-    });
-
-    document.body.appendChild(render(viewModel));
+<script src="../dist/steal.production.js" main="spectre-canjs/index" id="demo-source">
+  steal.import('spectre-canjs/modal-dialog/demo');
 </script>

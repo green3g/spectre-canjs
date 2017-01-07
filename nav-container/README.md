@@ -2,8 +2,6 @@
 @module {can.Component} nav-container <nav-container />
 @parent spectre.components
 
-@module {can.Component} nav-page <nav-page />
-@parent spectre.components
 -->
 
 ## Description

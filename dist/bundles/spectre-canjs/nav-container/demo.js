@@ -1,0 +1,3 @@
+/*spectre-canjs@0.18.2#nav-container/demo*/
+define("spectre-canjs@0.18.2#nav-container/demo",["can-stache","can-define/map/map","can-util/dom/ajax/ajax","font-awesome/css/font-awesome.css","spectre.css/dist/spectre.css","nav-container/"],function(e,t,a){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var s=n(e),c=n(t),o=n(a),d=s["default"](document.getElementById("demo-html").innerHTML),l=new c["default"]({people:o["default"]({url:"http://jsonplaceholder.typicode.com/users"}),pages:[{label:"List"},{label:"Create",active:!0},{label:"Other Options"}]});document.body.appendChild(d(l))});
+//# sourceMappingURL=demo.js.map

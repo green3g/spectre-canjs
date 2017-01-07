@@ -1,0 +1,3 @@
+/*spectre-canjs@0.18.2#dropdown-menu/demo*/
+define("spectre-canjs@0.18.2#dropdown-menu/demo",["can-stache","can-define/map/map","font-awesome/css/font-awesome.css","spectre.css/dist/spectre.css","dropdown-menu/"],function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var s=n(e),a=n(t),d=s["default"](document.getElementById("demo-html").innerHTML),c=new a["default"]({pages:[{label:"List"},{label:"Create",active:!0},{label:"Other Options"}]});document.body.appendChild(d(c))});
+//# sourceMappingURL=demo.js.map

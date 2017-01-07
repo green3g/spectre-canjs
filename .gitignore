@@ -5,8 +5,6 @@ node_modules/
 custom/
 
 #docs and build output
-dist/
-docs/
 
 .directory
 

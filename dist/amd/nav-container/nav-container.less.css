@@ -1,0 +1,7 @@
+/*spectre-canjs@0.15.5#nav-container/nav-container.less!steal-less@1.0.0-rc.3#less*/
+nav-container .tab-item {
+  cursor: pointer;
+}
+nav-container .tab-item.loading::after {
+  margin-left: 15px;
+}

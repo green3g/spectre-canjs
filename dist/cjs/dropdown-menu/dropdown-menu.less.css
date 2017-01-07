@@ -1,0 +1,19 @@
+/*spectre-canjs@0.15.5#dropdown-menu/dropdown-menu.less!steal-less@1.0.0-rc.3#less*/
+.dropdown-menu {
+  display: none;
+  position: absolute;
+}
+.dropdown-menu a {
+  cursor: pointer;
+}
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+  background: #f2f2f2;
+}
+.dropdown-toggle:focus + .dropdown-menu,
+.dropdown-toggle:active + .dropdown-menu {
+  display: block;
+}
+.dropdown-menu:hover {
+  display: block;
+}

@@ -42,13 +42,13 @@ document.body.appendChild(render({
     setSort (a, b, c, sortInfo) {
         const field = sortInfo.fieldName;
         this.data.sort((a, b) => {
-            return sortInfo.type === 'asc' ?
+            return sortInfo.type === 'asc'
                 //if ascending
-                (a[field] === b[field] ? 0 :
-                    a[field] > b[field] ? 1 : -1) :
+                ? (a[field] === b[field] ? 0
+                    : a[field] > b[field] ? 1 : -1)
                 //if descending
-                (a[field] === b[field] ? 0 :
-                    a[field] > b[field] ? -1 : 1);
+                : (a[field] === b[field] ? 0
+                    : a[field] > b[field] ? -1 : 1);
         });
     }
 }));

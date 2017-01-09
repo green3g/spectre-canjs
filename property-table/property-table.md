@@ -21,4 +21,4 @@ and capitalizing the first letter. Additional display options may be provided th
 
 ## Demo
 
-@demo property-table/demo.html 500
+@demo property-table/demo/demo.html 500

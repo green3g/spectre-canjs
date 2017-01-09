@@ -10,4 +10,4 @@ accepting a users' acceppt or reject.
 
 ## Example
 
-@demo modal-dialog/demo.html 800
+@demo modal-dialog/demo/demo.html 800

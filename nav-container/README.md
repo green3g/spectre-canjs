@@ -20,4 +20,4 @@ A basic tabbed navigation container. Works with nav-page components.
 
 ## Demo
 
-@demo nav-container/demo.html 500
+@demo nav-container/demo/demo.html 500

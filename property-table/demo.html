@@ -3,33 +3,6 @@
     <property-table {object}="data" {fields}="fields" />
 </script>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
-<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
-    import 'font-awesome/css/font-awesome.min.css';
-    import 'property-table/';
-
-    import stache from 'can-stache';
-
-    var render = stache(document.getElementById('demo-html').innerHTML);
-
-    var viewModel = {
-        fields: [{
-          //fields can be specified using a detailed object
-          name: 'prop_1',
-          alias: 'Property 1',
-          // formatters can customize the look of the value
-          formatter(prop){
-            return `<strong>${prop}</strong>`;
-          }
-        },
-        //or a simple field name
-        'another_property_value', 'etc_or_misc'],
-        data: {
-            prop_1: 'This is a property',
-            another_property_value: 'Value here',
-            etc_or_misc: 'This is a value'
-        }
-    };
-
-    document.body.appendChild(render(viewModel));
+<script src="../dist/steal.production.js" main="spectre-canjs/index" id="demo-source">
+  steal.import('spectre-canjs/property-table/demo');
 </script>

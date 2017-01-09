@@ -52,26 +52,6 @@
 
 </script>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css">
-<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
-    import 'font-awesome/css/font-awesome.min.css';
-    import 'dropdown-menu/';
-
-    import stache from 'can-stache';
-    import DefineMap from 'can-define/map/map';
-
-    var render = stache(document.getElementById('demo-html').innerHTML);
-
-    var viewModel = new DefineMap({
-        pages: [{
-            label: 'List'
-        }, {
-            label: 'Create',
-            active: true
-        }, {
-            label: 'Other Options'
-        }]
-    });
-
-    document.body.appendChild(render(viewModel));
+<script src="../dist/steal.production.js" main="spectre-canjs/index" id="demo-source">
+  steal.import('spectre-canjs/dropdown-menu/demo');
 </script>

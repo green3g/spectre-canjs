@@ -1,56 +1,152 @@
 <script type="text/stache" id="demo-html">
     <h1>Navigation Demo</h1>
 
-    <h2>Default Style</h2>
     <nav-container>
-      <nav-page label="test">
-        <p> some content and stuff</p>
-      </nav-page>
-      <nav-page label="Another Test">
-        <p>This is a test</p>
-      </nav-page>
-      <nav-page label="A final Test">
-        <div class="card">
-          <div class="card-image">
-              <img src="img/osx-el-capitan.jpg" class="img-responsive" />
-          </div>
-          <div class="card-header">
-              <h4 class="card-title">Microsoft</h4>
-              <h6 class="card-meta">Software and hardware</h6>
-          </div>
-          <div class="card-body">
-              To make a contribution to the world by making tools for the mind that advance humankind.
-          </div>
-          <div class="card-footer">
-              <button class="btn btn-primary">Do</button>
-          </div>
-        </div>
-      </nav-page>
+        <nav-page label="Tables">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>duration</th>
+                        <th>genre</th>
+                        <th>release date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="selected">
+                        <td>The Shawshank Redemption</td>
+                        <td>2h 22min</td>
+                        <td>Crime, Drama</td>
+                        <td>14 October 1994</td>
+                    </tr>
+                </tbody>
+            </table>
+        </nav-page>
+        <nav-page label="Forms">
+            <form class="form-horizontal" action="#forms" _lpchecked="1">
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-8">Email</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="email" id="input-example-8" placeholder="Email" value="spectre@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-9">URL</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="url" id="input-example-9" placeholder="URL" value="https://github.com/picturepan2/spectre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-10">Search</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="search" id="input-example-10" placeholder="Search">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-11">Tel</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="tel" id="input-example-11" placeholder="Tel" value="1-(888)-888-8888">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-12">Password</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="password" id="input-example-12" placeholder="Password" value="123456789">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-13">Number</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="number" id="input-example-13" placeholder="00" value="66">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-14">Date</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="date" id="input-example-14" value="2016-12-31">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-15">Color</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="color" id="input-example-15" value="#5764c6">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-16">File</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="file" id="input-example-16" value="">
+                    </div>
+                </div>
+                <div class="form-group hide">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-17">Slider</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-input" type="range" min="0" max="50" value="25">
+                    </div>
+                </div>
+                <div class="form-group hide">
+                    <div class="col-3">
+                        <label class="form-label" for="input-example-18">Progress</label>
+                    </div>
+                    <div class="col-9">
+                        <progress class="progress" value="50" max="100"></progress>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3"></div>
+                    <div class="col-9">
+                        <select class="form-select" multiple="">
+                                <option>Slack</option>
+                                <option>Skype</option>
+                                <option>Hipchat</option>
+                            </select>
+                    </div>
+                </div>
+            </form>
+        </nav-page>
 
+        {{#if people.isResolved}}
+        <nav-page label="User cards">
+            {{#each people.value}}
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{name}}</h4>
+                    <h6 class="card-meta">{{email}}</h6>
+                </div>
+                <div class="card-body">
+                    {{address.street}} {{address.suite}}<br /> {{address.city}} {{address.zipcode}}
+                </div>
+                <div class="card-footer">
+                    <a href="mailto:{{email}}" class="btn btn-primary">Contact</a>
+                </div>
+            </div>
+            {{/each}}
+        </nav-page>
+        {{/if}}
     </nav-container>
 
 </script>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.27/spectre.min.css" >
-<script src="../node_modules/steal/steal.js" main="@empty" id="demo-source">
-    import 'font-awesome/css/font-awesome.min.css';
-    import 'nav-container/';
-
-    import stache from 'can-stache';
-    import DefineMap from 'can-define/map/map';
-
-    var render = stache(document.getElementById('demo-html').innerHTML);
-
-    var viewModel = new DefineMap({
-        pages: [{
-          label: 'List'
-        }, {
-          label:'Create',
-          active: true
-        }, {
-          label: 'Other Options'
-        }]
-    });
-
-    document.body.appendChild(render(viewModel));
+<script src="../dist/steal.production.js" main="spectre-canjs/index" id="demo-source">
+    steal.import('spectre-canjs/nav-container/demo');
 </script>

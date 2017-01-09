@@ -65,7 +65,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     },
     /**
      * A list of filterObjects currently used in this widget
-     * @property {Array<spectre.types.filterObject>} filter-widget.ViewModel.filters
+     * @property {Array<filter-widget.Filter>} filter-widget.ViewModel.filters
      * @parent filter-widget.ViewModel.props
      */
     filters: {

@@ -1,7 +1,7 @@
 /* eslint-env qunit, browser */
 
 import {ViewModel} from './filter-widget';
-import {Filter} from './Filter';
+import {Filter, FilterOptions} from './Filter';
 
 import q from 'steal-qunit';
 import DefineMap from 'can-define/map/map';
@@ -32,34 +32,6 @@ test('fields get()', (assert) => {
     }];
     vm.fields = fields;
     assert.equal(vm.fields.length, 1, 'With excludeFilter true, only one field should be retreived from the getter');
-});
-
-
-test('formFields get()', (assert) => {
-    assert.equal(vm.formFields[0].fieldType, 'text', 'name field fieldType should be text by default');
-
-    const field = {
-        name: 'test',
-        alias: 'Test'
-    };
-    vm.fields = [field];
-    assert.equal(vm.formFields[0].fieldType, 'select', 'name field fieldType should be select when there are fieldOptions');
-});
-
-test('valueField get()', (assert) => {
-    assert.equal(vm.valueField.fieldType, 'text', 'default valueField fieldType should be text');
-
-});
-
-test('filterOptions get()', (assert) => {
-    vm.fields = [{name: 'test', label: 'test', type: 'date'}];
-    vm.fieldValue = 'test';
-
-    vm.filterOptions.forEach((f) => {
-        assert.ok(!f.types || f.types.indexOf('date') !== -1, 'each filter should have fieldType date');
-    });
-
-
 });
 
 test('fieldOptions get() with fields', (assert) => {
@@ -95,26 +67,57 @@ test('removeFilter()', (assert) => {
 
 q.module('filter-widget.Filter', {
     beforeEach: function () {
-        filter = new Filter({});
+        filter = new Filter({
+            name: 'test',
+            operator: 'equals',
+            value: 'test'
+        });
     },
     afterEach: function () {
         filter = null;
     }
 });
 
-// test('val set()', assert => {
-//   assert.equal(filter.attr('op'), 'like', 'default operator should be like');
-//
-//   let value = 'test';
-//   filter.attr('val', value);
-//   assert.equal(filter.attr('val'), '%' + value + '%', 'after setting value when op is like, the value should be %value%');
-//
-//   filter.attr('op', 'equals');
-//   filter.attr('val', value);
-//   assert.equal(filter.attr('val'), value, 'after setting value when op is not like, value should be value');
-//
-//   value = '2.5';
-//   filter.attr('op', 'greater_than');
-//   filter.attr('val', value);
-//   assert.equal(typeof filter.attr('val'), 'number', 'after setting value when op is number comparator, value should be a number');
-// });
+test('name get()', (assert) => {
+    assert.equal(filter.name, 'test');
+
+    filter.field = {
+        name: 'hello'
+    };
+    assert.equal(filter.name, 'hello', 'if field is set, the field name should be used');
+});
+
+test('operatorField get() no field type', (assert) => {
+    assert.equal(filter.operatorField.options.length, FilterOptions.length, 'filter options should be the default length');
+});
+
+test('operatorField get() with field type', (assert) => {
+    filter.field = {
+        name: 'test',
+        type: 'date'
+    };
+
+    assert.ok(filter.operatorField.options.length < FilterOptions.length, 'filter options should be filtered to date friendly types');
+});
+
+test('valueField get() no field set', (assert) => {
+    assert.equal(filter.valueField.fieldType, 'text', 'default valueField should be text field');
+});
+
+test('valueField get() field is set', (assert) => {
+    filter.field = {
+        fieldType: 'date',
+        name: 'test'
+    };
+
+    assert.equal(filter.valueField.fieldType, 'date', 'valueField type should be date when field type is date');
+});
+
+test('formObject get()', (assert) => {
+    assert.equal(filter.formObject.test, 'test', 'formObject should consist of a property with the correct value');
+});
+
+test('setField(field, dom, scope, val)', (assert) => {
+    filter.setField(null, null, null, 'hello');
+    assert.equal(filter.value, 'hello');
+});

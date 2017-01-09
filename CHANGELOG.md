@@ -1,6 +1,28 @@
+0.19.0 / 2017-01-09
+===================
+
+  * 0.19.0
+  * FIX: reset page when viewmodel parameters change
+  * CHG: Cleanup extra and unused code and move tests to Filter object where appropriate
+  * Merge remote-tracking branch 'origin/master'
+  * CHG: replace assign with object-assign
+  * FIX: filter-widget - make sure default field type is inline display
+  * ENH: if fields property is provided to filter-widget, use it to create a customized value field for different fieldTypes
+  * CHG: move field's inline property to field's properties object
+  * ignore demo files from linting
+  * docs: merge changes on build
+  * update build script
+  * add build scripts and docs
+  * update demos
+  * FIX: fix merge conflict
+  * Merge remote-tracking branch 'origin'
+  * CHG: remove jquery dependency as its no longer necessary
+  * FIX: file-field set content type to json
+
 0.18.2 / 2017-01-06
 ===================
 
+  * changelog
   * 0.18.2
   * FIX: file-field:convert delete data to json before sending
 
@@ -76,6 +98,7 @@
   * 0.15.13
   * updates dependencies/reformatted json
   * minor template tweaks
+  * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
   * update postversion  script
   * changelog
 
@@ -130,6 +153,12 @@
     # Conflicts:
     #    package.json
 
+0.15.7 / 2016-12-17
+===================
+
+  * 0.15.7
+  * remove uneeded package
+
 0.15.6 / 2016-12-17
 ===================
 
@@ -150,45 +179,3 @@
   * 0.15.5
   * fix build problems with import syntax
   * 0.15.4
-  * fix: reserved methods shouldn't be created in fields
-  * adds missing deps
-  * add missing testee
-
-0.15.3 / 2016-12-12
-===================
-
-  * 0.15.3
-  * lint free
-  * tests passing
-  * 0.15.2
-  * ie11 compatibility with  object.assign
-
-0.15.1 / 2016-12-07
-===================
-
-  * 0.15.1
-  * update can-define
-  * move filter widget into dropdown
-
-0.15.0 / 2016-12-07
-===================
-
-  * 0.15.0
-  * add dropdown css
-  * update steal to rc2
-  * 0.14.5
-  * Revert "workaround can-define issue with '#' and concat"
-    This reverts commit 1e18fc3285097c4a83582016b86d2e2835539a9f.
-
-0.14.4 / 2016-12-05
-===================
-
-  * 0.14.4
-  * remove extra workaround
-  * workaround can-define issue with '#' and concat
-  * custom deepcopy parameters so filters aren't overwritten
-
-0.14.3 / 2016-12-05
-===================
-
-  * 0.14.3

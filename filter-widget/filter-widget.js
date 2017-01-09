@@ -2,7 +2,7 @@ import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import deepAssign from 'can-util/js/deep-assign/deep-assign';
 import {makeSentenceCase} from '../../util/string';
-import {FieldList, parseFieldArray} from '../../util/field';
+import {FieldList, parseFieldArray, Field} from '../../util/field';
 
 import template from './template.stache!';
 import './filter-widget.less!';
@@ -111,49 +111,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                 alias: 'Field Name',
                 placeholder: 'Enter fieldname'
             };
-        }
-    },
-    /**
-     * The operator field properties
-     * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
-     * @parent filter-widget.ViewModel.props
-     */
-    operatorField: {
-        Type: DefineMap,
-        get () {
-            return {
-                name: 'operator',
-                alias: 'is',
-                placeholder: 'Choose an operator',
-                fieldType: 'select',
-                formatter (op) {
-                    return FilterOptions.filter((f) => {
-                        return f.value === op;
-                    })[0].label;
-                },
-                options: this.filterOptions
-            };
-        }
-    },
-    /**
-     * A custom field type for the value field to aid in entering a value to filter on
-     * For example: a date type field can be specified for the value to aid
-     * the user in picking a date.
-     * @property {spectre.types.util/field.Field} filter-widget.ViewModel.valueField
-     * @parent filter-widget.ViewModel.props
-     */
-    valueField: {
-        get () {
-            const defaultField = {
-                name: 'value',
-                alias: 'Value',
-                fieldType: 'text',
-                placeholder: 'Enter a filter value'
-            };
-            // return FilterOptions.filter((f) => {
-            //     return f.value === this.formObject.operator;
-            // })[0].valueField ||
-            return defaultField;
         }
     },
     /**
@@ -272,11 +229,18 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
         }
 
         // make a new filter object with the fields used in the form
+        let fieldProp;
+        if (this.fields.length) {
+            fieldProp = this.fields.filter((field) => {
+                return field.name === name;
+            })[0];
+        }
         const filterObj = new Filter({
-            name: name,
-            operatorField: deepAssign({}, this.operatorField),
-            valueField: deepAssign({}, this.valueField)
+            field: fieldProp,
+            name: name
         });
+
+        filterObj.valueField.inline = true;
 
         // reset the dropdown
         this.fieldValue = '';

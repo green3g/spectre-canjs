@@ -1,5 +1,3 @@
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
 import 'property-table/';
 
 import stache from 'can-stache';

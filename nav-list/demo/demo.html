@@ -1,0 +1,15 @@
+<script type="text/stache" id="demo-html">
+    <h1>Navigation Demo</h1>
+
+    <h2>Default Style</h2>
+    <nav-list {pages}="pages" {^active}="current" />
+
+    <p>{{current.label}}</p>
+
+    <h2>Breadcrumbs</h2>
+    <nav-list {pages}="pages" type="breadcrumb"/>
+</script>
+
+<script src="../../dist/steal.production.js" main="spectre-canjs/index" id="demo-source">
+  steal.import('spectre-canjs/nav-list/demo/navList');
+</script>

@@ -27,6 +27,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.0.0",
+    "can-connect": "^1.1.1",
+    "can-fixture": "^1.0.12",
+    "can-set": "^1.0.3",
     "changelog": "^1.0.7",
     "documentjs": "^0.4.4",
     "eslint": "^3.8.1",
@@ -39,22 +42,18 @@
     "testee": "^0.3.0"
   },
   "dependencies": {
-    "aja": "^0.4.1",
     "animate.css": "^3.5.2",
     "can-component": "^3.0.5",
-    "can-connect": "^1.1.1",
-    "can-define": "^1.0.12",
+    "can-define": "^1.0.14",
     "can-event": "^3.0.2",
-    "can-fixture": "^1.0.12",
     "can-route": "^3.0.6",
-    "can-set": "^1.0.3",
     "can-stache": "^3.0.17",
-    "can-util": "^3.0.1",
+    "can-util": "^3.2.2",
     "can-view-model": "^3.1.3",
-    "font-awesome": "^4.5.x",
+    "font-awesome": "^4.7.0",
     "object-assign": "^4.1.0",
-    "spectre.css": "^0.1.29",
-    "steal": "^1.0.8"
+    "spectre.css": "^0.1.31",
+    "steal": "^1.0.9"
   },
   "steal": {
     "plugins": [
@@ -62,20 +61,19 @@
       "steal-less",
       "steal-stache"
     ],
-    "bundleAssets": true,
     "___COMMENT": "These bundles are for the ghpages demo site",
     "bundle": [
-      "spectre-canjs/data-admin/demo",
-      "spectre-canjs/dropdown-menu/demo",
-      "spectre-canjs/filter-widget/demo",
-      "spectre-canjs/form-widget/demo",
-      "can-fixture",
-      "spectre-canjs/list-table/demo",
-      "spectre-canjs/modal-dialog/demo",
-      "spectre-canjs/nav-container/demo",
-      "spectre-canjs/paginate-widget/demo",
-      "spectre-canjs/property-table/demo",
-      "spectre-canjs/toast-container/demo"
+      "spectre-canjs/data-admin/demo/admin",
+      "spectre-canjs/dropdown-menu/demo/dropdown",
+      "spectre-canjs/filter-widget/demo/filter",
+      "spectre-canjs/form-widget/demo/form",
+      "spectre-canjs/list-table/demo/listTable",
+      "spectre-canjs/modal-dialog/demo/dialog",
+      "spectre-canjs/nav-container/demo/nav",
+      "spectre-canjs/paginate-widget/demo/paginate",
+      "spectre-canjs/property-table/demo/propertyTable",
+      "spectre-canjs/toast-container/demo/toast",
+      "can-fixture"
     ]
   }
 }

@@ -1,5 +1,3 @@
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
 import 'data-admin/data-admin';
 
 import SuperMap from 'can-connect/can/super-map/';

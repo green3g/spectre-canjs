@@ -1,7 +1,6 @@
 import 'toast-container/';
-import 'animate.css/animate.css!';
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
+import 'animate.css/animate.css';
+
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';

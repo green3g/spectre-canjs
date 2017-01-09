@@ -4,6 +4,7 @@ import Component from 'can-component';
 import CanEvent from 'can-event';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
+import ajax from 'can-util/dom/ajax/ajax';
 
 import './file-field.less';
 import template from './file-field.stache!';
@@ -36,7 +37,9 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @property {Array<String>} file-field.ViewModel.props.errors errors
      * @parent file-field.ViewModel.props
      */
-    errors: '*',
+    errors: {
+        Value: DefineMap
+    },
     /**
      * The current value of the field. This is a comma separated list of file
      * paths.
@@ -122,6 +125,7 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @param {Array<File>} files the array of files to upload
      */
     uploadFiles (files) {
+        this.errors[this.properties.name] = null;
         const data = new FormData();
         for (let i = 0; i < files.length; i++) {
             data.append(i, files.item(i));
@@ -188,6 +192,9 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @param {Error} errorThrown the error object
      */
     uploadError (response, textStatus, errorThrown) {
+        if (response.status === 413) {
+            this.errors[this.properties.name] = 'The uploaded file is too large';
+        }
         // Handle errors here
         dev.warn('ERRORS: ', response, textStatus, errorThrown);
         // TODO: STOP LOADING SPINNER

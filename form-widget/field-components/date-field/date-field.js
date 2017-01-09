@@ -109,6 +109,7 @@ export const ViewModel = DefineMap.extend('DateField', {
                 });
             }
             return {
+                inline: true,
                 options: options,
                 name: 'day'
             };
@@ -122,6 +123,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      */
     monthProperties: {
         value: {
+            inline: true,
             options: MONTH_OPTIONS,
             name: 'month'
         }
@@ -134,6 +136,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      */
     yearProperties: {
         value: {
+            inline: true,
             options: YEAR_OPTIONS,
             name: 'year'
         }

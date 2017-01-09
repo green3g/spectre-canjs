@@ -12,4 +12,4 @@ A configureable container for displaying spectre toasts, which are similar to bo
 
 ## Demo
 
-@demo toast-container/demo.html 800
+@demo toast-container/demo/demo.html 800

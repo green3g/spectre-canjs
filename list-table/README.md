@@ -10,4 +10,4 @@ The widget is configureable to allow for custom functionality. A `buttons` prope
 
 ## Example
 
-@demo list-table/demo.html 500
+@demo list-table/demo/demo.html 500

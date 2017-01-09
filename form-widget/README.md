@@ -9,4 +9,4 @@ A configureable form widget to modify data. The form accepts a formObject proper
 
 ## Demo
 
-@demo form-widget/demo.html 500
+@demo form-widget/demo/demo.html 500

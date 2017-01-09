@@ -11,4 +11,4 @@ A bootstrap style paginate navigation widget. This widget maintains an internal 
 
 ## Demo
 
-@demo paginate-widget/demo.html 500
+@demo paginate-widget/demo/demo.html 500

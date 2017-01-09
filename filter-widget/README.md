@@ -13,4 +13,4 @@ The filters generated follow the JSON API specification implemented by Flask-Res
 
 ## Demo
 
-@demo filter-widget/demo.html 500
+@demo filter-widget/demo/demo.html 500

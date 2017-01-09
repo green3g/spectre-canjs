@@ -48,4 +48,4 @@ on how the views are related allows for this.
 
 ## Demo
 
-@demo data-admin/demo.html 800
+@demo data-admin/demo/demo.html 800

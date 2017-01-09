@@ -10,4 +10,4 @@ A configureable toggle button designed for dropdown menus and other elements
 
 ## Demo
 
-@demo dropdown-menu/demo.html 800
+@demo dropdown-menu/demo/demo.html 800

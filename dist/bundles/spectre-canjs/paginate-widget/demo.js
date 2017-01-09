@@ -1,3 +1,3 @@
-/*spectre-canjs@0.18.2#paginate-widget/demo*/
-define("spectre-canjs@0.18.2#paginate-widget/demo",["can-define/map/map","can-stache","font-awesome/css/font-awesome.css","spectre.css/dist/spectre.css","paginate-widget/"],function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var a=n(e),s=n(t),d=s["default"](document.getElementById("demo-html").innerHTML)(new a["default"]({page1:0,page2:0}));document.body.appendChild(d)});
+/*spectre-canjs@0.19.0#paginate-widget/demo*/
+define("spectre-canjs@0.19.0#paginate-widget/demo",["can-define/map/map","can-stache","font-awesome/css/font-awesome.css","spectre.css/dist/spectre.css","paginate-widget/"],function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var a=n(e),s=n(t),d=s["default"](document.getElementById("demo-html").innerHTML)(new a["default"]({page1:0,page2:0}));document.body.appendChild(d)});
 //# sourceMappingURL=demo.js.map

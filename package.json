@@ -63,16 +63,17 @@
     ],
     "___COMMENT": "These bundles are for the ghpages demo site",
     "bundle": [
-      "spectre-canjs/data-admin/demo",
-      "spectre-canjs/dropdown-menu/demo",
-      "spectre-canjs/filter-widget/demo",
-      "spectre-canjs/form-widget/demo",
-      "spectre-canjs/list-table/demo",
-      "spectre-canjs/modal-dialog/demo",
-      "spectre-canjs/nav-container/demo",
-      "spectre-canjs/paginate-widget/demo",
-      "spectre-canjs/property-table/demo",
-      "spectre-canjs/toast-container/demo"
+      "spectre-canjs/data-admin/demo/admin",
+      "spectre-canjs/dropdown-menu/demo/dropdown",
+      "spectre-canjs/filter-widget/demo/filter",
+      "spectre-canjs/form-widget/demo/form",
+      "spectre-canjs/list-table/demo/listTable",
+      "spectre-canjs/modal-dialog/demo/dialog",
+      "spectre-canjs/nav-container/demo/nav",
+      "spectre-canjs/paginate-widget/demo/paginate",
+      "spectre-canjs/property-table/demo/propertyTable",
+      "spectre-canjs/toast-container/demo/toast",
+      "can-fixture"
     ]
   }
 }

@@ -1,5 +1,3 @@
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
 import 'list-table/';
 
 //sorting plugin

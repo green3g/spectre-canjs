@@ -1,11 +1,9 @@
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
 import 'dropdown-menu/';
 
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 
-var render = stache(document.getElementById('demo-html').innerHTML);
+var render = stache.from('demo-html');
 
 var viewModel = new DefineMap({
     pages: [{

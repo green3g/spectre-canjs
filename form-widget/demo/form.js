@@ -1,6 +1,3 @@
-import 'font-awesome/css/font-awesome.css';
-import 'spectre.css/dist/spectre.css';
-
 //import our form component
 import 'form-widget/';
 

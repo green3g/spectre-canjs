@@ -1,7 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 import '../select-field/select-field';
 import {MONTH_OPTIONS, YEAR_OPTIONS} from './constants';

@@ -4,7 +4,6 @@ import Component from 'can-component';
 import CanEvent from 'can-event';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
-import ajax from 'can-util/dom/ajax/ajax';
 
 import './file-field.less';
 import template from './file-field.stache!';

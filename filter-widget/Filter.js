@@ -1,6 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import {Field} from '../../util/field';
+import assign from 'object-assign';
 
 
 /**
@@ -137,13 +138,14 @@ export const Filter = DefineMap.extend('Filter', {
     valueField: {
         serialize: false,
         get () {
-            return this.field || new Field({
+            const fieldProps = this.field ? assign(this.field.serialize(), {inline: true}) : {
                 inline: true,
                 name: this.name,
                 alias: 'Value',
                 fieldType: 'text',
                 placeholder: 'Enter a filter value'
-            });
+            };
+            return new Field(fieldProps);
         }
     },
     /**
@@ -155,7 +157,6 @@ export const Filter = DefineMap.extend('Filter', {
         get () {
             const obj = {};
             obj[this.name] = this.value;
-            console.log(obj);
             return obj;
         }
     },

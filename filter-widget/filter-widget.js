@@ -1,8 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import deepAssign from 'can-util/js/deep-assign/deep-assign';
 import {makeSentenceCase} from '../../util/string';
-import {FieldList, parseFieldArray, Field} from '../../util/field';
+import {FieldList, parseFieldArray} from '../../util/field';
 
 import template from './template.stache!';
 import './filter-widget.less!';
@@ -120,7 +119,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * 2. 2f there is a defined type in the define property for the current filter field dropdown
      * If a type is found using the rules above, the returned value will be filtered to only include
      * operators for the given type.
-     * @property {Array<spectre.types.SelectOptionProperty>} filter-widget.ViewModel.filterOptions
+     * @property {Array<form-widget/field-components/select-field.SelectOption>} filter-widget.ViewModel.filterOptions
      * @parent filter-widget.ViewModel.props
      */
     filterOptions: {
@@ -239,8 +238,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
             field: fieldProp,
             name: name
         });
-
-        filterObj.valueField.inline = true;
 
         // reset the dropdown
         this.fieldValue = '';

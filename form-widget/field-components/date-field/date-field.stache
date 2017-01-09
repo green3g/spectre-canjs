@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label {{#inline}} class="sr-only" {{/inline}} for="{{name}}">{{properties.alias}}</label>
+    <label {{#if properties.inline}} class="hide" {{/if}} for="{{name}}">{{properties.alias}}</label>
     <div class="input-group">
         <select-field {(value)}="day" {properties}="dayProperties" class="float-left" (change)="onChange" />
         <select-field {(value)}="month" {properties}="monthProperties" class="float-left" (change)="onChange" />

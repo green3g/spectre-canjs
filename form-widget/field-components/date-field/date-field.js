@@ -1,7 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import assign from 'can-util/js/assign/assign';
+import assign from 'object-assign';
 
 import '../select-field/select-field';
 import {MONTH_OPTIONS, YEAR_OPTIONS} from './constants';
@@ -109,6 +109,7 @@ export const ViewModel = DefineMap.extend('DateField', {
                 });
             }
             return {
+                inline: true,
                 options: options,
                 name: 'day'
             };
@@ -122,6 +123,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      */
     monthProperties: {
         value: {
+            inline: true,
             options: MONTH_OPTIONS,
             name: 'month'
         }
@@ -134,6 +136,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      */
     yearProperties: {
         value: {
+            inline: true,
             options: YEAR_OPTIONS,
             name: 'year'
         }

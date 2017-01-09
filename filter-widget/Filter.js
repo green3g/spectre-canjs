@@ -1,71 +1,8 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
+import {Field} from '../../util/field';
+import assign from 'object-assign';
 
-/**
- * @constructor filter-widget.Filter Filter
- * @parent filter-widget
- * @group filter-widget.Filter.props Properties
- *
- * @description Creates a new filter object
- * @signature `new Filter(properties)`
- */
-export const Filter = DefineMap.extend('Filter', {
-    /**
-     * A value to filter on. Can be any primitive type
-     * @property {*} filter-widget.Filter.props.value value
-     * @parent filter-widget.Filter.props
-     */
-    value: {
-        type: '*'
-    },
-    /**
-     * The name of the field to filter on
-     * @property {String} filter-widget.Filter.props.name name
-     * @parent filter-widget.Filter.props
-     */
-    name: {
-        type: 'string',
-        value: ''
-    },
-    /**
-     * The operator to filter with. The default is `like`.
-     * @property {String} Ffilter-widget.Filter.props.operator operator
-     * @parent filter-widget.Filter.props
-     */
-    operator: {
-        type: 'string',
-        value: 'like'
-    },
-    /**
-     * A field object that defines the available operator options and properties.
-     * This is used to create the dropdown choice for each filter in the filter-widget
-     * @property {Object} filter-widget.Filter.props.operatorField operatorField
-     * @parent filter-widget.Filter.props
-     */
-    operatorField: {
-        serialize: false
-    },
-    /**
-     * A field object that defines the value field properties.
-     * This is used to create the value field for each filter in the filter-widget
-     * @property {Object} filter-widget.Filter.props.valueField valueField
-     * @parent filter-widget.Filter.props
-     */
-    valueField: {
-        serialize: false
-    }
-});
-
-/**
- * @constructor filter-widget.FilterList FilterList
- * @parent filter-widget
- *
- * @description Creates a new filter list
- * @signature `new FilterList([filters])`
- */
-export const FilterList = DefineList.extend('FilterList', {
-    '#': Filter
-});
 
 /**
  * @property filter-widget.FilterOptions FilterOptions
@@ -129,3 +66,127 @@ export const FilterOptions = [{
         }
     }
 }];
+
+/**
+ * @constructor filter-widget.Filter Filter
+ * @parent filter-widget
+ * @group filter-widget.Filter.props Properties
+ *
+ * @description Creates a new filter object
+ * @signature `new Filter(properties)`
+ */
+export const Filter = DefineMap.extend('Filter', {
+    /**
+     * A value to filter on. Can be any primitive type
+     * @property {*} filter-widget.Filter.props.value value
+     * @parent filter-widget.Filter.props
+     */
+    value: {
+        type: '*'
+    },
+    /**
+     * The name of the field to filter on
+     * @property {String} filter-widget.Filter.props.name name
+     * @parent filter-widget.Filter.props
+     */
+    name: {
+        type: 'string',
+        get (name) {
+            return this.field ? this.field.name : name;
+        },
+        serialize (name) {
+            return name;
+        }
+    },
+    /**
+     * The operator to filter with. The default is `like`.
+     * @property {String} Ffilter-widget.Filter.props.operator operator
+     * @parent filter-widget.Filter.props
+     */
+    operator: {
+        type: 'string',
+        value: 'like'
+    },
+    /**
+     * A field object that defines the available operator options and properties.
+     * This is used to create the dropdown choice for each filter in the filter-widget
+     * @property {Object} filter-widget.Filter.props.operatorField operatorField
+     * @parent filter-widget.Filter.props
+     */
+    operatorField: {
+        serialize: false,
+        get () {
+            const field = this.field;
+            return new Field({
+                name: 'operator',
+                alias: 'is',
+                inline: true,
+                placeholder: 'Choose an operator',
+                fieldType: 'select',
+                options: field ? FilterOptions.filter((filter) => {
+                    return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
+                }) : FilterOptions
+            });
+        }
+    },
+    /**
+     * A field object that defines the value field properties.
+     * This is used to create the value field for each filter in the filter-widget
+     * @property {util/field.Field} filter-widget.Filter.props.valueField valueField
+     * @parent filter-widget.Filter.props
+     */
+    valueField: {
+        serialize: false,
+        get () {
+            const fieldProps = this.field ? assign(this.field.serialize(), {inline: true}) : {
+                inline: true,
+                name: this.name,
+                alias: 'Value',
+                fieldType: 'text',
+                placeholder: 'Enter a filter value'
+            };
+            return new Field(fieldProps);
+        }
+    },
+    /**
+     * creates a dummmy form object for use with the field template
+     * @property {Object}  filter-widget.Filter.props.formObject formObject
+     */
+    formObject: {
+        serialize: false,
+        get () {
+            const obj = {};
+            obj[this.name] = this.value;
+            return obj;
+        }
+    },
+    /**
+     * The field object used to initialize this filter
+     * @property {util/field.Field}  filter-widget.Filter.props.field field
+     */
+    field: {
+        Type: Field,
+        serialize: false
+    },
+    /**
+     * a setter for the value field for use with the field template
+     * @param {util/field.Field} field the field object
+     * @param {domElement} dom the input element
+     * @param {Object} scope the view model scope
+     * @param {*} val the value set on the form
+     */
+    setField (field, dom, scope, val) {
+        this.value = val;
+    }
+});
+
+/**
+ * @constructor filter-widget.FilterList FilterList
+ * @parent filter-widget
+ *
+ * @description Creates a new filter list
+ * @signature `new FilterList([filters])`
+ */
+export const FilterList = DefineList.extend('FilterList', {
+    '#': Filter
+});

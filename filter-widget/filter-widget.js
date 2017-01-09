@@ -1,8 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import deepAssign from 'can-util/js/deep-assign/deep-assign';
 import {makeSentenceCase} from '../../util/string';
-import {FieldList, parseFieldArray} from '../../util/field';
+import {FieldList} from '../../util/field';
 
 import template from './template.stache!';
 import './filter-widget.less!';
@@ -11,7 +10,7 @@ import '../form-widget/';
 import '../form-widget/field-components/text-field/';
 import '../form-widget/field-components/select-field/';
 
-import {Filter, FilterList, FilterOptions} from './Filter';
+import {Filter, FilterList} from './Filter';
 
 /**
  * @constructor filter-widget.ViewModel ViewModel
@@ -73,31 +72,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
         Value: FilterList
     },
     /**
-     * The buttonObjects to display in the list table. This widget only uses
-     * a "Remove Filter" button
-     * @property {Array<buttonObject>} filter-widget.ViewModel.buttons
-     * @parent filter-widget.ViewModel.props
+     * The field properties for the field name dropdown
+     * @property {Object} filter-widget.ViewModel.nameField nameField
+     * @parent filter-widget.ViewModel
      */
-    buttons: {
-        value: [{
-            iconClass: 'fa fa-times',
-            eventName: 'delete',
-            title: 'Remove Filter'
-        }]
-    },
-    /**
-     * The fields to render in the form. These fields are:
-     * * name - the field name, which can be either a text field or select dropdown depending on the configuration
-     * * operator - the operator to filter the field by (like, eq, etc)
-     * * val - the value to filter the field by
-     * @property {Array.<util/field.Field>} filter-widget.ViewModel.fields
-     * @parent filter-widget.ViewModel.props
-     */
-    formFields: {
-        get () {
-            return parseFieldArray([this.nameField, this.operatorField, this.valueField]);
-        }
-    },
     nameField: {
         get () {
             return this.fieldOptions.length > 1 ? {
@@ -111,94 +89,6 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                 alias: 'Field Name',
                 placeholder: 'Enter fieldname'
             };
-        }
-    },
-    /**
-     * The operator field properties
-     * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
-     * @parent filter-widget.ViewModel.props
-     */
-    operatorField: {
-        Type: DefineMap,
-        get () {
-            return {
-                name: 'operator',
-                alias: 'is',
-                placeholder: 'Choose an operator',
-                fieldType: 'select',
-                formatter (op) {
-                    return FilterOptions.filter((f) => {
-                        return f.value === op;
-                    })[0].label;
-                },
-                options: this.filterOptions
-            };
-        }
-    },
-    /**
-     * A custom field type for the value field to aid in entering a value to filter on
-     * For example: a date type field can be specified for the value to aid
-     * the user in picking a date.
-     * @property {spectre.types.util/field.Field} filter-widget.ViewModel.valueField
-     * @parent filter-widget.ViewModel.props
-     */
-    valueField: {
-        get () {
-            const defaultField = {
-                name: 'value',
-                alias: 'Value',
-                fieldType: 'text',
-                placeholder: 'Enter a filter value'
-            };
-            // return FilterOptions.filter((f) => {
-            //     return f.value === this.formObject.operator;
-            // })[0].valueField ||
-            return defaultField;
-        }
-    },
-    /**
-     * A getter for the filter operators that changes based on the selected field and
-     * the selected field's type. The value may be filtered based on
-     * 1. If there is a `type` property on the field that matches the name of the dropdown
-     * 2. 2f there is a defined type in the define property for the current filter field dropdown
-     * If a type is found using the rules above, the returned value will be filtered to only include
-     * operators for the given type.
-     * @property {Array<spectre.types.SelectOptionProperty>} filter-widget.ViewModel.filterOptions
-     * @parent filter-widget.ViewModel.props
-     */
-    filterOptions: {
-        get () {
-
-            //if we have fields search them for a type matching the name
-            //of the selected field name
-            if (this.fields && this.fields.length) {
-                const field = this.fields.filter((f) => {
-                    return f.name === this.fieldValue;
-                })[0];
-                if (field && field.type) {
-                    return FilterOptions.filter((f) => {
-                        return !f.types || f.types.indexOf(field.type) !== -1;
-                    });
-                }
-            }
-
-            //otherwise search the ObjectTemplate for a field type
-            //if it doesn't exist or the property/type doesn't exist then
-            //return the whole array
-            if (!this.ObjecTemplate) {
-                return FilterOptions;
-            }
-            const define = (this.ObjectTemplate._define || this.ObjectTemplate.prototype._define).definitions;
-            if (!define) {
-                return FilterOptions;
-            }
-            if (!define[name] || !define[name].type) {
-                return FilterOptions;
-            }
-            const type = define[name].type;
-            return FilterOptions.filter((f) => {
-                return f.types.indexOf(type) !== -1;
-            });
         }
     },
     /**
@@ -230,6 +120,11 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
             })) : [];
         }
     },
+    /**
+     * The selected field dropdown value
+     * @property {String} filter-widget.ViewModel.fieldValue fieldValue
+     * @parent filter-widget.ViewModel
+     */
     fieldValue: 'string',
     /**
      * Removes a filter from the list of filters
@@ -272,10 +167,15 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
         }
 
         // make a new filter object with the fields used in the form
+        let fieldProp;
+        if (this.fields.length) {
+            fieldProp = this.fields.filter((field) => {
+                return field.name === name;
+            })[0];
+        }
         const filterObj = new Filter({
-            name: name,
-            operatorField: deepAssign({}, this.operatorField),
-            valueField: deepAssign({}, this.valueField)
+            field: fieldProp,
+            name: name
         });
 
         // reset the dropdown

@@ -697,13 +697,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
 Component.extend({
     tag: 'data-admin',
-    ViewModel: ViewModel,
+    viewModel: ViewModel,
     view: template,
     events: {
-        '{ViewModel.parameters} filters' () {
+        '{viewModel.parameters.filters} length' () {
             this.viewModel.parameters.page = 0;
         },
-        '{ViewModel.parameters} perPage' () {
+        '{viewModel.parameters} perPage' () {
             this.viewModel.parameters.page = 0;
         }
     }

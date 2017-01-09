@@ -1,5 +1,5 @@
 <div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
-    {{#if inline}}
+    {{#if properties.inline}}
         <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
             {{#each properties.options}}
                 <option value="{{value}}">{{label}}</option>

@@ -1,3 +1,16 @@
+0.19.1 / 2017-01-10
+===================
+
+  * 0.19.1
+  * FIX: make field objects extensible
+  * DOCS: git-add to ensure changes are published
+  * FIX: lint errors with demo
+  * fix demo path
+  * move demos into demo folder
+  * updates deps
+  * update docs script
+  * changelog
+
 0.19.0 / 2017-01-09
 ===================
 
@@ -164,18 +177,3 @@
 
   * 0.15.6
   * 0.15.5
-  * add missin jquery package
-  * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
-  * Merge pull request [#1](https://github.com/roemhildtg/spectre-canjs/issues/1) from roemhildtg/greenkeeper-update-all
-    Update all dependencies 🌴
-  * chore(package): update dependencies
-    https://greenkeeper.io/
-  * Merge remote-tracking branch 'origin'
-  * add steal-qunit dependency
-
-0.15.5 / 2016-12-16
-===================
-
-  * 0.15.5
-  * fix build problems with import syntax
-  * 0.15.4

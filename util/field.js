@@ -43,6 +43,8 @@ export const RESERVED = [
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
+    seal: false
+}, {
     /**
      * @prototype
      */

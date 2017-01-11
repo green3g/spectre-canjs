@@ -1,5 +1,5 @@
 //import our form component
-import 'form-widget/';
+import 'form-widget/form-widget';
 
 //import our fields that we're using
 import 'form-widget/field-components/text-field/';
@@ -111,11 +111,9 @@ const Template = DefineMap.extend({
 });
 
 const render = stache(document.getElementById('demo-html').innerHTML);
-
-const frag = render({
+const vm = new DefineMap({
     onSubmit: function() {
         alert('Form submitted! See the console for details');
-        console.log(arguments);
     },
     formObject: new Template(),
     fields: mapToFields(Template),
@@ -123,5 +121,6 @@ const frag = render({
         return JSON.stringify(this.formObject.serialize());
     }
 });
+const frag = render(vm);
 
 document.body.appendChild(frag);

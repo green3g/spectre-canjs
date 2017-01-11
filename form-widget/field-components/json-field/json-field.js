@@ -19,7 +19,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
    */
   /**
    * Form field properties that define this fields behavior
-   * @property {Object} json-field.ViewModel.props.properties properties
+   * @property {json-field.JSONFieldProperties} json-field.ViewModel.props.properties properties
    * @parent json-field.ViewModel.props
    */
     properties: DefineMap,
@@ -38,7 +38,10 @@ export const ViewModel = DefineMap.extend('JSONField', {
      */
     errors: '*',
     /**
-     * The current object being edited in this field's json form
+     * The current object being edited in this field's json form, this
+     * is created automatically from the `ObjectTemplate` property.
+     * It is initialized with default values by using `JSON.parse` on the `value`
+     * property
      * @property {Object} json-field.ViewModel.props.jsonFormObject jsonFormObject
      * @parent json-field.ViewModel.props
      */
@@ -53,7 +56,9 @@ export const ViewModel = DefineMap.extend('JSONField', {
         }
     },
     /**
-     * The field properties to set up the form fields functionality
+     * The field properties to set up the form fields functionality, this is
+     * set up automatically from the `fields` property or the `jsonFormObject`
+     * if `fields` is not provided.
      * @property {Array<util/field.Field>} json-field.ViewModel.props.formFields formFields
      * @parent json-field.ViewModel.props
      */
@@ -62,7 +67,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
             if (this.properties.fields && this.properties.fields.length) {
                 return parseFieldArray(this.properties.fields);
             }
-            return mapToFields(this.jsonFormObject);
+            return mapToFields(this.properties.ObjectTemplate);
         }
     },
     /**

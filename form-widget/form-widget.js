@@ -78,7 +78,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      */
     dirtyObject: {
         value: function () {
-            return {}; 
+            return {};
         },
         type: '*'
     },
@@ -223,10 +223,8 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {Object | Number | String} value  The value that was passed from the field component
      */
     setField (field, domElement, event, value) {
-        console.log(field.name, value);
         // update our dirty form field
         this.dirtyObject[field.name] = value;
-
         console.log(this.dirtyObject);
 
         // check for valid field value and don't update if it's not

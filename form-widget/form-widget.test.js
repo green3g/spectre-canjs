@@ -63,7 +63,7 @@ test('setField(field, domElement, event, value)', (assert) => {
     vm.formObject = object;
 
     vm.setField({name: 'test'}, null, null, 'dummy');
-    assert.deepEqual(vm.formObject.serialize(), expected, 'setting a field value should change the formObject');
+    assert.deepEqual(vm.dirtyObject, expected, 'setting a field value should change the dirtyObject');
 });
 
 test('cancelForm()', (assert) => {
@@ -74,13 +74,4 @@ test('cancelForm()', (assert) => {
         done();
     });
     vm.cancelForm();
-});
-
-test('getFieldValue(field)', (assert) => {
-    const field = new Field({name: 'label'});
-    vm.formObject = {
-        label: 'test'
-    };
-
-    assert.equal(vm.getFieldValue(field), 'test', 'field value should be equal to the property value');
 });

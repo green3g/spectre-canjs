@@ -58,7 +58,11 @@ test('saveField()', (assert) => {
         field1: 'hey',
         field2: 'there'
     });
-    vm.saveField(null, null, null, obj);
-
-    assert.deepEqual(JSON.parse(vm.value), obj.serialize(), 'field value should be set');
+    const expected = {
+        field1: 'updated',
+        field2: 'there'
+    };
+    
+    vm.saveField(null, null, null, {current: obj, name: 'field1', value: 'updated'});
+    assert.deepEqual(JSON.parse(vm.value), expected, 'field value should be set and updated correctly');
 });

@@ -38,7 +38,7 @@
     "steal-less": "^1.0.2",
     "steal-qunit": "^1.0.0",
     "steal-stache": "^3.0.5",
-    "steal-tools": "^1.0.1",
+    "steal-tools": "^1.0.2",
     "testee": "^0.3.0"
   },
   "dependencies": {

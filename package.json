@@ -27,7 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.0.0",
-    "can-connect": "^1.1.1",
+    "can-connect": "^1.2.0",
     "can-fixture": "^1.0.12",
     "can-set": "^1.0.3",
     "changelog": "^1.0.7",
@@ -37,14 +37,14 @@
     "steal-css": "^1.0.0",
     "steal-less": "^1.0.2",
     "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.4",
+    "steal-stache": "^3.0.5",
     "steal-tools": "^1.0.1",
     "testee": "^0.3.0"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
     "can-component": "^3.0.5",
-    "can-define": "^1.0.14",
+    "can-define": "^1.0.15",
     "can-event": "^3.0.2",
     "can-route": "^3.0.6",
     "can-stache": "^3.0.17",

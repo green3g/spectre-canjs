@@ -59,7 +59,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
      */
     formFields: {
         get () {
-            if (this.properties.fields) {
+            if (this.properties.fields && this.properties.fields.length) {
                 return parseFieldArray(this.properties.fields);
             }
             return mapToFields(this.jsonFormObject);

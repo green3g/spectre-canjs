@@ -199,7 +199,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     /**
      * Sets the formObject value when a field changes. This will allow for future
      * functionality where the form is much more responsive to values changing, like
-     * cascading dropdowns.
+     * cascading dropdowns. Dispatches the `fieldchange` event when a field changes
      * @function setField
      * @signature
      * @param  {util/field.Field} field  The field object properties
@@ -217,7 +217,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
 
         // update and dispatch field change event
         this.formObject[field.name] = value;
-        this.dispatch('field-change', [this.formObject]);
+        this.dispatch('fieldchange', [this.formObject]);
     },
     /**
      * Validates a field with a value if the field has a validate property

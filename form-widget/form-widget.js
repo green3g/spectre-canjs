@@ -68,10 +68,20 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * An object representing a can.Map or similar object. This object should have
      * a `save` method like a `can.Model` or `can-connect.superMap`. This object is
      * updated and its `save` method is called when the form is submitted.
-     * @property {can.Map} form-widget.ViewModel.props.formObject
+     * @property {DefineMap} form-widget.ViewModel.props.formObject
      * @parent form-widget.ViewModel.props
      */
     formObject: DefineMap,
+    /**
+     * An object set with values that have changed since the form was initialized
+     * @type {Object}
+     */
+    dirtyObject: {
+        value: function () {
+            return {}; 
+        },
+        type: '*'
+    },
     /**
      * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the api docs
      * @property {Array<String|util/field.Field>} form-widget.ViewModel.props.fields
@@ -129,16 +139,19 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     isValid: {
         get () {
             let isValid = true;
-            this.fields.forEach((f) => {
-                if (this.validationErrors[f.name]) {
+            for (let i = 0; i < this.fields.length; i++) {
+                const field = this.fields[i];
+                const name = field.name;
+                const currentValue = this.dirtyObject[name] || this.formObject[name];
+                if (this.validationErrors[name]) {
                     isValid = false;
                 } else {
-                    const error = this.validationErrors[f.name] = this.getValidationError(f, this.formObject[f.name]);
+                    const error = this.validationErrors[name] = this.getValidationError(field, currentValue);
                     if (error) {
                         isValid = false;
                     }
                 }
-            });
+            }
             return isValid;
         }
     },
@@ -193,6 +206,8 @@ export const ViewModel = DefineMap.extend('FormWidget', {
             this.isSaving = true;
         }
         const formObject = this.formObject;
+
+        formObject.set(this.dirtyObject);
         this.dispatch('submit', [formObject]);
         return false;
     },
@@ -208,16 +223,28 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {Object | Number | String} value  The value that was passed from the field component
      */
     setField (field, domElement, event, value) {
-        const error = this.validationErrors[field.name] = this.getValidationError(field, value);
+        console.log(field.name, value);
+        // update our dirty form field
+        this.dirtyObject[field.name] = value;
+
+        console.log(this.dirtyObject);
 
         // check for valid field value and don't update if it's not
+        const error = this.validationErrors[field.name] = this.getValidationError(field, value);
         if (error) {
             return;
         }
 
         // update and dispatch field change event
-        this.formObject[field.name] = value;
-        this.dispatch('fieldchange', [this.formObject]);
+        // if the value is different
+        if (this.formObject[field.name] !== value) {
+            this.dispatch('fieldchange', [{
+                name: field.name,
+                value: value,
+                dirty: this.dirtyFields,
+                current: this.formObject
+            }]);
+        }
     },
     /**
      * Validates a field with a value if the field has a validate property
@@ -227,7 +254,11 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @return {String} The validation error or null
      */
     getValidationError (field, value) {
-        return field.validate ? field.validate(value, this.formObject) : null;
+        return field.validate ? field.validate({
+            value: value,
+            dirty: this.dirtyObject,
+            current: this.formObject
+        }) : null;
     },
     /**
      * @typedef {can.Event} form-widget.events.formCancel cancel
@@ -241,16 +272,6 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      */
     cancelForm () {
         this.dispatch('cancel');
-    },
-    /**
-     * Fetches a value from the formObject
-     * @function getFieldValue
-     * @signature
-     * @param  {String} field The name of the field to return
-     * @return {*} The value of the object's property
-     */
-    getFieldValue (field) {
-        return this.formObject[field.name];
     }
 });
 

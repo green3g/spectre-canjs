@@ -7,7 +7,7 @@ import 'form-widget/field-components/select-field/';
 import 'form-widget/field-components/file-field/';
 import 'form-widget/field-components/json-field/';
 import 'form-widget/field-components/date-field/';
-import {mapToFields} from 'util/field';
+import { mapToFields } from 'util/field';
 
 //import canjs stuff
 import fixture from 'can-fixture';
@@ -39,8 +39,9 @@ const Template = DefineMap.extend({
     field1: {
         value: 'test-value',
         name: 'field1',
-        validate(val) {
-            return val.length < 50 ? 'This field must contain at least 50 characters' : false;
+        validate(props) {
+            console.log(props);
+            return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },
     field2: {
@@ -50,8 +51,8 @@ const Template = DefineMap.extend({
         type: 'text',
         textarea: true,
         placeholder: 'Enter the text: "hello"',
-        validate(val) {
-            if (val !== 'hello') {
+        validate(props) {
+            if (props.value !== 'hello') {
                 return 'This field must contain the text, "hello"';
             }
             return false;
@@ -74,10 +75,7 @@ const Template = DefineMap.extend({
         name: 'field4',
         alias: 'A date field',
         fieldType: 'date',
-        value() {
-            var date = new Date('2010-10-11T00:00:00+05:30');
-            return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-        }
+        value: new Date('2010-10-11')
     },
     field5: {
         name: 'field5',
@@ -105,15 +103,25 @@ const Template = DefineMap.extend({
                     label: 'Option 2'
                 }]
             },
-            json_field_3: 'number'
+            json_field_3: {
+                type: 'number',
+                validate(props) {
+                    return props.value < 10 ? 'Please enter a value greater than 10' : undefined;
+                }
+            }
         })
     }
 });
 
-const render = stache(document.getElementById('demo-html').innerHTML);
+const render = stache.from('demo-html');
+
 const vm = new DefineMap({
-    onSubmit: function() {
+    onSubmit() {
         alert('Form submitted! See the console for details');
+        console.log(this.formObject.serialize())
+    },
+    onCancel(){
+      console.log('Form canceled!');
     },
     formObject: new Template(),
     fields: mapToFields(Template),
@@ -121,6 +129,7 @@ const vm = new DefineMap({
         return JSON.stringify(this.formObject.serialize());
     }
 });
+
 const frag = render(vm);
 
 document.body.appendChild(frag);

@@ -4,7 +4,8 @@ import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import template from './json-field.stache!';
 import {mapToFields, parseFieldArray} from '../../../../util/field';
-import assign from 'object-assign';
+import assign from 'can-util/js/assign/assign';
+import dev from 'can-util/js/dev/dev';
 
 /**
  * @constructor form-widget/field-components/json-field.ViewModel ViewModel
@@ -46,13 +47,19 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @parent json-field.ViewModel.props
      */
     jsonFormObject: {
-        get: function () {
+        get: function (obj) {
             const Template = this.properties.ObjectTemplate;
-            const obj = this.value ? JSON.parse(this.value) : {};
-            if (template) {
-                return new Template(obj);
+            try {
+                obj = this.value ? JSON.parse(this.value) : {};
+            } catch (e) {
+                dev.warn(e);
             }
-            return null;
+            if (Template) {
+                return new Template(obj);
+            } else {
+                dev.warn('json-field needs an ObjectTemplate defined in its field properties');
+            }
+            return obj;
         }
     },
     /**
@@ -78,10 +85,11 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @param  {Object} scope The viewmodel of this object
      * @param  {DomElement} dom   The dom element that changed
      * @param  {Event} event The dom event on the input element
-     * @param  {Object} obj   The form object
+     * @param  {Object} props   The change event properties
      */
-    saveField (scope, dom, event, obj) {
-        const json = JSON.stringify(obj.serialize());
+    saveField (scope, dom, event, props) {
+        props.current[props.name] = props.value;
+        const json = JSON.stringify(props.current.serialize());
         this.value = json;
         this.dispatch('change', [json]);
     }

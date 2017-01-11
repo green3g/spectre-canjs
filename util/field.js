@@ -13,11 +13,11 @@ import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
 const TEMPLATES = {
-    text: '<text-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
-    select: '<select-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
-    file: '<file-field {properties}="." (change)="setField" value="{{getFieldValue(.)}}" {errors}="validationErrors" />',
-    json: '<json-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />',
-    date: '<date-field {properties}="." (change)="setField" {value}="getFieldValue(.)" {errors}="validationErrors" />'
+    text: '<text-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
+    select: '<select-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
+    file: '<file-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
+    json: '<json-field {properties}="." (change)="setField" {value}="formObject[name]" {errors}="validationErrors" />',
+    date: '<date-field {properties}="." (change)="setField" {value}="formObject[name]" {errors}="validationErrors" />'
 };
 
 //precompile templates

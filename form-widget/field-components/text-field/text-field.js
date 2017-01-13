@@ -43,7 +43,8 @@ Component.extend({
     ViewModel: ViewModel,
     events: {
         '{viewModel} value' (viewModel, event, newValue) {
-            viewModel.dispatch('change', [newValue]);
+            debugger;
+            viewModel.dispatch('fieldchange', [newValue]);
         }
     }
 });

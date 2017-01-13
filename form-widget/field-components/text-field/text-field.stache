@@ -1,16 +1,16 @@
 <div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
     {{#if properties.inline}}
         {{#if properties.textarea}}
-            <textarea ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" id="{{properties.name}}" class="form-control form-input" name="{{properties.name}}" {($value)}="value"></textarea>
+            <textarea ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" class="form-control form-input" name="{{properties.name}}" {($value)}="value"></textarea>
         {{else}}
-            <input ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" type="{{#if properties.textType}}{{properties.textType}}{{else}}text{{/if}}" class="form-control form-input" id="{{name}}" name="{{name}}" {($value)}="value" />
+            <input ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" type="{{#if properties.textType}}{{properties.textType}}{{else}}text{{/if}}" class="form-control form-input" name="{{properties.name}}" {($value)}="value" />
         {{/if}}
     {{else}}
-        <label class="form-label" for="{{name}}">{{properties.alias}}</label>
+        <label class="form-label" for="{{properties.name}}">{{properties.alias}}</label>
         {{#if properties.textarea}}
-            <textarea ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" id="{{properties.name}}" class="form-control form-input" name="{{name}}" {($value)}="value"></textarea>
+            <textarea ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}"  class="form-control form-input" name="{{properties.name}}" {($value)}="value"></textarea>
         {{else}}
-            <input ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" type="{{#if properties.textType}}{{properties.textType}}{{else}}text{{/if}}" class="form-control form-input " id="{{name}}" name="{{name}}" {($value)}="value"
+            <input ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" type="{{#if properties.textType}}{{properties.textType}}{{else}}text{{/if}}" class="form-control form-input" name="{{properties.name}}" {($value)}="value"
             />
         {{/if}}
     {{/if}}

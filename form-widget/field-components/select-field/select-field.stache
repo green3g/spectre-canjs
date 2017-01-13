@@ -1,6 +1,6 @@
 <div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
     {{#if properties.inline}}
-        <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
+        <select ($change)="onChange(%element.value)" {($value)}="value" class="form-select form-control" name="{{properties.name}}">
             {{#each properties.options}}
                 <option value="{{value}}">{{label}}</option>
             {{/each}}
@@ -10,7 +10,7 @@
             <label class="form-label" for="{{properties.name}}">{{properties.alias}}</label>
         </div>
         <div class="col-8">
-            <select ($change)="onChange(%element.value)" {($value)}="value" id="{{properties.name}}" class="form-select form-control" name="{{name}}">
+            <select ($change)="onChange(%element.value)" {($value)}="value" class="form-select form-control" name="{{properties.name}}">
                 {{#each properties.options}}
                     <option value="{{value}}">{{label}}</option>
                 {{/each}}

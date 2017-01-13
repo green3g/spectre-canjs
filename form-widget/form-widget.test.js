@@ -4,7 +4,6 @@ import {ViewModel} from './form-widget';
 import q from 'steal-qunit';
 
 import {Connection} from 'test/data/connection';
-import {Field} from '../../util/field';
 
 let vm;
 

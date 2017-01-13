@@ -1,13 +1,13 @@
 //import our form component
-import 'form-widget/form-widget';
+import 'spectre-canjs/form-widget/form-widget';
 
 //import our fields that we're using
-import 'form-widget/field-components/text-field/';
-import 'form-widget/field-components/select-field/';
-import 'form-widget/field-components/file-field/';
-import 'form-widget/field-components/json-field/';
-import 'form-widget/field-components/date-field/';
-import { mapToFields } from 'util/field';
+import 'spectre-canjs/form-widget/field-components/text-field/';
+import 'spectre-canjs/form-widget/field-components/select-field/';
+import 'spectre-canjs/form-widget/field-components/file-field/';
+import 'spectre-canjs/form-widget/field-components/json-field/';
+import 'spectre-canjs/form-widget/field-components/date-field/';
+import { mapToFields } from 'spectre-canjs/util/field';
 
 //import canjs stuff
 import fixture from 'can-fixture';
@@ -116,9 +116,12 @@ const Template = DefineMap.extend({
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
+    onChange(){
+      console.log(arguments);
+    },
     onSubmit() {
         alert('Form submitted! See the console for details');
-        console.log(this.formObject.serialize())
+        console.log('submitted data: ', this.formObject.serialize())
     },
     onCancel(){
       console.log('Form canceled!');

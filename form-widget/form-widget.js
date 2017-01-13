@@ -133,7 +133,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * Whether or not this form is valid and can be submitted. If this is
      * false, the form will not emit the submit event when it is submitted.
      * Instead, it will emit a `submit-fail` event
-     * @property {Boolean} form-widget.ViewModel.props.isValid
+     * @property {Boolean} form-widget.ViewModel.props.
      * @parent form-widget.ViewModel.props
      */
     isValid: {
@@ -225,7 +225,6 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     setField (field, domElement, event, value) {
         // update our dirty form field
         this.dirtyObject[field.name] = value;
-        console.log(this.dirtyObject);
 
         // check for valid field value and don't update if it's not
         const error = this.validationErrors[field.name] = this.getValidationError(field, value);

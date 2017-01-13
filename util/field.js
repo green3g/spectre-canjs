@@ -13,11 +13,11 @@ import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
 const TEMPLATES = {
-    text: '<text-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
-    select: '<select-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
-    file: '<file-field {properties}="." (change)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />',
-    json: '<json-field {properties}="." (change)="setField" {value}="formObject[name]" {errors}="validationErrors" />',
-    date: '<date-field {properties}="." (change)="setField" {value}="formObject[name]" {errors}="validationErrors" />'
+    text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
+    select: '<select-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
+    file: '<file-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
+    json: '<json-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
+    date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />' // date object
 };
 
 //precompile templates
@@ -97,8 +97,12 @@ export const Field = DefineMap.extend('Field', {
      * @parent util/field.Field.props
      */
     formTemplate: {
+        type: '*',
         get (template) {
             if (template) {
+                if (typeof template === 'string') {
+                    template = stache(template);
+                }
                 return template;
             }
             const fType = this.fieldType;
@@ -156,6 +160,18 @@ export const Field = DefineMap.extend('Field', {
     validate: {
         value: null
     },
+    /**
+     * A boolean flag to display form field inline with others and hide labels
+     * @property {Boolean} util/field.Field.props.inline inline
+     * @parent util/field.Field.props
+     */
+    inline: 'boolean',
+    /**
+     * Text to display when the field is empty (like a textbox). Doesn't apply to select fields.
+     * @property {String} util/field.Field.props.inline inline
+     * @parent util/field.Field.props
+     */
+    placeholder: 'string',
     /**
      * Returns the formatted value of this field, if a formatter is provided,
      * otherwise it simply returns the property

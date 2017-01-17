@@ -14,9 +14,7 @@ stealTools.build({
         'spectre-canjs/nav-container/demo/nav',
         'spectre-canjs/paginate-widget/demo/paginate',
         'spectre-canjs/property-table/demo/propertyTable',
-        'spectre-canjs/toast-container/demo/toast',
-        'spectre-canjs/form-widget/form-widget',
-        'spectre-canjs/form-widget/field-components/text-field/text-field'
+        'spectre-canjs/toast-container/demo/toast'
     ]
 }, {
     removeDevelopmentCode: false,

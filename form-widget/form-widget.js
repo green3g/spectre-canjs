@@ -220,7 +220,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {util/field.Field} field  The field object properties
      * @param  {domElement} domElement The form element that dispatched the event
      * @param  {Event} event  The event object and type
-     * @param  {Object | Number | String} value  The value that was passed from the field component
+     * @param  {FieldChangeEventObject} props  The value that was passed from the field component
      */
     setField (field, domElement, event, props) {
         const value = props.value;

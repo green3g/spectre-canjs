@@ -24,7 +24,7 @@ const Connection = SuperMap({
     idProp: 'id',
     Map: PostMap,
     List: PostList,
-    url: 'http://jsonplaceholder.typicode.com/posts',
+    url: 'https://jsonplaceholder.typicode.com/posts',
     name: 'post',
     metadata: {
         // total: data.length

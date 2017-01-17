@@ -1,3 +1,14 @@
+0.21.0 / 2017-01-17
+===================
+
+  * 0.21.0
+  * FIX: set default value of properties to DefineMap to solve issues from d931a88b3c9a2bf1c43d6f671ccba953a9642c3e
+  * DOCS: fix documentation onFieldChangeEventObject
+  * CHG: field `fieldchange` events conform to the same type of event that the form widget dispatches
+  * FIX: update event name to fieldchange
+  * DOCS: add missing event and update validation docs
+  * changelog
+
 0.20.0 / 2017-01-17
 ===================
 
@@ -148,18 +159,3 @@
   * minor template tweaks
   * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
   * update postversion  script
-  * changelog
-
-0.15.12 / 2016-12-21
-====================
-
-  * 0.15.12
-  * updating docs
-  * convert dropdowns in templates to use dropdown-menu components
-
-0.15.11 / 2016-12-20
-====================
-
-  * 0.15.11
-  * fix missing jsdoc
-  * dropdown-menu: pass event to viewmodel to prevent default page change

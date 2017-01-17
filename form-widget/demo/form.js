@@ -1,15 +1,10 @@
-//import our form component
 import 'spectre-canjs/form-widget/form-widget';
-
-//import our fields that we're using
 import 'spectre-canjs/form-widget/field-components/text-field/';
 import 'spectre-canjs/form-widget/field-components/select-field/';
 import 'spectre-canjs/form-widget/field-components/file-field/';
 import 'spectre-canjs/form-widget/field-components/json-field/';
 import 'spectre-canjs/form-widget/field-components/date-field/';
 import { mapToFields } from 'spectre-canjs/util/field';
-
-//import canjs stuff
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';

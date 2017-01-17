@@ -2,7 +2,6 @@ import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import {makeSentenceCase} from '../../util/string';
 import {FieldList} from '../../util/field';
-
 import template from './template.stache!';
 import './filter-widget.less!';
 import '../list-table/';

@@ -15,7 +15,6 @@ stealTools.build({
         'spectre-canjs/paginate-widget/demo/paginate',
         'spectre-canjs/property-table/demo/propertyTable',
         'spectre-canjs/toast-container/demo/toast',
-        'can-fixture',
         'spectre-canjs/form-widget/form-widget',
         'spectre-canjs/form-widget/field-components/text-field/text-field'
     ]

@@ -1,5 +1,4 @@
-import 'nav-container/';
-
+import 'spectre-canjs/nav-container/nav-container';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import ajax from 'can-util/dom/ajax/ajax';

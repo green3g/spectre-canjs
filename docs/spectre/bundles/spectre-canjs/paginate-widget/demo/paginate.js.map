@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../../paginate-widget/demo/paginate.js"],"names":["frag","_canStache2","document","getElementById","innerHTML","_map2","page1","page2","body","appendChild"],"mappings":";kPAIIA,EAAOC,aAAOC,SAASC,eAAe,aAAaC,WAAW,GAAAC,eAC9DC,MAAO,EACPC,MAAO,IAGXL,UAASM,KAAKC,YAAYT","file":"paginate.js"}

@@ -1,0 +1,3 @@
+/*spectre-canjs@0.20.0#paginate-widget/demo/paginate*/
+define("spectre-canjs@0.20.0#paginate-widget/demo/paginate",["can-define/map/map","can-stache","spectre-canjs/paginate-widget/paginate-widget"],function(e,t){"use strict";function a(e){return e&&e.__esModule?e:{"default":e}}var n=a(e),d=a(t),i=d["default"](document.getElementById("demo-html").innerHTML)(new n["default"]({page1:0,page2:0}));document.body.appendChild(i)});
+//# sourceMappingURL=paginate.js.map

@@ -1,0 +1,11 @@
+/*spectre-canjs@0.20.0#toast-container/toast-item.less!steal-less@1.1.0#less*/
+toast-item .toast.toast-warning {
+  background: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+toast-item .toast.toast-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}

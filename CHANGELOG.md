@@ -1,3 +1,24 @@
+0.20.0 / 2017-01-17
+===================
+
+  * TEST: fix failing form tests
+  * EHN: form widget now uses a "dirty" object to track changes
+    - rather than writing to the original
+    - events are modified to accommodate
+    - validation functions now accept a single object with several new props
+  * BUILD: make sure each module is listed in index for build
+  * ENH: update steal-tools
+  * ENH: use new key binding syntax on field templates
+  * move docs bundles to docs folder
+  * Updates dependencies
+  * DOCS: move doc bundle to script
+  * FIX: json-field - generate fields from ObjectTemplate
+  * FIX: form-widget - eliminate the use of dashes in event name field-change
+    - event dispatched is now `fieldchange`
+    - JSON field updated to use `fieldchange` event
+    - JSON field added to demo
+  * changelog
+
 0.19.1 / 2017-01-10
 ===================
 
@@ -148,32 +169,3 @@
   * add pre/postversion scripts
   * enhancement: reset page to 'list' and refresh after delete
   * fix: make form validation more robust
-
-0.15.9 / 2016-12-19
-===================
-
-  * 0.15.9
-  * fix: data-admin invalid error logging function
-  * Fix: filter-widget mismatched binding syntax
-
-0.15.8 / 2016-12-19
-===================
-
-  * 0.15.8
-  * 0.15.7
-  * fix: filter-widget - convert fields to type Field automatically
-  * Merge remote-tracking branch 'origin/master'
-    # Conflicts:
-    #    package.json
-
-0.15.7 / 2016-12-17
-===================
-
-  * 0.15.7
-  * remove uneeded package
-
-0.15.6 / 2016-12-17
-===================
-
-  * 0.15.6
-  * 0.15.5

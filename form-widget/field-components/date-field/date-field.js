@@ -157,7 +157,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @function onChange
      */
     onChange () {
-        this.dispatch('change', [this.value]);
+        this.dispatch('fieldchange', [this.value]);
     },
     /**
      * Checks to see if the date is valid

@@ -11,7 +11,7 @@ import assign from 'can-util/js/assign/assign';
  * @description A `<text-field />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('TextField', {
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     value: {
         type: 'string',
         value: ''
@@ -43,7 +43,10 @@ Component.extend({
     ViewModel: ViewModel,
     events: {
         '{viewModel} value' (viewModel, event, newValue) {
-            viewModel.dispatch('fieldchange', [newValue]);
+            viewModel.dispatch('fieldchange', [{
+                value: newValue,
+                name: this.viewModel.properties.name
+            }]);
         }
     }
 });

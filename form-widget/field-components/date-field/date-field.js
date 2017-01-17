@@ -26,7 +26,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @property {Object} date-field.ViewModel.props.properties properties
      * @parent date-field.ViewModel.props
      */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * A list of validation errors
      * @property {Array<String>} date-field.ViewModel.props.errors errors
@@ -157,7 +157,10 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @function onChange
      */
     onChange () {
-        this.dispatch('fieldchange', [this.value]);
+        this.dispatch('fieldchange', [{
+            value: this.value,
+            name: this.properties.name
+        }]);
     },
     /**
      * Checks to see if the date is valid

@@ -23,7 +23,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
    * @property {json-field.JSONFieldProperties} json-field.ViewModel.props.properties properties
    * @parent json-field.ViewModel.props
    */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * The current value of the field. This is a json serialized value
      * paths.
@@ -91,7 +91,10 @@ export const ViewModel = DefineMap.extend('JSONField', {
         props.current[props.name] = props.value;
         const json = JSON.stringify(props.current.serialize());
         this.value = json;
-        this.dispatch('fieldchange', [json]);
+        this.dispatch('fieldchange', [{
+            value: json,
+            name: this.properties.name
+        }]);
     }
 });
 assign(ViewModel.prototype, CanEvent);

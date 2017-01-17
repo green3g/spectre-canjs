@@ -61,7 +61,7 @@ test('setField(field, domElement, event, value)', (assert) => {
     const expected = {test: 'dummy'};
     vm.formObject = object;
 
-    vm.setField({name: 'test'}, null, null, 'dummy');
+    vm.setField({name: 'test'}, null, null, {value: 'dummy'});
     assert.deepEqual(vm.dirtyObject, expected, 'setting a field value should change the dirtyObject');
 });
 

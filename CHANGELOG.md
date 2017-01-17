@@ -1,6 +1,31 @@
+0.21.0 / 2017-01-17
+===================
+
+  * 0.21.0
+  * FIX: set default value of properties to DefineMap to solve issues from d931a88b3c9a2bf1c43d6f671ccba953a9642c3e
+  * DOCS: fix documentation onFieldChangeEventObject
+  * CHG: field `fieldchange` events conform to the same type of event that the form widget dispatches
+  * FIX: update event name to fieldchange
+  * DOCS: add missing event and update validation docs
+  * changelog
+
 0.20.0 / 2017-01-17
 ===================
 
+  * 0.20.0
+  * CHG: fix failing date-field test
+  * DOCS: update demo to use `fields` property example
+  * FIX: update fieldchange event
+  * DOCS: remove extra bundles
+  * DOCS: fix import statements
+    - remove comments from import statements
+    - use package name in spectre imports
+  * minor cleanup
+  * DOCS: rename bundle script
+  * ENH: update all dependancies and docs build script
+  * FIX: attempt at changing event name to solve form event issues
+    - add missing properties and documentation
+  * FIX: missing `name` property should be `properties.name`
   * TEST: fix failing form tests
   * EHN: form widget now uses a "dirty" object to track changes
     - rather than writing to the original
@@ -134,38 +159,3 @@
   * minor template tweaks
   * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
   * update postversion  script
-  * changelog
-
-0.15.12 / 2016-12-21
-====================
-
-  * 0.15.12
-  * updating docs
-  * convert dropdowns in templates to use dropdown-menu components
-
-0.15.11 / 2016-12-20
-====================
-
-  * 0.15.11
-  * fix missing jsdoc
-  * dropdown-menu: pass event to viewmodel to prevent default page change
-  * dropdown-menu: add additional docs and property defs
-
-0.15.10 / 2016-12-20
-====================
-
-  * 0.15.10
-  * format template and add docs
-  * dropdown-menu: if visible simply hideAll
-  * enhancement: first dropdown-menu draft
-  * run build scripts after version
-
-0.16.0 / 2016-12-19
-===================
-
-  * 0.16.0
-  * fix: form-widget failing test
-  * enhancement: updates steal
-  * add pre/postversion scripts
-  * enhancement: reset page to 'list' and refresh after delete
-  * fix: make form validation more robust

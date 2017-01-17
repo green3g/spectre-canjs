@@ -22,7 +22,7 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * @parent select-field.ViewModel.props
      * @property {select-field.SelectFieldProperty} select-field.ViewModel.props.properties properties
      */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * A list of validation errors
      * @property {Array<String>} select-field.ViewModel.props.errors errors
@@ -49,7 +49,10 @@ export const ViewModel = DefineMap.extend('SelectField', {
      */
     onChange (value) {
         //we could perform some other logic here
-        this.dispatch('fieldchange', [value]);
+        this.dispatch('fieldchange', [{
+            value: value,
+            name: this.properties.name
+        }]);
     },
     /**
      * Determines whether a value is the currently selected value

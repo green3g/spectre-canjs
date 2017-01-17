@@ -1,7 +1,4 @@
-import 'list-table/';
-
-//sorting plugin
-
+import 'spectre-canjs/list-table/list-table';
 import stache from 'can-stache';
 import DefineList from 'can-define/list/list';
 

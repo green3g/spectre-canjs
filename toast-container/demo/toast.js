@@ -1,12 +1,8 @@
-import 'toast-container/';
+import 'spectre-canjs/toast-container/toast-container';
 import 'animate.css/animate.css';
-
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';
-
-window.vm = canViewModel;
-
 
 const AppViewModel = new DefineMap({
     heading: 'Title Here',

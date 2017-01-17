@@ -1,5 +1,4 @@
-import 'nav-list/';
-
+import 'spectre-canjs/nav-list/nav-list';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 

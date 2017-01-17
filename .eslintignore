@@ -2,4 +2,4 @@ dist/*
 docs/*
 **/demo/*.js
 build.js
-bundle.js
+docs-bundle.js

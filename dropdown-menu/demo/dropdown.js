@@ -1,5 +1,4 @@
-import 'dropdown-menu/';
-
+import 'spectre-canjs/dropdown-menu/dropdown-menu';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 

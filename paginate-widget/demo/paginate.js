@@ -1,4 +1,4 @@
-import 'paginate-widget/';
+import 'spectre-canjs/paginate-widget/paginate-widget';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 

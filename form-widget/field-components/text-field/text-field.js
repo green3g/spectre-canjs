@@ -2,7 +2,7 @@ import canEvent from 'can-event';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import template from './text-field.stache!';
-import assign from 'object-assign';
+import assign from 'can-util/js/assign/assign';
 /**
  * @constructor form-widget/field-components/text-field.ViewModel ViewModel
  * @parent form-widget/text-date-field
@@ -43,7 +43,7 @@ Component.extend({
     ViewModel: ViewModel,
     events: {
         '{viewModel} value' (viewModel, event, newValue) {
-            viewModel.dispatch('change', [newValue]);
+            viewModel.dispatch('fieldchange', [newValue]);
         }
     }
 });

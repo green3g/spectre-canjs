@@ -1,10 +1,7 @@
-import 'data-admin/data-admin';
-
+import 'spectre-canjs/data-admin/data-admin';
 import SuperMap from 'can-connect/can/super-map/';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-// import data from 'test/data/posts.json';
-// import 'test/data/fixtures';
 import stache from 'can-stache';
 
 // additional field proeprties can be included here to customize the

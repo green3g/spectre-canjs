@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": "https://github.com/roemhildtg/spectre-canjs",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "build": "steal-tools",
     "watch": "npm-watch",
     "docs": "documentjs",
-    "postdocs": "node bundle",
+    "postdocs": "node docs-bundle",
     "prepublish-docs": "git checkout gh-pages && git merge master",
     "publish-docs": "npm run docs && git add . && git commit -m docs && git push origin gh-pages && git checkout master",
     "export": "node build.js",
@@ -26,54 +26,39 @@
   "author": "roemhildtg",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^7.0.0",
-    "can-connect": "^1.1.1",
+    "babel-eslint": "^7.1.1",
+    "can-connect": "^1.2.0",
     "can-fixture": "^1.0.12",
     "can-set": "^1.0.3",
     "changelog": "^1.0.7",
     "documentjs": "^0.4.4",
-    "eslint": "^3.8.1",
-    "npm-watch": "^0.1.x",
-    "steal-css": "^1.0.0",
-    "steal-less": "^1.0.2",
+    "eslint": "^3.13.1",
+    "npm-watch": "^0.1.7",
+    "steal-css": "^1.2.0",
+    "steal-less": "^1.1.0",
     "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.4",
-    "steal-tools": "^1.0.1",
+    "steal-stache": "^3.0.5",
+    "steal-tools": "^1.0.3",
     "testee": "^0.3.0"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
     "can-component": "^3.0.5",
-    "can-define": "^1.0.14",
+    "can-define": "^1.0.15",
     "can-event": "^3.0.2",
-    "can-route": "^3.0.6",
-    "can-stache": "^3.0.17",
+    "can-stache": "^3.0.18",
     "can-util": "^3.2.2",
     "can-view-model": "^3.1.3",
     "font-awesome": "^4.7.0",
     "object-assign": "^4.1.0",
     "spectre.css": "^0.1.31",
-    "steal": "^1.0.9"
+    "steal": "^1.0.10"
   },
   "steal": {
     "plugins": [
       "steal-css",
       "steal-less",
       "steal-stache"
-    ],
-    "___COMMENT": "These bundles are for the ghpages demo site",
-    "bundle": [
-      "spectre-canjs/data-admin/demo/admin",
-      "spectre-canjs/dropdown-menu/demo/dropdown",
-      "spectre-canjs/filter-widget/demo/filter",
-      "spectre-canjs/form-widget/demo/form",
-      "spectre-canjs/list-table/demo/listTable",
-      "spectre-canjs/modal-dialog/demo/dialog",
-      "spectre-canjs/nav-container/demo/nav",
-      "spectre-canjs/paginate-widget/demo/paginate",
-      "spectre-canjs/property-table/demo/propertyTable",
-      "spectre-canjs/toast-container/demo/toast",
-      "can-fixture"
     ]
   }
 }

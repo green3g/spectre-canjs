@@ -5,7 +5,7 @@
         <li class="menu-item">
             <div class="input-group">
                 <label {{#if properties.inline}} class="hide" {{/if}} for="{{properties.name}}">{{properties.alias}}</label>
-                <input ($change)="onChange(%element)" type="file" class="form-control form-input" id="{{properties.name}}" name="{{properties.name}}" {{#if properties.multiple}} multiple {{/if}} />
+                <input ($change)="onChange(%element)" type="file" class="form-control form-input" name="{{properties.name}}" {{#if properties.multiple}} multiple {{/if}} />
             </div>
 
             {{#if errors[properties.name]}}<span class="form-input-hint">{{ errors[properties.name]}}</span>{{/if}}

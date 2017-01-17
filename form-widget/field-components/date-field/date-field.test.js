@@ -55,7 +55,7 @@ test('getDaysInMonth()', (assert) => {
 });
 
 test('onChange()', (assert) => {
-    vm.on('change', () => {
+    vm.on('fieldchange', () => {
         assert.ok(true, 'onChange should trigger event');
     });
     vm.onChange();

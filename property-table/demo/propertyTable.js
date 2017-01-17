@@ -1,5 +1,4 @@
-import 'property-table/';
-
+import 'spectre-canjs/property-table/property-table';
 import stache from 'can-stache';
 
 var render = stache(document.getElementById('demo-html').innerHTML);

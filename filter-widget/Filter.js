@@ -1,6 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import {Field} from '../../util/field';
+import {makeSentenceCase} from '../../util/string';
 import assign from 'object-assign';
 
 
@@ -129,6 +130,11 @@ export const Filter = DefineMap.extend('Filter', {
             });
         }
     },
+    alias: {
+        get () {
+            return this.field ? this.field.alias : makeSentenceCase(this.name);
+        }
+    },
     /**
      * A field object that defines the value field properties.
      * This is used to create the value field for each filter in the filter-widget
@@ -173,10 +179,10 @@ export const Filter = DefineMap.extend('Filter', {
      * @param {util/field.Field} field the field object
      * @param {domElement} dom the input element
      * @param {Object} scope the view model scope
-     * @param {*} val the value set on the form
+     * @param {*} props the object with the value set on the form
      */
-    setField (field, dom, scope, val) {
-        this.value = val;
+    setField (field, dom, scope, props) {
+        this.value = props.value;
     }
 });
 

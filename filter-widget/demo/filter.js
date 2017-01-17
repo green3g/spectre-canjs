@@ -5,7 +5,7 @@ import DefineMap from 'can-define/map/map';
 
 const render = stache.from('demo-html');
 document.body.appendChild(render(new DefineMap({
-    fields: parseFieldArray(['field1', 'field_2', 'field 3']),
+    fields: parseFieldArray(['field_1', 'field_2', 'field_3']),
     disableAdd: false,
     stringify (data) {
         return JSON.stringify(data.serialize());

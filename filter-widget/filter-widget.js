@@ -154,13 +154,13 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @param  {can.Map} scope The stache scope (optional)
      * @param  {event} dom   The dom event (optional)
      * @param  {event} event The event (optional)
-     * @param  {string} name The name of the field filter to add. This is the only argument used by the function, the rest may be null.
+     * @param  {string} props The properties with a value key of the name of the field filter to add. This is the only argument used by the function, the rest may be null.
      * @return {Boolean} returns false to prevent event propagation from links
      */
     addFilter () {
 
         // get the name
-        const name = arguments.length === 4 ? arguments[3] : arguments[0];
+        const name = (arguments.length === 4 ? arguments[3] : arguments[0]).value;
         if (!name) {
             return false;
         }

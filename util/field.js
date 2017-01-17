@@ -153,7 +153,7 @@ export const Field = DefineMap.extend('Field', {
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
      * @signature `validate(propertyValue)`
-     * @param {Any} propertyValue the value of the property to validate
+     * @param {util/field.ValidationObject} props the value of the property to validate
      * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
      * @parent util/field.Field.props
      */

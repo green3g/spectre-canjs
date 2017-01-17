@@ -118,6 +118,6 @@ test('formObject get()', (assert) => {
 });
 
 test('setField(field, dom, scope, val)', (assert) => {
-    filter.setField(null, null, null, 'hello');
+    filter.setField(null, null, null, {value: 'hello'});
     assert.equal(filter.value, 'hello');
 });

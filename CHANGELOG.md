@@ -1,3 +1,10 @@
+0.21.1 / 2017-01-17
+===================
+
+  * 0.21.1
+  * FIX: Update and fix issues caused by event and object changes
+  * changelog
+
 0.21.0 / 2017-01-17
 ===================
 
@@ -156,6 +163,3 @@
 
   * 0.15.13
   * updates dependencies/reformatted json
-  * minor template tweaks
-  * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
-  * update postversion  script

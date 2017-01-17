@@ -4,7 +4,6 @@ import 'spectre-canjs/form-widget/field-components/select-field/';
 import 'spectre-canjs/form-widget/field-components/file-field/';
 import 'spectre-canjs/form-widget/field-components/json-field/';
 import 'spectre-canjs/form-widget/field-components/date-field/';
-import { mapToFields } from 'spectre-canjs/util/field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -31,15 +30,22 @@ fixture({
 });
 
 const Template = DefineMap.extend({
-    field1: {
-        value: 'test-value',
+    field1: { type: 'string', value: 'test-value' },
+    field2: 'string',
+    field3: 'number',
+    field4: 'date',
+    field5: 'string',
+    field6: 'string'
+});
+
+const fields = [{
         name: 'field1',
         validate(props) {
             console.log(props);
             return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },
-    field2: {
+    {
         value: 'another value',
         name: 'field2',
         alias: 'A basic textarea field',
@@ -52,8 +58,7 @@ const Template = DefineMap.extend({
             }
             return false;
         }
-    },
-    field3: {
+    }, {
         value: 1,
         name: 'field3',
         alias: 'A select dropdown',
@@ -65,21 +70,18 @@ const Template = DefineMap.extend({
             value: 2,
             label: 'Option 2'
         }]
-    },
-    field4: {
+    }, {
         name: 'field4',
         alias: 'A date field',
         fieldType: 'date',
         value: new Date('2010-10-11')
-    },
-    field5: {
+    }, {
         name: 'field5',
         alias: 'A file field',
         multiple: true,
         fieldType: 'file',
         url: '/upload'
-    },
-    field6: {
+    }, {
         name: 'field6',
         alias: 'A JSON Field',
         fieldType: 'json',
@@ -88,6 +90,10 @@ const Template = DefineMap.extend({
         ObjectTemplate: DefineMap.extend({
             json_field_1: 'string',
             json_field_2: {
+                validate(props){
+                  console.log(props);
+                  return props.value != 2 ? 'The value must be 2' : undefined;
+                },
                 value: 2,
                 fieldType: 'select',
                 options: [{
@@ -106,23 +112,23 @@ const Template = DefineMap.extend({
             }
         })
     }
-});
+]
 
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
-    onChange(){
-      console.log(arguments);
+    formObject: new Template(),
+    fields: fields,
+    onChange() {
+        console.log(arguments);
     },
     onSubmit() {
         alert('Form submitted! See the console for details');
         console.log('submitted data: ', this.formObject.serialize())
     },
-    onCancel(){
-      console.log('Form canceled!');
+    onCancel() {
+        console.log('Form canceled!');
     },
-    formObject: new Template(),
-    fields: mapToFields(Template),
     stringify() {
         return JSON.stringify(this.formObject.serialize());
     }

@@ -428,7 +428,7 @@ cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field 
 		
 			
 				<section class="signature">
-					<h2 id="sig_">function(<a href="util__field.Field.html" >field</a>, domElement, event, value)
+					<h2 id="sig_">function(<a href="util__field.Field.html" >field</a>, domElement, event, props)
 </h2>
 <div class="signature-wrapper">
 
@@ -474,16 +474,12 @@ cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field 
 		</li>
 		
 		<li class="parameter">
-			<h4>value
-				<code>{Object | Number | String}</code></h4>
+			<h4>props
+				<code>{FieldChangeEventObject}</code></h4>
 			<div class="description">
 				<p>The value that was passed from the field component</p>
 
 			</div>
-			
-			
-			
-			
 			
 			
 			
@@ -532,7 +528,7 @@ cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field 
 	
 	
 	<script type="text/javascript">
-		var docObject = {"src":"form-widget\\form-widget.js","line":213,"codeLine":224,"description":"Sets the formObject value when a field changes. This will allow for future\nfunctionality where the form is much more responsive to values changing, like\ncascading dropdowns. Dispatches the `fieldchange` event when a field changes","title":"","name":"form-widget.ViewModel.prototype.setField","parent":"form-widget.ViewModel.prototype","type":"function","signatures":[{"description":"","params":[{"types":[{"type":"util/field.Field"}],"name":"field","description":"The field object properties"},{"types":[{"type":"domElement"}],"name":"domElement","description":"The form element that dispatched the event"},{"types":[{"type":"Event"}],"name":"event","description":"The event object and type"},{"types":[{"type":"Object"},{"type":"Number"},{"type":"String"}],"name":"value","description":"The value that was passed from the field component"}]}],"glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"src":"form-widget\\form-widget.js","line":213,"codeLine":224,"description":"Sets the formObject value when a field changes. This will allow for future\nfunctionality where the form is much more responsive to values changing, like\ncascading dropdowns. Dispatches the `fieldchange` event when a field changes","title":"","name":"form-widget.ViewModel.prototype.setField","parent":"form-widget.ViewModel.prototype","type":"function","signatures":[{"description":"","params":[{"types":[{"type":"util/field.Field"}],"name":"field","description":"The field object properties"},{"types":[{"type":"domElement"}],"name":"domElement","description":"The form element that dispatched the event"},{"types":[{"type":"Event"}],"name":"event","description":"The event object and type"},{"types":[{"type":"FieldChangeEventObject"}],"name":"props","description":"The value that was passed from the field component"}]}],"glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 	
 	

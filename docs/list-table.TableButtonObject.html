@@ -3,8 +3,8 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: util\field.js
-	@function util/field.Field.prototype.mapToFields
+	source: list-table\TableButtonObject.md
+	@typedef list-table.TableButtonObject
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -24,7 +24,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Home  - util/field.Field.prototype.mapToFields</title>
+	<title>Home - TableButtonObject </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
@@ -82,8 +82,8 @@
 		
 			
 			<li class="search-container active">
-			<a class="sidebar-title" href="util__field.html" data-search="field">
-				field
+			<a class="sidebar-title" href="list-table.html" data-search="&lt;list-table /&gt;">
+				&lt;list-table /&gt;
 			</a>
 			
 	<ul>
@@ -91,21 +91,9 @@
 			
 				
 				
-				<li class="search-container">
-					<a class="constructor" href="util__field.Field.html" data-search="Field">
-						Field
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
 				<li class="search-container active ">
-					<a class="function" href="util__field.Field.prototype.mapToFields.html" data-search="util/field.Field.prototype.mapToFields">
-						Field.prototype.mapToFields
+					<a class="typedef" href="list-table.TableButtonObject.html" data-search="TableButtonObject">
+						TableButtonObject
 					</a>
 				</li>
 				
@@ -116,20 +104,8 @@
 				
 				
 				<li class="search-container">
-					<a class="function" href="util__field.Field.prototype.parseFieldArray.html" data-search="util/field.Field.prototype.parseFieldArray">
-						Field.prototype.parseFieldArray
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="util__field.ValidationObject.html" data-search="ValidationObject">
-						ValidationObject
+					<a class="constructor" href="list-table.ViewModel.html" data-search="ViewModel">
+						ViewModel
 					</a>
 				</li>
 				
@@ -153,9 +129,9 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>Field.prototype.mapToFields</h1>
+<h1>TableButtonObject</h1>
 	<ul class="tags">
-		<li>function</li>
+		<li>typedef</li>
 	</ul>
 	
 	
@@ -163,6 +139,12 @@
 
 <div class="sub-heading">
 	
+	
+		<span class="module">list-table.TableButtonObject</span>
+	
+	
+	
+	<h2><code>{TableButtonObject}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -186,58 +168,73 @@
 
 		
 		<section class="description">
-			<p>Converts a DefineMap to an array of Field objects using the property definitions
-property or the keys</p>
+			<p>Used by the list-table component to provide custom interactivity with each object or row.</p>
 
 		</section>
 		
 
 		
 			
-				<section class="signature">
-					<h2 id="sig_mapToFields_defineMap_">mapToFields(defineMap)
+			<section class='primary-options'>
+				
+
+  <h2 id="sig_">TableButtonObject
 </h2>
 <div class="signature-wrapper">
 
 
-	<h3>Parameters</h3>
-
-	<ol class="parameters">
-		
-		<li class="parameter">
-			<h4>defineMap
-				<code>{Constructor&lt;DefineMap&gt;}</code></h4>
-			<div class="description">
-				<p>The extended map/constructor to parse</p>
-
-			</div>
-			
-			
-			
-		</li>
-		
-	</ol>
 
 
-	<h3>Returns</h3>
-	<div class="returns">
-		<h4><code>{Array&lt;Field&gt;}</code></h4>
+
+
+  <h3>Properties</h3>
+  
+  <ol class="parameters">
+	
+	<li class="parameter">
+		<h4>title
+			<code>{String}</code></h4>
 		<div class="description">
-			<p>The array of fields</p>
+			<p>The title to display on the button hover</p>
 
 		</div>
 		
 		
-	</div>
+		
+	</li>
 	
+	<li class="parameter">
+		<h4>iconClass
+			<code>{String}</code></h4>
+		<div class="description">
+			<p>The class to use for the button icon</p>
 
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>eventName
+			<code>{String}</code></h4>
+		<div class="description">
+			<p>The event to dispatch when the button is clicked. This allows developers to bind functions to custom events, like <code>(eventName)=&quot;functionName&quot;</code></p>
 
-
+		</div>
+		
+		
+		
+	</li>
+	
+</ol>
 
 
 </div>
 
-				</section>
+  
+
+			</section>
 			
 		
 		
@@ -271,7 +268,7 @@ property or the keys</p>
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"function","name":"util/field.Field.prototype.mapToFields","parent":"util/field","src":"util\\field.js","line":218,"codeLine":227,"description":"Converts a DefineMap to an array of Field objects using the property definitions\nproperty or the keys","title":"","signatures":[{"code":"mapToFields(defineMap)","description":"","params":[{"types":[{"type":"Constructor","template":[{"types":[{"type":"DefineMap"}]}]}],"name":"defineMap","description":"The extended map/constructor to parse"}],"returns":{"types":[{"type":"Array","template":[{"types":[{"type":"Field"}]}]}],"description":"The array of fields"}}],"glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"typedef","name":"list-table.TableButtonObject","src":"list-table\\TableButtonObject.md","description":"Used by the list-table component to provide custom interactivity with each object or row.","title":"TableButtonObject\r","types":[{"type":"TableButtonObject","options":[{"name":"title","description":"The title to display on the button hover","types":[{"type":"String"}]},{"name":"iconClass","description":"The class to use for the button icon","types":[{"type":"String"}]},{"name":"eventName","description":"The event to dispatch when the button is clicked. This allows developers to bind functions to custom events, like `(eventName)=\"functionName\"`","types":[{"type":"String"}]}]}],"parent":"list-table","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 	
 	

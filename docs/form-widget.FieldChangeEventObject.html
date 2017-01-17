@@ -3,8 +3,8 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: form-widget\README.md
-	@module form-widget
+	source: form-widget\FieldChangeEventObject.md
+	@typedef form-widget.FieldChangeEventObject
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -24,7 +24,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Home - &lt;form-widget /&gt; </title>
+	<title>Home - FieldChangeEventObject </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
@@ -91,7 +91,7 @@
 			
 				
 				
-				<li class="search-container">
+				<li class="search-container active ">
 					<a class="typedef" href="form-widget.FieldChangeEventObject.html" data-search="FieldChangeEventObject">
 						FieldChangeEventObject
 					</a>
@@ -204,9 +204,9 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>&lt;form-widget /&gt;</h1>
+<h1>FieldChangeEventObject</h1>
 	<ul class="tags">
-		<li>module</li>
+		<li>typedef</li>
 	</ul>
 	
 	
@@ -215,11 +215,11 @@
 <div class="sub-heading">
 	
 	
-		<span class="module">form-widget</span>
+		<span class="module">form-widget.FieldChangeEventObject</span>
 	
 	
 	
-	<h2><code>{can.Component}</code></h2>
+	<h2><code>{Object}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -243,8 +243,7 @@
 
 		
 		<section class="description">
-			<!--
--->
+			<p>This event object is dispatched whenever a field in a form changes</p>
 
 		</section>
 		
@@ -254,7 +253,7 @@
 			<section class='primary-options'>
 				
 
-  <h2 id="sig_">can.Component
+  <h2 id="sig_">Object
 </h2>
 <div class="signature-wrapper">
 
@@ -262,6 +261,60 @@
 
 
 
+
+  <h3>Properties</h3>
+  
+  <ol class="parameters">
+	
+	<li class="parameter">
+		<h4>name
+			<code>{String}</code></h4>
+		<div class="description">
+			<p>The name of the field</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>value
+			<code>{Any}</code></h4>
+		<div class="description">
+			<p>The current value of the field, this can be any type</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>current
+			<code>{Object}</code></h4>
+		<div class="description">
+			<p>The current saved values that were passed to the form object performing the validation. This has not been updated yet from any form changes that occurred since the last submit</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>dirty
+			<code>{Object}</code></h4>
+		<div class="description">
+			<p>An object consisting of the values of the fields that have changed since the last submit.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+</ol>
 
 
 </div>
@@ -275,14 +328,6 @@
 		
 		
 
-		
-		<section class="comment">
-			<h2>Description</h2>
-<p>A configureable form widget to modify data. The form accepts a formObject property that should be an object similar to a <code>can.Map</code>. When the form is submitted, it calls the model's <code>save</code> method.</p>
-<h2>Demo</h2>
-<div class='demo_wrapper' data-demo-src='form-widget/demo/demo.html' data-demo-height='500'></div>
-
-		</section>
 		
 		
 
@@ -310,7 +355,7 @@
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"module","name":"form-widget","src":"form-widget\\README.md","description":"<!--\r\n-->","title":"<form-widget />\r","types":[{"type":"can.Component"}],"parent":"spectre.components","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"typedef","name":"form-widget.FieldChangeEventObject","src":"form-widget\\FieldChangeEventObject.md","description":"This event object is dispatched whenever a field in a form changes","title":"FieldChangeEventObject\r","types":[{"type":"Object","options":[{"name":"name","description":"The name of the field","types":[{"type":"String"}]},{"name":"value","description":"The current value of the field, this can be any type","types":[{"type":"Any"}]},{"name":"current","description":"The current saved values that were passed to the form object performing the validation. This has not been updated yet from any form changes that occurred since the last submit","types":[{"type":"Object","options":[]}]},{"name":"dirty","description":"An object consisting of the values of the fields that have changed since the last submit.","types":[{"type":"Object","options":[]}]}]}],"parent":"form-widget","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 	
 	

@@ -3,8 +3,8 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: util\field.js
-	@function util/field.Field.prototype.mapToFields
+	source: util\ValidationObject.md
+	@typedef util/field.ValidationObject
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -24,7 +24,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>Home  - util/field.Field.prototype.mapToFields</title>
+	<title>Home - ValidationObject </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
@@ -103,7 +103,7 @@
 			
 				
 				
-				<li class="search-container active ">
+				<li class="search-container">
 					<a class="function" href="util__field.Field.prototype.mapToFields.html" data-search="util/field.Field.prototype.mapToFields">
 						Field.prototype.mapToFields
 					</a>
@@ -127,7 +127,7 @@
 			
 				
 				
-				<li class="search-container">
+				<li class="search-container active ">
 					<a class="typedef" href="util__field.ValidationObject.html" data-search="ValidationObject">
 						ValidationObject
 					</a>
@@ -153,9 +153,9 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>Field.prototype.mapToFields</h1>
+<h1>ValidationObject</h1>
 	<ul class="tags">
-		<li>function</li>
+		<li>typedef</li>
 	</ul>
 	
 	
@@ -163,6 +163,12 @@
 
 <div class="sub-heading">
 	
+	
+		<span class="module">util/field.ValidationObject</span>
+	
+	
+	
+	<h2><code>{Object}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -186,58 +192,73 @@
 
 		
 		<section class="description">
-			<p>Converts a DefineMap to an array of Field objects using the property definitions
-property or the keys</p>
+			<p>Used by the form widget when a field value changes. A validation object is created, and passed to a validate function on the field if it exists.</p>
 
 		</section>
 		
 
 		
 			
-				<section class="signature">
-					<h2 id="sig_mapToFields_defineMap_">mapToFields(defineMap)
+			<section class='primary-options'>
+				
+
+  <h2 id="sig_">Object
 </h2>
 <div class="signature-wrapper">
 
 
-	<h3>Parameters</h3>
-
-	<ol class="parameters">
-		
-		<li class="parameter">
-			<h4>defineMap
-				<code>{Constructor&lt;DefineMap&gt;}</code></h4>
-			<div class="description">
-				<p>The extended map/constructor to parse</p>
-
-			</div>
-			
-			
-			
-		</li>
-		
-	</ol>
 
 
-	<h3>Returns</h3>
-	<div class="returns">
-		<h4><code>{Array&lt;Field&gt;}</code></h4>
+
+
+  <h3>Properties</h3>
+  
+  <ol class="parameters">
+	
+	<li class="parameter">
+		<h4>value
+			<code>{Any}</code></h4>
 		<div class="description">
-			<p>The array of fields</p>
+			<p>The current value of the field, this can be any type</p>
 
 		</div>
 		
 		
-	</div>
+		
+	</li>
 	
+	<li class="parameter">
+		<h4>current
+			<code>{Object}</code></h4>
+		<div class="description">
+			<p>The current saved values that were passed to the form object performing the validation. This has not been updated yet from any form changes that occurred since the last submit</p>
 
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>dirty
+			<code>{Object}</code></h4>
+		<div class="description">
+			<p>An object consisting of the values of the fields that have changed since the last submit.</p>
 
-
+		</div>
+		
+		
+		
+	</li>
+	
+</ol>
 
 
 </div>
 
-				</section>
+  
+
+			</section>
 			
 		
 		
@@ -271,7 +292,7 @@ property or the keys</p>
 	
 	
 	<script type="text/javascript">
-		var docObject = {"type":"function","name":"util/field.Field.prototype.mapToFields","parent":"util/field","src":"util\\field.js","line":218,"codeLine":227,"description":"Converts a DefineMap to an array of Field objects using the property definitions\nproperty or the keys","title":"","signatures":[{"code":"mapToFields(defineMap)","description":"","params":[{"types":[{"type":"Constructor","template":[{"types":[{"type":"DefineMap"}]}]}],"name":"defineMap","description":"The extended map/constructor to parse"}],"returns":{"types":[{"type":"Array","template":[{"types":[{"type":"Field"}]}]}],"description":"The array of fields"}}],"glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"typedef","name":"util/field.ValidationObject","src":"util\\ValidationObject.md","description":"Used by the form widget when a field value changes. A validation object is created, and passed to a validate function on the field if it exists.","title":"ValidationObject\r","types":[{"type":"Object","options":[{"name":"value","description":"The current value of the field, this can be any type","types":[{"type":"Any"}]},{"name":"current","description":"The current saved values that were passed to the form object performing the validation. This has not been updated yet from any form changes that occurred since the last submit","types":[{"type":"Object","options":[]}]},{"name":"dirty","description":"An object consisting of the values of the fields that have changed since the last submit.","types":[{"type":"Object","options":[]}]}]}],"parent":"util/field","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 	
 	

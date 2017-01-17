@@ -222,7 +222,8 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      * @param  {Event} event  The event object and type
      * @param  {Object | Number | String} value  The value that was passed from the field component
      */
-    setField (field, domElement, event, value) {
+    setField (field, domElement, event, props) {
+        const value = props.value;
         // update our dirty form field
         this.dirtyObject[field.name] = value;
 

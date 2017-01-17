@@ -180,7 +180,10 @@ export const ViewModel = DefineMap.extend('FileField', {
         } else {
             this.value = '';
         }
-        this.dispatch('fieldchange', [this.value]);
+        this.dispatch('fieldchange', [{
+            value: this.value,
+            name: this.properties.name
+        }]);
     },
     /**
      * Called when an error occurs during an upload. Logs an error message

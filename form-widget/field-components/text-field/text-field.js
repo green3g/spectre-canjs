@@ -43,7 +43,10 @@ Component.extend({
     ViewModel: ViewModel,
     events: {
         '{viewModel} value' (viewModel, event, newValue) {
-            viewModel.dispatch('fieldchange', [newValue]);
+            viewModel.dispatch('fieldchange', [{
+                value: newValue,
+                name: this.viewModel.properties.name
+            }]);
         }
     }
 });

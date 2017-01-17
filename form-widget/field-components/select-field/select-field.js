@@ -49,7 +49,10 @@ export const ViewModel = DefineMap.extend('SelectField', {
      */
     onChange (value) {
         //we could perform some other logic here
-        this.dispatch('fieldchange', [value]);
+        this.dispatch('fieldchange', [{
+            value: value,
+            name: this.properties.name
+        }]);
     },
     /**
      * Determines whether a value is the currently selected value

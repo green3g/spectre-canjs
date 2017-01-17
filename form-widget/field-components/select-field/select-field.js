@@ -22,7 +22,7 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * @parent select-field.ViewModel.props
      * @property {select-field.SelectFieldProperty} select-field.ViewModel.props.properties properties
      */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * A list of validation errors
      * @property {Array<String>} select-field.ViewModel.props.errors errors

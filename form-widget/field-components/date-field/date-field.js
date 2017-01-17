@@ -26,7 +26,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @property {Object} date-field.ViewModel.props.properties properties
      * @parent date-field.ViewModel.props
      */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * A list of validation errors
      * @property {Array<String>} date-field.ViewModel.props.errors errors

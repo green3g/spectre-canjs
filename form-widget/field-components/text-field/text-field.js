@@ -11,7 +11,7 @@ import assign from 'can-util/js/assign/assign';
  * @description A `<text-field />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('TextField', {
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     value: {
         type: 'string',
         value: ''

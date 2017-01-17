@@ -29,7 +29,7 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @property {Object} file-field.ViewModel.props.properties properties
      * @parent file-field.ViewModel.props
      */
-    properties: DefineMap,
+    properties: {Value: DefineMap},
     /**
      * A list of potential upload errors.
      * This is a placeholder for future functionality. Not yet implemented.

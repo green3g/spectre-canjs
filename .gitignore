@@ -9,3 +9,5 @@ dist/
 .directory
 
 *.log
+
+!docs/node_modules

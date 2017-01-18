@@ -1,3 +1,0 @@
-/*spectre-canjs@0.19.0#property-table/demo*/
-define("spectre-canjs@0.19.0#property-table/demo",["can-stache","font-awesome/css/font-awesome.css","spectre.css/dist/spectre.css","property-table/"],function(e){"use strict";function t(e){return e&&e.__esModule?e:{"default":e}}var r=t(e),s=r["default"](document.getElementById("demo-html").innerHTML),o={fields:[{name:"prop_1",alias:"Property 1",formatter:function(e){return"<strong>"+e+"</strong>"}},"another_property_value","etc_or_misc"],data:{prop_1:"This is a property",another_property_value:"Value here",etc_or_misc:"This is a value"}};document.body.appendChild(s(o))});
-//# sourceMappingURL=demo.js.map

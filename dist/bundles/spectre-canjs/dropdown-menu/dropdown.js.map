@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../dropdown-menu/dropdown.js"],"names":["render","_canStache2","from","viewModel","_map2","pages","label","active","document","body","appendChild"],"mappings":";4MAKIA,EAASC,aAAOC,KAAK,aAErBC,EAAY,GAAAC,eACZC,QACIC,MAAO,SAEPA,MAAO,SACPC,QAAQ,IAERD,MAAO,mBAIfE,UAASC,KAAKC,YAAYV,EAAOG","file":"dropdown.js"}

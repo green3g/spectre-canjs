@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../dropdown-menu/demo.js"],"names":["render","_canStache2","document","getElementById","innerHTML","viewModel","_map2","pages","label","active","body","appendChild"],"mappings":";2QAOIA,EAASC,aAAOC,SAASC,eAAe,aAAaC,WAErDC,EAAY,GAAAC,eACZC,QACIC,MAAO,SAEPA,MAAO,SACPC,QAAQ,IAERD,MAAO,mBAIfN,UAASQ,KAAKC,YAAYX,EAAOK","file":"demo.js"}

@@ -4,10 +4,8 @@ node_modules/
 #custom apps and modules
 custom/
 
-#docs and build output
+dist/
 
 .directory
 
 *.log
-
-!dist/node_modules

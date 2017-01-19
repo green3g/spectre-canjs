@@ -22,7 +22,22 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @property {json-field.JSONFieldProperties} json-field.ViewModel.props.properties properties
      * @parent json-field.ViewModel.props
      */
-    properties: {Value: DefineMap},
+    properties: {
+        Value: DefineMap,
+        set (props) {
+            const Template = props.ObjectTemplate;
+            let obj;
+            if (Template) {
+                obj = new Template();
+            } else {
+                dev.warn('json-field needs an ObjectTemplate defined in its field properties');
+                obj = new DefineMap();
+            }
+
+            this.jsonFormObject = obj;
+            return props;
+        }
+    },
     /**
      * The current value of the field. This is a json serialized value
      * paths.
@@ -60,15 +75,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @parent json-field.ViewModel.props
      */
     jsonFormObject: {
-        get () {
-            const Template = this.properties.ObjectTemplate;
-            if (Template) {
-                return new Template();
-            } else {
-                dev.warn('json-field needs an ObjectTemplate defined in its field properties');
-                return new DefineMap();
-            }
-        }
+        Value: DefineMap
     },
     /**
      * The field properties to set up the form fields functionality, this is

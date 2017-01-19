@@ -239,7 +239,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
             this.dispatch('fieldchange', [{
                 name: field.name,
                 value: value,
-                dirty: this.dirtyFields,
+                dirty: this.dirtyObject,
                 current: this.formObject
             }]);
         }
@@ -275,7 +275,6 @@ export const ViewModel = DefineMap.extend('FormWidget', {
 
 Component.extend({
     tag: 'form-widget',
-    ViewModel: ViewModel,
-    view: template,
-    leakScope: true
+    viewModel: ViewModel,
+    view: template
 });

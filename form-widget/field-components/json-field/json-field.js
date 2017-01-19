@@ -70,11 +70,6 @@ export const ViewModel = DefineMap.extend('JSONField', {
             }
         }
     },
-    formObjectValues: {
-        value () {
-            return {};
-        }
-    },
     /**
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `jsonFormObject`

@@ -67,7 +67,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @parent data-admin.ViewModel.props
      */
     view: {
-        Type: ViewMap
+        Type: ViewMap,
+        set (view) {
+            if (view) {
+                this.updateParameters(view.parameters);
+            }
+            return view;
+        }
     },
     /**
      * The current page to display in this view. Options include:
@@ -146,26 +152,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     parameters: {
         Value: ParameterMap,
-        Type: ParameterMap,
-        get (params) {
-
-            // mixin view parameters
-            if (this.view && this.view.parameters) {
-                this.view.parameters.forEach((p, key) => {
-                    // deep copy filters
-                    if (key === 'filters') {
-                        p.forEach((f) => {
-                            if (params.filters.indexOf(f) < 0) {
-                                params.filters.push(f);
-                            }
-                        });
-                    } else {
-                        params[key] = p;
-                    }
-                });
-            }
-            return params;
-        }
+        Type: ParameterMap
     },
     /**
      * A simple counter that forces a refresh on the promise when set. Used
@@ -692,6 +679,30 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         this.dispatch(eventName, [obj]);
 
         return returnVal;
+    },
+    /**
+     * Updates the parameters by mixing in properties and concating filter objects
+     * @function updateParameters
+     * @signature
+     * @param {DefineMap} params the params to mixin
+     */
+    updateParameters (params) {
+        // mixin view parameters
+        if (params) {
+            params.forEach((param, key) => {
+                // deep copy filters
+                if (key === 'filters') {
+                    const filters = param.filter((filter) => {
+                        return this.parameters.filters && this.parameters.filters.indexOf(filter) < 0;
+                    });
+                    this.parameters.set('filters',
+                        (this.parameters.filters ? this.parameters.filters.concat(filters) : filters)
+                    );
+                } else {
+                    this.parameters.set(key, param);
+                }
+            });
+        }
     }
 });
 
@@ -700,10 +711,10 @@ Component.extend({
     viewModel: ViewModel,
     view: template,
     events: {
-        '{viewModel.parameters.filters} length' () {
+        '{viewModel.parameters.filters} length': function () {
             this.viewModel.parameters.page = 0;
         },
-        '{viewModel.parameters} perPage' () {
+        '{viewModel.parameters} perPage': function () {
             this.viewModel.parameters.page = 0;
         }
     }

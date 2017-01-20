@@ -33,7 +33,6 @@ test('jsonFormObject get() with value', (assert) => {
         ObjectTemplate: TestObject
     };
     vm.value = '{"field2": "another"}';
-
     assert.equal(vm.jsonFormObject.field2, 'another', 'form object should have json value');
 });
 
@@ -62,7 +61,9 @@ test('saveField()', (assert) => {
         field1: 'updated',
         field2: 'there'
     };
-    
+
+    vm.jsonFormObject = obj;
+
     vm.saveField(null, null, null, {current: obj, name: 'field1', value: 'updated'});
     assert.deepEqual(JSON.parse(vm.value), expected, 'field value should be set and updated correctly');
 });

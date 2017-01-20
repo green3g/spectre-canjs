@@ -91,7 +91,6 @@ const fields = [{
             json_field_1: 'string',
             json_field_2: {
                 validate(props){
-                  console.log(props);
                   return props.value != 2 ? 'The value must be 2' : undefined;
                 },
                 value: 2,

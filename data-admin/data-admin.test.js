@@ -4,6 +4,7 @@ import q from 'steal-qunit';
 
 import {ViewModel} from './data-admin';
 import {Connection, TaskMap} from '../../test/data/connection';
+import DefineMap from 'can-define/map/map';
 import assign from 'object-assign';
 let vm;
 
@@ -281,4 +282,25 @@ test('toggle(prop, val)', (assert) => {
 
     vm.toggle('filterVisible', false);
     assert.notOk(vm.filterVisible, 'filter should not be visible after toggling to false');
+});
+
+test('updateParameters', (assert) => {
+    const params = new DefineMap({
+        param1: 'hello',
+        filters: [{
+            value: 'test value',
+            operator: 'like',
+            name: 'testFilter'
+        }]
+    });
+    vm.updateParameters(params);
+
+    assert.equal(vm.parameters.param1, 'hello', 'param should be set on vm');
+    assert.equal(vm.parameters.filters[0].name, 'testFilter', 'filter should be added to array');
+
+    params.param1 = 'goodbye';
+    vm.updateParameters(params);
+
+    assert.equal(vm.parameters.param1, 'goodbye', 'param1 should be updated');
+    assert.equal(vm.parameters.filters.length, 2, 'filter should be pushed into filters array');
 });

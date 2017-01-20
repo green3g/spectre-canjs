@@ -1,4 +1,3 @@
-
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
@@ -15,22 +14,51 @@ import dev from 'can-util/js/dev/dev';
  * @description A `<json-field />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('JSONField', {
-  /**
-   * @prototype
-   */
-  /**
-   * Form field properties that define this fields behavior
-   * @property {json-field.JSONFieldProperties} json-field.ViewModel.props.properties properties
-   * @parent json-field.ViewModel.props
-   */
-    properties: {Value: DefineMap},
+    /**
+     * @prototype
+     */
+    /**
+     * Form field properties that define this fields behavior
+     * @property {json-field.JSONFieldProperties} json-field.ViewModel.props.properties properties
+     * @parent json-field.ViewModel.props
+     */
+    properties: {
+        Value: DefineMap,
+        set (props) {
+            const Template = props.ObjectTemplate;
+            let obj;
+            if (Template) {
+                obj = new Template();
+            } else {
+                dev.warn('json-field needs an ObjectTemplate defined in its field properties');
+                obj = new DefineMap();
+            }
+
+            this.jsonFormObject = obj;
+            return props;
+        }
+    },
     /**
      * The current value of the field. This is a json serialized value
      * paths.
      * @property {String} json-field.ViewModel.props.value value
      * @parent json-field.ViewModel.props
      */
-    value: 'string',
+    value: {
+        type: 'string',
+        set (val) {
+            if (val) {
+                try {
+                    const obj = JSON.parse(val);
+                    this.jsonFormObject.set(obj);
+                } catch (e) {
+                    dev.warn('error parsing json, value set on json-field was ' + val);
+                    dev.warn(e);
+                }
+            }
+            return val;
+        }
+    },
     /**
      * A list of validation errors
      * This is a placeholder for future functionality. Not yet implemented.
@@ -47,20 +75,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @parent json-field.ViewModel.props
      */
     jsonFormObject: {
-        get: function (obj) {
-            const Template = this.properties.ObjectTemplate;
-            try {
-                obj = this.value ? JSON.parse(this.value) : {};
-            } catch (e) {
-                dev.warn(e);
-            }
-            if (Template) {
-                return new Template(obj);
-            } else {
-                dev.warn('json-field needs an ObjectTemplate defined in its field properties');
-            }
-            return obj;
-        }
+        Value: DefineMap
     },
     /**
      * The field properties to set up the form fields functionality, this is
@@ -88,8 +103,8 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @param  {Object} props   The change event properties
      */
     saveField (scope, dom, event, props) {
-        props.current[props.name] = props.value;
-        const json = JSON.stringify(props.current.serialize());
+        this.jsonFormObject.set(props.name, props.value);
+        const json = JSON.stringify(this.jsonFormObject.serialize());
         this.value = json;
         this.dispatch('fieldchange', [{
             value: json,

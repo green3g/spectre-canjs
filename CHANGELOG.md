@@ -1,3 +1,28 @@
+0.21.3 / 2017-01-20
+===================
+
+  * 0.21.3
+  * TEST: data-admin updateParameters
+  * FIX: fixes breaking app when existing filters are on the view and new filters are added
+  * DOCS: make sure entire docs directory gets committed
+  * DOCS: fix link
+  * DOCS: add badge for npm
+  * changelog
+
+0.21.2 / 2017-01-19
+===================
+
+  * 0.21.2
+  * BUILD: remove uneeded build step
+  * FIX: json-field - fix failing tests
+  * FIX: remove extra property
+  * FIX: json-field serialization and form object creation works much better
+  * Merge pull request [#16](https://github.com/roemhildtg/spectre-canjs/issues/16) from roemhildtg/greenkeeper/steal-1.0.11
+    chore(package): update steal to version 1.0.11
+  * chore(package): update steal to version 1.0.11
+    https://greenkeeper.io/
+  * changelog
+
 0.21.1 / 2017-01-17
 ===================
 
@@ -132,34 +157,3 @@
   * update deps
   * fix missing jsdoc
   * add tests and docs for field-components
-  * data-admin fix NaN displayed if totalPages is 1
-  * changelog
-
-0.17.2 / 2016-12-29
-===================
-
-  * 0.17.2
-  * fix typo in filter-widget overlay classname
-  * changelog
-
-0.17.1 / 2016-12-29
-===================
-
-  * 0.17.1
-  * fix display of filter-widget in data-admin
-  * changelog
-
-0.17.0 / 2016-12-29
-===================
-
-  * 0.17.0
-  * 0.16.0
-  * add tests for date-field
-  * add dependency free datepicker
-  * changelog
-
-0.15.13 / 2016-12-23
-====================
-
-  * 0.15.13
-  * updates dependencies/reformatted json

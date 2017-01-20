@@ -8,7 +8,7 @@
 # spectre-canjs
 
 [![Build Status](https://travis-ci.org/roemhildtg/spectre-canjs.svg?branch=master)](https://travis-ci.org/roemhildtg/spectre-canjs)
-[![NPM](https://nodei.co/npm/spectre-canjs.png?compact=true)](https://npmjs.org/package/<package>)
+[![NPM](https://nodei.co/npm/spectre-canjs.png?compact=true)](https://npmjs.org/package/spectre-canjs)
 
 A collection of data administration and management components to enable
 the rapid developement of client side web applications. Built on the Spectre CSS

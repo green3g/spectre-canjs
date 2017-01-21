@@ -1,0 +1,117 @@
+<div class="container api">
+	<div class="columns">
+		<div class="column col-xl-3 col-lg-4 col-md-4 col-xs-12">
+			<nav class="sidebar">
+				{{#if enableSearch}}
+					<div class="search-wrapper">
+						<div class="search">
+							<input type="text" />
+						</div>
+					</div>
+				{{/if}}
+				{{> menu.mustache}}
+			</nav>
+		</div>
+		<div class="column col-xl-9 col-lg-8 col-md-8 col-xs-12">
+			{{#unless hideArticle}}
+				<article class="content docs">
+			{{/unless}}
+
+			{{#unless hideTitle}}
+				<section class="title">
+					{{> title.mustache}}
+				</section>
+			{{/unless}}
+
+			{{#unless hideArticle}}
+				<section class="contents">
+				</section>
+			{{/unless}}
+
+			{{#if deprecated.length}}
+				<section class='warnings'>
+					{{#deprecated}}
+						<div class='deprecated warning'>
+							<span class="label label-danger">Deprecated {{version}}</span>
+							<div class='signature-wrapper'>
+								{{{chain "makeHtml" "makeLinks" description}}}
+							</div>
+						</div>
+					{{/deprecated}}
+				</section>
+			{{/if}}
+
+			{{#if description}}
+				<section class="description">
+					{{{chain "makeHtml" "makeLinks" description}}}
+				</section>
+			{{/if}}
+
+			{{#if signatures}}
+				{{#signatures}}
+					<section class="signature">
+						{{> signature.mustache}}
+					</section>
+				{{/signatures}}
+			{{else}}
+				{{#if types}}
+					<section class='primary-options'>
+						{{> types.mustache}}
+					</section>
+				{{/if}}
+			{{/if}}
+
+			{{#ifAny params returns}}
+				<section class="signature">
+					{{> signature.mustache}}
+				</section>
+			{{/ifAny}}
+
+
+			{{#if body}}
+				<section class="comment">
+					{{{chain "renderAsTemplate" "makeHtml" "makeLinks" body}}}
+				</section>
+			{{/if}}
+			{{#if htmlBody}}
+				{{{htmlBody}}}
+			{{/if}}
+
+			{{#if showChildrenInPage}}
+				{{#eachOrderedChildren children}}
+					<section class="comment">
+						<h2>{{title}}</h2>
+					</section>
+
+					{{#if description}}
+						<section class="description">
+							{{{chain "makeHtml" "makeLinks" description}}}
+						</section>
+					{{/if}}
+
+					{{#if body}}
+						<section class="comment">
+							{{{chain "renderAsTemplate" "makeHtml" "makeLinks" body}}}
+						</section>
+						{{#if htmlBody}}
+							{{{htmlBody}}}
+						{{/if}}
+					{{/if}}
+				{{/eachOrderedChildren}}
+			{{/if}}
+
+			{{#if api}}
+				<section class="api">
+					{{{makeApiSection}}}
+				</section>
+			{{/if}}
+
+			{{#unless hideArticle}}
+				</article>
+			{{/unless}}
+
+		</div>
+
+	</div>
+
+</div>

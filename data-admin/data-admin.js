@@ -18,26 +18,66 @@ import {FilterList} from '../filter-widget/Filter';
 import {parseFieldArray, mapToFields} from '../util/field';
 import {ViewMap} from './ViewMap';
 
+/**
+ * @constructor data-admin.SortMap SortMap
+ * @parent data-admin
+ * @group data-admin.SortMap.props Properties
+ *
+ * @description A special map for handling sorting parameter serialization
+ */
 export const SortMap = DefineMap.extend('SortMap', {
-    fieldName: null,
-    type: 'asc'
+  /**
+   * The fieldname to sort on.
+   * @property {String}
+   */
+    fieldName: 'string',
+    /**
+     * The type of sorting to apply to the field, valid values are `asc` or `desc`
+     * @property {String}
+     */
+    type: {value: 'asc', type: 'string'}
 });
 
+/**
+ * @constructor data-admin.ParameterMap ParameterMap
+ * @parent data-admin
+ * @group data-admin.ParameterMap.props Properties
+ *
+ * @description A special map for handling paramter serialization
+ */
 export const ParameterMap = DefineMap.extend('ParameterMap', {
     seal: false
 }, {
+    /**
+     * An array of filter parameters
+     * @property {Array<filter-widget.Filter>}
+     */
     filters: {
         Type: FilterList,
         Value: FilterList
     },
+    /**
+     * The number of items to show per per page. The default is 10.
+     * @property {Number}
+     */
     perPage: {
         type: 'number',
         value: 10
     },
+    /**
+     * The current page index to show. The default is 0.
+     * This value is 0 indexed so if you want the 3rd page, you would use
+     * index of 2.
+     * @property {Object}
+     */
     page: {
         type: 'number',
         value: 0
     },
+    /**
+     * Properties defining the sorting of the list table view.
+     * @property {data-admin.SortMap}
+     */
     sort: {
         Type: SortMap,
         Value: SortMap
@@ -51,7 +91,6 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
  * @constructor data-admin.ViewModel ViewModel
  * @parent data-admin
  * @group data-admin.ViewModel.props Properties
- * @group data-admin.ViewModel.topics Topics
  *
  * @description A `<data-admin />` component's ViewModel
  */
@@ -62,7 +101,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     /**
      * The view object that controls the entire setup of the data-admin.
      * Properties on the view control how each field is formatted, default values,
-     * interactions, etc.
+     * interactions, etc. Read the documentation on the ViewMap for details on the
+     * view properties.
      * @property {data-admin/ViewMap} data-admin.ViewModel.props.view
      * @parent data-admin.ViewModel.props
      */
@@ -80,6 +120,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * * `list`: The list table page that displays all records
      * * `details`: The individual view page that shows one detailed record
      * * `edit`: The editing view that allows editing of an individual record using a form
+     * * `add`: The add new page, allows users to create new records.
      * @property {String} data-admin.ViewModel.props.page
      * @parent data-admin.ViewModel.props
      */
@@ -88,8 +129,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         type: 'string'
     },
     /**
-     * A total items number representing a count of the available items
-     * @property {Number} data-admin.ViewModel.props.totalItems
+     * A total items number representing a count of the available items. This
+     * is a virtual property that is retrieved from the `view.connection`metadata.total`
+     * property if it exists. If the `view.connection.metadata` does not exist,
+     * this property may be set on the `data-admin` viewModel.
+     * @property {Number} data-admin.ViewModel.props.totalItems totalItems
+     * @parent data-admin.ViewModel.props
      */
     totalItems: {
         get (total) {
@@ -102,9 +147,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * A virtual property that calculates the number of total pages to show
-     * on the list page. This controls the paginator widget. It uses the property
-     * `view.connectionProperties.total`  and `queryPerPage` to perform this calculation.
-     * @property {String} data-admin.ViewModel.props.totalPages
+     * on the list page. This controls the paginator widget. It uses the `totalItems` property
+     * and the `parameters.perPage` value to calculate a number of pages to display.
+     * @property {Number} data-admin.ViewModel.props.totalPages
      * @parent data-admin.ViewModel.props
      */
     totalPages: {
@@ -121,7 +166,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * step below is less than the total count. Example, if there are
      * 30 total items, the default list returned will be 10, 20, and 50.
      * If no options are returned the per page switcher is hidden.
-     * @property {Array<Number>} data-admin.ViewModel.props.perPageOptions
+     * @property {Array<Number>} data-admin.ViewModel.props.perPageOptions perPageOptions
      * @parent data-admin.ViewModel.props
      */
     perPageOptions: {
@@ -147,7 +192,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
     },
     /**
-     * the internal parameters object. This is prepopulated when view is set.
+     * The internal parameters object. This is prepopulated when view is set.
      * @property {Object}
      */
     parameters: {

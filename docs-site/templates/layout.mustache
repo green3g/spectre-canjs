@@ -1,0 +1,86 @@
+<!DOCTYPE html> {{{generatedWarning}}}
+
+<!--[if lt IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<title>{{makeParentTitle}}
+		{{#if title}}- {{title}} {{else}}
+			{{#if name}}- {{name}}{{/if}}
+		{{/if}}
+	</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	{{^devBuild}}
+	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	<link rel="stylesheet" type="text/css" href="./spectre/bundles/docs-main.css">
+
+
+	{{/devBuild}}
+	<!--[if lt IE 9]>
+   <script type="text/javascript" src="static/html5shiv.js"></script>
+    <!--<![endif]-->
+</head>
+
+<body class="docs container">
+	{{#unless hideHeader}}
+		<header class="navbar">
+			<section class="navbar-section">
+				<a href="./index.html" class="navbar-brand">
+					<i class="icon icon-pages"></i> Spectre-CanJS
+				</a>
+				<a href="https://github.com/roemhildtg/spectre-canjs" class="btn btn-link">Github Repo</a>
+				<a href="https://picturepan2.github.io/spectre/" class="btn btn-link">Spectre.css Docs</a>
+			</section>
+			<section class="navbar-section">
+				<div class="input-group input-inline search">
+					<input class="form-input" type="text" placeholder="search" />
+					<button class="btn btn-primary input-group-btn">Search</button>
+				</div>
+			</section>
+		</header>
+	{{/unless}}
+
+	{{{content}}}
+	{{^hideFooter}}
+	<footer>
+		<nav class="container">
+			<a class="brand javascriptmvc" href="index.html"></a>
+		</nav>
+	</footer>
+	{{/hideFooter}}
+
+	<script type="text/javascript">
+		var docObject = {{{docObjectString}}};
+	</script>
+
+	{{#if devBuild}}
+		<script type='text/javascript' data-main="static" data-config="./static/config.js" src="./static/steal/steal.js"></script>
+	{{else}}
+		<script>
+			steal = {
+				instantiated: {
+					"bundles/static.css!$css": null
+				}
+			}
+		</script>
+		<script type='text/javascript' data-main="static" data-config="./static/config.js" src="./static/steal.production.js" bundles-path="bundles"></script>
+	{{/if}}
+</body>
+
+</html>

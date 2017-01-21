@@ -22,7 +22,7 @@
     "docs": "documentjs -d -f",
     "postdocs": "node docs-bundle",
     "prepublish-docs": "git checkout gh-pages && git merge master",
-    "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages && git checkout master",
+    "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages -f && git checkout master",
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",

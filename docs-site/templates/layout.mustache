@@ -24,9 +24,7 @@
 		{{/if}}
 	</title>
 	<meta name="description" content="">
-	<meta name="author" content="">
-
-	{{^devBuild}}
+	<meta name="author" content=""> {{^devBuild}}
 	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
 	<link rel="stylesheet" type="text/css" href="./spectre/bundles/docs-main.css">
 
@@ -47,6 +45,17 @@
 				<a href="https://github.com/roemhildtg/spectre-canjs" class="btn btn-link">Github Repo</a>
 				<a href="https://picturepan2.github.io/spectre/" class="btn btn-link">Spectre.css Docs</a>
 			</section>
+
+			{{#unless hideArticle}}
+				<section class="dropdown float-right">
+					<a class="btn btn-link dropdown-toggle" tabindex="0">Page Outline <i class="icon-caret"></i></a>
+					<ul class="menu">
+						<section class="contents">
+						</section>
+					</ul>
+				</section>
+			{{/unless}}
+
 			<section class="navbar-section">
 				<div class="input-group input-inline search">
 					<input class="form-input" type="text" placeholder="search" />
@@ -56,8 +65,7 @@
 		</header>
 	{{/unless}}
 
-	{{{content}}}
-	{{^hideFooter}}
+	{{{content}}} {{^hideFooter}}
 	<footer>
 		<nav class="container">
 			<a class="brand javascriptmvc" href="index.html"></a>

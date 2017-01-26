@@ -1,13 +1,16 @@
 {
-  "siteDefaults": {
-  },
-  "sites": {
-    "docs": {
-      "glob": {
-        "ignore": "{docs,dist,node_modules}/**/*"
-      },
-      "parent": "spectre",
-      "dest": "./docs"
+    "siteDefaults": {
+        "source": "https://github.com/roemhildtg/spectre-canjs",
+        "templates": "docs-site/templates",
+        "static": "docs-site/static"
+    },
+    "sites": {
+        "docs": {
+            "glob": {
+                "ignore": "{docs,dist,node_modules}/**/*"
+            },
+            "parent": "spectre",
+            "dest": "./docs"
+        }
     }
-  }
 }

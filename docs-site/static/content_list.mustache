@@ -1,0 +1,16 @@
+<ul class="menu">
+	<!-- menu header -->
+	<li class="menu-header">
+		<span class="menu-header-text">
+            Page Outline
+        </span>
+	</li>
+	<!-- menu item -->
+	{{#sections}}
+		<li class="menu-item">
+			<a href="#{{id}}">
+				<i class="icon icon-link"></i> {{text}}
+			</a>
+		</li>
+	{{/sections}}
+</ul>

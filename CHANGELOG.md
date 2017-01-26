@@ -1,3 +1,21 @@
+0.21.4 / 2017-01-26
+===================
+
+  * 0.21.4
+  * DOCS: add docs for checkbox field
+  * Merge remote-tracking branch 'origin/master'
+  * ENH: add new checkbox field
+  * ENH: add subform field as replacement for json-field
+    - subform to replace json-field as it doesn't automatically convert obj to json
+    - obj can be serialized to json easily before sending to server using defineMap's serialize
+  * DOCS:minor layout fixes
+  * DOCS: force push gh-pages branch
+  * Finish documenting data-admin
+  * DOCS: template tweaks and updates
+  * add custom template theme using spectre.css
+  * FIX: json-field existing json values passed correctly
+  * changelog
+
 0.21.3 / 2017-01-20
 ===================
 
@@ -140,20 +158,3 @@
   * Merge pull request [#7](https://github.com/roemhildtg/spectre-canjs/issues/7) from roemhildtg/greenkeeper/steal-less-1.0.2
     chore(package): update steal-less to version 1.0.2
   * file-field create the list in the getter and set it
-  * dropdown-menu: renames toggled to visible
-  * removes jquery dependency
-  * chore(package): update steal-less to version 1.0.2
-    https://greenkeeper.io/
-  * chore(package): update steal to version 1.0.8
-    https://greenkeeper.io/
-  * chore(package): update can-define to version 1.0.12
-    https://greenkeeper.io/
-  * chore(package): update can-connect to version 1.1.1
-    https://greenkeeper.io/
-  * chore(package): update can-component to version 3.0.5
-    https://greenkeeper.io/
-  * remove extra dep
-  * make file upload more mobile friendly
-  * update deps
-  * fix missing jsdoc
-  * add tests and docs for field-components

@@ -76,9 +76,9 @@ steal('can/control', './demo_frame.mustache!', 'jquery', 'can/observe', './prett
             return false;
         },
         showTab: function (tabName) {
-            $('.tab', this.element).removeClass('active');
+            $('.tab-item', this.element).removeClass('active');
             $('.tab-content', this.element).hide();
-            $('.tab[data-tab=' + tabName + ']', this.element).addClass('active');
+            $('.tab-item[data-tab=' + tabName + ']', this.element).addClass('active');
             $('[data-for=' + tabName + ']', this.element).show();
         },
         prettify: function (unescaped) {

@@ -3,6 +3,7 @@ import 'spectre-canjs/form-widget/field-components/text-field/';
 import 'spectre-canjs/form-widget/field-components/select-field/';
 import 'spectre-canjs/form-widget/field-components/file-field/';
 import 'spectre-canjs/form-widget/field-components/json-field/';
+import 'spectre-canjs/form-widget/field-components/subform-field/';
 import 'spectre-canjs/form-widget/field-components/date-field/';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
@@ -29,13 +30,39 @@ fixture({
     };
 });
 
+
+const ChildObject = DefineMap.extend({
+    json_field_1: 'string',
+    json_field_2: {
+        validate(props){
+          return props.value != 2 ? 'The value must be 2' : undefined;
+        },
+        value: 2,
+        fieldType: 'select',
+        options: [{
+            value: 1,
+            label: 'Option 1'
+        }, {
+            value: 2,
+            label: 'Option 2'
+        }]
+    },
+    json_field_3: {
+        type: 'number',
+        validate(props) {
+            return props.value < 10 ? 'Please enter a value greater than 10' : undefined;
+        }
+    }
+})
+
+
 const Template = DefineMap.extend({
     field1: { type: 'string', value: 'test-value' },
     field2: 'string',
     field3: 'number',
     field4: 'date',
     field5: 'string',
-    field6: 'string'
+    field6: ChildObject
 });
 
 const fields = [{
@@ -83,33 +110,11 @@ const fields = [{
         url: '/upload'
     }, {
         name: 'field6',
-        alias: 'A JSON Field',
-        fieldType: 'json',
+        alias: 'A Subform Field',
+        fieldType: 'subform',
         type: 'string',
         value: '',
-        ObjectTemplate: DefineMap.extend({
-            json_field_1: 'string',
-            json_field_2: {
-                validate(props){
-                  return props.value != 2 ? 'The value must be 2' : undefined;
-                },
-                value: 2,
-                fieldType: 'select',
-                options: [{
-                    value: 1,
-                    label: 'Option 1'
-                }, {
-                    value: 2,
-                    label: 'Option 2'
-                }]
-            },
-            json_field_3: {
-                type: 'number',
-                validate(props) {
-                    return props.value < 10 ? 'Please enter a value greater than 10' : undefined;
-                }
-            }
-        })
+        ObjectTemplate: ChildObject
     }
 ]
 

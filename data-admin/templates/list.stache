@@ -53,7 +53,7 @@
     <div class="clearfix"></div>
 
     {{#if objects.length}}
-        <list-table {objects}="objects" {buttons}="buttons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
+        <list-table {objects}="objects" {buttons}="buttons" {primary-button}="primaryButton" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
     {{else}}
         {{#if objectsPromise.isResolved}}
             <p>{{view.noDataMessage}}</p>

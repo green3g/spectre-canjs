@@ -4,6 +4,8 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import stache from 'can-stache';
 
+import '../../form-widget/field-components/checkbox-field/checkbox-field';
+
 // additional field proeprties can be included here to customize the
 // tables and forms for this object
 const PostMap = DefineMap.extend({
@@ -13,7 +15,8 @@ const PostMap = DefineMap.extend({
     },
     userId: 'number',
     title: 'string',
-    body: 'string'
+    body: 'string',
+    completed: {fieldType: 'checkbox', type: 'boolean'}
 });
 
 const PostList = DefineList.extend({
@@ -36,8 +39,7 @@ const viewModel = new DefineMap({
         title: 'Posts',
         connection: Connection,
         manageButtons: [{
-            textClass: 'text-success',
-            buttonClass: 'btn btn-success',
+            header: 'Quick Tasks',
             text: 'Complete',
             iconClass: 'fa fa-fw fa-check-square-o',
             onClick (objs) {

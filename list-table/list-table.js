@@ -9,6 +9,8 @@ import CanEvent from 'can-event';
 import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
 
+import '../dropdown-menu/dropdown-menu';
+
 /**
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
@@ -92,6 +94,12 @@ export const ViewModel = DefineMap.extend('ListTable', {
      */
     buttons: DefineList,
     /**
+     * A primary button to display next to the dropdown menu button on each row
+     * @property {Object} list-table.ViewModel.props.primaryButton
+     * @parent list-table.ViewModel.props
+     */
+    primaryButton: DefineMap,
+    /**
      * An array of fields
      * @parent list-table.ViewModel.props
      * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
@@ -126,14 +134,29 @@ export const ViewModel = DefineMap.extend('ListTable', {
         }
     },
     /**
-     * Called when a button is clicked. This dispatches the buttons event.
+     * The icon class for the menu dropdown on each row
+     * @type {Object}
+     */
+    menuIconClass: {
+        type: 'string',
+        value: 'fa fa-bars'
+    },
+    /**
+     * Called when a button is clicked. This dispatches the button's event and
+     * calls the buttons `onClick` method if it exists
      * @function buttonClick
      * @signature
-     * @param  {String} eventName The name of the event to dispatch
+     * @param  {String} button The button object that was clicked
      * @param  {can.Map} object  The row data
      */
-    buttonClick (eventName, object) {
-        this.dispatch(eventName, [object]);
+    buttonClick (button, object) {
+        console.log(button.serialize(), object.serialize());
+        if (button.eventName) {
+            this.dispatch(button.eventName, [object]);
+        }
+        if (typeof(button.onClick) === 'function') {
+            button.onClick([object]);
+        }
     },
     /**
      * Helps the template the currentSort value

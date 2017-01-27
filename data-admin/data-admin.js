@@ -303,19 +303,27 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @parent data-admin.ViewModel.props
      */
     buttons: {
-        type: '*',
-        get (buttons) {
-            if (buttons && buttons.length) {
-                return buttons;
-            }
-            buttons = [VIEW_BUTTON];
+        get () {
+            let buttons = [VIEW_BUTTON];
             if (!this.view.disableEdit) {
                 buttons.push(EDIT_BUTTON);
             }
             if (!this.view.disableDelete) {
                 buttons.push(DELETE_BUTTON);
             }
+            if (this.view.manageButtons && this.view.manageButtons.length) {
+                buttons = buttons.concat(this.view.manageButtons.serialize());
+            }
+
             return buttons;
+        }
+    },
+    primaryButton: {
+        value () {
+            return {
+                text: 'Detail',
+                eventName: 'view'
+            };
         }
     },
     /**

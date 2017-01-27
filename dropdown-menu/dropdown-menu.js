@@ -4,6 +4,8 @@ import template from './template.stache';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import canViewModel from 'can-view-model';
+import canEvent from 'can-event';
+import assign from 'can-util/js/assign/assign';
 
 
 /**
@@ -37,6 +39,22 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @parent dropdown-menu.ViewModel.props
      */
     visible: 'boolean',
+    /**
+     * The button class to apply to the button dropdown. The default is `btn btn-link`
+     * @property {String} dropdown-menu.ViewModel.props.buttonClass
+     * @parent dropdown-menu.ViewModel.props
+     */
+    buttonClass: {
+        type: 'string',
+        value: 'btn btn-link'
+    },
+    /**
+     * A button to display next to the dropdown button. This creates a split
+     * dropdown menu button group
+     * @property {Object} dropdown-menu.ViewModel.props.primaryButton
+     * @parent dropdown-menu.ViewModel.props
+     */
+    primaryButton: DefineMap,
     /**
      * toggles the display of a dropdown-menu component
      * @function toggle
@@ -72,8 +90,14 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
                 vm.visible = false;
             }
         }
+    },
+    onPrimaryClick () {
+        this.dispatch('primaryclick');
     }
 });
+
+assign(ViewModel.prototype, canEvent);
+
 
 export default Component.extend({
     tag: 'dropdown-menu',

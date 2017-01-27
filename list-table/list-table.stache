@@ -2,7 +2,7 @@
     <table class="table table-striped table-condensed">
         <thead>
             <tr>
-                <th class="tool-buttons">
+                <th class="tool-buttons" colspan="2">
                     <div class="form-group">
                         <label class="form-checkbox">
                             <input type="checkbox" ($change)="toggleSelectAll" {($checked)}="_allSelected" />
@@ -20,17 +20,38 @@
         </thead>
         <tbody>
             {{#each objects as row}}
-                <tr {{#if isSelected(row)}} class="warning" {{/if}}>
-                    <td class="tool-buttons">
+                <tr {{#if isSelected(row)}} class="selected" {{/if}}>
+                    <td class="checkbox-cell">
                         <div class="form-group inline-block">
                             <label class="form-checkbox">
                                 <input type="checkbox" ($change)="toggleSelected(row)" {($checked)}="isSelected(row)" />
                                 <i class="form-icon"></i>
                             </label>
                         </div>
-                        {{#each buttons}}
-                            <i class="{{iconClass}}" ($click)="buttonClick(eventName, row)"></i>&nbsp;&nbsp;
-                        {{/each}}
+                    </td>
+                    <td class="manage-tools-cell">
+                        <dropdown-menu icon-class="{{menuIconClass}}" button-class="btn btn-sm btn-primary" {{#primaryButton}} (primaryclick)="buttonClick(primaryButton, row)" {primary-button}="primaryButton" {{/primaryButton}}>
+                            <ul class="menu">
+                                {{#each buttons}}
+                                    {{#if header}}
+                                        <li class="menu-header">
+                                            <span class="menu-header-text">{{header}}</span>
+                                        </li>
+                                    {{/if}}
+                                    {{#if divideBefore}}
+                                        <li class="divider"></li>
+                                    {{/if}}
+                                    <li class="menu-item">
+                                        <a ($click)="buttonClick(., row)">
+                                            <i class="{{iconClass}}"></i> {{text}}
+                                        </a>
+                                    </li>
+                                    {{#if divideAfter}}
+                                        <li class="divider"></li>
+                                    {{/if}}
+                                {{/each}}
+                            </ul>
+                        </dropdown-menu>
                     </td>
                     {{#each fields as field}}
                         {{! this passes the field name and the current object to getFieldValue }}

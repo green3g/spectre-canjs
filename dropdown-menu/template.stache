@@ -1,5 +1,9 @@
 <div class="dropdown-wrapper">
-    <a href="#" class="btn btn-link" role="button" aria-haspopup="true" aria-expanded="false" ($click)="toggle(%event)">
+  <div class="btn-group">
+    {{#primaryButton}}
+      <a href="#" ($click)="onPrimaryClick" class="{{buttonClass}}">{{text}}</a>
+    {{/primaryButton}}
+    <a href="#" class="{{buttonClass}}" role="button" aria-haspopup="true" aria-expanded="false" ($click)="toggle(%event)">
       {{text}} <i class="{{iconClass}}"></i>
     </a>
 

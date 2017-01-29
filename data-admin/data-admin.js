@@ -318,12 +318,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             return buttons;
         }
     },
-    primaryButton: {
+    primaryButtons: {
         value () {
-            return {
-                text: 'Detail',
+            return [{
+                text: 'View',
                 eventName: 'view'
-            };
+            }];
         }
     },
     /**

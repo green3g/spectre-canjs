@@ -2,6 +2,7 @@ import './dropdown-menu.less';
 import template from './template.stache';
 
 import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import canViewModel from 'can-view-model';
 import canEvent from 'can-event';
@@ -49,12 +50,12 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
         value: 'btn btn-link'
     },
     /**
-     * A button to display next to the dropdown button. This creates a split
+     * An array of buttons to display next to the dropdown button. This creates a split
      * dropdown menu button group
-     * @property {Object} dropdown-menu.ViewModel.props.primaryButton
+     * @property {Array<TableButtonObject>} dropdown-menu.ViewModel.props.primaryButton
      * @parent dropdown-menu.ViewModel.props
      */
-    primaryButton: DefineMap,
+    primaryButtons: DefineList,
     /**
      * toggles the display of a dropdown-menu component
      * @function toggle
@@ -91,8 +92,8 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
             }
         }
     },
-    onPrimaryClick () {
-        this.dispatch('primaryclick');
+    onPrimaryClick (button) {
+        this.dispatch('primaryclick', [button]);
     }
 });
 

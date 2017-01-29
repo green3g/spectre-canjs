@@ -95,10 +95,10 @@ export const ViewModel = DefineMap.extend('ListTable', {
     buttons: DefineList,
     /**
      * A primary button to display next to the dropdown menu button on each row
-     * @property {Object} list-table.ViewModel.props.primaryButton
+     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButton
      * @parent list-table.ViewModel.props
      */
-    primaryButton: DefineMap,
+    primaryButtons: DefineList,
     /**
      * An array of fields
      * @parent list-table.ViewModel.props
@@ -139,18 +139,30 @@ export const ViewModel = DefineMap.extend('ListTable', {
      */
     menuIconClass: {
         type: 'string',
-        value: 'fa fa-bars'
+        value: 'fa fa-caret-down'
     },
     /**
      * Called when a button is clicked. This dispatches the button's event and
      * calls the buttons `onClick` method if it exists
-     * @function buttonClick
+     * @function dispatchButtonEvent
      * @signature
      * @param  {String} button The button object that was clicked
      * @param  {can.Map} object  The row data
      */
-    buttonClick (button, object) {
-        console.log(button.serialize(), object.serialize());
+    dispatchButtonEvent (button, object) {
+        if (button.eventName) {
+            this.dispatch(button.eventName, [object]);
+        }
+        if (typeof(button.onClick) === 'function') {
+            button.onClick([object]);
+        }
+    },
+    /**
+     * Called when the primary buttons are clicked. This dispatches the button's event and
+     * calls the buttons `onClick` method if it exists
+     */
+    dispatchPrimaryButtonEvent (eventArgs, object) {
+        const button = eventArgs[1];
         if (button.eventName) {
             this.dispatch(button.eventName, [object]);
         }

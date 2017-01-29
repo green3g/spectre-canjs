@@ -1,3 +1,19 @@
+0.22.0 / 2017-01-28
+===================
+
+  * 0.22.0
+  * FIX: fix failing tests related to primaryButton changes
+  * CHG: `primaryButton` changed to array of type button, `primaryButtons`
+    - allow for more flexibility in dropdown-menu, list-table, and data-admin
+  * CHG: list-table buttons now appear as a menu
+    -  In addition, primaryButton can appear beside the menu dropdown
+    - adds primaryButton to data-admin, list-table, and dropdown-menu
+  * ENH: adds checkbox template to field factory
+  * CHG: use common 'text' property for all button objects between different components
+    - more common names between properties
+    - includes breaking change for list-table, change button 'title' to 'text'
+  * changelog
+
 0.21.4 / 2017-01-26
 ===================
 
@@ -141,20 +157,3 @@
   * changelog
   * 0.18.1
   * FIX: file-field:remove extra send function
-
-0.18.0 / 2017-01-05
-===================
-
-  * 0.18.0
-  * Merge remote-tracking branch 'origin/greenkeeper/can-connect-1.1.1'
-    # Conflicts:
-    #    package.json
-  * Merge pull request [#10](https://github.com/roemhildtg/spectre-canjs/issues/10) from roemhildtg/greenkeeper/can-component-3.0.5
-    chore(package): update can-component to version 3.0.5
-  * Merge pull request [#9](https://github.com/roemhildtg/spectre-canjs/issues/9) from roemhildtg/greenkeeper/can-define-1.0.12
-    chore(package): update can-define to version 1.0.12
-  * Merge pull request [#8](https://github.com/roemhildtg/spectre-canjs/issues/8) from roemhildtg/greenkeeper/steal-1.0.8
-    chore(package): update steal to version 1.0.8
-  * Merge pull request [#7](https://github.com/roemhildtg/spectre-canjs/issues/7) from roemhildtg/greenkeeper/steal-less-1.0.2
-    chore(package): update steal-less to version 1.0.2
-  * file-field create the list in the getter and set it

@@ -146,7 +146,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
      * calls the buttons `onClick` method if it exists
      * @function dispatchButtonEvent
      * @signature
-     * @param  {String} button The button object that was clicked
+     * @param  {TableButtonObject} button The button object that was clicked
      * @param  {can.Map} object  The row data
      */
     dispatchButtonEvent (button, object) {
@@ -160,6 +160,9 @@ export const ViewModel = DefineMap.extend('ListTable', {
     /**
      * Called when the primary buttons are clicked. This dispatches the button's event and
      * calls the buttons `onClick` method if it exists
+     * @function dispatchPrimaryButtonEvent
+     * @param {Array<arguments>} eventArgs the `primaryclick` event args from the dropdown-meu
+     * @param {Object} object the row that the event was dispatched on 
      */
     dispatchPrimaryButtonEvent (eventArgs, object) {
         const button = eventArgs[1];

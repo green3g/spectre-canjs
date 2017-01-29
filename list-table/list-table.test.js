@@ -74,7 +74,7 @@ test('setSort(field)', (assert) => {
     }, 'Current sort should be ascending and set to field');
 });
 
-test('buttonClick(eventName, object)', (assert) => {
+test('dispatchButtonEvent(eventName, object)', (assert) => {
     const eventName = 'my-event';
     const myObj = {
         myObj: 'myObj'
@@ -85,7 +85,21 @@ test('buttonClick(eventName, object)', (assert) => {
         assert.equal(event.type, eventName, 'event should be the correct name');
         done();
     });
-    vm.buttonClick(eventName, myObj);
+    vm.dispatchButtonEvent({eventName: eventName}, myObj);
+});
+
+test('dispatchPrimaryButtonEvent(args, object)', (assert) => {
+    const eventName = 'my-event';
+    const myObj = {
+        myObj: 'myObj'
+    };
+    const done = assert.async();
+    vm.on(eventName, (event, obj) => {
+        assert.deepEqual(obj, myObj, 'event should emit the correct object');
+        assert.equal(event.type, eventName, 'event should be the correct name');
+        done();
+    });
+    vm.dispatchPrimaryButtonEvent([{}, {eventName: eventName}], myObj);
 });
 
 test('toggleSelected(obj), isSelected(obj)', (assert) => {

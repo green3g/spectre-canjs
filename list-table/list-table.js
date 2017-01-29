@@ -95,7 +95,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
     buttons: DefineList,
     /**
      * A primary button to display next to the dropdown menu button on each row
-     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButton
+     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButtons primaryButtons
      * @parent list-table.ViewModel.props
      */
     primaryButtons: DefineList,
@@ -162,7 +162,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
      * calls the buttons `onClick` method if it exists
      * @function dispatchPrimaryButtonEvent
      * @param {Array<arguments>} eventArgs the `primaryclick` event args from the dropdown-meu
-     * @param {Object} object the row that the event was dispatched on 
+     * @param {Object} object the row that the event was dispatched on
      */
     dispatchPrimaryButtonEvent (eventArgs, object) {
         const button = eventArgs[1];

@@ -92,8 +92,16 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
             }
         }
     },
+    /**
+     * When a primary button is clicked, this function dispatches the `primaryclick`
+     * event with the button that was clicked as its argument.
+     * @function onPrimaryClick
+     * @param {TableButtonObject} button the button that was clicked
+     * @return {Boolean} returns false to prevent event from changing page route
+     */
     onPrimaryClick (button) {
         this.dispatch('primaryclick', [button]);
+        return false;
     }
 });
 

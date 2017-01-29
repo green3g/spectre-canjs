@@ -12,6 +12,9 @@ var viewModel = new DefineMap({
         active: true
     }, {
         label: 'Other Options'
+    }],
+    primary: [{
+      text: 'Important!'
     }]
 });
 

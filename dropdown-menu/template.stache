@@ -1,7 +1,7 @@
 <div class="dropdown-wrapper">
   <div class="btn-group">
     {{#each primaryButtons as button}}
-      <a href="#" ($click)="onPrimaryClick" class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
+      <a href="#" ($click)="onPrimaryClick(button, %event)" class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
     {{/each}}
     <a href="#" class="{{buttonClass}}" role="button" aria-haspopup="true" aria-expanded="false" ($click)="toggle(%event)">
       {{text}} <i class="{{iconClass}}"></i>

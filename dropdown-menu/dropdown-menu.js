@@ -97,9 +97,13 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * event with the button that was clicked as its argument.
      * @function onPrimaryClick
      * @param {TableButtonObject} button the button that was clicked
+     * @param {MouseEvent} event The mouse click event on the button that we should prevent default
      * @return {Boolean} returns false to prevent event from changing page route
      */
-    onPrimaryClick (button) {
+    onPrimaryClick (button, event) {
+        if (event) {
+            event.preventDefault();
+        }
         this.dispatch('primaryclick', [button]);
         return false;
     }

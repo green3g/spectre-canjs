@@ -1,3 +1,10 @@
+0.22.2 / 2017-01-31
+===================
+
+  * 0.22.2
+  * FIX:dropdown-menu - preventDefault on mouse click primaryButtons
+  * changelog
+
 0.22.1 / 2017-01-31
 ===================
 
@@ -151,10 +158,3 @@
   * Merge remote-tracking branch 'origin'
   * CHG: remove jquery dependency as its no longer necessary
   * FIX: file-field set content type to json
-
-0.18.2 / 2017-01-06
-===================
-
-  * changelog
-  * 0.18.2
-  * FIX: file-field:convert delete data to json before sending

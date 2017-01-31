@@ -1,3 +1,11 @@
+0.22.1 / 2017-01-31
+===================
+
+  * 0.22.1
+  * DOCS: add primaryButtons to list-table demo
+  * FIX: make dropdown primary button clicks return false to prevent setting hash
+  * changelog
+
 0.22.0 / 2017-01-28
 ===================
 
@@ -150,10 +158,3 @@
   * changelog
   * 0.18.2
   * FIX: file-field:convert delete data to json before sending
-
-0.18.1 / 2017-01-06
-===================
-
-  * changelog
-  * 0.18.1
-  * FIX: file-field:remove extra send function

@@ -1,3 +1,10 @@
+0.22.3 / 2017-02-01
+===================
+
+  * 0.22.3
+  * ENH: json-field format fieldsets that were removed in https://github.com/picturepan2/spectre/pull/136
+  * changelog
+
 0.22.2 / 2017-01-31
 ===================
 
@@ -155,6 +162,3 @@
   * add build scripts and docs
   * update demos
   * FIX: fix merge conflict
-  * Merge remote-tracking branch 'origin'
-  * CHG: remove jquery dependency as its no longer necessary
-  * FIX: file-field set content type to json

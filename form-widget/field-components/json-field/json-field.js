@@ -1,10 +1,12 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import template from './json-field.stache!';
 import {mapToFields, parseFieldArray} from '../../../../util/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
+
+import template from './json-field.stache!';
+import './json-field.less';
 
 /**
  * @constructor form-widget/field-components/json-field.ViewModel ViewModel

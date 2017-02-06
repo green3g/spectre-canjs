@@ -2,7 +2,6 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import template from './subform-field.stache!';
-import './subform-field.less';
 import {mapToFields, parseFieldArray} from '../../../../util/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
@@ -14,7 +13,7 @@ import dev from 'can-util/js/dev/dev';
  *
  * @description A `<subform-field />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('JSONField', {
+export const ViewModel = DefineMap.extend('SubformField', {
     /**
      * @prototype
      */
@@ -46,10 +45,9 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * @parent subform-field.ViewModel.props
      */
     value: {
-        type: 'string',
         set (val) {
             if (typeof val === 'object') {
-                this.subFormObject.set(val);
+                this.subFormObject.set(val.serialize ? val.serialize() : val);
             } else {
                 dev.warn('typeof subform value needs to be object. Type is ' + typeof val, val);
             }

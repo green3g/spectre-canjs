@@ -1,7 +1,7 @@
 /* eslint-env qunit, browser */
 
 import q from 'steal-qunit';
-import {ViewModel} from './json-field';
+import {ViewModel} from './subform-field';
 import DefineMap from 'can-define/map/map';
 //eslint-disable-next-line
 let vm;
@@ -10,7 +10,7 @@ const TestObject = DefineMap.extend({
     field2: 'string'
 });
 
-q.module('json-field.ViewModel', {
+q.module('subform-field.ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

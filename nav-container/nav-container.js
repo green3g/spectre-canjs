@@ -9,6 +9,14 @@ import './nav-container.less!';
 
 
 let pageId = 0;
+
+/**
+ * @constructor nav-page.ViewModel ViewModel
+ * @parent nav-page
+ * @group nav-container.ViewModel.props Properties
+ *
+ * @description A `<nav-page />` component's ViewModel
+ */
 export const PageViewModel = DefineMap.extend('NavPage', {
     active: {type: 'boolean', value: false},
     label: 'string',

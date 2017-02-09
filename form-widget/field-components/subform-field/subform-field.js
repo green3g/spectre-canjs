@@ -98,9 +98,9 @@ export const ViewModel = DefineMap.extend('SubformField', {
      * @param  {Object} props   The change event properties
      */
     saveField (scope, dom, event, props) {
-        this.subFormObject.set(props.name, props.value);
+        this.subFormObject.set(props.dirty);
         this.dispatch('fieldchange', [{
-            value: this.subFormObject,
+            value: this.subFormObject.serialize(),
             name: this.properties.name
         }]);
     }

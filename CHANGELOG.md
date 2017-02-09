@@ -1,3 +1,19 @@
+0.22.5 / 2017-02-09
+===================
+
+  * 0.22.5
+  * ENH: generate fields from inherited DefineMaps
+  * FIX: subform - serialize subform object before dispatching event
+
+0.22.4 / 2017-02-07
+===================
+
+  * 0.22.4
+  * Cleanup: rename test file
+  * FIX: subform-field remove type 'string' and serialize objects if available
+  * FIX: add fieldset border to subform-field
+  * changelog
+
 0.22.3 / 2017-02-01
 ===================
 
@@ -154,11 +170,3 @@
   * Merge remote-tracking branch 'origin/master'
   * CHG: replace assign with object-assign
   * FIX: filter-widget - make sure default field type is inline display
-  * ENH: if fields property is provided to filter-widget, use it to create a customized value field for different fieldTypes
-  * CHG: move field's inline property to field's properties object
-  * ignore demo files from linting
-  * docs: merge changes on build
-  * update build script
-  * add build scripts and docs
-  * update demos
-  * FIX: fix merge conflict

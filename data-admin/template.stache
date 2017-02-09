@@ -9,6 +9,7 @@
         </nav-page>
     {{/unless}}
 
+    {{#if viewId}}
     <nav-page label="Details" page-id="details" {{#if focusObjectPromise.isPending}} loading {{/if}}>
         {{>view.detailsTemplate}}
     </nav-page>
@@ -18,4 +19,5 @@
                 {{>view.editTemplate}}
         </nav-page>
     {{/unless}}
+    {{/if}}
 </nav-container>

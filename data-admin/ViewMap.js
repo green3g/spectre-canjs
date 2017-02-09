@@ -101,9 +101,9 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     disableDelete: {value: false},
   /**
    * A flag to disable creating new objects
-   * @property {Boolean} disableAdd
+   * @property {Boolean} disableCreate
    */
-    disableAdd: {value: false},
+    disableCreate: {value: false},
   /**
    * The title of the view to display in the heading or tab container button in related views
    * @property {String} title

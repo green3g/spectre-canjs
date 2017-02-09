@@ -24,10 +24,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      */
     /**
      * Disabled the add new form if true
-     * @property {Boolean} filter-widget.ViewModel.disableAdd
+     * @property {Boolean} filter-widget.ViewModel.disableCreate
      * @parent filter-widget.ViewModel.props
      */
-    disableAdd: 'htmlbool',
+    disableCreate: 'htmlbool',
     /**
      * A list of fields that will be used to create options in the field name
      * dropdown. Each field may have a property `filterFactory` which may return

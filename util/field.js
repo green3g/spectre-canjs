@@ -232,10 +232,10 @@ export function mapToFields (defineMap) {
         dev.warn('map is undefined, so no fields will be generated');
         return [];
     }
-    const define = assign({}, (defineMap._define || defineMap.prototype._define).definitions);
+    const define = (defineMap._define || defineMap.prototype._define).definitions;
     const fields = [];
     for (var prop in define) {
-        if (define.hasOwnProperty(prop)) {
+        if (define[prop]) {
             const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
 
             // remove reserved properties if any

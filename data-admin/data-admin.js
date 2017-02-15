@@ -26,10 +26,10 @@ import {ViewMap} from './ViewMap';
  * @description A special map for handling sorting parameter serialization
  */
 export const SortMap = DefineMap.extend('SortMap', {
-  /**
-   * The fieldname to sort on.
-   * @property {String}
-   */
+    /**
+     * The fieldname to sort on.
+     * @property {String}
+     */
     fieldName: 'string',
     /**
      * The type of sorting to apply to the field, valid values are `asc` or `desc`
@@ -400,24 +400,59 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     selectedObjects: DefineList,
     /**
-     * Initializes related filters. This is called automatically when the
-     * viewModel is constructed.
-     * @function init
-     * @signature
-
+     * A field that is related to a parent data-admin. The field's name should
+     * be passed to this property, and the viewModel automatically looks up
+     * the relevent field object
+     * @property {util/field.Field} data-admin.ViewModel.props.relatedField
+     * @parent data-admin.ViewModel.props
      */
-    init () {
-        //set up related filters which are typically numbers.
-        if (this.relatedField) {
-            let val = parseFloat(this.relatedValue);
+    relatedField: {
+        set (field) {
+            const fieldList = this._fields.filter((f) => {
+                return f.name === field;
+            });
+            this.addRelatedFilter(fieldList[0], this.relatedValue);
+            return fieldList[0];
+        }
+    },
+    /**
+     * A value that is related to a parent data-admin. The value is converted
+     * to the `relatedField.type` if necessary.
+     * @property {any} data-admin.ViewModel.props.relatedValue
+     * @parent data-admin.ViewModel.props
+     */
+    relatedValue: {
+        set (val) {
             if (!val) {
-                //if we can't force numeric type, just use default value
-                val = this.relatedValue;
+                return val;
             }
+            if (this.relatedField) {
+                const type = this.relatedField.type;
+                if (type === 'number') {
+                    val = parseFloat(val);
+                }
+                if (type === 'date') {
+                    val = new Date(val);
+                }
+            }
+            this.addRelatedFilter(this.relatedField, val);
+            return val;
+        }
+    },
+    /**
+     * Adds a new filter that relates this data-admin to a parent data-admin
+     * viewmodel
+     * @function addRelatedFilter
+     * @signature
+     * @param {util/Field.Field} field The field to filter on (the child key)
+     * @param {any} value The value to use in the filter
+     */
+    addRelatedFilter (field, value) {
+        if (field && value) {
             this.parameters.filters.push({
-                name: this.relatedField,
-                operator: 'equals',
-                value: val
+                name: field.name,
+                value: value,
+                operator: 'equals'
             });
         }
     },
@@ -581,7 +616,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         //from the ObjectTemplate property which is a map
         const props = {};
         if (this.relatedField) {
-            props[this.relatedField] = this.relatedValue;
+            props[this.relatedField.name] = this.relatedValue;
         }
         return new(this.view.ObjectTemplate)(props);
     },

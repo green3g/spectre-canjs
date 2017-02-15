@@ -124,12 +124,12 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     beforeCreate: {value: undefined},
   /**
    * A method to call after a new object in this view is created
-   * @property {funtion} beforeCreate
+   * @property {funtion} afterCreate
    */
     afterCreate: {value: undefined},
   /**
    * A method to call before an object in this view is saved
-   * @property {funtion} beforeCreate
+   * @property {funtion} beforeSave
    */
     beforeSave: {value: undefined},
   /**

@@ -3,7 +3,7 @@
     <nav-container>
         <nav-page label="{{view.title}}">
 
-            <dropdown-menu text="Manage Item" class="float-right">
+            <dropdown-menu text="Manage Item" class="float-right" right>
                 <ul class="menu">
                     {{#if view.manageButtons.length}}
                         <!-- menu header -->

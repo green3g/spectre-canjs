@@ -9,7 +9,7 @@
   </div>
 
     {{#if visible}}
-        <div class="dropdown-content">
+        <div class="dropdown-content {{#right}}right{{/right}}">
             <content />
         </div>
     {{/if}}

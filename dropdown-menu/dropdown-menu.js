@@ -57,6 +57,13 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      */
     primaryButtons: DefineList,
     /**
+     * Whether or not to align this dropdown menu on the right hand side of
+     * the button.
+     * @property {HTMLBoolean} dropdown-menu.ViewModel.props.right
+     * @parent dropdown-menu.ViewModel.props
+     */
+    right: 'htmlbool',
+    /**
      * toggles the display of a dropdown-menu component
      * @function toggle
      * @signature

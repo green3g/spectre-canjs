@@ -16,7 +16,7 @@ const PostMap = DefineMap.extend({
     userId: 'number',
     title: 'string',
     body: 'string',
-    completed: {fieldType: 'checkbox', type: 'boolean'}
+    completed: { fieldType: 'checkbox', type: 'boolean' }
 });
 
 const PostList = DefineList.extend({
@@ -36,13 +36,24 @@ const Connection = SuperMap({
 
 const viewModel = new DefineMap({
     view: {
+        quickFilters: [{
+            text: 'User ID...',
+            field: 'userId',
+            options: [{
+                label: 'One',
+                value: 1
+            }, {
+                label: 'Two',
+                value: 2
+            }]
+        }],
         title: 'Posts',
         connection: Connection,
         manageButtons: [{
             header: 'Quick Tasks',
             text: 'Complete',
             iconClass: 'fa fa-fw fa-check-square-o',
-            onClick (objs) {
+            onClick(objs) {
                 if (!objs.length) {
                     objs = [objs];
                 }
@@ -52,6 +63,10 @@ const viewModel = new DefineMap({
                 });
             }
         }]
+    },
+    params: {},
+    getParameters() {
+        return JSON.stringify(this.params.serialize());
     }
 });
 

@@ -1,79 +1,86 @@
 <div class="object-metadata">
     <span class="text-bold">{{view.title}}</span>:
     {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
-
-    <div class="inline-block">
-        <div class="btn-group btn-group-block display-tools">
-            <button type="button" class="btn btn-primary badge" ($click)="toggle('filterVisible')" {{#if parameters.filters.length}} data-badge="{{parameters.filters.length}}" {{/if}}><i class="fa fa-search"></i> Search</button>
-            {{#filterVisible}}
-                <div class="rel filter-div">
-                    <div class="menu abs block">
-                        <filter-widget {(filters)}="parameters.filters" {fields}="_fields" {object-template}="view.ObjectTemplate" />
-                    </div>
-                </div>
-            {{/filterVisible}}
-            <a class="btn btn-primary" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
-            </div>
+    <dropdown-menu class="filter-dropdown inline-block" text="Search{{#if parameters.filters.length}} ({{parameters.filters.length}}){{/if}}" icon-class="fa fa-search">
+        <div class="menu">
+            <filter-widget {(filters)}="parameters.filters" {fields}="_fields" {object-template}="view.ObjectTemplate" />
         </div>
-        {{#if selectedObjects.length}}
-            <dropdown-menu class="inline-block float-right" text="Manage Selected...">
-                <ul class="menu">
-                    {{#if view.manageButtons.length}}
-                        <!-- menu header -->
-                        <li class="menu-header">
-                            <span class="menu-header-text">
-                      Tasks
-                  </span>
-                        </li>
-                        {{#each view.manageButtons}}
-                            {{#unless disabled}}
-                                <li class="menu-item">
-                                    <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
-                                </li>
-                            {{/unless}}
-                        {{/each}}
-                    {{/if}}
-                    <!-- menu divider -->
-                    <li class="divider"></li>
-                    <li class="menu-header">
-                        <span class="menu-header-text">
-                            Modify
-                        </span>
-                    </li>
+    </dropdown-menu>
+    {{#each view.quickFilters}}
+        <dropdown-menu text="{{text}}" class="inline-block">
+            <ul class="menu">
+                {{#each options}}
                     <li class="menu-item">
-                        <a ($click)="deleteMultiple(false)">
-                            <span class="icon icon-link"></span> Delete
+                        <a href="#" ($click)="toggleQuickFilter(field, value)">
+                            <i class="inline-block quick-filter-icon {{#if getQuickFilter(field, value)}}fa fa-check{{/if}}"></i> {{label}}
                         </a>
                     </li>
-                </ul>
-              </dropdown-menu>
-        {{/if}}
-    </div>
-
-    <div class="clearfix"></div>
-
-    {{#if objects.length}}
-        <list-table {objects}="objects" {buttons}="buttons" {primary-buttons}="primaryButtons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort" {fields}="_fields" />
-    {{else}}
-        {{#if objectsPromise.isResolved}}
-            <p>{{view.noDataMessage}}</p>
-        {{/if}}
+                {{/each}}
+            </ul>
+        </dropdown-menu>
+    {{/each}}
+    {{#if selectedObjects.length}}
+        <dropdown-menu class="inline-block float-right" text="Manage Selected...">
+            <ul class="menu">
+                {{#if view.manageButtons.length}}
+                    <!-- menu header -->
+                    <li class="menu-header">
+                        <span class="menu-header-text">
+                      Tasks
+                  </span>
+                    </li>
+                    {{#each view.manageButtons}}
+                        {{#unless disabled}}
+                            <li class="menu-item">
+                                <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
+                            </li>
+                        {{/unless}}
+                    {{/each}}
+                {{/if}}
+                <!-- menu divider -->
+                <li class="divider"></li>
+                <li class="menu-header">
+                    <span class="menu-header-text">
+                            Modify
+                        </span>
+                </li>
+                <li class="menu-item">
+                    <a ($click)="deleteMultiple(false)">
+                        <span class="icon icon-link"></span> Delete
+                    </a>
+                </li>
+            </ul>
+        </dropdown-menu>
     {{/if}}
 
-    <div class="hidden-print">
-        {{#if showPaginate}}
-            <paginate-widget {(active-page-index)}="parameters.page" {pages}="totalPages" />
-        {{/if}}
-        {{#if perPageOptions.length}}
-            <div class="per-page-form">
-                <div class="form-group">
-                    <label class="form-label perPageSelect">Items per page:</label>
-                    <select {($value)}="parameters.perPage" class="form-select form-control">
+    <a class="btn btn-link" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
+</div>
+
+<div class="clearfix"></div>
+
+{{#if objects.length}}
+    <list-table {objects}="objects" {buttons}="buttons" {primary-buttons}="primaryButtons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort"
+        {fields}="_fields" />
+{{else}}
+    {{#if objectsPromise.isResolved}}
+        <p>{{view.noDataMessage}}</p>
+    {{/if}}
+{{/if}}
+
+<div class="hidden-print">
+    {{#if showPaginate}}
+        <paginate-widget {(active-page-index)}="parameters.page" {pages}="totalPages" />
+    {{/if}}
+    {{#if perPageOptions.length}}
+        <div class="per-page-form">
+            <div class="form-group">
+                <label class="form-label perPageSelect">Items per page:</label>
+                <select {($value)}="parameters.perPage" class="form-select form-control">
                         {{#each perPageOptions}}
                             <option value="{{.}}">{{.}}</option>
                         {{/each}}
                     </select>
-                </div>
             </div>
-        {{/if}}
-    </div>
+        </div>
+    {{/if}}
+</div>

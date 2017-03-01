@@ -18,6 +18,9 @@ import addTemplate from './templates/add.stache!';
 
 /**
  * @module {Object} data-admin/ViewMap ViewMap
+ * @group data-admin/ViewMap.template View Templates
+ * @group data-admin/ViewMap.event Event Functions
+ * @group data-admin/ViewMap.props Properties
  * @parent data-admin
  * A view object that controls the display and management of data in the
  * data-admin and other data components.
@@ -36,13 +39,15 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      *
      * @link https://connect.canjs.com/doc/index.html can-connect
      * @link https://connect.canjs.com/doc/can-connect|constructor.html constructor
-     * @property {can-connect} connection
+     * @property {can-connect} data-admin/ViewMap.props.connection connection
+     * @parent data-admin/ViewMap.props
      */
     connection: '*',
     /**
      * rest parameters that are serialized during a getList request. These
      * parameters are typically mixed in with default parameters
-     * @property {Object}
+     * @property {Object} data-admin/ViewMap.props.parameters parameters
+     * @parent data-admin/ViewMap.props
      */
     parameters: {Type: DefineMap, Value: DefineMap},
     /**
@@ -58,7 +63,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      *
      * @link https://canjs.com/docs/can.Map.prototype.define.html Define Plugin
      * @signature `ObjectTemplate: DefineMap.extend({prop: 'value'})`
-     * @property {Constructor<can.Map>} ObjectTemplate
+     * @property {Constructor<can.Map>} data-admin/ViewMap.props.ObjectTemplate ObjectTemplate
+     * @parent data-admin/ViewMap.props
      */
     ObjectTemplate: {
         get (obj) {
@@ -71,110 +77,101 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * An array of field definitions which controls the display and editing
      * of each property of the objects being displayed and edited
-     * @property {Array<util/field.Field>} fields
+     * @property {Array<util/field.Field>} data-admin/ViewMap.props.fields fields
+     * @parent data-admin/ViewMap.props
      */
     fields: DefineList,
     /**
      * The message to display when adding new items is disabled
-     * @property {String} deleteFailMessage
+     * @property {String} data-admin/ViewMap.props.addDisabledMessage addDisabledMessage
+     * @parent data-admin/ViewMap.props
      */
     addDisabledMessage: {value: 'You do not have permission to add this data.'},
-  /**
-   * The message to display when a user does not have permissions to edit
-   * @property {String} editDisabledMessage
-   */
+    /**
+     * The message to display when a user does not have permissions to edit
+     * @property {String} data-admin/ViewMap.props.editDisabledMessage editDisabledMessage
+     * @parent data-admin/ViewMap.props
+     */
     editDisabledMessage: {value: 'You do not have permission to edit this data.'},
     /**
      * The message to display when no data is found in the list
-     * @property {String} noDataMessage
+     * @property {String} data-admin/ViewMap.props.noDataMessage noDataMessage
+     * @parent data-admin/ViewMap.props
      */
     noDataMessage: {value: 'No rows found.'},
-  /**
-   * A flag to disable editing existing objects
-   * @property {Boolean} disableEdit
-   */
+    /**
+     * A flag to disable editing existing objects
+     * @property {Boolean} data-admin/ViewMap.props.disableEdit disableEdit
+     * @parent data-admin/ViewMap.props
+     */
     disableEdit: {value: false},
-  /**
-   * A flag to disable deleting existing objects
-   * @property {Boolean} disableDelete
-   */
+    /**
+     * A flag to disable deleting existing objects
+     * @property {Boolean} data-admin/ViewMap.props.disableCreate disableDelete
+     * @parent data-admin/ViewMap.props
+     */
     disableDelete: {value: false},
-  /**
-   * A flag to disable creating new objects
-   * @property {Boolean} disableCreate
-   */
+    /**
+     * A flag to disable creating new objects
+     * @property {Boolean} data-admin/ViewMap.props.disableCreate disableCreate
+     * @parent data-admin/ViewMap.props
+     */
     disableCreate: {value: false},
-  /**
-   * The title of the view to display in the heading or tab container button in related views
-   * @property {String} title
-   */
+    /**
+     * The title of the view to display in the heading or tab container button in related views
+     * @property {String} data-admin/ViewMap.props.title title
+     * @parent data-admin/ViewMap.props
+     */
     title: {value: ''},
-  /**
-   * Views related to the current view. If related views are provided, the
-   * spectre manager will display items related to selected items on the detail page.
-   * The spectre manager will automatically have filters created to only show items
-   * with a value that matches the related views foreign key.
-   * @property {Array<spectre.types.relatedView>} relatedViews
-   */
+    /**
+     * Views related to the current view. If related views are provided, the
+     * spectre manager will display items related to selected items on the detail page.
+     * The spectre manager will automatically have filters created to only show items
+     * with a value that matches the related views foreign key.
+     * @property {Array<spectre.types.relatedView>} data-admin/ViewMap.props.relatedViews relatedViews
+     * @parent data-admin/ViewMap.props
+     */
     relatedViews: {value: undefined},
-  /**
-   * A method to call before a new object in this view is created
-   * @property {funtion} beforeCreate
-   */
-    beforeCreate: {value: undefined},
-  /**
-   * A method to call after a new object in this view is created
-   * @property {funtion} afterCreate
-   */
-    afterCreate: {value: undefined},
-  /**
-   * A method to call before an object in this view is saved
-   * @property {funtion} beforeSave
-   */
-    beforeSave: {value: undefined},
-  /**
-   * A method to call after an object in this view is saved
-   * @property {funtion} afterSave
-   */
-    afterSave: {value: undefined},
-  /**
-   * A method to call before an object in this view is deleted
-   * @property {funtion} beforeDelete
-   */
-    beforeDelete: {value: undefined},
-  /**
-   * A method to call after an object in this view is deleted
-   * @property {funtion} afterDelete
-   */
-    afterDelete: {value: undefined},
     /**
-     * called when an error occurs on delete
-     * @property {function} errorDelete
+     * Additional buttons to display when items are checked in the table. Buttons
+     * can have an icon, text an an on click event handler
+     * @property {Array<ManageButton>} data-admin/ViewMap.props.manageButtons manageButtons
+     * @parent data-admin/ViewMap.props
+     *   ```
+     *   manageButtons: [{
+         iconClass: 'fa fa-files-o',
+         text: 'New Workorder',
+         onClick(items){
+           batchWorkorder('water_pipe', items);
+         }
+       }],
+       ```
      */
-    errorDelete: {value: undefined},
-    /**
-     * called when an errror occurs on saved
-     * @property {function} errorSave
-     */
-    errorSave: {value: undefined},
-  /**
-   * Additional buttons to display when items are checked in the table. Buttons
-   * can have an icon, text an an on click event handler
-   * @property {Array<ManageButton>}
-   *   ```
-   *   manageButtons: [{
-       iconClass: 'fa fa-files-o',
-       text: 'New Workorder',
-       onClick(items){
-         batchWorkorder('water_pipe', items);
-       }
-     }],
-     ```
-   */
     manageButtons: {value: undefined},
     /**
+     * Dropdown values that quickly allow a user to filter a list without
+     * choosing a field and entering a value.
+     * Similar to the github filter dropdowns available.
+     * <span class="label-warning">Experimental</span>
+     * @property {Array<Object>} data-admin/ViewMap.props.quickFilters quickFilters
+     * @parent data-admin/ViewMap.props
+     *
+        quickFilters: [{
+           text: 'Text to display',
+           options: [{
+              field: 'fieldName',
+              label: 'text to display',
+              value: 'value to filter on'
+            }]
+         }]
+
+     *
+     */
+    quickFilters: {value: undefined},
+    /**
      * The template to render when editing and has permissions
-     * @property {Renderer} editTemplate
+     * @property {Renderer} data-admin/ViewMap.template.editTemplate editTemplate
+     * @parent data-admin/ViewMap.template
      */
     editTemplate: {
         get (template) {
@@ -186,7 +183,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     },
     /**
      * The template to render when editing and has permissions
-     * @property {Renderer} listTemplate
+     * @property {Renderer} data-admin/ViewMap.template.listTemplate listTemplate
+     * @parent data-admin/ViewMap.template
      */
     listTemplate: {
         get (template) {
@@ -196,10 +194,11 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
             return template;
         }
     },
-      /**
-       * The template to render when editing and has permissions
-       * @property {Renderer} addTemplate
-       */
+    /**
+     * The template to render when editing and has permissions
+     * @property {Renderer} data-admin/ViewMap.template.addTemplate addTemplate
+     * @parent data-admin/ViewMap.template
+     */
     addTemplate: {
         get (template) {
             if (!template) {
@@ -208,10 +207,11 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
             return template;
         }
     },
-      /**
-       * The template to render when editing and has permissions
-       * @property {Renderer} editTemplate
-       */
+    /**
+     * The template to render when editing and has permissions
+     * @property {Renderer} data-admin/ViewMap.template.editTemplate editTemplate
+     * @parent data-admin/ViewMap.template
+     */
     detailsTemplate: {
         get (template) {
             if (!template) {
@@ -219,5 +219,52 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
             }
             return template;
         }
-    }
+    },
+    /**
+     * A method to call before a new object in this view is created
+     * @property {funtion} data-admin/ViewMap.event.beforeCreate beforeCreate
+     * @parent data-admin/ViewMap.event
+     */
+    beforeCreate: {value: undefined},
+    /**
+     * A method to call after a new object in this view is created
+     * @property {funtion} data-admin/ViewMap.event.afterCreate afterCreate
+     * @parent data-admin/ViewMap.event
+     */
+    afterCreate: {value: undefined},
+    /**
+     * A method to call before an object in this view is saved
+     * @property {funtion} data-admin/ViewMap.event.beforeSave beforeSave
+     * @parent data-admin/ViewMap.event
+     */
+    beforeSave: {value: undefined},
+    /**
+     * A method to call after an object in this view is saved
+     * @property {funtion} data-admin/ViewMap.event.afterSave afterSave
+     * @parent data-admin/ViewMap.event
+     */
+    afterSave: {value: undefined},
+    /**
+     * A method to call before an object in this view is deleted
+     * @property {funtion} data-admin/ViewMap.event.beforeDelete
+     * @parent data-admin/ViewMap.event
+     */
+    beforeDelete: {value: undefined},
+    /**
+     * A method to call after an object in this view is deleted
+     * @property {funtion} data-admin/ViewMap.event.afterDelete afterDelete
+     * @parent data-admin/ViewMap.event
+     */
+    afterDelete: {value: undefined},
+    /**
+     * called when an error occurs on delete
+     * @property {function} data-admin/ViewMap.eventerrorDelete errorDelete
+     * @parent data-admin/ViewMap.event
+     */
+    errorDelete: {value: undefined},
+    /**
+     * called when an errror occurs on saved
+     * @property {function} data-admin/ViewMap.event.errorSave errorSave
+     */
+    errorSave: {value: undefined}
 });

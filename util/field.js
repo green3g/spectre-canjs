@@ -1,5 +1,5 @@
 /**
- * @module {{}} util/field field
+ * @module {Module} util/field field
  * @parent spectre.util
  * @description Field parsing and creating utilities
  */
@@ -12,6 +12,20 @@ import DefineList from 'can-define/list/list';
 import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
+/**
+ * Built in field templates. If `fieldType` is specified on a field, the
+ * template listed here will be used. Otherwise, `formTemplate` should be
+ * provided for custom field templates.
+ *  - text: `<text-field />` component
+ *  - select: `<select-field />` component
+ *  - file: `<file-field />` component
+ *  - json: `<json-field />` component
+ *  - subform: `<subform-field />` component
+ *  - date: `<date-field />` component
+ *  - checkbox: `<checkbox-field />` component
+ * @property {Object} util/field.Field.TEMPLATES Built-in Templates
+ * @parent util/field.Field.guides
+ */
 const TEMPLATES = {
     text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
     select: '<select-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
@@ -42,6 +56,7 @@ export const RESERVED = [
  * @constructor util/field.Field Field
  * @parent util/field
  * @group util/field.Field.props Properties
+ * @group util/field.Field.guides Guides
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
@@ -72,16 +87,6 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * A friendly name for the field used to display to the user
-     * The default is to capitalize the name and remove underscores
-     * @property {String} util/field.Field.props.alias alias
-     * @parent util/field.Field.props
-     */
-    type: {
-        type: 'string',
-        value: 'string'
-    },
-    /**
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant
      * @property {String} util/field.Field.props.type type
@@ -94,7 +99,7 @@ export const Field = DefineMap.extend('Field', {
     /**
      * The form field template to use when editing this field. This should be
      * a stache template renderer. By default, this value is set to the
-     * template for the given `type` property.
+     * template for the given `fieldType` property.
      * @property {Renderer} util/field.Field.props.formTemplate formTemplate
      * @parent util/field.Field.props
      */
@@ -169,8 +174,9 @@ export const Field = DefineMap.extend('Field', {
      */
     inline: 'boolean',
     /**
-     * Text to display when the field is empty (like a textbox). Doesn't apply to select fields.
-     * @property {String} util/field.Field.props.inline inline
+     * Text to display when the field is empty (like a textbox). Doesn't apply to
+     * some fields, like select or date fields.
+     * @property {String} util/field.Field.props.placeholder placeholder
      * @parent util/field.Field.props
      */
     placeholder: 'string',

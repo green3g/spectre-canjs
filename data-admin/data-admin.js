@@ -411,7 +411,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             const fieldList = this._fields.filter((f) => {
                 return f.name === field;
             });
-            this.addRelatedFilter(fieldList[0], this.relatedValue);
+            this.addFilter(fieldList[0], this.relatedValue);
             return fieldList[0];
         }
     },
@@ -435,19 +435,20 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                     val = new Date(val);
                 }
             }
-            this.addRelatedFilter(this.relatedField, val);
+            this.addFilter(this.relatedField, val);
             return val;
         }
     },
     /**
      * Adds a new filter that relates this data-admin to a parent data-admin
      * viewmodel
-     * @function addRelatedFilter
+     *  The operator used will be `'equals'`
+     * @function addFilter
      * @signature
      * @param {util/Field.Field} field The field to filter on (the child key)
      * @param {any} value The value to use in the filter
      */
-    addRelatedFilter (field, value) {
+    addFilter (field, value) {
         if (field && value) {
             this.parameters.filters.push({
                 name: field.name,
@@ -455,6 +456,50 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 operator: 'equals'
             });
         }
+    },
+    /**
+     * A helper for toggling quick filter dropdowns from the template,
+     * this accepts simplified parameters, similar to the addFilter function.
+     * Depending on the arguments several outcomes may occur:
+     *  - If a filter does not exist with the given field name, it will be created
+     *  - If a filter does exist with the field name, but the value is different,
+     *  the filter will be updated with the new value
+     *  - If the filter does exist with the current value, the filter will be removed
+     *  The operator used will be `'equals'`
+     *  @param {String} fieldName The field name to filter on
+     *  @param {Any} value The value to filter on
+     */
+    toggleQuickFilter (fieldName, value) {
+        let filter = this.parameters.filters.filter((f) => {
+            return f.name === fieldName;
+        });
+        if (filter.length) {
+            filter = filter[0];
+
+            // if the filter exists but the values are the same, remove the filter
+            if (filter.value === value) {
+                const index = this.parameters.filters.indexOf(filter);
+                this.parameters.filters.splice(index, 1);
+                return;
+            }
+
+            // otherwise update the value
+            filter.value = value;
+            return;
+        }
+
+        // if no filter exists create it
+        this.parameters.filters.push({
+            name: fieldName,
+            value: value,
+            operator: 'equals'
+        });
+    },
+    getQuickFilter (fieldName, value) {
+        const filter = this.parameters.filters.filter((f) => {
+            return f.name === fieldName && f.value === value;
+        });
+        return filter[0];
     },
     /**
      * Changes the page and resets the viewId to 0

@@ -126,9 +126,30 @@ test('relatedValue, relatedField set()', (assert) => {
     assert.equal(vm.parameters.filters.length, 1, 'should create filters parameter when initialized with related field and value');
 });
 
-test('addRelatedFilter(field, value)', (assert) => {
-    vm.addRelatedFilter({name: 'test'}, 'value');
+test('addFilter(field, value)', (assert) => {
+    vm.addFilter({name: 'test'}, 'value');
     assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
+});
+
+test('toggleQuickFilter(field, value)', (assert) => {
+    vm.toggleQuickFilter('test', 'value');
+    assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
+
+    vm.toggleQuickFilter('test', 'different');
+    assert.equal(vm.parameters.filters.length, 1, 'filters length should not have changed');
+    assert.equal(vm.parameters.filters[0].value, 'different', 'filter value should be updated');
+
+
+    vm.toggleQuickFilter('test', 'different');
+    assert.notOk(vm.parameters.filters.length, 'filter should be removed');
+});
+
+test('getQuickFilter(field, value)', (assert) => {
+    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
+
+    vm.toggleQuickFilter('test', 'different');
+    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
+    assert.ok(vm.getQuickFilter('test', 'different'), 'quick filter should be active');
 });
 
 test('editObject(scope, dom, event, obj)', (assert) => {

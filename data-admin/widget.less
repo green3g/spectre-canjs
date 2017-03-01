@@ -3,6 +3,10 @@ data-admin {
         cursor: pointer;
     }
 
+    td.manage-tools-cell {
+        width: 90px;
+    }
+
     .object-metadata {
         font-size: smaller;
 
@@ -35,29 +39,31 @@ data-admin {
         width: 100%;
     }
 
-    .filter-div {
-        top: 36px;
-        right: 100px;
-
-        .btn.btn:first-child:not(:last-child) {
-            border-bottom-right-radius: 0.3rem;
-            border-top-right-radius: 0.3rem;
-            border-radius: 0.3rem;
-        }
+    filter-widget {
+        background: #fff;
+        display: block;
     }
+
+    dropdown-menu.filter-dropdown .dropdown-content {
+        width: auto;
+    }
+    
     @media screen and (min-width: 980px) {
         .filter-widget {
             width: 550px;
             display: block;
         }
     }
-
     /* fix display of filter-widget */
     .display-tools {
-      overflow:visible;
+        overflow: visible;
     }
 
     .checkbox-cell label.form-checkbox {
-    padding: 1rem 1rem;
+        padding: 1rem;
+    }
+
+    .quick-filter-icon {
+        width: 20px;
     }
 }

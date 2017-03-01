@@ -2,11 +2,17 @@
 
 <script type="text/stache" id="demo-html">
 
-    <data-admin {view}="view" />
+    <h4>Data-admin Demo</h4>
+    <p>This demo will demonstrate the functionality of the data admin, but due to the nature of the rest service used, will not respond to the filtering, paginating, and other functionality of the data admin, such as editing, deleting, and creating data.</p>
+
+    <h5>Current parameters:</h5>
+    <pre>{{getParameters()}}</pre>
+
+    <data-admin {view}="view" {^parameters}="params" />
 
 </script>
 
-<script src="../../node_modules/steal/steal.js" main="docs-main"id="demo-source">
-// <script src="../../docs/spectre/steal.production.js" main="docs-main"id="demo-source">
-  steal.import('spectre-canjs/data-admin/demo/admin');
+<!-- <script src="../../node_modules/steal/steal.js" main="docs-main" id="demo-source"> -->
+<script src="../../docs/spectre/steal.production.js" main="docs-main" id="demo-source">
+    steal.import('spectre-canjs/data-admin/demo/admin');
 </script>

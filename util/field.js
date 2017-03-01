@@ -16,8 +16,10 @@ const TEMPLATES = {
     text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
     select: '<select-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
     file: '<file-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
-    json: '<json-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
-    date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />' // date object
+    json: '<json-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // string
+    subform: '<subform-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // string
+    date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // date object
+    checkbox: '<checkbox-field (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" {properties}="." />'
 };
 
 //precompile templates
@@ -230,10 +232,10 @@ export function mapToFields (defineMap) {
         dev.warn('map is undefined, so no fields will be generated');
         return [];
     }
-    const define = assign({}, (defineMap._define || defineMap.prototype._define).definitions);
+    const define = (defineMap._define || defineMap.prototype._define).definitions;
     const fields = [];
     for (var prop in define) {
-        if (define.hasOwnProperty(prop)) {
+        if (define[prop]) {
             const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
 
             // remove reserved properties if any

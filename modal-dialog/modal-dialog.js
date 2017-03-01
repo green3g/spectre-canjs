@@ -1,5 +1,7 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
+import canEvent from 'can-event';
+import assign from 'can-util/js/assign/assign';
 
 import template from './modal-dialog.stache!';
 
@@ -9,9 +11,11 @@ export const ViewModel = DefineMap.extend('ModalDialog', {
     small: {value: false, type: 'htmlbool'},
     show () {
         this.active = true;
+        this.dispatch('show');
     },
     hide () {
         this.active = false;
+        this.dispatch('hide');
     },
     toggle (visible) {
         if (typeof visible !== 'undefined') {
@@ -21,6 +25,8 @@ export const ViewModel = DefineMap.extend('ModalDialog', {
         }
     }
 });
+
+assign(ViewModel.prototype, canEvent);
 
 Component.extend({
     viewModel: ViewModel,

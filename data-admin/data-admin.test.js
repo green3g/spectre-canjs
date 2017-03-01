@@ -115,20 +115,20 @@ test('_fields get()', (assert) => {
     assert.equal(vm._fields.length, 4, 'if fields do exist on the view, they should be created correctly');
 });
 
-test('init() with parameters', (assert) => {
+test('relatedValue, relatedField set()', (assert) => {
     vm = new ViewModel({
         view: {
-            parameters: {test: 'text'},
-            connection: Connection
-        }
-    });
-    assert.equal(vm.parameters.test, 'text', 'parameters should be mixed in');
-
-    vm = new ViewModel({
+            fields: ['test']
+        },
         relatedField: 'test',
         relatedValue: 'testVal'
     });
     assert.equal(vm.parameters.filters.length, 1, 'should create filters parameter when initialized with related field and value');
+});
+
+test('addRelatedFilter(field, value)', (assert) => {
+    vm.addRelatedFilter({name: 'test'}, 'value');
+    assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
 });
 
 test('editObject(scope, dom, event, obj)', (assert) => {

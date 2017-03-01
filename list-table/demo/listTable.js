@@ -5,10 +5,15 @@ import DefineList from 'can-define/list/list';
 var render = stache(document.getElementById('demo-html').innerHTML);
 
 document.body.appendChild(render({
+    primary: [{
+      iconClass: 'fa fa-sad-o',
+      text: 'Say Goodbye',
+      eventName: 'goodbye'
+    }],
     buttons: [{
         iconClass: 'fa fa-smile-o',
         eventName: 'hello',
-        title: 'Say Hello'
+        text: 'Say Hello'
     }],
     // observable list enables sorting
     data: new DefineList([{
@@ -34,6 +39,9 @@ document.body.appendChild(render({
     }]),
     sayHello (a, b, c, obj) {
         alert(obj.name + ' says hello!');
+    },
+    sayGoodbye (a, b, c, obj) {
+        alert(obj.name + ' says goodbye!');
     },
     // sorts the observable list
     setSort (a, b, c, sortInfo) {

@@ -4,7 +4,7 @@
 
   <p><button class="btn" type="button" ($click)="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
 
-  <filter-widget {fields}="fields" {^filters}="filters" {{#disableAdd}}disable-add{{/disableAdd}} />
+  <filter-widget {fields}="fields" {^filters}="filters" {{#disableCreate}}disable-add{{/disableCreate}} />
 
   <h2>Current filters: </h2>
   <pre>{{stringify(filters)}}</pre>

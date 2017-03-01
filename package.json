@@ -1,22 +1,30 @@
 {
   "name": "spectre-canjs",
-  "version": "0.21.3",
+  "version": "0.23.2",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
-  "repository": "https://github.com/roemhildtg/spectre-canjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roemhildtg/spectre-canjs.git"
+  },
   "main": "index.js",
   "watch": {
-    "lint": "**/*.js",
-    "test": "**/*.js"
+    "docs": {
+      "patterns": [
+        "."
+      ],
+      "extensions": "js,mustache,css,less,md",
+      "ignore": "docs/**"
+    }
   },
   "scripts": {
     "pretest": "npm run lint",
     "test": "testee test/index.html --reporter Spec --browsers firefox",
     "build": "steal-tools",
     "watch": "npm-watch",
-    "docs": "documentjs",
+    "docs": "documentjs -d -f",
     "postdocs": "node docs-bundle",
     "prepublish-docs": "git checkout gh-pages && git merge master",
-    "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages && git checkout master",
+    "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages -f && git checkout master",
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",
@@ -51,7 +59,7 @@
     "can-view-model": "^3.1.3",
     "font-awesome": "^4.7.0",
     "object-assign": "^4.1.0",
-    "spectre.css": "^0.1.31",
+    "spectre.css": "^0.2.3",
     "steal": "^1.0.11"
   },
   "steal": {

@@ -9,13 +9,20 @@
         </nav-page>
     {{/unless}}
 
-    <nav-page label="Details" page-id="details" {{#if focusObjectPromise.isPending}} loading {{/if}}>
-        {{>view.detailsTemplate}}
-    </nav-page>
-
-    {{#unless view.disableEdit}}
-        <nav-page label="Edit" page-id="edit">
-                {{>view.editTemplate}}
+    {{#if viewId}}
+        <nav-page label="Details" page-id="details" {{#if focusObjectPromise.isPending}} loading {{/if}}>
+            {{>view.detailsTemplate}}
         </nav-page>
-    {{/unless}}
+
+        {{#unless view.disableEdit}}
+            <nav-page label="Edit" page-id="edit">
+                {{>view.editTemplate}}
+            </nav-page>
+        {{/unless}}
+    {{/if}}
+    {{#each view.tabs as tab}}
+        <nav-page label="{{tab.label}}" page-id="{{tab.id}}">
+            {{>tab.template}}
+        </nav-page>
+    {{/each}}
 </nav-container>

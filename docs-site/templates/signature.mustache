@@ -1,0 +1,112 @@
+<div class="card">
+	<div class="card-header">
+		<h2 class="card-title" id="{{makeSignatureId code params returns context}}">{{{makeSignature code}}}</h2>
+		{{#if release}}
+			<h6 class="card-meta">{{release}}</h6>{{/if}}
+	</div>
+	<div class="card-body">
+		{{{chain "makeHtml" "makeLinks" description}}}
+		{{#if params}}
+			<h3 class="card-meta">Parameters</h3>
+			<table class="table">
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Type
+					</th>
+					<th>
+						Description
+					</th>
+				</tr>
+				{{#each params}}
+					<tr>
+						<td>
+							<code>{{name}}</code>
+						</td>
+						<td>
+							<code>{{{makeTypesString types}}}</code>
+						</td>
+						<td>
+							{{{chain "makeHtml" "makeLinks" description}}}
+						</td>
+					</tr>
+				{{/each}}
+			</table>
+		{{/if}}
+		{{#if returns}}
+			<br />
+			<h3 class="card-meta">Returns</h3>
+			<br  />
+			<div class="returns">
+				<p>
+					<code>{{{makeTypesString returns.types}}}</code>
+				</p>
+				<div class="description">
+					{{{chain "makeHtml" "makeLinks" returns.description}}}
+				</div>
+
+				{{#getTypesWithDescriptions returns.types}}
+					<ul class="options">
+						{{#types}}
+							<li class="option">
+								<h5>{{name}}
+								{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}
+							</h5>
+								<div class="description">
+									{{{chain "makeHtml" "makeLinks" description}}}
+								</div>
+							</li>
+						{{/types}}
+					</ul>
+				{{/getTypesWithDescriptions}}
+			</div>
+
+		{{/if}}
+		{{#if context}}
+			<h3>This</h3>
+			<div class="returns">
+				<h4><code>{{{makeTypesString context.types}}}</code></h4>
+				<div class="description">
+					{{{chain "makeHtml" "makeLinks" context.description}}}
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if options.length}}
+			<h3>Properties</h3>
+			<table class="table">
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Type
+					</th>
+					<th>
+						Description
+					</th>
+				</tr>
+				{{#each options}}
+					<tr>
+						<td>
+							<code>{{name}}</code>
+						</td>
+						<td>
+							<code>{{{makeTypesString types}}}</code>
+						</td>
+						<td>
+							{{{chain "makeHtml" "makeLinks" description}}}
+							{{#if defaultValue}}Default: <code>{{defaultValue}}</code>{{/if}}
+						</td>
+					</tr>
+				{{/each}}
+			</table>
+			</ol>
+		{{/if}}
+	</div>
+	<div class="card-footer">
+
+	</div>
+</div>

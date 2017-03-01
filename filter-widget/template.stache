@@ -1,6 +1,6 @@
 <div class="filter-widget container-fluid">
 
-    {{#unless disableAdd}}
+    {{#unless disableCreate}}
         <select-field {properties}="nameField" (fieldchange)="addFilter" {($value)}="fieldValue" inline />
     {{/unless}}
 

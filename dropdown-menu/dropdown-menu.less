@@ -1,13 +1,22 @@
 dropdown-menu {
     .dropdown-wrapper {
         position: relative;
-            z-index: 2;
     }
 
     .dropdown-content {
         position: absolute;
         top: 3.5rem;
         left: 1.5rem;
+        z-index: 100;
+        width: 17.5rem;
+
+        a {
+          cursor: pointer;
+        }
+    }
+    .dropdown-content.right {
+      left:auto;
+      right:1.5rem;
     }
 
     .dropdown-underlay {

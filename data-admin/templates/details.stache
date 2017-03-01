@@ -1,9 +1,9 @@
-<div class="columns col-multiline">
-    {{#if focusObject}}
-        <div class="column {{#if view.relatedViews}}col-sm-12 col-4{{else}}col-12{{/if}}">
-            <h3 class="float-left">{{view.title}}: {{viewId}}</h3>
+{{#if focusObject}}
+    <h3>{{view.title}}: {{viewId}}</h3>
+    <nav-container>
+        <nav-page label="{{view.title}}">
 
-            <dropdown-menu text="Manage Item" class="float-right">
+            <dropdown-menu text="Manage Item" class="float-right" right>
                 <ul class="menu">
                     {{#if view.manageButtons.length}}
                         <!-- menu header -->
@@ -41,20 +41,13 @@
             <div class="clearfix"></div>
 
             <property-table {object}="focusObject" {fields}="_fields" />
-        </div>
-        {{#if view.relatedViews}}
-            <div class="column col-sm-12 col-8">
-                <h4>Related Data</h4>
-                <nav-container>
-                    {{#each view.relatedViews as relView}}
-                        <nav-page label="{{#if relView.title}}relView.title{{else}}{{relView.view.title}}{{/if}}">
-                            <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
-                        </nav-page>
-                    {{/each}}
-                </nav-container>
-            </div>
-        {{/if}}
-    {{else}}
-        <p>Please click the <i class="fa fa-list"></i> Details button on the list page to view a row.</p>
-    {{/if}}
-</div>
+        </nav-page>
+        {{#each view.relatedViews as relView}}
+            <nav-page label="{{#if relView.title}}{{relView.title}}{{else}}{{relView.view.title}}{{/if}}">
+                <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
+            </nav-page>
+        {{/each}}
+    </nav-container>
+{{else}}
+    <p>Please click the <i class="fa fa-list"></i> Details button on the list page to view a row.</p>
+{{/if}}

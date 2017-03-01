@@ -5,7 +5,7 @@ import template from './text-field.stache!';
 import assign from 'can-util/js/assign/assign';
 /**
  * @constructor form-widget/field-components/text-field.ViewModel ViewModel
- * @parent form-widget/text-date-field
+ * @parent form-widget/text-field
  * @group form-widget/field-components/text-field.ViewModel.props Properties
  *
  * @description A `<text-field />` component's ViewModel

@@ -2,8 +2,11 @@ import './dropdown-menu.less';
 import template from './template.stache';
 
 import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import canViewModel from 'can-view-model';
+import canEvent from 'can-event';
+import assign from 'can-util/js/assign/assign';
 
 
 /**
@@ -37,6 +40,29 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @parent dropdown-menu.ViewModel.props
      */
     visible: 'boolean',
+    /**
+     * The button class to apply to the button dropdown. The default is `btn btn-link`
+     * @property {String} dropdown-menu.ViewModel.props.buttonClass
+     * @parent dropdown-menu.ViewModel.props
+     */
+    buttonClass: {
+        type: 'string',
+        value: 'btn btn-link'
+    },
+    /**
+     * An array of buttons to display next to the dropdown button. This creates a split
+     * dropdown menu button group
+     * @property {Array<TableButtonObject>} dropdown-menu.ViewModel.props.primaryButton
+     * @parent dropdown-menu.ViewModel.props
+     */
+    primaryButtons: DefineList,
+    /**
+     * Whether or not to align this dropdown menu on the right hand side of
+     * the button.
+     * @property {HTMLBoolean} dropdown-menu.ViewModel.props.right
+     * @parent dropdown-menu.ViewModel.props
+     */
+    right: 'htmlbool',
     /**
      * toggles the display of a dropdown-menu component
      * @function toggle
@@ -72,8 +98,26 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
                 vm.visible = false;
             }
         }
+    },
+    /**
+     * When a primary button is clicked, this function dispatches the `primaryclick`
+     * event with the button that was clicked as its argument.
+     * @function onPrimaryClick
+     * @param {TableButtonObject} button the button that was clicked
+     * @param {MouseEvent} event The mouse click event on the button that we should prevent default
+     * @return {Boolean} returns false to prevent event from changing page route
+     */
+    onPrimaryClick (button, event) {
+        if (event) {
+            event.preventDefault();
+        }
+        this.dispatch('primaryclick', [button]);
+        return false;
     }
 });
+
+assign(ViewModel.prototype, canEvent);
+
 
 export default Component.extend({
     tag: 'dropdown-menu',

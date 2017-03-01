@@ -1,6 +1,6 @@
 <script type="text/stache" id="demo-html">
     <h1>List Table Demo</h1>
-    <list-table {^selected-objects}="selectedObjects" {objects}="data" (hello)="sayHello" {buttons}="buttons" (sort)="setSort" id-prop="name" />
+    <list-table {^selected-objects}="selectedObjects" {objects}="data" (hello)="sayHello" (goodbye)="sayGoodbye" {primary-buttons}="primary" {buttons}="buttons" (sort)="setSort" id-prop="name" />
 
     <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
     </p>

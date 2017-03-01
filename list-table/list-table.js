@@ -9,6 +9,8 @@ import CanEvent from 'can-event';
 import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
 
+import '../dropdown-menu/dropdown-menu';
+
 /**
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
@@ -92,6 +94,12 @@ export const ViewModel = DefineMap.extend('ListTable', {
      */
     buttons: DefineList,
     /**
+     * A primary button to display next to the dropdown menu button on each row
+     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButtons primaryButtons
+     * @parent list-table.ViewModel.props
+     */
+    primaryButtons: DefineList,
+    /**
      * An array of fields
      * @parent list-table.ViewModel.props
      * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
@@ -126,14 +134,44 @@ export const ViewModel = DefineMap.extend('ListTable', {
         }
     },
     /**
-     * Called when a button is clicked. This dispatches the buttons event.
-     * @function buttonClick
+     * The icon class for the menu dropdown on each row
+     * @type {Object}
+     */
+    menuIconClass: {
+        type: 'string',
+        value: 'fa fa-caret-down'
+    },
+    /**
+     * Called when a button is clicked. This dispatches the button's event and
+     * calls the buttons `onClick` method if it exists
+     * @function dispatchButtonEvent
      * @signature
-     * @param  {String} eventName The name of the event to dispatch
+     * @param  {TableButtonObject} button The button object that was clicked
      * @param  {can.Map} object  The row data
      */
-    buttonClick (eventName, object) {
-        this.dispatch(eventName, [object]);
+    dispatchButtonEvent (button, object) {
+        if (button.eventName) {
+            this.dispatch(button.eventName, [object]);
+        }
+        if (typeof(button.onClick) === 'function') {
+            button.onClick([object]);
+        }
+    },
+    /**
+     * Called when the primary buttons are clicked. This dispatches the button's event and
+     * calls the buttons `onClick` method if it exists
+     * @function dispatchPrimaryButtonEvent
+     * @param {Array<arguments>} eventArgs the `primaryclick` event args from the dropdown-meu
+     * @param {Object} object the row that the event was dispatched on
+     */
+    dispatchPrimaryButtonEvent (eventArgs, object) {
+        const button = eventArgs[1];
+        if (button.eventName) {
+            this.dispatch(button.eventName, [object]);
+        }
+        if (typeof(button.onClick) === 'function') {
+            button.onClick([object]);
+        }
     },
     /**
      * Helps the template the currentSort value

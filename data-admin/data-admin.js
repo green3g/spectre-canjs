@@ -466,10 +466,17 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      *  the filter will be updated with the new value
      *  - If the filter does exist with the current value, the filter will be removed
      *  The operator used will be `'equals'`
+     *  @function toggleQuickFilter
+     *  @signature
      *  @param {String} fieldName The field name to filter on
      *  @param {Any} value The value to filter on
+     *  @param {Event} event The dom click event to cancel
+     *  @return {Boolean} Returns false to prevent page navigation
      */
-    toggleQuickFilter (fieldName, value) {
+    toggleQuickFilter (fieldName, value, event) {
+        if (event) {
+            event.preventDefault();
+        }
         let filter = this.parameters.filters.filter((f) => {
             return f.name === fieldName;
         });
@@ -480,12 +487,12 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             if (filter.value === value) {
                 const index = this.parameters.filters.indexOf(filter);
                 this.parameters.filters.splice(index, 1);
-                return;
+                return false;
             }
 
             // otherwise update the value
             filter.value = value;
-            return;
+            return false;
         }
 
         // if no filter exists create it
@@ -494,6 +501,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             value: value,
             operator: 'equals'
         });
+        return false;
     },
     getQuickFilter (fieldName, value) {
         const filter = this.parameters.filters.filter((f) => {

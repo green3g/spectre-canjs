@@ -5,10 +5,10 @@ var render = stache.from('demo-html');
 
 var viewModel = {
     fields: [{
-            //fields can be specified using a detailed object
+        //fields can be specified using a detailed object
         name: 'prop_1',
         alias: 'Property 1',
-            // formatters can customize the look of the value
+        // formatters can customize the look of the value
         formatter (prop) {
             return `<strong>${prop}</strong>`;
         }
@@ -38,7 +38,7 @@ var viewModel = {
         alias: 'Property 1',
             // formatters can customize the look of the value
         formatter (prop) {
-            return `<strong>${prop}</strong>`;
+            return <strong>' + prop + '</strong>;
         }
     },
         //or a simple field name

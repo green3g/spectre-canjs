@@ -4,13 +4,13 @@
 
   <p><button class="btn" type="button" ($click)="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
 
-  <filter-widget {fields}="fields" {^filters}="filters" {{#disableCreate}}disable-add{{/disableCreate}} />
+  <filter-widget {fields}="fields" {^filters}="filters" {{#disableCreate}}disable-create{{/disableCreate}} />
 
   <h2>Current filters: </h2>
   <pre>{{stringify(filters)}}</pre>
   </div>
 
 </script>
-<script src="../../docs/spectre/steal.production.js" main="docs-main"id="demo-source">
+<script src="../../docs/spectre/steal.production.js" main="docs-main">
   steal.import('spectre-canjs/filter-widget/demo/filter');
 </script>

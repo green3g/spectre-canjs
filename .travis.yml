@@ -1,7 +1,7 @@
 language: node_js
 node_js: node
 addons:
-  firefox: latest
+  firefox: "51.0"
 install:
   - npm install
 before_install:

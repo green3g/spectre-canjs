@@ -1,3 +1,21 @@
+0.24.2 / 2017-03-07
+===================
+
+  * 0.24.2
+  * Merge remote-tracking branch 'origin/greenkeeper/eslint-3.17.1'
+  * Merge remote-tracking branch 'origin/greenkeeper/can-stache-3.0.20'
+  * TEST: use older firefox in travis build
+  * chore(package): update can-stache to version 3.0.20
+    https://greenkeeper.io/
+  * chore(package): update eslint to version 3.17.1
+    https://greenkeeper.io/
+  * DOCS: fix minor typos in demos
+  * get rid of 0 padding
+  * add javascript source code to demo viewer
+  * Merge pull request [#19](https://github.com/roemhildtg/spectre-canjs/issues/19) from roemhildtg/greenkeeper/eslint-3.14.0
+    chore(package): update eslint to version 3.14.0
+  * changelog
+
 0.24.1 / 2017-03-01
 ===================
 
@@ -115,6 +133,8 @@
   * Finish documenting data-admin
   * DOCS: template tweaks and updates
   * add custom template theme using spectre.css
+  * chore(package): update eslint to version 3.14.0
+    https://greenkeeper.io/
   * FIX: json-field existing json values passed correctly
   * changelog
 
@@ -165,21 +185,3 @@
 ===================
 
   * 0.20.0
-  * CHG: fix failing date-field test
-  * DOCS: update demo to use `fields` property example
-  * FIX: update fieldchange event
-  * DOCS: remove extra bundles
-  * DOCS: fix import statements
-    - remove comments from import statements
-    - use package name in spectre imports
-  * minor cleanup
-  * DOCS: rename bundle script
-  * ENH: update all dependancies and docs build script
-  * FIX: attempt at changing event name to solve form event issues
-    - add missing properties and documentation
-  * FIX: missing `name` property should be `properties.name`
-  * TEST: fix failing form tests
-  * EHN: form widget now uses a "dirty" object to track changes
-    - rather than writing to the original
-    - events are modified to accommodate
-    - validation functions now accept a single object with several new props

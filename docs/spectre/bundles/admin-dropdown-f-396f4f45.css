@@ -1,2 +1,2 @@
-nav-container .tab-item,paginate-widget a{cursor:pointer}nav-container .tab-item.loading::after{margin-left:15px}
+paginate-widget a{cursor:pointer}nav-container .tab-item{cursor:pointer}nav-container .tab-item.loading::after{margin-left:15px}
 /*# sourceMappingURL=admin-dropdown-f-396f4f45.css.map */

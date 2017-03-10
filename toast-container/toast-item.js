@@ -98,9 +98,9 @@ export const ViewModel = DefineMap.extend('ToastItem', {
     },
 
     /**
-     * @property {string} toast-item.viewModel.toast-itemBody body
+     * @property {string} toast-item.viewModel.body body
      * @parent toast-item/viewModal
-     * @description Used to programmatically change the content. The default is an empty string.
+     * @description The content displayed in the toast. The default is an empty string.
      */
     body: {
         value: '',

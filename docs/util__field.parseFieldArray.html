@@ -3,7 +3,7 @@
 
 	INSTEAD CHANGE:
 	source: util\field.js
-	@function util/field.Field.prototype.mapToFields
+	@function util/field.parseFieldArray
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -25,9 +25,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home
-		
-			- util/field.Field.prototype.mapToFields
-		
+		- parseFieldArray 
 	</title>
 	<meta name="description" content="">
 	<meta name="author" content=""> 
@@ -110,18 +108,6 @@
 			
 				
 				
-				<li class="menu-item search-container active ">
-					<a class="function active " href="util__field.Field.prototype.mapToFields.html" data-search="util/field.Field.prototype.mapToFields">
-						Field.prototype.mapToFields
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
 				<li class="menu-item search-container">
 					<a class="typedef" href="util__field.ValidationObject.html" data-search="ValidationObject">
 						ValidationObject
@@ -135,7 +121,19 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="function" href="util__field.parseFieldArray.html" data-search="parseFieldArray">
+					<a class="function" href="util__field.mapToFields.html" data-search="mapToFields">
+						mapToFields
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container active ">
+					<a class="function active " href="util__field.parseFieldArray.html" data-search="parseFieldArray">
 						parseFieldArray
 					</a>
 				</li>
@@ -161,7 +159,7 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>Field.prototype.mapToFields</h1>
+	<h1>parseFieldArray</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
@@ -179,6 +177,10 @@
 
 <div class="sub-heading">
 	
+		
+		<cite>util/field.parseFieldArray</cite>
+	
+	
 	<span class="inherits">&nbsp;</span>
 </div>
 
@@ -192,8 +194,7 @@
 
 			
 				<section class="description">
-					<p>Converts a DefineMap to an array of Field objects using the property definitions
-property or the keys</p>
+					<p>Converts an array of strings or field json objects into Field objects</p>
 
 				</section>
 			
@@ -203,7 +204,7 @@ property or the keys</p>
 					<section class="signature">
 						<div class="card">
 	<div class="card-header">
-		<h2 class="card-title" id="sig_mapToFields_defineMap_">mapToFields(defineMap)</h2>
+		<h2 class="card-title" id="sig_parseFieldArray_fields_">parseFieldArray(fields)</h2>
 		
 	</div>
 	<div class="card-body">
@@ -225,13 +226,13 @@ property or the keys</p>
 				
 					<tr>
 						<td>
-							<code>defineMap</code>
+							<code>fields</code>
 						</td>
 						<td>
-							<code>{DefineMap}</code>
+							<code>{Array&lt;Field | String&gt;}</code>
 						</td>
 						<td>
-							<p>The extended map/constructor to parse</p>
+							<p>An array of either strings or JSON like objects representing Field object properties</p>
 
 						</td>
 					</tr>
@@ -296,7 +297,7 @@ property or the keys</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"type":"function","name":"util/field.Field.prototype.mapToFields","parent":"util/field","src":"util\\field.js","line":226,"codeLine":235,"description":"Converts a DefineMap to an array of Field objects using the property definitions\nproperty or the keys","title":"","signatures":[{"code":"mapToFields(defineMap)","description":"","params":[{"types":[{"type":"DefineMap"}],"name":"defineMap","description":"The extended map/constructor to parse"}],"returns":{"types":[{"type":"Array","template":[{"types":[{"type":"util/field.Field"}]}]}],"description":"The array of fields"}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"function","name":"util/field.parseFieldArray","parent":"util/field","src":"util\\field.js","line":200,"codeLine":208,"description":"Converts an array of strings or field json objects into Field objects","title":"parseFieldArray","signatures":[{"code":"parseFieldArray(fields)","description":"","params":[{"types":[{"type":"Array","template":[{"types":[{"type":"Field"},{"type":"String"}]}]}],"name":"fields","description":"An array of either strings or JSON like objects representing Field object properties"}],"returns":{"types":[{"type":"Array","template":[{"types":[{"type":"util/field.Field"}]}]}],"description":"The array of fields"}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

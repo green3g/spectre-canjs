@@ -1,5 +1,7 @@
 <div class="modal{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
-    <div class="modal-overlay"></div>
+    {{#if backdrop}}
+        <div class="modal-overlay"></div>
+    {{/if}}
     <div class="modal-container">
 
         {{#if customBody}}

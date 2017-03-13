@@ -30,9 +30,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     disableCreate: 'htmlbool',
     /**
      * A list of fields that will be used to create options in the field name
-     * dropdown. Each field may have a property `filterFactory` which may return
+     * dropdown.
+     * <br />TODO: Each field may have a property `filterFactory` which may return
      * one or more filter objects
-     * @property {List} filter-widget.ViewModel.fields
+     * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
      * @parent filter-widget.ViewModel.props
      */
     fields: {
@@ -92,9 +93,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     },
     /**
      * An array of field options to display for the field selection dropdown. If not provided, the
-     * viewModel will look for the ObjectTemplate property and display its keys. If this property does
-     * not exist, the fieldOptions will be replaced with a simple text field.
-     * @property {Array<spectre.types.SelectOptionProperty>} filter-widget.ViewModel.fieldOptions
+     * viewModel will look for the ObjectTemplate property and display its keys.
+     * <br />TODO: If this property does
+     * not exist, the field select will be replaced with a simple text field.
+     * @property {Array<form-widget/field-components/select-field.SelectOption>} filter-widget.ViewModel.fieldOptions
      * @parent filter-widget.ViewModel.props
      */
     fieldOptions: {
@@ -129,7 +131,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * Removes a filter from the list of filters
      * @function removeFilter
      * @signature
-     * @param  {spectre.types.filterObject} obj  The object to remove. This is the only argument used by the function, the rest may be null.
+     * @param  {filter-widget.Filter} obj  The object to remove. This is the only argument used by the function, the rest may be null.
      * @return {undefined}
      */
     removeFilter (obj) {
@@ -147,14 +149,11 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     },
   /**
      * Adds a new filter or set of filters to the list of filters in this widget.
-     * A `filterFactory` may be defined on the field which may return one filter or an array of
+     * <br />TODO: A `filterFactory` may be defined on the field which may return one filter or an array of
      * filters.
     * @function addFilter
      * @signature
-     * @param  {can.Map} scope The stache scope (optional)
-     * @param  {event} dom   The dom event (optional)
-     * @param  {event} event The event (optional)
-     * @param  {string} props The properties with a value key of the name of the field filter to add. This is the only argument used by the function, the rest may be null.
+     * @param  {string} props The properties with a value key of the name of the field filter to add. This is the only argument passed to the function, the rest may be null.
      * @return {Boolean} returns false to prevent event propagation from links
      */
     addFilter () {

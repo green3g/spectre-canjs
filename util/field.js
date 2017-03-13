@@ -89,7 +89,7 @@ export const Field = DefineMap.extend('Field', {
     /**
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant
-     * @property {String} util/field.Field.props.type type
+     * @property {String} util/field.Field.props.fieldType fieldType
      * @parent util/field.Field.props
      */
     fieldType: {
@@ -159,8 +159,8 @@ export const Field = DefineMap.extend('Field', {
     /**
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
-     * @signature `validate(propertyValue)`
-     * @param {util/field.ValidationObject} props the value of the property to validate
+     * @signature `validate(props)`
+     * @param {util/field.ValidationObject} props A special object consisting of information about the current value and dirty state of the form object
      * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
      * @parent util/field.Field.props
      */
@@ -204,7 +204,7 @@ export const FieldList = DefineList.extend('FieldList', {
  * @parent util/field
  * @signature `parseFieldArray(fields)`
  * @param  {Array<Field | String>} fields An array of either strings or JSON like objects representing Field object properties
- * @return {Array<Field>} The array of fields
+ * @return {Array<util/field.Field>} The array of fields
  */
 export function parseFieldArray (fields) {
     // create field objects
@@ -230,8 +230,8 @@ export function parseFieldArray (fields) {
  * @function mapToFields
  * @parent util/field
  * @signature `mapToFields(defineMap)`
- * @param  {Constructor<DefineMap>} defineMap The extended map/constructor to parse
- * @return {Array<Field>} The array of fields
+ * @param  {DefineMap} defineMap The extended map/constructor to parse
+ * @return {Array<util/field.Field>} The array of fields
  */
 export function mapToFields (defineMap) {
     if (!defineMap) {

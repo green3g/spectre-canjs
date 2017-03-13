@@ -6,3 +6,6 @@
 
 @description
 Used by the form widget when a field value changes. A validation object is created, and passed to a validate function on the field if it exists.
+A validation object consists of the current value set on the field, and two objects representing the current and dirty states of the form.
+As values in the form object change, the new values are set on the dirty object. The current object preserves old values set before
+the form update occurs.

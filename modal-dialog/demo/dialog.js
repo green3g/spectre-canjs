@@ -12,9 +12,11 @@ var viewModel = new DefineMap({
     modal3: false,
     confirm1: false,
     onAccept () {
+        console.log('----- Confirmation Accepted ------');
         console.log(arguments);
     },
     onReject () {
+        console.log('----- Confirmation Rejected ------');
         console.log(arguments);
     },
     showModal (name) {
@@ -42,9 +44,11 @@ var viewModel = new DefineMap({
     modal3: false,
     confirm1: false,
     onAccept () {
+        console.log('----- Confirmation Accepted ------');
         console.log(arguments);
     },
     onReject () {
+        console.log('----- Confirmation Rejected ------');
         console.log(arguments);
     },
     showModal (name) {
@@ -56,5 +60,4 @@ var viewModel = new DefineMap({
 });
 
 document.body.appendChild(render(viewModel));
-
 `

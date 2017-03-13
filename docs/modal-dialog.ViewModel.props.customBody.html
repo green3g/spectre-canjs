@@ -2,8 +2,8 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: modal-dialog\README.md
-	@module modal-dialog
+	source: modal-dialog\modal-dialog.js
+	@property modal-dialog.ViewModel.props.customBody
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -25,7 +25,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home
-		- &lt;modal-dialog /&gt; 
+		- customBody 
 	</title>
 	<meta name="description" content="">
 	<meta name="author" content=""> 
@@ -85,22 +85,130 @@
     <li class="divider"></li>
 			
 		
+		<li class="menu-item search-container active parent">
+			<a class="sidebar-title" href="modal-dialog.html" data-search="&lt;modal-dialog /&gt;">
+				&lt;modal-dialog /&gt;
+			</a>
+		</li>
+    <li class="divider"></li>
+			
+		
 		
 			
 			<li class="menu-item search-container active">
-			<a class="sidebar-title active" href="modal-dialog.html" data-search="&lt;modal-dialog /&gt;">
-				&lt;modal-dialog /&gt;
+			<a class="sidebar-title active" href="modal-dialog.ViewModel.html" data-search="ViewModel">
+				ViewModel
 			</a>
+			
+		
+			
+				
+					<li class="menu-header heading search-container">
+						<span>prototype</span>
+					</li>
+						
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="function" href="modal-dialog.ViewModel.prototype.hide.html" data-search="modal-dialog.ViewModel.prototype.hide">
+						hide
+					</a>
+				</li>
+				
+
 			
 		
 			
 				
 				
 				<li class="menu-item search-container">
-					<a class="constructor" href="modal-dialog.ViewModel.html" data-search="ViewModel">
-						ViewModel
+					<a class="function" href="modal-dialog.ViewModel.prototype.show.html" data-search="modal-dialog.ViewModel.prototype.show">
+						show
 					</a>
 				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="function" href="modal-dialog.ViewModel.prototype.toggle.html" data-search="modal-dialog.ViewModel.prototype.toggle">
+						toggle
+					</a>
+				</li>
+				
+
+			
+		
+
+
+				
+				
+
+			
+		
+			
+				
+					<li class="menu-header heading search-container">
+						<span>Properties</span>
+					</li>
+						
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="modal-dialog.ViewModel.props.active.html" data-search="active">
+						active
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="modal-dialog.ViewModel.props.backdrop.html" data-search="backdrop">
+						backdrop
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container active ">
+					<a class="property active " href="modal-dialog.ViewModel.props.customBody.html" data-search="customBody">
+						customBody
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="modal-dialog.ViewModel.props.small.html" data-search="small">
+						small
+					</a>
+				</li>
+				
+
+			
+		
+
+
+				
 				
 
 			
@@ -123,16 +231,16 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>&lt;modal-dialog /&gt;</h1>
+	<h1>customBody</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
-			module
+			property
 		</span>
 	</div>
 	<div class="chip-sm">
 		<span class="chip-name">
-			<code>{can.Component}</code>
+			<code>{HTMLBoolean}</code>
 		</span>
 	</div>
 	
@@ -142,7 +250,7 @@
 <div class="sub-heading">
 	
 		
-		<cite>modal-dialog</cite>
+		<cite>modal-dialog.ViewModel.props.customBody</cite>
 	
 	
 	<span class="inherits">&nbsp;</span>
@@ -158,8 +266,9 @@
 
 			
 				<section class="description">
-					<!--
--->
+					<p>Whether or not to use a custom body content for the modal. The default is <code>false</code>.
+This overrides the title property and modal-body divs displayed by displaying
+only the content passed to the <code>&lt;modal-dialog&gt;&lt;/modal-dialog&gt;</code> component</p>
 
 				</section>
 			
@@ -171,7 +280,7 @@
 
   <div class="card">
 	<div class="card-header">
-		<h2 class="card-title" id="sig_">can.Component</h2>
+		<h2 class="card-title" id="sig_">HTMLBoolean</h2>
 		
 	</div>
 	<div class="card-body">
@@ -198,13 +307,7 @@
 
 			
 				<section class="comment">
-					<h2>Description</h2>
-<p>A configureable dialog component that allows for content to be displayed in a popup
-or alert style window. An additional component is also included, <code>&lt;confirm-dialog /&gt;</code> for
-accepting a users' acceppt or reject.</p>
-<h2>Example</h2>
-<div class='demo_wrapper' data-demo-src='modal-dialog/demo/demo.html' data-demo-height='800'></div>
-
+					
 				</section>
 			
 			
@@ -231,7 +334,7 @@ accepting a users' acceppt or reject.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"type":"module","name":"modal-dialog","src":"modal-dialog\\README.md","description":"<!--\r\n-->","title":"<modal-dialog />\r","types":[{"type":"can.Component"}],"parent":"spectre.components","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"modal-dialog.ViewModel.props.customBody","type":"property","parent":"modal-dialog.ViewModel.props","src":"modal-dialog\\modal-dialog.js","line":22,"codeLine":29,"description":"Whether or not to use a custom body content for the modal. The default is `false`.\nThis overrides the title property and modal-body divs displayed by displaying\nonly the content passed to the `<modal-dialog></modal-dialog>` component","types":[{"type":"HTMLBoolean"}],"title":"customBody","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

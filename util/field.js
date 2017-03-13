@@ -1,6 +1,7 @@
 /**
  * @module {Module} util/field field
  * @parent spectre.util
+ * @group util/field.methods Utility Methods
  * @description Field parsing and creating utilities
  */
 
@@ -197,13 +198,13 @@ export const FieldList = DefineList.extend('FieldList', {
     '#': Field
 });
 
-
+//eslint-disable-next-line valid-jsdoc
 /**
  * Converts an array of strings or field json objects into Field objects
- * @function parseFieldArray
- * @parent util/field
+ * @function util/field.methods.parseFieldArray parseFieldArray
+ * @parent util/field.methods
  * @signature `parseFieldArray(fields)`
- * @param  {Array<Field | String>} fields An array of either strings or JSON like objects representing Field object properties
+ * @param  {Array<util/field.Field | String>} fields An array of either strings or JSON like objects representing Field object properties
  * @return {Array<util/field.Field>} The array of fields
  */
 export function parseFieldArray (fields) {
@@ -224,11 +225,12 @@ export function parseFieldArray (fields) {
     });
 }
 
+//eslint-disable-next-line valid-jsdoc
 /**
  * Converts a DefineMap to an array of Field objects using the property definitions
  * property or the keys
- * @function mapToFields
- * @parent util/field
+ * @function util/field.methods.mapToFields mapToFields
+ * @parent util/field.methods
  * @signature `mapToFields(defineMap)`
  * @param  {DefineMap} defineMap The extended map/constructor to parse
  * @return {Array<util/field.Field>} The array of fields

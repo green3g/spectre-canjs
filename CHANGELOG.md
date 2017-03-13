@@ -1,3 +1,20 @@
+0.24.4 / 2017-03-13
+===================
+
+  * 0.24.4
+  * DOCS: document modal dialog and confirm dialog
+  * ENH: add optional backdrop property to allow hiding the modal's backdrop
+
+0.24.3 / 2017-03-10
+===================
+
+  * 0.24.3
+  * Merge remote-tracking branch 'origin/greenkeeper/steal-tools-1.2.0'
+  * DOCS: fix toast-item documentation
+  * chore(package): update steal-tools to version 1.2.0
+    https://greenkeeper.io/
+  * changelog
+
 0.24.2 / 2017-03-07
 ===================
 
@@ -174,14 +191,3 @@
 ===================
 
   * 0.21.0
-  * FIX: set default value of properties to DefineMap to solve issues from d931a88b3c9a2bf1c43d6f671ccba953a9642c3e
-  * DOCS: fix documentation onFieldChangeEventObject
-  * CHG: field `fieldchange` events conform to the same type of event that the form widget dispatches
-  * FIX: update event name to fieldchange
-  * DOCS: add missing event and update validation docs
-  * changelog
-
-0.20.0 / 2017-01-17
-===================
-
-  * 0.20.0

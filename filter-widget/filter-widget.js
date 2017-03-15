@@ -188,7 +188,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     }
 });
 
-Component.extend({
+export default Component.extend({
     tag: 'filter-widget',
     ViewModel: ViewModel,
     view: template

@@ -262,7 +262,7 @@ export const ViewModel = DefineMap.extend('FileField', {
 
 assign(ViewModel.prototype, CanEvent);
 
-Component.extend({
+export default Component.extend({
     tag: 'file-field',
     view: template,
     ViewModel: ViewModel

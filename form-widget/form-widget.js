@@ -273,7 +273,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     }
 });
 
-Component.extend({
+export default Component.extend({
     tag: 'form-widget',
     viewModel: ViewModel,
     view: template

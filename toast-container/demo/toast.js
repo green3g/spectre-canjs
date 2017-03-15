@@ -1,5 +1,4 @@
 import 'spectre-canjs/toast-container/toast-container';
-import 'animate.css/animate.css';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';
@@ -26,7 +25,6 @@ document.body.appendChild(render(AppViewModel));
 
 window.DEMO_SOURCE = `
 import 'spectre-canjs/toast-container/toast-container';
-import 'animate.css/animate.css';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';

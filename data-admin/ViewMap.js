@@ -149,6 +149,16 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      */
     manageButtons: {value: undefined},
     /**
+     * Additional tabs to display in this view's navigation pane. Each tab
+     * can have a
+     *  - `label` - Displayed to the user
+     *  - `id` - Used in the url
+     *  - `template` - Renders the content in the tab
+     * @property {Object} data-admin/ViewMap.props.tabs tabs
+     * @parent data-admin/ViewMap.props
+     */
+    tabs: '*',
+    /**
      * Dropdown values that quickly allow a user to filter a list without
      * choosing a field and entering a value.
      * Similar to the github filter dropdowns available.
@@ -208,8 +218,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         }
     },
     /**
-     * The template to render when editing and has permissions
-     * @property {Renderer} data-admin/ViewMap.template.editTemplate editTemplate
+     * The template to render when viewing details of an object
+     * @property {Renderer} data-admin/ViewMap.template.detailsTemplate detailsTemplate
      * @parent data-admin/ViewMap.template
      */
     detailsTemplate: {

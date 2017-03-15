@@ -1,3 +1,24 @@
+0.24.6 / 2017-03-15
+===================
+
+  * 0.24.6
+  * ENH: add fade in to nav (tabs) container
+  * FIX: modal dialog no backdrop again
+  * Revert "FIX: remove invisible blocking container if modal:backdrop is false"
+    This reverts commit 4614dc5e9a40467c3a0e454cd15f0875807e7d9b.
+  * changelog
+
+0.24.5 / 2017-03-15
+===================
+
+  * 0.24.5
+  * FIX: export component constructor as default
+  * DOCS: add missing property documentation
+  * FIX: remove invisible blocking container if modal:backdrop is false
+  * DOCS: fix name typo on field utility functions
+  * DOCS: fix typos and add details
+  * changelog
+
 0.24.4 / 2017-03-13
 ===================
 
@@ -165,29 +186,3 @@
   * DOCS: fix link
   * DOCS: add badge for npm
   * changelog
-
-0.21.2 / 2017-01-19
-===================
-
-  * 0.21.2
-  * BUILD: remove uneeded build step
-  * FIX: json-field - fix failing tests
-  * FIX: remove extra property
-  * FIX: json-field serialization and form object creation works much better
-  * Merge pull request [#16](https://github.com/roemhildtg/spectre-canjs/issues/16) from roemhildtg/greenkeeper/steal-1.0.11
-    chore(package): update steal to version 1.0.11
-  * chore(package): update steal to version 1.0.11
-    https://greenkeeper.io/
-  * changelog
-
-0.21.1 / 2017-01-17
-===================
-
-  * 0.21.1
-  * FIX: Update and fix issues caused by event and object changes
-  * changelog
-
-0.21.0 / 2017-01-17
-===================
-
-  * 0.21.0

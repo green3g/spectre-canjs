@@ -3,7 +3,8 @@ import DefineMap from 'can-define/map/map';
 import canEvent from 'can-event';
 import assign from 'can-util/js/assign/assign';
 
-import template from './modal-dialog.stache!';
+import template from './modal-dialog.stache';
+import './modal-dialog.less';
 
 /**
  * @constructor modal-dialog.ViewModel ViewModel
@@ -61,7 +62,7 @@ export const ViewModel = DefineMap.extend('ModalDialog', {
     /**
      * Toggles the state of this modal visibility
      * @function toggle
-     * @param {Boolean} visible An optional property to set the visible state to 
+     * @param {Boolean} visible An optional property to set the visible state to
      */
     toggle (visible) {
         if (typeof visible !== 'undefined') {

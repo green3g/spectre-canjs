@@ -10,6 +10,7 @@ var viewModel = new DefineMap({
     modal1: false,
     modal2: false,
     modal3: false,
+    modal4: false,
     confirm1: false,
     onAccept () {
         console.log('----- Confirmation Accepted ------');

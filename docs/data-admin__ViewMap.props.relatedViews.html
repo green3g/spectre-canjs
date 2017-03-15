@@ -270,6 +270,18 @@
 				
 				
 				<li class="menu-item search-container">
+					<a class="property" href="data-admin__ViewMap.props.disableDelete.html" data-search="disableDelete">
+						disableDelete
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
 					<a class="property" href="data-admin__ViewMap.props.disableEdit.html" data-search="disableEdit">
 						disableEdit
 					</a>
@@ -482,7 +494,7 @@
 	</div>
 	<div class="chip-sm">
 		<span class="chip-name">
-			<code>{Array&lt;spectre.types.relatedView&gt;}</code>
+			<code>{Array&lt;Object&gt;}</code>
 		</span>
 	</div>
 	
@@ -510,8 +522,9 @@
 				<section class="description">
 					<p>Views related to the current view. If related views are provided, the
 spectre manager will display items related to selected items on the detail page.
-The spectre manager will automatically have filters created to only show items
-with a value that matches the related views foreign key.</p>
+The data-admin will automatically create a filter to only show items
+with a value that matches the related views foreign key.
+Each related view object may have the following properties:</p>
 
 				</section>
 			
@@ -523,7 +536,7 @@ with a value that matches the related views foreign key.</p>
 
   <div class="card">
 	<div class="card-header">
-		<h2 class="card-title" id="sig_">Array&lt;spectre.types.relatedView&gt;</h2>
+		<h2 class="card-title" id="sig_">Array&lt;Object&gt;</h2>
 		
 	</div>
 	<div class="card-body">
@@ -550,7 +563,13 @@ with a value that matches the related views foreign key.</p>
 
 			
 				<section class="comment">
-					
+					<ul>
+<li><code>view</code> - The view property for the related view</li>
+<li><code>foreignKey</code> - the foreign key on the parent view</li>
+<li><code>referenceKey</code> - the reference key on the related child view</li>
+<li><code>title</code> - An optional title to override the <code>view.title</code> property</li>
+</ul>
+
 				</section>
 			
 			
@@ -577,7 +596,7 @@ with a value that matches the related views foreign key.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"data-admin/ViewMap.props.relatedViews","type":"property","parent":"data-admin/ViewMap.props","src":"data-admin\\ViewMap.js","line":125,"codeLine":133,"description":"Views related to the current view. If related views are provided, the\nspectre manager will display items related to selected items on the detail page.\nThe spectre manager will automatically have filters created to only show items\nwith a value that matches the related views foreign key.","types":[{"type":"Array","template":[{"types":[{"type":"spectre.types.relatedView"}]}]}],"title":"relatedViews","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"data-admin/ViewMap.props.relatedViews","type":"property","parent":"data-admin/ViewMap.props","src":"data-admin\\ViewMap.js","line":125,"codeLine":138,"description":"Views related to the current view. If related views are provided, the\nspectre manager will display items related to selected items on the detail page.\nThe data-admin will automatically create a filter to only show items\nwith a value that matches the related views foreign key.\nEach related view object may have the following properties:","types":[{"type":"Array","template":[{"types":[{"type":"Object","options":[]}]}]}],"title":"relatedViews","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

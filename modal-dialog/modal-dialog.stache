@@ -2,7 +2,7 @@
     {{#if backdrop}}
         <div class="modal-overlay"></div>
     {{/if}}
-    <div class="{{#if backdrop}}modal-container{{/if}}">
+    <div class="modal-container">
 
         {{#if customBody}}
             <content />

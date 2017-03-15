@@ -1,5 +1,5 @@
 {{#if parent.isActive(this)}}
-    <div class="container">
+    <div class="container fadeIn animated">
         <content />
     </div>
 {{/if}}

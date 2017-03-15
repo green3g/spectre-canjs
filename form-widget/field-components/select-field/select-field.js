@@ -69,7 +69,7 @@ export const ViewModel = DefineMap.extend('SelectField', {
 });
 assign(ViewModel.prototype, CanEvent);
 
-Component.extend({
+export default Component.extend({
     tag: 'select-field',
     view: template,
     ViewModel: ViewModel

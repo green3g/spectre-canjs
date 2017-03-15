@@ -897,7 +897,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     }
 });
 
-Component.extend({
+export default Component.extend({
     tag: 'data-admin',
     viewModel: ViewModel,
     view: template,

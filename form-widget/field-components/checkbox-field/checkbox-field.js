@@ -56,7 +56,7 @@ export const ViewModel = DefineMap.extend('CheckboxField', {
 
 assign(ViewModel.prototype, canEvent);
 
-Component.extend({
+export default Component.extend({
     tag: 'checkbox-field',
     viewModel: ViewModel,
     view: template

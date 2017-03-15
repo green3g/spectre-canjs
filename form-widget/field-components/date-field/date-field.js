@@ -181,7 +181,7 @@ export const ViewModel = DefineMap.extend('DateField', {
 assign(ViewModel.prototype, CanEvent);
 
 
-Component.extend({
+export default Component.extend({
     tag: 'date-field',
     view: template,
     ViewModel: ViewModel

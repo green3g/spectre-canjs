@@ -116,7 +116,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
 });
 assign(ViewModel.prototype, CanEvent);
 
-Component.extend({
+export default Component.extend({
     tag: 'json-field',
     view: template,
     ViewModel: ViewModel

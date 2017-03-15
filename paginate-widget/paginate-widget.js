@@ -208,7 +208,7 @@ export const ViewModel = DefineMap.extend('PaginateWidget', {
     }
 });
 
-Component.extend({
+export default Component.extend({
     tag: 'paginate-widget',
     ViewModel: ViewModel,
     view: template

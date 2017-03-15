@@ -37,7 +37,7 @@ export const ViewModel = DefineMap.extend('TextField', {
 });
 assign(ViewModel.prototype, canEvent);
 
-Component.extend({
+export default Component.extend({
     tag: 'text-field',
     view: template,
     ViewModel: ViewModel,

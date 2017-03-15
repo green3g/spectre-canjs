@@ -107,7 +107,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     disableEdit: {value: false},
     /**
      * A flag to disable deleting existing objects
-     * @property {Boolean} data-admin/ViewMap.props.disableCreate disableDelete
+     * @property {Boolean} data-admin/ViewMap.props.disableDelete disableDelete
      * @parent data-admin/ViewMap.props
      */
     disableDelete: {value: false},
@@ -126,9 +126,14 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * Views related to the current view. If related views are provided, the
      * spectre manager will display items related to selected items on the detail page.
-     * The spectre manager will automatically have filters created to only show items
+     * The data-admin will automatically create a filter to only show items
      * with a value that matches the related views foreign key.
-     * @property {Array<spectre.types.relatedView>} data-admin/ViewMap.props.relatedViews relatedViews
+     * Each related view object may have the following properties:
+     *  - `view` - The view property for the related view
+     *  - `foreignKey` - the foreign key on the parent view
+     *  - `referenceKey` - the reference key on the related child view
+     *  - `title` - An optional title to override the `view.title` property
+     * @property {Array<Object>} data-admin/ViewMap.props.relatedViews relatedViews
      * @parent data-admin/ViewMap.props
      */
     relatedViews: {value: undefined},
@@ -142,7 +147,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
          iconClass: 'fa fa-files-o',
          text: 'New Workorder',
          onClick(items){
-           batchWorkorder('water_pipe', items);
+           doSomething(items);
          }
        }],
        ```
@@ -160,9 +165,10 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     tabs: '*',
     /**
      * Dropdown values that quickly allow a user to filter a list without
-     * choosing a field and entering a value.
-     * Similar to the github filter dropdowns available.
-     * <span class="label-warning">Experimental</span>
+     * choosing a field and entering a value. Functionality is similar to the
+     * github filter dropdowns available for issues/pull requests.
+     * Syntax is similar to [form-widget/field-components/select-field.SelectOption].
+     * <span class="label label-danger">Experimental</span>
      * @property {Array<Object>} data-admin/ViewMap.props.quickFilters quickFilters
      * @parent data-admin/ViewMap.props
      *
@@ -179,7 +185,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      */
     quickFilters: {value: undefined},
     /**
-     * The template to render when editing and has permissions
+     * The template to render when editing and has permissions.  The scope of the template
+     * is the `data-admin` view model.
      * @property {Renderer} data-admin/ViewMap.template.editTemplate editTemplate
      * @parent data-admin/ViewMap.template
      */
@@ -192,7 +199,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         }
     },
     /**
-     * The template to render when editing and has permissions
+     * The template to render when editing and has permissions. The scope of the template
+     * is the `data-admin` view model.
      * @property {Renderer} data-admin/ViewMap.template.listTemplate listTemplate
      * @parent data-admin/ViewMap.template
      */
@@ -205,7 +213,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         }
     },
     /**
-     * The template to render when editing and has permissions
+     * The template to render when editing and has permissions. The scope of the template
+     * is the `data-admin` view model.
      * @property {Renderer} data-admin/ViewMap.template.addTemplate addTemplate
      * @parent data-admin/ViewMap.template
      */
@@ -218,7 +227,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         }
     },
     /**
-     * The template to render when viewing details of an object
+     * The template to render when viewing details of an object. The scope of the template
+     * is the `data-admin` view model.
      * @property {Renderer} data-admin/ViewMap.template.detailsTemplate detailsTemplate
      * @parent data-admin/ViewMap.template
      */

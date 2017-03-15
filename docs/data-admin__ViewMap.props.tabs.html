@@ -3,7 +3,7 @@
 
 	INSTEAD CHANGE:
 	source: data-admin\ViewMap.js
-	@module data-admin/ViewMap
+	@property data-admin/ViewMap.props.tabs
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -25,7 +25,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home
-		- ViewMap 
+		- tabs 
 	</title>
 	<meta name="description" content="">
 	<meta name="author" content=""> 
@@ -365,8 +365,8 @@
 			
 				
 				
-				<li class="menu-item search-container">
-					<a class="property" href="data-admin__ViewMap.props.tabs.html" data-search="tabs">
+				<li class="menu-item search-container active ">
+					<a class="property active " href="data-admin__ViewMap.props.tabs.html" data-search="tabs">
 						tabs
 					</a>
 				</li>
@@ -473,11 +473,11 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>ViewMap</h1>
+	<h1>tabs</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
-			module
+			property
 		</span>
 	</div>
 	<div class="chip-sm">
@@ -492,10 +492,10 @@
 <div class="sub-heading">
 	
 		
-		<cite>data-admin/ViewMap</cite>
+		<cite>data-admin/ViewMap.props.tabs</cite>
 	
 	
-	<span class="inherits">inherits: <a href="DefineMap.html">DefineMap</a></span>
+	<span class="inherits">&nbsp;</span>
 </div>
 
 <br />
@@ -508,8 +508,8 @@
 
 			
 				<section class="description">
-					<p>A view object that controls the display and management of data in the
-data-admin and other data components.</p>
+					<p>Additional tabs to display in this view's navigation pane. Each tab
+can have a</p>
 
 				</section>
 			
@@ -548,7 +548,12 @@ data-admin and other data components.</p>
 
 			
 				<section class="comment">
-					
+					<ul>
+<li><code>label</code> - Displayed to the user</li>
+<li><code>id</code> - Used in the url</li>
+<li><code>template</code> - Renders the content in the tab</li>
+</ul>
+
 				</section>
 			
 			
@@ -575,7 +580,7 @@ data-admin and other data components.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"data-admin/ViewMap","inherits":"DefineMap","type":"module","src":"data-admin\\ViewMap.js","line":18,"codeLine":27,"description":"A view object that controls the display and management of data in the\ndata-admin and other data components.","title":"ViewMap","types":[{"type":"Object","options":[]}],"parent":"data-admin","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"data-admin/ViewMap.props.tabs","type":"property","parent":"data-admin/ViewMap.props","src":"data-admin\\ViewMap.js","line":150,"codeLine":159,"description":"Additional tabs to display in this view's navigation pane. Each tab\ncan have a","types":[{"type":"Object","options":[]}],"title":"tabs","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

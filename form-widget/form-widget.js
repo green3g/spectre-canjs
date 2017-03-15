@@ -74,7 +74,8 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     formObject: DefineMap,
     /**
      * An object set with values that have changed since the form was initialized
-     * @type {Object}
+     * @property {Object} form-widget.ViewModel.props.dirtyObject dirtyObject
+     * @parent form-widget.ViewModel.props
      */
     dirtyObject: {
         value: function () {

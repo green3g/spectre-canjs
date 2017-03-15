@@ -135,7 +135,8 @@ export const ViewModel = DefineMap.extend('ListTable', {
     },
     /**
      * The icon class for the menu dropdown on each row
-     * @type {Object}
+     * @property {String} list-table.ViewModel.props.menuIconClass
+     * @parent list-table.ViewModel.props
      */
     menuIconClass: {
         type: 'string',

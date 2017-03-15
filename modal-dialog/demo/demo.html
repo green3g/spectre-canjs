@@ -4,6 +4,7 @@
     <button type="button" class="btn btn-default" ($click)="showModal('modal2')">Custom Modal</button>
     <button type="button" class="btn btn-default" ($click)="showModal('modal3')">Small Modal</button>
     <button type="button" class="btn btn-default" ($click)="showModal('confirm1')">Confirm Dialog</button>
+    <button type="button" class="btn btn-default" ($click)="showModal('modal4')">No Backdrop Modal</button>
 
     <modal-dialog title="A simple dialog with content" {(active)}="modal1">
 
@@ -99,6 +100,24 @@
       </form>
     </modal-dialog>
 
+    <modal-dialog id="modal4" {(active)}="modal4" backdrop="false" title="Modal without backdrop">
+      <p>This modal demonstrates the ability to generate a modal that allows the user to interact with elements behind a modal.</p>
+
+      <p>Combine this with a library such as
+      <a href="https://www.npmjs.com/package/draggable">draggable</a> for a
+      highly interactive user interface that would allow a user to drag
+      a modal dialog around the window.</p>
+
+      <p>Because this modal does not use the full screen blocking backdrop, it
+      should be positioned with css or javascript absolute positioning.</p>
+    </modal-dialog>
+
+    <style type="text/css">
+      #modal4 .modal-dialog-no-backdrop {
+        top: 30%;
+        left:10%;
+      }
+    </style>
 
     <confirm-dialog small title="Are you sure???" {(active)}="confirm1" (accept)="onAccept" (reject)="onReject">
 
@@ -108,6 +127,7 @@
     </confirm-dialog>
 </script>
 
-<script src="../../docs/spectre/steal.production.js" main="docs-main">
+<!-- <script src="../../docs/spectre/steal.production.js" main="docs-main"> -->
+<script src="../../node_modules/steal/steal.js" main="docs-main">
   steal.import('spectre-canjs/modal-dialog/demo/dialog');
 </script>

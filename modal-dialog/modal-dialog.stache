@@ -1,4 +1,4 @@
-<div class="modal{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
+<div class="{{#if backdrop}}modal{{else}}modal-dialog-no-backdrop{{/if}}{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
     {{#if backdrop}}
         <div class="modal-overlay"></div>
     {{/if}}

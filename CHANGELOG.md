@@ -1,3 +1,13 @@
+0.24.6 / 2017-03-15
+===================
+
+  * 0.24.6
+  * ENH: add fade in to nav (tabs) container
+  * FIX: modal dialog no backdrop again
+  * Revert "FIX: remove invisible blocking container if modal:backdrop is false"
+    This reverts commit 4614dc5e9a40467c3a0e454cd15f0875807e7d9b.
+  * changelog
+
 0.24.5 / 2017-03-15
 ===================
 
@@ -176,12 +186,3 @@
   * DOCS: fix link
   * DOCS: add badge for npm
   * changelog
-
-0.21.2 / 2017-01-19
-===================
-
-  * 0.21.2
-  * BUILD: remove uneeded build step
-  * FIX: json-field - fix failing tests
-  * FIX: remove extra property
-  * FIX: json-field serialization and form object creation works much better

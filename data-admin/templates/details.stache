@@ -2,7 +2,7 @@
     {{#if focusObjectPromise.isPending}}
         <div class="loading"></div>
     {{else}}
-        <h3>{{view.title}}: {{viewId}}</h3>
+        <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
         <nav-container>
             <nav-page label="{{view.title}}">
 

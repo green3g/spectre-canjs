@@ -37,13 +37,6 @@ const TEMPLATES = {
     checkbox: '<checkbox-field (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" {properties}="." />'
 };
 
-//precompile templates
-for (var type in TEMPLATES) {
-    if (TEMPLATES.hasOwnProperty(type)) {
-        TEMPLATES[type] = stache(TEMPLATES[type]);
-    }
-}
-
 export {TEMPLATES};
 
 export const RESERVED = [
@@ -116,9 +109,9 @@ export const Field = DefineMap.extend('Field', {
             const fType = this.fieldType;
             if (!TEMPLATES.hasOwnProperty(fType)) {
                 dev.warn('No template for the given field type', fType);
-                return TEMPLATES.text;
+                return stache(TEMPLATES.text);
             }
-            return TEMPLATES[fType];
+            return stache(TEMPLATES[fType]);
         }
     },
     /**

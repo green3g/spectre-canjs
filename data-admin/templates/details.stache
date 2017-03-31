@@ -1,53 +1,57 @@
 {{#if focusObject}}
-    <h3>{{view.title}}: {{viewId}}</h3>
-    <nav-container>
-        <nav-page label="{{view.title}}">
+    {{#if focusObjectPromise.isPending}}
+        <div class="loading"></div>
+    {{else}}
+        <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
+        <nav-container>
+            <nav-page label="{{view.title}}">
 
-            <dropdown-menu text="Manage Item" class="float-right" right>
-                <ul class="menu">
-                    {{#if view.manageButtons.length}}
-                        <!-- menu header -->
-                        <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
-                        {{#each view.manageButtons as button}}
-                            {{#unless disabled}}
-                                <li class="menu-item">
-                                    <a ($click)="manageObject(focusObject, button)"><span class="{{iconClass}}"></span>{{text}}</a>
-                                </li>
-                            {{/unless}}
-                        {{/each}}
-                    {{/if}}
-                    <!-- menu divider -->
-                    <li class="divider"></li>
-                    <li class="menu-header">
-                        <span class="menu-header-text">Modify</span>
-                    </li>
-                    {{#unless view.disableEdit}}
-                        <li class="menu-item">
-                            <a ($click)="editObject(focusObject)">
-                                <span class="fa fa-pencil fa-fw"></span> Edit
-                            </a>
+                <dropdown-menu text="Manage Item" class="float-right" right>
+                    <ul class="menu">
+                        {{#if view.manageButtons.length}}
+                            <!-- menu header -->
+                            <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
+                            {{#each view.manageButtons as button}}
+                                {{#unless disabled}}
+                                    <li class="menu-item">
+                                        <a ($click)="manageObject(focusObject, button)"><span class="{{iconClass}}"></span>{{text}}</a>
+                                    </li>
+                                {{/unless}}
+                            {{/each}}
+                        {{/if}}
+                        <!-- menu divider -->
+                        <li class="divider"></li>
+                        <li class="menu-header">
+                            <span class="menu-header-text">Modify</span>
                         </li>
-                    {{/unless}}
-                    {{#unless view.disableDelete}}
-                        <li class="menu-item">
-                            <a ($click)="deleteObject(focusObject)">
-                                <span class="fa fa-trash fa-fw"></span> Delete
-                            </a>
-                        </li>
-                    {{/unless}}
-                </ul>
-            </dropdown-menu>
+                        {{#unless view.disableEdit}}
+                            <li class="menu-item">
+                                <a ($click)="editObject(focusObject)">
+                                    <span class="fa fa-pencil fa-fw"></span> Edit
+                                </a>
+                            </li>
+                        {{/unless}}
+                        {{#unless view.disableDelete}}
+                            <li class="menu-item">
+                                <a ($click)="deleteObject(focusObject)">
+                                    <span class="fa fa-trash fa-fw"></span> Delete
+                                </a>
+                            </li>
+                        {{/unless}}
+                    </ul>
+                </dropdown-menu>
 
-            <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
-            <property-table {object}="focusObject" {fields}="_fields" />
-        </nav-page>
-        {{#each view.relatedViews as relView}}
-            <nav-page label="{{#if relView.title}}{{relView.title}}{{else}}{{relView.view.title}}{{/if}}">
-                <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
+                <property-table {object}="focusObject" {fields}="_fields" />
             </nav-page>
-        {{/each}}
-    </nav-container>
+            {{#each view.relatedViews as relView}}
+                <nav-page label="{{#if relView.title}}{{relView.title}}{{else}}{{relView.view.title}}{{/if}}">
+                    <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
+                </nav-page>
+            {{/each}}
+        </nav-container>
+    {{/if}}
 {{else}}
     <p>Please click the <i class="fa fa-list"></i> Details button on the list page to view a row.</p>
 {{/if}}

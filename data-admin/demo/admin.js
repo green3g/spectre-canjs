@@ -36,6 +36,7 @@ const Connection = SuperMap({
 
 const viewModel = new DefineMap({
     view: {
+        titleProp: 'title',
         quickFilters: [{
             text: 'User ID...',
             field: 'userId',

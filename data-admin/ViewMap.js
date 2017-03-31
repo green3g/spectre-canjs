@@ -124,6 +124,22 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      */
     title: {value: ''},
     /**
+     * The name of the property to use as the title in the view. This property
+     * value is displayed on the details view.
+     * view.title : object[view.titleProp]
+     * @property {String} data-admin/ViewMap.props.titleProp titleProp
+     * @parent data-admin/ViewMap.props
+     */
+    titleProp: {
+        type: 'string',
+        get (prop) {
+            if (prop) {
+                return prop;
+            }
+            return this.view ? this.view.connection.idProp : 'id';
+        }
+    },
+    /**
      * Views related to the current view. If related views are provided, the
      * spectre manager will display items related to selected items on the detail page.
      * The data-admin will automatically create a filter to only show items

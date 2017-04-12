@@ -24,26 +24,29 @@ test('value set(date)', (assert) => {
 
 test('value set() invalid date', (assert) => {
     vm.value = '0/0/0';
-    assert.equal(vm.day, new Date().getDate(), 'day should not be default of today');
-    assert.equal(vm.month, new Date().getMonth(), 'month should not be default of today');
-    assert.equal(vm.year, new Date().getFullYear(), 'year should not be default of today');
+    assert.equal(vm.day, undefined, 'day should not be defined');
+    assert.equal(vm.month, undefined, 'month should not be defined');
+    assert.equal(vm.year, undefined, 'year should not be defined');
 });
 
 test('value get()', (assert) => {
-    assert.equal(vm.value.getDate(), new Date().getDate(), 'day should be default today');
-    assert.equal(vm.value.getMonth(), new Date().getMonth(), 'month should be default today');
-    assert.equal(vm.value.getFullYear(), new Date().getFullYear(), 'year should be default today');
+    vm.value = new Date();
+    assert.equal(vm.value.getDate(), new Date().getDate(), 'day should be today');
+    assert.equal(vm.value.getMonth(), new Date().getMonth(), 'month should be today');
+    assert.equal(vm.value.getFullYear(), new Date().getFullYear(), 'year should be today');
 });
 
 test('value get() invalid date', (assert) => {
     vm.day = 0;
-    assert.equal(vm.value.getDate(), new Date().getDate(), 'day should be default today');
-    assert.equal(vm.value.getMonth(), new Date().getMonth(), 'month should be default today');
-    assert.equal(vm.value.getFullYear(), new Date().getFullYear(), 'year should be default today');
+    assert.equal(vm.value, null, 'day should be default null');
 });
 
 test('dayProperties get()', (assert) => {
-    vm.month = 0; //january has 31 days
+    vm.set({
+        month: 0,
+        day: 1,
+        year: 1900
+    });
     assert.equal(vm.dayProperties.options.length, 31, 'january should have 31 day options');
 });
 

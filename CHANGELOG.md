@@ -1,3 +1,25 @@
+
+0.25.0 / 2017-04-04
+===================
+
+  * add gitter integration
+
+0.24.8 / 2017-03-31
+===================
+
+  * 0.24.8
+  * ENH: add titleProp for displaying a custom title property on data-admin details page
+
+0.24.7 / 2017-03-29
+===================
+
+  * 0.24.7
+  * FIX: compile field templates in template getter
+  * ENH: class names for list-table
+  * ENH: make sure focus object is loaded before displaying details view
+  * DOCS: remove @type and fix missing props
+  * changelog
+
 0.24.6 / 2017-03-15
 ===================
 
@@ -173,16 +195,3 @@
   * add custom template theme using spectre.css
   * chore(package): update eslint to version 3.14.0
     https://greenkeeper.io/
-  * FIX: json-field existing json values passed correctly
-  * changelog
-
-0.21.3 / 2017-01-20
-===================
-
-  * 0.21.3
-  * TEST: data-admin updateParameters
-  * FIX: fixes breaking app when existing filters are on the view and new filters are added
-  * DOCS: make sure entire docs directory gets committed
-  * DOCS: fix link
-  * DOCS: add badge for npm
-  * changelog

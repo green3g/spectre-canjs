@@ -12,9 +12,9 @@ import assign from 'object-assign';
  * @description A `<select-field />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('SelectField', {
-  /**
-   * @prototype
-   */
+    /**
+     * @prototype
+     */
     /**
      * Properties for the select dropdown. The properties object is similar to that of
      * `util/field.Field` object, except it includes additional properties to define
@@ -22,7 +22,17 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * @parent select-field.ViewModel.props
      * @property {select-field.SelectFieldProperty} select-field.ViewModel.props.properties properties
      */
-    properties: {Value: DefineMap},
+    properties: {
+        Value: DefineMap,
+        set (props) {
+            if (props.optionsPromise) {
+                props.optionsPromise.then((options) => {
+                    props.set('options', options);
+                });
+            }
+            return props;
+        }
+    },
     /**
      * A list of validation errors
      * @property {Array<String>} select-field.ViewModel.props.errors errors

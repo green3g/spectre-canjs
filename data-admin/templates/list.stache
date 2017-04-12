@@ -44,11 +44,13 @@
                             Modify
                         </span>
                 </li>
+                {{#unless view.disableDelete}}
                 <li class="menu-item">
                     <a ($click)="deleteMultiple(false)">
                         <span class="icon icon-link"></span> Delete
                     </a>
                 </li>
+                {{/unless}}
             </ul>
         </dropdown-menu>
     {{/if}}

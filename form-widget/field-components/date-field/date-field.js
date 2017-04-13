@@ -48,17 +48,17 @@ export const ViewModel = DefineMap.extend('DateField', {
                 date = new Date();
             } else {
                 this.set({
-                    day: date.getDate(),
-                    month: date.getMonth(),
-                    year: date.getFullYear()
+                    day: date.getUTCDate(),
+                    month: date.getUTCMonth(),
+                    year: date.getUTCFullYear()
                 });
             }
             return date;
         },
-        get () {
+        get (value) {
             if (typeof this.month === 'undefined' || typeof this.day === 'undefined' ||
                 !this.year) {
-                return null;
+                return value;
             }
             const dateStr = `${this.month + 1}/${this.day}/${this.year}`;
             if (!this.isValidDate(dateStr)) {

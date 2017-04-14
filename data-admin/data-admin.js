@@ -897,7 +897,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
 
         //dispatch an event
-        this.dispatch(eventName, [obj]);
+        this.dispatch(eventName.toLowerCase(), [obj]);
 
         return returnVal;
     },

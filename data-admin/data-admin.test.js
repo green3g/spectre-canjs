@@ -212,12 +212,12 @@ test('beforeCreate and afterCreate events', (assert) => {
         }
     });
 
-    vm.on('beforeCreate', (event, obj) => {
+    vm.on('beforecreate', (event, obj) => {
         assert.notOk(obj.id, 'event should pass object not yet be saved with id');
         done();
     });
 
-    vm.on('afterCreate', (event, obj) => {
+    vm.on('aftercreate', (event, obj) => {
         assert.ok(typeof obj.id === 'number', 'event should have object passed with a new id');
         done();
     });
@@ -262,11 +262,11 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
         }
     });
 
-    vm.on('beforeDelete', (event, obj) => {
+    vm.on('beforedelete', (event, obj) => {
         assert.equal(obj.id, id, 'object should be passed with before delete event');
         done();
     });
-    vm.on('afterDelete', (event, obj) => {
+    vm.on('afterdelete', (event, obj) => {
         assert.equal(obj.id, id, 'object should be passed with after delete event');
         done();
     });

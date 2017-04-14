@@ -3,6 +3,7 @@ import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import dev from 'can-util/js/dev/dev';
 import template from './template.stache!';
+import isPromiseLike from 'can-util/js/is-promise-like/is-promise-like';
 import './widget.less!';
 
 import '../dropdown-menu/';
@@ -624,19 +625,32 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             return null;
         }
 
-        //save the object
+        // if the value returned is a promise, return a promise
+        // and wait to save the object
+        if (isPromiseLike(val)) {
+            return new Promise((resolve, reject) => {
+                val.then(() => {
+                    this._saveObject(obj, isNew).then(resolve);
+                }).catch(reject);
+            });
+        }
+
+        return this._saveObject(obj);
+    },
+    _saveObject (obj, isNew) {
+      //save the object
         var deferred = this.view.connection.save(obj);
         deferred.then((result) => {
 
-            // if event handlers
+          // if event handlers
             if (isNew) {
                 this.onEvent(obj, 'afterCreate');
             } else {
                 this.onEvent(obj, 'afterSave');
             }
 
-            //update the view id
-            //set page to the details view by default
+          //update the view id
+          //set page to the details view by default
             this.set({
                 viewId: this.view.connection.id(result),
                 page: 'details',
@@ -713,41 +727,57 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
             // beforeDelete handler
             // if return value is falsey, stop execution and don't delete
-            if (!this.onEvent(obj, 'beforeDelete')) {
+            const val = this.onEvent(obj, 'beforeDelete');
+            if (!val) {
                 return null;
             }
 
-            //destroy the object using the connection
-            const deferred = this.view.connection.destroy(obj);
-            deferred.then(() => {
-
-                this.set({
-                    viewId: null,
-                    page: 'list',
-                    objectsRefreshCount: this.objectsRefreshCount + 1
+            // if the val returned is a promise, return a new promise,
+            // and delete when the promise resolves
+            if (isPromiseLike(val)) {
+                return new Promise((resolve, reject) => {
+                    val.then(() => {
+                        this._deleteObject(obj).then(resolve);
+                    }).catch(reject);
                 });
+            }
 
-                //afterDelete handler
-                this.onEvent(obj, 'afterDelete');
+            return this._deleteObject(obj);
 
-                this.objectsRefreshCount++;
-            });
 
-            deferred.catch((result) => {
-
-                this.set({
-                    viewId: null,
-                    page: 'list',
-                    objectsRefreshCount: this.objectsRefreshCount + 1
-                });
-
-                //add a message
-                this.onEvent(result, 'errorDelete');
-                dev.warn(result);
-            });
-            return deferred;
         }
         return null;
+    },
+    _deleteObject (obj) {
+      //destroy the object using the connection
+        const deferred = this.view.connection.destroy(obj);
+        deferred.then(() => {
+
+            this.set({
+                viewId: null,
+                page: 'list',
+                objectsRefreshCount: this.objectsRefreshCount + 1
+            });
+
+          //afterDelete handler
+            this.onEvent(obj, 'afterDelete');
+
+            this.objectsRefreshCount++;
+        });
+
+        deferred.catch((result) => {
+
+            this.set({
+                viewId: null,
+                page: 'list',
+                objectsRefreshCount: this.objectsRefreshCount + 1
+            });
+
+          //add a message
+            this.onEvent(result, 'errorDelete');
+            dev.warn(result);
+        });
+        return deferred;
     },
     /**
      * @description

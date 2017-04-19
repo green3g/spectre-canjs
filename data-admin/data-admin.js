@@ -635,7 +635,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
         }
 
-        return this._saveObject(obj);
+        return this._saveObject(obj, isNew);
     },
     _saveObject (obj, isNew) {
       //save the object

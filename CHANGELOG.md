@@ -1,7 +1,33 @@
+0.26.1 / 2017-04-19
+===================
+
+  * 0.26.1
+  * FIX: failing to pass isNew to saveObject
+  * FIX: minor cleanup
+  * FIX: make event names lowercase
+    - html attributes are case insensitive
+  * ENH: allow `beforeCreate` and `beforeDelete` to return promiselike objects
+    - data-admin waits to save/delete object until promise resolves
+  * FIX: date-field get utc date values when splitting date
+
+0.26.0 / 2017-04-12
+===================
+
+  * Merge remote-tracking branch 'origin/master'
+  * changelog
+  * 0.26.0
+  * TEST: date-field failing tests
+  * ENH: allow select-field to use promise for options
+  * FIX: date-field bugs
+    - validation errors displayed
+    - if date dropdowns are not populated, return null value
+  * FIX: hide delete button if `view.disableDelete` is true
 
 0.25.0 / 2017-04-04
 ===================
 
+  * 0.25.0
+  * CHG: make form-widget dirtyObject a DefineMap
   * add gitter integration
 
 0.24.8 / 2017-03-31
@@ -169,29 +195,3 @@
   * FIX: fix failing tests related to primaryButton changes
   * CHG: `primaryButton` changed to array of type button, `primaryButtons`
     - allow for more flexibility in dropdown-menu, list-table, and data-admin
-  * CHG: list-table buttons now appear as a menu
-    -  In addition, primaryButton can appear beside the menu dropdown
-    - adds primaryButton to data-admin, list-table, and dropdown-menu
-  * ENH: adds checkbox template to field factory
-  * CHG: use common 'text' property for all button objects between different components
-    - more common names between properties
-    - includes breaking change for list-table, change button 'title' to 'text'
-  * changelog
-
-0.21.4 / 2017-01-26
-===================
-
-  * 0.21.4
-  * DOCS: add docs for checkbox field
-  * Merge remote-tracking branch 'origin/master'
-  * ENH: add new checkbox field
-  * ENH: add subform field as replacement for json-field
-    - subform to replace json-field as it doesn't automatically convert obj to json
-    - obj can be serialized to json easily before sending to server using defineMap's serialize
-  * DOCS:minor layout fixes
-  * DOCS: force push gh-pages branch
-  * Finish documenting data-admin
-  * DOCS: template tweaks and updates
-  * add custom template theme using spectre.css
-  * chore(package): update eslint to version 3.14.0
-    https://greenkeeper.io/

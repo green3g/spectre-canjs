@@ -27,7 +27,7 @@ import dev from 'can-util/js/dev/dev';
  * @property {Object} util/field.Field.TEMPLATES Built-in Templates
  * @parent util/field.Field.guides
  */
-const TEMPLATES = {
+export const TEMPLATES = {
     text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
     select: '<select-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
     file: '<file-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
@@ -36,8 +36,6 @@ const TEMPLATES = {
     date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // date object
     checkbox: '<checkbox-field (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" {properties}="." />'
 };
-
-export {TEMPLATES};
 
 export const RESERVED = [
     'get',
@@ -54,6 +52,8 @@ export const RESERVED = [
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
+
+    // allow extra properties on this type
     seal: false
 }, {
     /**

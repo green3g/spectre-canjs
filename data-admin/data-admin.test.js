@@ -203,22 +203,22 @@ test('beforeCreate and afterCreate events', (assert) => {
 
     assign(vm.view, {
         beforeCreate (obj) {
-            assert.notOk(obj.id, 'event should pass object not yet be saved with id');
+            assert.notOk(obj.id, 'beforecreate function should pass object not yet be saved with id');
             done();
         },
         afterCreate (obj) {
-            assert.ok(typeof obj.id === 'number', 'event should have object passed with a new id');
+            assert.ok(typeof obj.id === 'number', 'aftercreate function should have object passed with a new id');
             done();
         }
     });
 
     vm.on('beforecreate', (event, obj) => {
-        assert.notOk(obj.id, 'event should pass object not yet be saved with id');
+        assert.notOk(obj.id, 'beforecreate event should pass object not yet be saved with id');
         done();
     });
 
     vm.on('aftercreate', (event, obj) => {
-        assert.ok(typeof obj.id === 'number', 'event should have object passed with a new id');
+        assert.ok(typeof obj.id === 'number', 'aftercreate event should have object passed with a new id');
         done();
     });
 

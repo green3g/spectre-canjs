@@ -1,3 +1,10 @@
+0.27.1 / 2017-04-24
+===================
+
+  * 0.27.1
+  * FIX: revert bug from previous commit
+  * changelog
+
 0.27.0 / 2017-04-24
 ===================
 
@@ -183,10 +190,3 @@
 
   * 0.22.5
   * ENH: generate fields from inherited DefineMaps
-  * FIX: subform - serialize subform object before dispatching event
-
-0.22.4 / 2017-02-07
-===================
-
-  * 0.22.4
-  * Cleanup: rename test file

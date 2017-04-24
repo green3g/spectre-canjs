@@ -161,6 +161,16 @@ export const Filter = DefineMap.extend('Filter', {
     field: {
         Type: Field,
         serialize: false
+    },
+    /**
+     * a setter for the value field for use with the field template
+     * @param {util/field.Field} field the field object
+     * @param {domElement} dom the input element
+     * @param {Object} scope the view model scope
+     * @param {*} props the object with the value set on the form
+     */
+    setField (field, dom, scope, props) {
+        this.value = props.value;
     }
 });
 

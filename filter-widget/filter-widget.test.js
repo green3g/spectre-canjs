@@ -112,3 +112,8 @@ test('valueField get() field is set', (assert) => {
 
     assert.equal(filter.valueField.fieldType, 'date', 'valueField type should be date when field type is date');
 });
+
+test('setField(field, dom, scope, val)', (assert) => {
+    filter.setField(null, null, null, {value: 'hello'});
+    assert.equal(filter.value, 'hello');
+});

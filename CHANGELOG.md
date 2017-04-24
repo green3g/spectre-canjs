@@ -1,14 +1,42 @@
+0.27.0 / 2017-04-24
+===================
+
+  * 0.27.0
+  * CHG: remove obsolete tests
+  * DOCS: fix
+  * FIX: filter-widget - make sure field type uses textarea: false
+  * DOCS: fix demo to use steal.production
+  * ENH: data-admin - moves duplicate manage menu into template partial [#20](https://github.com/roemhildtg/spectre-canjs/issues/20)
+  * Merge pull request [#34](https://github.com/roemhildtg/spectre-canjs/issues/34) from roemhildtg/greenkeeper/can-util-3.3.7
+    chore(package): update can-util to version 3.3.7
+  * Merge pull request [#35](https://github.com/roemhildtg/spectre-canjs/issues/35) from roemhildtg/greenkeeper/steal-1.4.6
+    chore(package): update steal to version 1.4.6
+  * Merge pull request [#33](https://github.com/roemhildtg/spectre-canjs/issues/33) from roemhildtg/greenkeeper/steal-tools-1.3.1
+    chore(package): update steal-tools to version 1.3.1
+  * Merge branch 'master' into greenkeeper/steal-tools-1.3.1
+  * Merge pull request [#28](https://github.com/roemhildtg/spectre-canjs/issues/28) from roemhildtg/greenkeeper/testee-0.4.0
+    Update testee to the latest version 🚀
+  * changelog
+
 0.26.1 / 2017-04-19
 ===================
 
   * 0.26.1
   * FIX: failing to pass isNew to saveObject
   * FIX: minor cleanup
+  * chore(package): update steal-tools to version 1.3.1
+    https://greenkeeper.io/
+  * chore(package): update steal to version 1.4.6
+    https://greenkeeper.io/
+  * chore(package): update can-util to version 3.3.7
+    https://greenkeeper.io/
   * FIX: make event names lowercase
     - html attributes are case insensitive
   * ENH: allow `beforeCreate` and `beforeDelete` to return promiselike objects
     - data-admin waits to save/delete object until promise resolves
   * FIX: date-field get utc date values when splitting date
+  * chore(package): update testee to version 0.4.0
+    https://greenkeeper.io/
 
 0.26.0 / 2017-04-12
 ===================
@@ -162,36 +190,3 @@
 
   * 0.22.4
   * Cleanup: rename test file
-  * FIX: subform-field remove type 'string' and serialize objects if available
-  * FIX: add fieldset border to subform-field
-  * changelog
-
-0.22.3 / 2017-02-01
-===================
-
-  * 0.22.3
-  * ENH: json-field format fieldsets that were removed in https://github.com/picturepan2/spectre/pull/136
-  * changelog
-
-0.22.2 / 2017-01-31
-===================
-
-  * 0.22.2
-  * FIX:dropdown-menu - preventDefault on mouse click primaryButtons
-  * changelog
-
-0.22.1 / 2017-01-31
-===================
-
-  * 0.22.1
-  * DOCS: add primaryButtons to list-table demo
-  * FIX: make dropdown primary button clicks return false to prevent setting hash
-  * changelog
-
-0.22.0 / 2017-01-28
-===================
-
-  * 0.22.0
-  * FIX: fix failing tests related to primaryButton changes
-  * CHG: `primaryButton` changed to array of type button, `primaryButtons`
-    - allow for more flexibility in dropdown-menu, list-table, and data-admin

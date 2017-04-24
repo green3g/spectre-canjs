@@ -2,8 +2,8 @@
 @module {can.Component} form-widget/field-components/checkbox-field <checkbox-field />
 @parent form-widget.fields
 
-@option {String} fieldType This should be set to `select` to use this template in the form widget
-@option {Array.<spectre.types.CheckboxOptionProperty>} options An array of values and labels
+@option {String} fieldType This should be set to `checkbox` to use this template in the form widget
+@option {String} style Checkbox style, this can be `checkbox` or `switch`
 
 @description
 A checkbox style field.

@@ -814,17 +814,6 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * Passes an array of objects to the on click handler of a manageButton.
-     * The array will only contain one item, the object to "manage"
-     * @function manageObject
-     * @signature
-     * @param  {object} obj A single object
-     * @param  {Function} button  The button object with an `onclick` property
-     */
-    manageObject (obj, button) {
-        this.manageObjects([obj], button);
-    },
-    /**
-     * Passes an array of objects to the on click handler of a manageButton.
      * The array will contain an array of objects to "manage"
      * @function manageObjects
      * @signature
@@ -832,6 +821,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @param  {Function} button The button object with an `onclick` property
      */
     manageObjects (objects, button) {
+        if (!objects.length) {
+            objects = [objects];
+        }
         const defs = button.onClick(objects);
         if (defs) {
             Promise.all(defs).then(() => {

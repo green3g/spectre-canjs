@@ -1,0 +1,36 @@
+{{#if buttons.length}}
+    <dropdown-menu class="inline-block float-right" text="Manage..." right>
+        <ul class="menu">
+            {{#if view.manageButtons.length}}
+                <!-- menu header -->
+                <li class="menu-header">
+                    <span class="menu-header-text">
+                Tasks
+            </span>
+                </li>
+                {{#each view.manageButtons}}
+                    {{#unless disabled}}
+                        <li class="menu-item">
+                            <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
+                        </li>
+                    {{/unless}}
+                {{/each}}
+            {{/if}}
+            <!-- menu divider -->
+            <li class="divider"></li>
+            <li class="menu-header">
+                <span class="menu-header-text">
+                      Modify
+                  </span>
+            </li>
+            {{#unless view.disableDelete}}
+                <li class="menu-item">
+                    <a ($click)="deleteMultiple(false)">
+                        <span class="icon icon-link"></span> Delete
+                    </a>
+                </li>
+            {{/unless}}
+        </ul>
+    </dropdown-menu>
+    <div class="clearfix"></div>
+{{/if}}

@@ -163,6 +163,18 @@ export const Filter = DefineMap.extend('Filter', {
         serialize: false
     },
     /**
+     * creates a dummmy form object for use with the field template
+     * @property {Object}  filter-widget.Filter.props.formObject formObject
+     */
+    formObject: {
+        serialize: false,
+        get () {
+            const obj = {};
+            obj[this.name] = this.value;
+            return obj;
+        }
+    },
+    /**
      * a setter for the value field for use with the field template
      * @param {util/field.Field} field the field object
      * @param {domElement} dom the input element

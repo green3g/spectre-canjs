@@ -3,7 +3,7 @@
 
 	INSTEAD CHANGE:
 	source: data-admin\ViewMap.js
-	@property data-admin/ViewMap.props.connection
+	@property data-admin/ViewMap.template.manageTemplate
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -25,7 +25,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home
-		- connection 
+		- manageTemplate 
 	</title>
 	<meta name="description" content="">
 	<meta name="author" content=""> 
@@ -245,8 +245,8 @@
 			
 				
 				
-				<li class="menu-item search-container active ">
-					<a class="property active " href="data-admin__ViewMap.props.connection.html" data-search="connection">
+				<li class="menu-item search-container">
+					<a class="property" href="data-admin__ViewMap.props.connection.html" data-search="connection">
 						connection
 					</a>
 				</li>
@@ -475,8 +475,8 @@
 			
 				
 				
-				<li class="menu-item search-container">
-					<a class="property" href="data-admin__ViewMap.template.manageTemplate.html" data-search="manageTemplate">
+				<li class="menu-item search-container active ">
+					<a class="property active " href="data-admin__ViewMap.template.manageTemplate.html" data-search="manageTemplate">
 						manageTemplate
 					</a>
 				</li>
@@ -509,7 +509,7 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>connection</h1>
+	<h1>manageTemplate</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
@@ -518,7 +518,7 @@
 	</div>
 	<div class="chip-sm">
 		<span class="chip-name">
-			<code>{can-connect}</code>
+			<code>{Renderer}</code>
 		</span>
 	</div>
 	
@@ -528,22 +528,11 @@
 <div class="sub-heading">
 	
 		
-		<cite>data-admin/ViewMap.props.connection</cite>
+		<cite>data-admin/ViewMap.template.manageTemplate</cite>
 	
 	
 	<span class="inherits">&nbsp;</span>
 </div>
-
-<ul class="links">
-	
-		<li><a href="https://connect.canjs.com/doc/index.html">can-connect</a></li>
-	
-		<li><a href="https://connect.canjs.com/doc/can-connect|constructor.html">constructor</a></li>
-	
-	
-	
-	
-</ul>
 
 <br />
 
@@ -555,10 +544,8 @@
 
 			
 				<section class="description">
-					<p>A can-connect object that utilizes a miniumum of the base and constructor behaviors.
-This includes the can-connect.SuperMap, which consists of many different behaviors.
-In addition, a custom set of behaviors may be used as long as they include
-the constructor.</p>
+					<p>The menu template to render when items are selected, or an item is viewd
+in the details view. The scope of the template is the <code>data-admin</code> view model.</p>
 
 				</section>
 			
@@ -570,7 +557,7 @@ the constructor.</p>
 
   <div class="card">
 	<div class="card-header">
-		<h2 class="card-title" id="sig_">can-connect</h2>
+		<h2 class="card-title" id="sig_">Renderer</h2>
 		
 	</div>
 	<div class="card-body">
@@ -597,11 +584,7 @@ the constructor.</p>
 
 			
 				<section class="comment">
-					<p>This connection property can also contain a special metadata object. This object
-may include more properties in the future but currently it supports a <code>total</code>
-property which allows the template to display how many items there are in total.
-The path to this property should be <code>connection.metadata.total</code>.</p>
-
+					
 				</section>
 			
 			
@@ -628,7 +611,7 @@ The path to this property should be <code>connection.metadata.total</code>.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"data-admin/ViewMap.props.connection","type":"property","parent":"data-admin/ViewMap.props","src":"data-admin\\ViewMap.js","line":29,"codeLine":45,"description":"A can-connect object that utilizes a miniumum of the base and constructor behaviors.\nThis includes the can-connect.SuperMap, which consists of many different behaviors.\nIn addition, a custom set of behaviors may be used as long as they include\nthe constructor.","links":[{"href":"https://connect.canjs.com/doc/index.html","title":"can-connect"},{"href":"https://connect.canjs.com/doc/can-connect|constructor.html","title":"constructor"}],"types":[{"type":"can-connect"}],"title":"connection","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"data-admin/ViewMap.template.manageTemplate","type":"property","parent":"data-admin/ViewMap.template","src":"data-admin\\ViewMap.js","line":259,"codeLine":265,"description":"The menu template to render when items are selected, or an item is viewd\nin the details view. The scope of the template is the `data-admin` view model.","types":[{"type":"Renderer"}],"title":"manageTemplate","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

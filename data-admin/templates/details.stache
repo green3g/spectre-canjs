@@ -6,42 +6,7 @@
         <nav-container>
             <nav-page label="{{view.title}}">
 
-                <dropdown-menu text="Manage Item" class="float-right" right>
-                    <ul class="menu">
-                        {{#if view.manageButtons.length}}
-                            <!-- menu header -->
-                            <li class="menu-header"><span class="menu-header-text">Tasks</span></li>
-                            {{#each view.manageButtons as button}}
-                                {{#unless disabled}}
-                                    <li class="menu-item">
-                                        <a ($click)="manageObject(focusObject, button)"><span class="{{iconClass}}"></span>{{text}}</a>
-                                    </li>
-                                {{/unless}}
-                            {{/each}}
-                        {{/if}}
-                        <!-- menu divider -->
-                        <li class="divider"></li>
-                        <li class="menu-header">
-                            <span class="menu-header-text">Modify</span>
-                        </li>
-                        {{#unless view.disableEdit}}
-                            <li class="menu-item">
-                                <a ($click)="editObject(focusObject)">
-                                    <span class="fa fa-pencil fa-fw"></span> Edit
-                                </a>
-                            </li>
-                        {{/unless}}
-                        {{#unless view.disableDelete}}
-                            <li class="menu-item">
-                                <a ($click)="deleteObject(focusObject)">
-                                    <span class="fa fa-trash fa-fw"></span> Delete
-                                </a>
-                            </li>
-                        {{/unless}}
-                    </ul>
-                </dropdown-menu>
-
-                <div class="clearfix"></div>
+                {{>view.manageTemplate}}
 
                 <property-table {object}="focusObject" {fields}="_fields" />
             </nav-page>

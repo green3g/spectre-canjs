@@ -3,6 +3,7 @@ import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import dev from 'can-util/js/dev/dev';
 import template from './template.stache!';
+import isPromiseLike from 'can-util/js/is-promise-like/is-promise-like';
 import './widget.less!';
 
 import '../dropdown-menu/';
@@ -624,19 +625,32 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             return null;
         }
 
-        //save the object
+        // if the value returned is a promise, return a promise
+        // and wait to save the object
+        if (isPromiseLike(val)) {
+            return new Promise((resolve, reject) => {
+                val.then(() => {
+                    this._saveObject(obj, isNew).then(resolve);
+                }).catch(reject);
+            });
+        }
+
+        return this._saveObject(obj, isNew);
+    },
+    _saveObject (obj, isNew) {
+      //save the object
         var deferred = this.view.connection.save(obj);
         deferred.then((result) => {
 
-            // if event handlers
+          // if event handlers
             if (isNew) {
                 this.onEvent(obj, 'afterCreate');
             } else {
                 this.onEvent(obj, 'afterSave');
             }
 
-            //update the view id
-            //set page to the details view by default
+          //update the view id
+          //set page to the details view by default
             this.set({
                 viewId: this.view.connection.id(result),
                 page: 'details',
@@ -713,41 +727,57 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
             // beforeDelete handler
             // if return value is falsey, stop execution and don't delete
-            if (!this.onEvent(obj, 'beforeDelete')) {
+            const val = this.onEvent(obj, 'beforeDelete');
+            if (!val) {
                 return null;
             }
 
-            //destroy the object using the connection
-            const deferred = this.view.connection.destroy(obj);
-            deferred.then(() => {
-
-                this.set({
-                    viewId: null,
-                    page: 'list',
-                    objectsRefreshCount: this.objectsRefreshCount + 1
+            // if the val returned is a promise, return a new promise,
+            // and delete when the promise resolves
+            if (isPromiseLike(val)) {
+                return new Promise((resolve, reject) => {
+                    val.then(() => {
+                        this._deleteObject(obj).then(resolve);
+                    }).catch(reject);
                 });
+            }
 
-                //afterDelete handler
-                this.onEvent(obj, 'afterDelete');
+            return this._deleteObject(obj);
 
-                this.objectsRefreshCount++;
-            });
 
-            deferred.catch((result) => {
-
-                this.set({
-                    viewId: null,
-                    page: 'list',
-                    objectsRefreshCount: this.objectsRefreshCount + 1
-                });
-
-                //add a message
-                this.onEvent(result, 'errorDelete');
-                dev.warn(result);
-            });
-            return deferred;
         }
         return null;
+    },
+    _deleteObject (obj) {
+      //destroy the object using the connection
+        const deferred = this.view.connection.destroy(obj);
+        deferred.then(() => {
+
+            this.set({
+                viewId: null,
+                page: 'list',
+                objectsRefreshCount: this.objectsRefreshCount + 1
+            });
+
+          //afterDelete handler
+            this.onEvent(obj, 'afterDelete');
+
+            this.objectsRefreshCount++;
+        });
+
+        deferred.catch((result) => {
+
+            this.set({
+                viewId: null,
+                page: 'list',
+                objectsRefreshCount: this.objectsRefreshCount + 1
+            });
+
+          //add a message
+            this.onEvent(result, 'errorDelete');
+            dev.warn(result);
+        });
+        return deferred;
     },
     /**
      * @description
@@ -784,17 +814,6 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     },
     /**
      * Passes an array of objects to the on click handler of a manageButton.
-     * The array will only contain one item, the object to "manage"
-     * @function manageObject
-     * @signature
-     * @param  {object} obj A single object
-     * @param  {Function} button  The button object with an `onclick` property
-     */
-    manageObject (obj, button) {
-        this.manageObjects([obj], button);
-    },
-    /**
-     * Passes an array of objects to the on click handler of a manageButton.
      * The array will contain an array of objects to "manage"
      * @function manageObjects
      * @signature
@@ -802,6 +821,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @param  {Function} button The button object with an `onclick` property
      */
     manageObjects (objects, button) {
+        if (!objects.length) {
+            objects = [objects];
+        }
         const defs = button.onClick(objects);
         if (defs) {
             Promise.all(defs).then(() => {
@@ -867,7 +889,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
 
         //dispatch an event
-        this.dispatch(eventName, [obj]);
+        this.dispatch(eventName.toLowerCase(), [obj]);
 
         return returnVal;
     },

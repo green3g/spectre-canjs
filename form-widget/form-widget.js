@@ -74,14 +74,11 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     formObject: DefineMap,
     /**
      * An object set with values that have changed since the form was initialized
-     * @property {Object} form-widget.ViewModel.props.dirtyObject dirtyObject
+     * @property {DefineMap} form-widget.ViewModel.props.dirtyObject dirtyObject
      * @parent form-widget.ViewModel.props
      */
     dirtyObject: {
-        value: function () {
-            return {};
-        },
-        type: '*'
+        Value: DefineMap
     },
     /**
      * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the api docs
@@ -208,7 +205,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
         }
         const formObject = this.formObject;
 
-        formObject.set(this.dirtyObject);
+        formObject.set(this.dirtyObject.serialize());
         this.dispatch('submit', [formObject]);
         return false;
     },
@@ -226,7 +223,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
     setField (field, domElement, event, props) {
         const value = props.value;
         // update our dirty form field
-        this.dirtyObject[field.name] = value;
+        this.dirtyObject.set(field.name, value);
 
         // check for valid field value and don't update if it's not
         const error = this.validationErrors[field.name] = this.getValidationError(field, value);

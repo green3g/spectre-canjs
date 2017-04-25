@@ -144,7 +144,7 @@ export const Filter = DefineMap.extend('Filter', {
     valueField: {
         serialize: false,
         get () {
-            const fieldProps = this.field ? assign(this.field.serialize(), {inline: true}) : {
+            const fieldProps = this.field ? assign(this.field.serialize(), {inline: true, textarea: false}) : {
                 inline: true,
                 name: this.name,
                 alias: 'Value',
@@ -153,6 +153,14 @@ export const Filter = DefineMap.extend('Filter', {
             };
             return new Field(fieldProps);
         }
+    },
+    /**
+     * The field object used to initialize this filter
+     * @property {util/field.Field}  filter-widget.Filter.props.field field
+     */
+    field: {
+        Type: Field,
+        serialize: false
     },
     /**
      * creates a dummmy form object for use with the field template
@@ -165,14 +173,6 @@ export const Filter = DefineMap.extend('Filter', {
             obj[this.name] = this.value;
             return obj;
         }
-    },
-    /**
-     * The field object used to initialize this filter
-     * @property {util/field.Field}  filter-widget.Filter.props.field field
-     */
-    field: {
-        Type: Field,
-        serialize: false
     },
     /**
      * a setter for the value field for use with the field template

@@ -1,3 +1,86 @@
+0.27.1 / 2017-04-24
+===================
+
+  * 0.27.1
+  * FIX: revert bug from previous commit
+  * changelog
+
+0.27.0 / 2017-04-24
+===================
+
+  * 0.27.0
+  * CHG: remove obsolete tests
+  * DOCS: fix
+  * FIX: filter-widget - make sure field type uses textarea: false
+  * DOCS: fix demo to use steal.production
+  * ENH: data-admin - moves duplicate manage menu into template partial [#20](https://github.com/roemhildtg/spectre-canjs/issues/20)
+  * Merge pull request [#34](https://github.com/roemhildtg/spectre-canjs/issues/34) from roemhildtg/greenkeeper/can-util-3.3.7
+    chore(package): update can-util to version 3.3.7
+  * Merge pull request [#35](https://github.com/roemhildtg/spectre-canjs/issues/35) from roemhildtg/greenkeeper/steal-1.4.6
+    chore(package): update steal to version 1.4.6
+  * Merge pull request [#33](https://github.com/roemhildtg/spectre-canjs/issues/33) from roemhildtg/greenkeeper/steal-tools-1.3.1
+    chore(package): update steal-tools to version 1.3.1
+  * Merge branch 'master' into greenkeeper/steal-tools-1.3.1
+  * Merge pull request [#28](https://github.com/roemhildtg/spectre-canjs/issues/28) from roemhildtg/greenkeeper/testee-0.4.0
+    Update testee to the latest version 🚀
+  * changelog
+
+0.26.1 / 2017-04-19
+===================
+
+  * 0.26.1
+  * FIX: failing to pass isNew to saveObject
+  * FIX: minor cleanup
+  * chore(package): update steal-tools to version 1.3.1
+    https://greenkeeper.io/
+  * chore(package): update steal to version 1.4.6
+    https://greenkeeper.io/
+  * chore(package): update can-util to version 3.3.7
+    https://greenkeeper.io/
+  * FIX: make event names lowercase
+    - html attributes are case insensitive
+  * ENH: allow `beforeCreate` and `beforeDelete` to return promiselike objects
+    - data-admin waits to save/delete object until promise resolves
+  * FIX: date-field get utc date values when splitting date
+  * chore(package): update testee to version 0.4.0
+    https://greenkeeper.io/
+
+0.26.0 / 2017-04-12
+===================
+
+  * Merge remote-tracking branch 'origin/master'
+  * changelog
+  * 0.26.0
+  * TEST: date-field failing tests
+  * ENH: allow select-field to use promise for options
+  * FIX: date-field bugs
+    - validation errors displayed
+    - if date dropdowns are not populated, return null value
+  * FIX: hide delete button if `view.disableDelete` is true
+
+0.25.0 / 2017-04-04
+===================
+
+  * 0.25.0
+  * CHG: make form-widget dirtyObject a DefineMap
+  * add gitter integration
+
+0.24.8 / 2017-03-31
+===================
+
+  * 0.24.8
+  * ENH: add titleProp for displaying a custom title property on data-admin details page
+
+0.24.7 / 2017-03-29
+===================
+
+  * 0.24.7
+  * FIX: compile field templates in template getter
+  * ENH: class names for list-table
+  * ENH: make sure focus object is loaded before displaying details view
+  * DOCS: remove @type and fix missing props
+  * changelog
+
 0.24.6 / 2017-03-15
 ===================
 
@@ -107,82 +190,3 @@
 
   * 0.22.5
   * ENH: generate fields from inherited DefineMaps
-  * FIX: subform - serialize subform object before dispatching event
-
-0.22.4 / 2017-02-07
-===================
-
-  * 0.22.4
-  * Cleanup: rename test file
-  * FIX: subform-field remove type 'string' and serialize objects if available
-  * FIX: add fieldset border to subform-field
-  * changelog
-
-0.22.3 / 2017-02-01
-===================
-
-  * 0.22.3
-  * ENH: json-field format fieldsets that were removed in https://github.com/picturepan2/spectre/pull/136
-  * changelog
-
-0.22.2 / 2017-01-31
-===================
-
-  * 0.22.2
-  * FIX:dropdown-menu - preventDefault on mouse click primaryButtons
-  * changelog
-
-0.22.1 / 2017-01-31
-===================
-
-  * 0.22.1
-  * DOCS: add primaryButtons to list-table demo
-  * FIX: make dropdown primary button clicks return false to prevent setting hash
-  * changelog
-
-0.22.0 / 2017-01-28
-===================
-
-  * 0.22.0
-  * FIX: fix failing tests related to primaryButton changes
-  * CHG: `primaryButton` changed to array of type button, `primaryButtons`
-    - allow for more flexibility in dropdown-menu, list-table, and data-admin
-  * CHG: list-table buttons now appear as a menu
-    -  In addition, primaryButton can appear beside the menu dropdown
-    - adds primaryButton to data-admin, list-table, and dropdown-menu
-  * ENH: adds checkbox template to field factory
-  * CHG: use common 'text' property for all button objects between different components
-    - more common names between properties
-    - includes breaking change for list-table, change button 'title' to 'text'
-  * changelog
-
-0.21.4 / 2017-01-26
-===================
-
-  * 0.21.4
-  * DOCS: add docs for checkbox field
-  * Merge remote-tracking branch 'origin/master'
-  * ENH: add new checkbox field
-  * ENH: add subform field as replacement for json-field
-    - subform to replace json-field as it doesn't automatically convert obj to json
-    - obj can be serialized to json easily before sending to server using defineMap's serialize
-  * DOCS:minor layout fixes
-  * DOCS: force push gh-pages branch
-  * Finish documenting data-admin
-  * DOCS: template tweaks and updates
-  * add custom template theme using spectre.css
-  * chore(package): update eslint to version 3.14.0
-    https://greenkeeper.io/
-  * FIX: json-field existing json values passed correctly
-  * changelog
-
-0.21.3 / 2017-01-20
-===================
-
-  * 0.21.3
-  * TEST: data-admin updateParameters
-  * FIX: fixes breaking app when existing filters are on the view and new filters are added
-  * DOCS: make sure entire docs directory gets committed
-  * DOCS: fix link
-  * DOCS: add badge for npm
-  * changelog

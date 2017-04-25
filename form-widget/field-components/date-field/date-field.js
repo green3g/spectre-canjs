@@ -48,14 +48,18 @@ export const ViewModel = DefineMap.extend('DateField', {
                 date = new Date();
             } else {
                 this.set({
-                    day: date.getDate(),
-                    month: date.getMonth(),
-                    year: date.getFullYear()
+                    day: date.getUTCDate(),
+                    month: date.getUTCMonth(),
+                    year: date.getUTCFullYear()
                 });
             }
             return date;
         },
-        get () {
+        get (value) {
+            if (typeof this.month === 'undefined' || typeof this.day === 'undefined' ||
+                !this.year) {
+                return value;
+            }
             const dateStr = `${this.month + 1}/${this.day}/${this.year}`;
             if (!this.isValidDate(dateStr)) {
                 return new Date();
@@ -70,7 +74,6 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @parent date-field.ViewModel.props
      */
     day: {
-        value: new Date().getDate(),
         type: 'number'
     },
     /**
@@ -80,7 +83,6 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @parent date-field.ViewModel.props
      */
     month: {
-        value: new Date().getMonth(),
         type: 'number'
     },
     /**
@@ -90,8 +92,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @parent date-field.ViewModel.props
      */
     year: {
-        type: 'number',
-        value: new Date().getFullYear()
+        type: 'number'
     },
     /**
      * The properties object for the day picker dropdown. This is created
@@ -148,6 +149,9 @@ export const ViewModel = DefineMap.extend('DateField', {
      * @return {Number} the number of days in the month
      */
     getDaysInMonth (date) {
+        if (!date) {
+            date = new Date();
+        }
         var d = new Date(date.getYear(), date.getMonth() + 1, 0);
         return d.getDate();
     },

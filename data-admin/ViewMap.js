@@ -5,6 +5,7 @@ import editTemplate from './templates/edit.stache!';
 import listTemplate from './templates/list.stache!';
 import detailsTemplate from './templates/details.stache!';
 import addTemplate from './templates/add.stache!';
+import manageTemplate from './templates/manage.stache!';
 
 /**
  * @typedef {object} data-admin.relatedView RelatedView
@@ -252,6 +253,20 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         get (template) {
             if (!template) {
                 template = detailsTemplate;
+            }
+            return template;
+        }
+    },
+    /**
+     * The menu template to render when items are selected, or an item is viewd
+     * in the details view. The scope of the template is the `data-admin` view model.
+     * @property {Renderer} data-admin/ViewMap.template.manageTemplate manageTemplate
+     * @parent data-admin/ViewMap.template
+     */
+    manageTemplate: {
+        get (template) {
+            if (!template) {
+                template = manageTemplate;
             }
             return template;
         }

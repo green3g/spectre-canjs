@@ -52,7 +52,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "can-component": "^3.0.5",
-    "can-define": "^1.0.15",
+    "can-define": "^1.0.19",
     "can-event": "^3.0.2",
     "can-stache": "^3.0.20",
     "can-util": "^3.5.1",

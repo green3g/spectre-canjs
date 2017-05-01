@@ -5,7 +5,7 @@
   {{else}}
     {{#if dismissable}}<button class="btn btn-clear float-right" ($click)="hide"></button>{{/if}}
     {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
-    {{#if heading}}<span class="text-bold">{{heading}}{{/if}}
+    {{#if heading}}<span class="text-bold">{{heading}}</span>{{/if}}
     {{body}}
   {{/if}}
 </div>

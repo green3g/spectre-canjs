@@ -1,4 +1,4 @@
-<div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
+<div class="form-group {{#if errors[properties.name]}}has-error{{/if}}">
     <label {{#if properties.inline}} class="hide" {{/if}} for="{{properties.name}}">{{properties.alias}}</label>
     <div class="input-group">
         <select-field {(value)}="day" {properties}="dayProperties" class="float-left" (fieldchange)="onChange" />

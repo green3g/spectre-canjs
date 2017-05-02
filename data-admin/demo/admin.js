@@ -11,7 +11,7 @@ import '../../form-widget/field-components/checkbox-field/checkbox-field';
 const PostMap = DefineMap.extend({
     'id': {
         type: 'number',
-        excludeForm: true
+        edit: false
     },
     userId: 'number',
     title: 'string',
@@ -91,7 +91,7 @@ import '../../form-widget/field-components/checkbox-field/checkbox-field';
 const PostMap = DefineMap.extend({
     'id': {
         type: 'number',
-        excludeForm: true
+        edit: false
     },
     userId: 'number',
     title: 'string',

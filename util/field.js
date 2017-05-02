@@ -115,28 +115,31 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * Excludes this field from the list-table
-     * @property {Boolean} util/field.Field.props.excludeListTable excludeListTable
+     * Excludes this field from the list view in the data-admin
+     * @property {Boolean} util/field.Field.props.list list
      * @parent util/field.Field.props
      */
-    excludeListTable: {
-        value: false
+    list: {
+        type: 'boolean',
+        value: true
     },
     /**
-     * Excludes this field from the property-table
-     * @property {Boolean} util/field.Field.props.excludePropertyTable excludePropertyTable
+     * Includes this field in the details view in the data-admin
+     * @property {Boolean} util/field.Field.props.detail detail
      * @parent util/field.Field.props
      */
-    excludePropertyTable: {
-        value: false
+    detail: {
+        type: 'boolean',
+        value: true
     },
     /**
-     * Excludes this field from the form-widget
-     * @property {Boolean} util/field.Field.props.excludeForm excludeForm
+     * Includes this field in the edit view in the data-admin
+     * @property {Boolean} util/field.Field.props.edit edit
      * @parent util/field.Field.props
      */
-    excludeForm: {
-        value: false
+    edit: {
+        type: 'boolean',
+        value: true
     },
     /**
      * Formats the property when it is displayed in a property or list table

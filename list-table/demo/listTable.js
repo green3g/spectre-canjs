@@ -15,6 +15,12 @@ document.body.appendChild(render({
         eventName: 'hello',
         text: 'Say Hello'
     }],
+    fields: ['name', 'favorite_food', {
+      name: 'age',
+      formatter(val, obj){
+        return `${obj.name} is ${val} years old`
+      }
+    }],
     // observable list enables sorting
     data: new DefineList([{
         name: 'Peter',
@@ -75,6 +81,12 @@ document.body.appendChild(render({
         iconClass: 'fa fa-smile-o',
         eventName: 'hello',
         text: 'Say Hello'
+    }],
+    fields: ['name', 'favorite_food', {
+      name: 'age',
+      formatter(val, obj){
+        return \`\${obj.name} is \${val} years old\`
+      }
     }],
     // observable list enables sorting
     data: new DefineList([{

@@ -114,10 +114,3 @@ test('toggleSelectAll(), _allSelected', (assert) => {
     });
     assert.ok(vm._allSelected, '_allSelected should be truthy');
 });
-
-test('getFieldValue(field, obj)', (assert) => {
-    const field = new Field({name: 'label'});
-    const obj = vm.objects[0];
-
-    assert.equal(vm.getFieldValue(field, obj), 'label1', 'field value should be equal to the property value');
-});

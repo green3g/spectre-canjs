@@ -61,7 +61,7 @@
                     {{/if}}
                     {{#each fields as field}}
                         <td>
-                            {{#if @field.formatter}}
+                            {{#if field@formatter}}
                                 {{{field.formatter(row[field.name], row)}}}
                             {{else}}
                                 {{row[field.name]}}

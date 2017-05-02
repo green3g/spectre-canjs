@@ -86,7 +86,7 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
     },
     /**
      * Array of fields to show in the table
-     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields
+     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields fields
      */
     fields: {
         Value: DefineList,

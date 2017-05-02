@@ -53,7 +53,7 @@
     "animate.css": "^3.5.2",
     "can-component": "^3.0.5",
     "can-define": "^1.0.22",
-    "can-event": "^3.3.2",
+    "can-event": "^3.4.0",
     "can-stache": "^3.0.20",
     "can-util": "^3.5.1",
     "can-view-model": "^3.1.3",

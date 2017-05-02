@@ -11,7 +11,7 @@
                 <tr>
                     <td>{{field.alias}}</td>
                     <td>
-                        {{#if field.formatter}}
+                        {{#if @field.formatter}}
                             {{{field.formatter(object[field.name], object)}}}
                         {{else}}
                             {{object[field.name]}}

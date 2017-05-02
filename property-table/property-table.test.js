@@ -3,8 +3,6 @@
 import q from 'steal-qunit';
 import {Connection} from 'test/data/connection';
 import {ViewModel} from './property-table';
-import DefineMap from 'can-define/map/map';
-import {Field} from '../../util/field';
 
 let vm;
 
@@ -40,14 +38,6 @@ test('objectId set(id)', (assert) => {
         assert.equal(vm.object.id, id, 'objects id should match the id that was set');
         done();
     });
-});
-
-test('getValue(field)', (assert) => {
-    const field = new Field({name: 'test'});
-    const obj = new DefineMap({test: 'value'});
-
-    vm.object = obj;
-    assert.equal(vm.getValue(field), 'value', 'result should match the value of the object');
 });
 
 test('fields get()', (assert) => {

@@ -124,16 +124,6 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
 
         this.objectPromise = def;
         return def;
-    },
-    /**
-     * A helper for the template that gets an object's property using the field
-     * @function getValue
-     * @signature
-     * @param  {field} field The field object
-     * @return {string}       The formatted string
-     */
-    getValue (field) {
-        return field.getFormattedValue(this.object);
     }
 });
 

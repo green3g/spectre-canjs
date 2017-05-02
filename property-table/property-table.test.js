@@ -49,3 +49,12 @@ test('getValue(field)', (assert) => {
     vm.object = obj;
     assert.equal(vm.getValue(field), 'value', 'result should match the value of the object');
 });
+
+test('fields get()', (assert) => {
+    vm.fields = ['field_1', {
+        detail: false,
+        name: 'field_2'
+    }];
+
+    assert.equal(vm.fields.length, 1, 'fields should be excluded if detail:false');
+});

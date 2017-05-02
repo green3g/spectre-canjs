@@ -98,7 +98,7 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
                 return parseFieldArray(Object.keys(this.object));
             }
             return fields.filter((f) => {
-                return !f.excludePropertyTable;
+                return f.detail !== false;
             });
         }
     },

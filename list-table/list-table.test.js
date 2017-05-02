@@ -5,7 +5,6 @@ import q from 'steal-qunit';
 import {ViewModel} from './list-table';
 
 import {Connection} from '../../test/data/connection';
-import {Field} from '../../util/field';
 
 let vm;
 const objects = [{

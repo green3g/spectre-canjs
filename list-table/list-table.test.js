@@ -47,9 +47,9 @@ test('_allSelected get()', (assert) => {
 test('fields get()', (assert) => {
     vm.fields = ['yes', {
         name: 'no',
-        excludeListTable: true
+        list: false
     }];
-    assert.equal(vm.fields.length, 1, 'fields with excludeListTable should not be included');
+    assert.equal(vm.fields.length, 1, 'fields with list:false should not be included');
 });
 
 test('setSort(field)', (assert) => {

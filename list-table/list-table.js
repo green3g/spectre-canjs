@@ -115,7 +115,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
                 return parseFieldArray(Object.keys(this.objects[0]));
             }
             return fields.filter((f) => {
-                return !f.excludeListTable;
+                return f.list !== false;
             });
         }
     },

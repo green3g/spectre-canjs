@@ -8,7 +8,7 @@
                 {{#each view.manageButtons}}
                     {{#unless disabled}}
                         <li class="menu-item">
-                            <a ($click)="onClick(selectedObjects)"><span class="{{iconClass}}"></span>{{text}}</a>
+                            <a ($click)="manageObjects(.)"><span class="{{iconClass}}"></span>{{text}}</a>
                         </li>
                     {{/unless}}
                 {{/each}}

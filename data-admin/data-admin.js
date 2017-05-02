@@ -793,9 +793,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @return {Array<Promise>}
      */
     deleteMultiple (skipConfirm) {
-        const selected = this.selectedObjects;
+        const selected = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
         const defs = [];
-        //eslint-disable-next-line
+        // TODO: replace with nicer dialog confirmation
+        // eslint-disable-next-line
         if (skipConfirm || confirm(`Are you sure you want to delete the ${selected.length} selected records?`)) {
             selected.forEach((obj) => {
                 defs.push(this.deleteObject(null, null, null, obj, true));
@@ -817,13 +818,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * The array will contain an array of objects to "manage"
      * @function manageObjects
      * @signature
-     * @param  {object} objects     A single object
      * @param  {Function} button The button object with an `onclick` property
      */
-    manageObjects (objects, button) {
-        if (!objects.length) {
-            objects = [objects];
-        }
+    manageObjects (button) {
+        const objects = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
         const defs = button.onClick(objects);
         if (defs) {
             Promise.all(defs).then(() => {
@@ -838,7 +836,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {String} val The value to toggle
      * @param  {Boolean} visible (Optional) whether or not to display the dialog
-     * @param {Event} e (optional) the event to toggle
+     * @param {Event} e (optional) the event to stop
      * @return {Boolean} always returns false to prevent event from changing page
      */
     toggle (val, visible, e) {

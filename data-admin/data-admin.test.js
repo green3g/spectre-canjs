@@ -294,6 +294,63 @@ test('deleteMmultiple()', (assert) => {
     });
 });
 
+test('manageObjects(button) details', (assert) => {
+
+    // check the current counter
+    const currentCount = vm.objectsRefreshCount;
+
+    const done = assert.async(1);
+
+    const myButton = {
+        onClick (objects) {
+            assert.ok(objects.length, 'objects should be passed to the onclick function');
+            return [new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 500);
+            })];
+        }
+    };
+    vm.set({
+        page: 'details',
+        focusObject: {}
+    });
+    vm.manageObjects(myButton);
+
+    setTimeout(() => {
+        assert.equal(vm.objectsRefreshCount, currentCount + 1, 'objectsRefreshCount should be incremented when onclick returns a promise');
+        done();
+    }, 600);
+});
+
+test('manageObjects(button) list', (assert) => {
+
+    // check the current counter
+    const currentCount = vm.objectsRefreshCount;
+
+    const done = assert.async(1);
+
+    const myButton = {
+        onClick (objects) {
+            assert.ok(objects.length, 'objects should be passed to the onclick function');
+            return [new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 500);
+            })];
+        }
+    };
+    vm.set({
+        selectedObjects: [{}, {}],
+        page: 'list'
+    });
+    vm.manageObjects(myButton);
+    setTimeout(() => {
+        assert.equal(vm.objectsRefreshCount, currentCount + 1, 'objectsRefreshCount should be incremented when onclick returns a promise');
+        done();
+    }, 600);
+});
+
 test('toggle(prop, val)', (assert) => {
     vm.toggle('filterVisible');
     assert.ok(vm.filterVisible, 'filter should be visible after toggling');
@@ -303,6 +360,12 @@ test('toggle(prop, val)', (assert) => {
 
     vm.toggle('filterVisible', false);
     assert.notOk(vm.filterVisible, 'filter should not be visible after toggling to false');
+});
+
+test('clearSelection()', (assert) => {
+    vm.selectedObjects = [{}];
+    vm.clearSelection();
+    assert.equal(vm.selectedObjects.length, 0, 'selectedObjects should be empty');
 });
 
 test('updateParameters', (assert) => {

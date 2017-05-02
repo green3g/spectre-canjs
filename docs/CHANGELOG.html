@@ -142,7 +142,7 @@
 
 			
 				<section class="description">
-					<h1>0.27.1 / 2017-04-24</h1>
+					<h1>0.28.0 / 2017-05-02</h1>
 
 				</section>
 			
@@ -157,6 +157,69 @@
 			
 				<section class="comment">
 					<ul>
+<li>0.28.0</li>
+<li>DOCS: template fix</li>
+<li>DOCS: missing property fields</li>
+<li>TEST: remove lint</li>
+<li>DOCS: add detailed demo</li>
+<li>CHG: use stache key synatax to access formatter on field
+<ul>
+<li>eliminate need for getFieldValue in viewmodel</li>
+</ul></li>
+<li>CHG: use stache key value to access field formatter rather than helper function
+<ul>
+<li>removes extra function getvalue from property-table</li>
+</ul></li>
+<li>FIX: remove extra css</li>
+<li>CHG: exclude properties renamed to functional names
+<ul>
+<li>https://github.com/roemhildtg/spectre-canjs/issues/47</li>
+</ul></li>
+<li>CHG: rename excludePropertyTable: true to detail: false
+-https://github.com/roemhildtg/spectre-canjs/issues/47</li>
+<li>CHG: rename excludeListTable: true to list: false
+<ul>
+<li>https://github.com/roemhildtg/spectre-canjs/issues/47</li>
+</ul></li>
+<li>CHG: rename excludeForm: true to edit: false
+<ul>
+<li>https://github.com/roemhildtg/spectre-canjs/issues/47</li>
+</ul></li>
+<li>FIX: missing toast-container span tag</li>
+<li>FIX: form field has-danger should be has-error</li>
+<li>Merge remote-tracking branch 'origin/master'
+<h1>Conflicts:</h1>
+<h1>package.json</h1></li>
+<li>Merge pull request <a href="https://github.com/roemhildtg/spectre-canjs/issues/45">#45</a> from roemhildtg/greenkeeper/can-define-1.0.22
+chore(package): update can-define to version 1.0.22</li>
+<li>chore(package): update can-define to version 1.0.22
+https://greenkeeper.io/</li>
+<li>Merge pull request <a href="https://github.com/roemhildtg/spectre-canjs/issues/44">#44</a> from roemhildtg/greenkeeper/can-define-1.0.21
+chore(package): update can-define to version 1.0.21</li>
+<li>chore(package): update can-define to version 1.0.21
+https://greenkeeper.io/</li>
+<li>Merge remote-tracking branch 'origin/greenkeeper/can-define-1.0.19'</li>
+<li>Merge remote-tracking branch 'origin/greenkeeper/can-util-3.5.1'
+<h1>Conflicts:</h1>
+<h1>package.json</h1></li>
+<li>Merge remote-tracking branch 'origin/greenkeeper/can-util-3.4.1'</li>
+<li>chore(package): update can-define to version 1.0.19
+https://greenkeeper.io/</li>
+<li>chore(package): update can-util to version 3.5.1
+https://greenkeeper.io/</li>
+<li>chore(package): update can-util to version 3.4.1
+https://greenkeeper.io/</li>
+<li>chore(package): update steal to version 1.5.0
+https://greenkeeper.io/</li>
+</ul>
+<h1>0.27.2 / 2017-04-24</h1>
+<ul>
+<li>0.27.2</li>
+<li>FIX: revert previous commit removed formObject</li>
+<li>changelog</li>
+</ul>
+<h1>0.27.1 / 2017-04-24</h1>
+<ul>
 <li>0.27.1</li>
 <li>FIX: revert bug from previous commit</li>
 <li>changelog</li>
@@ -283,60 +346,6 @@ https://greenkeeper.io/</li>
 https://greenkeeper.io/</li>
 <li>DOCS: fix minor typos in demos</li>
 <li>get rid of 0 padding</li>
-<li>add javascript source code to demo viewer</li>
-<li>Merge pull request <a href="https://github.com/roemhildtg/spectre-canjs/issues/19">#19</a> from roemhildtg/greenkeeper/eslint-3.14.0
-chore(package): update eslint to version 3.14.0</li>
-<li>changelog</li>
-</ul>
-<h1>0.24.1 / 2017-03-01</h1>
-<ul>
-<li>0.24.1</li>
-<li>FIX: prevent page navigation when quick filter is selected</li>
-</ul>
-<h1>0.24.0 / 2017-03-01</h1>
-<ul>
-<li>0.24.0</li>
-<li>ENH: add github style quick filter capabilities to data-admin
-<ul>
-<li>update and fix docs</li>
-<li>use dropdown-menu for filter-widget</li>
-</ul></li>
-<li>DOCS: field documentation fixes</li>
-</ul>
-<h1>0.23.2 / 2017-02-28</h1>
-<ul>
-<li>0.23.2</li>
-<li>ENH: use right positioned dropdown on manage items detail view</li>
-<li>ENH: add right positioning option to dropdowns</li>
-<li>fix(package): update spectre.css to version 0.2.3
-Closes <a href="https://github.com/roemhildtg/spectre-canjs/issues/17">#17</a>
-https://greenkeeper.io/</li>
-</ul>
-<h1>0.23.1 / 2017-02-15</h1>
-<ul>
-<li>0.23.1</li>
-<li>TEST: data-admin - new relatedField/relatedValue setters</li>
-<li>ENH: add show/hide events to modal dialog</li>
-<li>FIX: subform-field include missing css</li>
-<li>ENH: list-table don't show buttons if none exist</li>
-<li>DOCS: fix view function typos</li>
-<li>FIX: data-admin - related view titles</li>
-<li>ENH: data-admin hide edit/details tabs if not selected</li>
-<li>ENH: data-admin - move init code into relatedField setter</li>
-<li>CHANGELOG</li>
-</ul>
-<h1>0.23.0 / 2017-02-09</h1>
-<ul>
-<li>0.23.0</li>
-<li>CHG: rename all <code>disableAdd</code> properties to <code>disableCreate</code> to fix discrepancies across application</li>
-<li>FIX: dont show details and edit tabs until there is an item to be edited/viewed</li>
-<li>ENH: data-admin: organize related tables in nav-containers on details view</li>
-<li>changelog</li>
-</ul>
-<h1>0.22.5 / 2017-02-09</h1>
-<ul>
-<li>0.22.5</li>
-<li>ENH: generate fields from inherited DefineMaps</li>
 </ul>
 
 				</section>
@@ -365,7 +374,7 @@ https://greenkeeper.io/</li>
 	
 
 	<script type="text/javascript">
-		var docObject = {"type":"page","name":"CHANGELOG","src":"CHANGELOG.md","description":"0.27.1 / 2017-04-24\r\n===================","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"page","name":"CHANGELOG","src":"CHANGELOG.md","description":"0.28.0 / 2017-05-02\r\n===================","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

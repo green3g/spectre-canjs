@@ -30,8 +30,8 @@ test('objectId set()', (assert) => {
 });
 
 test('fields get()', (assert) => {
-    vm.fields = ['yes', {excludeForm: true, name: 'no'}];
-    assert.equal(vm.fields.length, 1, 'fields with excludeForm:true should not be included');
+    vm.fields = ['yes', {edit: false, name: 'no'}];
+    assert.equal(vm.fields.length, 1, 'fields with edit:false should not be included');
 });
 
 test('fetchObject(con, id)', (assert) => {

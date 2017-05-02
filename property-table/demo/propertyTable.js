@@ -9,8 +9,11 @@ var viewModel = {
         name: 'prop_1',
         alias: 'Property 1',
         // formatters can customize the look of the value
-        formatter (prop) {
-            return `<strong>${prop}</strong>`;
+        formatter (prop, obj) {
+
+            // es6 template
+            return `This is a formatted property: <strong>${prop}</strong><br />
+            We can also utilize other properties on the object: <mark>${obj.etc_or_misc}</mark>`;
         }
     },
         //or a simple field name
@@ -29,16 +32,17 @@ window.DEMO_SOURCE = `
 import 'spectre-canjs/property-table/property-table';
 import stache from 'can-stache';
 
-var render = stache(document.getElementById('demo-html').innerHTML);
+var render = stache.from('demo-html');
 
 var viewModel = {
     fields: [{
-            //fields can be specified using a detailed object
+        //fields can be specified using a detailed object
         name: 'prop_1',
         alias: 'Property 1',
-            // formatters can customize the look of the value
-        formatter (prop) {
-            return <strong>' + prop + '</strong>;
+        // formatters can customize the look of the value
+        formatter (prop, obj) {
+            return \`This is a formatted property: <strong>\${prop}</strong><br />
+            We can also utilize other properties on the object: <mark>\${obj.etc_or_misc}</mark>\`;
         }
     },
         //or a simple field name

@@ -1,4 +1,4 @@
-<div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
+<div class="form-group {{#if errors[properties.name]}}has-error{{/if}}">
     {{#if properties.inline}}
         {{#if properties.textarea}}
             <textarea ($keydown)="beforeSubmit(%element, %event)" placeholder="{{properties.placeholder}}" class="form-control form-input" name="{{properties.name}}" {($value)}="value"></textarea>

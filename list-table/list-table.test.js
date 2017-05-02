@@ -5,7 +5,6 @@ import q from 'steal-qunit';
 import {ViewModel} from './list-table';
 
 import {Connection} from '../../test/data/connection';
-import {Field} from '../../util/field';
 
 let vm;
 const objects = [{
@@ -47,9 +46,9 @@ test('_allSelected get()', (assert) => {
 test('fields get()', (assert) => {
     vm.fields = ['yes', {
         name: 'no',
-        excludeListTable: true
+        list: false
     }];
-    assert.equal(vm.fields.length, 1, 'fields with excludeListTable should not be included');
+    assert.equal(vm.fields.length, 1, 'fields with list:false should not be included');
 });
 
 test('setSort(field)', (assert) => {
@@ -113,11 +112,4 @@ test('toggleSelectAll(), _allSelected', (assert) => {
         assert.ok(vm.isSelected(obj), 'each object should be selected');
     });
     assert.ok(vm._allSelected, '_allSelected should be truthy');
-});
-
-test('getFieldValue(field, obj)', (assert) => {
-    const field = new Field({name: 'label'});
-    const obj = vm.objects[0];
-
-    assert.equal(vm.getFieldValue(field, obj), 'label1', 'field value should be equal to the property value');
 });

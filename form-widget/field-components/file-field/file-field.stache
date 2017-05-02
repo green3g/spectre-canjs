@@ -1,4 +1,4 @@
-<div class="form-group {{#if errors[properties.name]}}has-danger{{/if}}">
+<div class="form-group {{#if errors[properties.name]}}has-error{{/if}}">
 
 
     <ul class="menu">

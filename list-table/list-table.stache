@@ -60,8 +60,13 @@
                         </td>
                     {{/if}}
                     {{#each fields as field}}
-                        {{! this passes the field name and the current object to getFieldValue }}
-                        <td>{{{getFieldValue(field, row)}}}</td>
+                        <td>
+                            {{#if field.formatter}}
+                                {{{field.formatter(row[field.name], row)}}}
+                            {{else}}
+                                {{row[field.name]}}
+                            {{/if}}
+                        </td>
                     {{/each}}
                 </tr>
             {{/each}}

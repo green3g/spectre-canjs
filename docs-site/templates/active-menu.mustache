@@ -2,9 +2,7 @@
 		{{#eachOrderedChildren children}}
 			{{^if hide}}
 				{{#ifGroup}}
-					<li class="menu-header heading search-container">
-						<span>{{makeTitle}}</span>
-					</li>
+					<li class="divider menu-header heading search-container" data-content="{{makeTitle}}"></li>
 						{{> active-menu.mustache}}
 				{{/ifGroup}}
 				{{^ifGroup}}

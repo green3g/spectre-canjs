@@ -115,7 +115,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
                 return parseFieldArray(Object.keys(this.objects[0]));
             }
             return fields.filter((f) => {
-                return !f.excludeListTable;
+                return f.list !== false;
             });
         }
     },
@@ -229,18 +229,6 @@ export const ViewModel = DefineMap.extend('ListTable', {
      */
     isSelected (obj) {
         return this.selectedIds.indexOf(obj[this.idProp]) > -1;
-    },
-    /**
-     * Returns an objects formatted value for the template
-     * @function getFieldValue
-     * @signature
-     * @param  {field} field The field object. This field object has a property
-     * called  `getFormattedValue` which formats and returns a string
-     * @param  {can.Map} obj   The object to retrieve the property from
-     * @return {String}       The formatted value
-     */
-    getFieldValue (field, obj) {
-        return field.getFormattedValue(obj);
     }
 });
 assign(ViewModel.prototype, CanEvent);

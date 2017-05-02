@@ -95,7 +95,7 @@ export const ViewModel = DefineMap.extend('FormWidget', {
                 return parseFieldArray(Object.keys(this.formObject));
             }
             return fields.filter((f) => {
-                return !f.excludeForm;
+                return f.edit !== false;
             });
         }
     },

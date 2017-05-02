@@ -1,3 +1,58 @@
+0.28.0 / 2017-05-02
+===================
+
+  * 0.28.0
+  * DOCS: template fix
+  * DOCS: missing property fields
+  * TEST: remove lint
+  * DOCS: add detailed demo
+  * CHG: use stache key synatax to access formatter on field
+    - eliminate need for getFieldValue in viewmodel
+  * CHG: use stache key value to access field formatter rather than helper function
+    - removes extra function getvalue from property-table
+  * FIX: remove extra css
+  * CHG: exclude properties renamed to functional names
+    - https://github.com/roemhildtg/spectre-canjs/issues/47
+  * CHG: rename excludePropertyTable: true to detail: false
+    -https://github.com/roemhildtg/spectre-canjs/issues/47
+  * CHG: rename excludeListTable: true to list: false
+    - https://github.com/roemhildtg/spectre-canjs/issues/47
+  * CHG: rename excludeForm: true to edit: false
+    - https://github.com/roemhildtg/spectre-canjs/issues/47
+  * FIX: missing toast-container span tag
+  * FIX: form field has-danger should be has-error
+  * Merge remote-tracking branch 'origin/master'
+    # Conflicts:
+    #    package.json
+  * Merge pull request [#45](https://github.com/roemhildtg/spectre-canjs/issues/45) from roemhildtg/greenkeeper/can-define-1.0.22
+    chore(package): update can-define to version 1.0.22
+  * chore(package): update can-define to version 1.0.22
+    https://greenkeeper.io/
+  * Merge pull request [#44](https://github.com/roemhildtg/spectre-canjs/issues/44) from roemhildtg/greenkeeper/can-define-1.0.21
+    chore(package): update can-define to version 1.0.21
+  * chore(package): update can-define to version 1.0.21
+    https://greenkeeper.io/
+  * Merge remote-tracking branch 'origin/greenkeeper/can-define-1.0.19'
+  * Merge remote-tracking branch 'origin/greenkeeper/can-util-3.5.1'
+    # Conflicts:
+    #    package.json
+  * Merge remote-tracking branch 'origin/greenkeeper/can-util-3.4.1'
+  * chore(package): update can-define to version 1.0.19
+    https://greenkeeper.io/
+  * chore(package): update can-util to version 3.5.1
+    https://greenkeeper.io/
+  * chore(package): update can-util to version 3.4.1
+    https://greenkeeper.io/
+  * chore(package): update steal to version 1.5.0
+    https://greenkeeper.io/
+
+0.27.2 / 2017-04-24
+===================
+
+  * 0.27.2
+  * FIX: revert previous commit removed formObject
+  * changelog
+
 0.27.1 / 2017-04-24
 ===================
 
@@ -132,61 +187,3 @@
     https://greenkeeper.io/
   * DOCS: fix minor typos in demos
   * get rid of 0 padding
-  * add javascript source code to demo viewer
-  * Merge pull request [#19](https://github.com/roemhildtg/spectre-canjs/issues/19) from roemhildtg/greenkeeper/eslint-3.14.0
-    chore(package): update eslint to version 3.14.0
-  * changelog
-
-0.24.1 / 2017-03-01
-===================
-
-  * 0.24.1
-  * FIX: prevent page navigation when quick filter is selected
-
-0.24.0 / 2017-03-01
-===================
-
-  * 0.24.0
-  * ENH: add github style quick filter capabilities to data-admin
-    - update and fix docs
-    - use dropdown-menu for filter-widget
-  * DOCS: field documentation fixes
-
-0.23.2 / 2017-02-28
-===================
-
-  * 0.23.2
-  * ENH: use right positioned dropdown on manage items detail view
-  * ENH: add right positioning option to dropdowns
-  * fix(package): update spectre.css to version 0.2.3
-    Closes [#17](https://github.com/roemhildtg/spectre-canjs/issues/17)
-    https://greenkeeper.io/
-
-0.23.1 / 2017-02-15
-===================
-
-  * 0.23.1
-  * TEST: data-admin - new relatedField/relatedValue setters
-  * ENH: add show/hide events to modal dialog
-  * FIX: subform-field include missing css
-  * ENH: list-table don't show buttons if none exist
-  * DOCS: fix view function typos
-  * FIX: data-admin - related view titles
-  * ENH: data-admin hide edit/details tabs if not selected
-  * ENH: data-admin - move init code into relatedField setter
-  * CHANGELOG
-
-0.23.0 / 2017-02-09
-===================
-
-  * 0.23.0
-  * CHG: rename all `disableAdd` properties to `disableCreate` to fix discrepancies across application
-  * FIX: dont show details and edit tabs until there is an item to be edited/viewed
-  * ENH: data-admin: organize related tables in nav-containers on details view
-  * changelog
-
-0.22.5 / 2017-02-09
-===================
-
-  * 0.22.5
-  * ENH: generate fields from inherited DefineMaps

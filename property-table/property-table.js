@@ -86,7 +86,7 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
     },
     /**
      * Array of fields to show in the table
-     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields
+     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields fields
      */
     fields: {
         Value: DefineList,
@@ -98,7 +98,7 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
                 return parseFieldArray(Object.keys(this.object));
             }
             return fields.filter((f) => {
-                return !f.excludePropertyTable;
+                return f.detail !== false;
             });
         }
     },
@@ -124,16 +124,6 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
 
         this.objectPromise = def;
         return def;
-    },
-    /**
-     * A helper for the template that gets an object's property using the field
-     * @function getValue
-     * @signature
-     * @param  {field} field The field object
-     * @return {string}       The formatted string
-     */
-    getValue (field) {
-        return field.getFormattedValue(this.object);
     }
 });
 

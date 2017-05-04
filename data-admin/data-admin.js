@@ -429,21 +429,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             return val;
         }
     },
-    /**
-     * A filter created that relates one data-admin to another. This filter
-     * is cached so it can be updated whenever the relatedValue or
-     * relatedField change
-     * @property {filter-widget.Filter} data-admin.ViewModel.props.relatedFilter relatedFilter
-     * @parent data-admin.ViewModel.props
-     */
     relatedFilter: '*',
-    /**
-     * Updates or creates the relatedFilter object
-     * @function updateRelatedFilter
-     * @signature
-     * @param {util/Field.Field} field The field to filter on
-     * @param {any} value The value to use in the filter
-     */
     updateRelatedFilter (field, value) {
         if (field && value) {
             if (this.relatedFilter) {
@@ -467,8 +453,6 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {util/Field.Field} field The field to filter on (the child key)
      * @param {any} value The value to use in the filter
-     * @return {filter-widget.Filter} the filter object or null if the filter
-     * cannot be created
      */
     addFilter (field, value) {
         if (field && value) {
@@ -480,7 +464,6 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
             return filters[filters.length - 1];
         }
-        return null;
     },
     /**
      * A helper for toggling quick filter dropdowns from the template,
@@ -662,19 +645,19 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return this._saveObject(obj, isNew);
     },
     _saveObject (obj, isNew) {
-      //save the object
+        //save the object
         var deferred = this.view.connection.save(obj);
         deferred.then((result) => {
 
-          // if event handlers
+            // if event handlers
             if (isNew) {
                 this.onEvent(obj, 'afterCreate');
             } else {
                 this.onEvent(obj, 'afterSave');
             }
 
-          //update the view id
-          //set page to the details view by default
+            //update the view id
+            //set page to the details view by default
             this.set({
                 viewId: this.view.connection.id(result),
                 page: 'details',
@@ -773,7 +756,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return null;
     },
     _deleteObject (obj) {
-      //destroy the object using the connection
+        //destroy the object using the connection
         const deferred = this.view.connection.destroy(obj);
         deferred.then(() => {
 
@@ -783,7 +766,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-          //afterDelete handler
+            //afterDelete handler
             this.onEvent(obj, 'afterDelete');
 
             this.objectsRefreshCount++;
@@ -797,7 +780,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-          //add a message
+            //add a message
             this.onEvent(result, 'errorDelete');
             dev.warn(result);
         });

@@ -409,11 +409,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     relatedField: {
         set (field) {
-            const fieldList = this._fields.filter((f) => {
+            field = this._fields.filter((f) => {
                 return f.name === field;
-            });
-            this.addFilter(fieldList[0], this.relatedValue);
-            return fieldList[0];
+            })[0];
+            this.updateRelatedFilter(field, this.relatedValue);
+            return field;
         }
     },
     /**
@@ -423,21 +423,40 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @parent data-admin.ViewModel.props
      */
     relatedValue: {
+        type: '*',
         set (val) {
-            if (!val) {
-                return val;
-            }
-            if (this.relatedField) {
-                const type = this.relatedField.type;
-                if (type === 'number') {
-                    val = parseFloat(val);
-                }
-                if (type === 'date') {
-                    val = new Date(val);
-                }
-            }
-            this.addFilter(this.relatedField, val);
+            this.updateRelatedFilter(this.relatedField, val);
             return val;
+        }
+    },
+    /**
+     * A filter created that relates one data-admin to another. This filter
+     * is cached so it can be updated whenever the relatedValue or
+     * relatedField change
+     * @property {filter-widget.Filter} data-admin.ViewModel.props.relatedFilter relatedFilter
+     * @parent data-admin.ViewModel.props
+     */
+    relatedFilter: '*',
+    /**
+     * Updates or creates the relatedFilter object
+     * @function updateRelatedFilter
+     * @signature
+     * @param {util/Field.Field} field The field to filter on
+     * @param {any} value The value to use in the filter
+     */
+    updateRelatedFilter (field, value) {
+        if (field && value) {
+            if (this.relatedFilter) {
+                this.relatedFilter.set({
+                    name: field.name,
+                    value: value
+                });
+            } else {
+                this.relatedFilter = this.addFilter(field, value);
+            }
+        } else {
+            const filters = this.parameters.filters;
+            filters.splice(filters.indexOf(this.relatedFilter), 1);
         }
     },
     /**
@@ -448,15 +467,20 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {util/Field.Field} field The field to filter on (the child key)
      * @param {any} value The value to use in the filter
+     * @return {filter-widget.Filter} the filter object or null if the filter
+     * cannot be created
      */
     addFilter (field, value) {
         if (field && value) {
-            this.parameters.filters.push({
+            const filters = this.parameters.filters;
+            filters.push({
                 name: field.name,
                 value: value,
                 operator: 'equals'
             });
+            return filters[filters.length - 1];
         }
+        return null;
     },
     /**
      * A helper for toggling quick filter dropdowns from the template,
@@ -801,8 +825,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             selected.forEach((obj) => {
                 defs.push(this.deleteObject(null, null, null, obj, true));
             });
-            selected.replace([]);
         }
+        this.selectedObjects.replace([]);
         return defs;
     },
     /**

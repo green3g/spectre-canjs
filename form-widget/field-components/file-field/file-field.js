@@ -111,6 +111,8 @@ export const ViewModel = DefineMap.extend('FileField', {
             if (!this.properties.multiple && this.currentFiles.length) {
                 this.removeFile(this.currentFiles[0]).then(() => {
                     this.uploadFiles(element.files);
+                }).catch((error) => {
+                    this.uploadError(error);
                 });
             } else {
                 this.uploadFiles(element.files);
@@ -210,6 +212,11 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @return {Promise} the promise resolved when the delete result is complete
      */
     removeFile (file) {
+        if (!confirm(`The file at ${file} will be removed. Are you sure you want to do this?`)) {
+            return this.state = new Promise((resolve, reject) => {
+                reject({message: 'User canceled out of dialog'});
+            });
+        }
         if (file.removing) {
             return false;
         }

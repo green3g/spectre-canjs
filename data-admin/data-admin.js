@@ -453,6 +453,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {util/Field.Field} field The field to filter on (the child key)
      * @param {any} value The value to use in the filter
+     * @return {filter-widget.Filter} the filter object
      */
     addFilter (field, value) {
         if (field && value) {
@@ -464,6 +465,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             });
             return filters[filters.length - 1];
         }
+        return null;
     },
     /**
      * A helper for toggling quick filter dropdowns from the template,

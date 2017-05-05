@@ -212,10 +212,12 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @return {Promise} the promise resolved when the delete result is complete
      */
     removeFile (file) {
+        // eslint-disable-next-line
         if (!confirm(`The file at ${file} will be removed. Are you sure you want to do this?`)) {
-            return this.state = new Promise((resolve, reject) => {
+            this.state = new Promise((resolve, reject) => {
                 reject({message: 'User canceled out of dialog'});
             });
+            return this.state;
         }
         if (file.removing) {
             return false;

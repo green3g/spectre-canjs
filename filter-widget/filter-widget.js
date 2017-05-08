@@ -30,7 +30,8 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     disableCreate: 'htmlbool',
     /**
      * A list of fields that will be used to create options in the field name
-     * dropdown.
+     * dropdown. If the field has a property `filter` set to false, it will be
+     * excluded from this widget. 
      * <br />TODO: Each field may have a property `filterFactory` which may return
      * one or more filter objects
      * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
@@ -42,7 +43,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
         get (fields) {
             if (fields.length) {
                 return fields.filter((f) => {
-                    return !f.excludeFilter;
+                    return f.filter !== false;
                 });
             }
             return [];

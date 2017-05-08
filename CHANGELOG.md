@@ -1,6 +1,21 @@
+0.28.4 / 2017-05-08
+===================
+
+  * 0.28.4
+  * FIX: failing filter test for excluding field from filter
+  * ENH: update dependencies
+  * ENH: don't use two-way binding where unecessary
+  * FIX: simplify filter field api
+  * FIX: float issue in data-admin
+  * fix lint errors
+  * ENH: prompt user before sending delete request to server
+  * FIX: add properties to track related filter. fixes duplicate related filters being created
+  * FIX: add methods to create and update relatedFilter from relatedField and relatedValue
+
 0.28.3 / 2017-05-02
 ===================
 
+  * changelog
   * 0.28.3
   * FIX: manage buttons not working on details view
 
@@ -174,23 +189,3 @@
   * 0.24.7
   * FIX: compile field templates in template getter
   * ENH: class names for list-table
-  * ENH: make sure focus object is loaded before displaying details view
-  * DOCS: remove @type and fix missing props
-  * changelog
-
-0.24.6 / 2017-03-15
-===================
-
-  * 0.24.6
-  * ENH: add fade in to nav (tabs) container
-  * FIX: modal dialog no backdrop again
-  * Revert "FIX: remove invisible blocking container if modal:backdrop is false"
-    This reverts commit 4614dc5e9a40467c3a0e454cd15f0875807e7d9b.
-  * changelog
-
-0.24.5 / 2017-03-15
-===================
-
-  * 0.24.5
-  * FIX: export component constructor as default
-  * DOCS: add missing property documentation

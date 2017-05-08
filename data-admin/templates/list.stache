@@ -6,6 +6,9 @@
             <filter-widget {(filters)}="parameters.filters" {fields}="_fields" {object-template}="view.ObjectTemplate" />
         </div>
     </dropdown-menu>
+
+    <a class="btn btn-link" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
+
     {{#each view.quickFilters}}
         <dropdown-menu text="{{text}}" class="inline-block">
             <ul class="menu">
@@ -22,8 +25,6 @@
     {{#if selectedObjects.length}}
         {{>view.manageTemplate}}
     {{/if}}
-
-    <a class="btn btn-link" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
 </div>
 
 <div class="clearfix"></div>

@@ -24,5 +24,4 @@
             {{/unless}}
         </ul>
     </dropdown-menu>
-    <div class="clearfix"></div>
 {{/if}}

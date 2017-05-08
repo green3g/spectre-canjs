@@ -13,6 +13,7 @@ import '../form-widget/';
 import '../filter-widget/';
 import '../paginate-widget/';
 import '../nav-container/nav-container';
+import '../modal-dialog/confirm-dialog';
 
 import {VIEW_BUTTON, EDIT_BUTTON, DELETE_BUTTON} from './buttons';
 import {FilterList} from '../filter-widget/Filter';
@@ -210,6 +211,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         Value: ParameterMap,
         Type: ParameterMap
     },
+    deletePromise: '*',
+    showConfirmDelete: 'boolean',
     /**
      * A simple counter that forces a refresh on the promise when set. Used
      * to manually refresh the data list
@@ -696,6 +699,21 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         }
         return new(this.view.ObjectTemplate)(props);
     },
+    confirmDelete () {
+        this.showConfirmDelete = true;
+        return new Promise((resolve) => {
+
+            // give canjs time to update deletePromise
+            setTimeout(() => {
+                if (this.deletePromise) {
+                    this.deletePromise.then(resolve);
+                } else {
+                    dev.warn('data-admin::no delete promise exists');
+                    resolve();
+                }
+            });
+        });
+    },
     /**
      * @description
      * Displays a confirm dialog box and if confirmed, attempts to delete
@@ -731,31 +749,43 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             obj = arguments[0];
             skipConfirm = arguments[1];
         }
-        // eslint-disable-next-line
-        if (obj && (skipConfirm || window.confirm('Are you sure you want to delete this record?'))) {
+        if (obj) {
 
-            // beforeDelete handler
-            // if return value is falsey, stop execution and don't delete
-            const val = this.onEvent(obj, 'beforeDelete');
-            if (!val) {
-                return null;
+            if (skipConfirm) {
+                return this._beforeDelete(obj);
+            } else {
+                // if we need to confirm, display the dialog and return a promise
+                return new Promise((resolve) => {
+                    this.confirmDelete().then(() => {
+                        this._beforeDelete(obj).then(resolve);
+                    });
+                });
             }
+        }
+        return null;
+    },
+    _beforeDelete (obj) {
+
+        // beforeDelete handler
+        // if return value is falsey, stop execution and don't delete
+        const val = this.onEvent(obj, 'beforeDelete');
+        if (!val) {
+            return null;
+        }
+
+        return new Promise((resolve, reject) => {
+
 
             // if the val returned is a promise, return a new promise,
             // and delete when the promise resolves
             if (isPromiseLike(val)) {
-                return new Promise((resolve, reject) => {
-                    val.then(() => {
-                        this._deleteObject(obj).then(resolve);
-                    }).catch(reject);
-                });
+                val.then(() => {
+                    this._deleteObject(obj).then(resolve);
+                }).catch(reject);
+            } else {
+                this._deleteObject(obj).then(resolve);
             }
-
-            return this._deleteObject(obj);
-
-
-        }
-        return null;
+        });
     },
     _deleteObject (obj) {
         //destroy the object using the connection
@@ -803,16 +833,23 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     deleteMultiple (skipConfirm) {
         const selected = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
+        return new Promise((resolve) => {
+            if (skipConfirm) {
+                this._deleteMultiple(selected).then(resolve);
+            } else {
+                this.confirmDelete().then(() => {
+                    this._deleteMultiple(selected).then(resolve);
+                });
+            }
+        });
+    },
+    _deleteMultiple (objects) {
         const defs = [];
-        // TODO: replace with nicer dialog confirmation
-        // eslint-disable-next-line
-        if (skipConfirm || confirm(`Are you sure you want to delete the ${selected.length} selected records?`)) {
-            selected.forEach((obj) => {
-                defs.push(this.deleteObject(null, null, null, obj, true));
-            });
-        }
+        objects.forEach((obj) => {
+            defs.push(this.deleteObject(null, null, null, obj, true));
+        });
         this.selectedObjects.replace([]);
-        return defs;
+        return Promise.all(defs);
     },
     /**
      * Empties the currently selected objects array

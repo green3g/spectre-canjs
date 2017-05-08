@@ -40,10 +40,14 @@ export const ViewModel = ModalViewModel.extend('ConfirmDialog', {
      */
     actionPromise: {
         get () {
-            return new Promise((resolve, reject) => {
-                this._resolveAction = resolve;
-                this._rejectAction = reject;
-            });
+            // generate a new promise when active becomes true
+            if (this.active) {
+                return new Promise((resolve, reject) => {
+                    this._resolveAction = resolve;
+                    this._rejectAction = reject;
+                });
+            }
+            return null;
         }
     },
     /**
@@ -61,13 +65,13 @@ export const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     },
     /**
      * Called when the reject button is clicked. Rejects the `actionPromise`.
-     * In addition, the `reject` event is dispatched on the component element. 
+     * In addition, the `reject` event is dispatched on the component element.
      * @function onReject
      * @signature
      */
     onReject () {
-        if (this._resolveAction) {
-            this._resolveAction(false);
+        if (this._rejectAction) {
+            this._rejectAction(false);
         }
         this.dispatch('reject', [this]);
         this.active = false;

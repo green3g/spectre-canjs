@@ -3,7 +3,7 @@ steal.bundlesPath = "bundles";
 steal.main = "docs-main";
 steal.configMain = "package.json!npm";
 /*
- *  steal v1.5.1
+ *  steal v1.5.2
  *  
  *  Copyright (c) 2017 Bitovi; Licensed MIT
  */

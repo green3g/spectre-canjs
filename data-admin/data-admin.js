@@ -829,19 +829,20 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
      * and will immediately attempt to remove the selected objects
-     * @return {Array<Promise>}
+     * @return {Promise} a promise that resolves once all delete calls are finished
      */
     deleteMultiple (skipConfirm) {
         const selected = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
-        return new Promise((resolve) => {
-            if (skipConfirm) {
-                this._deleteMultiple(selected).then(resolve);
-            } else {
+
+        if (skipConfirm) {
+            return this._deleteMultiple(selected);
+        } else {
+            return new Promise((resolve) => {
                 this.confirmDelete().then(() => {
                     this._deleteMultiple(selected).then(resolve);
                 });
-            }
-        });
+            });
+        }
     },
     _deleteMultiple (objects) {
         const defs = [];

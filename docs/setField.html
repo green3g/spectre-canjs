@@ -2,8 +2,8 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: data-admin\data-admin.js
-	@property page
+	source: filter-widget\Filter.js
+	@function setField
 ######################################################################## -->
 
 <!--[if lt IE 7]>
@@ -26,7 +26,7 @@
 	<meta charset="utf-8">
 	<title>Home
 		
-			- page
+			- setField
 		
 	</title>
 	<meta name="description" content="">
@@ -88,8 +88,8 @@
 			
 		
 		<li class="menu-item search-container active parent">
-			<a class="sidebar-title" href="data-admin.html" data-search="&lt;data-admin /&gt;">
-				&lt;data-admin /&gt;
+			<a class="sidebar-title" href="filter-widget.html" data-search="&lt;filter-widget /&gt;">
+				&lt;filter-widget /&gt;
 			</a>
 		</li>
     <li class="divider"></li>
@@ -98,8 +98,8 @@
 		
 			
 			<li class="menu-item search-container active">
-			<a class="sidebar-title active" href="data-admin.ParameterMap.html" data-search="ParameterMap">
-				ParameterMap
+			<a class="sidebar-title active" href="filter-widget.Filter.html" data-search="Filter">
+				Filter
 			</a>
 			
 		
@@ -112,8 +112,80 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="filters.html" data-search="filters">
-						filters
+					<a class="property" href="Ffilter-widget.Filter.props.operator.html" data-search="operator">
+						operator
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.field.html" data-search="field">
+						field
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.formObject.html" data-search="formObject">
+						formObject
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.name.html" data-search="name">
+						name
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.operatorField.html" data-search="operatorField">
+						operatorField
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.value.html" data-search="value">
+						value
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="filter-widget.Filter.props.valueField.html" data-search="valueField">
+						valueField
 					</a>
 				</li>
 				
@@ -124,32 +196,8 @@
 				
 				
 				<li class="menu-item search-container active ">
-					<a class="property active " href="page.html" data-search="page">
-						page
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="perPage.html" data-search="perPage">
-						perPage
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="sort.html" data-search="sort">
-						sort
+					<a class="function active " href="setField.html" data-search="setField">
+						setField
 					</a>
 				</li>
 				
@@ -181,16 +229,16 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>page</h1>
+	<h1>setField</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
-			property
+			function
 		</span>
 	</div>
 	<div class="chip-sm">
 		<span class="chip-name">
-			<code>{Object}</code>
+			<code></code>
 		</span>
 	</div>
 	
@@ -212,25 +260,89 @@
 
 			
 				<section class="description">
-					<p>The current page index to show. The default is 0.
-This value is 0 indexed so if you want the 3rd page, you would use
-index of 2.</p>
+					<p>a setter for the value field for use with the field template</p>
 
 				</section>
 			
 
 			
 				
-					<section class='primary-options'>
-						
-
-  <div class="card">
+					<section class="signature">
+						<div class="card">
 	<div class="card-header">
-		<h2 class="card-title" id="sig_">Object</h2>
+		<h2 class="card-title" id="sig_">function(<a href="util__field.Field.html" >field</a>, dom, scope, props)</h2>
 		
 	</div>
 	<div class="card-body">
 		
+		
+			<h3 class="card-meta">Parameters</h3>
+			<table class="table">
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Type
+					</th>
+					<th>
+						Description
+					</th>
+				</tr>
+				
+					<tr>
+						<td>
+							<code>field</code>
+						</td>
+						<td>
+							<code>{<a href="util__field.Field.html" >Field</a>}</code>
+						</td>
+						<td>
+							<p>the field object</p>
+
+						</td>
+					</tr>
+				
+					<tr>
+						<td>
+							<code>dom</code>
+						</td>
+						<td>
+							<code>{domElement}</code>
+						</td>
+						<td>
+							<p>the input element</p>
+
+						</td>
+					</tr>
+				
+					<tr>
+						<td>
+							<code>scope</code>
+						</td>
+						<td>
+							<code>{Object}</code>
+						</td>
+						<td>
+							<p>the view model scope</p>
+
+						</td>
+					</tr>
+				
+					<tr>
+						<td>
+							<code>props</code>
+						</td>
+						<td>
+							<code>{*}</code>
+						</td>
+						<td>
+							<p>the object with the value set on the form</p>
+
+						</td>
+					</tr>
+				
+			</table>
 		
 		
 		
@@ -242,8 +354,6 @@ index of 2.</p>
 	</div>
 </div>
 
-  
-
 					</section>
 				
 			
@@ -251,10 +361,6 @@ index of 2.</p>
 			
 
 
-			
-				<section class="comment">
-					
-				</section>
 			
 			
 
@@ -280,7 +386,7 @@ index of 2.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"page","type":"property","parent":"data-admin.ParameterMap.props","src":"data-admin\\data-admin.js","line":68,"codeLine":74,"description":"The current page index to show. The default is 0.\nThis value is 0 indexed so if you want the 3rd page, you would use\nindex of 2.","types":[{"type":"Object","options":[]}],"title":"","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"src":"filter-widget\\Filter.js","line":176,"codeLine":185,"description":"a setter for the value field for use with the field template","title":"","name":"setField","parent":"filter-widget.Filter.props","type":"function","signatures":[{"description":"","params":[{"types":[{"type":"util/field.Field"}],"name":"field","description":"the field object"},{"types":[{"type":"domElement"}],"name":"dom","description":"the input element"},{"types":[{"type":"Object","options":[]}],"name":"scope","description":"the view model scope"},{"types":[{"type":"*"}],"name":"props","description":"the object with the value set on the form"}]}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

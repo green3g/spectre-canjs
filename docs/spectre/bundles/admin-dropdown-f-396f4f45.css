@@ -1,2 +1,2 @@
-paginate-widget a{cursor:pointer}nav-container .tab-item{cursor:pointer}nav-container .tab-item.loading::after{margin-left:15px}
+modal-dialog .modal-dialog-no-backdrop{display:none;-webkit-animation:slide-down .2s;animation:slide-down .2s;max-width:64rem}modal-dialog .modal-dialog-no-backdrop.active{display:block;position:absolute;left:10%;top:10%}paginate-widget a{cursor:pointer}nav-container .tab-item{cursor:pointer}nav-container .tab-item.loading::after{margin-left:15px}
 /*# sourceMappingURL=admin-dropdown-f-396f4f45.css.map */

@@ -674,10 +674,11 @@ and will immediately attempt to remove the selected objects</p>
 			<br  />
 			<div class="returns">
 				<p>
-					<code>{Array&lt;Promise&gt;}</code>
+					<code>{Promise}</code>
 				</p>
 				<div class="description">
-					
+					<p>a promise that resolves once all delete calls are finished</p>
+
 				</div>
 
 				
@@ -725,7 +726,7 @@ and will immediately attempt to remove the selected objects</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"src":"data-admin\\data-admin.js","line":790,"codeLine":803,"type":"function","description":"Iterates through the objects in the `selectedObjects` array\nand deletes each one individually.\n\nTODO: implement batch deleting to avoid many ajax calls","title":"","name":"data-admin.ViewModel.prototype.deleteMultiple","parent":"data-admin.ViewModel.prototype","signatures":[{"description":"","params":[{"types":[{"type":"Boolean"}],"name":"skipConfirm","description":"If true, the method will not display a confirm dialog\nand will immediately attempt to remove the selected objects"}],"returns":{"types":[{"type":"Array","template":[{"types":[{"type":"Promise"}]}]}],"description":""}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"src":"data-admin\\data-admin.js","line":820,"codeLine":833,"type":"function","description":"Iterates through the objects in the `selectedObjects` array\nand deletes each one individually.\n\nTODO: implement batch deleting to avoid many ajax calls","title":"","name":"data-admin.ViewModel.prototype.deleteMultiple","parent":"data-admin.ViewModel.prototype","signatures":[{"description":"","params":[{"types":[{"type":"Boolean"}],"name":"skipConfirm","description":"If true, the method will not display a confirm dialog\nand will immediately attempt to remove the selected objects"}],"returns":{"types":[{"type":"Promise"}],"description":"a promise that resolves once all delete calls are finished"}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

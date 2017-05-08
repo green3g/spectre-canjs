@@ -1,3 +1,53 @@
+0.28.4 / 2017-05-08
+===================
+
+  * 0.28.4
+  * FIX: failing filter test for excluding field from filter
+  * ENH: update dependencies
+  * ENH: don't use two-way binding where unecessary
+  * FIX: simplify filter field api
+  * FIX: float issue in data-admin
+  * fix lint errors
+  * ENH: prompt user before sending delete request to server
+  * FIX: add properties to track related filter. fixes duplicate related filters being created
+  * FIX: add methods to create and update relatedFilter from relatedField and relatedValue
+
+0.28.3 / 2017-05-02
+===================
+
+  * changelog
+  * 0.28.3
+  * FIX: manage buttons not working on details view
+
+0.28.2 / 2017-05-02
+===================
+
+  * 0.28.2
+  * Merge remote-tracking branch 'origin/greenkeeper/spectre.css-0.2.14'
+    # Conflicts:
+    #    package.json
+  * Merge remote-tracking branch 'origin/greenkeeper/spectre.css-pin-0.2.13'
+    # Conflicts:
+    #    package.json
+  * Merge remote-tracking branch 'origin/greenkeeper/testee-0.5.0'
+  * Merge remote-tracking branch 'origin/greenkeeper/can-stache-3.0.24'
+    # Conflicts:
+    #    package.json
+
+0.28.1 / 2017-05-02
+===================
+
+  * Merge remote-tracking branch 'origin/greenkeeper/can-event-3.4.0'
+  * 0.28.1
+  * FIX: Move @ sign to correct position when checking for formatter function
+  * chore(package): update can-event to version 3.4.0
+  * FIX: make sure check for formatter isn't calling the formatter
+  * Merge pull request [#48](https://github.com/roemhildtg/spectre-canjs/issues/48) from roemhildtg/greenkeeper/can-event-3.3.2
+    chore(package): update can-event to version 3.3.2
+  * chore(package): update can-event to version 3.3.2
+  * FIX: broken menu headers
+  * changelog
+
 0.28.0 / 2017-05-02
 ===================
 
@@ -19,6 +69,8 @@
     - https://github.com/roemhildtg/spectre-canjs/issues/47
   * CHG: rename excludeForm: true to edit: false
     - https://github.com/roemhildtg/spectre-canjs/issues/47
+  * chore(package): update testee to version 0.5.0
+    https://greenkeeper.io/
   * FIX: missing toast-container span tag
   * FIX: form field has-danger should be has-error
   * Merge remote-tracking branch 'origin/master'
@@ -38,6 +90,11 @@
     #    package.json
   * Merge remote-tracking branch 'origin/greenkeeper/can-util-3.4.1'
   * chore(package): update can-define to version 1.0.19
+    https://greenkeeper.io/
+  * chore(package): update can-stache to version 3.0.24
+    https://greenkeeper.io/
+  * fix: pin spectre.css to 0.2.13
+  * chore(package): update spectre.css to version 0.2.14
     https://greenkeeper.io/
   * chore(package): update can-util to version 3.5.1
     https://greenkeeper.io/
@@ -132,58 +189,3 @@
   * 0.24.7
   * FIX: compile field templates in template getter
   * ENH: class names for list-table
-  * ENH: make sure focus object is loaded before displaying details view
-  * DOCS: remove @type and fix missing props
-  * changelog
-
-0.24.6 / 2017-03-15
-===================
-
-  * 0.24.6
-  * ENH: add fade in to nav (tabs) container
-  * FIX: modal dialog no backdrop again
-  * Revert "FIX: remove invisible blocking container if modal:backdrop is false"
-    This reverts commit 4614dc5e9a40467c3a0e454cd15f0875807e7d9b.
-  * changelog
-
-0.24.5 / 2017-03-15
-===================
-
-  * 0.24.5
-  * FIX: export component constructor as default
-  * DOCS: add missing property documentation
-  * FIX: remove invisible blocking container if modal:backdrop is false
-  * DOCS: fix name typo on field utility functions
-  * DOCS: fix typos and add details
-  * changelog
-
-0.24.4 / 2017-03-13
-===================
-
-  * 0.24.4
-  * DOCS: document modal dialog and confirm dialog
-  * ENH: add optional backdrop property to allow hiding the modal's backdrop
-
-0.24.3 / 2017-03-10
-===================
-
-  * 0.24.3
-  * Merge remote-tracking branch 'origin/greenkeeper/steal-tools-1.2.0'
-  * DOCS: fix toast-item documentation
-  * chore(package): update steal-tools to version 1.2.0
-    https://greenkeeper.io/
-  * changelog
-
-0.24.2 / 2017-03-07
-===================
-
-  * 0.24.2
-  * Merge remote-tracking branch 'origin/greenkeeper/eslint-3.17.1'
-  * Merge remote-tracking branch 'origin/greenkeeper/can-stache-3.0.20'
-  * TEST: use older firefox in travis build
-  * chore(package): update can-stache to version 3.0.20
-    https://greenkeeper.io/
-  * chore(package): update eslint to version 3.17.1
-    https://greenkeeper.io/
-  * DOCS: fix minor typos in demos
-  * get rid of 0 padding

@@ -26,12 +26,12 @@ q.module('filter-widget.ViewModel', {
 test('fields get()', (assert) => {
     const fields = [{
         name: 'test',
-        excludeFilter: true
+        filter: false
     }, {
         name: 'test2'
     }];
     vm.fields = fields;
-    assert.equal(vm.fields.length, 1, 'With excludeFilter true, only one field should be retreived from the getter');
+    assert.equal(vm.fields.length, 1, 'With filter false, only one field should be retreived from the getter');
 });
 
 test('fieldOptions get() with fields', (assert) => {

@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.28.2",
+  "version": "0.28.4",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": {
     "type": "git",
@@ -34,33 +34,33 @@
   "author": "roemhildtg",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "can-connect": "^1.2.0",
+    "babel-eslint": "^7.2.3",
+    "can-connect": "^1.3.11",
     "can-fixture": "^1.0.12",
-    "can-set": "^1.0.3",
+    "can-set": "^1.2.0",
     "changelog": "^1.0.7",
     "documentjs": "^0.4.4",
-    "eslint": "^3.17.1",
-    "npm-watch": "^0.1.7",
-    "steal-css": "^1.2.0",
-    "steal-less": "^1.1.0",
-    "steal-qunit": "^1.0.0",
-    "steal-stache": "^3.0.5",
-    "steal-tools": "^1.3.1",
+    "eslint": "^3.19.0",
+    "npm-watch": "^0.1.9",
+    "steal-css": "^1.2.4",
+    "steal-less": "^1.2.0",
+    "steal-qunit": "^1.0.1",
+    "steal-stache": "^3.0.7",
+    "steal-tools": "^1.3.3",
     "testee": "^0.5.0"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "can-component": "^3.0.5",
-    "can-define": "^1.0.22",
+    "can-component": "^3.0.7",
+    "can-define": "^1.0.24",
     "can-event": "^3.4.0",
     "can-stache": "^3.0.24",
-    "can-util": "^3.5.1",
+    "can-util": "^3.6.2",
     "can-view-model": "^3.1.3",
     "font-awesome": "^4.7.0",
-    "object-assign": "^4.1.0",
+    "object-assign": "^4.1.1",
     "spectre.css": "^0.2.14",
-    "steal": "^1.5.0"
+    "steal": "^1.5.2"
   },
   "steal": {
     "plugins": [

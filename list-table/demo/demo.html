@@ -5,6 +5,8 @@
     <!-- id-prop is required for selection -->
     <list-table {objects}="data" id-prop="name" />
 
+    <br />
+
     <h2>Advanced:</h2>
     <list-table {^selected-objects}="selectedObjects" {objects}="data" (hello)="sayHello" {fields}="fields" (goodbye)="sayGoodbye" {primary-buttons}="primary" {buttons}="buttons" (sort)="setSort" id-prop="name" />
 

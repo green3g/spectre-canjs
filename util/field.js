@@ -142,6 +142,15 @@ export const Field = DefineMap.extend('Field', {
         value: true
     },
     /**
+     * Includes this field in the filter widget's fields.
+     * @property {Boolean} util/field.Field.props.filter filter
+     * @parent util/field.Field.props
+     */
+    filter: {
+        type: 'boolean',
+        value: true
+    },
+    /**
      * Formats the property when it is displayed in a property or list table
      * @property {Function} util/field.Field.props.formatter formatter
      * @signature `formatter(property)`

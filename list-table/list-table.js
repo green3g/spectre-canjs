@@ -47,7 +47,9 @@ export const ViewModel = DefineMap.extend('ListTable', {
     },
     /**
      * Id property name for the rows of objects. The default is `id`. This value
-     * is used to determine whether objects are selected or not.
+     * is used to determine whether objects are selected or not. For a built in
+     * unique ID, `_cid` may be used. _cid is automatically generatted by `can-define`
+     * and should be guaranteed to be unique accross all DefineMaps
      * @parent list-table.ViewModel.props
      * @property {String} list-table.ViewModel.props.idProp
      */

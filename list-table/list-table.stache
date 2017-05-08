@@ -5,7 +5,7 @@
                 <th class="checkbox-heading">
                     <div class="form-group">
                         <label class="form-checkbox">
-                            <input type="checkbox" ($change)="toggleSelectAll" {($checked)}="_allSelected" />
+                            <input type="checkbox" ($change)="toggleSelectAll" {$checked}="_allSelected" />
                             <i class="form-icon"></i>
                         </label>
                     </div>
@@ -28,7 +28,7 @@
                     <td class="checkbox-cell">
                         <div class="form-group inline-block">
                             <label class="form-checkbox">
-                                <input type="checkbox" ($change)="toggleSelected(row)" {($checked)}="isSelected(row)" />
+                                <input type="checkbox" ($change)="toggleSelected(row)" {$checked}="isSelected(row)" />
                                 <i class="form-icon"></i>
                             </label>
                         </div>

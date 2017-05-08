@@ -409,11 +409,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      */
     relatedField: {
         set (field) {
-            const fieldList = this._fields.filter((f) => {
+            field = this._fields.filter((f) => {
                 return f.name === field;
-            });
-            this.addFilter(fieldList[0], this.relatedValue);
-            return fieldList[0];
+            })[0];
+            this.updateRelatedFilter(field, this.relatedValue);
+            return field;
         }
     },
     /**
@@ -423,21 +423,26 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @parent data-admin.ViewModel.props
      */
     relatedValue: {
+        type: '*',
         set (val) {
-            if (!val) {
-                return val;
-            }
-            if (this.relatedField) {
-                const type = this.relatedField.type;
-                if (type === 'number') {
-                    val = parseFloat(val);
-                }
-                if (type === 'date') {
-                    val = new Date(val);
-                }
-            }
-            this.addFilter(this.relatedField, val);
+            this.updateRelatedFilter(this.relatedField, val);
             return val;
+        }
+    },
+    relatedFilter: '*',
+    updateRelatedFilter (field, value) {
+        if (field && value) {
+            if (this.relatedFilter) {
+                this.relatedFilter.set({
+                    name: field.name,
+                    value: value
+                });
+            } else {
+                this.relatedFilter = this.addFilter(field, value);
+            }
+        } else {
+            const filters = this.parameters.filters;
+            filters.splice(filters.indexOf(this.relatedFilter), 1);
         }
     },
     /**
@@ -448,15 +453,19 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {util/Field.Field} field The field to filter on (the child key)
      * @param {any} value The value to use in the filter
+     * @return {filter-widget.Filter} the filter object
      */
     addFilter (field, value) {
         if (field && value) {
-            this.parameters.filters.push({
+            const filters = this.parameters.filters;
+            filters.push({
                 name: field.name,
                 value: value,
                 operator: 'equals'
             });
+            return filters[filters.length - 1];
         }
+        return null;
     },
     /**
      * A helper for toggling quick filter dropdowns from the template,
@@ -638,19 +647,19 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return this._saveObject(obj, isNew);
     },
     _saveObject (obj, isNew) {
-      //save the object
+        //save the object
         var deferred = this.view.connection.save(obj);
         deferred.then((result) => {
 
-          // if event handlers
+            // if event handlers
             if (isNew) {
                 this.onEvent(obj, 'afterCreate');
             } else {
                 this.onEvent(obj, 'afterSave');
             }
 
-          //update the view id
-          //set page to the details view by default
+            //update the view id
+            //set page to the details view by default
             this.set({
                 viewId: this.view.connection.id(result),
                 page: 'details',
@@ -749,7 +758,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return null;
     },
     _deleteObject (obj) {
-      //destroy the object using the connection
+        //destroy the object using the connection
         const deferred = this.view.connection.destroy(obj);
         deferred.then(() => {
 
@@ -759,7 +768,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-          //afterDelete handler
+            //afterDelete handler
             this.onEvent(obj, 'afterDelete');
 
             this.objectsRefreshCount++;
@@ -773,7 +782,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-          //add a message
+            //add a message
             this.onEvent(result, 'errorDelete');
             dev.warn(result);
         });
@@ -793,15 +802,16 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @return {Array<Promise>}
      */
     deleteMultiple (skipConfirm) {
-        const selected = this.selectedObjects;
+        const selected = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
         const defs = [];
-        //eslint-disable-next-line
+        // TODO: replace with nicer dialog confirmation
+        // eslint-disable-next-line
         if (skipConfirm || confirm(`Are you sure you want to delete the ${selected.length} selected records?`)) {
             selected.forEach((obj) => {
                 defs.push(this.deleteObject(null, null, null, obj, true));
             });
-            selected.replace([]);
         }
+        this.selectedObjects.replace([]);
         return defs;
     },
     /**
@@ -817,13 +827,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * The array will contain an array of objects to "manage"
      * @function manageObjects
      * @signature
-     * @param  {object} objects     A single object
      * @param  {Function} button The button object with an `onclick` property
      */
-    manageObjects (objects, button) {
-        if (!objects.length) {
-            objects = [objects];
-        }
+    manageObjects (button) {
+        const objects = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
         const defs = button.onClick(objects);
         if (defs) {
             Promise.all(defs).then(() => {
@@ -838,7 +845,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
      * @signature
      * @param {String} val The value to toggle
      * @param  {Boolean} visible (Optional) whether or not to display the dialog
-     * @param {Event} e (optional) the event to toggle
+     * @param {Event} e (optional) the event to stop
      * @return {Boolean} always returns false to prevent event from changing page
      */
     toggle (val, visible, e) {

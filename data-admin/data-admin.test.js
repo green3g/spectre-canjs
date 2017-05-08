@@ -275,22 +275,20 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
     vm.deleteObject(new TaskMap({id: id}), true);
 });
 
-test('deleteMmultiple()', (assert) => {
-    const done = assert.async(2);
+test('deleteMultiple(true)', (assert) => {
+    const done = assert.async();
     vm.selectedObjects = [{
-        id: 11
+        id: 12
     }, {
         id: 1
     }];
-    const defs = vm.deleteMultiple(true);
-    defs.forEach((def) => {
-        def.then((r) => {
-            assert.ok(r, 'then is resolved');
-            done();
-        }).catch((r) => {
-            assert.ok(r, 'catch is resolved');
-            done();
-        });
+    const promise = vm.deleteMultiple(true);
+    promise.then((r) => {
+        assert.ok(r, 'then is resolved');
+        done();
+    }).catch((r) => {
+        assert.ok(r, 'catch is resolved');
+        done();
     });
 });
 

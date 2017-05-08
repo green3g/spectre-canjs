@@ -176,6 +176,8 @@ export const Filter = DefineMap.extend('Filter', {
     },
     /**
      * a setter for the value field for use with the field template
+     * @function setField
+     * @signature
      * @param {util/field.Field} field the field object
      * @param {domElement} dom the input element
      * @param {Object} scope the view model scope

@@ -1,7 +1,8 @@
 import CanEvent from 'can-event';
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
-import template from './select-field.stache!';
+import template from './select-field.stache';
+import selectInput from './templates/selectInput.stache';
 import assign from 'object-assign';
 
 /**
@@ -51,6 +52,16 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * @parent select-field.ViewModel.props
      */
     inline: 'htmlbool',
+    /**
+     * The select input renderer - stache template. Used as a partial in the template.
+     * The default is a basic html select input.
+     * @property {Renderer} select-field.ViewModel.props.selectInput
+     */
+    selectInput: {
+        value () {
+            return selectInput;
+        }
+    },
     /**
      * Called whenever a field is changed, dispatches the change event
      * @function onChange

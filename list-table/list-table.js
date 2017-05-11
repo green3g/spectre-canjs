@@ -92,12 +92,12 @@ export const ViewModel = DefineMap.extend('ListTable', {
     /**
      * An array of buttonObjects
      * @parent list-table.ViewModel.props
-     * @property {Array.<spectre.types.TableButtonObject>} list-table.ViewModel.props.buttons
+     * @property {Array.<spectre.types.ButtonObject>} list-table.ViewModel.props.buttons
      */
     buttons: DefineList,
     /**
      * A primary button to display next to the dropdown menu button on each row
-     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButtons primaryButtons
+     * @property {Array<ButtonObject>} list-table.ViewModel.props.primaryButtons primaryButtons
      * @parent list-table.ViewModel.props
      */
     primaryButtons: DefineList,
@@ -149,7 +149,7 @@ export const ViewModel = DefineMap.extend('ListTable', {
      * calls the buttons `onClick` method if it exists
      * @function dispatchButtonEvent
      * @signature
-     * @param  {TableButtonObject} button The button object that was clicked
+     * @param  {ButtonObject} button The button object that was clicked
      * @param  {can.Map} object  The row data
      */
     dispatchButtonEvent (button, object) {

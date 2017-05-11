@@ -25,57 +25,6 @@ q.module('data-admin.ViewModel', {
     }
 });
 
-test('totalPages get()', (assert) => {
-    const cases = [{
-        items: 99,
-        perPage: 10,
-        expected: 10
-    }, {
-        items: 100,
-        perPage: 10,
-        expected: 10
-    }, {
-        items: 101,
-        perPage: 10,
-        expected: 11
-    }];
-    cases.forEach((c) => {
-        vm.view.connection.metadata.total = c.items;
-        vm.view.parameters.perPage = c.perPage;
-        assert.equal(vm.totalPages, c.expected, 'totalPages should be calculated correctly');
-    });
-});
-
-test('perPageOptions get()', (assert) => {
-    const tests = [{
-        total: 1,
-        expected: []
-    }, {
-        total: 15,
-        expected: [10, 20]
-    }, {
-        total: 50,
-        expected: [10, 20, 50]
-    }, {
-        total: 99,
-        expected: [10, 20, 50, 100]
-    }];
-    tests.forEach((t) => {
-        vm.view.connection.metadata.total = t.total;
-        assert.deepEqual(vm.perPageOptions.serialize(), t.expected, 'per page options should be filtered correctly');
-    });
-
-});
-
-test('showPaginate get()', (assert) => {
-    vm.view.connection.metadata.total = 10;
-    vm.parameters.perPage = 25;
-    assert.equal(vm.showPaginate, false, 'pagination should not be shown with one page');
-
-    vm.parameters.perPage = 5;
-    assert.equal(vm.showPaginate, true, 'pagination should be shown with more than one page');
-});
-
 test('objects get()', (assert) => {
     const done = assert.async();
     vm.view = {connection: Connection};
@@ -129,27 +78,6 @@ test('relatedValue, relatedField set()', (assert) => {
 test('addFilter(field, value)', (assert) => {
     vm.addFilter({name: 'test'}, 'value');
     assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
-});
-
-test('toggleQuickFilter(field, value)', (assert) => {
-    vm.toggleQuickFilter('test', 'value');
-    assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.equal(vm.parameters.filters.length, 1, 'filters length should not have changed');
-    assert.equal(vm.parameters.filters[0].value, 'different', 'filter value should be updated');
-
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.notOk(vm.parameters.filters.length, 'filter should be removed');
-});
-
-test('getQuickFilter(field, value)', (assert) => {
-    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
-    assert.ok(vm.getQuickFilter('test', 'different'), 'quick filter should be active');
 });
 
 test('editObject(scope, dom, event, obj)', (assert) => {
@@ -347,17 +275,6 @@ test('manageObjects(button) list', (assert) => {
         assert.equal(vm.objectsRefreshCount, currentCount + 1, 'objectsRefreshCount should be incremented when onclick returns a promise');
         done();
     }, 600);
-});
-
-test('toggle(prop, val)', (assert) => {
-    vm.toggle('filterVisible');
-    assert.ok(vm.filterVisible, 'filter should be visible after toggling');
-
-    vm.toggle('filterVisible');
-    assert.notOk(vm.filterVisible, 'filter should not be visible after toggling again');
-
-    vm.toggle('filterVisible', false);
-    assert.notOk(vm.filterVisible, 'filter should not be visible after toggling to false');
 });
 
 test('clearSelection()', (assert) => {

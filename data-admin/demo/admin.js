@@ -30,7 +30,7 @@ const Connection = SuperMap({
     url: 'https://jsonplaceholder.typicode.com/posts',
     name: 'post',
     metadata: {
-        // total: data.length
+        total: 100
     }
 });
 

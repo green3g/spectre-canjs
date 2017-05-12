@@ -75,6 +75,18 @@ test('relatedValue, relatedField set()', (assert) => {
     assert.equal(vm.parameters.filters.length, 1, 'should create filters parameter when initialized with related field and value');
 });
 
+test('totalItems get()', (assert) => {
+    assert.equal(vm.totalItems, 0, 'total Items should be 0 by default');
+    vm.view = {
+        connection: {
+            metadata: {
+                total: 10
+            }
+        }
+    };
+    assert.equal(vm.totalItems, 10, 'totalItems should be set correctly');
+});
+
 test('addFilter(field, value)', (assert) => {
     vm.addFilter({name: 'test'}, 'value');
     assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
@@ -203,14 +215,14 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
     vm.deleteObject(new TaskMap({id: id}), true);
 });
 
-test('deleteMultiple(true)', (assert) => {
+test('deleteMultiple(objects, true)', (assert) => {
     const done = assert.async();
     vm.selectedObjects = [{
         id: 12
     }, {
         id: 1
     }];
-    const promise = vm.deleteMultiple(true);
+    const promise = vm.deleteMultiple(vm.selectedObjects, true);
     promise.then((r) => {
         assert.ok(r, 'then is resolved');
         done();
@@ -230,11 +242,11 @@ test('manageObjects(button) details', (assert) => {
     const myButton = {
         onClick (objects) {
             assert.ok(objects.length, 'objects should be passed to the onclick function');
-            return [new Promise((resolve) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
                 }, 500);
-            })];
+            });
         }
     };
     vm.set({
@@ -259,11 +271,11 @@ test('manageObjects(button) list', (assert) => {
     const myButton = {
         onClick (objects) {
             assert.ok(objects.length, 'objects should be passed to the onclick function');
-            return [new Promise((resolve) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
                 }, 500);
-            })];
+            });
         }
     };
     vm.set({

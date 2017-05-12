@@ -44,9 +44,7 @@ export const RESERVED = [
 ];
 
 const displayTemplate = stache('{{object[field.name]}}');
-const formatter = function (val) {
-    return val;
-};
+
 /**
  * @constructor util/field.Field Field
  * @parent util/field

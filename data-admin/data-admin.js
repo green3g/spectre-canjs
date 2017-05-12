@@ -340,7 +340,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 name: 'actions',
                 alias: '',
                 edit: false,
-                details: false,
+                detail: false,
                 filter: false,
                 displayTemplate: actionsCellTemplate
             }];
@@ -765,7 +765,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         let button = arguments[arguments.length - 2],
             objects;
         if (!button || button.batchNum) {
-          
+
             // we didn't get passed objects so
             // we will use focusObject or selectedObjects
             button = arguments[arguments.length - 1];

@@ -5,7 +5,7 @@
       <i class="fa fa-caret-down"></i>
     </a>
 
-    <ul class="menu">
+    <ul class="menu" style="cursor:pointer;">
       {{#each actions as action}}
         {{#if header}}
           <li class="divider" data-content="{{header}}">

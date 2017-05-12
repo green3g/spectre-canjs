@@ -4,8 +4,6 @@
 @option {Function(Array<Object>)} onClick A click handler to call with an array with the object.
 @option {String} iconClass The class to use for the button icon
 @option {String} tooltip The tooltip text to display
-@option {Boolean} divideBefore Place a divider before this button when in a menu
-@option {Boolean} divideAfter Place a divider after this button when in a menu
 @option {Boolean} header Place a menu header before this button when used in a menu
 @option {String} eventName The event to dispatch when the button is clicked. This allows developers to bind functions to custom events, like `(eventName)="functionName"`
 

@@ -1,23 +1,7 @@
 <div class="inline-block btn-group btn-group-block">
   {{#each buttons}}
-    {{#unless disabled}}
-      {{#if ./buttons}}
-        <dropdown-menu title="{{text}}">
-          <ul class="menu">
-            {{#each ./buttons}}
-              {{#unless disabled}}
-                <li class="menu-item">
-                  <a ($click)="dispatchEvent(.)"><i class="{{iconClass}}"></i>{{text}}</a>
-                </li>
-              {{/unless}}
-            {{/each}}
-          </ul>
-        </dropdown-menu>
-      {{else}}
-        <button class="btn btn-primary{{#tooltip}} tooltip{{/tooltip}}" {{#tooltip}} data-tooltip="{{tooltip}}" {{/tooltip}} ($click)="dispatchEvent(.)">
+    <button class="btn btn-primary{{#tooltip}} tooltip{{/tooltip}}" {{#tooltip}} data-tooltip="{{tooltip}}" {{/tooltip}} ($click)="dispatchEvent(.)">
               <i class="{{iconClass}}"></i> {{text}}
       </button>
-      {{/if}}
-  {{/unless}}
   {{/each}}
 </div>

@@ -56,12 +56,12 @@ test('buttons get()', (assert) => {
 
 test('_fields get()', (assert) => {
     vm.view.ObjectTemplate = TaskMap;
-    assert.equal(vm._fields.length, 2, 'if no fields exist on the view, they should be created from the ObjectTemplate');
+    assert.equal(vm._fields.length, 3, 'if no fields exist on the view, they should be created from the ObjectTemplate');
 
     vm.view = {
         fields: ['test1', 'test2', 'test3', 'test4']
     };
-    assert.equal(vm._fields.length, 4, 'if fields do exist on the view, they should be created correctly');
+    assert.equal(vm._fields.length, 5, 'if fields do exist on the view, they should be created correctly');
 });
 
 test('relatedValue, relatedField set()', (assert) => {

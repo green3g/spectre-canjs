@@ -3,6 +3,7 @@ import DefineList from 'can-define/list/list';
 import Component from 'can-component';
 import dev from 'can-util/js/dev/dev';
 import template from './template.stache!';
+import actionsCellTemplate from './templates/actionsCell.stache';
 import isPromiseLike from 'can-util/js/is-promise-like/is-promise-like';
 import './widget.less!';
 
@@ -273,24 +274,28 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             if (!this.view.disableDelete) {
                 buttons.push(DELETE_BUTTON);
             }
-            if (this.view.manageButtons && this.view.manageButtons.length) {
-                buttons = buttons.concat(this.view.manageButtons.serialize());
+            if (this.view.actions && this.view.actions.length) {
+                buttons = buttons.concat(this.view.actions.serialize());
             }
 
-            return buttons;
+            return buttons.filter((button) => {
+                return !button.disabled;
+            });
         }
     },
     toolbarButtons: {
         get () {
             let buttons = [];
 
-            if (this.view.manageButtons && this.view.manageButtons.length) {
-                buttons = buttons.concat(this.view.manageButtons.serialize());
+            if (this.view.actions && this.view.actions.length) {
+                buttons = buttons.concat(this.view.actions.serialize());
             }
 
             if (!this.view.disableDelete) {
                 buttons.push(DELETE_BUTTON);
             }
+
+      // TODO: implement batch editing
 
             return buttons;
         }
@@ -331,15 +336,25 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    */
     _fields: {
         get () {
+            const fields = [{
+                name: 'actions',
+                alias: '',
+                edit: false,
+                details: false,
+                filter: false,
+                displayTemplate: actionsCellTemplate
+            }];
 
       //try a fields propety first
             if (this.view.fields) {
-                return parseFieldArray(this.view.fields);
+                if (this.view.fields.serialize()) {
+                    return parseFieldArray(fields.concat(this.view.fields.serialize()));
+                }
             }
 
       //if that doesn't exist, use the ObjectTemplate or Map to create fields
             const Template = this.view.ObjectTemplate || this.view.connection.Map;
-            return mapToFields(Template);
+            return parseFieldArray(fields).concat(mapToFields(Template));
         }
     },
   /**
@@ -436,19 +451,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * to start editing the object provided.
    * @function editObject
    * @signature
-   * @param  {DefineMap} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
    * @param  {DefineMap} obj   The object to start editing
    */
     editObject () {
-        let obj;
-    //accept 4 params from the template or just one
-        if (arguments.length === 4) {
-            obj = arguments[3];
-        } else {
-            obj = arguments[0];
-        }
+        const obj = arguments[arguments.length - 1];
 
         this.set({
             viewId: this.view.connection.id(obj),
@@ -460,21 +466,11 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * to display a detailed view of the object provided.
    * @function viewObject
    * @signature
-   * @param  {DefineMap} scope The stache scope (not used)
-   * @param  {domNode} dom   The domNode that triggered the event (not used)
-   * @param  {Event} event The event that was triggered (not used)
    * @param  {DefineMap} obj   The object to view
 
    */
     viewObject () {
-        let obj;
-    //accept 4 params from the template or just one
-        if (arguments.length === 4) {
-            obj = arguments[3];
-        } else {
-            obj = arguments[0];
-        }
-
+        const obj = arguments[arguments.length - 1];
         this.set({
             viewId: this.view.connection.id(obj),
             page: 'details'
@@ -623,29 +619,21 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    *
    * @function deleteObject
    * @signature `deleteObject(obj, skipConfirm)`
-   * @signature `deleteObject( scope, dom, event, obj, skipConfirm )`
-   * @param  {DefineMap} scope The stache scope (optional)
-   * @param  {domNode} dom   The domNode that triggered the event (optional)
-   * @param  {Event} event The event that was triggered (optional)
    * @param  {DefineMap} obj   The object to delete
    * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
    * and will immediately attempt to remove the object
    * @return {Promise}
    */
     deleteObject () {
-        let obj, skipConfirm;
-    //arguments can be ( scope, dom, event, obj, skipConfirm )
-    //OR (obj, skipConfirm)
-        if (arguments.length > 2) {
-            obj = arguments[3];
-            skipConfirm = arguments[4];
-        } else {
-            obj = arguments[0];
-            skipConfirm = arguments[1];
+        let obj = arguments[arguments.length - 1],
+            skipConfirm = false;
+        if (typeof obj === 'boolean') {
+            obj = arguments[arguments.length - 2];
+            skipConfirm = arguments[arguments.length - 1];
         }
         if (obj) {
 
-            if (skipConfirm) {
+            if (skipConfirm === true) {
                 return this._beforeDelete(obj);
             } else {
                 this.objectsToDelete.replace([obj]);
@@ -774,13 +762,15 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @param {Array<Object>} objects The objects to manage
    */
     manageObjects () {
-        let button, objects;
-        if (arguments.length === 4) {
-            objects = null;
-            button = arguments[3];
+        let button = arguments[arguments.length - 2],
+            objects;
+        if (!button || button.batchNum) {
+          
+            // we didn't get passed objects so
+            // we will use focusObject or selectedObjects
+            button = arguments[arguments.length - 1];
         } else {
-            button = arguments[0];
-            objects = arguments[1];
+            objects = arguments[arguments.length - 1];
         }
         if (objects && typeof objects.length === 'undefined') {
             objects = [objects];
@@ -788,7 +778,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             objects = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
         }
 
-        // if the button has an onclick handler call it directly with the objects
+    // if the button has an onclick handler call it directly with the objects
         if (button.onClick) {
             const promise = button.onClick(objects);
             if (promise) {
@@ -799,7 +789,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             return;
         }
 
-        // otherwise use the event name to determine an action
+    // otherwise use the event name to determine an action
         switch (button.eventName) {
         case 'delete':
             this.deleteMultiple(objects);

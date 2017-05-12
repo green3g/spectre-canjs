@@ -21,7 +21,10 @@
 <div class="clearfix"></div>
 
 {{#if objects.length}}
-  <list-table {objects}="objects" {buttons}="buttons" {primary-buttons}="primaryButtons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort"
+  <list-table {objects}="objects" id-prop="{{view.connection.idProp}}" {actions}="buttons"
+  {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject"
+  (view)="viewObject" (custom)="manageObjects"
+  {(current-sort)}="parameters.sort"
     {fields}="_fields" />
 {{else}}
   {{#if objectsPromise.isResolved}}

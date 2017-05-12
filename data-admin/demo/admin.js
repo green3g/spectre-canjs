@@ -50,7 +50,8 @@ const viewModel = new DefineMap({
         }],
         title: 'Posts',
         connection: Connection,
-        manageButtons: [{
+        actions: [{
+            tooltip: 'Mark this task complete',
             header: 'Quick Tasks',
             text: 'Complete',
             iconClass: 'fa fa-fw fa-check-square-o',
@@ -58,10 +59,12 @@ const viewModel = new DefineMap({
                 if (!objs.length) {
                     objs = [objs];
                 }
+                const promises = [];
                 objs.forEach((obj) => {
                     obj.completed = true;
-                    Connection.save(obj);
+                    promises.push(Connection.save(obj));
                 });
+                return Promise.all(promises);
             }
         }]
     },
@@ -129,7 +132,7 @@ const viewModel = new DefineMap({
         }],
         title: 'Posts',
         connection: Connection,
-        manageButtons: [{
+        actions: [{
             header: 'Quick Tasks',
             text: 'Complete',
             iconClass: 'fa fa-fw fa-check-square-o',

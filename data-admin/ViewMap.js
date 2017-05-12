@@ -156,10 +156,10 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * Additional buttons to display when items are checked in the table. Buttons
      * can have an icon, text an an on click event handler
-     * @property {Array<ManageButton>} data-admin/ViewMap.props.manageButtons manageButtons
+     * @property {Array<ManageButton>} data-admin/ViewMap.props.actions actions
      * @parent data-admin/ViewMap.props
      *   ```
-     *   manageButtons: [{
+     *   actions: [{
          iconClass: 'fa fa-files-o',
          text: 'New Workorder',
          onClick(items){
@@ -168,7 +168,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
        }],
        ```
      */
-    manageButtons: {value: undefined},
+    actions: {value: undefined},
     /**
      * Additional tabs to display in this view's navigation pane. Each tab
      * can have a

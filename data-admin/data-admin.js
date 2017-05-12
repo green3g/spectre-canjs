@@ -283,12 +283,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
     toolbarButtons: {
         get () {
             let buttons = [];
-            if (!this.view.disableDelete) {
-                buttons.push(DELETE_BUTTON);
-            }
 
             if (this.view.manageButtons && this.view.manageButtons.length) {
                 buttons = buttons.concat(this.view.manageButtons.serialize());
+            }
+
+            if (!this.view.disableDelete) {
+                buttons.push(DELETE_BUTTON);
             }
 
             return buttons;
@@ -725,11 +726,13 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    *
    * @function deleteMultiple
    * @signature
+   * @param {Array<object>} selected the objects to delete
    * @param {Boolean} skipConfirm If true, the method will not display a confirm dialog
    * and will immediately attempt to remove the selected objects
    * @return {Promise} a promise that resolves once all delete calls are finished
    */
-    deleteMultiple (objects, skipConfirm) {
+    deleteMultiple (selected, skipConfirm) {
+
         this.objectsToDelete.replace(selected);
 
         if (skipConfirm) {
@@ -768,21 +771,49 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @function manageObjects
    * @signature
    * @param  {Function} button The button object with an `onclick` property
+   * @param {Array<Object>} objects The objects to manage
    */
-    manageObjects (button, obj) {
-        const managedObjects = obj ? [obj]
-      : this.page === 'details' ? [this.focusObject] : this.selectedObjects;
+    manageObjects () {
+        let button, objects;
+        if (arguments.length === 4) {
+            objects = null;
+            button = arguments[3];
+        } else {
+            button = arguments[0];
+            objects = arguments[1];
+        }
+        if (objects && typeof objects.length === 'undefined') {
+            objects = [objects];
+        } else {
+            objects = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
+        }
+
+        // if the button has an onclick handler call it directly with the objects
+        if (button.onClick) {
+            const promise = button.onClick(objects);
+            if (promise) {
+                promise.then(() => {
+                    this.objectsRefreshCount++;
+                });
+            }
+            return;
+        }
+
+        // otherwise use the event name to determine an action
         switch (button.eventName) {
         case 'delete':
-            this.deleteMultiple(managedObjects);
+            this.deleteMultiple(objects);
+            break;
+        case 'view':
+            this.viewObject(objects[0]);
+            break;
+        case 'edit':
+            this.editObject(objects[0]);
+            break;
+        default:
+            dev.warn('unhandled button event', button.eventName);
         }
-        const objects = this.page === 'details' ? [this.focusObject] : this.selectedObjects;
-        const defs = button.onClick(objects);
-        if (defs) {
-            Promise.all(defs).then(() => {
-                this.objectsRefreshCount++;
-            });
-        }
+
     },
   /**
    * An empty function with no real side effects other than preventing

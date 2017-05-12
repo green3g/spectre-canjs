@@ -3,12 +3,12 @@
 
     <h2>Simple:</h2>
     <!-- id-prop is required for selection -->
-    <list-table {objects}="data" id-prop="name" />
+    <list-table {objects}="data" id-prop="_cid" />
 
     <br />
 
     <h2>Advanced:</h2>
-    <list-table {^selected-objects}="selectedObjects" {objects}="data" (hello)="sayHello" {fields}="fields" (goodbye)="sayGoodbye" {primary-buttons}="primary" {buttons}="buttons" (sort)="setSort" id-prop="name" />
+    <list-table {^selected-objects}="selectedObjects" {objects}="data" (up)="voteUp" {fields}="fields" (down)="voteDown" (sort)="setSort" id-prop="_cid" />
 
 
     <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
@@ -20,7 +20,7 @@
 }
 </style>
 
-<script src="../../docs/spectre/steal.production.js" main="docs-main">
-// <script src="../../node_modules/steal/steal.js" main="docs-main">
+<!-- <script src="../../docs/spectre/steal.production.js" main="docs-main"> -->
+<script src="../../node_modules/steal/steal.js" main="docs-main">
     steal.import('spectre-canjs/list-table/demo/listTable');
 </script>

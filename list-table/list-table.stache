@@ -10,10 +10,6 @@
                         </label>
           </div>
         </th>
-        {{#if buttons.length}}
-          <th class="manage-tools-heading">
-            <!-- tools -->&nbsp;</th>
-        {{/if}}
         {{#each fields}}
           <th {{#is name currentSort.fieldName}} class="text-bold" {{/is}} ($click)="setSort(name)">
             {{alias}}
@@ -22,43 +18,21 @@
         {{/each}}
       </tr>
     </thead>
+
     <tbody>
-      {{#each objects as row}}
-        <tr {{#if isSelected(row)}} class="selected" {{/if}}>
+      {{#each objects as object}}
+        <tr {{#if isSelected(object)}} class="selected" {{/if}}>
           <td class="checkbox-cell">
             <div class="form-group inline-block">
               <label class="form-checkbox">
-                                <input type="checkbox" ($change)="toggleSelected(row)" {$checked}="isSelected(row)" />
+                                <input type="checkbox" ($change)="toggleSelected(object)" {$checked}="isSelected(object)" />
                                 <i class="form-icon"></i>
                             </label>
             </div>
           </td>
-          {{#if buttons.length}}
-            <td class="manage-tools-cell">
-              <dropdown-menu icon-class="{{menuIconClass}}" button-class="btn btn-sm btn-primary" {{#if primaryButtons}} (primaryclick)="dispatchPrimaryButtonEvent(%arguments, row)" {primary-buttons}="primaryButtons" {{/if}}>
-                <ul class="menu">
-                  {{#each buttons as button}}
-                    {{#if header}}
-                      <li class="divider" data-content="{{header}}">
-                      </li>
-                    {{/if}}
-                    <li class="menu-item">
-                      <a ($click)="dispatchButtonEvent(button, row)">
-                        <i class="{{iconClass}}"></i> {{text}}
-                      </a>
-                    </li>
-                  {{/each}}
-                </ul>
-              </dropdown-menu>
-            </td>
-          {{/if}}
           {{#each fields as field}}
             <td>
-              {{#if field@formatter}}
-                {{{field.formatter(row[field.name], row)}}}
-              {{else}}
-                {{row[field.name]}}
-              {{/if}}
+                {{ >field.displayTemplate}}
             </td>
           {{/each}}
         </tr>

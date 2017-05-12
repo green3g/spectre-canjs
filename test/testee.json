@@ -1,0 +1,19 @@
+{
+  "port": 3996,
+  "root": "./",
+  "reporter": "Spec",
+  "timeout": 120,
+  "delay": 1000,
+  "tunnel": {
+    "type": "local"
+  },
+  "launch": {
+    "type": "local"
+  },
+  "browsers": ["firefox"],
+    "coverage": {
+      "dir": "coverage/",
+      "reporters": ["text", "html"],
+      "ignore": ["node_modules"]
+    }
+}

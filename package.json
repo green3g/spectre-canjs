@@ -18,7 +18,7 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "testee test/index.html --reporter Spec --browsers firefox",
+    "test": "testee test/index.html --config=test/testee.json",
     "build": "steal-tools",
     "watch": "npm-watch",
     "docs": "documentjs -d -f",

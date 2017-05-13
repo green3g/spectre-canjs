@@ -6,20 +6,26 @@
 
 ## Description
 
-A configureable data manager component that utilizes many of the data
+A flexible data manager component that utilizes many of the data
 components to build a complete paginated display of data as well as tools for
 creating, editing, and deleting data.
 
 In addition to the components used, this component provides functionality to
 create, update, display, and delete any type of data.
 
+Each data-admin consists of several partial templates which can easily be replaced
+to allow developers to customize any part of the data administration interface
+while utilizing the functionality of the data-admin viewmodel. 
+
 ## The View Property
 
-The [`view`](data-admin__ViewMap.html) is the core property to the
+The [view](data-admin__ViewMap.html) is the core property to the
 data-admin which controls exactly how the data-admin displays
 and updates the data.
 
-It requires a property, `connection` which is the data model. All data displayed in the data-admin is retrieved via the connection and any edits or deletes are pushed back to the connection. The `connection` object is simply a `can-connect`
+### Connection
+
+The view requires a property, `connection` which is the data model. All data displayed in the data-admin is retrieved via the connection and any edits or deletes are pushed back to the connection. The `connection` object is simply a `can-connect`
 object, like a supermap.
 
 The other properties define how new data is created, edited, and displayed.

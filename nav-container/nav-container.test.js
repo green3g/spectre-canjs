@@ -2,8 +2,7 @@
 
 import q from 'steal-qunit';
 
-import {ViewModel} from './tab-container';
-import {ViewModel as PanelViewModel} from '../panel-container/';
+import {ViewModel, PageViewModel} from './nav-container';
 let vm;
 
 q.module('tab-container.ViewModel', {
@@ -15,7 +14,7 @@ q.module('tab-container.ViewModel', {
     }
 });
 test('addPanel(panel)', (assert) => {
-    const panel = new PanelViewModel();
+    const panel = new PageViewModel();
     vm.addPanel(panel);
 
     assert.equal(vm.attr('panels').length, 1, 'tab-container should have added one panel');
@@ -23,7 +22,7 @@ test('addPanel(panel)', (assert) => {
 });
 
 test('removePanel(panel)', (assert) => {
-    const panel = new PanelViewModel();
+    const panel = new PageViewModel();
     vm.addPanel(panel);
     vm.removePanel(panel);
 
@@ -31,8 +30,8 @@ test('removePanel(panel)', (assert) => {
 });
 
 test('activate(panel)', (assert) => {
-    const panel1 = new PanelViewModel();
-    const panel2 = new PanelViewModel();
+    const panel1 = new PageViewModel();
+    const panel2 = new PageViewModel();
     vm.addPanel(panel1);
     vm.addPanel(panel2);
     vm.activate(panel2);

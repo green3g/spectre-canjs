@@ -5,7 +5,6 @@ import editTemplate from './templates/edit.stache!';
 import listTemplate from './templates/list.stache!';
 import detailsTemplate from './templates/details.stache!';
 import addTemplate from './templates/add.stache!';
-import manageTemplate from './templates/manage.stache!';
 
 /**
  * @typedef {object} data-admin.relatedView RelatedView
@@ -157,10 +156,10 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * Additional buttons to display when items are checked in the table. Buttons
      * can have an icon, text an an on click event handler
-     * @property {Array<ManageButton>} data-admin/ViewMap.props.manageButtons manageButtons
+     * @property {Array<ManageButton>} data-admin/ViewMap.props.actions actions
      * @parent data-admin/ViewMap.props
      *   ```
-     *   manageButtons: [{
+     *   actions: [{
          iconClass: 'fa fa-files-o',
          text: 'New Workorder',
          onClick(items){
@@ -169,7 +168,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
        }],
        ```
      */
-    manageButtons: {value: undefined},
+    actions: {value: undefined},
     /**
      * Additional tabs to display in this view's navigation pane. Each tab
      * can have a
@@ -253,20 +252,6 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
         get (template) {
             if (!template) {
                 template = detailsTemplate;
-            }
-            return template;
-        }
-    },
-    /**
-     * The menu template to render when items are selected, or an item is viewd
-     * in the details view. The scope of the template is the `data-admin` view model.
-     * @property {Renderer} data-admin/ViewMap.template.manageTemplate manageTemplate
-     * @parent data-admin/ViewMap.template
-     */
-    manageTemplate: {
-        get (template) {
-            if (!template) {
-                template = manageTemplate;
             }
             return template;
         }

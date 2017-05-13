@@ -52,7 +52,7 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
      * An array of buttons to display next to the dropdown button. This creates a split
      * dropdown menu button group
-     * @property {Array<TableButtonObject>} dropdown-menu.ViewModel.props.primaryButton
+     * @property {Array<ButtonObject>} dropdown-menu.ViewModel.props.primaryButton
      * @parent dropdown-menu.ViewModel.props
      */
     primaryButtons: DefineList,
@@ -103,7 +103,7 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * When a primary button is clicked, this function dispatches the `primaryclick`
      * event with the button that was clicked as its argument.
      * @function onPrimaryClick
-     * @param {TableButtonObject} button the button that was clicked
+     * @param {ButtonObject} button the button that was clicked
      * @param {MouseEvent} event The mouse click event on the button that we should prevent default
      * @return {Boolean} returns false to prevent event from changing page route
      */

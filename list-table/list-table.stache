@@ -1,75 +1,42 @@
 <div class="query-table">
-    <table class="table table-striped table-condensed">
-        <thead>
-            <tr>
-                <th class="checkbox-heading">
-                    <div class="form-group">
-                        <label class="form-checkbox">
+  <table class="table table-striped table-condensed">
+    <thead>
+      <tr>
+        <th class="checkbox-heading">
+          <div class="form-group">
+            <label class="form-checkbox">
                             <input type="checkbox" ($change)="toggleSelectAll" {$checked}="_allSelected" />
                             <i class="form-icon"></i>
                         </label>
-                    </div>
-                </th>
-                {{#if buttons.length}}
-                    <th class="manage-tools-heading">
-                        <!-- tools -->&nbsp;</th>
-                {{/if}}
-                {{#each fields}}
-                    <th {{#is name currentSort.fieldName}} class="text-bold" {{/is}} ($click)="setSort(name)">
-                        {{alias}}
-                        {{#is name currentSort.fieldName}}<i class="sort-icon fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>{{/is}}
-                    </th>
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each objects as row}}
-                <tr {{#if isSelected(row)}} class="selected" {{/if}}>
-                    <td class="checkbox-cell">
-                        <div class="form-group inline-block">
-                            <label class="form-checkbox">
-                                <input type="checkbox" ($change)="toggleSelected(row)" {$checked}="isSelected(row)" />
+          </div>
+        </th>
+        {{#each fields}}
+          <th {{#is name currentSort.fieldName}} class="text-bold" {{/is}} ($click)="setSort(name)">
+            {{alias}}
+            {{#is name currentSort.fieldName}}<i class="sort-icon fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>{{/is}}
+          </th>
+        {{/each}}
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each objects as object}}
+        <tr {{#if isSelected(object)}} class="selected" {{/if}}>
+          <td class="checkbox-cell">
+            <div class="form-group inline-block">
+              <label class="form-checkbox">
+                                <input type="checkbox" ($change)="toggleSelected(object)" {$checked}="isSelected(object)" />
                                 <i class="form-icon"></i>
                             </label>
-                        </div>
-                    </td>
-                    {{#if buttons.length}}
-                        <td class="manage-tools-cell">
-                            <dropdown-menu icon-class="{{menuIconClass}}" button-class="btn btn-sm btn-primary" {{#if primaryButtons}} (primaryclick)="dispatchPrimaryButtonEvent(%arguments, row)" {primary-buttons}="primaryButtons" {{/if}}>
-                                <ul class="menu">
-                                    {{#each buttons as button}}
-                                        {{#if header}}
-                                            <li class="menu-header">
-                                                <span class="menu-header-text">{{header}}</span>
-                                            </li>
-                                        {{/if}}
-                                        {{#if divideBefore}}
-                                            <li class="divider"></li>
-                                        {{/if}}
-                                        <li class="menu-item">
-                                            <a ($click)="dispatchButtonEvent(button, row)">
-                                                <i class="{{iconClass}}"></i> {{text}}
-                                            </a>
-                                        </li>
-                                        {{#if divideAfter}}
-                                            <li class="divider"></li>
-                                        {{/if}}
-                                    {{/each}}
-                                </ul>
-                            </dropdown-menu>
-                        </td>
-                    {{/if}}
-                    {{#each fields as field}}
-                        <td>
-                            {{#if field@formatter}}
-                                {{{field.formatter(row[field.name], row)}}}
-                            {{else}}
-                                {{row[field.name]}}
-                            {{/if}}
-                        </td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
+            </div>
+          </td>
+          {{#each fields as field}}
+            <td>
+                {{ >field.displayTemplate}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>

@@ -1,7 +1,7 @@
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import viewModel from 'can-view-model';
+import canViewModel from 'can-view-model';
 
 import template from './nav-container.stache!';
 import pageTemplate from './nav-page.stache!';
@@ -145,10 +145,10 @@ export const ViewModel = DefineMap.extend('NavContainer', {
 Component.extend({
     tag: 'nav-page',
     view: pageTemplate,
-    viewModel: PageViewModel,
+    ViewModel: PageViewModel,
     events: {
         inserted: function () {
-            this.viewModel.parent = viewModel(this.element.parentNode);
+            this.viewModel.parent = canViewModel(this.element.parentNode);
             if (this.viewModel.parent && this.viewModel.parent.addPage) {
                 this.viewModel.parent.addPage(this.viewModel);
             }

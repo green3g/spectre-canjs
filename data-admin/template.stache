@@ -32,21 +32,11 @@
     <h3><i class="fa fa-exclamation"></i> Warning!</h3>
     <p>Are you sure you want to delete these item(s)?</p>
 
-    {{#is page 'details'}}
-        <p>Item to be deleted: </p>
+        <p>{{objectsToDelete.length}} item(s) to be deleted:</p>
         <ul>
-            <li>{{focusObject[view.titleProp]}}</li>
-        </ul>
-
-    {{/is}}
-
-    {{#is page 'list'}}
-        <p>{{selectedObjects.length}} items to be deleted:</p>
-        <ul>
-            {{#each selectedObjects as obj}}
+            {{#each objectsToDelete as obj}}
                 <li>{{obj[view.titleProp]}}</li>
             {{/each}}
         </ul>
-    {{/is}}
 
 </confirm-dialog>

@@ -3,7 +3,7 @@
 import q from 'steal-qunit';
 
 import {ViewModel} from './data-admin';
-import {Connection, TaskMap} from '../../test/data/connection';
+import {Connection, TaskMap} from '../test/data/connection';
 import DefineMap from 'can-define/map/map';
 import assign from 'object-assign';
 let vm;
@@ -23,57 +23,6 @@ q.module('data-admin.ViewModel', {
         vm = null;
         localStorage.clear();
     }
-});
-
-test('totalPages get()', (assert) => {
-    const cases = [{
-        items: 99,
-        perPage: 10,
-        expected: 10
-    }, {
-        items: 100,
-        perPage: 10,
-        expected: 10
-    }, {
-        items: 101,
-        perPage: 10,
-        expected: 11
-    }];
-    cases.forEach((c) => {
-        vm.view.connection.metadata.total = c.items;
-        vm.view.parameters.perPage = c.perPage;
-        assert.equal(vm.totalPages, c.expected, 'totalPages should be calculated correctly');
-    });
-});
-
-test('perPageOptions get()', (assert) => {
-    const tests = [{
-        total: 1,
-        expected: []
-    }, {
-        total: 15,
-        expected: [10, 20]
-    }, {
-        total: 50,
-        expected: [10, 20, 50]
-    }, {
-        total: 99,
-        expected: [10, 20, 50, 100]
-    }];
-    tests.forEach((t) => {
-        vm.view.connection.metadata.total = t.total;
-        assert.deepEqual(vm.perPageOptions.serialize(), t.expected, 'per page options should be filtered correctly');
-    });
-
-});
-
-test('showPaginate get()', (assert) => {
-    vm.view.connection.metadata.total = 10;
-    vm.parameters.perPage = 25;
-    assert.equal(vm.showPaginate, false, 'pagination should not be shown with one page');
-
-    vm.parameters.perPage = 5;
-    assert.equal(vm.showPaginate, true, 'pagination should be shown with more than one page');
 });
 
 test('objects get()', (assert) => {
@@ -107,12 +56,12 @@ test('buttons get()', (assert) => {
 
 test('_fields get()', (assert) => {
     vm.view.ObjectTemplate = TaskMap;
-    assert.equal(vm._fields.length, 2, 'if no fields exist on the view, they should be created from the ObjectTemplate');
+    assert.equal(vm._fields.length, 3, 'if no fields exist on the view, they should be created from the ObjectTemplate');
 
     vm.view = {
         fields: ['test1', 'test2', 'test3', 'test4']
     };
-    assert.equal(vm._fields.length, 4, 'if fields do exist on the view, they should be created correctly');
+    assert.equal(vm._fields.length, 5, 'if fields do exist on the view, they should be created correctly');
 });
 
 test('relatedValue, relatedField set()', (assert) => {
@@ -126,30 +75,21 @@ test('relatedValue, relatedField set()', (assert) => {
     assert.equal(vm.parameters.filters.length, 1, 'should create filters parameter when initialized with related field and value');
 });
 
+test('totalItems get()', (assert) => {
+    assert.equal(vm.totalItems, 0, 'total Items should be 0 by default');
+    vm.view = {
+        connection: {
+            metadata: {
+                total: 10
+            }
+        }
+    };
+    assert.equal(vm.totalItems, 10, 'totalItems should be set correctly');
+});
+
 test('addFilter(field, value)', (assert) => {
     vm.addFilter({name: 'test'}, 'value');
     assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
-});
-
-test('toggleQuickFilter(field, value)', (assert) => {
-    vm.toggleQuickFilter('test', 'value');
-    assert.equal(vm.parameters.filters.length, 1, 'filter should be added');
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.equal(vm.parameters.filters.length, 1, 'filters length should not have changed');
-    assert.equal(vm.parameters.filters[0].value, 'different', 'filter value should be updated');
-
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.notOk(vm.parameters.filters.length, 'filter should be removed');
-});
-
-test('getQuickFilter(field, value)', (assert) => {
-    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
-
-    vm.toggleQuickFilter('test', 'different');
-    assert.notOk(vm.getQuickFilter('test', 'value'), 'quick filter should not be active');
-    assert.ok(vm.getQuickFilter('test', 'different'), 'quick filter should be active');
 });
 
 test('editObject(scope, dom, event, obj)', (assert) => {
@@ -275,14 +215,14 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
     vm.deleteObject(new TaskMap({id: id}), true);
 });
 
-test('deleteMultiple(true)', (assert) => {
+test('deleteMultiple(objects, true)', (assert) => {
     const done = assert.async();
     vm.selectedObjects = [{
         id: 12
     }, {
         id: 1
     }];
-    const promise = vm.deleteMultiple(true);
+    const promise = vm.deleteMultiple(vm.selectedObjects, true);
     promise.then((r) => {
         assert.ok(r, 'then is resolved');
         done();
@@ -302,11 +242,11 @@ test('manageObjects(button) details', (assert) => {
     const myButton = {
         onClick (objects) {
             assert.ok(objects.length, 'objects should be passed to the onclick function');
-            return [new Promise((resolve) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
                 }, 500);
-            })];
+            });
         }
     };
     vm.set({
@@ -331,11 +271,11 @@ test('manageObjects(button) list', (assert) => {
     const myButton = {
         onClick (objects) {
             assert.ok(objects.length, 'objects should be passed to the onclick function');
-            return [new Promise((resolve) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
                 }, 500);
-            })];
+            });
         }
     };
     vm.set({
@@ -347,17 +287,6 @@ test('manageObjects(button) list', (assert) => {
         assert.equal(vm.objectsRefreshCount, currentCount + 1, 'objectsRefreshCount should be incremented when onclick returns a promise');
         done();
     }, 600);
-});
-
-test('toggle(prop, val)', (assert) => {
-    vm.toggle('filterVisible');
-    assert.ok(vm.filterVisible, 'filter should be visible after toggling');
-
-    vm.toggle('filterVisible');
-    assert.notOk(vm.filterVisible, 'filter should not be visible after toggling again');
-
-    vm.toggle('filterVisible', false);
-    assert.notOk(vm.filterVisible, 'filter should not be visible after toggling to false');
 });
 
 test('clearSelection()', (assert) => {

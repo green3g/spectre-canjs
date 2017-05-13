@@ -2,7 +2,7 @@ import data from './tasks.json';
 import fixture from 'can-fixture';
 import DefineList from 'can-define/list/list';
 import assign from 'object-assign';
-
+import dev from 'can-util/js/dev/dev';
 
 let index = 1000;
 
@@ -13,20 +13,38 @@ fixture({
         const perPage = params.data.perPage || 10;
         const page = params.data.page || 0;
         const sortInfo = params.data.sort;
+        let totalItems = data.length;
         let tempData = new DefineList(data);
 
         //filter it
         if (params.data.filters && params.data.filters.length) {
             //lets just handle one filter for testing
+            dev.warn('only the first filter is going to be used!');
             const f = params.data.filters[0];
-            // console.log('only the first filter is going to be used!');
-            if (f.operator !== 'like') {
-                // console.log(f.operator, 'operator not implemented, like will be used instead');
+            const exclusions = [null, '', undefined];
+            if (exclusions.indexOf(f.value === -1)) {
+                switch (f.operator) {
+                case 'equals':
+                    tempData = tempData.filter((d) => {
+                    //eslint-disable-next-line
+                    return d[f.name] == f.value;
+                    });
+                    break;
+                default:
+                    if (f.operator !== 'like') {
+                        dev.warn(f.operator, 'operator not implemented in fixture, like will be used instead!');
+                    }
+                    if (typeof f.value !== 'string') {
+                        dev.warn('ignoring filter on non-string value');
+                    } else {
+                        tempData = tempData.filter((d) => {
+                            return d[f.name].toUpperCase().indexOf(f.value.toUpperCase()) !== -1;
+                        });
+                    }
+                }
+                dev.warn('found ' + tempData.length + ' items after filtering');
+                totalItems = tempData.length;
             }
-            tempData = tempData.filter((d) => {
-                return d[f.name].indexOf(f.value) !== -1;
-            });
-            // console.log('found ' + tempData.length + ' items after filtering');
         }
 
 
@@ -42,7 +60,10 @@ fixture({
         tempData = tempData.slice(page * perPage, (page + 1) * perPage);
 
         //return the serialized version
-        return tempData.serialize();
+        return {
+            data: tempData.serialize(),
+            total: totalItems
+        };
     },
     'POST /tasks' (params, response) {
         const newId = index++;

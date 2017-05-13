@@ -3,7 +3,7 @@ import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import {parseFieldArray, Field} from '../../util/field';
+import {parseFieldArray, Field} from '../util/field';
 import assign from 'object-assign';
 
 /**

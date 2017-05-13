@@ -1,5 +1,11 @@
 {{#if focusObject}}
+  {{#if focusObjectPromise.isPending}}
+    <div class="loading"></div>
+  {{else}}
+    <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
+
     <form-widget {form-object}="focusObject" show-saving (submit)="saveObject" {fields}="_fields" (cancel)="setPage('list')" />
-    {{else}}
-    <p>Please click the <i class="fa fa-pencil"></i> Edit button on the list page to edit a row.</p>
+  {{/if}}
+{{else}}
+  <p>Please click the <i class="fa fa-pencil"></i> Edit button on the list page to edit a row.</p>
 {{/if}}

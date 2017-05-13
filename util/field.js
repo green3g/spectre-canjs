@@ -43,6 +43,7 @@ export const RESERVED = [
     'serialize'
 ];
 
+const displayTemplate = stache('{{object[field.name]}}');
 
 /**
  * @constructor util/field.Field Field
@@ -65,6 +66,7 @@ export const Field = DefineMap.extend('Field', {
      * @parent util/field.Field.props
      */
     name: 'string',
+    type: '*',
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
@@ -115,6 +117,17 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
+     * Formats the property when it is displayed
+     * @property {Renderer} util/field.Field.props.displayTemlpate displayTemplate
+     * @signature `formatter(property)`
+     * @parent util/field.Field.props
+     */
+    displayTemplate: {
+        value: function () {
+            return displayTemplate;
+        }
+    },
+    /**
      * Excludes this field from the list view in the data-admin
      * @property {Boolean} util/field.Field.props.list list
      * @parent util/field.Field.props
@@ -151,18 +164,6 @@ export const Field = DefineMap.extend('Field', {
         value: true
     },
     /**
-     * Formats the property when it is displayed in a property or list table
-     * @property {Function} util/field.Field.props.formatter formatter
-     * @signature `formatter(property)`
-     * @param {Any} property The property to format, this can be whatever type the
-     * property is defined as
-     * @return {String} a formatted string
-     * @parent util/field.Field.props
-     */
-    formatter: {
-        value: null
-    },
-    /**
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
      * @signature `validate(props)`
@@ -185,17 +186,7 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field.Field.props.placeholder placeholder
      * @parent util/field.Field.props
      */
-    placeholder: 'string',
-    /**
-     * Returns the formatted value of this field, if a formatter is provided,
-     * otherwise it simply returns the property
-     * @function getFormattedValue
-     * @param {Object} obj the object to extract a formatted property from
-     * @return {String} the formatted property
-     */
-    getFormattedValue (obj) {
-        return this.formatter ? this.formatter(obj[this.name], obj) : obj[this.name];
-    }
+    placeholder: 'string'
 });
 
 

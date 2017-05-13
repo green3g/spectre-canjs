@@ -3,8 +3,8 @@
 import q from 'steal-qunit';
 
 import {ViewModel} from './list-table';
-
-import {Connection} from '../../test/data/connection';
+import DefineMap from 'can-define/map/map';
+import {Connection} from '../test/data/connection';
 
 let vm;
 const objects = [{
@@ -51,6 +51,15 @@ test('fields get()', (assert) => {
     assert.equal(vm.fields.length, 1, 'fields with list:false should not be included');
 });
 
+test('fields get() without providing fields', (assert) => {
+    vm.objects = [new DefineMap({
+        field1: 'val1',
+        field2: 'val2'
+    })];
+
+    assert.equal(vm.fields.length, 2, 'fields should be automatically created form object if no fields are provided');
+});
+
 test('setSort(field)', (assert) => {
     const fieldName = 'name';
     const otherField = 'label';
@@ -73,37 +82,12 @@ test('setSort(field)', (assert) => {
     }, 'Current sort should be ascending and set to field');
 });
 
-test('dispatchButtonEvent(eventName, object)', (assert) => {
-    const eventName = 'my-event';
-    const myObj = {
-        myObj: 'myObj'
-    };
-    const done = assert.async();
-    vm.on(eventName, (event, obj) => {
-        assert.deepEqual(obj, myObj, 'event should emit the correct object');
-        assert.equal(event.type, eventName, 'event should be the correct name');
-        done();
-    });
-    vm.dispatchButtonEvent({eventName: eventName}, myObj);
-});
-
-test('dispatchPrimaryButtonEvent(args, object)', (assert) => {
-    const eventName = 'my-event';
-    const myObj = {
-        myObj: 'myObj'
-    };
-    const done = assert.async();
-    vm.on(eventName, (event, obj) => {
-        assert.deepEqual(obj, myObj, 'event should emit the correct object');
-        assert.equal(event.type, eventName, 'event should be the correct name');
-        done();
-    });
-    vm.dispatchPrimaryButtonEvent([{}, {eventName: eventName}], myObj);
-});
-
 test('toggleSelected(obj), isSelected(obj)', (assert) => {
     vm.toggleSelected(vm.objects[0]);
     assert.ok(vm.isSelected(vm.objects[0]), 'object should be selected');
+
+    vm.toggleSelected(vm.objects[0]);
+    assert.notOk(vm.isSelected(vm.objects[0]), 'object should not be selected');
 });
 
 test('toggleSelectAll(), _allSelected', (assert) => {
@@ -112,4 +96,10 @@ test('toggleSelectAll(), _allSelected', (assert) => {
         assert.ok(vm.isSelected(obj), 'each object should be selected');
     });
     assert.ok(vm._allSelected, '_allSelected should be truthy');
+
+    vm.toggleSelectAll();
+    vm.objects.forEach((obj) => {
+        assert.notOk(vm.isSelected(obj), 'each object should be selected');
+    });
+
 });

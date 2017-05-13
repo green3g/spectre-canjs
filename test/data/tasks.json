@@ -1,85 +1,106 @@
 [{
   "id": 1,
   "name": "Trash",
-  "description": "Take out the trash"
+  "description": "Take out the trash",
+  "completed": false
 },{
   "id": 2,
   "name": "Dishes",
-  "description": "Do the dishes"
+  "description": "Do the dishes",
+  "completed": false
 },{
   "id": 3,
   "name": "Cat",
-  "description": "Clean the litter box and feed the cat"
+  "description": "Clean the litter box and feed the cat",
+  "completed": false
 },{
   "id": 4,
   "name": "Vaccum",
-  "description": "Vaccum the basement"
+  "description": "Vaccum the basement",
+  "completed": false
 },{
   "id": 6,
   "name": "Groceries",
-  "description": "Stock up on groceries"
+  "description": "Stock up on groceries",
+  "completed": false
 },{
   "id": 11,
   "name": "Programming",
-  "description": "Write some code"
+  "description": "Write some code",
+  "completed": false
 },{
   "id": 12,
   "name": "Clothes",
-  "description": "Wash and dry laundry"
+  "description": "Wash and dry laundry",
+  "completed": false
 }, {
   "id": 13,
   "name": "Trash",
-  "description": "Take out the trash"
+  "description": "Take out the trash",
+  "completed": false
 },{
   "id": 24,
   "name": "Dishes",
-  "description": "Do the dishes"
+  "description": "Do the dishes",
+  "completed": false
 },{
   "id": 35,
   "name": "Cat",
-  "description": "Clean the litter box and feed the cat"
+  "description": "Clean the litter box and feed the cat",
+  "completed": false
 },{
   "id": 46,
   "name": "Vaccum",
-  "description": "Vaccum the basement"
+  "description": "Vaccum the basement",
+  "completed": false
 },{
   "id": 67,
   "name": "Groceries",
-  "description": "Stock up on groceries"
+  "description": "Stock up on groceries",
+  "completed": false
 },{
   "id": 118,
   "name": "Programming",
-  "description": "Write some code"
+  "description": "Write some code",
+  "completed": false
 },{
   "id": 121,
   "name": "Clothes",
-  "description": "Wash and dry laundry"
+  "description": "Wash and dry laundry",
+  "completed": false
 }, {
   "id": 123,
   "name": "Trash",
-  "description": "Take out the trash"
+  "description": "Take out the trash",
+  "completed": false
 },{
   "id": 223,
   "name": "Dishes",
-  "description": "Do the dishes"
+  "description": "Do the dishes",
+  "completed": false
 },{
   "id": 3456,
   "name": "Cat",
-  "description": "Clean the litter box and feed the cat"
+  "description": "Clean the litter box and feed the cat",
+  "completed": false
 },{
   "id": 4754,
   "name": "Vaccum",
-  "description": "Vaccum the basement"
+  "description": "Vaccum the basement",
+  "completed": false
 },{
   "id": 6734,
   "name": "Groceries",
-  "description": "Stock up on groceries"
+  "description": "Stock up on groceries",
+  "completed": false
 },{
   "id": 1132,
   "name": "Programming",
-  "description": "Write some code"
+  "description": "Write some code",
+  "completed": false
 },{
   "id": 121235,
   "name": "Clothes",
-  "description": "Wash and dry laundry"
+  "description": "Wash and dry laundry",
+  "completed": false
 }]

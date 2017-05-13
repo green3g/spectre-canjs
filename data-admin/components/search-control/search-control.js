@@ -4,7 +4,7 @@ import Component from 'can-component';
 import template from './search-control.stache';
 import './search-control.less';
 
-import {FilterList} from '~/filter-widget/Filter';
+import {FilterList, Filter} from '~/filter-widget/Filter';
 import '~/filter-widget/filter-widget';
 import '~/dropdown-menu/dropdown-menu';
 
@@ -51,12 +51,22 @@ export const ViewModel = DefineMap.extend({
             return false;
         }
 
+
+                // make a new filter object with the fields used in the form
+        let fieldProp;
+        if (this.fields.length) {
+            fieldProp = this.fields.filter((field) => {
+                return field.name === fieldName;
+            })[0];
+        }
+
       // if no filter exists create it
-        this.filters.push({
+        this.filters.push(new Filter({
             name: fieldName,
             value: value,
-            operator: 'equals'
-        });
+            operator: 'equals',
+            field: fieldProp
+        }));
         return false;
     },
     getQuickFilter (fieldName, value) {

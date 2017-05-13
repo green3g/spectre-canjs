@@ -13,7 +13,7 @@
   "browsers": ["firefox"],
     "coverage": {
       "dir": "coverage/",
-      "reporters": ["text", "html", "json"],
+      "reporters": ["text", "html", "json", "lcov"],
       "ignore": ["node_modules"]
     }
 }

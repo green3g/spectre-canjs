@@ -19,7 +19,7 @@ export const TaskMap = DefineMap.extend('Task', {
     'name': 'string',
     'description': 'string',
     completed: {
-      type: 'boolean',
+      type: 'number',
       fieldType: 'checkbox',
       value: false,
       displayTemplate: stache('{{#if object.completed}}Yes{{else}}No{{/if}}')
@@ -50,10 +50,10 @@ const viewModel = new DefineMap({
             field: 'completed',
             options: [{
                 label: 'Yes',
-                value: 'true'
+                value: 1
             }, {
                 label: 'No',
-                value: 'false'
+                value: 0
             }]
         }],
         title: 'Tasks',

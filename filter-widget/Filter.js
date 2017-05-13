@@ -3,6 +3,7 @@ import DefineList from 'can-define/list/list';
 import {Field} from '../util/field';
 import {makeSentenceCase} from '../util/string';
 import assign from 'object-assign';
+import define from 'can-define';
 
 
 /**
@@ -83,7 +84,10 @@ export const Filter = DefineMap.extend('Filter', {
      * @parent filter-widget.Filter.props
      */
     value: {
-        type: '*'
+        type (newVal) {
+            const type = this.valueField && this.valueField.type ? this.valueField.type : '*';
+            return define.types[type](newVal);
+        }
     },
     /**
      * The name of the field to filter on

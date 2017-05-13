@@ -3,7 +3,7 @@
 import q from 'steal-qunit';
 
 import {ViewModel} from './data-admin';
-import {Connection, TaskMap} from '../../test/data/connection';
+import {Connection, TaskMap} from '../test/data/connection';
 import DefineMap from 'can-define/map/map';
 import assign from 'object-assign';
 let vm;

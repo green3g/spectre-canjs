@@ -4,9 +4,9 @@ import Component from 'can-component';
 import template from './search-control.stache';
 import './search-control.less';
 
-import {FilterList} from '../../../../filter-widget/Filter';
-import '../../../../filter-widget/filter-widget';
-import '../../../../dropdown-menu/dropdown-menu';
+import {FilterList} from '~/filter-widget/Filter';
+import '~/filter-widget/filter-widget';
+import '~/dropdown-menu/dropdown-menu';
 
 export const ViewModel = DefineMap.extend({
     filters: FilterList,

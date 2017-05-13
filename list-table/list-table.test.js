@@ -4,7 +4,7 @@ import q from 'steal-qunit';
 
 import {ViewModel} from './list-table';
 import DefineMap from 'can-define/map/map';
-import {Connection} from '../../test/data/connection';
+import {Connection} from '../test/data/connection';
 
 let vm;
 const objects = [{

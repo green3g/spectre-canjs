@@ -3,7 +3,7 @@ import Component from 'can-component';
 import template from './paginate-footer.stache';
 import './paginate-footer.less';
 
-import '../../../../paginate-widget/paginate-widget';
+import '~/paginate-widget/paginate-widget';
 
 /**
  * @module paginate-footer

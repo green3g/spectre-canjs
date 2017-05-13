@@ -1,7 +1,7 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import {mapToFields, parseFieldArray} from '../../../../util/field';
+import {mapToFields, parseFieldArray} from '~/util/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
 

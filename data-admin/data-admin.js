@@ -415,7 +415,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    *  The operator used will be `'equals'`
    * @function addFilter
    * @signature
-   * @param {util/Field.Field} field The field to filter on (the child key)
+   * @param {util/field.Field} field The field to filter on (the child key)
    * @param {any} value The value to use in the filter
    * @return {filter-widget.Filter} the filter object
    */

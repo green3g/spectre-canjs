@@ -124,6 +124,12 @@ export const Field = DefineMap.extend('Field', {
     displayTemplate: {
         value: function () {
             return displayTemplate;
+        },
+        type (val) {
+            if (typeof val === 'string') {
+                return stache(val);
+            }
+            return val;
         }
     },
     /**

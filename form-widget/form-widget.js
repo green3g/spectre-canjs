@@ -9,6 +9,7 @@ import './widget.less!';
  * @parent form-widget
  * @group form-widget.ViewModel.props Properties
  * @group form-widget.ViewModel.events Events
+ * @extends util/field/FieldComponentMap
  *
  * @description A `<form-widget />` component's ViewModel
  */
@@ -19,8 +20,8 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
    /**
     * A string referencing a field property that will exclude that field
     * from this classes fields. The default is 'edit'.
-    * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
-    * @parent util/field.FieldComponentMap.props
+    * @property {String} form-widget.ViewModel.props.excludeFieldKey excludeFieldKey
+    * @parent form-widget.ViewModel.props
     */
     excludeFieldKey: {
         value: 'edit'
@@ -112,7 +113,7 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
             this.fields.forEach((f) => {
                 define[f.name] = '*';
             });
-            const Validation = DefineMap.extend(define);
+            const Validation = DefineMap.extend({seal: false}, define);
             return new Validation();
         }
     },

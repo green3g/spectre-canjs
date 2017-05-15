@@ -19,7 +19,7 @@ import '../modal-dialog/confirm-dialog';
 
 import {VIEW_BUTTON, EDIT_BUTTON, DELETE_BUTTON} from './buttons';
 import {FilterList} from '../filter-widget/Filter';
-import {parseFieldArray, mapToFields} from '../util/field';
+import {parseFieldArray, mapToFields} from '../util/field/field';
 import {ViewMap} from './ViewMap';
 
 /**

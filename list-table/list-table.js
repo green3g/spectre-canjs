@@ -17,6 +17,7 @@ import '../dropdown-menu/dropdown-menu';
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
  * @group list-table.ViewModel.props Properties
+ * @extends util/field/FieldComponentMap
  *
  * @description A `<list-table />` component's ViewModel
  */
@@ -24,8 +25,8 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
   /**
    * A string referencing a field property that will exclude that field
    * from this classes fields. The default is 'list'.
-   * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
-   * @parent util/field.FieldComponentMap.props
+   * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
+   * @parent list-table.ViewModel.props
    */
     excludeFieldKey: {
         value: 'list'
@@ -37,7 +38,7 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
    * Optional promise or deferred object that will resolve to an object. Once
    * the promise resolves, the objects list will be replaced with the promise result
    * @parent list-table.ViewModel.props
-   * @property {can.Deferred | Promise} list-table.ViewModel.props.promise
+   * @property {Promise} list-table.ViewModel.props.promise
    */
     promise: {
         set (newVal) {
@@ -51,10 +52,21 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
    * A list of objects to display. These objects should generally be can.Model
    * objects but may be any can.Map or javascript object.
    * @parent list-table.ViewModel.props
-   * @property {Array.<can.Model | can.Map | Object>} list-table.ViewModel.props.objects
+   * @property {Array<DefineMap>} list-table.ViewModel.props.objects
    */
     objects: {
         Value: DefineList
+    },
+    /**
+     * A virtual property that retrieves this table's first object
+     * @parent list-table.ViewModel.props
+     * @property {Array<Object>} list-table.ViewModel.props.object
+     *
+     */
+    object: {
+        get () {
+            return this.objects[0] || {};
+        }
     },
   /**
    * Id property name for the rows of objects. The default is `id`. This value

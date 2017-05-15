@@ -9,6 +9,7 @@ import assign from 'object-assign';
  * @constructor property-table.ViewModel ViewModel
  * @parent property-table
  * @group property-table.ViewModel.props Properties
+ * @extends util/field/FieldComponentMap
  *
  * @description A `<property-table />` component's ViewModel
  */
@@ -18,12 +19,12 @@ export const ViewModel = FieldComponentMap.extend('PropertyTable', {
      */
    /**
     * A string referencing a field property that will exclude that field
-    * from this classes fields. The default is 'details'.
-    * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
-    * @parent util/field.FieldComponentMap.props
+    * from this classes fields. The default is 'detail'.
+    * @property {String} property-table.ViewModel.props.excludeFieldKey excludeFieldKey
+    * @parent property-table.ViewModel.props
     */
     excludeFieldKey: {
-        value: 'details'
+        value: 'detail'
     },
     /**
      * A flag to allow editing (Not yet implemented)

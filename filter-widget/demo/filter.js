@@ -1,6 +1,6 @@
 import 'filter-widget/';
 import stache from 'can-stache';
-import {parseFieldArray} from 'spectre-canjs/util/field';
+import {parseFieldArray} from 'spectre-canjs/util/field/field';
 import DefineMap from 'can-define/map/map';
 
 const render = stache.from('demo-html');
@@ -19,7 +19,7 @@ document.body.appendChild(render(new DefineMap({
 window.DEMO_SOURCE = `
 import 'filter-widget/';
 import stache from 'can-stache';
-import {parseFieldArray} from 'spectre-canjs/util/field';
+import {parseFieldArray} from 'spectre-canjs/util/field/field';
 import DefineMap from 'can-define/map/map';
 
 const render = stache.from('demo-html');

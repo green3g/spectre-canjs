@@ -6,7 +6,7 @@
  */
 
 
-import {makeSentenceCase} from './string';
+import {makeSentenceCase} from '../string/string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';

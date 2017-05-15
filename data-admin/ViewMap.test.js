@@ -66,3 +66,11 @@ test('detailsTemplate value()', (assert) => {
 test('detailsTemplate value()', (assert) => {
     assert.equal(vm.detailsTemplate, detailsTemplate, 'if not set vm should return default');
 });
+
+test('addTemplate value()', (assert) => {
+    const templ = vm.addTemplate = stache('<p></p>');
+    assert.equal(vm.addTemplate, templ, 'if set vm should return default');
+});
+test('addTemplate value()', (assert) => {
+    assert.equal(vm.addTemplate, addTemplate, 'if not set vm should return default');
+});

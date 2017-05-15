@@ -1,7 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import {Field} from '../util/field';
-import {makeSentenceCase} from '../util/string';
+import {Field} from '../util/field/field';
+import {makeSentenceCase} from '../util/string/string';
 import assign from 'object-assign';
 import define from 'can-define';
 

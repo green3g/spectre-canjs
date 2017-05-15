@@ -3,7 +3,7 @@ import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import template from './subform-field.stache!';
 import './subform-field.less';
-import {mapToFields, parseFieldArray} from '~/util/field';
+import {mapToFields, parseFieldArray} from '~/util/field/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
 

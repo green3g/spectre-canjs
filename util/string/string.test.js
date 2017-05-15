@@ -4,7 +4,7 @@ import q from 'steal-qunit';
 
 import {makeSentenceCase} from './string';
 
-q.module('util/string', {
+q.module('util/string/string', {
     beforeEach: () => {
     },
     afterEach: () => {

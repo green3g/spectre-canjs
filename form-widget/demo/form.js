@@ -68,7 +68,6 @@ const Template = DefineMap.extend({
 const fields = [{
         name: 'field1',
         validate(props) {
-            console.log(props);
             return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },
@@ -144,12 +143,12 @@ document.body.appendChild(frag);
 
 window.DEMO_SOURCE = `
 import 'spectre-canjs/form-widget/form-widget';
-import 'spectre-canjs/form-widget/field-components/text-field/';
-import 'spectre-canjs/form-widget/field-components/select-field/';
-import 'spectre-canjs/form-widget/field-components/file-field/';
-import 'spectre-canjs/form-widget/field-components/json-field/';
-import 'spectre-canjs/form-widget/field-components/subform-field/';
-import 'spectre-canjs/form-widget/field-components/date-field/';
+import 'spectre-canjs/form-widget/field-components/text-field/text-field';
+import 'spectre-canjs/form-widget/field-components/select-field/select-field';
+import 'spectre-canjs/form-widget/field-components/file-field/file-field';
+import 'spectre-canjs/form-widget/field-components/json-field/json-field';
+import 'spectre-canjs/form-widget/field-components/subform-field/subform-field';
+import 'spectre-canjs/form-widget/field-components/date-field/date-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -213,7 +212,6 @@ const Template = DefineMap.extend({
 const fields = [{
         name: 'field1',
         validate(props) {
-            console.log(props);
             return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },

@@ -2,7 +2,7 @@
 
 import q from 'steal-qunit';
 import {ViewModel} from './search-control';
-import {Field} from '~/util/field';
+import {Field} from '~/util/field/field';
 
 //eslint-disable-next-line
 let vm;

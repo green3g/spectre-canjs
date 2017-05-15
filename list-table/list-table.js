@@ -1,6 +1,6 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import {Field, parseFieldArray} from '../util/field';
+import FieldComponentMap from '../util/field/FieldComponentMap';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
@@ -10,16 +10,27 @@ import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
 import makeArray from 'can-util/js/make-array/make-array';
 
+
 import '../dropdown-menu/dropdown-menu';
 
 /**
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
  * @group list-table.ViewModel.props Properties
+ * @extends util/field/FieldComponentMap
  *
  * @description A `<list-table />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
+export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
+  /**
+   * A string referencing a field property that will exclude that field
+   * from this classes fields. The default is 'list'.
+   * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
+   * @parent list-table.ViewModel.props
+   */
+    excludeFieldKey: {
+        value: 'list'
+    },
   /**
    * @prototype
    */
@@ -27,7 +38,7 @@ export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
    * Optional promise or deferred object that will resolve to an object. Once
    * the promise resolves, the objects list will be replaced with the promise result
    * @parent list-table.ViewModel.props
-   * @property {can.Deferred | Promise} list-table.ViewModel.props.promise
+   * @property {Promise} list-table.ViewModel.props.promise
    */
     promise: {
         set (newVal) {
@@ -41,10 +52,21 @@ export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
    * A list of objects to display. These objects should generally be can.Model
    * objects but may be any can.Map or javascript object.
    * @parent list-table.ViewModel.props
-   * @property {Array.<can.Model | can.Map | Object>} list-table.ViewModel.props.objects
+   * @property {Array<DefineMap>} list-table.ViewModel.props.objects
    */
     objects: {
         Value: DefineList
+    },
+    /**
+     * A virtual property that retrieves this table's first object
+     * @parent list-table.ViewModel.props
+     * @property {Array<Object>} list-table.ViewModel.props.object
+     *
+     */
+    object: {
+        get () {
+            return this.objects[0] || {};
+        }
     },
   /**
    * Id property name for the rows of objects. The default is `id`. This value
@@ -88,26 +110,6 @@ export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
         type: 'boolean',
         get () {
             return this.selectedObjects.length === this.objects.length;
-        }
-    },
-  /**
-   * An array of fields
-   * @parent list-table.ViewModel.props
-   * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
-   */
-    fields: {
-        Value: DefineList,
-        Type: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.objects.length) {
-                return parseFieldArray(Object.keys(this.objects[0]));
-            }
-            return fields.filter((f) => {
-                return f.list !== false;
-            });
         }
     },
   /**

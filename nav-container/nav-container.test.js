@@ -13,28 +13,28 @@ q.module('tab-container.ViewModel', {
         vm = null;
     }
 });
-test('addPanel(panel)', (assert) => {
-    const panel = new PageViewModel();
-    vm.addPanel(panel);
+test('addPage(page)', (assert) => {
+    const page = new PageViewModel();
+    vm.addPage(page);
 
-    assert.equal(vm.attr('panels').length, 1, 'tab-container should have added one panel');
-    assert.equal(vm.attr('active'), panel, 'the added panel should be activated by default');
+    assert.equal(vm.pages.length, 1, 'tab-container should have added one page');
+    assert.equal(vm.activePage, page, 'the added page should be activated by default');
 });
 
-test('removePanel(panel)', (assert) => {
-    const panel = new PageViewModel();
-    vm.addPanel(panel);
-    vm.removePanel(panel);
+test('removepage(page)', (assert) => {
+    const page = new PageViewModel();
+    vm.addPage(page);
+    vm.removePage(page);
 
-    assert.equal(vm.attr('panels').length, 0, 'there should not be any panels in the tab-container after remove');
+    assert.equal(vm.pages.length, 0, 'there should not be any pages in the tab-container after remove');
 });
 
-test('activate(panel)', (assert) => {
-    const panel1 = new PageViewModel();
-    const panel2 = new PageViewModel();
-    vm.addPanel(panel1);
-    vm.addPanel(panel2);
-    vm.activate(panel2);
+test('activate(page)', (assert) => {
+    const page1 = new PageViewModel();
+    const page2 = new PageViewModel();
+    vm.addPage(page1);
+    vm.addPage(page2);
+    vm.makeActive(page2);
 
-    assert.equal(vm.attr('active'), panel2, 'the active panel should be panel2');
+    assert.equal(vm.activePage, page2, 'the active page should be page2');
 });

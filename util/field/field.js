@@ -66,7 +66,6 @@ export const Field = DefineMap.extend('Field', {
      * @parent util/field.Field.props
      */
     name: 'string',
-    type: '*',
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores

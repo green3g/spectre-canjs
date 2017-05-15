@@ -1,9 +1,8 @@
-import template from './property-table.stache!';
-import DefineList from 'can-define/list/list';
+import template from './property-table.stache';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import {parseFieldArray, Field} from '../util/field';
+import FieldComponentMap from '../../util/field/FieldComponentMap';
 import assign from 'object-assign';
 
 /**
@@ -13,10 +12,19 @@ import assign from 'object-assign';
  *
  * @description A `<property-table />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('PropertyTable', {
+export const ViewModel = FieldComponentMap.extend('PropertyTable', {
     /**
      * @prototype
      */
+   /**
+    * A string referencing a field property that will exclude that field
+    * from this classes fields. The default is 'details'.
+    * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
+    * @parent util/field.FieldComponentMap.props
+    */
+    excludeFieldKey: {
+        value: 'details'
+    },
     /**
      * A flag to allow editing (Not yet implemented)
      * TODO: implement editing
@@ -83,24 +91,6 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
      */
     fieldProperties: {
         value: null
-    },
-    /**
-     * Array of fields to show in the table
-     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields fields
-     */
-    fields: {
-        Value: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.object) {
-                return parseFieldArray(Object.keys(this.object));
-            }
-            return fields.filter((f) => {
-                return f.detail !== false;
-            });
-        }
     },
     /**
      * Asynchronously fetches an object using a can-connect model and an id

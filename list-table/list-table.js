@@ -1,6 +1,6 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import {Field, parseFieldArray} from '../util/field';
+import FieldComponentMap from '../util/field/FieldComponentMap';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
@@ -9,6 +9,7 @@ import CanEvent from 'can-event';
 import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
 import makeArray from 'can-util/js/make-array/make-array';
+
 
 import '../dropdown-menu/dropdown-menu';
 
@@ -19,7 +20,16 @@ import '../dropdown-menu/dropdown-menu';
  *
  * @description A `<list-table />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
+export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
+  /**
+   * A string referencing a field property that will exclude that field
+   * from this classes fields. The default is 'list'.
+   * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
+   * @parent util/field.FieldComponentMap.props
+   */
+    excludeFieldKey: {
+        value: 'list'
+    },
   /**
    * @prototype
    */
@@ -88,26 +98,6 @@ export const ViewModel = DefineMap.extend('ListTable', {seal: false}, {
         type: 'boolean',
         get () {
             return this.selectedObjects.length === this.objects.length;
-        }
-    },
-  /**
-   * An array of fields
-   * @parent list-table.ViewModel.props
-   * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
-   */
-    fields: {
-        Value: DefineList,
-        Type: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.objects.length) {
-                return parseFieldArray(Object.keys(this.objects[0]));
-            }
-            return fields.filter((f) => {
-                return f.list !== false;
-            });
         }
     },
   /**

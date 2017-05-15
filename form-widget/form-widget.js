@@ -1,8 +1,7 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
-import DefineList from 'can-define/list/list';
 import template from './template.stache!';
-import {Field, parseFieldArray} from '../util/field';
+import FieldComponentMap from '../util/field/FieldComponentMap';
 import './widget.less!';
 
 /**
@@ -13,10 +12,19 @@ import './widget.less!';
  *
  * @description A `<form-widget />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('FormWidget', {
+export const ViewModel = FieldComponentMap.extend('FormWidget', {
     /**
      * @prototype
      */
+   /**
+    * A string referencing a field property that will exclude that field
+    * from this classes fields. The default is 'edit'.
+    * @property {String} util/field.FieldComponentMap.props.excludeFieldKey
+    * @parent util/field.FieldComponentMap.props
+    */
+    excludeFieldKey: {
+        value: 'edit'
+    },
     /**
      * Whether or not to show the submit/cancel buttons
      * @property {Boolean} form-widget.ViewModel.props.showButtons
@@ -79,25 +87,6 @@ export const ViewModel = DefineMap.extend('FormWidget', {
      */
     dirtyObject: {
         Value: DefineMap
-    },
-    /**
-     * The list of form fields properties. These can be specified as strings representing the field names or the object properties described in the api docs
-     * @property {Array<String|util/field.Field>} form-widget.ViewModel.props.fields
-     * @parent form-widget.ViewModel.props
-     */
-    fields: {
-        Value: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.formObject) {
-                return parseFieldArray(Object.keys(this.formObject));
-            }
-            return fields.filter((f) => {
-                return f.edit !== false;
-            });
-        }
     },
     /**
      * If set to true, the form will go into a saving/loading state

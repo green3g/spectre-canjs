@@ -77,3 +77,23 @@ test('perPageOptions get()', (assert) => {
         assert.deepEqual(vm.perPageOptions.serialize(), t.expected, 'per page options should be filtered correctly');
     });
 });
+
+test('itemFrom get()', (assert) => {
+    vm.set({
+        pageIndex: 1,
+        perPage: 15
+    });
+    assert.equal(vm.itemFrom, 16, 'itemFrom should be calculated correctly');
+});
+
+test('itemTo get()', (assert) => {
+    vm.set({
+        pageIndex: 1,
+        perPage: 15,
+        total: 100
+    });
+    assert.equal(vm.itemTo, 30, 'itemTo should be calculated correctly');
+
+    vm.pageIndex = 7;
+    assert.equal(vm.itemTo, 100, 'itemTo should be capped at max');
+});

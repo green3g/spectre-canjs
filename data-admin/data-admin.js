@@ -876,7 +876,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
 
 export default Component.extend({
     tag: 'data-admin',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     events: {
         '{viewModel.parameters.filters} length': function () {

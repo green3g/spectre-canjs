@@ -122,5 +122,5 @@ assign(ViewModel.prototype, canEvent);
 export default Component.extend({
     tag: 'dropdown-menu',
     view: template,
-    viewModel: ViewModel
+    ViewModel: ViewModel
 });

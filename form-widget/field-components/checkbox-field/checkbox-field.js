@@ -58,6 +58,6 @@ assign(ViewModel.prototype, canEvent);
 
 export default Component.extend({
     tag: 'checkbox-field',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template
 });

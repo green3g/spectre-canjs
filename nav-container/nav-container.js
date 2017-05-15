@@ -18,14 +18,39 @@ let pageId = 0;
  * @description A `<nav-page />` component's ViewModel
  */
 export const PageViewModel = DefineMap.extend('NavPage', {
+  /**
+   * The display state of the page. If true, the page content will be shown
+   * @type {Boolean} nav-container.ViewModel.props.active active
+   * @parent nav-container.ViewModel.props
+   */
     active: {type: 'boolean', value: false},
+    /**
+     * The label to display in the parent container tab
+     * @type {String} nav-container.ViewModel.props.label label
+     * @parent nav-container.ViewModel.props
+     */
     label: 'string',
+    /**
+     * Whether or not this page is currently loading
+     * @type {HTMLBoolean} nav-container.ViewModel.props.loading loading
+     * @parent nav-container.ViewModel.props
+     */
     loading: {type: 'htmlbool', value: false},
+    /**
+     * A unique id to identify this page. The default is automatically provided.
+     * @type {String} nav-container.ViewModel.props.pageId pageId
+     * @parent nav-container.ViewModel.props
+     */
     pageId: {
         value: function () {
             return 'page-' + pageId++;
         }
     },
+    /**
+     * The parent containers view model
+     * @type {DefineMap} nav-container.ViewModel.props.parent parent
+     * @parent nav-container.ViewModel.props
+     */
     parent: '*'
 });
 
@@ -53,8 +78,8 @@ export const ViewModel = DefineMap.extend('NavContainer', {
     pages: {Value: PageList},
     /**
      * The currently active page
-     * @parent nav-container.ViewModel.props
      * @property {nav-page.ViewModel} nav-container.ViewModel.props.activePage activePage
+     * @parent nav-container.ViewModel.props
      */
     activePage: {
         get () {
@@ -142,7 +167,7 @@ export const ViewModel = DefineMap.extend('NavContainer', {
     }
 });
 
-Component.extend({
+export const NavPageComponent = Component.extend({
     tag: 'nav-page',
     view: pageTemplate,
     ViewModel: PageViewModel,
@@ -164,7 +189,7 @@ Component.extend({
 
 export default Component.extend({
     tag: 'nav-container',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     leakScope: true
 });

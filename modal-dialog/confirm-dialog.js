@@ -82,7 +82,7 @@ assign(ViewModel, CanEvent);
 
 export default Component.extend({
     tag: 'confirm-dialog',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     leakScope: true
 });

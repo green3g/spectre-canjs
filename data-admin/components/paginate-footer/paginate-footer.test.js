@@ -6,7 +6,7 @@ import {ViewModel} from './paginate-footer';
 //eslint-disable-next-line
 let vm;
 
-q.module('.ViewModel', {
+q.module('data-admin/components/paginate-footer.ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

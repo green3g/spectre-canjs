@@ -20,7 +20,7 @@
 // }];
 
 // let fields;
-// q.module('.ViewModel', {
+// q.module('util/field/field', {
 //     beforeEach: () => {
 //         fields = cases.map((c) => {
 //             return new Field(c);

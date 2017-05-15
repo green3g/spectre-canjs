@@ -83,7 +83,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * The type of the form field to use when editing this field. These types
-     * are defined in the `util/field.TEMPLATES` constant
+     * are defined in the `util/field.TEMPLATES` constant. This should be
+     * omitted if a custom template is used.
      * @property {String} util/field.Field.props.fieldType fieldType
      * @parent util/field.Field.props
      */
@@ -95,6 +96,23 @@ export const Field = DefineMap.extend('Field', {
      * The form field template to use when editing this field. This should be
      * a stache template renderer. By default, this value is set to the
      * template for the given `fieldType` property.
+     *
+     * The default renderers are provided as a constant, and may be referenced
+     * by passing the `field.fieldType` parameter. For instance, passing
+     * `fieldType: 'select'` will set `formTemplate` to the registered
+     * template for a `select-field` component.
+     *
+     * Custom templates can be created to add various field types and functionality
+     * to the form widget.
+     *
+     * The custom templates will have the following useful properties in their scope:
+     *  - `this`: (alias `.` is the current `this` object) the field properties object
+     *  - `setField`: the function to call when the field changes
+     *  - `formObject`: the form object
+     *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
+     *
+     * For example:
+     * `'<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />'`
      * @property {Renderer} util/field.Field.props.formTemplate formTemplate
      * @parent util/field.Field.props
      */
@@ -116,7 +134,30 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * Formats the property when it is displayed
+     * Formats the field into a renderer. The renderer has the scope of the
+     * list-table and property table. The simplest displayTemplate value would be
+     * the default, which is `{{object[field.name]}}`.
+     *
+     * In this example,
+     * the scope of the table components provide access to each row as `object` and the
+     * current field as `field`.
+     *
+     * In addition, other properties can be accessed and combined by providing it
+     * `{{object.other_prop_name}}`. Custom helpers and other methods may also be
+     * registered and utilized. For instance, if we created a global helper
+     * `capitalize(property)` we could access it with {{capitalize object.prop_name}}.
+     *
+     * For a local helper, an additional method could be added to the field, like
+     * ```javascript
+     * {
+     * name: 'prop',
+     * alias: 'Property',
+     * displayTemplate: '{{field.capitalize(object['prop'])}}',
+     * capitalize: function(val){
+     *     return val.toUpperCase();
+     * }
+     * }
+     * ```
      * @property {Renderer} util/field.Field.props.displayTemlpate displayTemplate
      * @signature `formatter(property)`
      * @parent util/field.Field.props
@@ -133,7 +174,7 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * Excludes this field from the list view in the data-admin
+     * Includes this field in the list view in the data-admin
      * @property {Boolean} util/field.Field.props.list list
      * @parent util/field.Field.props
      */

@@ -7,7 +7,7 @@ import {Field} from '~/util/field/field';
 //eslint-disable-next-line
 let vm;
 
-q.module('.ViewModel', {
+q.module('data-admin/components/search-control.ViewModel', {
     beforeEach () {
         vm = new ViewModel({
             filters: [],

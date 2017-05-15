@@ -6,7 +6,7 @@ import {ViewModel} from './dropdown-menu';
 //eslint-disable-next-line
 let vm;
 
-q.module('.ViewModel', {
+q.module('dropdown-menu.ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

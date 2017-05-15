@@ -3,7 +3,7 @@ node_js: node
 addons:
   firefox: "51.0"
   code_climate:
-    repo_token: 0e12d67d3b264b07523bf35e2a4aaa2de099783d6027846affe613302606634b
+    repo_token: 77c29acf0fc4dc4578d936d2299557830033eb2ea16220f443e35db4ee7ecb5b
 install:
   - npm install
 before_install:

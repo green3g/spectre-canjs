@@ -136,7 +136,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
             if (prop) {
                 return prop;
             }
-            return this.view ? this.view.connection.idProp : 'id';
+            return this.connection ? this.connection.idProp : 'id';
         }
     },
     /**
@@ -207,11 +207,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     editTemplate: {
-        get (template) {
-            if (!template) {
-                template = editTemplate;
-            }
-            return template;
+        value () {
+            return editTemplate;
         }
     },
     /**
@@ -221,11 +218,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     listTemplate: {
-        get (template) {
-            if (!template) {
-                template = listTemplate;
-            }
-            return template;
+        value () {
+            return listTemplate;
         }
     },
     /**
@@ -235,11 +229,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     addTemplate: {
-        get (template) {
-            if (!template) {
-                template = addTemplate;
-            }
-            return template;
+        value () {
+            return addTemplate;
         }
     },
     /**
@@ -249,11 +240,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     detailsTemplate: {
-        get (template) {
-            if (!template) {
-                template = detailsTemplate;
-            }
-            return template;
+        value () {
+            return detailsTemplate;
         }
     },
     /**

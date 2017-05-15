@@ -8,6 +8,7 @@ import '../data-admin/components/search-control/search-control.test';
 import '../data-admin/components/manage-toolbar/manage-toolbar.test';
 import '../data-admin/ViewMap.test';
 import '../util/string/string.test';
+import '../util/field/field.test';
 import '../paginate-widget/paginate-widget.test';
 import '../form-widget/form-widget.test';
 import '../dropdown-menu/dropdown-menu.test';

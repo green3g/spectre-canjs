@@ -98,9 +98,6 @@ export const Filter = DefineMap.extend('Filter', {
         type: 'string',
         get (name) {
             return this.field ? this.field.name : name;
-        },
-        serialize (name) {
-            return name;
         }
     },
     /**

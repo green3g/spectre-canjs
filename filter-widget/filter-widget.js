@@ -56,14 +56,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @property {can.Map} filter-widget.ViewModel.ObjectTemplate
      * @parent filter-widget.ViewModel.props
      */
-    ObjectTemplate: {
-        get (t) {
-            if (t) {
-                return t;
-            }
-            return this.connection ? this.connection.Map : null;
-        }
-    },
+    ObjectTemplate: '*',
     /**
      * A list of filterObjects currently used in this widget
      * @property {Array<filter-widget.Filter>} filter-widget.ViewModel.filters

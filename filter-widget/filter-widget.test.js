@@ -1,26 +1,30 @@
 /* eslint-env qunit, browser */
 
 import {ViewModel} from './filter-widget';
-import {Filter, FilterOptions} from './Filter';
 
 import q from 'steal-qunit';
 import DefineMap from 'can-define/map/map';
+import {Filter} from './Filter';
 
-var vm, filter;
+var vm;
 
 q.module('filter-widget.ViewModel', {
     beforeEach: function () {
         vm = new ViewModel();
-        filter = new Filter({
-            name: 'test',
-            operator: 'equals',
-            value: 'test'
-        });
     },
     afterEach: function () {
-        filter = null;
         vm = null;
     }
+});
+
+
+test('nameField get()', (assert) => {
+    assert.notOk(vm.nameField.options, 'nameField should not have options when no fieldOptions are available');
+    vm.fields = [{
+        name: 'one',
+        alias: 'One'
+    }];
+    assert.ok(vm.nameField.options, 'nameField should have options when fieldOptiosn are available');
 });
 
 test('fields get()', (assert) => {
@@ -55,69 +59,28 @@ test('fieldOptions get() with ObjectTemplate', (assert) => {
 });
 
 test('addFilter()', (assert) => {
+    const filter = new Filter({
+        name: 'test',
+        operator: 'equals',
+        value: 'test'
+    });
     vm.addFilter(null, null, null, filter);
     assert.equal(vm.filters.length, 1, 'filters should been added');
 });
 
 test('removeFilter()', (assert) => {
+    const filter = new Filter({
+        name: 'test',
+        operator: 'equals',
+        value: 'test'
+    });
     vm.addFilter(null, null, null, filter);
     vm.removeFilter(null, null, null, filter);
     assert.equal(vm.filters.length, 0, 'filters should have been removed');
 });
 
-q.module('filter-widget.Filter', {
-    beforeEach: function () {
-        filter = new Filter({
-            name: 'test',
-            operator: 'equals',
-            value: 'test'
-        });
-    },
-    afterEach: function () {
-        filter = null;
-    }
-});
-
-test('name get()', (assert) => {
-    assert.equal(filter.name, 'test');
-
-    filter.field = {
-        name: 'hello'
-    };
-    assert.equal(filter.name, 'hello', 'if field is set, the field name should be used');
-});
-
-test('operatorField get() no field type', (assert) => {
-    assert.equal(filter.operatorField.options.length, FilterOptions.length, 'filter options should be the default length');
-});
-
-test('operatorField get() with field type', (assert) => {
-    filter.field = {
-        name: 'test',
-        type: 'date'
-    };
-
-    assert.ok(filter.operatorField.options.length < FilterOptions.length, 'filter options should be filtered to date friendly types');
-});
-
-test('valueField get() no field set', (assert) => {
-    assert.equal(filter.valueField.fieldType, 'text', 'default valueField should be text field');
-});
-
-test('valueField get() field is set', (assert) => {
-    filter.field = {
-        fieldType: 'date',
-        name: 'test'
-    };
-
-    assert.equal(filter.valueField.fieldType, 'date', 'valueField type should be date when field type is date');
-});
-
-test('formObject get()', (assert) => {
-    assert.equal(filter.formObject.test, 'test', 'formObject should consist of a property with the correct value');
-});
-
-test('setField(field, dom, scope, val)', (assert) => {
-    filter.setField(null, null, null, {value: 'hello'});
-    assert.equal(filter.value, 'hello');
+test('removeFilters()', (assert) => {
+    vm.filters = [new Filter(), new Filter()];
+    vm.removeFilters();
+    assert.notOk(vm.filters.length, 'filters should be removed');
 });

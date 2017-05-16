@@ -1,57 +1,35 @@
-<div class="object-metadata">
-    <span class="text-bold">{{view.title}}</span>:
-    {{#if view.connection.metadata.total}}{{view.connection.metadata.total}} rows found. Page {{pageNumber}} of {{totalPages}}{{/if}}
-    <dropdown-menu class="filter-dropdown inline-block" text="Search{{#if parameters.filters.length}} ({{parameters.filters.length}}){{/if}}" icon-class="fa fa-search">
-        <div class="menu">
-            <filter-widget {(filters)}="parameters.filters" {fields}="_fields" {object-template}="view.ObjectTemplate" />
-        </div>
-    </dropdown-menu>
+<header class="navbar">
+  <section class="navbar-section">
+    <h3>{{view.title}} List</h3>
+  </section>
+  <section class="navbar-section">
+    <search-control {fields}="_fields" {(filters)}="parameters.filters" {view}="view" />
+  </section>
 
-    <a class="btn btn-link" ($click)="setPage('list')"><i title="Refresh Data" class="fa fa-refresh"></i></a>
-
-    {{#each view.quickFilters}}
-        <dropdown-menu text="{{text}}" class="inline-block">
-            <ul class="menu">
-                {{#each options}}
-                    <li class="menu-item">
-                        <a href="#" ($click)="toggleQuickFilter(field, value, %event)">
-                            <i class="inline-block quick-filter-icon {{#if getQuickFilter(field, value)}}fa fa-check{{/if}}"></i> {{label}}
-                        </a>
-                    </li>
-                {{/each}}
-            </ul>
-        </dropdown-menu>
-    {{/each}}
+  <section class="navbar-section">
     {{#if selectedObjects.length}}
-        {{>view.manageTemplate}}
+      <manage-toolbar {buttons}="toolbarButtons" (buttonclick)="manageObjects" />
     {{/if}}
-</div>
+
+      <button class="btn btn-default" ($click)="setPage('list')">
+              <i title="Refresh Data" class="fa {{#if objectsPromise.isPending}}fa-spin{{/if}} fa-refresh"></i> Refresh
+            </button>
+  </section>
+</header>
+
 
 <div class="clearfix"></div>
 
 {{#if objects.length}}
-    <list-table {objects}="objects" {buttons}="buttons" {primary-buttons}="primaryButtons" id-prop="{{view.connection.idProp}}" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" {(current-sort)}="parameters.sort"
-        {fields}="_fields" />
+  <list-table {objects}="objects" id-prop="{{view.connection.idProp}}" {actions}="buttons"
+  {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject"
+  (view)="viewObject" (custom)="manageObjects"
+  {(current-sort)}="parameters.sort"
+    {fields}="_fields" />
 {{else}}
-    {{#if objectsPromise.isResolved}}
-        <p>{{view.noDataMessage}}</p>
-    {{/if}}
+  {{#if objectsPromise.isResolved}}
+    <p>{{view.noDataMessage}}</p>
+  {{/if}}
 {{/if}}
 
-<div class="hidden-print">
-    {{#if showPaginate}}
-        <paginate-widget {(active-page-index)}="parameters.page" {pages}="totalPages" />
-    {{/if}}
-    {{#if perPageOptions.length}}
-        <div class="per-page-form">
-            <div class="form-group">
-                <label class="form-label perPageSelect">Items per page:</label>
-                <select {($value)}="parameters.perPage" class="form-select form-control">
-                        {{#each perPageOptions}}
-                            <option value="{{.}}">{{.}}</option>
-                        {{/each}}
-                    </select>
-            </div>
-        </div>
-    {{/if}}
-</div>
+<paginate-footer total="{{totalItems}}" {(per-page)}="parameters.perPage" {(page-index)}="parameters.page" />

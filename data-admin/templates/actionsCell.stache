@@ -1,0 +1,22 @@
+<div class="dropdown" style="width:100px;">
+  <div class="btn-group">
+    <a class="btn btn-primary btn-sm" ($click)="dispatchEvent('view', object)">View</a>
+    <a class="btn btn-primary dropdown-toggle btn-sm" tabindex="0">
+      <i class="fa fa-caret-down"></i>
+    </a>
+
+    <ul class="menu" style="cursor:pointer;">
+      {{#each actions as action}}
+        {{#if header}}
+          <li class="divider" data-content="{{header}}">
+          </li>
+        {{/if}}
+        <li class="menu-item">
+          <a ($click)="dispatchEvent('custom', action, object)">
+            <i class="{{iconClass}}"></i> {{text}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import viewModel from 'can-view-model';
+import canViewModel from 'can-view-model';
 
 import template from './nav-container.stache!';
 import pageTemplate from './nav-page.stache!';
@@ -13,19 +13,44 @@ let pageId = 0;
 /**
  * @constructor nav-page.ViewModel ViewModel
  * @parent nav-page
- * @group nav-container.ViewModel.props Properties
+ * @group nav-page.ViewModel.props Properties
  *
  * @description A `<nav-page />` component's ViewModel
  */
 export const PageViewModel = DefineMap.extend('NavPage', {
+  /**
+   * The display state of the page. If true, the page content will be shown
+   * @property {Boolean} nav-page.ViewModel.props.active active
+   * @parent nav-page.ViewModel.props
+   */
     active: {type: 'boolean', value: false},
+    /**
+     * The label to display in the parent container tab
+     * @property {String} nav-page.ViewModel.props.label label
+     * @parent nav-page.ViewModel.props
+     */
     label: 'string',
+    /**
+     * Whether or not this page is currently loading
+     * @property {HTMLBoolean} nav-page.ViewModel.props.loading loading
+     * @parent nav-page.ViewModel.props
+     */
     loading: {type: 'htmlbool', value: false},
+    /**
+     * A unique id to identify this page. The default is automatically provided.
+     * @property {String} nav-page.ViewModel.props.pageId pageId
+     * @parent nav-page.ViewModel.props
+     */
     pageId: {
         value: function () {
             return 'page-' + pageId++;
         }
     },
+    /**
+     * The parent containers view model
+     * @property {DefineMap} nav-page.ViewModel.props.parent parent
+     * @parent nav-page.ViewModel.props
+     */
     parent: '*'
 });
 
@@ -53,8 +78,8 @@ export const ViewModel = DefineMap.extend('NavContainer', {
     pages: {Value: PageList},
     /**
      * The currently active page
-     * @parent nav-container.ViewModel.props
      * @property {nav-page.ViewModel} nav-container.ViewModel.props.activePage activePage
+     * @parent nav-container.ViewModel.props
      */
     activePage: {
         get () {
@@ -142,13 +167,13 @@ export const ViewModel = DefineMap.extend('NavContainer', {
     }
 });
 
-Component.extend({
+export const NavPageComponent = Component.extend({
     tag: 'nav-page',
     view: pageTemplate,
-    viewModel: PageViewModel,
+    ViewModel: PageViewModel,
     events: {
         inserted: function () {
-            this.viewModel.parent = viewModel(this.element.parentNode);
+            this.viewModel.parent = canViewModel(this.element.parentNode);
             if (this.viewModel.parent && this.viewModel.parent.addPage) {
                 this.viewModel.parent.addPage(this.viewModel);
             }
@@ -164,7 +189,7 @@ Component.extend({
 
 export default Component.extend({
     tag: 'nav-container',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     leakScope: true
 });

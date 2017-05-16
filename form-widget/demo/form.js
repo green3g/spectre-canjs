@@ -1,10 +1,10 @@
 import 'spectre-canjs/form-widget/form-widget';
-import 'spectre-canjs/form-widget/field-components/text-field/';
-import 'spectre-canjs/form-widget/field-components/select-field/';
-import 'spectre-canjs/form-widget/field-components/file-field/';
-import 'spectre-canjs/form-widget/field-components/json-field/';
-import 'spectre-canjs/form-widget/field-components/subform-field/';
-import 'spectre-canjs/form-widget/field-components/date-field/';
+import 'spectre-canjs/form-widget/field-components/text-field/text-field';
+import 'spectre-canjs/form-widget/field-components/select-field/select-field';
+import 'spectre-canjs/form-widget/field-components/file-field/file-field';
+import 'spectre-canjs/form-widget/field-components/subform-field/subform-field';
+import 'spectre-canjs/form-widget/field-components/date-field/date-field';
+import 'spectre-canjs/form-widget/field-components/checkbox-field/checkbox-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -52,6 +52,11 @@ const ChildObject = DefineMap.extend({
         validate(props) {
             return props.value < 10 ? 'Please enter a value greater than 10' : undefined;
         }
+    },
+    json_field_4: {
+      type: 'boolean',
+      fieldType: 'checkbox',
+      style: 'switch'
     }
 })
 
@@ -68,7 +73,6 @@ const Template = DefineMap.extend({
 const fields = [{
         name: 'field1',
         validate(props) {
-            console.log(props);
             return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },
@@ -121,6 +125,7 @@ const fields = [{
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
+    dirtyObject: null,
     formObject: new Template(),
     fields: fields,
     onChange() {
@@ -133,8 +138,9 @@ const vm = new DefineMap({
     onCancel() {
         console.log('Form canceled!');
     },
-    stringify() {
-        return JSON.stringify(this.formObject.serialize());
+    stringify(obj) {
+      if(!obj){ return }
+        return JSON.stringify(obj.serialize());
     }
 });
 
@@ -144,12 +150,12 @@ document.body.appendChild(frag);
 
 window.DEMO_SOURCE = `
 import 'spectre-canjs/form-widget/form-widget';
-import 'spectre-canjs/form-widget/field-components/text-field/';
-import 'spectre-canjs/form-widget/field-components/select-field/';
-import 'spectre-canjs/form-widget/field-components/file-field/';
-import 'spectre-canjs/form-widget/field-components/json-field/';
-import 'spectre-canjs/form-widget/field-components/subform-field/';
-import 'spectre-canjs/form-widget/field-components/date-field/';
+import 'spectre-canjs/form-widget/field-components/text-field/text-field';
+import 'spectre-canjs/form-widget/field-components/select-field/select-field';
+import 'spectre-canjs/form-widget/field-components/file-field/file-field';
+import 'spectre-canjs/form-widget/field-components/json-field/json-field';
+import 'spectre-canjs/form-widget/field-components/subform-field/subform-field';
+import 'spectre-canjs/form-widget/field-components/date-field/date-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -213,7 +219,6 @@ const Template = DefineMap.extend({
 const fields = [{
         name: 'field1',
         validate(props) {
-            console.log(props);
             return props.value.length < 50 ? 'This field must contain at least 50 characters' : false;
         }
     },

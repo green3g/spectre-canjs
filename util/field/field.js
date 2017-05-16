@@ -1,12 +1,4 @@
-/**
- * @module {Module} util/field field
- * @parent spectre.util
- * @group util/field.methods Utility Methods
- * @description Field parsing and creating utilities
- */
-
-
-import {makeSentenceCase} from './string';
+import {makeSentenceCase} from '../string/string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
@@ -25,7 +17,7 @@ import dev from 'can-util/js/dev/dev';
  *  - date: `<date-field />` component
  *  - checkbox: `<checkbox-field />` component
  * @property {Object} util/field.Field.TEMPLATES Built-in Templates
- * @parent util/field.Field.guides
+ * @parent util/field.guides
  */
 export const TEMPLATES = {
     text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
@@ -43,12 +35,12 @@ export const RESERVED = [
     'serialize'
 ];
 
+const displayTemplate = stache('{{object[field.name]}}');
 
 /**
  * @constructor util/field.Field Field
  * @parent util/field
  * @group util/field.Field.props Properties
- * @group util/field.Field.guides Guides
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
@@ -82,7 +74,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * The type of the form field to use when editing this field. These types
-     * are defined in the `util/field.TEMPLATES` constant
+     * are defined in the `util/field.TEMPLATES` constant. This should be
+     * omitted if a custom template is used.
      * @property {String} util/field.Field.props.fieldType fieldType
      * @parent util/field.Field.props
      */
@@ -91,9 +84,25 @@ export const Field = DefineMap.extend('Field', {
         value: 'text'
     },
     /**
-     * The form field template to use when editing this field. This should be
-     * a stache template renderer. By default, this value is set to the
+     * The form field template to use when editing this field in the form-widget. This should be
+     * a template renderer. By default, this value is set to the
      * template for the given `fieldType` property.
+     *
+     * The default renderers are provided as a constant, and may be referenced
+     * by passing the `field.fieldType` parameter. For instance, passing
+     * `fieldType: 'select'` will set `formTemplate` to the registered
+     * template for a `select-field` component.
+     *
+     * Custom templates can be created to add various field types and functionality
+     * to the form widget.
+     *
+     * The custom templates will have the following useful properties in their scope:
+     *  - `this`: (alias `.` is the current `this` object) the field properties object
+     *  - `setField`: the function to call when the field changes
+     *  - `formObject`: the form object
+     *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
+     *
+     * For example:
      * @property {Renderer} util/field.Field.props.formTemplate formTemplate
      * @parent util/field.Field.props
      */
@@ -115,7 +124,49 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * Excludes this field from the list view in the data-admin
+     * @body
+     * Formats the field into a renderer in the list and details view of the
+     * data-admin component. The renderer has the scope of the
+     * list-table or property table. The simplest displayTemplate value would be
+     * the default, which is `object[field.name]`. (make sure to surround values with brackets)
+     *
+     * In this example,
+     * the scope of the table components provide access to each row as `object` and the
+     * current field as `field`.
+     *
+     * In addition, other properties can be accessed and combined by providing it
+     * `{{object.other_prop_name}}`. Custom helpers and other methods may also be
+     * registered and utilized. For instance, if we created a global helper
+     * `capitalize(property)` we could access it with `capitalize object.prop_name`.
+     *
+     * For a local helper, an additional method could be added to the field, like
+     * ```javascript
+     * {
+     * name: 'prop',
+     * alias: 'Property',
+     * capitalize: function(val){
+     *     return val.toUpperCase();
+     * }
+     * }
+     * ```
+     *
+     * In a stache template, this could be rendered using `field.capitalize(object.prop)`
+     * @property {Renderer} util/field.Field.props.displayTemlpate displayTemplate
+     * @parent util/field.Field.props
+     */
+    displayTemplate: {
+        value: function () {
+            return displayTemplate;
+        },
+        type (val) {
+            if (typeof val === 'string') {
+                return stache(val);
+            }
+            return val;
+        }
+    },
+    /**
+     * Includes this field in the list view in the data-admin
      * @property {Boolean} util/field.Field.props.list list
      * @parent util/field.Field.props
      */
@@ -151,18 +202,6 @@ export const Field = DefineMap.extend('Field', {
         value: true
     },
     /**
-     * Formats the property when it is displayed in a property or list table
-     * @property {Function} util/field.Field.props.formatter formatter
-     * @signature `formatter(property)`
-     * @param {Any} property The property to format, this can be whatever type the
-     * property is defined as
-     * @return {String} a formatted string
-     * @parent util/field.Field.props
-     */
-    formatter: {
-        value: null
-    },
-    /**
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
      * @signature `validate(props)`
@@ -185,17 +224,7 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field.Field.props.placeholder placeholder
      * @parent util/field.Field.props
      */
-    placeholder: 'string',
-    /**
-     * Returns the formatted value of this field, if a formatter is provided,
-     * otherwise it simply returns the property
-     * @function getFormattedValue
-     * @param {Object} obj the object to extract a formatted property from
-     * @return {String} the formatted property
-     */
-    getFormattedValue (obj) {
-        return this.formatter ? this.formatter(obj[this.name], obj) : obj[this.name];
-    }
+    placeholder: 'string'
 });
 
 
@@ -237,7 +266,7 @@ export function parseFieldArray (fields) {
  * @function util/field.methods.mapToFields mapToFields
  * @parent util/field.methods
  * @signature `mapToFields(defineMap)`
- * @param  {DefineMap} defineMap The extended map/constructor to parse
+ * @param  {Constructor} defineMap The extended map/constructor to parse
  * @return {Array<util/field.Field>} The array of fields
  */
 export function mapToFields (defineMap) {

@@ -3,14 +3,14 @@ import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import template from './subform-field.stache!';
 import './subform-field.less';
-import {mapToFields, parseFieldArray} from '../../../../util/field';
+import {mapToFields, parseFieldArray} from '~/util/field/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
 
 /**
  * @constructor form-widget/field-components/subform-field.ViewModel ViewModel
  * @parent form-widget/field-components/subform-field
- * @group form-widget/field-components/subform-field.ViewModel.props Properties
+ * @group subform-field.ViewModel.props Properties
  *
  * @description A `<subform-field />` component's ViewModel
  */
@@ -20,7 +20,7 @@ export const ViewModel = DefineMap.extend('SubformField', {
      */
     /**
      * Form field properties that define this fields behavior
-     * @property {subform-field.JSONFieldProperties} subform-field.ViewModel.props.properties properties
+     * @property {subform-field.SubformFieldProperties} subform-field.ViewModel.props.properties properties
      * @parent subform-field.ViewModel.props
      */
     properties: {

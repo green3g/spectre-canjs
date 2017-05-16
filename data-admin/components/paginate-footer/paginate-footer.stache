@@ -1,0 +1,35 @@
+<div class="hidden-print paginate-footer">
+  <div class="columns">
+    <div class="column">
+      {{#if showPaginate}}
+        <paginate-widget {(active-page-index)}="pageIndex" {pages}="totalPages" />
+      {{/if}}
+
+      {{#if perPageOptions.length}}
+        <div class="per-page-form">
+          <div class="form-group">
+            <label class="form-label perPageSelect">
+
+                    </label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Per page:</span>
+                        <select {($value)}="perPage" class="form-select">
+                                    {{#each perPageOptions}}
+                                        <option value="{{.}}">{{.}}</option>
+                                    {{/each}}
+                                </select>
+                      </div>
+          </div>
+        </div>
+      {{/if}}
+
+    </div>
+    <div class="divider-vert"></div>
+    <div class="column">
+      {{#if total}}
+        <h5>{{itemFrom}} - {{itemTo}} of {{total}}</h5>
+      {{/if}}
+    </div>
+  </div>
+</div>

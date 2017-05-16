@@ -1,12 +1,15 @@
 <div id="demo-app"></div>
 
-<script type="text/stache" id="demo-html" can-autorender="can-autorender">
+<script type="text/stache" id="demo-html">
   <div class="container">
     <h1>Form Widget Demo</h1>
     <p>Current form values: </p>
-    <pre>{{stringify}}</pre>
+    <pre>{{stringify (formObject)}}</pre>
 
-    <form-widget {(form-object)}="formObject" {fields}="fields" (submit)="onSubmit" (cancel)="onCancel" />
+    <p>Dirty field values</p>
+    <pre>{{stringify (dirtyObject)}}</pre>
+
+    <form-widget {(form-object)}="formObject" {fields}="fields" {^dirty-object}="dirtyObject" (submit)="onSubmit" (cancel)="onCancel" />
   </div>
 </script>
 <!-- <script src="../../node_modules/steal/steal.js" main="docs-main" id="demo-source"> -->

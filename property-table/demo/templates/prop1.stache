@@ -1,0 +1,2 @@
+This is a formatted property: <strong>{{object.prop_1}}</strong><br />
+We can also utilize other properties on the object: <mark>{{object.etc_or_misc}}</mark>

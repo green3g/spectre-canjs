@@ -6,7 +6,7 @@ import {ViewModel} from './text-field';
 //eslint-disable-next-line
 let vm;
 
-q.module('.ViewModel', {
+q.module('form-widget/field-components/text-field.ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

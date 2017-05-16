@@ -1,22 +1,31 @@
-import template from './property-table.stache!';
-import DefineList from 'can-define/list/list';
+import template from './property-table.stache';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import {parseFieldArray, Field} from '../../util/field';
+import FieldComponentMap from '../../util/field/FieldComponentMap';
 import assign from 'object-assign';
 
 /**
  * @constructor property-table.ViewModel ViewModel
  * @parent property-table
  * @group property-table.ViewModel.props Properties
+ * @description A `<property-table />` component's ViewModel. This viewmodel
+ * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
  *
- * @description A `<property-table />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('PropertyTable', {
+export const ViewModel = FieldComponentMap.extend('PropertyTable', {
     /**
      * @prototype
      */
+   /**
+    * A string referencing a field property that will exclude that field
+    * from this classes fields. The default is 'detail'.
+    * @property {String} property-table.ViewModel.props.excludeFieldKey excludeFieldKey
+    * @parent property-table.ViewModel.props
+    */
+    excludeFieldKey: {
+        value: 'detail'
+    },
     /**
      * A flag to allow editing (Not yet implemented)
      * TODO: implement editing
@@ -77,38 +86,12 @@ export const ViewModel = DefineMap.extend('PropertyTable', {
      */
     objectPromise: {},
     /**
-     * A configuration object defining exactly how to display the properties fields and values
-     * @property {property-table.types.tablePropertiesObject} property-table.ViewModel.props.fieldProperties
-     * @parent property-table.ViewModel.props
-     */
-    fieldProperties: {
-        value: null
-    },
-    /**
-     * Array of fields to show in the table
-     * @property {Array<util/field.Field>} property-table.ViewModel.props.fields fields
-     */
-    fields: {
-        Value: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.object) {
-                return parseFieldArray(Object.keys(this.object));
-            }
-            return fields.filter((f) => {
-                return f.detail !== false;
-            });
-        }
-    },
-    /**
      * Asynchronously fetches an object using a can-connect model and an id
      * @function fetchObject
      * @signature
      * @param  {can-connect.model} con The connection object to an api resource
      * @param  {Number} id  The id number of the object to retrieve
-     * @return {Deferred}     A deferred object that is resolved once the object is retreived
+     * @return {Promise}     A promise that is resolved once the object is retreived
      * @link https://connect.canjs.com/ can-connect
      */
     fetchObject (con, id) {

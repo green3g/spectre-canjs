@@ -5,6 +5,7 @@ node_modules/
 custom/
 
 dist/
+coverage/
 
 .directory
 

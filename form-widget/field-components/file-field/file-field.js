@@ -16,7 +16,7 @@ const FileMap = DefineMap.extend({
 /**
  * @constructor form-widget/field-components/file-field.ViewModel ViewModel
  * @parent form-widget/field-components/file-field
- * @group form-widget/field-components/file-field.ViewModel.props Properties
+ * @group file-field.ViewModel.props Properties
  *
  * @description A `<file-field />` component's ViewModel
  */
@@ -53,9 +53,9 @@ export const ViewModel = DefineMap.extend('FileField', {
      * A list of current files stored in this field. This is initialized
      * as a list of items created splitting the comma separated list of files
      * provided to the `value`.
-     *
      * It is then manipulated by pushing and splicing uploaded and deleted items.
-     * @property {Object}
+     * @property {Object} file-field.ViewModel.props.currentFiles currentFiles
+     * @parent file-field.ViewModel.props
      */
     currentFiles: {
         get (val) {
@@ -191,7 +191,7 @@ export const ViewModel = DefineMap.extend('FileField', {
      * Called when an error occurs during an upload. Logs an error message
      * when in dev mode
      * @function uploadError
-     * @param {Object} response the jquery xhr response object
+     * @param {Object} response the xhr response object
      * @param {String} textStatus the status text
      * @param {Error} errorThrown the error object
      */
@@ -258,7 +258,7 @@ export const ViewModel = DefineMap.extend('FileField', {
      * @function removeError
      * @signature
      * @param {String} file The file path that the delete was attempted on
-     * @param {Object} response The jquery xhr response object
+     * @param {Object} response The xhr response object
      */
     removeError (file, response) {
         if (response.status === 404) {

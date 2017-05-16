@@ -52,6 +52,6 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
 
 Component.extend({
     tag: 'toast-container',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template
 });

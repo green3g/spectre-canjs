@@ -1,7 +1,7 @@
 /* eslint-env qunit, browser */
 
 import q from 'steal-qunit';
-import {Connection} from 'test/data/connection';
+import {Connection} from '../test/data/connection';
 import {ViewModel} from './property-table';
 
 let vm;

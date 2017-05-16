@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "0.28.5",
+  "version": "0.29.0",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "testee test/index.html --reporter Spec --browsers firefox",
+    "test": "testee test/index.html --config test/testee.json",
     "build": "steal-tools",
     "watch": "npm-watch",
     "docs": "documentjs -d -f",

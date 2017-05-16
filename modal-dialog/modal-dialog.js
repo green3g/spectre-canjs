@@ -76,7 +76,7 @@ export const ViewModel = DefineMap.extend('ModalDialog', {
 assign(ViewModel.prototype, canEvent);
 
 Component.extend({
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     tag: 'modal-dialog'
 });

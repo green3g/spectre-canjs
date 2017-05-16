@@ -155,7 +155,7 @@ assign(ViewModel, CanEvent);
 Component.extend({
     tag: 'toast-item',
     view: template,
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     events: {
         inserted () {
             const vm = this.viewModel;

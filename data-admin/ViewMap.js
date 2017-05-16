@@ -5,12 +5,11 @@ import editTemplate from './templates/edit.stache!';
 import listTemplate from './templates/list.stache!';
 import detailsTemplate from './templates/details.stache!';
 import addTemplate from './templates/add.stache!';
-import manageTemplate from './templates/manage.stache!';
 
 /**
  * @typedef {object} data-admin.relatedView RelatedView
  * related view objects that describe the relationship between a parent and child view.
- * @parent data-admin
+ * @parent data-admin.types
  * //TODO this seems wrong, the foreignKey should probably be switched to the child
  * @option {String} foreignKey - The property to lookup a value for on the parent view's selected object
  * @option {String} referenceKey - The property on child view's objects to filter on
@@ -22,7 +21,7 @@ import manageTemplate from './templates/manage.stache!';
  * @group data-admin/ViewMap.template View Templates
  * @group data-admin/ViewMap.event Event Functions
  * @group data-admin/ViewMap.props Properties
- * @parent data-admin
+ * @parent data-admin.types
  * A view object that controls the display and management of data in the
  * data-admin and other data components.
  */
@@ -137,7 +136,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
             if (prop) {
                 return prop;
             }
-            return this.view ? this.view.connection.idProp : 'id';
+            return this.connection ? this.connection.idProp : 'id';
         }
     },
     /**
@@ -157,10 +156,10 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
     /**
      * Additional buttons to display when items are checked in the table. Buttons
      * can have an icon, text an an on click event handler
-     * @property {Array<ManageButton>} data-admin/ViewMap.props.manageButtons manageButtons
+     * @property {Array<ManageButton>} data-admin/ViewMap.props.actions actions
      * @parent data-admin/ViewMap.props
      *   ```
-     *   manageButtons: [{
+     *   actions: [{
          iconClass: 'fa fa-files-o',
          text: 'New Workorder',
          onClick(items){
@@ -169,7 +168,7 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
        }],
        ```
      */
-    manageButtons: {value: undefined},
+    actions: {value: undefined},
     /**
      * Additional tabs to display in this view's navigation pane. Each tab
      * can have a
@@ -208,11 +207,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     editTemplate: {
-        get (template) {
-            if (!template) {
-                template = editTemplate;
-            }
-            return template;
+        value () {
+            return editTemplate;
         }
     },
     /**
@@ -222,11 +218,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     listTemplate: {
-        get (template) {
-            if (!template) {
-                template = listTemplate;
-            }
-            return template;
+        value () {
+            return listTemplate;
         }
     },
     /**
@@ -236,11 +229,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     addTemplate: {
-        get (template) {
-            if (!template) {
-                template = addTemplate;
-            }
-            return template;
+        value () {
+            return addTemplate;
         }
     },
     /**
@@ -250,25 +240,8 @@ export const ViewMap = DefineMap.extend('ViewMap', {seal: false}, {
      * @parent data-admin/ViewMap.template
      */
     detailsTemplate: {
-        get (template) {
-            if (!template) {
-                template = detailsTemplate;
-            }
-            return template;
-        }
-    },
-    /**
-     * The menu template to render when items are selected, or an item is viewd
-     * in the details view. The scope of the template is the `data-admin` view model.
-     * @property {Renderer} data-admin/ViewMap.template.manageTemplate manageTemplate
-     * @parent data-admin/ViewMap.template
-     */
-    manageTemplate: {
-        get (template) {
-            if (!template) {
-                template = manageTemplate;
-            }
-            return template;
+        value () {
+            return detailsTemplate;
         }
     },
     /**

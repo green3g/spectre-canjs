@@ -1,13 +1,14 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import {Field, parseFieldArray} from '../util/field';
+import FieldComponentMap from '../util/field/FieldComponentMap';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import CanEvent from 'can-event';
-import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
+import makeArray from 'can-util/js/make-array/make-array';
+
 
 import '../dropdown-menu/dropdown-menu';
 
@@ -16,18 +17,28 @@ import '../dropdown-menu/dropdown-menu';
  * @parent list-table
  * @group list-table.ViewModel.props Properties
  *
- * @description A `<list-table />` component's ViewModel
+ * @description A `<list-table />` component's ViewModel. This viewmodel
+ * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
  */
-export const ViewModel = DefineMap.extend('ListTable', {
-    /**
-     * @prototype
-     */
-    /**
-     * Optional promise or deferred object that will resolve to an object. Once
-     * the promise resolves, the objects list will be replaced with the promise result
-     * @parent list-table.ViewModel.props
-     * @property {can.Deferred | Promise} list-table.ViewModel.props.promise
-     */
+export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
+  /**
+   * A string referencing a field property that will exclude that field
+   * from this classes fields. The default is 'list'.
+   * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
+   * @parent list-table.ViewModel.props
+   */
+    excludeFieldKey: {
+        value: 'list'
+    },
+  /**
+   * @prototype
+   */
+  /**
+   * Optional promise or deferred object that will resolve to an object. Once
+   * the promise resolves, the objects list will be replaced with the promise result
+   * @parent list-table.ViewModel.props
+   * @property {Promise} list-table.ViewModel.props.promise
+   */
     promise: {
         set (newVal) {
             newVal.then((objects) => {
@@ -36,41 +47,52 @@ export const ViewModel = DefineMap.extend('ListTable', {
             return newVal;
         }
     },
-    /**
-     * A list of objects to display. These objects should generally be can.Model
-     * objects but may be any can.Map or javascript object.
-     * @parent list-table.ViewModel.props
-     * @property {Array.<can.Model | can.Map | Object>} list-table.ViewModel.props.objects
-     */
+  /**
+   * A list of objects to display. These objects should generally be can.Model
+   * objects but may be an javascript object.
+   * @parent list-table.ViewModel.props
+   * @property {Array<DefineMap>} list-table.ViewModel.props.objects
+   */
     objects: {
         Value: DefineList
     },
     /**
-     * Id property name for the rows of objects. The default is `id`. This value
-     * is used to determine whether objects are selected or not. For a built in
-     * unique ID, `_cid` may be used. _cid is automatically generatted by `can-define`
-     * and should be guaranteed to be unique accross all DefineMaps
+     * A virtual property that retrieves this table's first object
      * @parent list-table.ViewModel.props
-     * @property {String} list-table.ViewModel.props.idProp
+     * @property {Array<Object>} list-table.ViewModel.props.object
+     *
      */
+    object: {
+        get () {
+            return this.objects[0] || {};
+        }
+    },
+  /**
+   * Id property name for the rows of objects. The default is `id`. This value
+   * is used to determine whether objects are selected or not. For a built in
+   * unique ID, `_cid` may be used. _cid is automatically generatted by `can-define`
+   * and should be guaranteed to be unique accross all DefineMaps
+   * @parent list-table.ViewModel.props
+   * @property {String} list-table.ViewModel.props.idProp
+   */
     idProp: {
         value: 'id'
     },
-    /**
-     * A list of the currently selected objects in the table
-     * @parent list-table.ViewModel.props
-     * @property {Array.<can.Map>} list-table.ViewModel.props.selectedObjects
-     */
+  /**
+   * A list of the currently selected objects in the table
+   * @parent list-table.ViewModel.props
+   * @property {Array.<Object>} list-table.ViewModel.props.selectedObjects
+   */
     selectedObjects: {
         Type: DefineList,
         Value: DefineList
     },
-    /**
-     * An array of ids for the selected objects. This is a virtual property
-     * and cannot be set.
-     * @parent list-table.ViewModel.props
-     * @property {Array<Number>} list-table.ViewModel.props.selectedIds
-     */
+  /**
+   * An array of ids for the selected objects. This is a virtual property
+   * and cannot be set.
+   * @parent list-table.ViewModel.props
+   * @property {Array<Number>} list-table.ViewModel.props.selectedIds
+   */
     selectedIds: {
         get () {
             return this.selectedObjects.map((obj) => {
@@ -78,129 +100,64 @@ export const ViewModel = DefineMap.extend('ListTable', {
             });
         }
     },
-    /**
-     * A virtual property that helps the template determine whether all objects are selected
-     * @parent list-table.ViewModel.props
-     * @property {Boolean} list-table.ViewModel.props._allSelected
-     */
+  /**
+   * A virtual property that helps the template determine whether all objects are selected
+   * @parent list-table.ViewModel.props
+   * @property {Boolean} list-table.ViewModel.props._allSelected
+   */
     _allSelected: {
         type: 'boolean',
         get () {
             return this.selectedObjects.length === this.objects.length;
         }
     },
-    /**
-     * An array of buttonObjects
-     * @parent list-table.ViewModel.props
-     * @property {Array.<spectre.types.TableButtonObject>} list-table.ViewModel.props.buttons
-     */
-    buttons: DefineList,
-    /**
-     * A primary button to display next to the dropdown menu button on each row
-     * @property {Array<TableButtonObject>} list-table.ViewModel.props.primaryButtons primaryButtons
-     * @parent list-table.ViewModel.props
-     */
-    primaryButtons: DefineList,
-    /**
-     * An array of fields
-     * @parent list-table.ViewModel.props
-     * @property {Array<util/field.Field>} list-table.ViewModel.props.fields
-     */
-    fields: {
-        Value: DefineList,
-        Type: DefineList,
-        get (fields) {
-            if (fields.length && !(fields[0] instanceof Field)) {
-                fields = parseFieldArray(fields);
-            }
-            if (!fields.length && this.objects.length) {
-                return parseFieldArray(Object.keys(this.objects[0]));
-            }
-            return fields.filter((f) => {
-                return f.list !== false;
-            });
-        }
-    },
-    /**
-     * The current sort field
-     * @parent list-table.ViewModel.props
-     * @property {can.List} list-table.ViewModel.props.currentSort
-     */
+  /**
+   * The current sort field
+   * @parent list-table.ViewModel.props
+   * @property {can.List} list-table.ViewModel.props.currentSort
+   */
     currentSort: {
         Type: DefineMap,
         value: function () {
             return {
-                fieldName: null,
+                field: null,
                 type: 'asc'
             };
         }
     },
-    /**
-     * The icon class for the menu dropdown on each row
-     * @property {String} list-table.ViewModel.props.menuIconClass
-     * @parent list-table.ViewModel.props
-     */
-    menuIconClass: {
-        type: 'string',
-        value: 'fa fa-caret-down'
+  /**
+   * Dispatches an event with the name of the passed argument. Any additional
+   * arguments will be passed to the event handler
+   * @function dispatchEvent
+   * @signature
+   * @param  {String} event The name of the event to dispatch
+   */
+    dispatchEvent (event) {
+        this.dispatch(event, makeArray(arguments));
     },
-    /**
-     * Called when a button is clicked. This dispatches the button's event and
-     * calls the buttons `onClick` method if it exists
-     * @function dispatchButtonEvent
-     * @signature
-     * @param  {TableButtonObject} button The button object that was clicked
-     * @param  {can.Map} object  The row data
-     */
-    dispatchButtonEvent (button, object) {
-        if (button.eventName) {
-            this.dispatch(button.eventName, [object]);
-        }
-        if (typeof(button.onClick) === 'function') {
-            button.onClick([object]);
-        }
-    },
-    /**
-     * Called when the primary buttons are clicked. This dispatches the button's event and
-     * calls the buttons `onClick` method if it exists
-     * @function dispatchPrimaryButtonEvent
-     * @param {Array<arguments>} eventArgs the `primaryclick` event args from the dropdown-meu
-     * @param {Object} object the row that the event was dispatched on
-     */
-    dispatchPrimaryButtonEvent (eventArgs, object) {
-        const button = eventArgs[1];
-        if (button.eventName) {
-            this.dispatch(button.eventName, [object]);
-        }
-        if (typeof(button.onClick) === 'function') {
-            button.onClick([object]);
-        }
-    },
-    /**
-     * Helps the template the currentSort value
-     * @function setSort
-     * @signature
-     * @param  {String} field the field to set the sort on
-     */
+  /**
+   * Helps the template the currentSort value
+   * @function setSort
+   * @signature
+   * @param  {String} field the field to set the sort on
+   */
     setSort (field) {
-        CanBatch.start();
-        if (this.currentSort.fieldName !== field) {
+        if (this.currentSort.field !== field) {
             this.currentSort = {
-                fieldName: field,
+                field: field,
                 type: 'asc'
             };
         } else {
             this.currentSort.type = this.currentSort.type === 'asc' ? 'desc' : 'asc';
         }
-        CanBatch.stop();
         this.dispatch('sort', [this.currentSort]);
     },
-    /**
-     * Toggles a row as selected or not selected
-     * @function toggleSelected
-     * @signature
-     * @param  {can.Map} obj The row to toggle
-     */
+  /**
+   * Toggles a row as selected or not selected
+   * @function toggleSelected
+   * @signature
+   * @param  {Object} obj The row to toggle
+   */
     toggleSelected (obj) {
         const index = this.selectedObjects.indexOf(obj);
         if (index > -1) {
@@ -209,11 +166,11 @@ export const ViewModel = DefineMap.extend('ListTable', {
             this.selectedObjects.push(obj);
         }
     },
-    /**
-     * Selects or unselects all of the objects in the table
-     * @function toggleSelectAll
-     * @signature
-     */
+  /**
+   * Selects or unselects all of the objects in the table
+   * @function toggleSelectAll
+   * @signature
+   */
     toggleSelectAll () {
         if (this.selectedObjects.length < this.objects.length) {
             this.selectedObjects.replace(this.objects);
@@ -221,14 +178,14 @@ export const ViewModel = DefineMap.extend('ListTable', {
             this.selectedObjects.replace([]);
         }
     },
-    /**
-     * Determines whether or not the provided object is selected by comparing
-     * it to the list of currently selected objects
-     * @function isSelected
-     * @signature
-     * @param  {can.Map | Object} obj The object to check if is selected
-     * @return {Boolean}     Whether or not it is selected
-     */
+  /**
+   * Determines whether or not the provided object is selected by comparing
+   * it to the list of currently selected objects
+   * @function isSelected
+   * @signature
+   * @param  {Object} obj The object to check if is selected
+   * @return {Boolean}     Whether or not it is selected
+   */
     isSelected (obj) {
         return this.selectedIds.indexOf(obj[this.idProp]) > -1;
     }

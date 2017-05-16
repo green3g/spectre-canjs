@@ -2,8 +2,7 @@
 
 import q from 'steal-qunit';
 
-import {ViewModel} from './tab-container';
-import {ViewModel as PanelViewModel} from '../panel-container/';
+import {ViewModel, PageViewModel} from './nav-container';
 let vm;
 
 q.module('tab-container.ViewModel', {
@@ -14,28 +13,51 @@ q.module('tab-container.ViewModel', {
         vm = null;
     }
 });
-test('addPanel(panel)', (assert) => {
-    const panel = new PanelViewModel();
-    vm.addPanel(panel);
 
-    assert.equal(vm.attr('panels').length, 1, 'tab-container should have added one panel');
-    assert.equal(vm.attr('active'), panel, 'the added panel should be activated by default');
+test('activePage get()', (assert) => {
+    assert.notOk(vm.activePage, 'if no pages are present, activePage should be null');
 });
 
-test('removePanel(panel)', (assert) => {
-    const panel = new PanelViewModel();
-    vm.addPanel(panel);
-    vm.removePanel(panel);
+test('addPage(page)', (assert) => {
+    const page = new PageViewModel();
+    vm.addPage(page);
 
-    assert.equal(vm.attr('panels').length, 0, 'there should not be any panels in the tab-container after remove');
+    assert.equal(vm.pages.length, 1, 'tab-container should have added one page');
+    assert.equal(vm.activePage, page, 'the added page should be activated by default');
 });
 
-test('activate(panel)', (assert) => {
-    const panel1 = new PanelViewModel();
-    const panel2 = new PanelViewModel();
-    vm.addPanel(panel1);
-    vm.addPanel(panel2);
-    vm.activate(panel2);
+test('removepage(page)', (assert) => {
+    const page = new PageViewModel();
+    vm.addPage(page);
+    vm.removePage(page);
 
-    assert.equal(vm.attr('active'), panel2, 'the active panel should be panel2');
+    assert.equal(vm.pages.length, 0, 'there should not be any pages in the tab-container after remove');
+});
+
+test('removePage(activePage)', (assert) => {
+    const active = new PageViewModel();
+    const other = new PageViewModel();
+    vm.pages = [active, other];
+    vm.makeActive(active);
+
+    vm.removePage(active);
+
+    assert.ok(vm.isActive(other), 'other page should be made active if active is removed');
+});
+
+test('activate(page)', (assert) => {
+    const page1 = new PageViewModel();
+    const page2 = new PageViewModel();
+    vm.addPage(page1);
+    vm.addPage(page2);
+    vm.makeActive(page2);
+
+    assert.equal(vm.activePage, page2, 'the active page should be page2');
+});
+
+test('isActive(page)', (assert) => {
+    assert.notOk(vm.isActive(null), 'a null page should not be active');
+    const active = new PageViewModel();
+    vm.pages = [active];
+    assert.ok(vm.isActive(active), 'the first page should be active');
 });

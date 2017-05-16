@@ -1,7 +1,7 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import {mapToFields, parseFieldArray} from '../../../../util/field';
+import {mapToFields, parseFieldArray} from '~/util/field/field';
 import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
 
@@ -11,7 +11,7 @@ import './json-field.less';
 /**
  * @constructor form-widget/field-components/json-field.ViewModel ViewModel
  * @parent form-widget/field-components/json-field
- * @group form-widget/field-components/json-field.ViewModel.props Properties
+ * @group json-field.ViewModel.props Properties
  *
  * @description A `<json-field />` component's ViewModel
  */

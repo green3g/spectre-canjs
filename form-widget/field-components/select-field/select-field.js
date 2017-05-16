@@ -21,7 +21,7 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * `util/field.Field` object, except it includes additional properties to define
      * the select dropdown behavior.
      * @parent select-field.ViewModel.props
-     * @property {select-field.SelectFieldProperty} select-field.ViewModel.props.properties properties
+     * @property {select-field.SelectFieldProperty} form-widget/field-components/select-field.ViewModel.properties properties
      */
     properties: {
         Value: DefineMap,
@@ -55,7 +55,8 @@ export const ViewModel = DefineMap.extend('SelectField', {
     /**
      * The select input renderer - stache template. Used as a partial in the template.
      * The default is a basic html select input.
-     * @property {Renderer} select-field.ViewModel.props.selectInput
+     * @property {Renderer} select-field.ViewModel.props.selectInput selectInput
+     * @parent select-field.ViewModel.props
      */
     selectInput: {
         value () {

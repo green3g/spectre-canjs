@@ -1,22 +1,22 @@
 {{#if focusObject}}
-    {{#if focusObjectPromise.isPending}}
-        <div class="loading"></div>
-    {{else}}
-        <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
-        <nav-container>
-            <nav-page label="{{view.title}}">
+  {{#if focusObjectPromise.isPending}}
+    <div class="loading"></div>
+  {{else}}
+    <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
+    <nav-container>
+      <nav-page label="{{view.title}}">
 
-                {{>view.manageTemplate}}
+        <manage-toolbar class="inline-block float-right" {buttons}="toolbarButtons" (buttonclick)="manageObjects" />
 
-                <property-table {object}="focusObject" {fields}="_fields" />
-            </nav-page>
-            {{#each view.relatedViews as relView}}
-                <nav-page label="{{#if relView.title}}{{relView.title}}{{else}}{{relView.view.title}}{{/if}}">
-                    <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
-                </nav-page>
-            {{/each}}
-        </nav-container>
-    {{/if}}
+        <property-table {object}="focusObject" {fields}="_fields" />
+      </nav-page>
+      {{#each view.relatedViews as relView}}
+        <nav-page label="{{#if relView.title}}{{relView.title}}{{else}}{{relView.view.title}}{{/if}}">
+          <data-admin {view}="relView.view" related-field="{{relView.referenceKey}}" related-value="{{focusObject[relView.foreignKey]}}" />
+        </nav-page>
+      {{/each}}
+    </nav-container>
+  {{/if}}
 {{else}}
-    <p>Please click the <i class="fa fa-list"></i> Details button on the list page to view a row.</p>
+  <p>Please click the <i class="fa fa-list"></i> Details button on the list page to view a row.</p>
 {{/if}}

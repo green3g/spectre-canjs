@@ -6,7 +6,7 @@ import assign from 'object-assign';
 
 /**
  * @constructor confirm-dialog.ViewModel ViewModel
- * @extends modal-dialog.ViewModel
+ * @inherits modal-dialog.ViewModel
  * @parent confirm-dialog
  * @group confirm-dialog.ViewModel.props Properties
  *
@@ -82,7 +82,7 @@ assign(ViewModel, CanEvent);
 
 export default Component.extend({
     tag: 'confirm-dialog',
-    viewModel: ViewModel,
+    ViewModel: ViewModel,
     view: template,
     leakScope: true
 });

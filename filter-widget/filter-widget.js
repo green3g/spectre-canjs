@@ -1,13 +1,13 @@
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import {makeSentenceCase} from '../../util/string';
-import {FieldList} from '../../util/field';
+import {makeSentenceCase} from '../util/string/string';
+import {FieldList} from '../util/field/field';
 import template from './template.stache!';
 import './filter-widget.less!';
-import '../list-table/';
-import '../form-widget/';
-import '../form-widget/field-components/text-field/';
-import '../form-widget/field-components/select-field/';
+import '../list-table/list-table';
+import '../form-widget/form-widget';
+import '../form-widget/field-components/text-field/text-field';
+import '../form-widget/field-components/select-field/select-field';
 
 import {Filter, FilterList} from './Filter';
 
@@ -31,7 +31,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     /**
      * A list of fields that will be used to create options in the field name
      * dropdown. If the field has a property `filter` set to false, it will be
-     * excluded from this widget. 
+     * excluded from this widget.
      * <br />TODO: Each field may have a property `filterFactory` which may return
      * one or more filter objects
      * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
@@ -56,14 +56,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @property {can.Map} filter-widget.ViewModel.ObjectTemplate
      * @parent filter-widget.ViewModel.props
      */
-    ObjectTemplate: {
-        get (t) {
-            if (t) {
-                return t;
-            }
-            return this.connection ? this.connection.Map : null;
-        }
-    },
+    ObjectTemplate: '*',
     /**
      * A list of filterObjects currently used in this widget
      * @property {Array<filter-widget.Filter>} filter-widget.ViewModel.filters

@@ -6,7 +6,6 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import CanEvent from 'can-event';
-import CanBatch from 'can-event/batch/batch';
 import assign from 'object-assign';
 import makeArray from 'can-util/js/make-array/make-array';
 
@@ -50,7 +49,7 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
     },
   /**
    * A list of objects to display. These objects should generally be can.Model
-   * objects but may be any can.Map or javascript object.
+   * objects but may be an javascript object.
    * @parent list-table.ViewModel.props
    * @property {Array<DefineMap>} list-table.ViewModel.props.objects
    */
@@ -82,7 +81,7 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
   /**
    * A list of the currently selected objects in the table
    * @parent list-table.ViewModel.props
-   * @property {Array.<can.Map>} list-table.ViewModel.props.selectedObjects
+   * @property {Array.<Object>} list-table.ViewModel.props.selectedObjects
    */
     selectedObjects: {
         Type: DefineList,
@@ -121,19 +120,10 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
         Type: DefineMap,
         value: function () {
             return {
-                fieldName: null,
+                field: null,
                 type: 'asc'
             };
         }
-    },
-  /**
-   * The icon class for the menu dropdown on each row
-   * @property {String} list-table.ViewModel.props.menuIconClass
-   * @parent list-table.ViewModel.props
-   */
-    menuIconClass: {
-        type: 'string',
-        value: 'fa fa-caret-down'
     },
   /**
    * Dispatches an event with the name of the passed argument. Any additional
@@ -152,23 +142,21 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
    * @param  {String} field the field to set the sort on
    */
     setSort (field) {
-        CanBatch.start();
-        if (this.currentSort.fieldName !== field) {
+        if (this.currentSort.field !== field) {
             this.currentSort = {
-                fieldName: field,
+                field: field,
                 type: 'asc'
             };
         } else {
             this.currentSort.type = this.currentSort.type === 'asc' ? 'desc' : 'asc';
         }
-        CanBatch.stop();
         this.dispatch('sort', [this.currentSort]);
     },
   /**
    * Toggles a row as selected or not selected
    * @function toggleSelected
    * @signature
-   * @param  {can.Map} obj The row to toggle
+   * @param  {Object} obj The row to toggle
    */
     toggleSelected (obj) {
         const index = this.selectedObjects.indexOf(obj);
@@ -195,7 +183,7 @@ export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
    * it to the list of currently selected objects
    * @function isSelected
    * @signature
-   * @param  {can.Map | Object} obj The object to check if is selected
+   * @param  {Object} obj The object to check if is selected
    * @return {Boolean}     Whether or not it is selected
    */
     isSelected (obj) {

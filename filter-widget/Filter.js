@@ -79,7 +79,12 @@ export const FilterOptions = [{
  */
 export const Filter = DefineMap.extend('Filter', {
     /**
-     * A value to filter on. Can be any primitive type
+     * @prototype
+     */
+    /**
+     * A value to filter on. Can be any primitive type. If the
+     * [filter-widget.Filter.props.field `field`] property
+     * is set, the `field.type` property will be used to coerce the value.
      * @property {*} filter-widget.Filter.props.value value
      * @parent filter-widget.Filter.props
      */
@@ -98,6 +103,9 @@ export const Filter = DefineMap.extend('Filter', {
         type: 'string',
         get (name) {
             return this.field ? this.field.name : name;
+        },
+        serialize (name) {
+            return name;
         }
     },
     /**
@@ -111,7 +119,10 @@ export const Filter = DefineMap.extend('Filter', {
     },
     /**
      * A field object that defines the available operator options and properties.
-     * This is used to create the dropdown choice for each filter in the filter-widget
+     * This is used to create the dropdown choice for each filter in the filter-widget.
+     * This field is generated automatically. If the
+     * [filter-widget.Filter.props.field `field`] property is set,
+     * the `field.type` property will be used to filter the operator options.
      * @property {Object} filter-widget.Filter.props.operatorField operatorField
      * @parent filter-widget.Filter.props
      */
@@ -131,6 +142,14 @@ export const Filter = DefineMap.extend('Filter', {
             });
         }
     },
+    /**
+     * A virtual property to provide the field alias. If the
+     * [filter-widget.Filter.props.field `field`] property is set, this alias
+     * will match the `field.alias`
+     * @property {Object} filter-widget.Filter.props.alias alias
+     * @parent filter-widget.Filter.props
+     *
+     */
     alias: {
         get () {
             return this.field ? this.field.alias : makeSentenceCase(this.name);
@@ -138,7 +157,9 @@ export const Filter = DefineMap.extend('Filter', {
     },
     /**
      * A field object that defines the value field properties.
-     * This is used to create the value field for each filter in the filter-widget
+     * This is used to create the value field for each filter in the filter-widget.
+     * If the [filter-widget.Filter.props.field `field`] property is set, the
+     * valueField will be a customized field based off of the set field.
      * @property {util/field.Field} filter-widget.Filter.props.valueField valueField
      * @parent filter-widget.Filter.props
      */
@@ -156,16 +177,22 @@ export const Filter = DefineMap.extend('Filter', {
         }
     },
     /**
-     * The field object used to initialize this filter
+     * The field object used to initialize this filter. When this value is
+     * provided, the custom field will be used in place of the regular
+     * text field. This allows the user to interract with a different
+     * type of field, like a checkbox when setting filters.
      * @property {util/field.Field}  filter-widget.Filter.props.field field
+     * @parent filter-widget.Filter.props
      */
     field: {
         Type: Field,
         serialize: false
     },
     /**
-     * creates a dummmy form object for use with the field template
+     * A virtual property that creates a dummmy form object for use with the
+     * field template
      * @property {Object}  filter-widget.Filter.props.formObject formObject
+     * @parent filter-widget.Filter.props
      */
     formObject: {
         serialize: false,

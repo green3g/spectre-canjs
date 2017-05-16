@@ -120,6 +120,7 @@ const fields = [{
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
+    dirtyObject: null,
     formObject: new Template(),
     fields: fields,
     onChange() {
@@ -132,8 +133,9 @@ const vm = new DefineMap({
     onCancel() {
         console.log('Form canceled!');
     },
-    stringify() {
-        return JSON.stringify(this.formObject.serialize());
+    stringify(obj) {
+      if(!obj){ return }
+        return JSON.stringify(obj.serialize());
     }
 });
 

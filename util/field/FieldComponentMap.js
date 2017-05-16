@@ -3,7 +3,7 @@ import {parseFieldArray, Field} from '../field/field';
 import DefineList from 'can-define/list/list';
 
 /**
- * @module util/field.FieldComponentMap
+ * @constructor util/field/FieldComponentMap
  * @parent util/field
  * @group util/field.FieldComponentMap.props
  * A super class for widgets utilizing a fields property that needs

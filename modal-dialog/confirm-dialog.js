@@ -6,7 +6,7 @@ import assign from 'object-assign';
 
 /**
  * @constructor confirm-dialog.ViewModel ViewModel
- * @extends modal-dialog.ViewModel
+ * @inherits modal-dialog.ViewModel
  * @parent confirm-dialog
  * @group confirm-dialog.ViewModel.props Properties
  *

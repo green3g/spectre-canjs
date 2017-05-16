@@ -6,7 +6,9 @@
 
 ## Description
 
-A configureable toggle button designed for dropdown menus and other elements
+A configureable toggle button designed for dropdown menus and other elements.
+Any elements placed in a dropdown-menu will be hidden initially and
+ toggled when clicked
 
 ## Demo
 

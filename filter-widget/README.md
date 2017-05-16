@@ -2,14 +2,18 @@
 @module {can.Component} filter-widget <filter-widget />
 @parent spectre.components
 @group filter-widget.props Properties
-@link http://jsonapi.org/format/#fetching-filtering JSON-API
 -->
 
 ## Description
 
-A widget with several fields that let the user filter a rest response. Uses a list-table to display the current filter objects.
+A minimalist widget that allows a user to create filters from an array of
+fields. Initially, only a dropdown is displayed. Upon choosing a field from the
+dropdown, a dynamic filter form is generated.
 
-The filters generated follow the JSON API specification implemented by Flask-Restless
+The filters generated consist of three parts
+ - Operator - the type of comparator to filter on
+ - Name - the name of the field
+ - Value - the value to filter on
 
 ## Demo
 

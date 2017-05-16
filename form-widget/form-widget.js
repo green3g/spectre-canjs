@@ -9,9 +9,9 @@ import './widget.less!';
  * @parent form-widget
  * @group form-widget.ViewModel.props Properties
  * @group form-widget.ViewModel.events Events
- * @extends util/field/FieldComponentMap
  *
- * @description A `<form-widget />` component's ViewModel
+ * @description A `<form-widget />` component's ViewModel. This viewmodel
+ * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
  */
 export const ViewModel = FieldComponentMap.extend('FormWidget', {
     /**
@@ -19,7 +19,7 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
      */
    /**
     * A string referencing a field property that will exclude that field
-    * from this classes fields. The default is 'edit'.
+    * from this classes fields. The default is `'edit'`.
     * @property {String} form-widget.ViewModel.props.excludeFieldKey excludeFieldKey
     * @parent form-widget.ViewModel.props
     */
@@ -36,7 +36,7 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         value: true
     },
     /**
-     * Whether or not this form should be a bootstrap inline form
+     * Whether or not this form should be an inline (horizontal) form
      * @property {Boolean} form-widget.ViewModel.props.inline
      * @parent form-widget.ViewModel.props
      */
@@ -45,15 +45,18 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         value: false
     },
     /**
-     * The connection info for this form's data. If this is provided, the object will be fetched using the objectId property
-     * @property {connectInfoObject} form-widget.ViewModel.props.connection
+     * The connection info for this form's data. If this is provided, the
+     * object will be fetched using the objectId property
+     * @property {can-connect} form-widget.ViewModel.props.connection
+     * @link https://canjs.com/doc/can-connect.html can-connect
      * @parent form-widget.ViewModel.props
      */
     connection: {
         value: null
     },
     /**
-     * The object id of the item to retrieve. If this is provided, a request will be made to the connection object with the specified id.
+     * The object id of the item to retrieve. If this and [form-widget.ViewModel.props.connection] is provided, a request
+     * will be made to the connection object with the specified id.
      * @property {Number} form-widget.ViewModel.props.objectId
      * @parent form-widget.ViewModel.props
      */
@@ -74,9 +77,10 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         value: null
     },
     /**
-     * An object representing a can.Map or similar object. This object should have
-     * a `save` method like a `can.Model` or `can-connect.superMap`. This object is
-     * updated and its `save` method is called when the form is submitted.
+     * An object representing the current state of the values passed to the form.
+     * If the fields have changed, this object will be updated when the submit
+     * button is pressed and the validations have passed. To capture current
+     * state of the form, use [form-widget.ViewModel.props.dirtyObject].
      * @property {DefineMap} form-widget.ViewModel.props.formObject
      * @parent form-widget.ViewModel.props
      */
@@ -90,17 +94,13 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         Value: DefineMap
     },
     /**
-     * If set to true, the form will go into a saving/loading state
-     * when the submit button is clicked
-     * @property {Boolean} form-widget.ViewModel.props.showSaving
-     * @parent form-widget.ViewModel.props
-     */
-    showSaving: {
-        type: 'htmlbool',
-        value: false
-    },
-    /**
-     * an object consisting of validation error strings
+     * An object consisting of validation error strings
+     * ```javascript
+     *{
+     *    fieldName: 'error message',
+     *    otherFieldName: 'another error message'
+     *}
+     * ```
      * @property {Object} form-widget.ViewModel.props.validationErrors
      * @parent form-widget.ViewModel.props
      */
@@ -119,9 +119,9 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
     },
     /**
      * Whether or not this form is valid and can be submitted. If this is
-     * false, the form will not emit the submit event when it is submitted.
-     * Instead, it will emit a `submit-fail` event
-     * @property {Boolean} form-widget.ViewModel.props.
+     * false, the form will not dispatch the `submit` event when it is submitted.
+     * Instead, it will dispatch a `submit-fail` event
+     * @property {Boolean} form-widget.ViewModel.props.isValid isValid
      * @parent form-widget.ViewModel.props
      */
     isValid: {
@@ -157,9 +157,9 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
      * Fetches and replaces the formObject with a new formObject
      * @function fetchObject
      * @signature
-     * @param  {superMap} con The supermap connection to the api service
+     * @param  {connection} con The supermap connection to the api service
      * @param  {Number} id  The id number of the object to fetch
-     * @return {Promise}
+     * @return {Promise} A promise resolved when the object is fetched from can-connect
      */
     fetchObject (con, id) {
         if (!con || !id) {
@@ -174,7 +174,8 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         return promise;
     },
     /**
-     * Called when the form is submitted. The object is updated by calling it's `save` method. The event `submit` is dispatched.
+     * Called when the form is submitted. The object is updated by calling
+     * it's `save` method. The event `submit` is dispatched.
      * @function submitForm
      * @signature
      * @param {Object} vm The scope of the form (this view model)
@@ -202,7 +203,9 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
     /**
      * Sets the formObject value when a field changes. This will allow for future
      * functionality where the form is much more responsive to values changing, like
-     * cascading dropdowns. Dispatches the `fieldchange` event when a field changes
+     * cascading dropdowns. Dispatches the `fieldchange` event when a field changes.
+     * This updates the [form-widget.ViewModel.props.dirtyObject] and calls the
+     * validation method on the field.
      * @function setField
      * @signature
      * @param  {util/field.Field} field  The field object properties
@@ -233,7 +236,7 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
         }
     },
     /**
-     * Validates a field with a value if the field has a validate property
+     * Validates a field with a value if the field has a [util/field.Field.props.validate] property
      * @function getValidationError
      * @param  {Object} field The field object to validate
      * @param  {value} value The value of the field to validate

@@ -11,7 +11,7 @@ export const MetadataMap = DefineMap.extend('Metadata', {
 
 /**
  * A behavior to add the total count of objects available to the connection's metadata
- * @type {Behavior}
+ * @property {Behavior}
  */
 export default connect.behavior('totalResourceCount', function (base) {
     return {

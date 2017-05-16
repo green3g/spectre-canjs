@@ -17,9 +17,9 @@ import '../dropdown-menu/dropdown-menu';
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
  * @group list-table.ViewModel.props Properties
- * @extends util/field/FieldComponentMap
  *
- * @description A `<list-table />` component's ViewModel
+ * @description A `<list-table />` component's ViewModel. This viewmodel
+ * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
  */
 export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
   /**

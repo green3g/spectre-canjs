@@ -5,7 +5,9 @@
 -->
 
 ## Description
-A configureable form widget to modify data. The form accepts a formObject property that should be an object similar to a `can.Map`. When the form is submitted, it calls the model's `save` method.
+A configureable form widget to modify data. The form supports builtin and custom
+field types, and provides additional functionality such as nested forms,
+validation, and tracking dirty vs. set values.
 
 ## Demo
 

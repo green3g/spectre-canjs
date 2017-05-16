@@ -20,25 +20,25 @@ let pageId = 0;
 export const PageViewModel = DefineMap.extend('NavPage', {
   /**
    * The display state of the page. If true, the page content will be shown
-   * @type {Boolean} nav-container.ViewModel.props.active active
+   * @property {Boolean} nav-container.ViewModel.props.active active
    * @parent nav-container.ViewModel.props
    */
     active: {type: 'boolean', value: false},
     /**
      * The label to display in the parent container tab
-     * @type {String} nav-container.ViewModel.props.label label
+     * @property {String} nav-container.ViewModel.props.label label
      * @parent nav-container.ViewModel.props
      */
     label: 'string',
     /**
      * Whether or not this page is currently loading
-     * @type {HTMLBoolean} nav-container.ViewModel.props.loading loading
+     * @property {HTMLBoolean} nav-container.ViewModel.props.loading loading
      * @parent nav-container.ViewModel.props
      */
     loading: {type: 'htmlbool', value: false},
     /**
      * A unique id to identify this page. The default is automatically provided.
-     * @type {String} nav-container.ViewModel.props.pageId pageId
+     * @property {String} nav-container.ViewModel.props.pageId pageId
      * @parent nav-container.ViewModel.props
      */
     pageId: {
@@ -48,7 +48,7 @@ export const PageViewModel = DefineMap.extend('NavPage', {
     },
     /**
      * The parent containers view model
-     * @type {DefineMap} nav-container.ViewModel.props.parent parent
+     * @property {DefineMap} nav-container.ViewModel.props.parent parent
      * @parent nav-container.ViewModel.props
      */
     parent: '*'

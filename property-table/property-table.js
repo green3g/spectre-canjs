@@ -9,9 +9,9 @@ import assign from 'object-assign';
  * @constructor property-table.ViewModel ViewModel
  * @parent property-table
  * @group property-table.ViewModel.props Properties
- * @extends util/field/FieldComponentMap
+ * @description A `<property-table />` component's ViewModel. This viewmodel
+ * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
  *
- * @description A `<property-table />` component's ViewModel
  */
 export const ViewModel = FieldComponentMap.extend('PropertyTable', {
     /**
@@ -86,20 +86,12 @@ export const ViewModel = FieldComponentMap.extend('PropertyTable', {
      */
     objectPromise: {},
     /**
-     * A configuration object defining exactly how to display the properties fields and values
-     * @property {property-table.types.tablePropertiesObject} property-table.ViewModel.props.fieldProperties
-     * @parent property-table.ViewModel.props
-     */
-    fieldProperties: {
-        value: null
-    },
-    /**
      * Asynchronously fetches an object using a can-connect model and an id
      * @function fetchObject
      * @signature
      * @param  {can-connect.model} con The connection object to an api resource
      * @param  {Number} id  The id number of the object to retrieve
-     * @return {Deferred}     A deferred object that is resolved once the object is retreived
+     * @return {Promise}     A promise that is resolved once the object is retreived
      * @link https://connect.canjs.com/ can-connect
      */
     fetchObject (con, id) {

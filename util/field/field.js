@@ -93,8 +93,8 @@ export const Field = DefineMap.extend('Field', {
         value: 'text'
     },
     /**
-     * The form field template to use when editing this field. This should be
-     * a stache template renderer. By default, this value is set to the
+     * The form field template to use when editing this field in the form-widget. This should be
+     * a template renderer. By default, this value is set to the
      * template for the given `fieldType` property.
      *
      * The default renderers are provided as a constant, and may be referenced
@@ -112,7 +112,6 @@ export const Field = DefineMap.extend('Field', {
      *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
      *
      * For example:
-     * `'<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />'`
      * @property {Renderer} util/field.Field.props.formTemplate formTemplate
      * @parent util/field.Field.props
      */
@@ -134,9 +133,11 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * Formats the field into a renderer. The renderer has the scope of the
-     * list-table and property table. The simplest displayTemplate value would be
-     * the default, which is `{{object[field.name]}}`.
+     * @body
+     * Formats the field into a renderer in the list and details view of the
+     * data-admin component. The renderer has the scope of the
+     * list-table or property table. The simplest displayTemplate value would be
+     * the default, which is `object[field.name]`. (make sure to surround values with brackets)
      *
      * In this example,
      * the scope of the table components provide access to each row as `object` and the
@@ -145,21 +146,21 @@ export const Field = DefineMap.extend('Field', {
      * In addition, other properties can be accessed and combined by providing it
      * `{{object.other_prop_name}}`. Custom helpers and other methods may also be
      * registered and utilized. For instance, if we created a global helper
-     * `capitalize(property)` we could access it with {{capitalize object.prop_name}}.
+     * `capitalize(property)` we could access it with `capitalize object.prop_name`.
      *
      * For a local helper, an additional method could be added to the field, like
      * ```javascript
      * {
      * name: 'prop',
      * alias: 'Property',
-     * displayTemplate: '{{field.capitalize(object['prop'])}}',
      * capitalize: function(val){
      *     return val.toUpperCase();
      * }
      * }
      * ```
+     *
+     * In a stache template, this could be rendered using `field.capitalize(object.prop)`
      * @property {Renderer} util/field.Field.props.displayTemlpate displayTemplate
-     * @signature `formatter(property)`
      * @parent util/field.Field.props
      */
     displayTemplate: {

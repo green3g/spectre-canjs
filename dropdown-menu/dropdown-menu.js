@@ -41,8 +41,9 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      */
     visible: 'boolean',
     /**
-     * The button class to apply to the button dropdown. The default is `btn btn-link`
-     * @property {String} dropdown-menu.ViewModel.props.buttonClass
+     * The button class to apply to the button dropdown. The default is `btn btn-link`.
+     * See the spectre.css styles for details on more button classes available
+     * @property {String} dropdown-menu.ViewModel.props.buttonClass buttonClass
      * @parent dropdown-menu.ViewModel.props
      */
     buttonClass: {
@@ -52,14 +53,14 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
      * An array of buttons to display next to the dropdown button. This creates a split
      * dropdown menu button group
-     * @property {Array<ButtonObject>} dropdown-menu.ViewModel.props.primaryButton
+     * @property {Array<ButtonObject>} dropdown-menu.ViewModel.props.primaryButtons primaryButtons
      * @parent dropdown-menu.ViewModel.props
      */
     primaryButtons: DefineList,
     /**
      * Whether or not to align this dropdown menu on the right hand side of
      * the button.
-     * @property {HTMLBoolean} dropdown-menu.ViewModel.props.right
+     * @property {HTMLBoolean} dropdown-menu.ViewModel.props.right right
      * @parent dropdown-menu.ViewModel.props
      */
     right: 'htmlbool',
@@ -68,7 +69,8 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
      * @function toggle
      * @signature
      * @param {Event} ev (event) the click event to cancel
-     * @param {Boolean} val (optional) whether or not to display the menu, if undefined the dropdown will be visible
+     * @param {Boolean} val optional - whether or not to display the menu,
+     * if undefined the dropdown will toggle the current visibility
      * @return {Boolean} always returns false to prevent page navigation from occuring
      */
     toggle (ev, val) {
@@ -87,8 +89,11 @@ export const ViewModel = DefineMap.extend('DropdownMenu', {
         return false;
     },
     /**
-     * Queries the dom for other dropdown-menu components and hides them
+     * Queries the dom for other dropdown-menu components and hides them.
+     * This is used when a dropdown component is visible and another one is
+     * clicked, any others will be made invisible
      * @function hideAll
+     * @signature `hideAll()`
      */
     hideAll () {
         const nodes = document.querySelectorAll('dropdown-menu');

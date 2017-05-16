@@ -24,7 +24,7 @@ import {ViewMap} from './ViewMap';
 
 /**
  * @constructor data-admin.SortMap SortMap
- * @parent data-admin
+ * @parent data-admin.types
  * @group data-admin.SortMap.props Properties
  *
  * @description A special map for handling sorting parameter serialization
@@ -32,19 +32,21 @@ import {ViewMap} from './ViewMap';
 export const SortMap = DefineMap.extend('SortMap', {
   /**
    * The fieldname to sort on.
-   * @property {String}
+   * @property {String} data-admin.SortMap.props.field field
+   * @parent data-admin.SortMap.props
    */
-    fieldName: 'string',
+    field: 'string',
   /**
    * The type of sorting to apply to the field, valid values are `asc` or `desc`
-   * @property {String}
+   * @property {String} data-admin.SortMap.props.type
+   * @parent data-admin.SortMap.props
    */
     type: {value: 'asc', type: 'string'}
 });
 
 /**
  * @constructor data-admin.ParameterMap ParameterMap
- * @parent data-admin
+ * @parent data-admin.types
  * @group data-admin.ParameterMap.props Properties
  *
  * @description A special map for handling paramter serialization
@@ -54,7 +56,8 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
 }, {
   /**
    * An array of filter parameters
-   * @property {Array<filter-widget.Filter>}
+   * @property {Array<filter-widget.Filter>} data-admin.ParameterMap.props.filters filters
+   * @parent data-admin.ParameterMap.props
    */
     filters: {
         Type: FilterList,
@@ -62,7 +65,8 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
     },
   /**
    * The number of items to show per per page. The default is 10.
-   * @property {Number}
+   * @property {Number} data-admin.ParameterMap.prop.perPage perPage
+   * @parent data-admin.ParameterMap.props
    */
     perPage: {
         type: 'number',
@@ -72,7 +76,8 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
    * The current page index to show. The default is 0.
    * This value is 0 indexed so if you want the 3rd page, you would use
    * index of 2.
-   * @property {Object}
+   * @property {Object} data-admin.ParameterMap.props.page page
+   * @parent data-admin.ParameterMap.props
    */
     page: {
         type: 'number',
@@ -80,7 +85,8 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
     },
   /**
    * Properties defining the sorting of the list table view.
-   * @property {data-admin.SortMap}
+   * @property {data-admin.SortMap} data-admin.ParameterMap.props.sort
+   * @parent data-admin.ParameterMap.props
    */
     sort: {
         Type: SortMap,
@@ -97,7 +103,6 @@ export const ParameterMap = DefineMap.extend('ParameterMap', {
  * @constructor data-admin.ViewModel ViewModel
  * @parent data-admin
  * @group data-admin.ViewModel.props Properties
- *
  * @description A `<data-admin />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('DataAdmin', {
@@ -262,7 +267,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * Buttons to use for the list table actions. If `view.disableEdit` and `view.disableDelete` is falsey
    * the buttons will include an edit and delete button, respectively. Otherwise, it will be
    * a simple view details button.
-   * @property {Array<list-table.ButtonObject>} data-admin.ViewModel.props.buttons buttons
+   * @property {Array<dropdown-menu.ButtonObject>} data-admin.ViewModel.props.buttons buttons
    * @parent data-admin.ViewModel.props
    */
     buttons: {

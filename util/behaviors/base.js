@@ -13,6 +13,14 @@ import totalResourceCount from './totalResourceCount';
 
 import $ from 'jquery';
 
+/**
+ * @module {function} util/behaviors/base base
+ * @description A custom base connection factory for can-connect. Similar
+ * to the `can-connect/can/base` connection but adds spectre-canjs behaviors
+ * @param  {Object} options Behavior options. Mixin additional behaviors using the `options.behaviors` (array)
+ * @return {Connection}         The can-connect connection object
+ * @parent util/behaviors
+ */
 export default function (options) {
 
     var behaviors = [

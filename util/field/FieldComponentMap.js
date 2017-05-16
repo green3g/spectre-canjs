@@ -3,8 +3,8 @@ import {parseFieldArray, Field} from '../field/field';
 import DefineList from 'can-define/list/list';
 
 /**
- * @constructor util/field/FieldComponentMap
- * @parent util/field
+ * @constructor util/field/FieldComponentMap FieldComponentMap
+ * @parent util/field.types
  * @group util/field.FieldComponentMap.props
  * A super class for widgets utilizing a fields property that needs
  * to be filtered.

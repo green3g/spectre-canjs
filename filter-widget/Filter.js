@@ -8,7 +8,7 @@ import define from 'can-define';
 
 /**
  * @property filter-widget.FilterOptions FilterOptions
- * @parent filter-widget
+ * @parent filter-widget.types
  *
  * @description The default filter operator options
  */
@@ -71,7 +71,7 @@ export const FilterOptions = [{
 
 /**
  * @constructor filter-widget.Filter Filter
- * @parent filter-widget
+ * @parent filter-widget.types
  * @group filter-widget.Filter.props Properties
  *
  * @description Creates a new filter object
@@ -218,7 +218,7 @@ export const Filter = DefineMap.extend('Filter', {
 
 /**
  * @constructor filter-widget.FilterList FilterList
- * @parent filter-widget
+ * @parent filter-widget.types
  *
  * @description Creates a new filter list
  * @signature `new FilterList([filters])`

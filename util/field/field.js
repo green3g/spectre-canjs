@@ -1,11 +1,3 @@
-/**
- * @module {Module} util/field field
- * @parent spectre.util
- * @group util/field.methods Utility Methods
- * @description Field parsing and creating utilities
- */
-
-
 import {makeSentenceCase} from '../string/string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -25,7 +17,7 @@ import dev from 'can-util/js/dev/dev';
  *  - date: `<date-field />` component
  *  - checkbox: `<checkbox-field />` component
  * @property {Object} util/field.Field.TEMPLATES Built-in Templates
- * @parent util/field.Field.guides
+ * @parent util/field.guides
  */
 export const TEMPLATES = {
     text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
@@ -49,7 +41,6 @@ const displayTemplate = stache('{{object[field.name]}}');
  * @constructor util/field.Field Field
  * @parent util/field
  * @group util/field.Field.props Properties
- * @group util/field.Field.guides Guides
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
@@ -275,7 +266,7 @@ export function parseFieldArray (fields) {
  * @function util/field.methods.mapToFields mapToFields
  * @parent util/field.methods
  * @signature `mapToFields(defineMap)`
- * @param  {DefineMap} defineMap The extended map/constructor to parse
+ * @param  {Constructor} defineMap The extended map/constructor to parse
  * @return {Array<util/field.Field>} The array of fields
  */
 export function mapToFields (defineMap) {

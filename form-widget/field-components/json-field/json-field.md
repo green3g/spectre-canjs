@@ -8,7 +8,7 @@
 
 @description
 
-This component creates a sub form that is serialized to a JSON string when values in the sub form change. This can be used to store JSON data in a database field.
+<span class="label label-warning">DEPRECATED</span>. Use subform-field instead. This component creates a sub form that is serialized to a JSON string when values in the sub form change. This can be used to store JSON data in a database field.
 
 # Example
 

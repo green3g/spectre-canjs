@@ -1,6 +1,7 @@
 <!--
 @module {can.Component} dropdown-menu <dropdown-menu />
 @parent spectre.components
+@group dropdown-menu.types Types
 @outline 3
 -->
 

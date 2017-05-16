@@ -8,9 +8,35 @@ import {FilterList, Filter} from '~/filter-widget/Filter';
 import '~/filter-widget/filter-widget';
 import '~/dropdown-menu/dropdown-menu';
 
+/**
+ * @constructor search-control.ViewModel ViewModel
+ * @parent search-control
+ * @group search-control.ViewModel.props Properties
+ *
+ * @description A `<search-control />` component's ViewModel
+ */
 export const ViewModel = DefineMap.extend({
+  /**
+   * @prototype
+   */
+  
+  /**
+   * The current filters
+   * @property {Array<filter-widget.Filter>} search-control.ViewModel.props.filters filters
+   * @parent search-control.ViewModel.props
+   */
     filters: FilterList,
+    /**
+     * The fields to search on. These fields will be excluded from the fitler
+     * if `filter: false`
+     * @property {Array<util/field.Field>} search-control.ViewModel.props.fields fields
+     */
     fields: DefineList,
+    /**
+     * The view object is used to retrieve quickFilters and the ObjectTemplate
+     * @property {Object} search-control.ViewModel.props.view view
+     * @parent search-control.ViewModel.props
+     */
     view: '*',
 
   /**

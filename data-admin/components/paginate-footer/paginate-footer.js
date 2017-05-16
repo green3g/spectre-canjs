@@ -5,9 +5,6 @@ import './paginate-footer.less';
 
 import '~/paginate-widget/paginate-widget';
 
-/**
- * @module paginate-footer
- */
 
 /**
  * @constructor paginate-footer.ViewModel ViewModel

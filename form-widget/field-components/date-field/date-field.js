@@ -145,6 +145,7 @@ export const ViewModel = DefineMap.extend('DateField', {
     /**
      * Returns the number of days in the month of the date provided
      * @function getDaysInMonth
+     * @signature
      * @param {Date} date the date to determine the number of days in the month from
      * @return {Number} the number of days in the month
      */
@@ -159,6 +160,7 @@ export const ViewModel = DefineMap.extend('DateField', {
      * Called when one of the select-field values change. Dispatches the
      * `change` event with the current date value
      * @function onChange
+     * @signature `onChange()`
      */
     onChange () {
         this.dispatch('fieldchange', [{
@@ -169,6 +171,7 @@ export const ViewModel = DefineMap.extend('DateField', {
     /**
      * Checks to see if the date is valid
      * @function isValidDate
+     * @signature
      * @param {String|Date} d the date to check for validity. This can be either
      * a string like `12/12/2016` or a date object
      * @return {Boolean} whether or not the date is valid

@@ -11,7 +11,7 @@ import './json-field.less';
 /**
  * @constructor form-widget/field-components/json-field.ViewModel ViewModel
  * @parent form-widget/field-components/json-field
- * @group form-widget/field-components/json-field.ViewModel.props Properties
+ * @group json-field.ViewModel.props Properties
  *
  * @description A `<json-field />` component's ViewModel
  */

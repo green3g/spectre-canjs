@@ -1,7 +1,7 @@
 <!--
 @module {can.Component} filter-widget <filter-widget />
 @parent spectre.components
-@group filter-widget.props Properties
+@group filter-widget.types Types
 -->
 
 ## Description

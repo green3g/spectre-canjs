@@ -1,6 +1,7 @@
 <!--
 @module {can.Component} data-admin <data-admin />
 @parent spectre.components
+@group data-admin.types Types
 @outline 3
 -->
 
@@ -15,7 +16,7 @@ create, update, display, and delete any type of data.
 
 Each data-admin consists of several partial templates which can easily be replaced
 to allow developers to customize any part of the data administration interface
-while utilizing the functionality of the data-admin viewmodel. 
+while utilizing the functionality of the data-admin viewmodel.
 
 ## The View Property
 

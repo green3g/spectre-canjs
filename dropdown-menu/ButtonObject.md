@@ -1,5 +1,5 @@
-@typedef {Object} list-table.ButtonObject ButtonObject
-@parent list-table
+@typedef {Object} dropdown-menu.ButtonObject ButtonObject
+@parent dropdown-menu.types
 @option {String} text The title to display on the button
 @option {Function(Array<Object>)} onClick A click handler to call with an array with the object.
 @option {String} iconClass The class to use for the button icon

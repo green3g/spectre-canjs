@@ -9,7 +9,7 @@ import addTemplate from './templates/add.stache!';
 /**
  * @typedef {object} data-admin.relatedView RelatedView
  * related view objects that describe the relationship between a parent and child view.
- * @parent data-admin
+ * @parent data-admin.types
  * //TODO this seems wrong, the foreignKey should probably be switched to the child
  * @option {String} foreignKey - The property to lookup a value for on the parent view's selected object
  * @option {String} referenceKey - The property on child view's objects to filter on
@@ -21,7 +21,7 @@ import addTemplate from './templates/add.stache!';
  * @group data-admin/ViewMap.template View Templates
  * @group data-admin/ViewMap.event Event Functions
  * @group data-admin/ViewMap.props Properties
- * @parent data-admin
+ * @parent data-admin.types
  * A view object that controls the display and management of data in the
  * data-admin and other data components.
  */

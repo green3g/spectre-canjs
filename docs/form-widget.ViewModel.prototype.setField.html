@@ -220,18 +220,6 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props..html" data-search="form-widget.ViewModel.props.">
-						
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.connection.html" data-search="form-widget.ViewModel.props.connection">
 						connection
 					</a>
@@ -256,8 +244,8 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props.fields.html" data-search="form-widget.ViewModel.props.fields">
-						fields
+					<a class="property" href="form-widget.ViewModel.props.excludeFieldKey.html" data-search="excludeFieldKey">
+						excludeFieldKey
 					</a>
 				</li>
 				
@@ -304,6 +292,18 @@
 				
 				
 				<li class="menu-item search-container">
+					<a class="property" href="form-widget.ViewModel.props.isValid.html" data-search="isValid">
+						isValid
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.objectId.html" data-search="form-widget.ViewModel.props.objectId">
 						objectId
 					</a>
@@ -330,18 +330,6 @@
 				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.showButtons.html" data-search="form-widget.ViewModel.props.showButtons">
 						showButtons
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props.showSaving.html" data-search="form-widget.ViewModel.props.showSaving">
-						showSaving
 					</a>
 				</li>
 				
@@ -418,7 +406,9 @@
 				<section class="description">
 					<p>Sets the formObject value when a field changes. This will allow for future
 functionality where the form is much more responsive to values changing, like
-cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field changes</p>
+cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field changes.
+This updates the <a href="form-widget.ViewModel.props.dirtyObject.html">dirtyObject</a> and calls the
+validation method on the field.</p>
 
 				</section>
 			
@@ -544,7 +534,7 @@ cascading dropdowns. Dispatches the <code>fieldchange</code> event when a field 
 	
 
 	<script type="text/javascript">
-		var docObject = {"src":"form-widget\\form-widget.js","line":211,"codeLine":222,"description":"Sets the formObject value when a field changes. This will allow for future\nfunctionality where the form is much more responsive to values changing, like\ncascading dropdowns. Dispatches the `fieldchange` event when a field changes","title":"","name":"form-widget.ViewModel.prototype.setField","parent":"form-widget.ViewModel.prototype","type":"function","signatures":[{"description":"","params":[{"types":[{"type":"util/field.Field"}],"name":"field","description":"The field object properties"},{"types":[{"type":"domElement"}],"name":"domElement","description":"The form element that dispatched the event"},{"types":[{"type":"Event"}],"name":"event","description":"The event object and type"},{"types":[{"type":"FieldChangeEventObject"}],"name":"props","description":"The value that was passed from the field component"}]}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"src":"form-widget\\form-widget.js","line":202,"codeLine":215,"description":"Sets the formObject value when a field changes. This will allow for future\nfunctionality where the form is much more responsive to values changing, like\ncascading dropdowns. Dispatches the `fieldchange` event when a field changes.\nThis updates the [form-widget.ViewModel.props.dirtyObject] and calls the\nvalidation method on the field.","title":"","name":"form-widget.ViewModel.prototype.setField","parent":"form-widget.ViewModel.prototype","type":"function","signatures":[{"description":"","params":[{"types":[{"type":"util/field.Field"}],"name":"field","description":"The field object properties"},{"types":[{"type":"domElement"}],"name":"domElement","description":"The form element that dispatched the event"},{"types":[{"type":"Event"}],"name":"event","description":"The event object and type"},{"types":[{"type":"FieldChangeEventObject"}],"name":"props","description":"The value that was passed from the field component"}]}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

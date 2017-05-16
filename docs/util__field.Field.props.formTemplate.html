@@ -2,7 +2,7 @@
 	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
 
 	INSTEAD CHANGE:
-	source: util\field.js
+	source: util\field\field.js
 	@property util/field.Field.props.formTemplate
 ######################################################################## -->
 
@@ -86,8 +86,8 @@
 			
 		
 		<li class="menu-item search-container active parent">
-			<a class="sidebar-title" href="util__field.html" data-search="field">
-				field
+			<a class="sidebar-title" href="util__field.html" data-search="field">
+				field
 			</a>
 		</li>
     <li class="divider"></li>
@@ -105,44 +105,6 @@
 				
 					<li class="divider menu-header heading search-container" data-content="prototype"></li>
 						
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="function" href="util__field.Field.prototype.getFormattedValue.html" data-search="util/field.Field.prototype.getFormattedValue">
-						getFormattedValue
-					</a>
-				</li>
-				
-
-			
-		
-
-
-				
-				
-
-			
-		
-			
-				
-					<li class="divider menu-header heading search-container" data-content="Guides"></li>
-						
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="util__field.Field.TEMPLATES.html" data-search="Built-in Templates">
-						Built-in Templates
-					</a>
-				</li>
-				
-
-			
-		
-
 
 				
 				
@@ -172,6 +134,18 @@
 				<li class="menu-item search-container">
 					<a class="property" href="util__field.Field.props.detail.html" data-search="detail">
 						detail
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="property" href="util__field.Field.props.displayTemlpate.html" data-search="displayTemplate">
+						displayTemplate
 					</a>
 				</li>
 				
@@ -220,18 +194,6 @@
 				<li class="menu-item search-container active ">
 					<a class="property active " href="util__field.Field.props.formTemplate.html" data-search="formTemplate">
 						formTemplate
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="util__field.Field.props.formatter.html" data-search="formatter">
-						formatter
 					</a>
 				</li>
 				
@@ -358,8 +320,8 @@
 
 			
 				<section class="description">
-					<p>The form field template to use when editing this field. This should be
-a stache template renderer. By default, this value is set to the
+					<p>The form field template to use when editing this field in the form-widget. This should be
+a template renderer. By default, this value is set to the
 template for the given <code>fieldType</code> property.</p>
 
 				</section>
@@ -399,7 +361,21 @@ template for the given <code>fieldType</code> property.</p>
 
 			
 				<section class="comment">
-					
+					<p>The default renderers are provided as a constant, and may be referenced
+by passing the <code>field.fieldType</code> parameter. For instance, passing
+<code>fieldType: 'select'</code> will set <code>formTemplate</code> to the registered
+template for a <code>select-field</code> component.</p>
+<p>Custom templates can be created to add various field types and functionality
+to the form widget.</p>
+<p>The custom templates will have the following useful properties in their scope:</p>
+<ul>
+<li><code>this</code>: (alias <code>.</code> is the current <code>this</code> object) the field properties object</li>
+<li><code>setField</code>: the function to call when the field changes</li>
+<li><code>formObject</code>: the form object</li>
+<li><code>validationErrors</code>: An object with keys referencing the field name, and a string referencing a validation error</li>
+</ul>
+<p>For example:</p>
+
 				</section>
 			
 			
@@ -426,7 +402,7 @@ template for the given <code>fieldType</code> property.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"util/field.Field.props.formTemplate","type":"property","parent":"util/field.Field.props","src":"util\\field.js","line":92,"codeLine":99,"description":"The form field template to use when editing this field. This should be\na stache template renderer. By default, this value is set to the\ntemplate for the given `fieldType` property.","types":[{"type":"Renderer"}],"title":"formTemplate","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"util/field.Field.props.formTemplate","type":"property","parent":"util/field.Field.props","src":"util\\field\\field.js","line":85,"codeLine":108,"description":"The form field template to use when editing this field in the form-widget. This should be\na template renderer. By default, this value is set to the\ntemplate for the given `fieldType` property.","types":[{"type":"Renderer"}],"title":"formTemplate","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

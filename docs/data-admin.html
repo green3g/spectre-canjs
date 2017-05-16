@@ -25,7 +25,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home
-		- &lt;data-admin /&gt; 
+		- &lt;data-admin /&gt; 
 	</title>
 	<meta name="description" content="">
 	<meta name="author" content=""> 
@@ -88,10 +88,27 @@
 		
 			
 			<li class="menu-item search-container active">
-			<a class="sidebar-title active" href="data-admin.html" data-search="&lt;data-admin /&gt;">
-				&lt;data-admin /&gt;
+			<a class="sidebar-title active" href="data-admin.html" data-search="&lt;data-admin /&gt;">
+				&lt;data-admin /&gt;
 			</a>
 			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="constructor" href="data-admin.ViewModel.html" data-search="ViewModel">
+						ViewModel
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+					<li class="divider menu-header heading search-container" data-content="Types"></li>
+						
 		
 			
 				
@@ -111,18 +128,6 @@
 				<li class="menu-item search-container">
 					<a class="constructor" href="data-admin.SortMap.html" data-search="SortMap">
 						SortMap
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="constructor" href="data-admin.ViewModel.html" data-search="ViewModel">
-						ViewModel
 					</a>
 				</li>
 				
@@ -155,6 +160,13 @@
 		
 
 
+				
+				
+
+			
+		
+
+
 		</li>
 			
 		
@@ -171,7 +183,7 @@
 			
 				<section class="title">
 					<div class="heading">
-	<h1>&lt;data-admin /&gt;</h1>
+	<h1>&lt;data-admin /&gt;</h1>
 
 	<div class="chip-sm">
 		<span class="chip-name">
@@ -241,16 +253,20 @@
 			
 				<section class="comment">
 					<h2>Description</h2>
-<p>A configureable data manager component that utilizes many of the data
+<p>A flexible data manager component that utilizes many of the data
 components to build a complete paginated display of data as well as tools for
 creating, editing, and deleting data.</p>
 <p>In addition to the components used, this component provides functionality to
 create, update, display, and delete any type of data.</p>
+<p>Each data-admin consists of several partial templates which can easily be replaced
+to allow developers to customize any part of the data administration interface
+while utilizing the functionality of the data-admin viewmodel.</p>
 <h2>The View Property</h2>
-<p>The <a href="data-admin__ViewMap.html"><code>view</code></a> is the core property to the
+<p>The <a href="data-admin__ViewMap.html">view</a> is the core property to the
 data-admin which controls exactly how the data-admin displays
 and updates the data.</p>
-<p>It requires a property, <code>connection</code> which is the data model. All data displayed in the data-admin is retrieved via the connection and any edits or deletes are pushed back to the connection. The <code>connection</code> object is simply a <code>can-connect</code>
+<h3>Connection</h3>
+<p>The view requires a property, <code>connection</code> which is the data model. All data displayed in the data-admin is retrieved via the connection and any edits or deletes are pushed back to the connection. The <code>connection</code> object is simply a <code>can-connect</code>
 object, like a supermap.</p>
 <p>The other properties define how new data is created, edited, and displayed.</p>
 <h3>Fields</h3>
@@ -297,7 +313,7 @@ on how the views are related allows for this.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"type":"module","name":"data-admin","src":"data-admin\\README.md","description":"","title":"<data-admin />","types":[{"type":"can.Component"}],"parent":"spectre.components","outline":{"depth":3},"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"module","name":"data-admin","src":"data-admin\\README.md","description":"","title":"<data-admin />\r","types":[{"type":"can.Component"}],"parent":"spectre.components","outline":{"depth":3},"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

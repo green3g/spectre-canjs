@@ -220,18 +220,6 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props..html" data-search="form-widget.ViewModel.props.">
-						
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.connection.html" data-search="form-widget.ViewModel.props.connection">
 						connection
 					</a>
@@ -256,8 +244,8 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props.fields.html" data-search="form-widget.ViewModel.props.fields">
-						fields
+					<a class="property" href="form-widget.ViewModel.props.excludeFieldKey.html" data-search="excludeFieldKey">
+						excludeFieldKey
 					</a>
 				</li>
 				
@@ -304,6 +292,18 @@
 				
 				
 				<li class="menu-item search-container">
+					<a class="property" href="form-widget.ViewModel.props.isValid.html" data-search="isValid">
+						isValid
+					</a>
+				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.objectId.html" data-search="form-widget.ViewModel.props.objectId">
 						objectId
 					</a>
@@ -330,18 +330,6 @@
 				<li class="menu-item search-container">
 					<a class="property" href="form-widget.ViewModel.props.showButtons.html" data-search="form-widget.ViewModel.props.showButtons">
 						showButtons
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="form-widget.ViewModel.props.showSaving.html" data-search="form-widget.ViewModel.props.showSaving">
-						showSaving
 					</a>
 				</li>
 				
@@ -416,9 +404,10 @@
 
 			
 				<section class="description">
-					<p>An object representing a can.Map or similar object. This object should have
-a <code>save</code> method like a <code>can.Model</code> or <code>can-connect.superMap</code>. This object is
-updated and its <code>save</code> method is called when the form is submitted.</p>
+					<p>An object representing the current state of the values passed to the form.
+If the fields have changed, this object will be updated when the submit
+button is pressed and the validations have passed. To capture current
+state of the form, use <a href="form-widget.ViewModel.props.dirtyObject.html">dirtyObject</a>.</p>
 
 				</section>
 			
@@ -484,7 +473,7 @@ updated and its <code>save</code> method is called when the form is submitted.</
 	
 
 	<script type="text/javascript">
-		var docObject = {"name":"form-widget.ViewModel.props.formObject","type":"property","parent":"form-widget.ViewModel.props","src":"form-widget\\form-widget.js","line":66,"codeLine":73,"description":"An object representing a can.Map or similar object. This object should have\na `save` method like a `can.Model` or `can-connect.superMap`. This object is\nupdated and its `save` method is called when the form is submitted.","types":[{"type":"DefineMap"}],"title":"","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"name":"form-widget.ViewModel.props.formObject","type":"property","parent":"form-widget.ViewModel.props","src":"form-widget\\form-widget.js","line":78,"codeLine":86,"description":"An object representing the current state of the values passed to the form.\nIf the fields have changed, this object will be updated when the submit\nbutton is pressed and the validations have passed. To capture current\nstate of the form, use [form-widget.ViewModel.props.dirtyObject].","types":[{"type":"DefineMap"}],"title":"","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

@@ -88,8 +88,8 @@
 			
 		
 		<li class="menu-item search-container active parent">
-			<a class="sidebar-title" href="data-admin.html" data-search="&lt;data-admin /&gt;">
-				&lt;data-admin /&gt;
+			<a class="sidebar-title" href="data-admin.html" data-search="&lt;data-admin /&gt;">
+				&lt;data-admin /&gt;
 			</a>
 		</li>
     <li class="divider"></li>
@@ -244,30 +244,6 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="function" href="data-admin.ViewModel.prototype.toggle.html" data-search="data-admin.ViewModel.prototype.toggle">
-						toggle
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="function" href="data-admin.ViewModel.prototype.toggleQuickFilter.html" data-search="data-admin.ViewModel.prototype.toggleQuickFilter">
-						toggleQuickFilter
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="function" href="data-admin.ViewModel.prototype.updateParameters.html" data-search="data-admin.ViewModel.prototype.updateParameters">
 						updateParameters
 					</a>
@@ -318,18 +294,6 @@
 				<li class="menu-item search-container">
 					<a class="property" href="data-admin.ViewModel.props.buttons.html" data-search="buttons">
 						buttons
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.filterVisible.html" data-search="filterVisible">
-						filterVisible
 					</a>
 				</li>
 				
@@ -412,32 +376,8 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.pageNumber.html" data-search="data-admin.ViewModel.props.pageNumber">
-						pageNumber
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="property" href="data-admin.ViewModel.props.parameters.html" data-search="parameters">
 						parameters
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.perPageOptions.html" data-search="perPageOptions">
-						perPageOptions
 					</a>
 				</li>
 				
@@ -484,18 +424,6 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.selectMenu.html" data-search="data-admin.ViewModel.props.selectMenu">
-						selectMenu
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="property" href="data-admin.ViewModel.props.selectedObjects.html" data-search="data-admin.ViewModel.props.selectedObjects">
 						selectedObjects
 					</a>
@@ -508,32 +436,8 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.showPaginate.html" data-search="showPaginate">
-						showPaginate
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="property" href="data-admin.ViewModel.props.totalItems.html" data-search="totalItems">
 						totalItems
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
-					<a class="property" href="data-admin.ViewModel.props.totalPages.html" data-search="data-admin.ViewModel.props.totalPages">
-						totalPages
 					</a>
 				</li>
 				
@@ -792,7 +696,7 @@ if it exists and the <code>errorSave</code> event is dispatched.</p>
 	
 
 	<script type="text/javascript">
-		var docObject = {"src":"data-admin\\data-admin.js","line":588,"codeLine":615,"type":"function","description":"Saves the provided object and sets the current viewId to the object's\nid once it is returned. We then switch the page to the detail view to\ndisplay the created or updated object.\n\nThis action occurs after any validation in the form has passed. Before\nthe object is saved, `view.beforeCreate` or `view.beforeSave` is called\nif it exists. This function may return a `falsey` value which will prevent\nthe actual save action from occuring. The function can also return the\nmodified object. In addition, the viewModel dispatches\nthe `beforeCreate` or `beforeSave` events.\n\nIf any errors occur after the save, the `view.errorSave` method is called\nif it exists and the `errorSave` event is dispatched.","title":"","name":"data-admin.ViewModel.prototype.saveObject","parent":"data-admin.ViewModel.prototype","signatures":[{"code":"saveObject(obj)","description":"","params":[]},{"code":"saveObject(scope, dom, event, obj)","description":"","params":[{"types":[{"type":"DefineMap"}],"name":"scope","description":"The stache scope (optional)"},{"types":[{"type":"domNode"}],"name":"dom","description":"The domNode that triggered the event (optional)"},{"types":[{"type":"Event"}],"name":"event","description":"The event that was triggered (optional)"},{"types":[{"type":"DefineMap"}],"name":"obj","description":"The object to save"}],"returns":{"types":[{"type":"Promise"}],"description":""}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"src":"data-admin\\data-admin.js","line":483,"codeLine":510,"type":"function","description":"Saves the provided object and sets the current viewId to the object's\nid once it is returned. We then switch the page to the detail view to\ndisplay the created or updated object.\n\nThis action occurs after any validation in the form has passed. Before\nthe object is saved, `view.beforeCreate` or `view.beforeSave` is called\nif it exists. This function may return a `falsey` value which will prevent\nthe actual save action from occuring. The function can also return the\nmodified object. In addition, the viewModel dispatches\nthe `beforeCreate` or `beforeSave` events.\n\nIf any errors occur after the save, the `view.errorSave` method is called\nif it exists and the `errorSave` event is dispatched.","title":"","name":"data-admin.ViewModel.prototype.saveObject","parent":"data-admin.ViewModel.prototype","signatures":[{"code":"saveObject(obj)","description":"","params":[]},{"code":"saveObject(scope, dom, event, obj)","description":"","params":[{"types":[{"type":"DefineMap"}],"name":"scope","description":"The stache scope (optional)"},{"types":[{"type":"domNode"}],"name":"dom","description":"The domNode that triggered the event (optional)"},{"types":[{"type":"Event"}],"name":"event","description":"The event that was triggered (optional)"},{"types":[{"type":"DefineMap"}],"name":"obj","description":"The object to save"}],"returns":{"types":[{"type":"Promise"}],"description":""}}],"source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

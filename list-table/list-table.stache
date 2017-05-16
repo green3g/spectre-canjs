@@ -11,9 +11,9 @@
           </div>
         </th>
         {{#each fields}}
-          <th {{#is name currentSort.fieldName}} class="text-bold" {{/is}} ($click)="setSort(name)">
+          <th {{#is name currentSort.field}} class="text-bold" {{/is}} ($click)="setSort(name)">
             {{alias}}
-            {{#is name currentSort.fieldName}}<i class="sort-icon fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>{{/is}}
+            {{#is name currentSort.field}}<i class="sort-icon fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>{{/is}}
           </th>
         {{/each}}
       </tr>

@@ -146,7 +146,7 @@ document.body.appendChild(render({
 
   // sorts the observable list
   setSort(a, b, c, sortInfo) {
-    const field = sortInfo.fieldName;
+    const field = sortInfo.field;
     this.data.sort((a, b) => {
       return sortInfo.type === 'asc'
 

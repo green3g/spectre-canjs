@@ -61,24 +61,24 @@ test('fields get() without providing fields', (assert) => {
 });
 
 test('setSort(field)', (assert) => {
-    const fieldName = 'name';
+    const field = 'name';
     const otherField = 'label';
-    vm.setSort(fieldName);
+    vm.setSort(field);
     assert.deepEqual(vm.currentSort.serialize(), {
         type: 'asc',
-        fieldName: fieldName
+        field: field
     }, 'Current sort should be ascending and set to field');
 
-    vm.setSort(fieldName);
+    vm.setSort(field);
     assert.deepEqual(vm.currentSort.serialize(), {
         type: 'desc',
-        fieldName: fieldName
+        field: field
     }, 'Current sort should be descending and set to field');
 
     vm.setSort(otherField);
     assert.deepEqual(vm.currentSort.serialize(), {
         type: 'asc',
-        fieldName: otherField
+        field: otherField
     }, 'Current sort should be ascending and set to field');
 });
 

@@ -97,8 +97,8 @@ export const ViewModel = FieldComponentMap.extend('FormWidget', {
      * An object consisting of validation error strings
      * ```javascript
      *{
-     *    fieldName: 'error message',
-     *    otherFieldName: 'another error message'
+     *    field: 'error message',
+     *    otherfield: 'another error message'
      *}
      * ```
      * @property {Object} form-widget.ViewModel.props.validationErrors

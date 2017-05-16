@@ -49,8 +49,8 @@ fixture({
 
 
         //sort it
-        if (sortInfo && sortInfo.fieldName) {
-            const field = sortInfo.fieldName;
+        if (sortInfo && sortInfo.field) {
+            const field = sortInfo.field;
             tempData = tempData.sort((a, b) => {
                 return sortInfo.type === 'asc' ? (a[field] === b[field] ? 0 : a[field] > b[field] ? 1 : -1) : (a[field] === b[field] ? 0 : a[field] > b[field] ? -1 : 1);
             });

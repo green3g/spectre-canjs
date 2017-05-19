@@ -1,3 +1,92 @@
+0.29.1 / 2017-05-19
+===================
+
+  * 0.29.1
+  * FIX: cell width issue
+  * ENH: move redundant detail page title into nav-page header
+  * FIX: issue with field serialization
+  * ENH: add basic accordion-container
+
+0.29.0 / 2017-05-16
+===================
+
+  * 0.29.0
+  * FIX: replacing all instances of sort.fieldName with sort.field
+  * FIX: lint
+  * DOCS: reorganizing and updating docs
+  * CHG: list-table sorting `fieldName` becomes `field`
+  * DOCS
+  * TEST: fix ignore
+  * DOCS: documents field templates properties better
+  * ENH: automatically convert string templates to renderers
+  * TEST: tests
+  * TEST: paginate and manage components
+  * TEST: add missing nav-container tests
+  * TEST: add generated codeclimate.yml
+  * TEST: missing addTemplate test
+  * TEST: fix misnamed modules
+  * TEST: adds missing modal and confirm dialog tests
+  * ENH: convert template getters to defaulter values
+  * TEST: viewmap tests
+  * TEST: update test coverage
+  * Merge pull request [#52](https://github.com/roemhildtg/spectre-canjs/issues/52) from roemhildtg/field-super-class
+    Field super class
+  * TEST: remove codeclimate
+  * ENH: add codeclimate config
+  * FIX: issues with path and Field super class
+  * ENH: move field code into super class
+    - reorganize utility classes
+  * FIX: ignore files from codeclimate
+  * Merge branch 'master' of https://github.com/roemhildtg/spectre-canjs
+  * FIX: consistency between viewModel and ViewModel in components
+  * Merge pull request [#51](https://github.com/roemhildtg/spectre-canjs/issues/51) from roemhildtg/modular-data-admin-[#20](https://github.com/roemhildtg/spectre-canjs/issues/20)
+    Modular data admin [#20](https://github.com/roemhildtg/spectre-canjs/issues/20)
+  * TEST: coverage working
+  * FIX: filter values should be coerced to field type
+  * TEST: add coverage to travis
+  * TEST: add additional cases to fixture
+  * FIX: numerous path fixes and modifications
+  * TEST: enhancements
+  * Add some custom behaviors to can-connect to get totalItems and convert parameters
+  * FIX: show cursor when buttons are hovered
+  * FIX: minor typo
+  * DOCS: fix demo list-table
+  * TEST: adds test coverage reporting
+  * CHG: cleans up button madness and replaces `manageButtons` with `actions` in viewMap configs
+  * CHG: replaces field.formatter with field.displayTemplate
+    https://github.com/roemhildtg/spectre-canjs/issues/50
+    - a partial template to render the field when it is displayed (list-table, property-table)
+    - list-table no longer has buttons since they can be
+    rendered with the field template
+  * FIX: adds missing tests
+  * FIX: fixing management buttons and actions
+  * FIX: bug with menu item headers
+  * ENH: cleaning up buttons and data-admin modularization
+    https://github.com/roemhildtg/spectre-canjs/issues/20
+    https://github.com/roemhildtg/spectre-canjs/issues/50
+  * ENH: replace list view templates with new components and clean up css
+    https://github.com/roemhildtg/spectre-canjs/issues/20
+  * ENH: create manage-toolbar component
+    https://github.com/roemhildtg/spectre-canjs/issues/20
+  * ENH: create search-control component
+    https://github.com/roemhildtg/spectre-canjs/issues/20
+  * ENH: create paginate-footer component
+    https://github.com/roemhildtg/spectre-canjs/issues/20
+
+0.28.5 / 2017-05-08
+===================
+
+  * 0.28.5
+  * ENH: minor efficiency improvement
+    - use different id to delete to avoid failing test
+  * DOCS: minor cleanup
+  * ENH: make select-field more DRY
+  * ENH: display custom confirm-dialog for delete prompts
+  * FIX: bug with confirm-dialog
+    - reject action was never called
+    - enhance the promise to reload if the active property changes
+  * changelog
+
 0.28.4 / 2017-05-08
 ===================
 
@@ -67,125 +156,3 @@
     -https://github.com/roemhildtg/spectre-canjs/issues/47
   * CHG: rename excludeListTable: true to list: false
     - https://github.com/roemhildtg/spectre-canjs/issues/47
-  * CHG: rename excludeForm: true to edit: false
-    - https://github.com/roemhildtg/spectre-canjs/issues/47
-  * chore(package): update testee to version 0.5.0
-    https://greenkeeper.io/
-  * FIX: missing toast-container span tag
-  * FIX: form field has-danger should be has-error
-  * Merge remote-tracking branch 'origin/master'
-    # Conflicts:
-    #    package.json
-  * Merge pull request [#45](https://github.com/roemhildtg/spectre-canjs/issues/45) from roemhildtg/greenkeeper/can-define-1.0.22
-    chore(package): update can-define to version 1.0.22
-  * chore(package): update can-define to version 1.0.22
-    https://greenkeeper.io/
-  * Merge pull request [#44](https://github.com/roemhildtg/spectre-canjs/issues/44) from roemhildtg/greenkeeper/can-define-1.0.21
-    chore(package): update can-define to version 1.0.21
-  * chore(package): update can-define to version 1.0.21
-    https://greenkeeper.io/
-  * Merge remote-tracking branch 'origin/greenkeeper/can-define-1.0.19'
-  * Merge remote-tracking branch 'origin/greenkeeper/can-util-3.5.1'
-    # Conflicts:
-    #    package.json
-  * Merge remote-tracking branch 'origin/greenkeeper/can-util-3.4.1'
-  * chore(package): update can-define to version 1.0.19
-    https://greenkeeper.io/
-  * chore(package): update can-stache to version 3.0.24
-    https://greenkeeper.io/
-  * fix: pin spectre.css to 0.2.13
-  * chore(package): update spectre.css to version 0.2.14
-    https://greenkeeper.io/
-  * chore(package): update can-util to version 3.5.1
-    https://greenkeeper.io/
-  * chore(package): update can-util to version 3.4.1
-    https://greenkeeper.io/
-  * chore(package): update steal to version 1.5.0
-    https://greenkeeper.io/
-
-0.27.2 / 2017-04-24
-===================
-
-  * 0.27.2
-  * FIX: revert previous commit removed formObject
-  * changelog
-
-0.27.1 / 2017-04-24
-===================
-
-  * 0.27.1
-  * FIX: revert bug from previous commit
-  * changelog
-
-0.27.0 / 2017-04-24
-===================
-
-  * 0.27.0
-  * CHG: remove obsolete tests
-  * DOCS: fix
-  * FIX: filter-widget - make sure field type uses textarea: false
-  * DOCS: fix demo to use steal.production
-  * ENH: data-admin - moves duplicate manage menu into template partial [#20](https://github.com/roemhildtg/spectre-canjs/issues/20)
-  * Merge pull request [#34](https://github.com/roemhildtg/spectre-canjs/issues/34) from roemhildtg/greenkeeper/can-util-3.3.7
-    chore(package): update can-util to version 3.3.7
-  * Merge pull request [#35](https://github.com/roemhildtg/spectre-canjs/issues/35) from roemhildtg/greenkeeper/steal-1.4.6
-    chore(package): update steal to version 1.4.6
-  * Merge pull request [#33](https://github.com/roemhildtg/spectre-canjs/issues/33) from roemhildtg/greenkeeper/steal-tools-1.3.1
-    chore(package): update steal-tools to version 1.3.1
-  * Merge branch 'master' into greenkeeper/steal-tools-1.3.1
-  * Merge pull request [#28](https://github.com/roemhildtg/spectre-canjs/issues/28) from roemhildtg/greenkeeper/testee-0.4.0
-    Update testee to the latest version 🚀
-  * changelog
-
-0.26.1 / 2017-04-19
-===================
-
-  * 0.26.1
-  * FIX: failing to pass isNew to saveObject
-  * FIX: minor cleanup
-  * chore(package): update steal-tools to version 1.3.1
-    https://greenkeeper.io/
-  * chore(package): update steal to version 1.4.6
-    https://greenkeeper.io/
-  * chore(package): update can-util to version 3.3.7
-    https://greenkeeper.io/
-  * FIX: make event names lowercase
-    - html attributes are case insensitive
-  * ENH: allow `beforeCreate` and `beforeDelete` to return promiselike objects
-    - data-admin waits to save/delete object until promise resolves
-  * FIX: date-field get utc date values when splitting date
-  * chore(package): update testee to version 0.4.0
-    https://greenkeeper.io/
-
-0.26.0 / 2017-04-12
-===================
-
-  * Merge remote-tracking branch 'origin/master'
-  * changelog
-  * 0.26.0
-  * TEST: date-field failing tests
-  * ENH: allow select-field to use promise for options
-  * FIX: date-field bugs
-    - validation errors displayed
-    - if date dropdowns are not populated, return null value
-  * FIX: hide delete button if `view.disableDelete` is true
-
-0.25.0 / 2017-04-04
-===================
-
-  * 0.25.0
-  * CHG: make form-widget dirtyObject a DefineMap
-  * add gitter integration
-
-0.24.8 / 2017-03-31
-===================
-
-  * 0.24.8
-  * ENH: add titleProp for displaying a custom title property on data-admin details page
-
-0.24.7 / 2017-03-29
-===================
-
-  * 0.24.7
-  * FIX: compile field templates in template getter
-  * ENH: class names for list-table

@@ -2,9 +2,8 @@
   {{#if focusObjectPromise.isPending}}
     <div class="loading"></div>
   {{else}}
-    <h3>{{view.title}}: {{focusObject[view.titleProp]}}</h3>
     <nav-container>
-      <nav-page label="{{view.title}}">
+      <nav-page label="{{view.title}}: {{focusObject[view.titleProp]}}">
 
         <manage-toolbar class="inline-block float-right" {buttons}="toolbarButtons" (buttonclick)="manageObjects" />
 

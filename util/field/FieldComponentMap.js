@@ -5,7 +5,7 @@ import DefineList from 'can-define/list/list';
 /**
  * @constructor util/field/FieldComponentMap FieldComponentMap
  * @parent util/field.types
- * @group util/field.FieldComponentMap.props
+ * @group FieldComponentMap.props
  * A super class for widgets utilizing a fields property that needs
  * to be filtered.
  */
@@ -13,21 +13,21 @@ export default DefineMap.extend({
   /**
    * A string referencing a field property that will exclude that field
    * from this classes fields.
-   * @property {String} util/field.FieldComponentMap.props.excludeFieldKey excludeFieldKey
-   * @parent util/field.FieldComponentMap.props
+   * @property {String} FieldComponentMap.props.excludeFieldKey excludeFieldKey
+   * @parent FieldComponentMap.props
    */
     excludeFieldKey: 'string',
     /**
      * A property that converts this class's object to an array of
      * fields if fields are not provided.
-     * @property {DefineMap} util/field.FieldComponentMap.props.object object
-     * @parent util/field.FieldComponentMap.props
+     * @property {DefineMap} FieldComponentMap.props.object object
+     * @parent FieldComponentMap.props
      */
     object: DefineMap,
   /**
    * An array of fields
-   * @parent util/field.FieldComponentMap.props
-   * @property {Array<util/field.Field>} util/field.FieldComponentMap.props.fields fields
+   * @property {Array<util/field.Field>} FieldComponentMap.props.fields fields
+   * @parent FieldComponentMap.props
    */
     fields: {
         Value: DefineList,
@@ -37,7 +37,8 @@ export default DefineMap.extend({
                 fields = parseFieldArray(fields);
             }
             if (!fields.length && this.object) {
-                return parseFieldArray(Object.keys(this.object));
+                const obj = this.object.serialize ? this.object.serialize() : this.object;
+                return parseFieldArray(Object.keys(obj));
             }
             return fields.filter((f) => {
                 return f[this.excludeFieldKey] !== false;

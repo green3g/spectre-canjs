@@ -1,4 +1,4 @@
-<div class="dropdown" style="width:100px;">
+<div class="dropdown" style="width:70px;">
   <div class="btn-group">
     <a class="btn btn-primary btn-sm" ($click)="dispatchEvent('view', object)">View</a>
     <a class="btn btn-primary dropdown-toggle btn-sm" tabindex="0">

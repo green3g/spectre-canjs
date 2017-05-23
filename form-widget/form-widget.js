@@ -1,7 +1,7 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import template from './template.stache!';
-import FieldComponentMap from '../util/field/FieldComponentMap';
+import FieldIteratorMap from '../util/field/FieldIteratorMap';
 import './widget.less!';
 
 /**
@@ -11,9 +11,9 @@ import './widget.less!';
  * @group form-widget.ViewModel.events Events
  *
  * @description A `<form-widget />` component's ViewModel. This viewmodel
- * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
+ * extends the [util/field/ ]'s properties
  */
-export const ViewModel = FieldComponentMap.extend('FormWidget', {
+export const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * @prototype
      */

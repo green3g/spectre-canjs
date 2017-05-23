@@ -1,6 +1,6 @@
 import template from './list-table.stache';
 import './list-table.less!';
-import FieldComponentMap from '../util/field/FieldComponentMap';
+import FieldIteratorMap from '../util/field/FieldIteratorMap';
 
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
@@ -18,9 +18,9 @@ import '../dropdown-menu/dropdown-menu';
  * @group list-table.ViewModel.props Properties
  *
  * @description A `<list-table />` component's ViewModel. This viewmodel
- * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
+ * extends the [util/field/ ]'s properties
  */
-export const ViewModel = FieldComponentMap.extend('ListTable', {seal: false}, {
+export const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
   /**
    * A string referencing a field property that will exclude that field
    * from this classes fields. The default is 'list'.

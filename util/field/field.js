@@ -232,7 +232,7 @@ export const FieldList = DefineList.extend('FieldList', {
     '#': Field
 });
 
-//eslint-disable-next-line valid-jsdoc
+// eslint-disable-next-line valid-jsdoc
 /**
  * Converts an array of strings or field json objects into Field objects
  * @function util/field.methods.parseFieldArray parseFieldArray
@@ -259,7 +259,7 @@ export function parseFieldArray (fields) {
     });
 }
 
-//eslint-disable-next-line valid-jsdoc
+// eslint-disable-next-line valid-jsdoc
 /**
  * Converts a DefineMap to an array of Field objects using the property definitions
  * property or the keys

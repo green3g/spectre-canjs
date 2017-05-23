@@ -350,14 +350,14 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 displayTemplate: actionsCellTemplate
             }];
 
-      //try a fields propety first
+      // try a fields propety first
             if (this.view.fields) {
                 if (this.view.fields.serialize()) {
                     return parseFieldArray(fields.concat(this.view.fields.serialize()));
                 }
             }
 
-      //if that doesn't exist, use the ObjectTemplate or Map to create fields
+      // if that doesn't exist, use the ObjectTemplate or Map to create fields
             const Template = this.view.ObjectTemplate || this.view.connection.Map;
             return parseFieldArray(fields).concat(mapToFields(Template));
         }
@@ -510,7 +510,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    */
     saveObject () {
         let obj;
-    //accept 4 params from the template or just one
+    // accept 4 params from the template or just one
         if (arguments.length === 4) {
             obj = arguments[3];
         } else {
@@ -545,7 +545,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         return this._saveObject(obj, isNew);
     },
     _saveObject (obj, isNew) {
-    //save the object
+    // save the object
         var deferred = this.view.connection.save(obj);
         deferred.then((result) => {
 
@@ -556,8 +556,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 this.onEvent(obj, 'afterSave');
             }
 
-      //update the view id
-      //set page to the details view by default
+      // update the view id
+      // set page to the details view by default
             this.set({
                 viewId: this.view.connection.id(result),
                 page: 'details',
@@ -586,8 +586,8 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @return {DefineMap} A new object created from the `view.ObjectTemplate`
    */
     getNewObject () {
-    //create a new empty object with the defaults provided
-    //from the ObjectTemplate property which is a map
+    // create a new empty object with the defaults provided
+    // from the ObjectTemplate property which is a map
         const props = {};
         if (this.relatedField) {
             props[this.relatedField.name] = this.relatedValue;
@@ -680,7 +680,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
         });
     },
     _deleteObject (obj) {
-    //destroy the object using the connection
+    // destroy the object using the connection
         const deferred = this.view.connection.destroy(obj);
         deferred.then(() => {
 
@@ -690,7 +690,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-      //afterDelete handler
+      // afterDelete handler
             this.onEvent(obj, 'afterDelete');
 
             this.objectsRefreshCount++;
@@ -704,7 +704,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 objectsRefreshCount: this.objectsRefreshCount + 1
             });
 
-      //add a message
+      // add a message
             this.onEvent(result, 'errorDelete');
             dev.warn(result);
         });
@@ -833,10 +833,10 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    */
     onEvent (obj, eventName) {
 
-    //get the view method
+    // get the view method
         const prop = this.view[eventName];
 
-    //if it is a function, call it passing the object
+    // if it is a function, call it passing the object
         let returnVal = true;
         if (typeof prop === 'function') {
             returnVal = prop(obj);
@@ -848,7 +848,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
             }
         }
 
-    //dispatch an event
+    // dispatch an event
         this.dispatch(eventName.toLowerCase(), [obj]);
 
         return returnVal;

@@ -2,7 +2,7 @@ import superMap from 'can-connect/can/super-map/';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 
-//import fake ajax services
+// import fake ajax services
 import './fixtures';
 
 export const TaskMap = DefineMap.extend('Task', {seal: false}, {

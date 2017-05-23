@@ -211,7 +211,7 @@ test('deleteObject(obj, skipConfirm) ', (assert) => {
         done();
     });
 
-  //delete the object skip confirm
+  // delete the object skip confirm
     vm.deleteObject(new TaskMap({id: id}), true);
 });
 

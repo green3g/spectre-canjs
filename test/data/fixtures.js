@@ -6,7 +6,7 @@ import dev from 'can-util/js/dev/dev';
 
 let index = 1000;
 
-//a mock ajax service
+// a mock ajax service
 fixture.delay = 200;
 fixture({
     'GET /tasks' (params) {
@@ -16,9 +16,9 @@ fixture({
         let totalItems = data.length;
         let tempData = new DefineList(data);
 
-        //filter it
+        // filter it
         if (params.data.filters && params.data.filters.length) {
-            //lets just handle one filter for testing
+            // lets just handle one filter for testing
             dev.warn('only the first filter is going to be used!');
             const f = params.data.filters[0];
             const exclusions = [null, '', undefined];
@@ -48,7 +48,7 @@ fixture({
         }
 
 
-        //sort it
+        // sort it
         if (sortInfo && sortInfo.field) {
             const field = sortInfo.field;
             tempData = tempData.sort((a, b) => {
@@ -56,10 +56,10 @@ fixture({
             });
         }
 
-        //pageinate it
+        // pageinate it
         tempData = tempData.slice(page * perPage, (page + 1) * perPage);
 
-        //return the serialized version
+        // return the serialized version
         return {
             data: tempData.serialize(),
             total: totalItems
@@ -75,7 +75,7 @@ fixture({
     },
     'GET /tasks/{id}' (params, response) {
         const items = data.filter((item) => {
-            //eslint-disable-next-line eqeqeq
+            // eslint-disable-next-line eqeqeq
             return item.id == params.data.id;
         });
         if (!items.length) {
@@ -86,7 +86,7 @@ fixture({
     },
     'PUT /tasks/{id}' (params, response) {
         let item = data.filter((i) => {
-            //eslint-disable-next-line eqeqeq
+            // eslint-disable-next-line eqeqeq
             return i.id == params.data.id;
         });
         if (!item.length) {

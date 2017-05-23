@@ -1,9 +1,8 @@
-import CanEvent from 'can-event';
 import Component from 'can-component';
-import DefineMap from 'can-define/map/map';
+import Base from '~/util/field/FieldInputMap';
 import template from './select-field.stache';
 import selectInput from './templates/selectInput.stache';
-import assign from 'object-assign';
+import DefineMap from 'can-define/map/map';
 
 /**
  * @constructor form-widget/field-components/select-field.ViewModel ViewModel
@@ -12,7 +11,7 @@ import assign from 'object-assign';
  *
  * @description A `<select-field />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('SelectField', {
+export const ViewModel = Base.extend('SelectField', {
     /**
      * @prototype
      */
@@ -35,18 +34,6 @@ export const ViewModel = DefineMap.extend('SelectField', {
         }
     },
     /**
-     * A list of validation errors
-     * @property {Array<String>} select-field.ViewModel.props.errors errors
-     * @parent select-field.ViewModel.props
-     */
-    errors: '*',
-    /**
-     * The current value selected
-     * @property {String} select-field.ViewModel.props.value value
-     * @parent select-field.ViewModel.props
-     */
-    value: {type: 'string', value: ''},
-    /**
      * Whether or not to display this field inline with other fields
      * @property {HTMLBoolean} select-field.ViewModel.props.inline inline
      * @parent select-field.ViewModel.props
@@ -64,19 +51,6 @@ export const ViewModel = DefineMap.extend('SelectField', {
         }
     },
     /**
-     * Called whenever a field is changed, dispatches the change event
-     * @function onChange
-     * @signature
-     * @param {String} value The currently selected value
-     */
-    onChange (value) {
-        //we could perform some other logic here
-        this.dispatch('fieldchange', [{
-            value: value,
-            name: this.properties.name
-        }]);
-    },
-    /**
      * Determines whether a value is the currently selected value
      * @function isSelected
      * @signature
@@ -84,12 +58,11 @@ export const ViewModel = DefineMap.extend('SelectField', {
      * @return {Boolean} whether or not it is selected
      */
     isSelected (value) {
-        //coerce check into this value type
-        //eslint-disable-next-line eqeqeq
+        // coerce check into this value type
+        // eslint-disable-next-line eqeqeq
         return value == this.value;
     }
 });
-assign(ViewModel.prototype, CanEvent);
 
 export default Component.extend({
     tag: 'select-field',

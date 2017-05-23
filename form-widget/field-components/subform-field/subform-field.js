@@ -1,10 +1,9 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
-import CanEvent from 'can-event';
 import template from './subform-field.stache!';
 import './subform-field.less';
+import Base from '~/util/field/FieldInputMap';
 import {mapToFields, parseFieldArray} from '~/util/field/field';
-import assign from 'can-util/js/assign/assign';
 import dev from 'can-util/js/dev/dev';
 
 /**
@@ -14,31 +13,10 @@ import dev from 'can-util/js/dev/dev';
  *
  * @description A `<subform-field />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('SubformField', {
+export const ViewModel = Base.extend('SubformField', {
     /**
      * @prototype
      */
-    /**
-     * Form field properties that define this fields behavior
-     * @property {subform-field.SubformFieldProperties} subform-field.ViewModel.props.properties properties
-     * @parent subform-field.ViewModel.props
-     */
-    properties: {
-        Value: DefineMap,
-        set (props) {
-            const Template = props.ObjectTemplate;
-            let obj;
-            if (Template) {
-                obj = new Template();
-            } else {
-                dev.warn('subform-field needs an ObjectTemplate defined in its field properties');
-                obj = new DefineMap();
-            }
-
-            this.subFormObject = obj;
-            return props;
-        }
-    },
     /**
      * The current value of the field. This is a json serialized value
      * paths.
@@ -56,13 +34,6 @@ export const ViewModel = DefineMap.extend('SubformField', {
         }
     },
     /**
-     * A list of validation errors
-     * This is a placeholder for future functionality. Not yet implemented.
-     * @property {Array<String>} subform-field.ViewModel.props.errors errors
-     * @parent subform-field.ViewModel.props
-     */
-    errors: '*',
-    /**
      * The current object being edited in this field's json form, this
      * is created automatically from the `ObjectTemplate` property.
      * It is initialized with default values by using `JSON.parse` on the `value`
@@ -71,7 +42,19 @@ export const ViewModel = DefineMap.extend('SubformField', {
      * @parent subform-field.ViewModel.props
      */
     subFormObject: {
-        Value: DefineMap
+        Value: DefineMap,
+        get () {
+            const Template = this.properties.ObjectTemplate;
+            let obj;
+            if (Template) {
+                obj = new Template();
+            } else {
+                dev.warn('subform-field needs an ObjectTemplate defined in its field properties');
+                obj = new DefineMap();
+            }
+
+            return obj;
+        }
     },
     /**
      * The field properties to set up the form fields functionality, this is
@@ -106,7 +89,6 @@ export const ViewModel = DefineMap.extend('SubformField', {
         }]);
     }
 });
-assign(ViewModel.prototype, CanEvent);
 
 export default Component.extend({
     tag: 'subform-field',

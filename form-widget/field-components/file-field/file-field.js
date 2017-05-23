@@ -1,8 +1,7 @@
+import Base from '~/util/field/FieldInputMap';
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
-import CanEvent from 'can-event';
-import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
 import './file-field.less';
@@ -20,35 +19,10 @@ const FileMap = DefineMap.extend({
  *
  * @description A `<file-field />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('FileField', {
+export const ViewModel = Base.extend('FileField', {
     /**
      * @prototype
      */
-    /**
-     * Form field properties that define this fields behavior
-     * @property {Object} file-field.ViewModel.props.properties properties
-     * @parent file-field.ViewModel.props
-     */
-    properties: {Value: DefineMap},
-    /**
-     * A list of potential upload errors.
-     * This is a placeholder for future functionality. Not yet implemented.
-     * @property {Array<String>} file-field.ViewModel.props.errors errors
-     * @parent file-field.ViewModel.props
-     */
-    errors: {
-        Value: DefineMap
-    },
-    /**
-     * The current value of the field. This is a comma separated list of file
-     * paths.
-     * @property {String} file-field.ViewModel.props.value value
-     * @parent file-field.ViewModel.props
-     */
-    value: {
-        type: 'string',
-        value: ''
-    },
     /**
      * A list of current files stored in this field. This is initialized
      * as a list of items created splitting the comma separated list of files
@@ -61,6 +35,9 @@ export const ViewModel = DefineMap.extend('FileField', {
         get (val) {
             // create a new list and initialize it with the list of files
             if (!val) {
+                if (!this.value) {
+                    this.value = '';
+                }
                 val = this.currentFiles = new DefineList(this.value.split(',').filter((file) => {
                     return file !== '';
                 }).map((file) => {
@@ -182,10 +159,6 @@ export const ViewModel = DefineMap.extend('FileField', {
         } else {
             this.value = '';
         }
-        this.dispatch('fieldchange', [{
-            value: this.value,
-            name: this.properties.name
-        }]);
     },
     /**
      * Called when an error occurs during an upload. Logs an error message
@@ -262,14 +235,12 @@ export const ViewModel = DefineMap.extend('FileField', {
      */
     removeError (file, response) {
         if (response.status === 404) {
-            //file doesn't exist, remove it from this widget
+            // file doesn't exist, remove it from this widget
             this.removeSuccess(file, response);
         }
         dev.warn('Error: ', response);
     }
 });
-
-assign(ViewModel.prototype, CanEvent);
 
 export default Component.extend({
     tag: 'file-field',

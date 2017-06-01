@@ -11,7 +11,7 @@ export const TaskMap = DefineMap.extend('Task', {seal: false}, {
 });
 
 export const TaskList = DefineList.extend({
-    map: TaskMap
+    '#': TaskMap
 });
 
 const C = superMap({

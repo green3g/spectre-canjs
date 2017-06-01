@@ -10,3 +10,4 @@
 @description
 
 A file upload field. Once a file is selected, this component POST's the upload to a special url and returns the url result as text to the form.
+<mark>This is experimental!</mark>

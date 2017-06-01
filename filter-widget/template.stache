@@ -1,22 +1,22 @@
 <div class="filter-widget container-fluid">
 
-    {{#unless disableCreate}}
-        <select-field {properties}="nameField" (fieldchange)="addFilter" {($value)}="fieldValue" inline />
-    {{/unless}}
+  {{#unless disableCreate}}
+    <select-field {properties}="nameField" (fieldchange)="addFilter" {(value)}="fieldValue" inline />
+  {{/unless}}
 
-    <br />
+  <br />
 
-    {{#each filters}}
-        <div class="clearfix pt-10">
-            <form class="form" ($submit)="noOp">
-                <button type="button" class="btn block float-left" ($click)="removeFilter(this)"><i class="fa fa-trash"></i> {{alias}}</button>
-                <select-field class="float-left" {properties}="operatorField" {(value)}="operator" inline />
-                <div class="float-left">
-                    {{#valueField}}
-                        {{>formTemplate}}
-                    {{/valueField}}
-                </div>
-            </form>
+  {{#each filters}}
+    <div class="clearfix pt-10">
+      <form class="form" ($submit)="noOp">
+        <button type="button" class="btn block float-left" ($click)="removeFilter(this)"><i class="fa fa-trash"></i> {{alias}}</button>
+        <select-field class="float-left" {properties}="operatorField" {(value)}="operator" inline />
+        <div class="float-left">
+          {{#valueField}}
+            {{>formTemplate}}
+          {{/valueField}}
         </div>
-    {{/each}}
+      </form>
+    </div>
+  {{/each}}
 </div>

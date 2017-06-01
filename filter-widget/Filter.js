@@ -13,12 +13,12 @@ import define from 'can-define';
  * @description The default filter operator options
  */
 export const FilterOptions = [{
-    label: 'Does not contain',
-    value: 'not_like',
-    types: ['string']
-}, {
     label: 'Contains',
     value: 'like',
+    types: ['string']
+}, {
+    label: 'Does not contain',
+    value: 'not_like',
     types: ['string']
 }, {
     label: 'Starts with',
@@ -115,7 +115,9 @@ export const Filter = DefineMap.extend('Filter', {
      */
     operator: {
         type: 'string',
-        value: 'like'
+        get (val) {
+            return typeof val === 'undefined' ? this.operatorField.value : val;
+        }
     },
     /**
      * A field object that defines the available operator options and properties.
@@ -130,15 +132,17 @@ export const Filter = DefineMap.extend('Filter', {
         serialize: false,
         get () {
             const field = this.field;
+            const options = field ? FilterOptions.filter((filter) => {
+                return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
+            }) : FilterOptions;
             return new Field({
                 name: 'operator',
+                value: options[0].value,
                 alias: 'is',
                 inline: true,
                 placeholder: 'Choose an operator',
                 fieldType: 'select',
-                options: field ? FilterOptions.filter((filter) => {
-                    return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
-                }) : FilterOptions
+                options: options
             });
         }
     },

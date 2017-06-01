@@ -27,7 +27,7 @@ export const TaskMap = DefineMap.extend('Task', {
 });
 
 export const TaskList = DefineList.extend({
-    map: TaskMap
+    '#': TaskMap
 });
 
 const Connection = base({
@@ -111,7 +111,7 @@ const PostMap = DefineMap.extend({
 });
 
 const PostList = DefineList.extend({
-    map: PostMap
+    '#': PostMap
 });
 
 const Connection = SuperMap({

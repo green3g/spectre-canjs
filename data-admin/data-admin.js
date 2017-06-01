@@ -818,7 +818,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @return {Boolean} always returns false
    */
     noop (event) {
-        if (event) {
+        if (event && event.preventDefault) {
             event.preventDefault();
         }
         return false;

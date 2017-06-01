@@ -406,7 +406,7 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                     value: value
                 });
             } else {
-                this.relatedFilter = this.addFilter(field, value);
+                this.relatedFilter = this.addFilter(field, value, false);
             }
         } else if (this.relatedFilter) {
             const filters = this.parameters.filters;
@@ -422,15 +422,18 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
    * @signature
    * @param {util/field.Field} field The field to filter on (the child key)
    * @param {any} value The value to use in the filter
+   * @param {Boolean} visible Whether or not this filter should be visible.
+   * The default is `true`.
    * @return {filter-widget.Filter} the filter object
    */
-    addFilter (field, value) {
+    addFilter (field, value, visible = true) {
         if (field && value) {
             const filters = this.parameters.filters;
             filters.push({
                 name: field.name,
                 value: value,
-                operator: 'equals'
+                operator: 'equals',
+                visible: visible
             });
             return filters[filters.length - 1];
         }

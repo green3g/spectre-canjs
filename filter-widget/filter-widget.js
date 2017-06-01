@@ -63,6 +63,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     filters: {
+        Type: FilterList,
         Value: FilterList
     },
     /**

@@ -19,10 +19,10 @@ export const TaskMap = DefineMap.extend('Task', {
     'name': 'string',
     'description': 'string',
     completed: {
-      type: 'number',
-      fieldType: 'checkbox',
-      value: false,
-      displayTemplate: stache('{{#if object.completed}}Yes{{else}}No{{/if}}')
+        type: 'number',
+        fieldType: 'checkbox',
+        value: false,
+        displayTemplate: stache('{{#if object.completed}}Yes{{else}}No{{/if}}')
     }
 });
 
@@ -31,10 +31,10 @@ export const TaskList = DefineList.extend({
 });
 
 const Connection = base({
-  // transform spectre-canjs parameters to our servers parameters if needed
-  //behaviors:  [
-  //transformParameters
-  //],
+    // transform spectre-canjs parameters to our servers parameters if needed
+    //behaviors:  [
+    //transformParameters
+    //],
     idProp: 'id',
     Map: TaskMap,
     List: TaskList,

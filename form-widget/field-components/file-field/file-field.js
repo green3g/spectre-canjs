@@ -17,7 +17,7 @@ const FileMap = DefineMap.extend({
  * @parent form-widget/field-components/file-field
  * @group file-field.ViewModel.props Properties
  *
- * @description A `<file-field />` component's ViewModel
+ * @description A `<file-field />` component's ViewModel. <mark>This is experimental!</mark>
  */
 export const ViewModel = Base.extend('FileField', {
     /**
@@ -32,13 +32,12 @@ export const ViewModel = Base.extend('FileField', {
      * @parent file-field.ViewModel.props
      */
     currentFiles: {
+        Type: DefineList,
         get (val) {
             // create a new list and initialize it with the list of files
             if (!val) {
-                if (!this.value) {
-                    this.value = '';
-                }
-                val = this.currentFiles = new DefineList(this.value.split(',').filter((file) => {
+                val = this.value || '';
+                val = this.currentFiles = new DefineList(val.split(',').filter((file) => {
                     return file !== '';
                 }).map((file) => {
                     return new FileMap({
@@ -186,7 +185,7 @@ export const ViewModel = Base.extend('FileField', {
      */
     removeFile (file) {
         // eslint-disable-next-line
-        if (!confirm(`The file at ${file} will be removed. Are you sure you want to do this?`)) {
+        if (!confirm(`The file at ${file.path} will be removed. Are you sure you want to do this?`)) {
             this.state = new Promise((resolve, reject) => {
                 reject({message: 'User canceled out of dialog'});
             });

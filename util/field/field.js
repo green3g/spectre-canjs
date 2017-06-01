@@ -202,6 +202,15 @@ export const Field = DefineMap.extend('Field', {
         value: true
     },
     /**
+     * Includes this field in the sorting capability
+     * @property {Boolean} util/field.Field.props.sort sort
+     * @parent util/field.Field.props
+     */
+    sort: {
+        type: 'boolean',
+        value: true
+    },
+    /**
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
      * @signature `validate(props)`
@@ -224,7 +233,14 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field.Field.props.placeholder placeholder
      * @parent util/field.Field.props
      */
-    placeholder: 'string'
+    placeholder: 'string',
+    /**
+     * Adds css classes to the table cells and headings. Selectors should use
+     * `th.classname` and `td.classname`
+     * @property {String} util/field.Field.props.classes classes
+     * @parent util/field.Field.props
+     */
+    classes: 'string'
 });
 
 

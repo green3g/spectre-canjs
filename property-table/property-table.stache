@@ -10,7 +10,7 @@
             {{#each fields as field}}
                 <tr>
                     <td>{{field.alias}}</td>
-                    <td>
+                    <td class="{{field.classes}}">
                       {{>field.displayTemplate}}
                     </td>
                 </tr>

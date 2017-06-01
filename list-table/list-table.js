@@ -18,7 +18,7 @@ import '../dropdown-menu/dropdown-menu';
  * @group list-table.ViewModel.props Properties
  *
  * @description A `<list-table />` component's ViewModel. This viewmodel
- * extends the [util/field/ ]'s properties
+ * extends the [util/field/FieldIteratorMap FieldIteratorMap]'s properties
  */
 export const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
   /**
@@ -140,16 +140,25 @@ export const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
    * @function setSort
    * @signature
    * @param  {String} field the field to set the sort on
+   * @param {Event} event the event to cancel
    */
-    setSort (field) {
+    setSort (field, event) {
+        if (!field) {
+            if (event) {
+                event.stopPropagation();
+            }
+            this.currentSort = {};
+            return;
+        }
         if (this.currentSort.field !== field) {
             this.currentSort = {
                 field: field,
-                type: 'asc'
+                type: 'desc'
             };
         } else {
             this.currentSort.type = this.currentSort.type === 'asc' ? 'desc' : 'asc';
         }
+        this.sort(this.currentSort);
         this.dispatch('sort', [this.currentSort]);
     },
   /**
@@ -188,6 +197,27 @@ export const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
    */
     isSelected (obj) {
         return this.selectedIds.indexOf(obj[this.idProp]) > -1;
+    },
+    /**
+     * A function that sorts the list. It is called with the scope of the
+     * view model.
+     * @function sort
+     * @signature
+     * @param  {Object} sortInfo The sorting object which contains `field` and `type`
+     */
+    sort (sortInfo) {
+        const field = sortInfo.field;
+        this.objects.sort((a, b) => {
+            return sortInfo.type === 'asc'
+
+            // if ascending
+            ? (a[field] === b[field] ? 0
+              : a[field] > b[field] ? 1 : -1)
+
+            // if descending
+            : (a[field] === b[field] ? 0
+              : a[field] > b[field] ? -1 : 1);
+        });
     }
 });
 assign(ViewModel.prototype, CanEvent);

@@ -11,9 +11,10 @@
           </div>
         </th>
         {{#each fields}}
-          <th {{#is name currentSort.field}} class="text-bold" {{/is}} ($click)="setSort(name)">
+          <th {{#is name currentSort.field}} class="text-bold {{#if classes}}{{classes}}{{/if}}"{{/is}}{{#if ./sort}} ($click)="setSort(name)"{{/if}}>
             {{alias}}
-            {{#is name currentSort.field}}<i class="sort-icon fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>{{/is}}
+            {{#is name currentSort.field}}<i class="fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>
+            <i class="fa fa-times float-right" ($click)="setSort('', %event)" title="Clear Sort"></i>{{/is}}
           </th>
         {{/each}}
       </tr>
@@ -31,7 +32,7 @@
             </div>
           </td>
           {{#each fields as field}}
-            <td>
+            <td {{#if classes}}class="{{classes}}"{{/if}}>
                 {{ >field.displayTemplate}}
             </td>
           {{/each}}

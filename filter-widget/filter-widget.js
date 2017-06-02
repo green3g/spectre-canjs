@@ -63,6 +63,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @parent filter-widget.ViewModel.props
      */
     filters: {
+        Type: FilterList,
         Value: FilterList
     },
     /**
@@ -96,7 +97,7 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     fieldOptions: {
         get () {
             const fields = [{
-                value: '',
+                value: '_',
                 label: 'Add a filter'
             }];
             if (this.fields.length) {
@@ -120,7 +121,10 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
      * @property {String} filter-widget.ViewModel.fieldValue fieldValue
      * @parent filter-widget.ViewModel
      */
-    fieldValue: 'string',
+    fieldValue: {
+        type: 'string',
+        value: '_'
+    },
     /**
      * Removes a filter from the list of filters
      * @function removeFilter
@@ -141,11 +145,11 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
     removeFilters () {
         this.filters.replace([]);
     },
-  /**
+    /**
      * Adds a new filter or set of filters to the list of filters in this widget.
      * <br />TODO: A `filterFactory` may be defined on the field which may return one filter or an array of
      * filters.
-    * @function addFilter
+     * @function addFilter
      * @signature
      * @param  {string} props The properties with a value key of the name of the field filter to add. This is the only argument passed to the function, the rest may be null.
      * @return {Boolean} returns false to prevent event propagation from links
@@ -154,7 +158,8 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
 
         // get the name
         const name = (arguments.length === 4 ? arguments[3] : arguments[0]).value;
-        if (!name) {
+
+        if (!name || name === '_') {
             return false;
         }
 
@@ -165,14 +170,17 @@ export const ViewModel = DefineMap.extend('FilterWidget', {
                 return field.name === name;
             })[0];
         }
+
         const filterObj = new Filter({
             field: fieldProp,
             name: name
         });
 
-        // reset the dropdown
-        this.fieldValue = '';
         this.filters.push(filterObj);
+
+
+        // reset the dropdown
+        this.fieldValue = '_';
 
         return false;
     },

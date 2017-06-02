@@ -65,21 +65,21 @@ test('setSort(field)', (assert) => {
     const otherField = 'label';
     vm.setSort(field);
     assert.deepEqual(vm.currentSort.serialize(), {
-        type: 'asc',
+        type: 'desc',
         field: field
-    }, 'Current sort should be ascending and set to field');
+    }, 'Current sort should be desc by default');
 
     vm.setSort(field);
     assert.deepEqual(vm.currentSort.serialize(), {
-        type: 'desc',
+        type: 'asc',
         field: field
-    }, 'Current sort should be descending and set to field');
+    }, 'Current sort should be asc after setting again');
 
     vm.setSort(otherField);
     assert.deepEqual(vm.currentSort.serialize(), {
-        type: 'asc',
+        type: 'desc',
         field: otherField
-    }, 'Current sort should be ascending and set to field');
+    }, 'Current sort should be desc by default');
 });
 
 test('toggleSelected(obj), isSelected(obj)', (assert) => {

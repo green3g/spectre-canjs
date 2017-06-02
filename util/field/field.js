@@ -202,6 +202,15 @@ export const Field = DefineMap.extend('Field', {
         value: true
     },
     /**
+     * Includes this field in the sorting capability
+     * @property {Boolean} util/field.Field.props.sort sort
+     * @parent util/field.Field.props
+     */
+    sort: {
+        type: 'boolean',
+        value: true
+    },
+    /**
      * Validates a property and returns a string if the field is invalid
      * @property {Function} util/field.Field.props.validate validate
      * @signature `validate(props)`
@@ -224,7 +233,14 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field.Field.props.placeholder placeholder
      * @parent util/field.Field.props
      */
-    placeholder: 'string'
+    placeholder: 'string',
+    /**
+     * Adds css classes to the table cells and headings. Selectors should use
+     * `th.classname` and `td.classname`
+     * @property {String} util/field.Field.props.classes classes
+     * @parent util/field.Field.props
+     */
+    classes: 'string'
 });
 
 
@@ -232,7 +248,7 @@ export const FieldList = DefineList.extend('FieldList', {
     '#': Field
 });
 
-//eslint-disable-next-line valid-jsdoc
+// eslint-disable-next-line valid-jsdoc
 /**
  * Converts an array of strings or field json objects into Field objects
  * @function util/field.methods.parseFieldArray parseFieldArray
@@ -259,7 +275,7 @@ export function parseFieldArray (fields) {
     });
 }
 
-//eslint-disable-next-line valid-jsdoc
+// eslint-disable-next-line valid-jsdoc
 /**
  * Converts a DefineMap to an array of Field objects using the property definitions
  * property or the keys

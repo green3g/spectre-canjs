@@ -45,9 +45,11 @@ var data = [{
 document.body.appendChild(render({
   fields: [{
     name: 'actions',
+    sort: false,
     displayTemplate: actionTemplate
   }, 'name', 'favorite_food', {
     name: 'age',
+    classes: 'text-italic',
     displayTemplate: stache('{{object.name}} is {{object.age}} years old')
   }, { name: 'votes', displayTemplate: voteTemplate }],
 

@@ -2,7 +2,7 @@ import template from './property-table.stache';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';
 import CanEvent from 'can-event';
-import FieldComponentMap from '../../util/field/FieldComponentMap';
+import FieldIteratorMap from '../../util/field/FieldIteratorMap';
 import assign from 'object-assign';
 
 /**
@@ -10,10 +10,10 @@ import assign from 'object-assign';
  * @parent property-table
  * @group property-table.ViewModel.props Properties
  * @description A `<property-table />` component's ViewModel. This viewmodel
- * extends the [util/field/FieldComponentMap FieldComponentMap]'s properties
+ * extends the [util/field/ ]'s properties
  *
  */
-export const ViewModel = FieldComponentMap.extend('PropertyTable', {
+export const ViewModel = FieldIteratorMap.extend('PropertyTable', {
     /**
      * @prototype
      */

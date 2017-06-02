@@ -1,11 +1,8 @@
-import DefineMap from 'can-define/map/map';
+import Base from '~/util/field/FieldInputMap';
 import Component from 'can-component';
-import CanEvent from 'can-event';
-import assign from 'object-assign';
 
 import '../select-field/select-field';
 import {MONTH_OPTIONS, YEAR_OPTIONS} from './constants';
-
 
 import template from './date-field.stache!';
 import './date-field.less!';
@@ -17,22 +14,10 @@ import './date-field.less!';
  *
  * @description A `<date-field />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('DateField', {
+export const ViewModel = Base.extend('DateField', {
     /**
      * @prototype
      */
-    /**
-     * Form field properties that define this fields behavior
-     * @property {Object} date-field.ViewModel.props.properties properties
-     * @parent date-field.ViewModel.props
-     */
-    properties: {Value: DefineMap},
-    /**
-     * A list of validation errors
-     * @property {Array<String>} date-field.ViewModel.props.errors errors
-     * @parent date-field.ViewModel.props
-     */
-    errors: '*',
     /**
      * The current value in the date picker field. This value is
      * a virtual property based on the month, day, and year properties
@@ -44,8 +29,17 @@ export const ViewModel = DefineMap.extend('DateField', {
     value: {
         type: 'date',
         set (date) {
+
+            // if the value is falsey, return it
+            if (!date) {
+                return date;
+            }
+
+            // otherwise validate the and create a new date if not valid
             if (!this.isValidDate(date)) {
                 date = new Date();
+
+                // if the set date is valid, set our dropdowns
             } else {
                 this.set({
                     day: date.getUTCDate(),
@@ -184,9 +178,6 @@ export const ViewModel = DefineMap.extend('DateField', {
         return (!isNaN(d.getTime()));
     }
 });
-
-assign(ViewModel.prototype, CanEvent);
-
 
 export default Component.extend({
     tag: 'date-field',

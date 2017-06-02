@@ -21,11 +21,12 @@
 <div class="clearfix"></div>
 
 {{#if objects.length}}
+<div {{#if objectsPromise.isPending}}class="faded"{{/if}}>
   <list-table {objects}="objects" id-prop="{{view.connection.idProp}}" {actions}="buttons"
   {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject"
-  (view)="viewObject" (custom)="manageObjects"
-  {(current-sort)}="parameters.sort"
-    {fields}="_fields" />
+  (view)="viewObject" (custom)="manageObjects" {sort}="@noop"
+  {(current-sort)}="parameters.sort" {fields}="_fields" />
+</div>
 {{else}}
   {{#if objectsPromise.isResolved}}
     <p>{{view.noDataMessage}}</p>

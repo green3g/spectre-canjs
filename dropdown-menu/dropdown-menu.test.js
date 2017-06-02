@@ -41,4 +41,4 @@ test('onPrimaryClick(button)', (assert) => {
     vm.onPrimaryClick(button);
 });
 
-//TODO: test hideAll
+// TODO: test hideAll

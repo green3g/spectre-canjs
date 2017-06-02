@@ -82,7 +82,7 @@ const fields = [{
         alias: 'A basic textarea field',
         type: 'text',
         textarea: true,
-        placeholder: 'Enter the text: "hello"',
+        placeholder: 'Enter the text: hello',
         validate(props) {
             if (props.value !== 'hello') {
                 return 'This field must contain the text, "hello"';

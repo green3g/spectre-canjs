@@ -13,7 +13,7 @@ import './json-field.less';
  * @parent form-widget/field-components/json-field
  * @group json-field.ViewModel.props Properties
  *
- * @description A `<json-field />` component's ViewModel
+ * @description A `<json-field />` component's ViewModel - Deprecated (use subform-field)
  */
 export const ViewModel = DefineMap.extend('JSONField', {
     /**

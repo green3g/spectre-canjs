@@ -13,12 +13,12 @@ import define from 'can-define';
  * @description The default filter operator options
  */
 export const FilterOptions = [{
-    label: 'Does not contain',
-    value: 'not_like',
-    types: ['string']
-}, {
     label: 'Contains',
     value: 'like',
+    types: ['string']
+}, {
+    label: 'Does not contain',
+    value: 'not_like',
     types: ['string']
 }, {
     label: 'Starts with',
@@ -115,7 +115,12 @@ export const Filter = DefineMap.extend('Filter', {
      */
     operator: {
         type: 'string',
-        value: 'like'
+        get (val) {
+            return typeof val === 'undefined' ? this.operatorField.value : val;
+        },
+        serialize (val) {
+            return val;
+        }
     },
     /**
      * A field object that defines the available operator options and properties.
@@ -130,30 +135,58 @@ export const Filter = DefineMap.extend('Filter', {
         serialize: false,
         get () {
             const field = this.field;
+            const options = field ? FilterOptions.filter((filter) => {
+                return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
+            }) : FilterOptions;
             return new Field({
                 name: 'operator',
+                value: options[0].value,
                 alias: 'is',
                 inline: true,
                 placeholder: 'Choose an operator',
                 fieldType: 'select',
-                options: field ? FilterOptions.filter((filter) => {
-                    return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
-                }) : FilterOptions
+                options: options
             });
         }
+    },
+    /**
+     * A property to show or hide this filter in the picker. The default is `true`
+     * @property {Boolean} filter-widget.Filter.props.visible visible
+     * @parent filter-widget.Filter.props
+     */
+    visible: {
+        type: 'boolean',
+        value: true,
+        serialize: false,
+        set (val) {
+            return val;
+        }
+    },
+    /**
+     * A property to disable this filter's remove button. This filter will not
+     * be removable. In addition, the operator field will be fixed. The default
+     * is `false`.
+     * @property {Boolean} filter-widget.Filter.props.pinned
+     * @parent filter-widget.Filter.props
+     */
+    pinned: {
+        type: 'boolean',
+        value: false,
+        serialize: false
     },
     /**
      * A virtual property to provide the field alias. If the
      * [filter-widget.Filter.props.field `field`] property is set, this alias
      * will match the `field.alias`
-     * @property {Object} filter-widget.Filter.props.alias alias
+     * @property {String} filter-widget.Filter.props.alias alias
      * @parent filter-widget.Filter.props
      *
      */
     alias: {
         get () {
             return this.field ? this.field.alias : makeSentenceCase(this.name);
-        }
+        },
+        serialize: false
     },
     /**
      * A field object that defines the value field properties.

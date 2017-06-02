@@ -46,7 +46,7 @@ export const ViewModel = DefineMap.extend('PaginateFooter', {
    */
     totalPages: {
         get () {
-      //round up to the nearest integer
+      // round up to the nearest integer
             const totalPages = Math.ceil(this.total / this.perPage);
             return totalPages ? totalPages : 1;
         }

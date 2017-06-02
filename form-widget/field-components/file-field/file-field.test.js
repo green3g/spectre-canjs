@@ -20,7 +20,7 @@ test('currentFiles get()', (assert) => {
     assert.equal(vm.currentFiles.length, 3, 'the field should have files');
 });
 
-//TODO: Test the uploadFiles process with fixtures
+// TODO: Test the uploadFiles process with fixtures
 
 test('uploadSuccess()', (assert) => {
     vm.uploadSuccess({
@@ -40,9 +40,9 @@ test('updateValue()', (assert) => {
     assert.equal(vm.value, '', 'the value should be empty');
 });
 
-//TODO test uploadError with fixtures
+// TODO test uploadError with fixtures
 
-//TODO: test removeFile with fixtures
+// TODO: test removeFile with fixtures
 
 test('removeSuccess(file)', (assert) => {
     vm.currentFiles = [{path: 'file_1'}, {path: 'file_2'}];

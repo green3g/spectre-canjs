@@ -244,6 +244,7 @@ export const ViewModel = FieldIteratorMap.extend('FormWidget', {
      */
     getValidationError (field, value) {
         return field.validate ? field.validate({
+            name: field.name,
             value: value,
             dirty: this.dirtyObject,
             current: this.formObject

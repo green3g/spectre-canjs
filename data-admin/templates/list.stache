@@ -2,16 +2,16 @@
   <section class="navbar-section">
     <h3>{{view.title}} List</h3>
   </section>
-  <section class="navbar-section">
+  <section class="navbar-section hidden-print">
     <search-control {fields}="_fields" {(filters)}="parameters.filters" {view}="view" />
   </section>
 
-  <section class="navbar-section">
+  <section class="navbar-section hidden-print">
     {{#if selectedObjects.length}}
       <manage-toolbar {buttons}="toolbarButtons" (buttonclick)="manageObjects" />
     {{/if}}
 
-      <button class="btn btn-default" ($click)="setPage('list')">
+    <button class="btn btn-default" ($click)="setPage('list')">
               <i title="Refresh Data" class="fa {{#if objectsPromise.isPending}}fa-spin{{/if}} fa-refresh"></i> Refresh
             </button>
   </section>
@@ -21,16 +21,16 @@
 <div class="clearfix"></div>
 
 {{#if objects.length}}
-<div {{#if objectsPromise.isPending}}class="faded"{{/if}}>
-  <list-table {objects}="objects" id-prop="{{view.connection.idProp}}" {actions}="buttons"
-  {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject"
-  (view)="viewObject" (custom)="manageObjects" {sort}="@noop"
-  {(current-sort)}="parameters.sort" {fields}="_fields" />
-</div>
+  <div {{#if objectsPromise.isPending}} class="faded" {{/if}}>
+    <list-table {objects}="objects" id-prop="{{view.connection.idProp}}" {actions}="buttons" {(selected-objects)}="selectedObjects" (edit)="editObject" (delete)="deleteObject" (view)="viewObject" (custom)="manageObjects" {sort}="@noop" {(current-sort)}="parameters.sort"
+      {fields}="_fields" />
+  </div>
 {{else}}
   {{#if objectsPromise.isResolved}}
     <p>{{view.noDataMessage}}</p>
   {{/if}}
 {{/if}}
 
-<paginate-footer total="{{totalItems}}" {(per-page)}="parameters.perPage" {(page-index)}="parameters.page" />
+<div class="hidden-print">
+  <paginate-footer total="{{totalItems}}" {(per-page)}="parameters.perPage" {(page-index)}="parameters.page" />
+</div>

@@ -347,7 +347,9 @@ export const ViewModel = DefineMap.extend('DataAdmin', {
                 edit: false,
                 detail: false,
                 filter: false,
-                displayTemplate: actionsCellTemplate
+                sort: false,
+                displayTemplate: actionsCellTemplate,
+                classes: 'hidden-print'
             }];
 
       // try a fields propety first

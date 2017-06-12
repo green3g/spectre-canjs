@@ -2,7 +2,6 @@
 import '../filter-widget/filter-widget.test';
 import '../list-table/list-table.test';
 import '../property-table/property-table.test';
-import '../data-admin/data-admin.test';
 import '../data-admin/components/paginate-footer/paginate-footer.test';
 import '../data-admin/components/search-control/search-control.test';
 import '../data-admin/components/manage-toolbar/manage-toolbar.test';

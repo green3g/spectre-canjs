@@ -5,7 +5,6 @@ stealTools.build({
     main: 'docs-main',
     config: path.join(__dirname, 'package.json!npm'),
     bundle: [
-        'spectre-canjs/data-admin/demo/admin',
         'spectre-canjs/dropdown-menu/demo/dropdown',
         'spectre-canjs/filter-widget/demo/filter',
         'spectre-canjs/form-widget/demo/form',

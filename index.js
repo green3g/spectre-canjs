@@ -1,6 +1,5 @@
 import 'spectre.css/dist/spectre.css';
 import 'font-awesome/css/font-awesome.css';
-import 'spectre-canjs/data-admin/';
 import 'spectre-canjs/filter-widget/';
 import 'spectre-canjs/form-widget/';
 import 'spectre-canjs/list-table/';

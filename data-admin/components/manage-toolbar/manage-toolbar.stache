@@ -1,7 +1,0 @@
-<div class="inline-block btn-group btn-group-block">
-  {{#each buttons}}
-    <button class="btn btn-primary{{#tooltip}} tooltip{{/tooltip}}" {{#tooltip}} data-tooltip="{{tooltip}}" {{/tooltip}} ($click)="dispatchEvent(.)">
-              <i class="{{iconClass}}"></i> {{text}}
-      </button>
-  {{/each}}
-</div>

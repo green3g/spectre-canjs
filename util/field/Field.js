@@ -2,7 +2,6 @@ import {makeSentenceCase} from '../string/string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
 /**
@@ -28,12 +27,6 @@ export const TEMPLATES = {
     date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // date object
     checkbox: '<checkbox-field (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" {properties}="." />'
 };
-
-export const RESERVED = [
-    'get',
-    'set',
-    'serialize'
-];
 
 const displayTemplate = stache('{{object[field.name]}}');
 
@@ -248,68 +241,4 @@ export const FieldList = DefineList.extend('FieldList', {
     '#': Field
 });
 
-// eslint-disable-next-line valid-jsdoc
-/**
- * Converts an array of strings or field json objects into Field objects
- * @function util/field.methods.parseFieldArray parseFieldArray
- * @parent util/field.methods
- * @signature `parseFieldArray(fields)`
- * @param  {Array<util/field.Field | String>} fields An array of either strings or JSON like objects representing Field object properties
- * @return {Array<util/field.Field>} The array of fields
- */
-export function parseFieldArray (fields) {
-    // create field objects
-    return fields.map((f) => {
-        // if we have a string give it a default name
-        if (typeof f === 'string') {
-            f = {
-                name: f
-            };
-        }
-        // add additional props with field constructor
-        return new Field(f);
-
-        // filter fields to exclude any '__' hidden props
-    }).filter((f) => {
-        return f.name.indexOf('__') === -1;
-    });
-}
-
-// eslint-disable-next-line valid-jsdoc
-/**
- * Converts a DefineMap to an array of Field objects using the property definitions
- * property or the keys
- * @function util/field.methods.mapToFields mapToFields
- * @parent util/field.methods
- * @signature `mapToFields(defineMap)`
- * @param  {Constructor} defineMap The extended map/constructor to parse
- * @return {Array<util/field.Field>} The array of fields
- */
-export function mapToFields (defineMap) {
-    if (!defineMap) {
-        dev.warn('map is undefined, so no fields will be generated');
-        return [];
-    }
-    const define = (defineMap._define || defineMap.prototype._define).definitions;
-    const fields = [];
-    for (var prop in define) {
-        if (define[prop]) {
-            const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
-
-            // remove reserved properties if any
-            const clone = assign({}, define[prop]);
-            RESERVED.forEach((r) => {
-                delete clone[r];
-            });
-
-            fields.push(assign({}, {
-                name: prop,
-                type: 'string',
-                fieldType: 'text'
-            }, clone, {
-                type: fType
-            }));
-        }
-    }
-    return parseFieldArray(fields);
-}
+export default Field;

@@ -105,18 +105,6 @@
 				
 				
 				<li class="menu-item search-container">
-					<a class="typedef" href="form-widget__field-components__select-field.SelectOption.html" data-search="SelectOption">
-						SelectOption
-					</a>
-				</li>
-				
-
-			
-		
-			
-				
-				
-				<li class="menu-item search-container">
 					<a class="constructor" href="form-widget__field-components__select-field.ViewModel.html" data-search="ViewModel">
 						ViewModel
 					</a>
@@ -127,12 +115,36 @@
 		
 			
 				
+					<li class="divider menu-header heading search-container" data-content="types"></li>
+						
+		
+			
+				
 				
 				<li class="menu-item search-container">
-					<a class="typedef" href="select-field.SelectFieldProperty.html" data-search="SelectFieldProperty">
+					<a class="typedef" href="select-field.types.SelectFieldProperty.html" data-search="SelectFieldProperty">
 						SelectFieldProperty
 					</a>
 				</li>
+				
+
+			
+		
+			
+				
+				
+				<li class="menu-item search-container">
+					<a class="typedef" href="select-field.types.SelectOption.html" data-search="SelectOption">
+						SelectOption
+					</a>
+				</li>
+				
+
+			
+		
+
+
+				
 				
 
 			
@@ -269,7 +281,7 @@ options: [{
 							<code>options</code>
 						</td>
 						<td>
-							<code>{Array&lt;spectre.types.SelectOptionProperty&gt;}</code>
+							<code>{Array&lt;select-field.SelectOption&gt;}</code>
 						</td>
 						<td>
 							<p>An array of values and labels</p>
@@ -286,7 +298,7 @@ options: [{
 							<code>{Promise}</code>
 						</td>
 						<td>
-							<p>A promise that asynchronously resolves to an array of <a href="form-widget__field-components__select-field.SelectOption.html">SelectOption</a></p>
+							<p>A promise that asynchronously resolves to an array of [form-widget/field-components/select-field.SelectOption]</p>
 
 							
 						</td>
@@ -339,7 +351,7 @@ options: [{
 	
 
 	<script type="text/javascript">
-		var docObject = {"type":"module","name":"form-widget/field-components/select-field","src":"form-widget\\field-components\\select-field\\select-field.md","description":"A select dropdown with options. See `selectFieldProperty` and `selectOptionProperty`.\r\n# Example\r\n```\r\n{\r\nname: 'op',\r\nalias: 'is',\r\nplaceholder: 'Choose a operator',\r\nfieldType: 'select',\r\noptions: [{\r\n label: 'Equal to',\r\n value: '=='\r\n}, {\r\n label: 'Not equal to',\r\n value: '!='\r\n}, {\r\n label: 'Contains',\r\n value: 'in'\r\n}, {\r\n label: 'Does not contain',\r\n value: 'not_in'\r\n}, {\r\n label: 'Like',\r\n value: 'like'\r\n}]\r\n},\r\n```","title":"<select-field />\r","types":[{"type":"can.Component","options":[{"name":"fieldType","description":"This should be set to `select` to use this template in the form widget","types":[{"type":"String"}]},{"name":"options","description":"An array of values and labels","types":[{"type":"Array","template":[{"types":[{"type":"spectre.types.SelectOptionProperty"}]}]}]},{"name":"optionsPromise","description":"A promise that asynchronously resolves to an array of [form-widget/field-components/select-field.SelectOption]","types":[{"type":"Promise"}]}]}],"parent":"form-widget.fields","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+		var docObject = {"type":"module","name":"form-widget/field-components/select-field","src":"form-widget\\field-components\\select-field\\select-field.md","description":"A select dropdown with options. See `selectFieldProperty` and `selectOptionProperty`.\r\n# Example\r\n```\r\n{\r\nname: 'op',\r\nalias: 'is',\r\nplaceholder: 'Choose a operator',\r\nfieldType: 'select',\r\noptions: [{\r\n label: 'Equal to',\r\n value: '=='\r\n}, {\r\n label: 'Not equal to',\r\n value: '!='\r\n}, {\r\n label: 'Contains',\r\n value: 'in'\r\n}, {\r\n label: 'Does not contain',\r\n value: 'not_in'\r\n}, {\r\n label: 'Like',\r\n value: 'like'\r\n}]\r\n},\r\n```","title":"<select-field />\r","types":[{"type":"can.Component","options":[{"name":"fieldType","description":"This should be set to `select` to use this template in the form widget","types":[{"type":"String"}]},{"name":"options","description":"An array of values and labels","types":[{"type":"Array","template":[{"types":[{"type":"select-field.SelectOption"}]}]}]},{"name":"optionsPromise","description":"A promise that asynchronously resolves to an array of [form-widget/field-components/select-field.SelectOption]","types":[{"type":"Promise"}]}]}],"parent":"form-widget.fields","source":"https://github.com/roemhildtg/spectre-canjs","templates":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\templates","static":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs-site\\static","glob":{"ignore":"{docs,dist,node_modules}/**/*","pattern":"**/*.{md,js}","cwd":"C:\\www\\gis\\static_apps\\spectre-can-js"},"dest":"C:\\www\\gis\\static_apps\\spectre-can-js\\docs","forceBuild":true,"debug":true,"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
 	</script>
 
 	

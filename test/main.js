@@ -2,10 +2,6 @@
 import '../filter-widget/filter-widget.test';
 import '../list-table/list-table.test';
 import '../property-table/property-table.test';
-import '../data-admin/components/paginate-footer/paginate-footer.test';
-import '../data-admin/components/search-control/search-control.test';
-import '../data-admin/components/manage-toolbar/manage-toolbar.test';
-import '../data-admin/ViewMap.test';
 import '../util/string/string.test';
 import '../util/field/field.test';
 import '../paginate-widget/paginate-widget.test';

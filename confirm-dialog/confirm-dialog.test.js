@@ -6,7 +6,7 @@ import ViewModel from './ViewModel';
 //eslint-disable-next-line
 let vm;
 
-q.module('modal-dialog/confirm-dialog.ViewModel', {
+q.module('confirm-dialog/ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

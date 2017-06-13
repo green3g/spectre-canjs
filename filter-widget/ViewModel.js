@@ -1,6 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import {makeSentenceCase} from '../util/string/string';
-import {FieldList} from '../util/field/field';
+import {FieldList} from '../util/field/Field';
 import {Filter, FilterList} from './Filter';
 
 /**

@@ -2,7 +2,7 @@
 
 import q from 'steal-qunit';
 
-import {ViewModel} from './paginate-widget';
+import ViewModel from './ViewModel';
 
 let vm;
 

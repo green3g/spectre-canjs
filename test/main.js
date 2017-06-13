@@ -12,6 +12,6 @@ import '../form-widget/field-components/file-field/file-field.test';
 import '../form-widget/field-components/json-field/json-field.test';
 import '../form-widget/field-components/select-field/select-field.test';
 import '../form-widget/field-components/text-field/text-field.test';
-import '../modal-dialog/confirm-dialog.test';
+import '../confirm-dialog/confirm-dialog.test';
 import '../modal-dialog/modal-dialog.test';
 import '../nav-container/nav-container.test';

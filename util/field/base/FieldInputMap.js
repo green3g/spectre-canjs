@@ -4,7 +4,7 @@ import canEvent from 'can-event';
 import assign from 'can-util/js/assign/assign';
 
 /**
- * @constructor util/field/FieldInputMap
+ * @constructor util/field/base/FieldInputMap
  * @parent util/field.types
  * @group FieldInputMap.props props
  *
@@ -13,19 +13,20 @@ import assign from 'can-util/js/assign/assign';
 export const ViewModel = DefineMap.extend('FieldInput', {
     /**
      * The properties for this checkbox
-     * @property {DefineMap} util/field/FieldInputMap.props.properties properties
-     * @parent util/field/FieldInputMap.props
+     * @property {DefineMap} FieldInputMap.props.properties properties
+     * @parent FieldInputMap.props
      */
     properties: {Value: DefineMap},
     /**
      * The form errors object
-     * @property {Object} util/field/FieldInputMap.props
+     * @property {Object} FieldInputMap.props.errors errors
+     * @parent FieldInputMap.props
      */
     errors: '*',
     /**
      * The current field value
-     * @property {Object} util/field/FieldInputMap.props.value value
-     * @parent util/field/FieldInputMap.props
+     * @property {Object} FieldInputMap.props.value value
+     * @parent FieldInputMap.props
      */
     value: {
         type: '*',

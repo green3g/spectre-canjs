@@ -1,6 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import FieldIteratorMap from '../../util/field/FieldIteratorMap';
+import FieldIteratorMap from '../../util/field/base/FieldIteratorMap';
 import assign from 'object-assign';
 
 /**

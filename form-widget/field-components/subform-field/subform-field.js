@@ -2,8 +2,9 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import template from './subform-field.stache!';
 import './subform-field.less';
-import Base from '~/util/field/FieldInputMap';
-import {mapToFields, parseFieldArray} from '~/util/field/field';
+import Base from '~/util/field/base/FieldInputMap';
+import parseFieldArray from '~/util/field/parseFieldArray/parseFieldArray';
+import mapToFields from '~/util/field/mapToFields/mapToFields';
 import dev from 'can-util/js/dev/dev';
 
 /**

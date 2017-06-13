@@ -1,4 +1,4 @@
-import FieldIteratorMap from '../util/field/FieldIteratorMap';
+import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import CanEvent from 'can-event';

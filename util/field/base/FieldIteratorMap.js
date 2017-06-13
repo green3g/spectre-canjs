@@ -1,9 +1,10 @@
 import DefineMap from 'can-define/map/map';
-import {parseFieldArray, Field} from '../field/field';
+import parseFieldArray from '../parseFieldArray/parseFieldArray';
+import Field from '../Field';
 import DefineList from 'can-define/list/list';
 
 /**
- * @constructor util/field/FieldIteratorMap
+ * @constructor util/field/base/FieldIteratorMap
  * @parent util/field.types
  * @group FieldIteratorMap.props
  * A super class for widgets that need to iterate through a set or subset
@@ -18,20 +19,20 @@ export default DefineMap.extend({
   /**
    * A string referencing a field property that will exclude that field
    * from this classes fields.
-   * @property {String} FieldIteratorMap.propsexcludeFieldKey excludeFieldKey
+   * @property {String} FieldIteratorMap.props.excludeFieldKey excludeFieldKey
    * @parent FieldIteratorMap.props
    */
     excludeFieldKey: 'string',
     /**
      * A property that converts this class's object to an array of
      * fields if fields are not provided.
-     * @property {DefineMap} FieldIteratorMap.propsobject object
+     * @property {DefineMap} FieldIteratorMap.props.object object
      * @parent FieldIteratorMap.props
      */
     object: DefineMap,
   /**
    * An array of fields
-   * @property {Array<util/field.Field>} FieldIteratorMap.propsfields fields
+   * @property {Array<util/field.Field>} FieldIteratorMap.props.fields fields
    * @parent FieldIteratorMap.props
    */
     fields: {

@@ -1,5 +1,5 @@
 import DefineMap from 'can-define/map/map';
-import FieldIteratorMap from '../util/field/FieldIteratorMap';
+import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 
 /**
  * @constructor form-widget.ViewModel ViewModel

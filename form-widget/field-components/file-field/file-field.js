@@ -1,4 +1,4 @@
-import Base from '~/util/field/FieldInputMap';
+import Base from '~/util/field/base/FieldInputMap';
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import Component from 'can-component';

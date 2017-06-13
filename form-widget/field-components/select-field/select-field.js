@@ -1,5 +1,5 @@
 import Component from 'can-component';
-import Base from '~/util/field/FieldInputMap';
+import Base from '~/util/field/base/FieldInputMap';
 import template from './select-field.stache';
 import selectInput from './templates/selectInput.stache';
 import DefineMap from 'can-define/map/map';

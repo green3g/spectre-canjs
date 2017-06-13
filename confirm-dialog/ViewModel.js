@@ -1,4 +1,4 @@
-import {ViewModel as ModalViewModel} from '../modal-dialog/ViewModel';
+import ModalViewModel from '../modal-dialog/ViewModel';
 
 /**
  * @constructor confirm-dialog.ViewModel ViewModel

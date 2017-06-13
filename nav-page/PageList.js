@@ -6,6 +6,8 @@ import ViewModel from './ViewModel';
  * @constructor nav-page/PageList PageList
  * @parent nav-page
  */
-export const PageList = DefineList.extend('NavPageList', {
+const PageList = DefineList.extend('NavPageList', {
     '#': ViewModel
 });
+
+export default PageList;

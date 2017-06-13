@@ -70,7 +70,8 @@ const ViewModel = DefineMap.extend('FilterWidget', {
                 name: 'name',
                 alias: 'Field Name',
                 fieldType: 'select',
-                options: this.fieldOptions
+                options: this.fieldOptions,
+                inline: true
             } : {
                 name: 'name',
                 alias: 'Field Name',

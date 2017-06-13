@@ -61,7 +61,7 @@ export const ViewModel = Base.extend('SubformField', {
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `subFormObject`
      * if `fields` is not provided.
-     * @property {Array<util/field.Field>} subform-field.ViewModel.props.formFields formFields
+     * @property {Array<util/field/Field>} subform-field.ViewModel.props.formFields formFields
      * @parent subform-field.ViewModel.props
      */
     formFields: {

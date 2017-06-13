@@ -1,6 +1,5 @@
-import DefineMap from 'can-define/map/map';
+import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 import {makeSentenceCase} from '../util/string/string';
-import {FieldList} from '../util/field/Field';
 import {Filter, FilterList} from './Filter';
 
 /**
@@ -8,9 +7,10 @@ import {Filter, FilterList} from './Filter';
  * @parent filter-widget
  * @group filter-widget.ViewModel.props Properties
  *
- * @description A `<filter-widget />` component's ViewModel
+ * @description A `<filter-widget />` component's ViewModel.
+ * extends the [util/field/base/FieldIteratorMap FieldIteratorMap]'s properties
  */
-const ViewModel = DefineMap.extend('FilterWidget', {
+const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     /**
      * @prototype
      */
@@ -18,28 +18,18 @@ const ViewModel = DefineMap.extend('FilterWidget', {
      * Disabled the add new form if true
      * @property {Boolean} filter-widget.ViewModel.disableCreate
      * @parent filter-widget.ViewModel.props
+     * @inherits {util/field/base/FieldIteratorMap} FieldIteratorMap
+
      */
     disableCreate: 'htmlbool',
-    /**
-     * A list of fields that will be used to create options in the field name
-     * dropdown. If the field has a property `filter` set to false, it will be
-     * excluded from this widget.
-     * <br />TODO: Each field may have a property `filterFactory` which may return
-     * one or more filter objects
-     * @property {Array<util/field.Field>} filter-widget.ViewModel.fields
-     * @parent filter-widget.ViewModel.props
-     */
-    fields: {
-        Type: FieldList,
-        Value: FieldList,
-        get (fields) {
-            if (fields.length) {
-                return fields.filter((f) => {
-                    return f.filter !== false;
-                });
-            }
-            return [];
-        }
+      /**
+       * A string referencing a field property that will exclude that field
+       * from this classes fields. The default is 'list'.
+       * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
+       * @parent list-table.ViewModel.props
+       */
+    excludeFieldKey: {
+        value: 'filter'
     },
     /**
      * An optional object template to derive field options from. If it is provided,

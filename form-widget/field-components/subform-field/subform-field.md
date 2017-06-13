@@ -4,7 +4,7 @@
 
 @option {String} fieldType This should be set to `subform`
 @option {can.Map} ObjectTemplate The object to use as the form object template
-@option {Array<String|util/field.Field>} formFields The form fields to use in the form
+@option {Array<String|util/field/Field>} formFields The form fields to use in the form
 
 @description
 

@@ -48,7 +48,7 @@ const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
      * An array of buttons to display next to the dropdown button. This creates a split
      * dropdown menu button group
-     * @property {Array<ButtonObject>} dropdown-menu.ViewModel.props.primaryButtons primaryButtons
+     * @property {Array<dropdown-menu.ButtonObject>} dropdown-menu.ViewModel.props.primaryButtons primaryButtons
      * @parent dropdown-menu.ViewModel.props
      */
     primaryButtons: DefineList,

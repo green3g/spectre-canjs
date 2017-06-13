@@ -1,9 +1,10 @@
 
 @module {can.Component} form-widget/field-components/select-field <select-field />
 @parent form-widget.fields
+@group select-field.types types
 
 @option {String} fieldType This should be set to `select` to use this template in the form widget
-@option {Array<spectre.types.SelectOptionProperty>} options An array of values and labels
+@option {Array<select-field.SelectOption>} options An array of values and labels
 @option {Promise} optionsPromise A promise that asynchronously resolves to an array of [form-widget/field-components/select-field.SelectOption]
 
 @description

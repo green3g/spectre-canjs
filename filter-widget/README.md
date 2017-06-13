@@ -11,9 +11,9 @@ fields. Initially, only a dropdown is displayed. Upon choosing a field from the
 dropdown, a dynamic filter form is generated.
 
 The filters generated consist of three parts
- - Operator - the type of comparator to filter on
- - Name - the name of the field
- - Value - the value to filter on
+ - `operator` - the type of comparator to filter on
+ - `name` - the name of the field
+ - `value` - the value to filter on
 
 ## Demo
 

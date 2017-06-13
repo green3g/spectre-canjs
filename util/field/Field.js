@@ -15,7 +15,7 @@ import dev from 'can-util/js/dev/dev';
  *  - subform: `<subform-field />` component
  *  - date: `<date-field />` component
  *  - checkbox: `<checkbox-field />` component
- * @property {Object} util/field.Field.TEMPLATES Built-in Templates
+ * @property {Object} util/field/Field.TEMPLATES Built-in Templates
  * @parent util/field.guides
  */
 export const TEMPLATES = {
@@ -31,9 +31,9 @@ export const TEMPLATES = {
 const displayTemplate = stache('{{object[field.name]}}');
 
 /**
- * @constructor util/field.Field Field
+ * @constructor util/field/Field Field
  * @parent util/field
- * @group util/field.Field.props Properties
+ * @group util/field/Field.props Properties
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
@@ -46,15 +46,15 @@ export const Field = DefineMap.extend('Field', {
      */
     /**
      * The name of the property on the object, this field's name
-     * @property {String} util/field.Field.props.name name
-     * @parent util/field.Field.props
+     * @property {String} util/field/Field.props.name name
+     * @parent util/field/Field.props
      */
     name: 'string',
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
-     * @property {String} util/field.Field.props.alias alias
-     * @parent util/field.Field.props
+     * @property {String} util/field/Field.props.alias alias
+     * @parent util/field/Field.props
      */
     alias: {
         type: 'string',
@@ -69,8 +69,8 @@ export const Field = DefineMap.extend('Field', {
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant. This should be
      * omitted if a custom template is used.
-     * @property {String} util/field.Field.props.fieldType fieldType
-     * @parent util/field.Field.props
+     * @property {String} util/field/Field.props.fieldType fieldType
+     * @parent util/field/Field.props
      */
     fieldType: {
         type: 'string',
@@ -96,8 +96,8 @@ export const Field = DefineMap.extend('Field', {
      *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
      *
      * For example:
-     * @property {Renderer} util/field.Field.props.formTemplate formTemplate
-     * @parent util/field.Field.props
+     * @property {Renderer} util/field/Field.props.formTemplate formTemplate
+     * @parent util/field/Field.props
      */
     formTemplate: {
         type: '*',
@@ -144,8 +144,8 @@ export const Field = DefineMap.extend('Field', {
      * ```
      *
      * In a stache template, this could be rendered using `field.capitalize(object.prop)`
-     * @property {Renderer} util/field.Field.props.displayTemlpate displayTemplate
-     * @parent util/field.Field.props
+     * @property {Renderer} util/field/Field.props.displayTemlpate displayTemplate
+     * @parent util/field/Field.props
      */
     displayTemplate: {
         value: function () {
@@ -160,8 +160,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the list view in the data-admin
-     * @property {Boolean} util/field.Field.props.list list
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.list list
+     * @parent util/field/Field.props
      */
     list: {
         type: 'boolean',
@@ -169,8 +169,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the details view in the data-admin
-     * @property {Boolean} util/field.Field.props.detail detail
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.detail detail
+     * @parent util/field/Field.props
      */
     detail: {
         type: 'boolean',
@@ -178,8 +178,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the edit view in the data-admin
-     * @property {Boolean} util/field.Field.props.edit edit
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.edit edit
+     * @parent util/field/Field.props
      */
     edit: {
         type: 'boolean',
@@ -187,8 +187,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the filter widget's fields.
-     * @property {Boolean} util/field.Field.props.filter filter
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.filter filter
+     * @parent util/field/Field.props
      */
     filter: {
         type: 'boolean',
@@ -196,8 +196,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the sorting capability
-     * @property {Boolean} util/field.Field.props.sort sort
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.sort sort
+     * @parent util/field/Field.props
      */
     sort: {
         type: 'boolean',
@@ -205,33 +205,33 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Validates a property and returns a string if the field is invalid
-     * @property {Function} util/field.Field.props.validate validate
+     * @property {Function} util/field/Field.props.validate validate
      * @signature `validate(props)`
      * @param {util/field.ValidationObject} props A special object consisting of information about the current value and dirty state of the form object
      * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
-     * @parent util/field.Field.props
+     * @parent util/field/Field.props
      */
     validate: {
         value: null
     },
     /**
      * A boolean flag to display form field inline with others and hide labels
-     * @property {Boolean} util/field.Field.props.inline inline
-     * @parent util/field.Field.props
+     * @property {Boolean} util/field/Field.props.inline inline
+     * @parent util/field/Field.props
      */
     inline: 'boolean',
     /**
      * Text to display when the field is empty (like a textbox). Doesn't apply to
      * some fields, like select or date fields.
-     * @property {String} util/field.Field.props.placeholder placeholder
-     * @parent util/field.Field.props
+     * @property {String} util/field/Field.props.placeholder placeholder
+     * @parent util/field/Field.props
      */
     placeholder: 'string',
     /**
      * Adds css classes to the table cells and headings. Selectors should use
      * `th.classname` and `td.classname`
-     * @property {String} util/field.Field.props.classes classes
-     * @parent util/field.Field.props
+     * @property {String} util/field/Field.props.classes classes
+     * @parent util/field/Field.props
      */
     classes: 'string'
 });

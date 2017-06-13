@@ -9,9 +9,9 @@ import makeArray from 'can-util/js/make-array/make-array';
  * @constructor list-table.ViewModel ViewModel
  * @parent list-table
  * @group list-table.ViewModel.props Properties
- *
+ * @inherits {util/field/base/FieldIteratorMap} FieldIteratorMap
  * @description A `<list-table />` component's ViewModel. This viewmodel
- * extends the [util/field/FieldIteratorMap FieldIteratorMap]'s properties
+ * extends the [util/field/base/FieldIteratorMap FieldIteratorMap]'s properties
  */
 const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
   /**

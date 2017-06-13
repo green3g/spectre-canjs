@@ -205,7 +205,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * validation method on the field.
      * @function setField
      * @signature
-     * @param  {util/field.Field} field  The field object properties
+     * @param  {util/field/Field} field  The field object properties
      * @param  {domElement} domElement The form element that dispatched the event
      * @param  {Event} event  The event object and type
      * @param  {FieldChangeEventObject} props  The value that was passed from the field component
@@ -233,7 +233,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
         }
     },
     /**
-     * Validates a field with a value if the field has a [util/field.Field.props.validate] property
+     * Validates a field with a value if the field has a [util/field/Field.props.validate] property
      * @function getValidationError
      * @param  {Object} field The field object to validate
      * @param  {value} value The value of the field to validate

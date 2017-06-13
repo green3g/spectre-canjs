@@ -84,7 +84,7 @@ export const ViewModel = DefineMap.extend('JSONField', {
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `jsonFormObject`
      * if `fields` is not provided.
-     * @property {Array<util/field.Field>} json-field.ViewModel.props.formFields formFields
+     * @property {Array<util/field/Field>} json-field.ViewModel.props.formFields formFields
      * @parent json-field.ViewModel.props
      */
     formFields: {

@@ -4,7 +4,7 @@ import canEvent from 'can-event';
 import assign from 'can-util/js/assign/assign';
 
 /**
- * @constructor util/field/base/FieldInputMap
+ * @constructor util/field/base/FieldInputMap FieldInputMap
  * @parent util/field.types
  * @group FieldInputMap.props props
  *

@@ -17,10 +17,10 @@ export const ViewModel = Base.extend('SelectField', {
      */
     /**
      * Properties for the select dropdown. The properties object is similar to that of
-     * `util/field.Field` object, except it includes additional properties to define
+     * `util/field/Field` object, except it includes additional properties to define
      * the select dropdown behavior.
      * @parent select-field.ViewModel.props
-     * @property {select-field.SelectFieldProperty} form-widget/field-components/select-field.ViewModel.properties properties
+     * @property {select-field.types.SelectFieldProperty} form-widget/field-components/select-field.ViewModel.properties properties
      */
     properties: {
         Value: DefineMap,
@@ -33,12 +33,6 @@ export const ViewModel = Base.extend('SelectField', {
             return props;
         }
     },
-    /**
-     * Whether or not to display this field inline with other fields
-     * @property {HTMLBoolean} select-field.ViewModel.props.inline inline
-     * @parent select-field.ViewModel.props
-     */
-    inline: 'htmlbool',
     /**
      * The select input renderer - stache template. Used as a partial in the template.
      * The default is a basic html select input.

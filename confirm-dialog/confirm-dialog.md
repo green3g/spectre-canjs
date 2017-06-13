@@ -5,8 +5,8 @@
 -->
 
 ## Description
-An extension of `<confirm-dialog />` that prompts the user for an accept or reject
-action. 
+An extension of `<modal-dialog />` that prompts the user for an accept or reject
+action.
 
 ## Example
 

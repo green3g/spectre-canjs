@@ -4,10 +4,10 @@ import Field from '../Field';
 import DefineList from 'can-define/list/list';
 
 /**
- * @constructor util/field/base/FieldIteratorMap
+ * @constructor util/field/base/FieldIteratorMap FieldIteratorMap
  * @parent util/field.types
  * @group FieldIteratorMap.props
- * A super class for widgets that need to iterate through a set or subset
+ * A base class for widgets that need to iterate through a set or subset
  * of fields.
  * ViewModels inheriting this map should define a excludeFieldKey which
  * is a field property that will exclude those fields from this class. For
@@ -32,7 +32,7 @@ export default DefineMap.extend({
     object: DefineMap,
   /**
    * An array of fields
-   * @property {Array<util/field.Field>} FieldIteratorMap.props.fields fields
+   * @property {Array<util/field/Field>} FieldIteratorMap.props.fields fields
    * @parent FieldIteratorMap.props
    */
     fields: {

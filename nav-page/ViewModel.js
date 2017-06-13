@@ -17,6 +17,12 @@ const ViewModel = DefineMap.extend('NavPage', {
    */
     active: {type: 'boolean', value: false},
     /**
+     * Add custom classes to the navigation containers nav tab.
+     * @type {String} nav-page.ViewModel.props.classes classes
+     * @parent nav-page.ViewModel.props
+     */
+    classes: 'string',
+    /**
      * The label to display in the parent container tab
      * @property {String} nav-page.ViewModel.props.label label
      * @parent nav-page.ViewModel.props

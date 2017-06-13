@@ -1,6 +1,6 @@
 <ul class="tab">
     {{#each pages}}
-      <li class="tab-item {{#is . ../activePage}}active{{/is}}{{#if loading}} loading{{/if}}" ($click)="makeActive(.)">
+      <li class="tab-item {{#is . ../activePage}}active{{/is}}{{#if loading}} loading{{/if}} {{classes}}" ($click)="makeActive(.)">
           <a {{#if href}}href="{{href}}"{{/if}}>
               {{label}}
           </a>

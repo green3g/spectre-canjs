@@ -1,7 +1,7 @@
 language: node_js
 node_js: node
 addons:
-  firefox: "51.0"
+  firefox: "54.0"
   code_climate:
     repo_token: 77c29acf0fc4dc4578d936d2299557830033eb2ea16220f443e35db4ee7ecb5b
 install:

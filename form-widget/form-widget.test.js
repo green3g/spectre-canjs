@@ -1,6 +1,6 @@
 /* eslint-env qunit, browser */
 
-import {ViewModel} from './form-widget';
+import ViewModel from './ViewModel';
 import q from 'steal-qunit';
 
 import {Connection} from '../test/data/connection';

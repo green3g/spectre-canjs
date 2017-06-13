@@ -1,11 +1,6 @@
-import template from './toast-item.stache!';
-import './toast-item.less!';
-
-import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import assign from 'object-assign';
-
 
 /**
  * @constructor toast-item.ViewModel ViewModel
@@ -14,7 +9,7 @@ import assign from 'object-assign';
  *
  * @description A `<toast-item />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('ToastItem', {
+const ViewModel = DefineMap.extend('ToastItem', {
   /**
    * @prototype
    */
@@ -145,27 +140,4 @@ export const ViewModel = DefineMap.extend('ToastItem', {
 });
 
 assign(ViewModel, CanEvent);
-
-
-/**
- * @module {can.Component} toast-item <toast-item />
- * @parent spectre.components
- * @outline 3
- */
-Component.extend({
-    tag: 'toast-item',
-    view: template,
-    ViewModel: ViewModel,
-    events: {
-        inserted () {
-            const vm = this.viewModel;
-            if (vm.autoHide) {
-                setTimeout(() => {
-                    vm.hide();
-                }, vm.autoHide);
-            }
-        }
-    }
-});
-
 export default ViewModel;

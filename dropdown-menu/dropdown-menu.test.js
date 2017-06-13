@@ -1,7 +1,7 @@
 /* eslint-env qunit, browser */
 
 import q from 'steal-qunit';
-import {ViewModel} from './dropdown-menu';
+import ViewModel from './ViewModel';
 
 //eslint-disable-next-line
 let vm;

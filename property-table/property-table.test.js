@@ -2,7 +2,7 @@
 
 import q from 'steal-qunit';
 import {Connection} from '../test/data/connection';
-import {ViewModel} from './property-table';
+import ViewModel from './ViewModel';
 
 let vm;
 

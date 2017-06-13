@@ -1,6 +1,6 @@
 /* eslint-env qunit, browser */
 
-import {ViewModel} from './filter-widget';
+import ViewModel from './ViewModel';
 
 import q from 'steal-qunit';
 import DefineMap from 'can-define/map/map';

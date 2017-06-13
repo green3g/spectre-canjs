@@ -1,8 +1,4 @@
-import {ViewModel as ModalViewModel} from './modal-dialog';
-import template from './confirm-dialog.stache!';
-import Component from 'can-component';
-import CanEvent from 'can-event';
-import assign from 'object-assign';
+import {ViewModel as ModalViewModel} from '../modal-dialog/ViewModel';
 
 /**
  * @constructor confirm-dialog.ViewModel ViewModel
@@ -12,7 +8,7 @@ import assign from 'object-assign';
  *
  * @description A `<confirm-dialog />` component's ViewModel
  */
-export const ViewModel = ModalViewModel.extend('ConfirmDialog', {
+const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * The text to display in the accept confirmation button. The default is `'Ok'`
      * @property {String} confirm-dialog.ViewModel.props.acceptText acceptText
@@ -78,11 +74,4 @@ export const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     }
 });
 
-assign(ViewModel, CanEvent);
-
-export default Component.extend({
-    tag: 'confirm-dialog',
-    ViewModel: ViewModel,
-    view: template,
-    leakScope: true
-});
+export default ViewModel;

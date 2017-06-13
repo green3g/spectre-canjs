@@ -19,6 +19,8 @@
     {{/if}}
   {{/each}}
 
+  <br />
+
   {{#unless disableCreate}}
     <select-field {properties}="nameField" (fieldchange)="addFilter" {(value)}="fieldValue" inline />
   {{/unless}}

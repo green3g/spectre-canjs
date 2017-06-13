@@ -5,6 +5,7 @@ addons:
   code_climate:
     repo_token: 77c29acf0fc4dc4578d936d2299557830033eb2ea16220f443e35db4ee7ecb5b
 install:
+  - npm install npm@4 -g
   - npm install
 before_install:
   - "export DEBUG=testee:*"

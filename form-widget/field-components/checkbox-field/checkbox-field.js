@@ -1,6 +1,6 @@
 import Component from 'can-component';
 import template from './template.stache';
-import Base from '~/util/field/FieldInputMap';
+import Base from '~/util/field/base/FieldInputMap';
 
 export const ViewModel = Base.extend('CheckboxField', {
     value: {

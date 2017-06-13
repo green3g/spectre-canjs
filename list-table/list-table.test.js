@@ -2,7 +2,7 @@
 
 import q from 'steal-qunit';
 
-import {ViewModel} from './list-table';
+import ViewModel from './ViewModel';
 import DefineMap from 'can-define/map/map';
 import {Connection} from '../test/data/connection';
 

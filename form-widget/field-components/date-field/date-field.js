@@ -1,4 +1,4 @@
-import Base from '~/util/field/FieldInputMap';
+import Base from '~/util/field/base/FieldInputMap';
 import Component from 'can-component';
 
 import '../select-field/select-field';

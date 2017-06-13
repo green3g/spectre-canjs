@@ -1,11 +1,4 @@
 <div class="filter-widget container-fluid">
-
-  {{#unless disableCreate}}
-    <select-field {properties}="nameField" (fieldchange)="addFilter" {(value)}="fieldValue" inline />
-  {{/unless}}
-
-  <br />
-
   {{#each filters}}
     {{#if visible}}
       <div class="clearfix pt-10">
@@ -25,4 +18,11 @@
       </div>
     {{/if}}
   {{/each}}
+
+  <br />
+
+  {{#unless disableCreate}}
+    <select-field {properties}="nameField" (fieldchange)="addFilter" {(value)}="fieldValue" inline />
+  {{/unless}}
+
 </div>

@@ -2,8 +2,9 @@ import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import template from './subform-field.stache!';
 import './subform-field.less';
-import Base from '~/util/field/FieldInputMap';
-import {mapToFields, parseFieldArray} from '~/util/field/field';
+import Base from '~/util/field/base/FieldInputMap';
+import parseFieldArray from '~/util/field/parseFieldArray/parseFieldArray';
+import mapToFields from '~/util/field/mapToFields/mapToFields';
 import dev from 'can-util/js/dev/dev';
 
 /**
@@ -60,7 +61,7 @@ export const ViewModel = Base.extend('SubformField', {
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `subFormObject`
      * if `fields` is not provided.
-     * @property {Array<util/field.Field>} subform-field.ViewModel.props.formFields formFields
+     * @property {Array<util/field/Field>} subform-field.ViewModel.props.formFields formFields
      * @parent subform-field.ViewModel.props
      */
     formFields: {

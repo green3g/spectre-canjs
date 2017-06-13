@@ -1,7 +1,7 @@
 import canEvent from 'can-event';
 import Component from 'can-component';
 import template from './text-field.stache!';
-import Base from '~/util/field/FieldInputMap';
+import Base from '~/util/field/base/FieldInputMap';
 /**
  * @constructor form-widget/field-components/text-field.ViewModel ViewModel
  * @parent form-widget/text-field

@@ -2,7 +2,9 @@
 
 import q from 'steal-qunit';
 
-import {ViewModel, PageViewModel} from './nav-container';
+import ViewModel from './ViewModel';
+import PageViewModel from '../nav-page/ViewModel';
+
 let vm;
 
 q.module('tab-container.ViewModel', {

@@ -1,6 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import {Field} from '../util/field/field';
+import Field from '../util/field/Field';
 import {makeSentenceCase} from '../util/string/string';
 import assign from 'object-assign';
 import define from 'can-define';
@@ -193,7 +193,7 @@ export const Filter = DefineMap.extend('Filter', {
      * This is used to create the value field for each filter in the filter-widget.
      * If the [filter-widget.Filter.props.field `field`] property is set, the
      * valueField will be a customized field based off of the set field.
-     * @property {util/field.Field} filter-widget.Filter.props.valueField valueField
+     * @property {util/field/Field} filter-widget.Filter.props.valueField valueField
      * @parent filter-widget.Filter.props
      */
     valueField: {
@@ -214,7 +214,7 @@ export const Filter = DefineMap.extend('Filter', {
      * provided, the custom field will be used in place of the regular
      * text field. This allows the user to interract with a different
      * type of field, like a checkbox when setting filters.
-     * @property {util/field.Field}  filter-widget.Filter.props.field field
+     * @property {util/field/Field}  filter-widget.Filter.props.field field
      * @parent filter-widget.Filter.props
      */
     field: {
@@ -239,7 +239,7 @@ export const Filter = DefineMap.extend('Filter', {
      * a setter for the value field for use with the field template
      * @function setField
      * @signature
-     * @param {util/field.Field} field the field object
+     * @param {util/field/Field} field the field object
      * @param {domElement} dom the input element
      * @param {Object} scope the view model scope
      * @param {*} props the object with the value set on the form

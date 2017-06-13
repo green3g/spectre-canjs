@@ -1,4 +1,4 @@
-import {NavPageComponent} from '../nav-container/nav-container';
+import NavPageComponent from '../nav-page/nav-page';
 import NavComponent from '../nav-container/nav-container';
 import page from './accordion-page.stache';
 import container from './accordion-container.stache';

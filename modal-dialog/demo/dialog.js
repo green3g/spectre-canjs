@@ -1,5 +1,5 @@
 import 'spectre-canjs/modal-dialog/modal-dialog';
-import 'spectre-canjs/modal-dialog/confirm-dialog';
+import 'spectre-canjs/confirm-dialog/confirm-dialog';
 
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';

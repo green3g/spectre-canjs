@@ -1,7 +1,7 @@
 @typedef {Object} dropdown-menu.ButtonObject ButtonObject
 @parent dropdown-menu.types
 @option {String} text The title to display on the button
-@option {Function(Array<Object>)} onClick A click handler to call with an array with the object.
+@option {Function(ButtonObject)} onClick A click handler to call with the object.
 @option {String} iconClass The class to use for the button icon
 @option {String} tooltip The tooltip text to display
 @option {Boolean} header Place a menu header before this button when used in a menu

@@ -3,7 +3,7 @@ import Component from 'can-component';
 import pageTemplate from './nav-page.stache';
 import canViewModel from 'can-view-model';
 
-export const NavPageComponent = Component.extend({
+export default Component.extend({
     tag: 'nav-page',
     view: pageTemplate,
     ViewModel: ViewModel,

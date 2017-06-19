@@ -31,6 +31,10 @@ const ViewModel = DefineMap.extend('NavContainer', {
             if (!this.pages.length) {
                 return null;
             }
+            
+            if(this.activeId === null){
+              return null;
+            }
 
             // lookup active page id
             active = this.pages.filter((p) => {
@@ -93,6 +97,14 @@ const ViewModel = DefineMap.extend('NavContainer', {
             return;
         }
         this.activeId = page.pageId;
+    },
+    toggle(page){
+      if(page === this.activePage){
+        this.activeId = null;
+        return;
+      }
+      
+      this.activeId = page.pageId;
     },
     /**
      * Used to check whether the current page is the active page

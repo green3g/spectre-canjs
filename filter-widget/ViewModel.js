@@ -84,12 +84,14 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
                 label: 'Add a filter'
             }];
             if (this.fields.length) {
-                return fields.concat(this.fields.map((f) => {
+                var mapped = this.fields.map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
-                }).serialize());
+                });
+
+                return fields.concat(mapped.serialize());
             }
             return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
                 return {

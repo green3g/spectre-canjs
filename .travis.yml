@@ -8,6 +8,7 @@ addons:
 install:
   - npm install
 before_install:
+  - "npm i -g npm@latest"
   - "export DEBUG=testee:console-log"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"

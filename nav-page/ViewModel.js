@@ -10,7 +10,7 @@ let pageId = 0;
  * @description A `<nav-page />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('NavPage', {
-  /**
+    /**
    * The display state of the page. If true, the page content will be shown
    * @property {Boolean} nav-page.ViewModel.props.active active
    * @parent nav-page.ViewModel.props

@@ -15,7 +15,7 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
     /**
      * @prototype
      */
-   /**
+    /**
     * A string referencing a field property that will exclude that field
     * from this classes fields. The default is 'detail'.
     * @property {String} property-table.ViewModel.props.excludeFieldKey excludeFieldKey
@@ -24,13 +24,6 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
     excludeFieldKey: {
         value: 'detail'
     },
-    /**
-     * A property that converts this class's object to an array of
-     * fields if fields are not provided.
-     * @property {DefineMap} property-table.ViewModel.props.object object
-     * @parent property-table.ViewModel.props
-     */
-    object: DefineMap,
     /**
      * A flag to allow editing (Not yet implemented)
      * TODO: implement editing

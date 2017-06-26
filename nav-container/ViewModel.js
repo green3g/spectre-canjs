@@ -9,7 +9,7 @@ import PageList from '../nav-page/PageList';
  * @description A `<nav-container />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('NavContainer', {
-  /**
+    /**
    * @prototype
    */
     /**
@@ -32,8 +32,8 @@ const ViewModel = DefineMap.extend('NavContainer', {
                 return null;
             }
             
-            if(this.activeId === null){
-              return null;
+            if (this.activeId === null) {
+                return null;
             }
 
             // lookup active page id
@@ -98,13 +98,13 @@ const ViewModel = DefineMap.extend('NavContainer', {
         }
         this.activeId = page.pageId;
     },
-    toggle(page){
-      if(page === this.activePage){
-        this.activeId = null;
-        return;
-      }
+    toggle (page) {
+        if (page === this.activePage) {
+            this.activeId = null;
+            return;
+        }
       
-      this.activeId = page.pageId;
+        this.activeId = page.pageId;
     },
     /**
      * Used to check whether the current page is the active page

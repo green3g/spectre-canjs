@@ -27,13 +27,6 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
         value: 'list'
     },
     /**
-     * A property that converts this class's object to an array of
-     * fields if fields are not provided.
-     * @property {DefineMap} list-table.ViewModel.props.object object
-     * @parent list-table.ViewModel.props
-     */
-    object: DefineMap,
-    /**
      * Optional promise or deferred object that will resolve to an object. Once
      * the promise resolves, the objects list will be replaced with the promise result
      * @parent list-table.ViewModel.props

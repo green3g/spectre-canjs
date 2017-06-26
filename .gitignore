@@ -12,4 +12,3 @@ coverage/
 .directory
 
 *.log
-package-lock.json

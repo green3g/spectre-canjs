@@ -23,13 +23,6 @@ export default DefineMap.extend({
    * @parent FieldIteratorMap.props
    */
     excludeFieldKey: 'string',
-    /**
-     * A property that converts this class's object to an array of
-     * fields if fields are not provided.
-     * @property {DefineMap} FieldIteratorMap.props.object object
-     * @parent FieldIteratorMap.props
-     */
-    object: DefineMap,
   /**
    * An array of fields
    * @property {Array<util/field/Field>} FieldIteratorMap.props.fields fields

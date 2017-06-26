@@ -25,6 +25,13 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
         value: 'detail'
     },
     /**
+     * A property that converts this class's object to an array of
+     * fields if fields are not provided.
+     * @property {DefineMap} property-table.ViewModel.props.object object
+     * @parent property-table.ViewModel.props
+     */
+    object: DefineMap,
+    /**
      * A flag to allow editing (Not yet implemented)
      * TODO: implement editing
      * @property {Boolean} property-table.ViewModel.props.edit

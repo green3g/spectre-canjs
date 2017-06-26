@@ -24,6 +24,17 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
         value: 'edit'
     },
     /**
+     * A property that converts this class's object to an array of
+     * fields if fields are not provided.
+     * @property {DefineMap} form-widget.ViewModel.props.object object
+     * @parent form-widget.ViewModel.props
+     */
+    object: {
+        get () {
+            return this.formObject;
+        }
+    },
+    /**
      * Whether or not to show the submit/cancel buttons
      * @property {Boolean} form-widget.ViewModel.props.showButtons
      * @parent form-widget.ViewModel.props

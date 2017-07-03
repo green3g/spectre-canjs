@@ -1,6 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import {ViewModel as Toast} from '../toast-item/ViewModel';
+import Toast from '../toast-item/ViewModel';
 
 /**
  * @constructor toast-container.ViewModel ViewModel
@@ -9,7 +9,7 @@ import {ViewModel as Toast} from '../toast-item/ViewModel';
  *
  * @description A `<toast-container />` component's ViewModel
  */
-export const ViewModel = DefineMap.extend('ToastContainer', {
+export default DefineMap.extend('ToastContainer', {
     /**
    * @prototype
    */

@@ -5,7 +5,7 @@
     top: 0;
     left:50%;
     right:0;
-    bottom:0;
+    z-index:100;
   }
 
   toast-container toast-item {
@@ -19,33 +19,34 @@
     <toast-container id="toast-container"></toast-container>
 
     <p>Heading:
-        <input type="text" {($value)}="heading" />
+        <input class="form-input" type="text" {($value)}="heading" />
     </p>
     <p>Detail:
-        <input type="text" {($value)}="body" />
+        <input class="form-input" type="text" {($value)}="body" />
     </p>
     <p>Timeout:
-        <input type="text" {($value)}="autoHide" />
+        <input class="form-input" type="number" {($value)}="autoHide" />
     </p>
     <p>Severity:
-        <select {($value)}="severity">
+        <select {($value)}="severity" class="form-select">
             <option value="">None</option>
                 <option value="success">success</option>
-            <option value="danger">danger</option>
+            <option value="error">error</option>
             <option value="primary">primary</option>
             <option value="warning">warning</option>
             <option value="info">info</option>
         </select>
     </p>
     <p>Dismissable:
-        <select {($value)}="dismissable">
+        <select {($value)}="dismissable" class="form-select" >
             <option value="true">true</option>
             <option value="false">false</option>
-        </select>{{dismissable}}
+        </select>
     </p>
     <button class="btn btn-secondary" ($click)="add">Add Alert</button>
 </script>
 
-<script src="../../docs/spectre/steal.production.js" main="docs-main">
+<script src="../../node_modules/steal/steal.js" main="docs-main">
+// <script src="../../docs/spectre/steal.production.js" main="docs-main">
   steal.import('spectre-canjs/toast-container/demo/toast');
 </script>

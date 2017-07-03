@@ -1,4 +1,5 @@
 import 'spectre-canjs/toast-container/toast-container';
+import 'spectre-canjs/toast-item/toast-item';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';
@@ -10,7 +11,7 @@ const AppViewModel = new DefineMap({
     severity: 'info',
     dismissable: true,
     add () {
-        canViewModel(document.getElementById('toast-container')).addToast({
+        canViewModel('toast-container').addToast({
             heading: this.heading,
             body: this.body,
             severity: this.severity,

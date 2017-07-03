@@ -4,6 +4,9 @@ import DefineList from 'can-define/list/list';
 import actionTemplate from './templates/actionCell.stache';
 import voteTemplate from './templates/voteTemplate.stache';
 
+import dev from 'can-util/js/dev/dev';
+dev.logLevel = 5;
+
 stache.registerSimpleHelper('voteColor', function(val){
   if(val < 0){
     return 'red';
@@ -13,7 +16,7 @@ stache.registerSimpleHelper('voteColor', function(val){
   return 'green'
 });
 
-var render = stache(document.getElementById('demo-html').innerHTML);
+var render = stache.from('demo-html');
 
 var data = [{
   name: 'Peter',
@@ -60,24 +63,6 @@ document.body.appendChild(render({
   },
   voteDown(vm, el, ev, name, obj) {
     obj.votes--;
-  },
-
-  // sorts the observable list
-  setSort(a, b, c, sortInfo) {
-    const field = sortInfo.field;
-    this.data.sort((a, b) => {
-      return sortInfo.type === 'asc'
-
-        //if ascending
-        ?
-        (a[field] === b[field] ? 0 :
-          a[field] > b[field] ? 1 : -1)
-
-        //if descending
-        :
-        (a[field] === b[field] ? 0 :
-          a[field] > b[field] ? -1 : 1);
-    });
   }
 }));
 

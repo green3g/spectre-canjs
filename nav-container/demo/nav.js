@@ -1,4 +1,5 @@
 import 'spectre-canjs/nav-container/nav-container';
+import 'spectre-canjs/nav-page/nav-page';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import ajax from 'can-util/dom/ajax/ajax';
@@ -24,6 +25,7 @@ document.body.appendChild(render(viewModel));
 window.DEMO_SOURCE = `
 
 import 'spectre-canjs/nav-container/nav-container';
+import 'spectre-canjs/nav-page/nav-page';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import ajax from 'can-util/dom/ajax/ajax';

@@ -8,7 +8,7 @@
     <br />
 
     <h2>Advanced:</h2>
-    <list-table {^selected-objects}="selectedObjects" {objects}="data" (up)="voteUp" {fields}="fields" (down)="voteDown" (sort)="setSort" id-prop="_cid" />
+    <list-table {^selected-objects}="selectedObjects" {objects}="data" (up)="voteUp" {fields}="fields" (down)="voteDown" id-prop="_cid" />
 
 
     <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}

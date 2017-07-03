@@ -14,7 +14,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * @prototype
      */
-   /**
+    /**
     * A string referencing a field property that will exclude that field
     * from this classes fields. The default is `'edit'`.
     * @property {String} form-widget.ViewModel.props.excludeFieldKey excludeFieldKey
@@ -22,6 +22,17 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     */
     excludeFieldKey: {
         value: 'edit'
+    },
+    /**
+     * A property that converts this class's object to an array of
+     * fields if fields are not provided.
+     * @property {DefineMap} form-widget.ViewModel.props.object object
+     * @parent form-widget.ViewModel.props
+     */
+    object: {
+        get () {
+            return this.formObject;
+        }
     },
     /**
      * Whether or not to show the submit/cancel buttons

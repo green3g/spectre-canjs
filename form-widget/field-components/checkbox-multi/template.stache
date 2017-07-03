@@ -1,0 +1,12 @@
+<fieldset class="mt-10">
+  <legend>{{properties.alias}}</legend>
+  {{#each properties.options as opt}}
+    <div class="form-group">
+      <label class="form-{{#if properties.style}}{{properties.style}}{{else}}checkbox{{/if}}">
+        <input type="checkbox" {($checked)}="boolean-to-inList(opt.value, ../value)" name="{{opt.value}}" ($change)="onChange" />
+        <i class="form-icon"></i> {{opt.label}}
+    </label>
+    </div>
+  {{/each}}
+
+</fieldset>

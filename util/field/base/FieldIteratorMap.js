@@ -16,7 +16,7 @@ import DefineList from 'can-define/list/list';
  * `excludeFieldKey: 'edit'` in this class.
  */
 export default DefineMap.extend({
-  /**
+    /**
    * A string referencing a field property that will exclude that field
    * from this classes fields.
    * @property {String} FieldIteratorMap.props.excludeFieldKey excludeFieldKey
@@ -24,13 +24,6 @@ export default DefineMap.extend({
    */
     excludeFieldKey: 'string',
     /**
-     * A property that converts this class's object to an array of
-     * fields if fields are not provided.
-     * @property {DefineMap} FieldIteratorMap.props.object object
-     * @parent FieldIteratorMap.props
-     */
-    object: DefineMap,
-  /**
    * An array of fields
    * @property {Array<util/field/Field>} FieldIteratorMap.props.fields fields
    * @parent FieldIteratorMap.props

@@ -17,9 +17,9 @@ import string from 'can-util/js/string/string';
 export function makeSentenceCase (text) {
     text = String(text);
     return string.capitalize(String.prototype.trim.call(
-    text.split('_')
-    .join(' ')
-    .toLowerCase()
-    .replace(/ +/g, ' ')
-  ));
+        text.split('_')
+            .join(' ')
+            .toLowerCase()
+            .replace(/ +/g, ' ')
+    ));
 }

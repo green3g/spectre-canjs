@@ -15,7 +15,7 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
     /**
      * @prototype
      */
-   /**
+    /**
     * A string referencing a field property that will exclude that field
     * from this classes fields. The default is 'detail'.
     * @property {String} property-table.ViewModel.props.excludeFieldKey excludeFieldKey

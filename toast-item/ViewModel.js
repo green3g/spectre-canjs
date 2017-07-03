@@ -10,10 +10,10 @@ import assign from 'object-assign';
  * @description A `<toast-item />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('ToastItem', {
-  /**
+    /**
    * @prototype
    */
-  /**
+    /**
    * whether or not to fade the toast-item out using animate.css
    * @property {Boolean} toast-item.viewModel.props.fade fade
    * @parent toast-item.ViewModel.props

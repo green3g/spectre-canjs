@@ -8,8 +8,7 @@ dist/
 coverage/
 
 .directory
-
+.vscode
 *.log
 
 !docs/node_modules
-package-lock.json

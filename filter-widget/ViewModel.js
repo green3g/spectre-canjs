@@ -22,7 +22,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
 
      */
     disableCreate: 'htmlbool',
-      /**
+    /**
        * A string referencing a field property that will exclude that field
        * from this classes fields. The default is 'list'.
        * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
@@ -84,12 +84,14 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
                 label: 'Add a filter'
             }];
             if (this.fields.length) {
-                return fields.concat(this.fields.map((f) => {
+                var mapped = this.fields.map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
-                }).serialize());
+                });
+
+                return fields.concat(mapped.serialize());
             }
             return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
                 return {

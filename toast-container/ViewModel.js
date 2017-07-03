@@ -10,7 +10,7 @@ import {ViewModel as Toast} from '../toast-item/ViewModel';
  * @description A `<toast-container />` component's ViewModel
  */
 export const ViewModel = DefineMap.extend('ToastContainer', {
-  /**
+    /**
    * @prototype
    */
     /**
@@ -23,7 +23,7 @@ export const ViewModel = DefineMap.extend('ToastContainer', {
             '#': Toast
         })
     },
-  /**
+    /**
    * adds a new toast
    * @function addToast
    * @signature `addToast(properties)`

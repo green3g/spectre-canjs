@@ -9,7 +9,7 @@ import PageList from '../nav-page/PageList';
  * @description A `<nav-container />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('NavContainer', {
-  /**
+    /**
    * @prototype
    */
     /**
@@ -29,6 +29,10 @@ const ViewModel = DefineMap.extend('NavContainer', {
             let active;
 
             if (!this.pages.length) {
+                return null;
+            }
+            
+            if (this.activeId === null) {
                 return null;
             }
 
@@ -92,6 +96,14 @@ const ViewModel = DefineMap.extend('NavContainer', {
         if (page === this.activePage) {
             return;
         }
+        this.activeId = page.pageId;
+    },
+    toggle (page) {
+        if (page === this.activePage) {
+            this.activeId = null;
+            return;
+        }
+      
         this.activeId = page.pageId;
     },
     /**

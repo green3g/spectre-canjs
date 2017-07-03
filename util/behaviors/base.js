@@ -42,7 +42,7 @@ export default function (options) {
         behaviors = behaviors.concat(options.behaviors);
     }
 
-  // Handles if jQuery isn't provided.
+    // Handles if jQuery isn't provided.
     if ($ && $.ajax) {
         options.ajax = $.ajax;
     }

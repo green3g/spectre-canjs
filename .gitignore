@@ -10,5 +10,5 @@ docs/
 coverage/
 
 .directory
-
+.vscode
 *.log

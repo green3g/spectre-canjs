@@ -1,3 +1,10 @@
+0.31.1 / 2017-07-03
+===================
+
+  * 0.31.1
+  * FIX: toast imports and demo
+  * changelog
+
 0.31.0 / 2017-07-03
 ===================
 
@@ -127,6 +134,3 @@
     - a partial template to render the field when it is displayed (list-table, property-table)
     - list-table no longer has buttons since they can be
     rendered with the field template
-  * FIX: adds missing tests
-  * FIX: fixing management buttons and actions
-  * FIX: bug with menu item headers

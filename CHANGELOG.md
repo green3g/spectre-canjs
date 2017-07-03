@@ -1,6 +1,75 @@
+0.31.0 / 2017-07-03
+===================
+
+  * 0.31.0
+  * 0.30.1
+  * update packages
+  * add missing dependency
+  * ignore vscode files
+  * TEST: add missing test
+  * DOCS: update demos
+
+0.30.1 / 2017-06-26
+===================
+
+  * log errors
+  * 0.30.0
+  * LINT
+  * Using npm 5
+  * using NPM 5
+  * FIX indent
+  * FIX: move `object` to widget viewmodels
+  * FIX: .map returns plain array now
+  * ENH: (experimental) add a new multi-field checkbox type that uses a list as a value
+  * ENH: add a toggle method and allow inheriting widgets like accordions to hide pages
+  * ENH: separate select-field component from viewmodel
+  * ENH: add nicer looking accordion styles
+  * fix travis npm 5 build
+  * TEST: update firefox
+  * TEST: debug travis
+
+0.30.0 / 2017-06-13
+===================
+
+  * DOCS
+  * ENH: add the ability to add custom classes to a nav container
+  * FIX: add extra space between filters/picker
+  * ENH: filter widget - make add filter inline, and place it below the existing filters for better ux
+  * ENH: separate modular utility classes where possible
+  * ENH: better code organization - separate component from view model modules
+  * FIX: removes test files for data-admin
+  * FIX: removes other data-admin component test
+  * FIX: remove data-admin tests, etc.
+  * CHG: move data-admin components to can-admin-app
+  * FIX: format comments
+  * ENH: hide header tools on printouts
+  * ENH: pass field name in form validation functions
+  * FIX: disable sort on actions field and hide on printout
+
+0.29.2 / 2017-06-02
+===================
+
+  * 0.25.2
+  * FIX: demo contains invalid characters
+  * DOCS: add experimental note
+  * ENH: implement additional properties on filter objects to restrict editing `pinned: true` and hide completely `visible: false`
+  * cleanup
+  * FIX: file-field value updating
+  * ENH: add default list-table sorting mechanism
+    - ENH: field.classes property to list and property tables
+  * FIX: field update handling in field widgets and filter
+  * ENH: add fade effect to data-admin loading state
+    - fix sort with new list-table sorting
+    - minor cleanup
+  * ENH: tighten the lint rules
+  * CHG: rename FieldComponentMap to a better described FieldIteratorMap
+    - a class that iterates and builds field lists
+  * ENH: move bulk of field widget code into parent class FieldInputMap
+
 0.29.1 / 2017-05-19
 ===================
 
+  * changelog
   * 0.29.1
   * FIX: cell width issue
   * ENH: move redundant detail page title into nav-page header
@@ -61,98 +130,3 @@
   * FIX: adds missing tests
   * FIX: fixing management buttons and actions
   * FIX: bug with menu item headers
-  * ENH: cleaning up buttons and data-admin modularization
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-    https://github.com/roemhildtg/spectre-canjs/issues/50
-  * ENH: replace list view templates with new components and clean up css
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create manage-toolbar component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create search-control component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create paginate-footer component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-
-0.28.5 / 2017-05-08
-===================
-
-  * 0.28.5
-  * ENH: minor efficiency improvement
-    - use different id to delete to avoid failing test
-  * DOCS: minor cleanup
-  * ENH: make select-field more DRY
-  * ENH: display custom confirm-dialog for delete prompts
-  * FIX: bug with confirm-dialog
-    - reject action was never called
-    - enhance the promise to reload if the active property changes
-  * changelog
-
-0.28.4 / 2017-05-08
-===================
-
-  * 0.28.4
-  * FIX: failing filter test for excluding field from filter
-  * ENH: update dependencies
-  * ENH: don't use two-way binding where unecessary
-  * FIX: simplify filter field api
-  * FIX: float issue in data-admin
-  * fix lint errors
-  * ENH: prompt user before sending delete request to server
-  * FIX: add properties to track related filter. fixes duplicate related filters being created
-  * FIX: add methods to create and update relatedFilter from relatedField and relatedValue
-
-0.28.3 / 2017-05-02
-===================
-
-  * changelog
-  * 0.28.3
-  * FIX: manage buttons not working on details view
-
-0.28.2 / 2017-05-02
-===================
-
-  * 0.28.2
-  * Merge remote-tracking branch 'origin/greenkeeper/spectre.css-0.2.14'
-    # Conflicts:
-    #    package.json
-  * Merge remote-tracking branch 'origin/greenkeeper/spectre.css-pin-0.2.13'
-    # Conflicts:
-    #    package.json
-  * Merge remote-tracking branch 'origin/greenkeeper/testee-0.5.0'
-  * Merge remote-tracking branch 'origin/greenkeeper/can-stache-3.0.24'
-    # Conflicts:
-    #    package.json
-
-0.28.1 / 2017-05-02
-===================
-
-  * Merge remote-tracking branch 'origin/greenkeeper/can-event-3.4.0'
-  * 0.28.1
-  * FIX: Move @ sign to correct position when checking for formatter function
-  * chore(package): update can-event to version 3.4.0
-  * FIX: make sure check for formatter isn't calling the formatter
-  * Merge pull request [#48](https://github.com/roemhildtg/spectre-canjs/issues/48) from roemhildtg/greenkeeper/can-event-3.3.2
-    chore(package): update can-event to version 3.3.2
-  * chore(package): update can-event to version 3.3.2
-  * FIX: broken menu headers
-  * changelog
-
-0.28.0 / 2017-05-02
-===================
-
-  * 0.28.0
-  * DOCS: template fix
-  * DOCS: missing property fields
-  * TEST: remove lint
-  * DOCS: add detailed demo
-  * CHG: use stache key synatax to access formatter on field
-    - eliminate need for getFieldValue in viewmodel
-  * CHG: use stache key value to access field formatter rather than helper function
-    - removes extra function getvalue from property-table
-  * FIX: remove extra css
-  * CHG: exclude properties renamed to functional names
-    - https://github.com/roemhildtg/spectre-canjs/issues/47
-  * CHG: rename excludePropertyTable: true to detail: false
-    -https://github.com/roemhildtg/spectre-canjs/issues/47
-  * CHG: rename excludeListTable: true to list: false
-    - https://github.com/roemhildtg/spectre-canjs/issues/47

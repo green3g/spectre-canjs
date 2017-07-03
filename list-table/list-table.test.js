@@ -103,3 +103,11 @@ test('toggleSelectAll(), _allSelected', (assert) => {
     });
 
 });
+
+test('dispatchEvent("my")', (assert) => {
+    const obj = new DefineMap();
+    vm.on('my', (viewModel, ev, objectMap) => {
+        assert.equal(objectMap, obj, 'dispatch event should dispatch object');
+    });
+    vm.dispatchEvent('my', obj);
+});

@@ -1,3 +1,17 @@
+0.31.3 / 2017-07-20
+===================
+
+  * 0.31.3
+  * ff 53
+  * canjs 3.9 packages
+
+0.31.2 / 2017-07-20
+===================
+
+  * 0.31.2
+  * update packages - roll back can-define
+  * changelog
+
 0.31.1 / 2017-07-03
 ===================
 
@@ -124,13 +138,3 @@
   * FIX: numerous path fixes and modifications
   * TEST: enhancements
   * Add some custom behaviors to can-connect to get totalItems and convert parameters
-  * FIX: show cursor when buttons are hovered
-  * FIX: minor typo
-  * DOCS: fix demo list-table
-  * TEST: adds test coverage reporting
-  * CHG: cleans up button madness and replaces `manageButtons` with `actions` in viewMap configs
-  * CHG: replaces field.formatter with field.displayTemplate
-    https://github.com/roemhildtg/spectre-canjs/issues/50
-    - a partial template to render the field when it is displayed (list-table, property-table)
-    - list-table no longer has buttons since they can be
-    rendered with the field template

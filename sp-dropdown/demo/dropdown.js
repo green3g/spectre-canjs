@@ -1,4 +1,4 @@
-import 'spectre-canjs/dropdown-menu/dropdown-menu';
+import 'spectre-canjs/sp-dropdown/sp-dropdown';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 
@@ -20,7 +20,7 @@ var viewModel = new DefineMap({
 
 document.body.appendChild(render(viewModel));
  window.DEMO_SOURCE = `
- import 'spectre-canjs/dropdown-menu/dropdown-menu';
+ import 'spectre-canjs/sp-dropdown/sp-dropdown';
  import stache from 'can-stache';
  import DefineMap from 'can-define/map/map';
 

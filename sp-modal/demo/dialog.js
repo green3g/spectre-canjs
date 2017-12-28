@@ -1,5 +1,5 @@
-import 'spectre-canjs/modal-dialog/modal-dialog';
-import 'spectre-canjs/confirm-dialog/confirm-dialog';
+import 'spectre-canjs/sp-modal/sp-modal';
+import 'spectre-canjs/sp-confirm/sp-confirm';
 
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -31,8 +31,8 @@ var viewModel = new DefineMap({
 document.body.appendChild(render(viewModel));
 
 window.DEMO_SOURCE = `
-import 'spectre-canjs/modal-dialog/modal-dialog';
-import 'spectre-canjs/modal-dialog/confirm-dialog';
+import 'spectre-canjs/sp-modal/sp-modal';
+import 'spectre-canjs/sp-modal/sp-confirm';
 
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';

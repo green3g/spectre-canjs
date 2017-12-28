@@ -1,4 +1,4 @@
-import 'spectre-canjs/paginate-widget/paginate-widget';
+import 'spectre-canjs/sp-paginate/sp-paginate';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 
@@ -10,7 +10,7 @@ var frag = stache(document.getElementById('demo-html').innerHTML)(new DefineMap(
 document.body.appendChild(frag);
 
 window.DEMO_SOURCE = `
-import 'spectre-canjs/paginate-widget/paginate-widget';
+import 'spectre-canjs/sp-paginate/sp-paginate';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 

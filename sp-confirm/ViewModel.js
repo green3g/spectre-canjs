@@ -1,26 +1,26 @@
-import ModalViewModel from '../modal-dialog/ViewModel';
+import ModalViewModel from '../sp-modal/ViewModel';
 
 /**
- * @constructor confirm-dialog.ViewModel ViewModel
- * @inherits modal-dialog.ViewModel
- * @parent confirm-dialog
- * @group confirm-dialog.ViewModel.props Properties
+ * @constructor sp-confirm.ViewModel ViewModel
+ * @inherits sp-modal.ViewModel
+ * @parent sp-confirm
+ * @group sp-confirm.ViewModel.props Properties
  *
- * @description A `<confirm-dialog />` component's ViewModel
+ * @description A `<sp-confirm />` component's ViewModel
  */
 const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * The text to display in the accept confirmation button. The default is `'Ok'`
-     * @property {String} confirm-dialog.ViewModel.props.acceptText acceptText
-     * @parent confirm-dialog.ViewModel.props
+     * @property {String} sp-confirm.ViewModel.props.acceptText acceptText
+     * @parent sp-confirm.ViewModel.props
      */
     acceptText: {
         value: 'Ok'
     },
     /**
      * The text to display in the reject confirmation button. The default is `'Cancel'`
-     * @property {String} confirm-dialog.ViewModel.props.rejectText rejectText
-     * @parent confirm-dialog.ViewModel.props
+     * @property {String} sp-confirm.ViewModel.props.rejectText rejectText
+     * @parent sp-confirm.ViewModel.props
      */
     rejectText: {
         value: 'Cancel'
@@ -31,8 +31,8 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     _rejectAction: '*',
     /**
      * A promise resolved or rejected when the modal is confirmed or rejected.
-     * @property {Promise} confirm-dialog.ViewModel.props.actionPromise actionPromise
-     * @parent confirm-dialog.ViewModel.props
+     * @property {Promise} sp-confirm.ViewModel.props.actionPromise actionPromise
+     * @parent sp-confirm.ViewModel.props
      */
     actionPromise: {
         get () {

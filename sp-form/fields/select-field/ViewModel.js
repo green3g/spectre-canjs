@@ -5,8 +5,8 @@ import dev from 'can-util/js/dev/dev';
 
 const DEFAULT_OPTION = {label: 'Choose a value...', value: ''};
 /**
- * @constructor admin-form/field-select-field.ViewModel ViewModel
- * @parent admin-form/field-select-field
+ * @constructor sp-form/fields/select-field.ViewModel ViewModel
+ * @parent sp-form/fields/select-field
  * @group select-field.ViewModel.props Properties
  *
  * @description A `<select-field />` component's ViewModel
@@ -20,7 +20,7 @@ export default Base.extend('SelectField', {
      * `util/field/Field` object, except it includes additional properties to define
      * the select dropdown behavior.
      * @parent select-field.ViewModel.props
-     * @property {select-field.types.SelectFieldProperty} admin-form/field-select-field.ViewModel.properties properties
+     * @property {select-field.types.SelectFieldProperty} sp-form/fields/select-field.ViewModel.properties properties
      */
     properties: {
         value: {

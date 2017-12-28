@@ -1,4 +1,4 @@
-<div class="paginate-widget">
+<div class="sp-paginate">
   <ul class="pagination">
     {{^hideFirst}}
     <li class="{{^hasPrevious}}disabled{{/hasPrevious}} page-item">

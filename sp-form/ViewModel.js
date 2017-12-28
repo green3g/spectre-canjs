@@ -2,12 +2,12 @@ import DefineMap from 'can-define/map/map';
 import FieldIteratorMap from 'spectre-canjs/util/field/base/FieldIteratorMap';
 
 /**
- * @constructor admin-form.ViewModel ViewModel
- * @parent admin-form
- * @group admin-form.ViewModel.props Properties
- * @group admin-form.ViewModel.events Events
+ * @constructor sp-form.ViewModel ViewModel
+ * @parent sp-form
+ * @group sp-form.ViewModel.props Properties
+ * @group sp-form.ViewModel.events Events
  *
- * @description A `<admin-form />` component's ViewModel. This viewmodel
+ * @description A `<sp-form />` component's ViewModel. This viewmodel
  * extends the [util/field/ ]'s properties
  */
 const ViewModel = FieldIteratorMap.extend('FormWidget', {
@@ -17,22 +17,22 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
     * A string referencing a field property that will exclude that field
     * from this classes fields. The default is `'edit'`.
-    * @property {String} admin-form.ViewModel.props.excludeFieldKey excludeFieldKey
-    * @parent admin-form.ViewModel.props
+    * @property {String} sp-form.ViewModel.props.excludeFieldKey excludeFieldKey
+    * @parent sp-form.ViewModel.props
     */
     excludeFieldKey: {
         value: 'edit'
     },
     /**
      * Whether or not to show the saving icon when the submit button is clickered.
-     * @property {HTMLBoolean} admin-form.ViewModel.props.object object 
-     * @parent admin-form.ViewModel.props
+     * @property {HTMLBoolean} sp-form.ViewModel.props.object object 
+     * @parent sp-form.ViewModel.props
      */
     showSaving: {type: 'htmlbool', value: true},
     /**
      * Whether or not this form should be an inline (horizontal) form
-     * @property {Boolean} admin-form.ViewModel.props.inline
-     * @parent admin-form.ViewModel.props
+     * @property {Boolean} sp-form.ViewModel.props.inline
+     * @parent sp-form.ViewModel.props
      */
     inline: {
         type: 'boolean',
@@ -41,18 +41,18 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * The connection info for this form's data. If this is provided, the
      * object will be fetched using the objectId property
-     * @property {can-connect} admin-form.ViewModel.props.connection
+     * @property {can-connect} sp-form.ViewModel.props.connection
      * @link https://canjs.com/doc/can-connect.html can-connect
-     * @parent admin-form.ViewModel.props
+     * @parent sp-form.ViewModel.props
      */
     connection: {
         value: null
     },
     /**
-     * The object id of the item to retrieve. If this and [admin-form.ViewModel.props.connection] is provided, a request
+     * The object id of the item to retrieve. If this and [sp-form.ViewModel.props.connection] is provided, a request
      * will be made to the connection object with the specified id.
-     * @property {Number} admin-form.ViewModel.props.objectId
-     * @parent admin-form.ViewModel.props
+     * @property {Number} sp-form.ViewModel.props.objectId
+     * @parent sp-form.ViewModel.props
      */
     objectId: {
         type: 'number',
@@ -63,8 +63,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     },
     /**
      * The pending promise if the object is being retrieved or null
-     * @property {Promise}  admin-form.ViewModel.props.promise
-     * @parent admin-form.ViewModel.props
+     * @property {Promise}  sp-form.ViewModel.props.promise
+     * @parent sp-form.ViewModel.props
      */
     promise: {
         value: null
@@ -73,9 +73,9 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * An object representing the current state of the values passed to the form.
      * If the fields have changed, this object will be updated when the submit
      * button is pressed and the validations have passed. To capture current
-     * state of the form, use [admin-form.ViewModel.props.dirtyObject].
-     * @property {DefineMap} admin-form.ViewModel.props.object
-     * @parent admin-form.ViewModel.props
+     * state of the form, use [sp-form.ViewModel.props.dirtyObject].
+     * @property {DefineMap} sp-form.ViewModel.props.object
+     * @parent sp-form.ViewModel.props
      */
     object: {
         Type: DefineMap,
@@ -87,8 +87,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     },
     /**
      * An object set with current form values
-     * @property {DefineMap} admin-form.ViewModel.props.dirtyObject dirtyObject
-     * @parent admin-form.ViewModel.props
+     * @property {DefineMap} sp-form.ViewModel.props.dirtyObject dirtyObject
+     * @parent sp-form.ViewModel.props
      */
     dirtyObject: DefineMap,
     /**
@@ -99,8 +99,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      *    otherfield: 'another error message'
      *}
      * ```
-     * @property {Object} admin-form.ViewModel.props.validationErrors
-     * @parent admin-form.ViewModel.props
+     * @property {Object} sp-form.ViewModel.props.validationErrors
+     * @parent sp-form.ViewModel.props
      */
     validationErrors: {
         get (val) {
@@ -118,8 +118,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * Whether or not this form is valid and can be submitted. If this is
      * false, the form will not dispatch the `submit` event when it is submitted.
      * Instead, it will dispatch a `submit-fail` event
-     * @property {Boolean} admin-form.ViewModel.props.isValid isValid
-     * @parent admin-form.ViewModel.props
+     * @property {Boolean} sp-form.ViewModel.props.isValid isValid
+     * @parent sp-form.ViewModel.props
      */
     isValid: {
         get () {
@@ -146,8 +146,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * This property is set to true when the save button is clicked.
      * It sets the save button to a loading state
-     * @property {Boolean} admin-form.ViewModel.props.isSaving
-     * @parent admin-form.ViewModel.props
+     * @property {Boolean} sp-form.ViewModel.props.isSaving
+     * @parent sp-form.ViewModel.props
      */
     isSaving: {
         value: false,
@@ -216,7 +216,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * Sets the object value when a field changes. This will allow for future
      * functionality where the form is much more responsive to values changing, like
      * cascading dropdowns. Dispatches the `fieldchange` event when a field changes.
-     * This updates the [admin-form.ViewModel.props.dirtyObject] and calls the
+     * This updates the [sp-form.ViewModel.props.dirtyObject] and calls the
      * validation method on the field.
      * @function setField
      * @signature

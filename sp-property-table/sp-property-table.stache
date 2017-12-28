@@ -11,7 +11,7 @@
                 <tr>
                     <td>{{field.alias}}</td>
                     <td class="{{field.classes}}">
-                      {{>field.displayTemplate}}
+                      {{>field.displayComponent}}
                     </td>
                 </tr>
             {{/each}}

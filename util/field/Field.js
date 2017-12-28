@@ -4,7 +4,7 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import dev from 'can-util/js/dev/dev';
 
-const displayTemplate = stache('{{object[field.name]}}');
+const displayComponent = stache('{{object[field.name]}}');
 
 /**
  * @constructor util/field/Field Field
@@ -53,7 +53,7 @@ export const Field = DefineMap.extend('Field', {
         value: 'text-field'
     },
     /**
-     * The form field template to use when editing this field in the form-widget. This should be
+     * The form field template to use when editing this field in the sp-form. This should be
      * a template renderer. By default, this value is set to the
      * template for the given `fieldTag` property.
      *
@@ -89,7 +89,7 @@ export const Field = DefineMap.extend('Field', {
      * @body
      * Formats the field into a renderer in the list and details view of the
      * data-admin component. The renderer has the scope of the
-     * list-table or property table. The simplest displayTemplate value would be
+     * sp-list-table or property table. The simplest displayComponent value would be
      * the default, which is `object[field.name]`. (make sure to surround values with brackets)
      *
      * In this example,
@@ -113,12 +113,12 @@ export const Field = DefineMap.extend('Field', {
      * ```
      *
      * In a stache template, this could be rendered using `field.capitalize(object.prop)`
-     * @property {Renderer} util/field/Field.props.displayTemlpate displayTemplate
+     * @property {Renderer} util/field/Field.props.displayTemlpate displayComponent
      * @parent util/field/Field.props
      */
     displayComponent: {
         value: function () {
-            return displayTemplate;
+            return displayComponent;
         },
         type (val) {
             if (typeof val === 'string') {

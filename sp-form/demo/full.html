@@ -1,0 +1,25 @@
+<div id="demo-app"></div>
+
+<script type="text/stache" id="demo-html">
+  <div class="container">
+    <h1>Form Widget Demo</h1>
+    <p>Default form object values: </p>
+    <pre>{{stringify (formObject)}}</pre>
+
+    <p>Dirty field values</p>
+    <pre>{{stringify (dirtyObject)}}</pre>
+
+    <sp-form 
+      vm:object:bind="formObject" 
+      vm:fields:from="fields" 
+      vm:dirtyObject:to="dirtyObject" 
+      vm:actions:from="actions"
+      on:vm:submit="onSubmit" 
+      vm:isSaving:bind="formSaving"
+      on:vm:cancel="onCancel"></sp-form>
+  </div>
+</script>
+<script src="../../node_modules/steal/steal.js" main="spectre-canjs/docs-main" id="demo-source">
+// <script src="../../../docs/can-admin/steal.production.js" main="can-admin/docs-main">
+  steal.import('spectre-canjs/sp-form/demo/form');
+</script>

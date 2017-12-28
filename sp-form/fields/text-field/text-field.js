@@ -6,8 +6,8 @@ import Base from 'spectre-canjs/util/field/base/FieldInputMap';
 import $ from 'can-jquery';
 
 /**
- * @constructor admin-form/field-text-field.ViewModel ViewModel
- * @parent admin-form/text-field
+ * @constructor sp-form/fields/text-field.ViewModel ViewModel
+ * @parent sp-form/text-field
  * @group text-field.ViewModel.props Properties
  *
  * @description A `<text-field />` component's ViewModel

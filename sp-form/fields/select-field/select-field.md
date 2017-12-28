@@ -1,11 +1,11 @@
 
-@module {can.Component} admin-form/field-select-field <select-field />
-@parent admin-form.fields
+@module {can.Component} sp-form/fields/select-field <select-field />
+@parent sp-form.fields
 @group select-field.types types
 
 @option {String} fieldType This should be set to `select` to use this template in the form widget
 @option {Array<select-field.SelectOption>} options An array of values and labels
-@option {Promise} optionsPromise A promise that asynchronously resolves to an array of [admin-form/field-select-field.SelectOption]
+@option {Promise} optionsPromise A promise that asynchronously resolves to an array of [sp-form/fields/select-field.SelectOption]
 
 @description
 A select dropdown with options. See `selectFieldProperty` and `selectOptionProperty`.

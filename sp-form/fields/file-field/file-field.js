@@ -18,8 +18,8 @@ const FileList = DefineList.extend({
 });
 
 /**
- * @constructor admin-form/field-file-field.ViewModel ViewModel
- * @parent admin-form/field-file-field
+ * @constructor sp-form/fields/file-field.ViewModel ViewModel
+ * @parent sp-form/fields/file-field
  * @group file-field.ViewModel.props Properties
  *
  * @description A `<file-field />` component's ViewModel. <mark>This is experimental!</mark>

@@ -1,5 +1,15 @@
 import DefineMap from 'can-define/map/map';
-import PageList from '../sp-tab-page/PageList';
+import DefineList from 'can-define/list/list';
+import Page from '../sp-tab-page/ViewModel';
+
+/**
+ * An extended DefineList with type set to a nav page ViewModel
+ * @constructor sp-tab-page/PageList PageList
+ * @parent sp-tab-page
+ */
+const PageList = DefineList.extend('NavPageList', {
+    '#': Page
+});
 
 /**
  * @constructor sp-tab-container.ViewModel ViewModel

@@ -1,20 +1,20 @@
 <script type="text/stache" id="demo-html">
-<accordion-container>
-<accordion-page label="Test">
+<sp-accordion>
+<sp-accordion-page label="Test">
 <p> lots of content</p>
-</accordion-page>
+</sp-accordion-page>
 
-<accordion-page label="Test">
+<sp-accordion-page label="Test">
 <p> lots of content</p>
-</accordion-page>
+</sp-accordion-page>
 
-<accordion-page label="Test">
+<sp-accordion-page label="Test">
 <p> lots of content</p>
 <p> lots of content</p>
 <p> lots of content</p>
-</accordion-page>
+</sp-accordion-page>
 
-<accordion-page label="Test">
+<sp-accordion-page label="Test">
 <p> lots of content</p>
 <p> lots of content</p>
 <p> lots of content</p>
@@ -23,15 +23,15 @@
 <p> lots of content</p>
 <p> lots of content</p>
 <p> lots of content</p>
-</accordion-page>
+</sp-accordion-page>
 
-</accordion-container>
+</sp-accordion>
 </script>
 
 <script src="../node_modules/steal/steal.js" main="@loader">
 import stache from 'can-stache';
 import 'spectre.css';
 import 'animate.css';
-import 'spectre-canjs/accordion-container/accordion-container';
+import 'spectre-canjs/sp-accordion/sp-accordion';
 document.body.appendChild(stache.from('demo-html')());
 </script>

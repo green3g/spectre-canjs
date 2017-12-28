@@ -1,8 +1,8 @@
 <!--
-@module {can.Component} form-widget <form-widget />
+@module {can.Component} sp-form <sp-form />
 @parent spectre-canjs.components
-@group form-widget.fields Field Types
-@group form-widget.types Types
+@group sp-form.fields Field Types
+@group sp-form.types Types
 -->
 
 ## Description
@@ -12,4 +12,4 @@ validation, and tracking dirty vs. set values.
 
 ## Demo
 
-@demo form-widget/demo/demo.html 500
+@demo sp-form/demo/demo.html 500

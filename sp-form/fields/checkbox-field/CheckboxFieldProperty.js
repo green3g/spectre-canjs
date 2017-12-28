@@ -1,8 +1,8 @@
 import DefineMap from 'can-define/map/map';
 
 /**
- * @constructor admin-form/field-checkbox-field.CheckboxFieldProperty CheckboxFieldProperty
- * @parent admin-form/field-checkbox-field
+ * @constructor sp-form/fields/checkbox-field.CheckboxFieldProperty CheckboxFieldProperty
+ * @parent sp-form/fields/checkbox-field
  * @group CheckboxFieldProperty.props Properties
  *
  * @description A properties object for the checkbox-field

@@ -1,6 +1,6 @@
 
-@module {can.Component} admin-form/field-checkbox-field <checkbox-field />
-@parent admin-form.fields
+@module {can.Component} sp-form/fields/checkbox-field <checkbox-field />
+@parent sp-form.fields
 
 @option {String} fieldType This should be set to `checkbox` to use this template in the form widget
 @option {String} style Checkbox style, this can be `checkbox` or `switch`

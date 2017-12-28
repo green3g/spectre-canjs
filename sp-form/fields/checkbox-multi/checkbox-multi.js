@@ -1,4 +1,4 @@
-import 'spectre-canjs/admin-form/field-checkbox-field/checkbox-field';
+import 'spectre-canjs/sp-form/fields/checkbox-field/checkbox-field';
 import 'can-stache-converters';
 import Component from 'can-component';
 import ViewModel from './ViewModel';

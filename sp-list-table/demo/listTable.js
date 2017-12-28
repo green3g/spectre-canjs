@@ -1,4 +1,4 @@
-import 'spectre-canjs/list-table/list-table';
+import 'spectre-canjs/sp-list-table/sp-list-table';
 import stache from 'can-stache';
 import DefineList from 'can-define/list/list';
 import actionTemplate from './templates/actionCell.stache';
@@ -49,15 +49,15 @@ document.body.appendChild(render({
   fields: [{
     name: 'actions',
     sort: false,
-    displayTemplate: actionTemplate
+    displayComponent: actionTemplate
   }, 'name', 'favorite_food', {
     name: 'age',
     classes: 'text-italic',
-    displayTemplate: stache('{{object.name}} is {{object.age}} years old')
-  }, { name: 'votes', displayTemplate: voteTemplate }],
+    displayComponent: stache('{{object.name}} is {{object.age}} years old')
+  }, { name: 'votes', displayComponent: voteTemplate }],
 
   // observable list enables sorting
-  data: new DefineList(data),
+  objects: new DefineList(data),
   voteUp(vm, el, ev, name, obj) {
     obj.votes++;
   },
@@ -67,7 +67,7 @@ document.body.appendChild(render({
 }));
 
 window.DEMO_SOURCE = `
-import 'spectre-canjs/list-table/list-table';
+import 'spectre-canjs/sp-list-table/sp-list-table';
 import stache from 'can-stache';
 import DefineList from 'can-define/list/list';
 import actionTemplate from './templates/actionCell.stache';
@@ -116,11 +116,11 @@ var data = [{
 document.body.appendChild(render({
   fields: [{
     name: 'actions',
-    displayTemplate: actionTemplate
+    displayComponent: actionTemplate
   }, 'name', 'favorite_food', {
     name: 'age',
-    displayTemplate: stache('{{object.name}} is {{object.age}} years old')
-  }, { name: 'votes', displayTemplate: voteTemplate }],
+    displayComponent: stache('{{object.name}} is {{object.age}} years old')
+  }, { name: 'votes', displayComponent: voteTemplate }],
 
   // observable list enables sorting
   data: new DefineList(data),

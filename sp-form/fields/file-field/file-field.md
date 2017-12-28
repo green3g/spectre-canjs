@@ -1,5 +1,5 @@
-@module {can.Component} admin-form/field-file-field <file-field />
-@parent admin-form.fields
+@module {can.Component} sp-form/fields/file-field <file-field />
+@parent sp-form.fields
 
 @option {String} fieldType Should be set to `file` for the form to use this template
 @option {String} url The url up post the file upload to

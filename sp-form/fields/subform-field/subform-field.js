@@ -8,8 +8,8 @@ import mapToFields from 'spectre-canjs/util/field/mapToFields/mapToFields';
 import dev from 'can-util/js/dev/dev';
 
 /**
- * @constructor admin-form/field-subform-field.ViewModel ViewModel
- * @parent admin-form/field-subform-field
+ * @constructor sp-form/fields/subform-field.ViewModel ViewModel
+ * @parent sp-form/fields/subform-field
  * @group subform-field.ViewModel.props Properties
  *
  * @description A `<subform-field />` component's ViewModel

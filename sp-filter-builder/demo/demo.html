@@ -1,0 +1,29 @@
+<script type="text/stache" id="demo-html">
+  <div class="container">
+    <h1>Filter Widget Demo</h1>
+
+    <p><button class="btn" type="button" on:el:click="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
+
+    <sp-filter-builder vm:fields:from="fields" vm:filters:to="filters" {{#disableCreate}}disable-create{{/disableCreate}} />
+
+    <h2>Current filters: </h2>
+    <pre>{{stringify(filters)}}</pre>
+
+  <div class="divider"></div>
+  <h2>Pinned</h2>
+  <p>Filters can be pinned so that the widget will not allow them to be removed or the operator to be changed. These filters values may still be changed.
+  </p>
+  <button class="btn btn-default" on:el:click="pin(filters)">Toggle Pin Filters</button><br />
+
+  <div class="divider"></div>
+
+  <h2>Hidden</h2>
+  <p>Filters can also be hidden so that the widget does not allow them to be modified at all.</p>
+  <button class="btn btn-default" on:el:click="hide(filters)">Hide Filters</button>
+
+  </div>
+</script>
+<script src="../../../docs/spectre-canjs/steal.production.js" main="spectre-canjs/docs-main">
+// <script src="../../node_modules/steal/steal.js" main="spectre-canjs/docs-main">
+  steal.import('spectre-canjs/sp-filter-builder/demo/filter');
+</script>

@@ -50,7 +50,7 @@ header .nav {
 			border: 1px solid rgba(0, 0, 0, 0.6);
 			border-radius: 2px;
 		}
-		dropdown-menu:before {
+		sp-dropdown:before {
 			position:absolute;
 			content : '';
 			height : 15px;
@@ -82,7 +82,7 @@ header .nav {
 * @demo demos/header-dropdown.html
 **/
 header {
-	.dropdown-menu {
+	.sp-dropdown {
 		display: none;
 		visibility: collapse;
 		position: absolute;
@@ -114,8 +114,8 @@ header {
 			}
 		}
 	}
-	.dropdown-menu li a:hover,
-	.dropdown-menu li.active a {
+	.sp-dropdown li a:hover,
+	.sp-dropdown li.active a {
 		background-color: @fog;
 		color: @night;
 	}
@@ -134,7 +134,7 @@ header {
 header {
 	.bitovi-menu {
 		display: inline-block;
-		.dropdown-menu {
+		.sp-dropdown {
 			right: 0;
 			left: auto;
 		}
@@ -170,9 +170,9 @@ header {
 		position: relative;
 	}
 
-	.bitovi-menu:hover .dropdown-menu,
-	.logo-menu:hover .dropdown-menu,
-	.menu-container:hover .dropdown-menu {
+	.bitovi-menu:hover .sp-dropdown,
+	.logo-menu:hover .sp-dropdown,
+	.menu-container:hover .sp-dropdown {
 		display: block;
 		visibility: visible;
 	}

@@ -1,4 +1,4 @@
-import 'spectre-canjs/nav-list/nav-list';
+import 'spectre-canjs/sp-menu/sp-menu';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 
@@ -18,7 +18,7 @@ var viewModel = new DefineMap({
 document.body.appendChild(render(viewModel));
 
 window.DEMO_SOURCE = `
-import 'spectre-canjs/nav-list/nav-list';
+import 'spectre-canjs/sp-menu/sp-menu';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 

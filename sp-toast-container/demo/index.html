@@ -15,35 +15,37 @@
 </style>
 
 <script type="text/stache" id="demo-html">
-    <h1>Toast Demo</h1>
-    <sp-toast-container id="sp-toast-container"></sp-toast-container>
+    <div class="container">
+        <h1>Toast Demo</h1>
+        <sp-toast-container id="sp-toast-container"></sp-toast-container>
 
-    <p>Heading:
-        <input class="form-input" type="text" el:value:bind="heading" />
-    </p>
-    <p>Detail:
-        <input class="form-input" type="text" el:value:bind="body" />
-    </p>
-    <p>Timeout:
-        <input class="form-input" type="number" el:value:bind="autoHide" />
-    </p>
-    <p>Severity:
-        <select el:value:bind="severity" class="form-select">
-            <option value="">None</option>
-                <option value="success">success</option>
-            <option value="error">error</option>
-            <option value="primary">primary</option>
-            <option value="warning">warning</option>
-            <option value="info">info</option>
-        </select>
-    </p>
-    <p>Dismissable:
-        <select el:value:bind="dismissable" class="form-select" >
-            <option value="true">true</option>
-            <option value="false">false</option>
-        </select>
-    </p>
-    <button class="btn btn-secondary" on:el:click="add">Add Alert</button>
+        <p>Heading:
+            <input class="form-input" type="text" el:value:bind="heading" />
+        </p>
+        <p>Detail:
+            <input class="form-input" type="text" el:value:bind="body" />
+        </p>
+        <p>Timeout:
+            <input class="form-input" type="number" el:value:bind="autoHide" />
+        </p>
+        <p>Severity:
+            <select el:value:bind="severity" class="form-select">
+                <option value="">None</option>
+                    <option value="success">success</option>
+                <option value="error">error</option>
+                <option value="primary">primary</option>
+                <option value="warning">warning</option>
+                <option value="info">info</option>
+            </select>
+        </p>
+        <p>Dismissable:
+            <select el:value:bind="dismissable" class="form-select" >
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+        </p>
+        <button class="btn btn-secondary" on:el:click="add">Add Alert</button>
+    </div>
 </script>
 
 <script src="../../node_modules/steal/steal.js" main="spectre-canjs/docs-main">

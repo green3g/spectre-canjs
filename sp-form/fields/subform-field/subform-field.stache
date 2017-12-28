@@ -1,12 +1,12 @@
 <div class="form-group">
   <fieldset>
     <legend>{{properties.alias}}</legend>
-    <admin-form vm:inline:from="properties.inline" 
+    <sp-form vm:inline:from="properties.inline" 
       object:from="subFormObject" 
       on:fieldchange="saveField" 
       fields:from="formFields" 
       actions:from="formActions">
       <can-template name="submit"><i /></can-template>
-    </admin-form>
+    </sp-form>
   </fieldset>
 </div>

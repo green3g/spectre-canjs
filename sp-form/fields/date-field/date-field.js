@@ -8,8 +8,8 @@ import template from './date-field.stache!';
 import './date-field.less!';
 
 /**
- * @constructor admin-form/field-date-field.ViewModel ViewModel
- * @parent admin-form/field-date-field
+ * @constructor sp-form/fields/date-field.ViewModel ViewModel
+ * @parent sp-form/fields/date-field
  * @group date-field.ViewModel.props Properties
  *
  * @description A `<date-field />` component's ViewModel

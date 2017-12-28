@@ -1,11 +1,11 @@
 import DefineMap from 'can-define/map/map';
 
 /**
- * @constructor paginate-widget.ViewModel ViewModel
- * @parent paginate-widget
- * @group paginate-widget.ViewModel.props Properties
+ * @constructor sp-paginate.ViewModel ViewModel
+ * @parent sp-paginate
+ * @group sp-paginate.ViewModel.props Properties
  *
- * @description A `<paginate-widget />` component's ViewModel
+ * @description A `<sp-paginate />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('PaginateWidget', {
     /**
@@ -13,8 +13,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     /**
      * The number of pages to show in the widget
-     * @property {Number} paginate-widget.ViewModel.props.pages
-     * @parent paginate-widget.ViewModel.props
+     * @property {Number} sp-paginate.ViewModel.props.pages
+     * @parent sp-paginate.ViewModel.props
      */
     pages: {
         type: 'number',
@@ -22,8 +22,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * The active page index
-     * @property {Number} paginate-widget.ViewModel.props.activePageIndex
-     * @parent paginate-widget.ViewModel.props
+     * @property {Number} sp-paginate.ViewModel.props.activePageIndex
+     * @parent sp-paginate.ViewModel.props
      */
     activePageIndex: {
         value: 0,
@@ -31,8 +31,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * The number of pages to show on either side of the currently selected page. The default is 3. For example, if the selected page is 5, the visible pages should be 2,3,4,5,6,7,8.
-     * @property {Number}  paginate-widget.ViewModel.props.activeOffset
-     * @parent paginate-widget.ViewModel.props
+     * @property {Number}  sp-paginate.ViewModel.props.activeOffset
+     * @parent sp-paginate.ViewModel.props
      */
     activeOffset: {
         value: 3,
@@ -40,8 +40,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * A virtual property used by the template to indicate whether or not there is a next page
-     * @property {Boolean} paginate-widget.ViewModel.props.hasNext
-     * @parent paginate-widget.ViewModel.props
+     * @property {Boolean} sp-paginate.ViewModel.props.hasNext
+     * @parent sp-paginate.ViewModel.props
      */
     hasNext: {
         get () {
@@ -50,8 +50,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * A virtual property used by the template to indicate whether or not there is a previous page
-     * @property {Boolean} paginate-widget.ViewModel.props.hasPrevious
-     * @parent paginate-widget.ViewModel.props
+     * @property {Boolean} sp-paginate.ViewModel.props.hasPrevious
+     * @parent sp-paginate.ViewModel.props
      */
     hasPrevious: {
         get () {
@@ -60,8 +60,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * The array of currently shown pages in the widget
-     * @property {Array<Number>} paginate-widget.ViewModel.props.visiblePages
-     * @parent paginate-widget.ViewModel.props
+     * @property {Array<Number>} sp-paginate.ViewModel.props.visiblePages
+     * @parent sp-paginate.ViewModel.props
      */
     visiblePages: {
         get () {
@@ -75,8 +75,8 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * The array of numbers 0 through number of pages. This is a helper for the visiblePages getter
-     * @property {Array<Number>} paginate-widget.ViewModel.props.pageArray
-     * @parent paginate-widget.ViewModel.props
+     * @property {Array<Number>} sp-paginate.ViewModel.props.pageArray
+     * @parent sp-paginate.ViewModel.props
      */
     pageArray: {
         get () {
@@ -89,9 +89,9 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * Hides the first button
-     * @signature `<paginate-widget hide-first />`
-     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideFirst
-     * @parent paginate-widget.ViewModel.props
+     * @signature `<sp-paginate hide-first />`
+     * @property {HTMLBoolean} sp-paginate.ViewModel.props.hideFirst
+     * @parent sp-paginate.ViewModel.props
      */
     hideFirst: {
         type: 'htmlbool',
@@ -99,9 +99,9 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * Hides the last button
-     * @signature `<paginate-widget hide-last />`
-     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideLast
-     * @parent paginate-widget.ViewModel.props
+     * @signature `<sp-paginate hide-last />`
+     * @property {HTMLBoolean} sp-paginate.ViewModel.props.hideLast
+     * @parent sp-paginate.ViewModel.props
      */
     hideLast: {
         type: 'htmlbool',
@@ -109,9 +109,9 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * Hides the previous button
-     * @signature `<paginate-widget hide-previous />`
-     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hidePrevious
-     * @parent paginate-widget.ViewModel.props
+     * @signature `<sp-paginate hide-previous />`
+     * @property {HTMLBoolean} sp-paginate.ViewModel.props.hidePrevious
+     * @parent sp-paginate.ViewModel.props
      */
     hidePrevious: {
         type: 'htmlbool',
@@ -119,9 +119,9 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * Hides the next button
-     * @signature `<paginate-widget hide-next />`
-     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hideNext
-     * @parent paginate-widget.ViewModel.props
+     * @signature `<sp-paginate hide-next />`
+     * @property {HTMLBoolean} sp-paginate.ViewModel.props.hideNext
+     * @parent sp-paginate.ViewModel.props
      */
     hideNext: {
         type: 'htmlbool',
@@ -129,9 +129,9 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
     },
     /**
      * Hides the list of pages
-     * @signature `<paginate-widget hide-pages />`
-     * @property {HTMLBoolean} paginate-widget.ViewModel.props.hidePages
-     * @parent paginate-widget.ViewModel.props
+     * @signature `<sp-paginate hide-pages />`
+     * @property {HTMLBoolean} sp-paginate.ViewModel.props.hidePages
+     * @parent sp-paginate.ViewModel.props
      */
     hidePages: {
         type: 'htmlbool',

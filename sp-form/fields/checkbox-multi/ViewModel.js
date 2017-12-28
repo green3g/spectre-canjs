@@ -1,4 +1,4 @@
-import FieldInputMap from 'spectre-canjs/admin-form/field-select-field/ViewModel';
+import FieldInputMap from 'spectre-canjs/sp-form/fields/select-field/ViewModel';
 import DefineList from 'can-define/list/list';
 
 export default FieldInputMap.extend('CheckboxMulti', {

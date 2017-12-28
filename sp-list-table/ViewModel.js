@@ -6,11 +6,11 @@ import assign from 'object-assign';
 import makeArray from 'can-util/js/make-array/make-array';
 
 /**
- * @constructor list-table.ViewModel ViewModel
- * @parent list-table
- * @group list-table.ViewModel.props Properties
+ * @constructor sp-list-table.ViewModel ViewModel
+ * @parent sp-list-table
+ * @group sp-list-table.ViewModel.props Properties
  * @inherits {util/field/base/FieldIteratorMap} FieldIteratorMap
- * @description A `<list-table />` component's ViewModel. This viewmodel
+ * @description A `<sp-list-table />` component's ViewModel. This viewmodel
  * extends the [util/field/base/FieldIteratorMap FieldIteratorMap]'s properties
  */
 const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
@@ -20,8 +20,8 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     /**
      * A string referencing a field property that will exclude that field
      * from this classes fields. The default is 'list'.
-     * @property {String} list-table.ViewModel.props.excludeFieldKey excludeFieldKey
-     * @parent list-table.ViewModel.props
+     * @property {String} sp-list-table.ViewModel.props.excludeFieldKey excludeFieldKey
+     * @parent sp-list-table.ViewModel.props
      */
     excludeFieldKey: {
         value: 'list'
@@ -29,8 +29,8 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     /**
      * Optional promise or deferred object that will resolve to an object. Once
      * the promise resolves, the objects list will be replaced with the promise result
-     * @parent list-table.ViewModel.props
-     * @property {Promise} list-table.ViewModel.props.promise
+     * @parent sp-list-table.ViewModel.props
+     * @property {Promise} sp-list-table.ViewModel.props.promise
      */
     promise: {
         set (newVal) {
@@ -43,16 +43,16 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     /**
      * A list of objects to display. These objects should generally be can.Model
      * objects but may be an javascript object.
-     * @parent list-table.ViewModel.props
-     * @property {Array<DefineMap>} list-table.ViewModel.props.objects
+     * @parent sp-list-table.ViewModel.props
+     * @property {Array<DefineMap>} sp-list-table.ViewModel.props.objects
      */
     objects: {
         Value: DefineList
     },
     /**
      * A virtual property that retrieves this table's first object
-     * @parent list-table.ViewModel.props
-     * @property {Array<Object>} list-table.ViewModel.props.object
+     * @parent sp-list-table.ViewModel.props
+     * @property {Array<Object>} sp-list-table.ViewModel.props.object
      *
      */
     object: {
@@ -65,16 +65,16 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
      * is used to determine whether objects are selected or not. For a built in
      * unique ID, `_cid` may be used. _cid is automatically generatted by `can-define`
      * and should be guaranteed to be unique accross all DefineMaps
-     * @parent list-table.ViewModel.props
-     * @property {String} list-table.ViewModel.props.idProp
+     * @parent sp-list-table.ViewModel.props
+     * @property {String} sp-list-table.ViewModel.props.idProp
      */
     idProp: {
         value: 'id'
     },
     /**
      * A list of the currently selected objects in the table
-     * @parent list-table.ViewModel.props
-     * @property {Array.<Object>} list-table.ViewModel.props.selectedObjects
+     * @parent sp-list-table.ViewModel.props
+     * @property {Array.<Object>} sp-list-table.ViewModel.props.selectedObjects
      */
     selectedObjects: {
         Type: DefineList,
@@ -83,8 +83,8 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     /**
      * An array of ids for the selected objects. This is a virtual property
      * and cannot be set.
-     * @parent list-table.ViewModel.props
-     * @property {Array<Number>} list-table.ViewModel.props.selectedIds
+     * @parent sp-list-table.ViewModel.props
+     * @property {Array<Number>} sp-list-table.ViewModel.props.selectedIds
      */
     selectedIds: {
         get () {
@@ -95,8 +95,8 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     },
     /**
      * A virtual property that helps the template determine whether all objects are selected
-     * @parent list-table.ViewModel.props
-     * @property {Boolean} list-table.ViewModel.props._allSelected
+     * @parent sp-list-table.ViewModel.props
+     * @property {Boolean} sp-list-table.ViewModel.props._allSelected
      */
     _allSelected: {
         type: 'boolean',
@@ -106,8 +106,8 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
     },
     /**
      * The current sort field
-     * @parent list-table.ViewModel.props
-     * @property {can.List} list-table.ViewModel.props.currentSort
+     * @parent sp-list-table.ViewModel.props
+     * @property {can.List} sp-list-table.ViewModel.props.currentSort
      */
     currentSort: {
         Type: DefineMap,

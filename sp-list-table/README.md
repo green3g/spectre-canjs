@@ -1,5 +1,5 @@
 <!--
-@module {can.Component} list-table <list-table />
+@module {can.Component} sp-list-table <sp-list-table />
 @parent spectre-canjs.components
 -->
 
@@ -10,4 +10,4 @@ The widget is configureable to allow for custom functionality. A `buttons` prope
 
 ## Example
 
-@demo list-table/demo/demo.html 500
+@demo sp-list-table/demo/demo.html 500

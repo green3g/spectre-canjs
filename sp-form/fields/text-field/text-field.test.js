@@ -3,10 +3,10 @@
 import q from 'steal-qunit';
 import {ViewModel} from './text-field';
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 let vm;
 
-q.module('admin-form/field-text-field.ViewModel', {
+q.module('sp-form/fields/text-field.ViewModel', {
     beforeEach () {
         vm = new ViewModel();
     },

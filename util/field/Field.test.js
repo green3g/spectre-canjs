@@ -31,23 +31,23 @@ test('Field.alias', (assert) => {
     });
 });
 
-test('Field.formTemplate', (assert) => {
+test('Field.editComponent', (assert) => {
     let field = new Field();
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be a renderer function');
+    assert.ok(typeof field.editComponent === 'function', 'editComponent should be a renderer function');
 
     field = new Field({
-        formTemplate: '<p></p>'
+        editComponent: '<p></p>'
     });
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be converted to a renderer function');
+    assert.ok(typeof field.editComponent === 'function', 'editComponent should be converted to a renderer function');
 
     function renderer () {}
     field = new Field({
-        formTemplate: renderer
+        editComponent: renderer
     });
-    assert.equal(field.formTemplate, renderer, 'if fieldtemplate is a renderer function, it should be returned');
+    assert.equal(field.editComponent, renderer, 'if editComponent is a renderer function, it should be returned');
 
     field = new Field({
         fieldType: 'select'
     });
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be a function if passed a correct fieldType');
+    assert.ok(typeof field.editComponent === 'function', 'editComponent should be a function if passed a correct fieldType');
 });

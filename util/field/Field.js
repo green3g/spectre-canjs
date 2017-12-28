@@ -2,7 +2,6 @@ import {makeSentenceCase} from '../string/string';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import dev from 'can-util/js/dev/dev';
 
 const displayComponent = stache('{{object[field.name]}}');
 
@@ -59,7 +58,7 @@ export const Field = DefineMap.extend('Field', {
      *
      * The default renderers are provided as a constant, and may be referenced
      * by passing the `field.fieldTag` parameter. For instance, passing
-     * `fieldTag: 'select'` will set `formTemplate` to the registered
+     * `fieldTag: 'select'` will set `editComponent` to the registered
      * template for a `select-field` component.
      *
      * Custom templates can be created to add various field types and functionality
@@ -68,21 +67,24 @@ export const Field = DefineMap.extend('Field', {
      * The custom templates will have the following useful properties in their scope:
      *  - `this`: (alias `.` is the current `this` object) the field properties object
      *  - `setField`: the function to call when the field changes
-     *  - `formObject`: the form object
+     *  - `object`: the form object
      *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
      *
      * For example:
-     * @property {Renderer} util/field/Field.props.formTemplate formTemplate
+     * @property {Renderer} util/field/Field.props.editComponent editComponent
      * @parent util/field/Field.props
      */
     editComponent: {
         type: '*',
-        get () {
+        get (renderer) {
+            if (typeof renderer === 'function') {
+                return renderer;
+            }
             return stache(`<${this.fieldTag} 
                 properties:from="." 
                 value:bind="../dirtyObject[name]" 
                 error:bind="../validationErrors[name]"
-                on:fieldchange="setField" />`);
+                on:fieldchange="checkField(scope.arguments)" />`);
         }
     },
     /**

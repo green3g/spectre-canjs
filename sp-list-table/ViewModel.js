@@ -72,6 +72,15 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
         value: 'id'
     },
     /**
+     * Whether rows can be selectable using a checkbox
+     * @parent sp-list-table.ViewModel.props
+     * @property {Boolean} sp-list-table.ViewModel.props.selectable
+     */
+    selectable: {
+        type: 'boolean',
+        value: true
+    },
+    /**
      * A list of the currently selected objects in the table
      * @parent sp-list-table.ViewModel.props
      * @property {Array.<Object>} sp-list-table.ViewModel.props.selectedObjects

@@ -157,18 +157,6 @@ export const ViewModel = Base.extend('DateField', {
         return d.getDate();
     },
     /**
-     * Called when one of the select-field values change. Dispatches the
-     * `change` event with the current date value
-     * @function onChange
-     * @signature `onChange()`
-     */
-    onChange () {
-        // this.dispatch('fieldchange', [{
-        //     value: this.value,
-        //     name: this.properties.name
-        // }]);
-    },
-    /**
      * Checks to see if the date is valid
      * @function isValidDate
      * @signature

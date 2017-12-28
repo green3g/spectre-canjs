@@ -35,7 +35,7 @@ export const ViewModel = Base.extend('SubformField', {
 
 
             if (typeof val === 'object') {
-                this.subFormObject = val;
+                this.subobject = val;
             } else {
                 dev.warn('typeof subform value needs to be object. Type is ' + typeof val, val);
             }
@@ -53,16 +53,16 @@ export const ViewModel = Base.extend('SubformField', {
      * is created automatically from the `ObjectTemplate` property.
      * It is initialized with default values by using `JSON.parse` on the `value`
      * property
-     * @property {Object} subform-field.ViewModel.props.subFormObject subFormObject
+     * @property {Object} subform-field.ViewModel.props.subobject subobject
      * @parent subform-field.ViewModel.props
      */
-    subFormObject: {
+    subobject: {
         Type: DefineMap,
         Value: DefineMap
     },
     /**
      * The field properties to set up the form fields functionality, this is
-     * set up automatically from the `fields` property or the `subFormObject`
+     * set up automatically from the `fields` property or the `subobject`
      * if `fields` is not provided.
      * @property {Array<util/field/Field>} subform-field.ViewModel.props.formFields formFields
      * @parent subform-field.ViewModel.props
@@ -86,9 +86,9 @@ export const ViewModel = Base.extend('SubformField', {
      * @param  {Object} props   The change event properties
      */
     saveField (scope, dom, event, props) {
-        this.subFormObject.assign(props.dirty.serialize());
+        this.subobject.assign(props.dirty.serialize());
         this.dispatch('fieldchange', [{
-            value: this.subFormObject.serialize(),
+            value: this.subobject.serialize(),
             name: this.properties.name
         }]);
     }

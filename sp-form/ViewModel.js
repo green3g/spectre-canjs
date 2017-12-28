@@ -213,20 +213,13 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
         }
     },
     /**
-     * Sets the object value when a field changes. This will allow for future
-     * functionality where the form is much more responsive to values changing, like
-     * cascading dropdowns. Dispatches the `fieldchange` event when a field changes.
-     * This updates the [sp-form.ViewModel.props.dirtyObject] and calls the
-     * validation method on the field.
-     * @function setField
+     * Runs the field validation and updates the validation object.
+     * If the validation succeeds (returns no validation error) then a fieldchange event is dispatched
+     * @function checkField
      * @signature
-     * @param  {util/field/Field} field  The field object properties
-     * @param  {domElement} domElement The form element that dispatched the event
-     * @param  {Event} event  The event object and type
-     * @param  {FieldChangeEventObject} props  The value that was passed from the field component
+     * @param {Array} arguments an array with 3 arguments, event, value (field value) and field<Field> object
      */
-    setField (field, domElement, event, props) {
-        const value = props.value;
+    checkField ([event, value, field]) {
 
         // check for valid field value and don't update if it's not
         const error = this.validationErrors[field.name] = this.getValidationError(field, value);

@@ -4,13 +4,13 @@
   <div class="container">
     <h1>Form Widget Demo</h1>
     <p>Default form object values: </p>
-    <pre>{{stringify (formObject)}}</pre>
+    <pre>{{stringify (object)}}</pre>
 
     <p>Dirty field values</p>
     <pre>{{stringify (dirtyObject)}}</pre>
 
     <sp-form 
-      vm:object:bind="formObject" 
+      vm:object:bind="object" 
       vm:fields:from="fields" 
       vm:dirtyObject:to="dirtyObject" 
       vm:actions:from="actions"

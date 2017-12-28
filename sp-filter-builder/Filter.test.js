@@ -74,8 +74,8 @@ test('alias get()', (assert) => {
     assert.equal(filter.alias, 'Test Alias', 'alias should be correctly retrieved');
 });
 
-test('formObject get()', (assert) => {
-    assert.equal(filter.formObject.test, 'test', 'formObject should consist of a property with the correct value');
+test('object get()', (assert) => {
+    assert.equal(filter.object.test, 'test', 'object should consist of a property with the correct value');
 });
 
 test('setField(field, dom, scope, val)', (assert) => {

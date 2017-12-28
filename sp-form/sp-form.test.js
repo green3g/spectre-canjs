@@ -24,7 +24,7 @@ test('objectId set()', (assert) => {
         objectId: id
     });
     vm.promise.then(() => {
-        assert.equal(vm.formObject.id, id, 'formObject should be retrieved correctly');
+        assert.equal(vm.object.id, id, 'object should be retrieved correctly');
         done();
     });
 });
@@ -39,7 +39,7 @@ test('fetchObject(con, id)', (assert) => {
     const done = assert.async();
     const promise = vm.fetchObject(Connection, id);
     promise.then(() => {
-        assert.equal(vm.formObject.id, id, 'form object should be loaded asynchronously');
+        assert.equal(vm.object.id, id, 'form object should be loaded asynchronously');
         done();
     });
 });
@@ -47,7 +47,7 @@ test('fetchObject(con, id)', (assert) => {
 test('submitForm()', (assert) => {
     const done = assert.async();
     const object = {test: 'hello'};
-    vm.formObject = object;
+    vm.object = object;
 
     vm.on('submit', function (ev, item) {
         assert.deepEqual(item.serialize(), object, 'item dispatched from submit event should be the object');
@@ -56,21 +56,29 @@ test('submitForm()', (assert) => {
     vm.submitForm();
 });
 
-test('setField(field, domElement, event, value)', (assert) => {
+test('checkField(field, domElement, event, value)', (assert) => {
+    const done = assert.async();
     const object = {test: 'hello'};
-    const expected = {test: 'dummy'};
-    vm.formObject = object;
-
-    vm.setField({name: 'test'}, null, null, {value: 'dummy'});
-    assert.deepEqual(vm.dirtyObject.serialize(), expected, 'setting a field value should change the dirtyObject');
+    vm.object = object;
+    function handle () {
+        assert.ok(true, 'fieldchange event is dispatched');
+        vm.off('fieldchange', handle);
+        done();
+    }
+    vm.on('fieldchange', handle);
+    vm.checkField([{event: 'change'}, 'dummy', {name: 'test'}]);
 });
 
-test('cancelForm()', (assert) => {
+test('dispatchEvent(eventName)', (assert) => {
     const done = assert.async();
 
-    vm.on('cancel', function () {
-        assert.equal(1, 1, 'cancel event should be dispatched');
+    function handle () {
+        assert.ok(true, 'cancel event is dispatched');
+        vm.off('cancel', handle);
         done();
-    });
-    vm.cancelForm();
+    }
+
+    vm.on('cancel', handle);
+
+    vm.dispatchEvent('cancel');
 });

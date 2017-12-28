@@ -9,7 +9,6 @@ import '../sp-form/sp-form.test';
 import '../sp-dropdown/sp-dropdown.test';
 import '../sp-form/fields/date-field/date-field.test';
 import '../sp-form/fields/file-field/file-field.test';
-import '../sp-form/fields/json-field/json-field.test';
 import '../sp-form/fields/select-field/select-field.test';
 import '../sp-form/fields/text-field/text-field.test';
 import '../sp-confirm/sp-confirm.test';

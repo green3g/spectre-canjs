@@ -1,18 +1,20 @@
 <script type="text/stache" id="demo-html">
-    <h1>List Table Demo</h1>
+    <div class="container">
+        <h1>List Table Demo</h1>
 
-    <h2>Simple:</h2>
-    <!-- id-prop is required for selection -->
-    <sp-list-table vm:objects:from="objects" id-prop="_cid" />
+        <h2>Simple:</h2>
+        <!-- id-prop is required for selection -->
+        <sp-list-table vm:objects:from="objects" id-prop="_cid" />
 
-    <br />
+        <br />
 
-    <h2>Advanced:</h2>
-    <sp-list-table vm:selectedObjects:to="selectedObjects" vm:objects:from="objects" on:vm:up="voteUp" vm:fields:from="fields" on:vm:down="voteDown" id-prop="_cid" />
+        <h2>Advanced:</h2>
+        <sp-list-table vm:selectedObjects:to="selectedObjects" vm:objects:from="objects" on:vm:up="voteUp" vm:fields:from="fields" on:vm:down="voteDown" id-prop="_cid" />
 
 
-    <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
-    </p>
+        <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
+        </p>
+    </div>
 </script>
 <style>
 .manage-tools-cell {

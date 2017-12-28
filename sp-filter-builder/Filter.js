@@ -223,10 +223,10 @@ export const Filter = DefineMap.extend('Filter', {
     /**
      * A virtual property that creates a dummmy form object for use with the
      * field template
-     * @property {Object}  sp-filter-builder.Filter.props.formObject formObject
+     * @property {Object}  sp-filter-builder.Filter.props.object object
      * @parent sp-filter-builder.Filter.props
      */
-    formObject: {
+    object: {
         serialize: false,
         get () {
             const obj = {};

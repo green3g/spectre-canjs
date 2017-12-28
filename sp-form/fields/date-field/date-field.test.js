@@ -3,7 +3,7 @@
 import q from 'steal-qunit';
 import {ViewModel} from './date-field';
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 let vm;
 
 q.module('date-field.ViewModel', {
@@ -61,7 +61,7 @@ test('onChange()', (assert) => {
     vm.on('fieldchange', () => {
         assert.ok(true, 'onChange should trigger event');
     });
-    vm.onChange();
+    vm.value = '1/1/2017';
 });
 
 test('isValidDate()', (assert) => {

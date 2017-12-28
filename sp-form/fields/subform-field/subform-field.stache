@@ -2,7 +2,7 @@
   <fieldset>
     <legend>{{properties.alias}}</legend>
     <sp-form vm:inline:from="properties.inline" 
-      object:from="subFormObject" 
+      object:from="subobject" 
       on:fieldchange="saveField" 
       fields:from="formFields" 
       actions:from="formActions">

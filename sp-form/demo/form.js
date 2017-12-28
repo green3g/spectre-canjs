@@ -194,7 +194,7 @@ const fields = [{
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
-    formObject: new Template(),
+    object: new Template(),
     fields: fields,
     formSaving: false,
     // actions: [{
@@ -210,7 +210,7 @@ const vm = new DefineMap({
         console.log(arguments);
     },
     onSubmit () {
-        console.log('submitted data: ', this.formObject.serialize());
+        console.log('submitted data: ', this.object.serialize());
         alert('Form submitted! See the console for details');
         setTimeout(() => {
             this.formSaving = false;
@@ -428,7 +428,7 @@ const fields = [{
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
-    formObject: new Template(),
+    object: new Template(),
     fields: fields,
     formSaving: false,
     // actions: [{
@@ -444,7 +444,7 @@ const vm = new DefineMap({
         console.log(arguments);
     },
     onSubmit () {
-        console.log('submitted data: ', this.formObject.serialize());
+        console.log('submitted data: ', this.object.serialize());
         alert('Form submitted! See the console for details');
         setTimeout(() => {
             this.formSaving = false;

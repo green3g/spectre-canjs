@@ -10,10 +10,10 @@ stealTools.build({
         'spectre-canjs/form-widget/demo/form',
         'spectre-canjs/list-table/demo/listTable',
         'spectre-canjs/modal-dialog/demo/dialog',
-        'spectre-canjs/nav-container/demo/nav',
+        'spectre-canjs/sp-tab-container/demo/nav',
         'spectre-canjs/paginate-widget/demo/paginate',
-        'spectre-canjs/property-table/demo/propertyTable',
-        'spectre-canjs/toast-container/demo/toast'
+        'spectre-canjs/sp-property-table/demo/propertyTable',
+        'spectre-canjs/sp-toast-container/demo/toast'
     ]
 }, {
     removeDevelopmentCode: false,

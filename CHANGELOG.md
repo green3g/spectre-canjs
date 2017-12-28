@@ -61,7 +61,7 @@
   * FIX: removes test files for data-admin
   * FIX: removes other data-admin component test
   * FIX: remove data-admin tests, etc.
-  * CHG: move data-admin components to can-admin-app
+  * CHG: move data-admin components to spectre-canjs-app
   * FIX: format comments
   * ENH: hide header tools on printouts
   * ENH: pass field name in form validation functions
@@ -93,7 +93,7 @@
   * changelog
   * 0.29.1
   * FIX: cell width issue
-  * ENH: move redundant detail page title into nav-page header
+  * ENH: move redundant detail page title into sp-tab-page header
   * FIX: issue with field serialization
   * ENH: add basic accordion-container
 
@@ -111,7 +111,7 @@
   * ENH: automatically convert string templates to renderers
   * TEST: tests
   * TEST: paginate and manage components
-  * TEST: add missing nav-container tests
+  * TEST: add missing sp-tab-container tests
   * TEST: add generated codeclimate.yml
   * TEST: missing addTemplate test
   * TEST: fix misnamed modules

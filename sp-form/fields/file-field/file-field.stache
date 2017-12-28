@@ -1,0 +1,36 @@
+<div class="form-group {{#if error}}has-error{{/if}}">
+
+    {{#with(properties)}}
+    <ul class="menu">
+        <li class="menu-item">
+            <div class="input-group">
+                <label {{#if inline}} class="hide" {{/if}} for="{{name}}">{{alias}}</label>
+                <input on:el:change="onChange(%element)" type="file" class="form-control form-input" name="{{name}}" {{#if multiple}} multiple {{/if}} />
+            </div>
+
+            {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
+        </li>
+        {{#if state.isPending}}
+            <li class="menu-item loading"></li>
+        {{/if}}
+        {{#if value.length}}
+            <!-- menu header -->
+            <li class="menu-header">
+                <span class="menu-header-text">
+            Current Files
+        </span>
+            </li>
+            {{#each value}}
+                <!-- menu item -->
+                <li class="menu-item clear">
+                    <a href="{{path}}" target="_blank" class="float-left">
+                        <i class="icon icon-link"></i> {{path}}
+                    </a>
+                    <button type="button" class="btn ml-10 {{#if removing}}loading{{/if}}" on:el:click="removeFile(.)"><i class="fa fa-trash"></i></button>
+                </li>
+            {{/each}}
+        {{/if}}
+    </ul>
+    {{/with}}
+
+</div>

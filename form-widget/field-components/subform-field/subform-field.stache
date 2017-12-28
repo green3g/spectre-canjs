@@ -1,6 +1,0 @@
-<div class="form-group">
-  <fieldset>
-    <legend>{{properties.alias}}</legend>
-    <form-widget inline="{{properties.inline}}" {form-object}="subFormObject" (fieldchange)="saveField" {fields}="formFields" show-buttons="false" />
-  </fieldset>
-</div>

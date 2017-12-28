@@ -4,30 +4,6 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import dev from 'can-util/js/dev/dev';
 
-/**
- * Built in field templates. If `fieldType` is specified on a field, the
- * template listed here will be used. Otherwise, `formTemplate` should be
- * provided for custom field templates.
- *  - text: `<text-field />` component
- *  - select: `<select-field />` component
- *  - file: `<file-field />` component
- *  - json: `<json-field />` component
- *  - subform: `<subform-field />` component
- *  - date: `<date-field />` component
- *  - checkbox: `<checkbox-field />` component
- * @property {Object} util/field/Field.TEMPLATES Built-in Templates
- * @parent util/field.guides
- */
-export const TEMPLATES = {
-    text: '<text-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
-    select: '<select-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
-    file: '<file-field {properties}="." (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" />', // string
-    json: '<json-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // string
-    subform: '<subform-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // string
-    date: '<date-field {properties}="." (fieldchange)="setField" {value}="formObject[name]" {errors}="validationErrors" />', // date object
-    checkbox: '<checkbox-field (fieldchange)="setField" value="{{formObject[name]}}" {errors}="validationErrors" {properties}="." />'
-};
-
 const displayTemplate = stache('{{object[field.name]}}');
 
 /**
@@ -69,21 +45,21 @@ export const Field = DefineMap.extend('Field', {
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant. This should be
      * omitted if a custom template is used.
-     * @property {String} util/field/Field.props.fieldType fieldType
+     * @property {String} util/field/Field.props.fieldTag fieldTag
      * @parent util/field/Field.props
      */
-    fieldType: {
+    fieldTag: {
         type: 'string',
-        value: 'text'
+        value: 'text-field'
     },
     /**
      * The form field template to use when editing this field in the form-widget. This should be
      * a template renderer. By default, this value is set to the
-     * template for the given `fieldType` property.
+     * template for the given `fieldTag` property.
      *
      * The default renderers are provided as a constant, and may be referenced
-     * by passing the `field.fieldType` parameter. For instance, passing
-     * `fieldType: 'select'` will set `formTemplate` to the registered
+     * by passing the `field.fieldTag` parameter. For instance, passing
+     * `fieldTag: 'select'` will set `formTemplate` to the registered
      * template for a `select-field` component.
      *
      * Custom templates can be created to add various field types and functionality
@@ -99,21 +75,14 @@ export const Field = DefineMap.extend('Field', {
      * @property {Renderer} util/field/Field.props.formTemplate formTemplate
      * @parent util/field/Field.props
      */
-    formTemplate: {
+    editComponent: {
         type: '*',
-        get (template) {
-            if (template) {
-                if (typeof template === 'string') {
-                    template = stache(template);
-                }
-                return template;
-            }
-            const fType = this.fieldType;
-            if (!TEMPLATES.hasOwnProperty(fType)) {
-                dev.warn('No template for the given field type', fType);
-                return stache(TEMPLATES.text);
-            }
-            return stache(TEMPLATES[fType]);
+        get () {
+            return stache(`<${this.fieldTag} 
+                properties:from="." 
+                value:bind="../dirtyObject[name]" 
+                error:bind="../validationErrors[name]"
+                on:fieldchange="setField" />`);
         }
     },
     /**
@@ -147,7 +116,7 @@ export const Field = DefineMap.extend('Field', {
      * @property {Renderer} util/field/Field.props.displayTemlpate displayTemplate
      * @parent util/field/Field.props
      */
-    displayTemplate: {
+    displayComponent: {
         value: function () {
             return displayTemplate;
         },

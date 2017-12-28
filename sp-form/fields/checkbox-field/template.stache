@@ -1,0 +1,10 @@
+<div class="form-group {{#if(error)}}has-error{{/if}}">
+    {{#with(properties)}}
+        <label class="form-{{#if style}}{{style}}{{else}}checkbox{{/if}}">
+            <input type="checkbox" el:checked:bind="../value" name:from="name" />
+            <i class="form-icon"></i> {{alias}}
+        </label>
+    {{/with}}
+    {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
+</div>
+

@@ -18,11 +18,11 @@ export const ViewModel = DefineMap.extend('FieldInput', {
      */
     properties: {Value: DefineMap},
     /**
-     * The form errors object
-     * @property {Object} FieldInputMap.props.errors errors
+     * The field error string
+     * @property {String} FieldInputMap.props.error error
      * @parent FieldInputMap.props
      */
-    errors: '*',
+    error: 'string',
     /**
      * The current field value
      * @property {Object} FieldInputMap.props.value value

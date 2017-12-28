@@ -1,0 +1,13 @@
+<div class="form-group {{#if error}}has-error{{/if}}">
+    {{#if properties.inline}}
+        {{>selectInput}}
+    {{else}}
+        <div class="col-4">
+            <label class="form-label" for="{{properties.name}}">{{properties.alias}}</label>
+        </div>
+        <div class="col-8">
+            {{>selectInput}}
+        </div>
+    {{/if}}
+    {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
+</div>

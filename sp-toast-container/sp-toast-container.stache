@@ -1,0 +1,13 @@
+
+<div class="toasts">
+    {{#each toasts}}
+        <sp-toast on:vm:hide="removeToast(.)"
+          severity="{{severity}}"
+          visible="{{visible}}"
+          heading="{{heading}}"
+          use-content-tag="false"
+          auto-hide="{{autoHide}}"
+          body="{{body}}"
+          dismissable="{{dismissable}}" />
+    {{/each}}
+</div>

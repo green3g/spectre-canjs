@@ -1,5 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import parseFieldArray from '../parseFieldArray/parseFieldArray';
+import mapToFields from '../mapToFields/mapToFields';
 import Field from '../Field';
 import DefineList from 'can-define/list/list';
 
@@ -32,12 +33,22 @@ export default DefineMap.extend({
         Value: DefineList,
         Type: DefineList,
         get (fields) {
+            fields = fields || [];
+
+            // if user provides fields, use those
             if (fields.length && !(fields[0] instanceof Field)) {
                 fields = parseFieldArray(fields);
             }
+            
+            // otherwise try to get 'defined' fields from define map properties
+            if (!fields.length && this.object instanceof DefineMap) {
+                fields = mapToFields(this.object);
+            }
+
+            // if this fails, serialize the object and use keys of object
             if (!fields.length && this.object) {
                 const obj = this.object.serialize ? this.object.serialize() : this.object;
-                return parseFieldArray(Object.keys(obj));
+                fields = parseFieldArray(Object.keys(obj));
             }
             return fields.filter((f) => {
                 return f[this.excludeFieldKey] !== false;

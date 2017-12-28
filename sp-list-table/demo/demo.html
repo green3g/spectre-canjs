@@ -1,0 +1,26 @@
+<script type="text/stache" id="demo-html">
+    <h1>List Table Demo</h1>
+
+    <h2>Simple:</h2>
+    <!-- id-prop is required for selection -->
+    <list-table vm:objects:from="data" id-prop="_cid" />
+
+    <br />
+
+    <h2>Advanced:</h2>
+    <list-table vm:selectedObjects:to="selectedObjects" vm:objects:from="data" on:vm:up="voteUp" vm:fields:from="fields" on:vm:down="voteDown" id-prop="_cid" />
+
+
+    <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
+    </p>
+</script>
+<style>
+.manage-tools-cell {
+  width: 150px;
+}
+</style>
+
+<script src="../../../docs/spectre-canjs/steal.production.js" main="spectre-canjs/docs-main">
+// <script src="../../node_modules/steal/steal.js" main="spectre-canjs/docs-main">
+    steal.import('spectre-canjs/list-table/demo/listTable');
+</script>

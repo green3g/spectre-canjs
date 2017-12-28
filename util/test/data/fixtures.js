@@ -26,7 +26,7 @@ fixture({
                 switch (f.operator) {
                 case 'equals':
                     tempData = tempData.filter((d) => {
-                    //eslint-disable-next-line
+                    // eslint-disable-next-line
                     return d[f.name] == f.value;
                     });
                     break;

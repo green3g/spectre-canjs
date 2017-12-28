@@ -219,6 +219,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @signature
      * @param {Array} arguments an array with 3 arguments, event, value (field value) and field<Field> object
      */
+    // eslint-disable-next-line
     checkField ([event, value, field]) {
 
         // check for valid field value and don't update if it's not

@@ -3,7 +3,7 @@
 import q from 'steal-qunit';
 import ViewModel from './ViewModel';
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 let vm;
 
 q.module('select-field.ViewModel', {

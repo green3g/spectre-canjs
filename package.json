@@ -41,12 +41,13 @@
     "babel-jest": "^22.0.4",
     "babel-preset-es2015": "^6.24.1",
     "can-connect": "^1.5.14",
-    "can-fixture": "^1.2.1",
+    "can-fixture": "github:roemhildtg/can-fixture",
     "eslint": "^4.14.0",
     "http-server": "^0.10.0",
     "jest": "^22.0.4",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
+    "json-pretty-html": "^1.0.2",
     "qunit": "^2.4.1",
     "qunit-cli": "^0.2.0",
     "regenerator-runtime": "^0.11.1",
@@ -76,5 +77,8 @@
       "steal-less",
       "steal-stache"
     ]
+  },
+  "jest": {
+    "collectCoverage": true
   }
 }

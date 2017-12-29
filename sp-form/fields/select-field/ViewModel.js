@@ -31,10 +31,10 @@ export default Base.extend('SelectField', {
             const props = this.properties;
             if (props.optionsPromise) {
                 props.optionsPromise.then((options) => {
-                    set([DEFAULT_OPTION].concat(options.serialize ? options.serialize() : options));
+                    set([DEFAULT_OPTION].concat(options.get ? options.get() : options));
                 });
             } else if (props.options && props.options.length) {
-                set([DEFAULT_OPTION].concat(props.options.serialize ? props.options.serialize() : props.options));
+                set([DEFAULT_OPTION].concat(props.options.get ? props.options.get() : props.options));
             } else {
                 dev.warn('select-field::no options passed');
             }

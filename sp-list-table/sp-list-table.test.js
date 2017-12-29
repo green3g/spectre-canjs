@@ -53,26 +53,26 @@ test('fields get() without providing fields', () => {
     expect(vm.fields.length).toEqual(2);
 });
 
-test('setSort(field)', (assert) => {
+test('setSort(field)', () => {
     const field = 'name';
     const otherField = 'label';
     vm.setSort(field);
-    assert.deepEqual(vm.currentSort.serialize(), {
+    expect(vm.currentSort.serialize()).toEqual({
         type: 'desc',
         field: field
-    }, 'Current sort should be desc by default');
+    });
 
     vm.setSort(field);
-    assert.deepEqual(vm.currentSort.serialize(), {
+    expect(vm.currentSort.serialize()).toEqual({
         type: 'asc',
         field: field
-    }, 'Current sort should be asc after setting again');
+    });
 
     vm.setSort(otherField);
-    assert.deepEqual(vm.currentSort.serialize(), {
+    expect(vm.currentSort.serialize()).toEqual({
         type: 'desc',
         field: otherField
-    }, 'Current sort should be desc by default');
+    });
 });
 
 test('toggleSelected(obj), isSelected(obj)', () => {

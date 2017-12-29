@@ -10,7 +10,8 @@ test('mapToFields', () => {
     });
 
     const ExtendedMyMap = MyMap.extend({
-        field1: 'number'
+        field1: 'number',
+        field2: 'string'
     });
 
     const results = [

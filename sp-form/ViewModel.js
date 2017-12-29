@@ -81,7 +81,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
         Type: DefineMap,
         set (obj) {
             const Constructor = obj.constructor ? obj.constructor : DefineMap;
-            this.dirtyObject = new Constructor(obj);
+            this.dirtyObject = new Constructor(obj.get());
             return obj;
         }
     },
@@ -201,7 +201,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
             this.isSaving = true;
         }
 
-        this.object.assign(this.dirtyObject.serialize());
+        this.object.assign(this.dirtyObject);
         this.dispatch('submit', [this.object]);
         return false;
     },
@@ -222,21 +222,16 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     checkField ([, value, field]) {
 
         // check for valid field value and don't update if it's not
-        const error = this.validationErrors[field.name] = this.getValidationError(field, value);
-        if (error) {
-            return;
-        }
+        this.validationErrors[field.name] = this.getValidationError(field, value);
 
         // update and dispatch field change event
         // if the value is different
-        if (this.object[field.name] !== value) {
-            this.dispatch('fieldchange', [{
-                name: field.name,
-                value: value,
-                dirty: this.dirtyObject,
-                current: this.object
-            }]);
-        }
+        this.dispatch('fieldchange', [{
+            name: field.name,
+            value: value,
+            dirty: this.dirtyObject,
+            current: this.object
+        }]);
     },
     /**
      * Validates a field with a value if the field has a [util/field/Field.props.validate] property

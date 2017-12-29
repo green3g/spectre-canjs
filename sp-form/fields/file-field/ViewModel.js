@@ -3,13 +3,22 @@ import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import dev from 'can-util/js/dev/dev';
 
-const FileMap = DefineMap.extend({
+export const FileMap = DefineMap.extend({
+    name: {
+        get (name) {
+            if (name) {
+                return name;
+            }
+
+            const parts = this.path ? this.path.split('/') : ['File'];
+            return parts[parts.length - 1];
+        }
+    },
     path: 'string',
-    name: 'string',
     removing: 'boolean'
 });
 
-const FileList = DefineList.extend({
+export const FileList = DefineList.extend({
     '#': FileMap
 });
 
@@ -121,10 +130,7 @@ export default Base.extend('FileField', {
                 this.value.push(file);
             });
             
-            this.dispatch('fieldchange', [{
-                value: this.value,
-                name: this.properties.name
-            }]);
+            this.dispatch('fieldchange', [this.value, this.properties]);
         } else {
             // Handle errors here
             dev.warn('ERRORS: ', data.error);
@@ -192,11 +198,7 @@ export default Base.extend('FileField', {
      */
     removeSuccess (file) {
         this.value.splice(this.value.indexOf(file), 1);
-        
-        this.dispatch('fieldchange', [{
-            value: this.value,
-            name: this.properties.name
-        }]);
+        this.dispatch('fieldchange', [this.value, this.properties]);
     },
     /**
      * Called if an error occurs deleting the file. If the response is a 404,

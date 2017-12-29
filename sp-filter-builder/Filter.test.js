@@ -36,19 +36,20 @@ test('operatorField get() with field type', () => {
 });
 
 test('valueField get() no field set', () => {
-    expect(filter.valueField.fieldType).toEqual('text');
+    expect(filter.valueField.fieldTag).toEqual('text-field');
 });
 
 test('valueField get() field is set', () => {
     filter.field = {
-        name: 'test'
+        name: 'test',
+        fieldTag: 'date-field'
     };
 
-    expect(filter.valueField.fieldType).toEqual('date');
+    expect(filter.valueField.fieldTag).toEqual('date-field');
 });
 
 test('alias get()', () => {
-    expect(filter.alias).toEqual('Name');
+    expect(filter.alias).toEqual('Test');
     filter.field = {
         alias: 'Test Alias'
     };

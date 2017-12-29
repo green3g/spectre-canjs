@@ -31,7 +31,7 @@ test('value get()', () => {
 
 test('value get() invalid date', () => {
     vm.day = 0;
-    expect(vm.value).toEqual(null);
+    expect(vm.value).toBeFalsy();
 });
 
 test('dayProperties get()', () => {

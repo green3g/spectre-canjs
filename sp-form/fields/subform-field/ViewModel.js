@@ -1,9 +1,7 @@
-
 import DefineMap from 'can-define/map/map';
 import Base from 'spectre-canjs/util/field/base/FieldInputMap';
 import parseFieldArray from 'spectre-canjs/util/field/parseFieldArray/parseFieldArray';
 import mapToFields from 'spectre-canjs/util/field/mapToFields/mapToFields';
-import dev from 'can-util/js/dev/dev';
 
 /**
  * @constructor sp-form/fields/subform-field.ViewModel ViewModel
@@ -23,6 +21,7 @@ export default Base.extend('SubformField', {
      * @parent subform-field.ViewModel.props
      */
     value: {
+        Value: DefineMap,
         set (val) {
             if (this.value !== val) {
                 this.dispatch('fieldchange', [{
@@ -30,33 +29,8 @@ export default Base.extend('SubformField', {
                     name: this.properties.name
                 }]);
             }
-
-
-            if (typeof val === 'object') {
-                this.subobject = val;
-            } else {
-                dev.warn('typeof subform value needs to be object. Type is ' + typeof val, val);
-            }
             return val;
         }
-    },
-    // override default actions to none
-    formActions: {
-        value () {
-            return [];
-        }
-    },
-    /**
-     * The current object being edited in this field's json form, this
-     * is created automatically from the `ObjectTemplate` property.
-     * It is initialized with default values by using `JSON.parse` on the `value`
-     * property
-     * @property {Object} subform-field.ViewModel.props.subobject subobject
-     * @parent subform-field.ViewModel.props
-     */
-    subobject: {
-        Type: DefineMap,
-        Value: DefineMap
     },
     /**
      * The field properties to set up the form fields functionality, this is
@@ -83,11 +57,8 @@ export default Base.extend('SubformField', {
      * @param  {Event} event The dom event on the input element
      * @param  {Object} props   The change event properties
      */
-    saveField (scope, dom, event, props) {
-        this.subobject.assign(props.dirty.serialize());
-        this.dispatch('fieldchange', [{
-            value: this.subobject.serialize(),
-            name: this.properties.name
-        }]);
+    saveField ([, props]) {
+        this.value.assign(props.dirty.get());
+        this.dispatch('fieldchange', [this.value, this.properties]);
     }
 });

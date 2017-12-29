@@ -7,7 +7,10 @@ import 'spectre-canjs/sp-form/fields/checkbox-field/checkbox-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import dev from 'can-util/js/dev/dev';
+import jsonMarkup from 'json-pretty-html';
+import {FileList} from '../fields/file-field/ViewModel';
 
 // import jquery ui functionality for datepicker
 import 'jquery';
@@ -16,6 +19,7 @@ import 'jquery-ui/ui/widgets/datepicker';
 import 'jquery-ui/themes/base/core.css';
 import 'jquery-ui/themes/base/theme.css';
 import 'jquery-ui/themes/base/datepicker.css';
+import './full.less';
 
 // this example uses fixtures to catch requests and simulate
 // file upload experience
@@ -49,7 +53,7 @@ fixture({
 });
 
 
-const ChildObject = DefineMap.extend({
+const ChildObject = DefineMap.extend('ChildDemoObject', {
     json_field_1: 'string',
     json_field_2: {
         validate (props) {
@@ -84,43 +88,31 @@ const ChildObject = DefineMap.extend({
 });
 
 
-const Template = DefineMap.extend({
+const DemoObject = DefineMap.extend('DemoObject', {
     field1: {type: 'string', value: 'test-value'},
     field2: 'string',
     field3: 'number',
     field4: {
         type: 'date', 
-        value: new Date('2010-10-11')
+        serialize(date){
+            return date ? date.toDateString() : 'Not set';
+        }
     },
     field5: {
-
-        // convert a string value to a file list type 
-        set (val) {
-            if (!val) {
-                return []; 
-            }
-            if (typeof val === 'string') {
-                return val.split(',').map((file) => {
-                    const spl = file.split('/');
-                    return {
-                        path: file,
-                        name: spl[spl.length - 1]
-                    };
-                });
-            }
-            return val;
-        },
+        Type: FileList,
+        Value: FileList,
 
         // convert file list type back to list
         serialize (val) {
-
-            return val ? val.map((obj) => {
-                return obj.path;
-            }).join(',') : '';
+            if(!val){
+                return '';
+            }
+            return val.map(file => {
+                return file.name;
+            }).join(',')
         }
     },
     field6: ChildObject,
-    field1Length: 'number',
     field7: 'boolean'
 });
 
@@ -194,22 +186,14 @@ const fields = [{
 const render = stache.from('demo-html');
 
 const vm = new DefineMap({
-    object: new Template(),
+    object: new DemoObject(),
     fields: fields,
     formSaving: false,
-    // actions: [{
-    //     label: 'Submit',
-    //     iconClass: 'fa fa-plus',
-    //     buttonClass: 'btn btn-primary',
-    //     eventName: 'submit'
-    // }, {
-    //     label: 'Cancel and log message',
-    //     eventName: 'cancel'
-    // }],
     onChange () {
         console.log(arguments);
     },
     onSubmit () {
+        console.log(this.object);
         console.log('submitted data: ', this.object.serialize());
         alert('Form submitted! See the console for details');
         setTimeout(() => {
@@ -220,10 +204,11 @@ const vm = new DefineMap({
         console.log('Form canceled!');
     },
     stringify (obj) {
+        console.log(obj)
         if (!obj) {
             return; 
         }
-        return JSON.stringify(obj.serialize());
+        return jsonMarkup(obj.serialize());
     }
 });
 

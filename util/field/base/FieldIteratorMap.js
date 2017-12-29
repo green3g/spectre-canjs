@@ -47,7 +47,7 @@ export default DefineMap.extend({
 
             // if this fails, serialize the object and use keys of object
             if (!fields.length && this.object) {
-                const obj = this.object.serialize ? this.object.serialize() : this.object;
+                const obj = this.object.get ? this.object.get() : this.object;
                 fields = parseFieldArray(Object.keys(obj));
             }
             return fields.filter((f) => {

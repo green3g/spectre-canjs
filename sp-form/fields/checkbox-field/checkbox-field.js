@@ -6,10 +6,9 @@ export const ViewModel = Base.extend('CheckboxField', {
     value: {
         type: 'boolean',
         set (val) {
-            this.dispatch('fieldchange', [{
-                value: val,
-                name: this.properties.name
-            }]);
+            if (val !== this.value) { 
+                this.dispatch('fieldchange', [val, this.properties]); 
+            }
             return val;
         }
     }

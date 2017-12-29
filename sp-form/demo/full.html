@@ -4,17 +4,17 @@
   <div class="container">
     <h1>Form Widget Demo</h1>
     <p>Default form object values: </p>
-    <pre>{{stringify (object)}}</pre>
+    <div class="json">{{{stringify (object)}}}</div>
 
     <p>Dirty field values</p>
-    <pre>{{stringify (dirtyObject)}}</pre>
+    <div class="json">{{{stringify (dirtyObject)}}}</div>
 
     <sp-form 
       vm:object:bind="object" 
       vm:fields:from="fields" 
       vm:dirtyObject:to="dirtyObject" 
       vm:actions:from="actions"
-      on:vm:submit="onSubmit" 
+      on:vm:submit="onSubmit(scope.arguments)" 
       vm:isSaving:bind="formSaving"
       on:vm:cancel="onCancel"></sp-form>
   </div>

@@ -2,10 +2,9 @@
   <fieldset>
     <legend>{{properties.alias}}</legend>
     <sp-form vm:inline:from="properties.inline" 
-      object:from="subobject" 
-      on:fieldchange="saveField" 
-      fields:from="formFields" 
-      actions:from="formActions">
+      object:bind="value" 
+      on:fieldchange="saveField(scope.arguments)" 
+      fields:from="formFields">
       <can-template name="submit"><i /></can-template>
     </sp-form>
   </fieldset>

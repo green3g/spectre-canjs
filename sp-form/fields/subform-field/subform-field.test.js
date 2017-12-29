@@ -15,22 +15,6 @@ afterEach(() => {
 });
 
 
-test('jsonobject get()', () => {
-    vm.properties = {
-        ObjectTemplate: TestObject
-    };
-
-    expect(vm.jsonobject.field1).toEqual('test');
-});
-
-test('jsonobject get() with value', () => {
-    vm.properties = {
-        ObjectTemplate: TestObject
-    };
-    vm.value = '{"field2": "another"}';
-    expect(vm.jsonobject.field2).toEqual('another');
-});
-
 test('formFields get()', () => {
     vm.properties = {
         ObjectTemplate: TestObject
@@ -52,13 +36,14 @@ test('saveField()', () => {
         field1: 'hey',
         field2: 'there'
     });
-    const expected = {
+
+    const expected = new TestObject({
         field1: 'updated',
         field2: 'there'
-    };
+    });
 
-    vm.jsonobject = obj;
+    vm.value = obj;
 
-    vm.saveField(null, null, null, {current: obj, name: 'field1', value: 'updated'});
-    expect(JSON.parse(vm.value)).toEqual(expected);
+    vm.saveField([{event: 'event'}, {dirty: expected}]);
+    expect(vm.value.get()).toEqual(expected.get());
 });

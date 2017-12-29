@@ -5,15 +5,15 @@ stealTools.build({
     main: 'docs-main',
     config: path.join(__dirname, 'package.json!npm'),
     bundle: [
-        'spectre-canjs/dropdown-menu/demo/dropdown',
-        'spectre-canjs/filter-widget/demo/filter',
-        'spectre-canjs/form-widget/demo/form',
-        'spectre-canjs/list-table/demo/listTable',
-        'spectre-canjs/modal-dialog/demo/dialog',
-        'spectre-canjs/nav-container/demo/nav',
-        'spectre-canjs/paginate-widget/demo/paginate',
-        'spectre-canjs/property-table/demo/propertyTable',
-        'spectre-canjs/toast-container/demo/toast'
+        'spectre-canjs/sp-dropdown/demo/dropdown',
+        'spectre-canjs/sp-filter-builder/demo/filter',
+        'spectre-canjs/sp-form/demo/form',
+        'spectre-canjs/sp-list-table/demo/listTable',
+        'spectre-canjs/sp-modal/demo/dialog',
+        'spectre-canjs/sp-tab-container/demo/nav',
+        'spectre-canjs/sp-paginate/demo/paginate',
+        'spectre-canjs/sp-property-table/demo/propertyTable',
+        'spectre-canjs/sp-toast-container/demo/toast'
     ]
 }, {
     removeDevelopmentCode: false,

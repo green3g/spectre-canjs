@@ -1,4 +1,4 @@
-import superMap from 'can-connect/can/super-map/';
+import superMap from 'can-connect/can/super-map/super-map';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 

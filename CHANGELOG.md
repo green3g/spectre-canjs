@@ -61,7 +61,7 @@
   * FIX: removes test files for data-admin
   * FIX: removes other data-admin component test
   * FIX: remove data-admin tests, etc.
-  * CHG: move data-admin components to can-admin-app
+  * CHG: move data-admin components to spectre-canjs-app
   * FIX: format comments
   * ENH: hide header tools on printouts
   * ENH: pass field name in form validation functions
@@ -76,11 +76,11 @@
   * ENH: implement additional properties on filter objects to restrict editing `pinned: true` and hide completely `visible: false`
   * cleanup
   * FIX: file-field value updating
-  * ENH: add default list-table sorting mechanism
+  * ENH: add default sp-list-table sorting mechanism
     - ENH: field.classes property to list and property tables
   * FIX: field update handling in field widgets and filter
   * ENH: add fade effect to data-admin loading state
-    - fix sort with new list-table sorting
+    - fix sort with new sp-list-table sorting
     - minor cleanup
   * ENH: tighten the lint rules
   * CHG: rename FieldComponentMap to a better described FieldIteratorMap
@@ -93,9 +93,9 @@
   * changelog
   * 0.29.1
   * FIX: cell width issue
-  * ENH: move redundant detail page title into nav-page header
+  * ENH: move redundant detail page title into sp-tab-page header
   * FIX: issue with field serialization
-  * ENH: add basic accordion-container
+  * ENH: add basic sp-accordion
 
 0.29.0 / 2017-05-16
 ===================
@@ -104,14 +104,14 @@
   * FIX: replacing all instances of sort.fieldName with sort.field
   * FIX: lint
   * DOCS: reorganizing and updating docs
-  * CHG: list-table sorting `fieldName` becomes `field`
+  * CHG: sp-list-table sorting `fieldName` becomes `field`
   * DOCS
   * TEST: fix ignore
   * DOCS: documents field templates properties better
   * ENH: automatically convert string templates to renderers
   * TEST: tests
   * TEST: paginate and manage components
-  * TEST: add missing nav-container tests
+  * TEST: add missing sp-tab-container tests
   * TEST: add generated codeclimate.yml
   * TEST: missing addTemplate test
   * TEST: fix misnamed modules

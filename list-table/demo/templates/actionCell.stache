@@ -1,4 +1,0 @@
-<span style="user-select:none; cursor:pointer;">
-<i ($click)="dispatchEvent('up', object)" class="fa fa-2x fa-thumbs-up"></i>
-<i ($click)="dispatchEvent('down', object)" class="fa fa-2x fa-thumbs-down"></i>
-</span>

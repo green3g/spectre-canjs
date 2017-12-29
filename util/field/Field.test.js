@@ -1,19 +1,12 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-
 import Field from './Field';
 
 let fields;
-q.module('util/field/field', {
-    beforeEach: () => {
-    },
-    afterEach: () => {
-        fields = null;
-    }
+
+afterEach (() => {
+    fields = null;
 });
 
-test('Field.alias', (assert) => {
+test('Field.alias', () => {
 
     fields = [{
         name: 'test',
@@ -27,27 +20,27 @@ test('Field.alias', (assert) => {
 
     fields.forEach((f) => {
         f = new Field(f);
-        assert.equal(f.alias, f.expected, 'field alias should be correct');
+        expect(f.alias).toEqual(f.expected);
     });
 });
 
-test('Field.formTemplate', (assert) => {
+test('Field.editComponent', () => {
     let field = new Field();
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be a renderer function');
+    expect(typeof field.editComponent === 'function').toBeTruthy();
 
     field = new Field({
-        formTemplate: '<p></p>'
+        editComponent: '<p></p>'
     });
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be converted to a renderer function');
+    expect(typeof field.editComponent === 'function').toBeTruthy();
 
     function renderer () {}
     field = new Field({
-        formTemplate: renderer
+        editComponent: renderer
     });
-    assert.equal(field.formTemplate, renderer, 'if fieldtemplate is a renderer function, it should be returned');
+    expect(field.editComponent).toEqual(renderer);
 
     field = new Field({
         fieldType: 'select'
     });
-    assert.ok(typeof field.formTemplate === 'function', 'formTemplate should be a function if passed a correct fieldType');
+    expect(typeof field.editComponent === 'function').toBeTruthy();
 });

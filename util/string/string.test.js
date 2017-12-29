@@ -1,17 +1,9 @@
 /* eslint-env qunit, browser */
 
-import q from 'steal-qunit';
 
 import {makeSentenceCase} from './string';
 
-q.module('util/string/string', {
-    beforeEach: () => {
-    },
-    afterEach: () => {
-    }
-});
-
-test('makeSentenceCase', (assert) => {
+test('makeSentenceCase', () => {
     const tests = [{
         value: 'something_to_test',
         expected: 'Something to test'
@@ -24,6 +16,6 @@ test('makeSentenceCase', (assert) => {
     }];
 
     tests.forEach((t) => {
-        assert.equal(makeSentenceCase(t.value), t.expected, 'Value should be formatted correctly');
+        expect(makeSentenceCase(t.value)).toEqual(t.expected);
     });
 });

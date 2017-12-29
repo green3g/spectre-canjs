@@ -238,7 +238,8 @@
     "env": {
         "amd": true,
         "es6": true,
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "globals": {
         "define": true,

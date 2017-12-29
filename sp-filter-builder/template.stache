@@ -1,0 +1,14 @@
+<div class="sp-filter-builder container-fluid">
+  {{#each filters}}
+    {{#if visible}}
+      <sp-filter filter:from="." on:remove="removeFilter(.)" />
+    {{/if}}
+  {{/each}}
+
+  <br />
+
+  {{#unless disableCreate}}
+    <select-field vm:properties:from="nameField" on:vm:fieldchange="addFilter" vm:value:bind="fieldValue" inline />
+  {{/unless}}
+
+</div>

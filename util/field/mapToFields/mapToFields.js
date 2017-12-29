@@ -23,25 +23,22 @@ export default function mapToFields (defineMap) {
         return [];
     }
     const define = (defineMap._define || defineMap.prototype._define).definitions;
-    const fields = [];
-    for (var prop in define) {
-        if (define[prop]) {
-            const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
+    const fields = Object.keys(define).map((prop) => {
+        const fType = typeof define[prop].type === 'function' ? define[prop].type.name : define[prop].type;
 
-            // remove reserved properties if any
-            const clone = assign({}, define[prop]);
-            RESERVED.forEach((r) => {
-                delete clone[r];
-            });
+        // remove reserved properties if any
+        const clone = assign({}, define[prop]);
+        RESERVED.forEach((r) => {
+            delete clone[r];
+        });
 
-            fields.push(assign({}, {
-                name: prop,
-                type: 'string',
-                fieldType: 'text'
-            }, clone, {
-                type: fType
-            }));
-        }
-    }
+        return assign({}, {
+            name: prop,
+            type: 'string',
+            fieldType: 'text'
+        }, clone, {
+            type: fType
+        });
+    });
     return parseFieldArray(fields);
 }

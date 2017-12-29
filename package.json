@@ -19,8 +19,7 @@
   "scripts": {
     "start": "http-server -c-1",
     "pretest": "npm run lint",
-    "test": "rm -rf ~/.mozilla && DEBUG=testee:* testee test/index.html --config test/testee.json",
-    "test-windows": "testee test/index.html --config test/testee.json",
+    "test": "jest",
     "build": "steal-tools",
     "watch": "npm-watch",
     "docs": "documentjs -d -f",

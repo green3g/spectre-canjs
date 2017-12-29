@@ -113,6 +113,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
         }
     },
     field6: ChildObject,
+    field1Length: 'number',
     field7: 'boolean'
 });
 
@@ -120,6 +121,8 @@ const fields = [{
     name: 'field1',
     validate (props) {
 
+        // since this function is run whenever field1 changes, we can use 
+        // it to set additional properties
         // set an additional prop in the dirty to track additional data
         // this field is defined in the Model, but not a field so its not editable
         props.dirty.assign({
@@ -189,16 +192,13 @@ const vm = new DefineMap({
     object: new DemoObject(),
     fields: fields,
     formSaving: false,
-    onChange () {
-        console.log(arguments);
-    },
     onSubmit () {
         console.log(this.object);
         console.log('submitted data: ', this.object.serialize());
         alert('Form submitted! See the console for details');
         setTimeout(() => {
             this.formSaving = false;
-        }, 1000)
+        }, 3000)
     },
     onCancel () {
         console.log('Form canceled!');

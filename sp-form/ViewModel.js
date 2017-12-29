@@ -201,7 +201,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
             this.isSaving = true;
         }
 
-        this.object.assign(this.dirtyObject);
+        this.object.assign(this.dirtyObject.get());
         this.dispatch('submit', [this.object]);
         return false;
     },

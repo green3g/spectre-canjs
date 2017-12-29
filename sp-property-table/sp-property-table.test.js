@@ -1,50 +1,43 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
 import {Connection} from '../test/data/connection';
 import ViewModel from './ViewModel';
 
 let vm;
 
-q.module('sp-property-table.ViewModel', {
-    beforeEach: () => {
-        vm = new ViewModel();
-    },
-    afterEach: () => {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
+});
+afterEach(() => {
+    vm = null;
 });
 
-test('fetchObject(con, id)', (assert) => {
-    const done = assert.async();
+test('fetchObject(con, id)', (done) => {
     vm.fetchObject(Connection, 6).then(() => {
 
-        assert.ok(vm.object, 'the table should have an object after an object is fetched');
+        expect(vm.object).toBeTruthy();
         done();
 
     });
 });
 
-test('objectId set(id)', (assert) => {
-    const done = assert.async();
+test('objectId set(id)', (done) => {
     const id = 6;
     vm.connection = Connection;
-    assert.notOk(vm.objectPromise, 'objectPromise should not have a value by default');
+    expect(vm.objectPromise).toBeFalsy();
 
     vm.objectId = id;
-    assert.ok(vm.objectPromise, 'objectPromise should have a value after setting the objectId');
+    expect(vm.objectPromise).toBeTruthy();
 
     vm.objectPromise.then(() => {
-        assert.equal(vm.object.id, id, 'objects id should match the id that was set');
+        expect(vm.object.id).toEqual(id);
         done();
     });
 });
 
-test('fields get()', (assert) => {
+test('fields get()', () => {
     vm.fields = ['field_1', {
         details: false,
         name: 'field_2'
     }];
 
-    assert.equal(vm.fields.length, 1, 'fields should be excluded if detail:false');
+    expect(vm.fields.length).toEqual(1);
 });

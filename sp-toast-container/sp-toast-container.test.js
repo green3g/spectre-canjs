@@ -1,33 +1,27 @@
-/* eslint-env qunit, browser */
 
-import q from 'steal-qunit';
-
-import {ViewModel} from './alert-widget';
-import {Message} from './message';
+import ViewModel from './ViewModel';
 
 let vm;
 
-q.module('alert-widget.ViewModel', {
-    beforeEach: () => {
-        vm = new ViewModel();
-    },
-    afterEach: () => {
-        vm = null;
-    }
+beforeEach (() => {
+    vm = new ViewModel();
+});
+afterEach (() => {
+    vm = null;
 });
 
-test('addMessage(message)', (assert) => {
-    vm.addMessage(new Message({
-        message: 'alert!'
-    }));
-    assert.equal(vm.attr('messages').length, 1, 'message should be added');
-});
-
-test('removeMessage(message)', (assert) => {
-    const m = new Message({
-        message: 'alert!'
+test('addToast(message)', () => {
+    vm.addToast({
+        body: 'alert!'
     });
-    vm.addMessage(m);
-    vm.removeMessage(m);
-    assert.equal(vm.attr('messages').length, 0, 'message should be removed');
+    expect(vm.toasts.length).toEqual(1);
+});
+
+test('removeToast(message)', () => {
+    const m = {
+        message: 'alert!'
+    };
+    vm.addToast(m);
+    vm.removeToast(vm.toasts[0]);
+    expect(vm.toasts.length).toEqual(0);
 });

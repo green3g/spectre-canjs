@@ -1,7 +1,3 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-
 import ViewModel from './ViewModel';
 import DefineMap from 'can-define/map/map';
 import {Connection} from '../test/data/connection';
@@ -15,49 +11,46 @@ const objects = [{
     label: 'label2'
 }];
 
-q.module('sp-list-table.ViewModel', {
-    beforeEach: () => {
-        vm = new ViewModel({
-            idProp: 'name',
-            objects: objects
-        });
-    },
-    afterEach: () => {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel({
+        idProp: 'name',
+        objects: objects
+    });
+});
+afterEach(() => {
+    vm = null;
 });
 
-test('promise set()', (assert) => {
-    const done = assert.async();
+test('promise set()', (done) => {
     vm.promise = Connection.getList({});
     vm.promise.then(() => {
-        assert.ok(vm.objects.length > 3, 'objects should be retrieved and replaced');
+        expect(vm.objects.length > 3).toBeTruthy();
         done();
     });
 });
 
-test('_allSelected get()', (assert) => {
+test('_allSelected get()', () => {
     vm.objects.forEach((o) => {
         vm.toggleSelected(o);
     });
-    assert.ok(vm._allSelected, 'all items should be selected');
+    expect(vm._allSelected).toBeTruthy();
 });
 
-test('fields get()', (assert) => {
+test('fields get()', () => {
     vm.fields = ['yes', {
         name: 'no',
         list: false
     }];
-    assert.equal(vm.fields.length, 1, 'fields with list:false should not be included');
+    expect(vm.fields.length).toEqual(1);
 });
 
-test('fields get() without providing fields', (assert) => {
+test('fields get() without providing fields', () => {
     vm.objects = [new DefineMap({
         field1: 'val1',
         field2: 'val2'
     })];
 
-    assert.equal(vm.fields.length, 2, 'fields should be automatically created form object if no fields are provided');
+    expect(vm.fields.length).toEqual(2);
 });
 
 test('setSort(field)', (assert) => {
@@ -82,32 +75,32 @@ test('setSort(field)', (assert) => {
     }, 'Current sort should be desc by default');
 });
 
-test('toggleSelected(obj), isSelected(obj)', (assert) => {
+test('toggleSelected(obj), isSelected(obj)', () => {
     vm.toggleSelected(vm.objects[0]);
-    assert.ok(vm.isSelected(vm.objects[0]), 'object should be selected');
+    expect(vm.isSelected(vm.objects[0])).toBeTruthy();
 
     vm.toggleSelected(vm.objects[0]);
-    assert.notOk(vm.isSelected(vm.objects[0]), 'object should not be selected');
+    expect(vm.isSelected(vm.objects[0])).toBeFalsy();
 });
 
-test('toggleSelectAll(), _allSelected', (assert) => {
+test('toggleSelectAll(), _allSelected', () => {
     vm.toggleSelectAll();
     vm.objects.forEach((obj) => {
-        assert.ok(vm.isSelected(obj), 'each object should be selected');
+        expect(vm.isSelected(obj)).toBeTruthy();
     });
-    assert.ok(vm._allSelected, '_allSelected should be truthy');
+    expect(vm._allSelected).toBeTruthy();
 
     vm.toggleSelectAll();
     vm.objects.forEach((obj) => {
-        assert.notOk(vm.isSelected(obj), 'each object should be selected');
+        expect(vm.isSelected(obj)).toBeFalsy();
     });
 
 });
 
-test('dispatchEvent("my")', (assert) => {
+test('dispatchEvent("my")', () => {
     const obj = new DefineMap();
     vm.on('my', (viewModel, ev, objectMap) => {
-        assert.equal(objectMap, obj, 'dispatch event should dispatch object');
+        expect(objectMap).toEqual(obj);
     });
     vm.dispatchEvent('my', obj);
 });

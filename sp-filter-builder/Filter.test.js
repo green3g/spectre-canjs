@@ -1,84 +1,66 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
 import {Filter, FilterOptions} from './Filter';
 
-// eslint-disable-next-line
 let filter;
 
-q.module('sp-filter-builder/Filter', {
-    beforeEach () {
-        filter = new Filter({
-            name: 'test',
-            operator: 'equals',
-            value: 'test'
-        });
-    },
-    afterEach () {
-        filter = null;
-    }
+beforeEach(() => {
+    filter = new Filter({
+        name: 'test',
+        operator: 'equals',
+        value: 'test'
+    });
 });
-q.module('sp-filter-builder.Filter', {
-    beforeEach: function () {
-        filter = new Filter({
-            name: 'test',
-            operator: 'equals',
-            value: 'test'
-        });
-    },
-    afterEach: function () {
-        filter = null;
-    }
+afterEach(() => {
+    filter = null;
 });
 
-test('name get()', (assert) => {
-    assert.equal(filter.name, 'test');
+test('name get()', () => {
+    expect(filter.name).toEqual('test');
 
     filter.field = {
         name: 'hello'
     };
-    assert.equal(filter.name, 'hello', 'if field is set, the field name should be used');
+    expect(filter.name).toEqual('hello');
 });
 
-test('operatorField get() no field type', (assert) => {
-    assert.equal(filter.operatorField.options.length, FilterOptions.length, 'filter options should be the default length');
+test('operatorField get() no field type', () => {
+    expect(filter.operatorField.options.length).toEqual(FilterOptions.length);
 });
 
-test('operatorField get() with field type', (assert) => {
+test('operatorField get() with field type', () => {
     filter.field = {
         name: 'test',
         type: 'date'
     };
 
-    assert.ok(filter.operatorField.options.length < FilterOptions.length, 'filter options should be filtered to date friendly types');
+    expect(filter.operatorField.options.length < FilterOptions.length).toBeTruthy();
 });
 
-test('valueField get() no field set', (assert) => {
-    assert.equal(filter.valueField.fieldType, 'text', 'default valueField should be text field');
+test('valueField get() no field set', () => {
+    expect(filter.valueField.fieldType).toEqual('text');
 });
 
-test('valueField get() field is set', (assert) => {
+test('valueField get() field is set', () => {
     filter.field = {
         name: 'test'
     };
 
-    assert.equal(filter.valueField.fieldType, 'date', 'valueField type should be date when field type is date');
+    expect(filter.valueField.fieldType).toEqual('date');
 });
 
-test('alias get()', (assert) => {
-    assert.equal(filter.alias, 'Name', 'the alias should be formatted by default');
+test('alias get()', () => {
+    expect(filter.alias).toEqual('Name');
     filter.field = {
         alias: 'Test Alias'
     };
 
-    assert.equal(filter.alias, 'Test Alias', 'alias should be correctly retrieved');
+    expect(filter.alias).toEqual('Test Alias');
 });
 
-test('object get()', (assert) => {
-    assert.equal(filter.object.test, 'test', 'object should consist of a property with the correct value');
+test('object get()', () => {
+    expect(filter.object.test).toEqual('test');
 });
 
-test('setField(field, dom, scope, val)', (assert) => {
+test('setField(field, dom, scope, val)', () => {
     filter.setField(null, null, null, {value: 'hello'});
-    assert.equal(filter.value, 'hello');
+    expect(filter.value).toEqual('hello');
 });

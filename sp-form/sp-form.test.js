@@ -1,67 +1,58 @@
-/* eslint-env qunit, browser */
-
 import ViewModel from './ViewModel';
-import q from 'steal-qunit';
 
 import {Connection} from '../test/data/connection';
 
 let vm;
 
-q.module('sp-form.ViewModel', {
-    beforeEach: function () {
-        vm = new ViewModel({});
-    },
-    afterEach: function () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel({});
+});
+afterEach(() => {
+    vm = null;
 });
 
-test('objectId set()', (assert) => {
-    const done = assert.async();
+test('objectId set()', (done) => {
     const id = 6;
     vm.assign({
         connection: Connection,
         objectId: id
     });
     vm.promise.then(() => {
-        assert.equal(vm.object.id, id, 'object should be retrieved correctly');
+        expect(vm.object.id).toEqual(id);
         done();
     });
 });
 
-test('fields get()', (assert) => {
+test('fields get()', () => {
     vm.fields = ['yes', {edit: false, name: 'no'}];
-    assert.equal(vm.fields.length, 1, 'fields with edit:false should not be included');
+    expect(vm.fields.length).toEqual(1);
 });
 
-test('fetchObject(con, id)', (assert) => {
+test('fetchObject(con, id)', (done) => {
     const id = 6;
-    const done = assert.async();
     const promise = vm.fetchObject(Connection, id);
     promise.then(() => {
-        assert.equal(vm.object.id, id, 'form object should be loaded asynchronously');
+        expect(vm.object.id).toEqual(id);
         done();
     });
 });
 
-test('submitForm()', (assert) => {
-    const done = assert.async();
+test('submitForm()', (done) => {
     const object = {test: 'hello'};
     vm.object = object;
 
     vm.on('submit', function (ev, item) {
-        assert.deepEqual(item.serialize(), object, 'item dispatched from submit event should be the object');
+        expect(item.serialize()).toEqual(object);
         done();
     });
     vm.submitForm();
 });
 
-test('checkField(field, domElement, event, value)', (assert) => {
-    const done = assert.async();
+test('checkField(field, domElement, event, value)', (done) => {
     const object = {test: 'hello'};
     vm.object = object;
     function handle () {
-        assert.ok(true, 'fieldchange event is dispatched');
+        expect(true).toBeTruthy();
         vm.off('fieldchange', handle);
         done();
     }
@@ -69,11 +60,10 @@ test('checkField(field, domElement, event, value)', (assert) => {
     vm.checkField([{event: 'change'}, 'dummy', {name: 'test'}]);
 });
 
-test('dispatchEvent(eventName)', (assert) => {
-    const done = assert.async();
+test('dispatchEvent(eventName)', (done) => {
 
     function handle () {
-        assert.ok(true, 'cancel event is dispatched');
+        expect(true).toBeTruthy();
         vm.off('cancel', handle);
         done();
     }

@@ -1,5 +1,5 @@
-import FieldIteratorMap from '~/util/field/base/FieldIteratorMap';
-import {makeSentenceCase} from '~/util/string/string';
+import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
+import {makeSentenceCase} from '../util/string/string';
 import {Filter, FilterList} from './Filter';
 
 /**

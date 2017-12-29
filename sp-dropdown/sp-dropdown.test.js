@@ -1,42 +1,37 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
 import ViewModel from './ViewModel';
 
 // eslint-disable-next-line
 let vm;
 
-q.module('sp-dropdown.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach (() => {
+    vm = new ViewModel();
+});
+afterEach (() => {
+    vm = null;
 });
 
-test('toggle()', (assert) => {
+test('toggle()', () => {
     vm.toggle();
-    assert.ok(vm.visible, 'state should be visible');
+    expect(vm.visible).toBeTruthy();
 
     vm.toggle();
-    assert.notOk(vm.visible, 'state should not be visible');
+    expect(vm.visible).toBeFalsy();
 });
 
-test('toggle(null, true)', (assert) => {
+test('toggle(null, true)', () => {
     vm.toggle(null, true);
-    assert.ok(vm.visible, 'state should be visible when true is passed');
+    expect(vm.visible).toBeTruthy();
 });
 
-test('toggle(null, false)', (assert) => {
+test('toggle(null, false)', () => {
     vm.toggle(null, false);
-    assert.notOk(vm.visible, 'state should not be visible when false is passed');
+    expect(vm.visible).toBeFalsy();
 });
 
-test('onPrimaryClick(button)', (assert) => {
+test('onPrimaryClick(button)', () => {
     const button = {};
     vm.on('primaryclick', function () {
-        assert.equal(arguments[arguments.length - 1], button, 'button should be dispatched with the event');
+        expect(arguments[arguments.length - 1]).toEqual(button);
     });
     vm.onPrimaryClick(button);
 });

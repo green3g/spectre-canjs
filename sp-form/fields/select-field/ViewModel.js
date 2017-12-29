@@ -1,6 +1,5 @@
 
 import Base from 'spectre-canjs/util/field/base/FieldInputMap';
-import selectInput from './templates/selectInput.stache';
 import dev from 'can-util/js/dev/dev';
 
 const DEFAULT_OPTION = {label: 'Choose a value...', value: ''};
@@ -39,17 +38,6 @@ export default Base.extend('SelectField', {
             } else {
                 dev.warn('select-field::no options passed');
             }
-        }
-    },
-    /**
-     * The select input renderer - stache template. Used as a partial in the template.
-     * The default is a basic html select input.
-     * @property {Renderer} select-field.ViewModel.props.selectInput selectInput
-     * @parent select-field.ViewModel.props
-     */
-    selectInput: {
-        value () {
-            return selectInput;
         }
     },
     /**

@@ -1,28 +1,23 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-import {ViewModel} from './file-field';
+import ViewModel from './ViewModel';
 
 // eslint-disable-next-line
 let vm;
 
-q.module('file-field.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach (() => {
+    vm = new ViewModel();
+});
+afterEach (() => {
+    vm = null;
 });
 
 // TODO: Test the uploadFiles process with fixtures
 
-test('uploadSuccess()', (assert) => {
+test('uploadSuccess()', () => {
     vm.uploadSuccess({
         uploads: ['file_1', 'file_2']
     });
 
-    assert.equal(vm.value.length, 2, 'the field should have files');
+    expect(vm.value.length).toEqual(2);
 });
 
 
@@ -30,16 +25,16 @@ test('uploadSuccess()', (assert) => {
 
 // TODO: test removeFile with fixtures
 
-test('removeSuccess(file)', (assert) => {
+test('removeSuccess(file)', () => {
     vm.value = [{path: 'file_1'}, {path: 'file_2'}];
     vm.removeSuccess(vm.value[0]);
-    assert.equal(vm.value.length, 1, 'file should be removed from currentFiles');
+    expect(vm.value.length).toEqual(1);
 });
 
-test('removeError(file, response) 404', (assert) => {
+test('removeError(file, response) 404', () => {
     vm.value = [{path: 'file_1'}, {path: 'file_2'}];
     vm.removeError(vm.value[0], {
         status: 404
     });
-    assert.equal(vm.value.length, 1, 'file should be removed from currentFiles');
+    expect(vm.value.length).toEqual(1);
 });

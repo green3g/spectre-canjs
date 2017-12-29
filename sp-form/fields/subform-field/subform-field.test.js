@@ -1,7 +1,4 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-import {ViewModel} from './subform-field';
+import ViewModel from './ViewModel';
 import DefineMap from 'can-define/map/map';
 // eslint-disable-next-line
 let vm;
@@ -10,49 +7,47 @@ const TestObject = DefineMap.extend({
     field2: 'string'
 });
 
-q.module('subform-field.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
+});
+afterEach(() => {
+    vm = null;
 });
 
 
-test('jsonobject get()', (assert) => {
+test('jsonobject get()', () => {
     vm.properties = {
         ObjectTemplate: TestObject
     };
 
-    assert.equal(vm.jsonobject.field1, 'test', 'form object should be initialized');
+    expect(vm.jsonobject.field1).toEqual('test');
 });
 
-test('jsonobject get() with value', (assert) => {
+test('jsonobject get() with value', () => {
     vm.properties = {
         ObjectTemplate: TestObject
     };
     vm.value = '{"field2": "another"}';
-    assert.equal(vm.jsonobject.field2, 'another', 'form object should have json value');
+    expect(vm.jsonobject.field2).toEqual('another');
 });
 
-test('formFields get()', (assert) => {
+test('formFields get()', () => {
     vm.properties = {
         ObjectTemplate: TestObject
     };
 
-    assert.equal(vm.formFields.length, 2, 'vm should have form fields created from object template');
+    expect(vm.formFields.length).toEqual(2);
 });
 
-test('formFields get() with field properties', (assert) => {
+test('formFields get() with field properties', () => {
     vm.properties = {
         fields: ['field1', 'field2', 'field3']
     };
 
-    assert.equal(vm.formFields.length, 3, 'vm should have form fields created from properties');
+    expect(vm.formFields.length).toEqual(3);
 });
 
-test('saveField()', (assert) => {
+test('saveField()', () => {
     const obj = new TestObject({
         field1: 'hey',
         field2: 'there'
@@ -65,5 +60,5 @@ test('saveField()', (assert) => {
     vm.jsonobject = obj;
 
     vm.saveField(null, null, null, {current: obj, name: 'field1', value: 'updated'});
-    assert.deepEqual(JSON.parse(vm.value), expected, 'field value should be set and updated correctly');
+    expect(JSON.parse(vm.value)).toEqual(expected);
 });

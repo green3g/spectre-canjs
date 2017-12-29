@@ -1,33 +1,27 @@
-/* eslint-env qunit, browser */
-
 import ViewModel from './ViewModel';
-
-import q from 'steal-qunit';
 import DefineMap from 'can-define/map/map';
 import {Filter} from './Filter';
 
 var vm;
 
-q.module('sp-filter-builder.ViewModel', {
-    beforeEach: function () {
-        vm = new ViewModel();
-    },
-    afterEach: function () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
+});
+afterEach(() => {
+    vm = null;
 });
 
 
-test('nameField get()', (assert) => {
-    assert.notOk(vm.nameField.options, 'nameField should not have options when no fieldOptions are available');
+test('nameField get()', () => {
+    expect(vm.nameField.options).toBeFalsy();
     vm.fields = [{
         name: 'one',
         alias: 'One'
     }];
-    assert.ok(vm.nameField.options, 'nameField should have options when fieldOptiosn are available');
+    expect(vm.nameField.options).toBeTruthy();
 });
 
-test('fields get()', (assert) => {
+test('fields get()', () => {
     const fields = [{
         name: 'test',
         filter: false
@@ -35,19 +29,19 @@ test('fields get()', (assert) => {
         name: 'test2'
     }];
     vm.fields = fields;
-    assert.equal(vm.fields.length, 1, 'With filter false, only one field should be retreived from the getter');
+    expect(vm.fields.length).toBe(1);
 });
 
-test('fieldOptions get() with fields', (assert) => {
+test('fieldOptions get() with fields', () => {
     const fields = [{
         name: 'test',
         alias: 'Other'
     }];
     vm.fields = fields;
-    assert.equal(vm.fieldOptions.length, fields.length + 1, 'when fields are provided, fieldOptions should be created from the value');
+    expect(vm.fieldOptions.length).toEqual(fields.length + 1);
 });
 
-test('fieldOptions get() with ObjectTemplate', (assert) => {
+test('fieldOptions get() with ObjectTemplate', () => {
     const Template = DefineMap.extend({
         test1: 'string',
         test2: 'string',
@@ -55,20 +49,20 @@ test('fieldOptions get() with ObjectTemplate', (assert) => {
     });
     const len = Object.keys((new Template()).serialize()).length + 1;
     vm.ObjectTemplate = Template;
-    assert.equal(vm.fieldOptions.length, len, 'when no fieldOptions are provided, but ObjectTemplate is, fieldOptions.length should be length of ObjectTemplate keys');
+    expect(vm.fieldOptions.length).toEqual(len);
 });
 
-test('addFilter()', (assert) => {
+test('addFilter()', () => {
     const filter = new Filter({
         name: 'test',
         operator: 'equals',
         value: 'test'
     });
     vm.addFilter(null, null, null, filter);
-    assert.equal(vm.filters.length, 1, 'filters should been added');
+    expect(vm.filters.length).toEqual(1);
 });
 
-test('removeFilter()', (assert) => {
+test('removeFilter()', () => {
     const filter = new Filter({
         name: 'test',
         operator: 'equals',
@@ -76,11 +70,11 @@ test('removeFilter()', (assert) => {
     });
     vm.addFilter(null, null, null, filter);
     vm.removeFilter(null, null, null, filter);
-    assert.equal(vm.filters.length, 0, 'filters should have been removed');
+    expect(vm.filters.length).toEqual(0);
 });
 
-test('removeFilters()', (assert) => {
+test('removeFilters()', () => {
     vm.filters = [new Filter(), new Filter()];
     vm.removeFilters();
-    assert.notOk(vm.filters.length, 'filters should be removed');
+    expect(vm.filters.length).toBeFalsy();
 });

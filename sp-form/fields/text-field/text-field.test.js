@@ -1,19 +1,14 @@
-/* eslint-env qunit, browser */
+import ViewModel from './ViewModel';
 
-import q from 'steal-qunit';
-import {ViewModel} from './text-field';
-
-// eslint-disable-next-line
 let vm;
 
-q.module('sp-form/fields/text-field.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
 });
-test('text-field', (assert) => {
-    assert.ok(true, 'nothing to test');
+afterEach(() => {
+    vm = null;
+});
+    
+test('text-field', () => {
+    expect(vm).toBeTruthy();
 });

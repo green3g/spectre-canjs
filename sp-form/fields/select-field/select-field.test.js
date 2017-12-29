@@ -1,22 +1,17 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
 import ViewModel from './ViewModel';
 
-// eslint-disable-next-line
+
 let vm;
 
-q.module('select-field.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
 });
-test('isSelected(values)', (assert) => {
+afterEach(() => {
+    vm = null;
+});
+test('isSelected(values)', () => {
     vm.value = '1';
 
-    assert.ok(vm.isSelected(1), 'value should be coerced');
-    assert.ok(vm.isSelected('1'), 'value should be identified as selected');
+    expect(vm.isSelected(1)).toBeTruthy();
+    expect(vm.isSelected('1')).toBeTruthy();
 });

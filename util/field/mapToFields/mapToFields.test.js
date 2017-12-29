@@ -1,19 +1,9 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-
 import Field from '../Field';
 import mapToFields from './mapToFields';
 import DefineMap from 'can-define/map/map';
 
-q.module('util/field/field', {
-    beforeEach: () => {
-    },
-    afterEach: () => {
-    }
-});
 
-test('mapToFields', (assert) => {
+test('mapToFields', () => {
     const MyMap = DefineMap.extend({
         field1: 'string',
         field2: 'string'
@@ -29,9 +19,9 @@ test('mapToFields', (assert) => {
         mapToFields(ExtendedMyMap)
     ];
     results.forEach((r) => {
-        assert.equal(r.length, 2, 'fields should be created');
+        expect(r.length).toEqual(2);
         r.forEach((f) => {
-            assert.ok(f instanceof Field, 'field should be type Field');
+            expect(f instanceof Field).toBeTruthy();
         });
     });
 });

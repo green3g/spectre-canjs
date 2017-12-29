@@ -1,47 +1,43 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
 import ViewModel from './ViewModel';
 
 // eslint-disable-next-line
 let vm;
 
-q.module('sp-modal.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
 });
-test('show()', (assert) => {
+afterEach(() => {
+    vm = null;
+});
+
+test('show()', () => {
     vm.on('show', function () {
-        assert.ok(1, 'show event should be dispatched');
-        assert.ok(vm.active, 'vm should be active');
+        expect(1).toBeTruthy();
+        expect(vm.active).toBeTruthy();
     });
     vm.show();
 });
 
-test('hide()', (assert) => {
+test('hide()', () => {
     vm.active = true;
     vm.on('hide', function () {
-        assert.notOk(vm.active, 'vm should not be active and hide event should disaptched');
+        expect(vm.active).toBeFalsy();
     });
     vm.hide();
 });
 
-test('toggle(true)', (assert) => {
+test('toggle(true)', () => {
     vm.toggle(true);
-    assert.ok(vm.active, 'vm should be visible if visible is true');
+    expect(vm.active).toBeTruthy();
 });
-test('toggle(false)', (assert) => {
+test('toggle(false)', () => {
     vm.active = true;
     vm.toggle(false);
-    assert.notOk(vm.active, 'vm should be visible if visible is true');
+    expect(vm.active).toBeFalsy();
 });
-test('toggle()', (assert) => {
+test('toggle()', () => {
     vm.toggle();
-    assert.ok(vm.active, 'vm should be visible if visible is not passed');
+    expect(vm.active).toBeTruthy();
     vm.toggle();
-    assert.notOk(vm.active, 'vm should not be visible if visible is not passed again');
+    expect(vm.active).toBeFalsy();
 });

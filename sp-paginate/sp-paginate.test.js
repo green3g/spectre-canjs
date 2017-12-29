@@ -1,37 +1,31 @@
-/* eslint-env qunit, browser */
-
-import q from 'steal-qunit';
-
 import ViewModel from './ViewModel';
 
 let vm;
 
-q.module('sp-paginate.ViewModel', {
-    beforeEach () {
-        vm = new ViewModel();
-    },
-    afterEach () {
-        vm = null;
-    }
+beforeEach(() => {
+    vm = new ViewModel();
+});
+afterEach(() => {
+    vm = null;
 });
 
-test('hasNext get()', (assert) => {
+test('hasNext get()', () => {
     vm.pages = 10;
     vm.activePageIndex = 0;
-    assert.equal(vm.hasNext, true, 'it should have a next page if page index is 0');
+    expect(vm.hasNext).toEqual(true);
     vm.activePageIndex = 9;
-    assert.equal(vm.hasNext, false, 'it should not have a next page if page index is 9');
+    expect(vm.hasNext).toEqual(false);
 });
 
-test('hasPrevious get()', (assert) => {
+test('hasPrevious get()', () => {
     vm.pages = 10;
     vm.activePageIndex = 0;
-    assert.equal(vm.hasPrevious, false, 'it should not have a previous page if page index is 0');
+    expect(vm.hasPrevious).toEqual(false);
     vm.activePageIndex = 9;
-    assert.equal(vm.hasPrevious, true, 'it should have a previous page if page index is 9');
+    expect(vm.hasPrevious).toEqual(true);
 });
 
-test('visiblePages get()', (assert) => {
+test('visiblePages get()', () => {
     vm.update({
         pages: 10,
         activeOffset: 3
@@ -49,11 +43,11 @@ test('visiblePages get()', (assert) => {
 
     tests.forEach((test) => {
         vm.activePageIndex = test.index;
-        assert.deepEqual(vm.visiblePages, test.expected, 'visiblePages should contain the correct offset pages');
+        expect(vm.visiblePages).toEqual(test.expected);
     });
 });
 
-test('pageArray get()', (assert) => {
+test('pageArray get()', () => {
     const tests = [{
         pages: 5,
         expected: [1, 2, 3, 4, 5]
@@ -63,11 +57,11 @@ test('pageArray get()', (assert) => {
     }];
     tests.forEach((test) => {
         vm.pages = test.pages;
-        assert.deepEqual(vm.pageArray, test.expected, 'it should have the expected pages in the pageArray');
+        expect(vm.pageArray).toEqual(test.expected);
     });
 });
 
-test('gotoNext()', (assert) => {
+test('gotoNext()', () => {
     const tests = [{
         index: 0,
         expected: 1
@@ -82,11 +76,11 @@ test('gotoNext()', (assert) => {
     tests.forEach((test) => {
         vm.activePageIndex = test.index;
         vm.gotoNext();
-        assert.equal(vm.activePageIndex, test.expected, 'it should increase the page index unless its at the last page');
+        expect(vm.activePageIndex).toEqual(test.expected);
     });
 });
 
-test('gotoPrevious()', (assert) => {
+test('gotoPrevious()', () => {
     const tests = [{
         index: 0,
         expected: 0
@@ -101,28 +95,28 @@ test('gotoPrevious()', (assert) => {
     tests.forEach((test) => {
         vm.activePageIndex = test.index;
         vm.gotoPrevious();
-        assert.equal(vm.activePageIndex, test.expected, 'it should decrease the page index unless its at the first page');
+        expect(vm.activePageIndex).toEqual(test.expected);
     });
 });
 
-test('gotoFirst()', (assert) => {
+test('gotoFirst()', () => {
     vm.activePageIndex = 5;
     vm.gotoFirst();
-    assert.equal(vm.activePageIndex, 0, 'The active page should be the first');
+    expect(vm.activePageIndex).toEqual(0);
 });
 
-test('gotoLast()', (assert) => {
+test('gotoLast()', () => {
     vm.gotoLast();
-    assert.equal(vm.activePageIndex, vm.pages - 1, 'the active page should be the last');
+    expect(vm.activePageIndex).toEqual(vm.pages - 1);
 });
 
-test('gotoPage(p)', (assert) => {
+test('gotoPage(p)', () => {
     vm.gotoPage(5);
-    assert.equal(vm.activePageIndex, 4, 'the active page should be set correctly');
+    expect(vm.activePageIndex).toEqual(4);
     vm.gotoPage(15);
-    assert.equal(vm.activePageIndex, 4, 'the active page should not have changed if an invalid page is passed');
+    expect(vm.activePageIndex).toEqual(4);
 });
 
-test('isActive(p)', (assert) => {
-    assert.ok(vm.isActive(1), 'the first page should be active by default');
+test('isActive(p)', () => {
+    expect(vm.isActive(1)).toBeTruthy();
 });

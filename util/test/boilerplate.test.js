@@ -1,18 +1,13 @@
-/* eslint-env qunit, browser */
-import q from 'steal-qunit';
-
 // import {ViewModel} from './';
 
 // let vm;
 
-q.module('.ViewModel', {
-    beforeEach () {
-        // vm = new ViewModel();
-    },
-    afterEach () {
-        // vm = null;
-    }
+beforeEach(() => {
+    // vm = new ViewModel();
 });
-test('buttonClick', (assert) => {
-    assert.equal(1, 1, 'one should equal one');
+afterEach (() => {
+    // vm = null;
+});
+test('buttonClick', () => {
+    expect(1).toEqual(1);
 });

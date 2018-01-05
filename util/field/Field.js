@@ -49,7 +49,7 @@ export const Field = DefineMap.extend('Field', {
      */
     fieldTag: {
         type: 'string',
-        value: 'text-field'
+        value: 'sp-text-field'
     },
     /**
      * The form field template to use when editing this field in the sp-form. This should be
@@ -59,7 +59,7 @@ export const Field = DefineMap.extend('Field', {
      * The default renderers are provided as a constant, and may be referenced
      * by passing the `field.fieldTag` parameter. For instance, passing
      * `fieldTag: 'select'` will set `editComponent` to the registered
-     * template for a `select-field` component.
+     * template for a `sp-select-field` component.
      *
      * Custom templates can be created to add various field types and functionality
      * to the form widget.

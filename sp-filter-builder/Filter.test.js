@@ -36,16 +36,16 @@ test('operatorField get() with field type', () => {
 });
 
 test('valueField get() no field set', () => {
-    expect(filter.valueField.fieldTag).toEqual('text-field');
+    expect(filter.valueField.fieldTag).toEqual('sp-text-field');
 });
 
 test('valueField get() field is set', () => {
     filter.field = {
         name: 'test',
-        fieldTag: 'date-field'
+        fieldTag: 'sp-date-field'
     };
 
-    expect(filter.valueField.fieldTag).toEqual('date-field');
+    expect(filter.valueField.fieldTag).toEqual('sp-date-field');
 });
 
 test('alias get()', () => {

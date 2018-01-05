@@ -6,7 +6,7 @@
     {{else}}
     <button type="button" class="btn block float-left" on:el:click="dispatch('remove')">
       <i class="fa fa-trash"></i> {{alias}}</button>
-    <select-field class="float-left" vm:properties:from="operatorField" vm:value:bind="operator" inline /> {{/if}}
+    <sp-select-field class="float-left" vm:properties:from="operatorField" vm:value:bind="operator" inline /> {{/if}}
     <div class="d-inline-block">
       {{#valueField}} {{>editComponent}} {{/valueField}}
     </div>

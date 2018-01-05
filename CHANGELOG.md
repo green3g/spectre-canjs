@@ -43,7 +43,7 @@
   * FIX: .map returns plain array now
   * ENH: (experimental) add a new multi-field checkbox type that uses a list as a value
   * ENH: add a toggle method and allow inheriting widgets like accordions to hide pages
-  * ENH: separate select-field component from viewmodel
+  * ENH: separate sp-select-field component from viewmodel
   * ENH: add nicer looking accordion styles
   * fix travis npm 5 build
   * TEST: update firefox
@@ -75,7 +75,7 @@
   * DOCS: add experimental note
   * ENH: implement additional properties on filter objects to restrict editing `pinned: true` and hide completely `visible: false`
   * cleanup
-  * FIX: file-field value updating
+  * FIX: sp-file-field value updating
   * ENH: add default sp-list-table sorting mechanism
     - ENH: field.classes property to list and property tables
   * FIX: field update handling in field widgets and filter

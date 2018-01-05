@@ -143,7 +143,7 @@ export const Filter = DefineMap.extend('Filter', {
                 alias: 'is',
                 inline: true,
                 placeholder: 'Choose an operator',
-                fieldTag: 'select-field',
+                fieldTag: 'sp-select-field',
                 options: options
             }, fieldProps || {}));
         }
@@ -202,7 +202,7 @@ export const Filter = DefineMap.extend('Filter', {
                 inline: true,
                 name: this.name,
                 alias: 'Value',
-                fieldTag: 'text-field',
+                fieldTag: 'sp-text-field',
                 placeholder: 'Enter a filter value'
             };
             return new Field(fieldProps);

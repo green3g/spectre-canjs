@@ -1,16 +1,16 @@
 import 'spectre-canjs/sp-form/sp-form';
-import 'spectre-canjs/sp-form/fields/text-field/text-field';
-import 'spectre-canjs/sp-form/fields/select-field/select-field';
-import 'spectre-canjs/sp-form/fields/file-field/file-field';
-import 'spectre-canjs/sp-form/fields/subform-field/subform-field';
-import 'spectre-canjs/sp-form/fields/checkbox-field/checkbox-field';
+import 'spectre-canjs/sp-form/fields/sp-text-field/sp-text-field';
+import 'spectre-canjs/sp-form/fields/sp-select-field/sp-select-field';
+import 'spectre-canjs/sp-form/fields/sp-file-field/sp-file-field';
+import 'spectre-canjs/sp-form/fields/sp-subform-field/sp-subform-field';
+import 'spectre-canjs/sp-form/fields/sp-check-field/sp-check-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import dev from 'can-util/js/dev/dev';
 import jsonMarkup from 'json-pretty-html';
-import {FileList} from '../fields/file-field/ViewModel';
+import {FileList} from '../fields/sp-file-field/ViewModel';
 
 // import jquery ui functionality for datepicker
 import 'jquery';
@@ -60,7 +60,7 @@ const ChildObject = DefineMap.extend('ChildDemoObject', {
             return props.value != 2 ? 'The value must be 2' : undefined;
         },
         value: 2,
-        fieldTag: 'select-field',
+        fieldTag: 'sp-select-field',
         options: [{
             value: 1,
             label: 'Option 1'
@@ -78,7 +78,7 @@ const ChildObject = DefineMap.extend('ChildDemoObject', {
     },
     json_field_4: {
         type: 'boolean',
-        fieldTag: 'checkbox-field',
+        fieldTag: 'sp-check-field',
         style: 'switch',
         validate(props){
             console.log(props.value);
@@ -148,7 +148,7 @@ const fields = [{
     value: 1,
     name: 'field3',
     alias: 'A select dropdown',
-    fieldTag: 'select-field',
+    fieldTag: 'sp-select-field',
     validate(props){
         if (props.value != 1) {
             return 'This field must be 1';
@@ -169,19 +169,19 @@ const fields = [{
     name: 'field5',
     alias: 'A file field',
     multiple: true,
-    fieldTag: 'file-field',
+    fieldTag: 'sp-file-field',
     url: '/upload'
 }, {
     name: 'field6',
     alias: 'A Subform Field',
-    fieldTag: 'subform-field',
+    fieldTag: 'sp-subform-field',
     type: 'string',
     value: '',
     ObjectTemplate: ChildObject
 }, {
     name: 'field7',
     alias: 'A checkbox',
-    fieldTag: 'checkbox-field',
+    fieldTag: 'sp-check-field',
     value: false
     
 }];
@@ -218,11 +218,11 @@ document.body.appendChild(frag);
 
 window.DEMO_SOURCE = `
 import 'spectre-canjs/sp-form/sp-form';
-import 'spectre-canjs/sp-form/fields/text-field/text-field';
-import 'spectre-canjs/sp-form/fields/select-field/select-field';
-import 'spectre-canjs/sp-form/fields/file-field/file-field';
-import 'spectre-canjs/sp-form/fields/subform-field/subform-field';
-import 'spectre-canjs/sp-form/fields/checkbox-field/checkbox-field';
+import 'spectre-canjs/sp-form/fields/sp-text-field/sp-text-field';
+import 'spectre-canjs/sp-form/fields/sp-select-field/sp-select-field';
+import 'spectre-canjs/sp-form/fields/sp-file-field/sp-file-field';
+import 'spectre-canjs/sp-form/fields/sp-subform-field/sp-subform-field';
+import 'spectre-canjs/sp-form/fields/sp-check-field/sp-check-field';
 import fixture from 'can-fixture';
 import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
@@ -275,7 +275,7 @@ const ChildObject = DefineMap.extend({
             return props.value != 2 ? 'The value must be 2' : undefined;
         },
         value: 2,
-        fieldTag: 'select-field',
+        fieldTag: 'sp-select-field',
         options: [{
             value: 1,
             label: 'Option 1'
@@ -293,7 +293,7 @@ const ChildObject = DefineMap.extend({
     },
     json_field_4: {
         type: 'boolean',
-        fieldTag: 'checkbox-field',
+        fieldTag: 'sp-check-field',
         style: 'switch',
         validate(props){
             console.log(props.value);
@@ -372,7 +372,7 @@ const fields = [{
     value: 1,
     name: 'field3',
     alias: 'A select dropdown',
-    fieldTag: 'select-field',
+    fieldTag: 'sp-select-field',
     validate(props){
         if (props.value != 1) {
             return 'This field must be 1';
@@ -393,19 +393,19 @@ const fields = [{
     name: 'field5',
     alias: 'A file field',
     multiple: true,
-    fieldTag: 'file-field',
+    fieldTag: 'sp-file-field',
     url: '/upload'
 }, {
     name: 'field6',
     alias: 'A Subform Field',
-    fieldTag: 'subform-field',
+    fieldTag: 'sp-subform-field',
     type: 'string',
     value: '',
     ObjectTemplate: ChildObject
 }, {
     name: 'field7',
     alias: 'A checkbox',
-    fieldTag: 'checkbox-field',
+    fieldTag: 'sp-check-field',
     value: false
     
 }];

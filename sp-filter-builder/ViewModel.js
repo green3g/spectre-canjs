@@ -74,7 +74,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      * viewModel will look for the ObjectTemplate property and display its keys.
      * <br />TODO: If this property does
      * not exist, the field select will be replaced with a simple text field.
-     * @property {Array<sp-form/fields/select-field.SelectOption>} sp-filter-builder.ViewModel.fieldOptions
+     * @property {Array<sp-form/fields/sp-select-field.SelectOption>} sp-filter-builder.ViewModel.fieldOptions
      * @parent sp-filter-builder.ViewModel.props
      */
     fieldOptions: {

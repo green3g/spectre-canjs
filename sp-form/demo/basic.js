@@ -1,5 +1,5 @@
 import '../sp-form';
-import '../fields/text-field/text-field';
+import '../fields/sp-text-field/sp-text-field';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import stache from 'can-stache';

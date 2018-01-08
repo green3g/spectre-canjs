@@ -4,10 +4,10 @@
 
     <p><button class="btn" type="button" on:el:click="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
 
-    <sp-filter-builder vm:fields:from="fields" vm:filters:to="filters" {{#disableCreate}}disable-create{{/disableCreate}} />
+    <sp-filter-builder fields:from="fields" filters:to="filters" {{#disableCreate}}disable-create{{/disableCreate}} />
 
     <h2>Current filters: </h2>
-    <pre>{{stringify(filters)}}</pre>
+    <div class="json">{{{stringify(filters)}}}</div>
 
   <div class="divider"></div>
   <h2>Pinned</h2>

@@ -210,7 +210,6 @@ const vm = new DefineMap({
         console.log('Form canceled!');
     },
     stringify (obj) {
-        console.log(obj)
         if (!obj) {
             return; 
         }

@@ -4,6 +4,7 @@ import Field from '../util/field/Field';
 import {makeSentenceCase} from '../util/string/string';
 import assign from 'can-assign';
 import define from 'can-define';
+import stache from 'can-stache';
 
 /**
  * @property sp-filter-builder.FilterOptions FilterOptions
@@ -206,6 +207,17 @@ export const Filter = DefineMap.extend('Filter', {
                 placeholder: 'Enter a filter value'
             };
             return new Field(fieldProps);
+        }
+    },
+    valueComponent: {
+        type: '*',
+        get (renderer) {
+            if (typeof renderer === 'function') {
+                return renderer;
+            }
+            return stache(`<${this.valueField.fieldTag} 
+                properties:from="valueField" 
+                value:bind="value" />`);
         }
     },
     /**

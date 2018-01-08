@@ -61,6 +61,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
                 alias: 'Field Name',
                 fieldType: 'select',
                 options: this.fieldOptions,
+                defaultLabel: 'Add a filter',
                 inline: true
             } : {
                 name: 'name',
@@ -79,10 +80,6 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      */
     fieldOptions: {
         get () {
-            const fields = [{
-                value: '_',
-                label: 'Add a filter'
-            }];
             if (this.fields.length) {
                 var mapped = this.fields.map((f) => {
                     return {
@@ -91,9 +88,9 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
                     };
                 });
 
-                return fields.concat(mapped.serialize());
+                return mapped.serialize();
             }
-            return this.ObjectTemplate ? fields.concat(Object.keys(new this.ObjectTemplate()).map((key) => {
+            return this.ObjectTemplate ? Object.keys(new this.ObjectTemplate().map((key) => {
                 return {
                     value: key,
                     label: makeSentenceCase(key)
@@ -136,15 +133,12 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      * filters.
      * @function addFilter
      * @signature
-     * @param  {string} props The properties with a value key of the name of the field filter to add. This is the only argument passed to the function, the rest may be null.
+     * @param  {string} arguments the array of arguments from the fieldchange event
      * @return {Boolean} returns false to prevent event propagation from links
      */
-    addFilter () {
+    addFilter ([, name]) {
 
-        // get the name
-        const name = (arguments.length === 4 ? arguments[3] : arguments[0]).value;
-
-        if (!name || name === '_') {
+        if (!name || name === '') {
             return false;
         }
 
@@ -165,12 +159,8 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
 
 
         // reset the dropdown
-        this.fieldValue = '_';
+        this.fieldValue = '';
 
-        return false;
-    },
-    noOp (vm, form, event) {
-        event.preventDefault();
         return false;
     }
 });

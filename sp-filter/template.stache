@@ -1,14 +1,14 @@
 {{#with(filter)}}
 <div class="clearfix pt-10">
-  <form class="form" on:el:submit="noOp()">
+  <form class="form" on:el:submit="noOp(scope.event)">
     {{#if pinned}}
     <span class="filter-fixed">{{alias}} {{operatorField.alias}}</span>
     {{else}}
-    <button type="button" class="btn block float-left" on:el:click="dispatch('remove')">
+    <button type="button" class="btn block float-left" on:el:click="dispatchEvent('remove')">
       <i class="fa fa-trash"></i> {{alias}}</button>
-    <sp-select-field class="float-left" vm:properties:from="operatorField" vm:value:bind="operator" inline /> {{/if}}
+    <sp-select-field class="float-left" properties:from="operatorField" value:bind="operator" inline /> {{/if}}
     <div class="d-inline-block">
-      {{#valueField}} {{>editComponent}} {{/valueField}}
+      {{>valueComponent}}
     </div>
   </form>
 </div>

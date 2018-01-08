@@ -57,3 +57,12 @@ test('isActive(page)', () => {
     vm.pages = [active];
     expect(vm.isActive(active)).toBeTruthy();
 });
+
+test('toggle(page)', () => {
+    const active = new PageViewModel();
+    const other = new PageViewModel();
+    vm.pages = [active, other];
+
+    vm.toggle(active);
+    expect(vm.isActive(active)).toBeFalsy();
+});

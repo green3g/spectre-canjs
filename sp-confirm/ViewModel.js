@@ -38,9 +38,8 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
         get () {
             // generate a new promise when active becomes true
             if (this.active) {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve) => {
                     this._resolveAction = resolve;
-                    this._rejectAction = reject;
                 });
             }
             return null;
@@ -66,8 +65,8 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
      * @signature
      */
     onReject () {
-        if (this._rejectAction) {
-            this._rejectAction(false);
+        if (this._resolveAction) {
+            this._resolveAction(false);
         }
         this.dispatch('reject', [this]);
         this.active = false;

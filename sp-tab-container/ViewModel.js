@@ -108,6 +108,11 @@ const ViewModel = DefineMap.extend('NavContainer', {
         }
         this.activeId = page.pageId;
     },
+    /**
+     * Used by nav containers that might need to toggle pages, rather than just
+     * activate them (accordion)
+     * @param {sp-tab-page.ViewModel} page the page to toggle
+     */
     toggle (page) {
         if (page === this.activePage) {
             this.activeId = null;

@@ -1,5 +1,4 @@
 import ViewModel from './ViewModel';
-import DefineMap from 'can-define/map/map';
 import {Filter} from './Filter';
 
 var vm;
@@ -38,18 +37,7 @@ test('fieldOptions get() with fields', () => {
         alias: 'Other'
     }];
     vm.fields = fields;
-    expect(vm.fieldOptions.length).toEqual(fields.length + 1);
-});
-
-test('fieldOptions get() with ObjectTemplate', () => {
-    const Template = DefineMap.extend({
-        test1: 'string',
-        test2: 'string',
-        test3: 'string'
-    });
-    const len = Object.keys((new Template()).serialize()).length + 1;
-    vm.ObjectTemplate = Template;
-    expect(vm.fieldOptions.length).toEqual(len);
+    expect(vm.fieldOptions.length).toEqual(fields.length);
 });
 
 test('addFilter()', () => {
@@ -58,7 +46,7 @@ test('addFilter()', () => {
         operator: 'equals',
         value: 'test'
     });
-    vm.addFilter(null, null, null, filter);
+    vm.addFilter([null, filter]);
     expect(vm.filters.length).toEqual(1);
 });
 
@@ -68,8 +56,8 @@ test('removeFilter()', () => {
         operator: 'equals',
         value: 'test'
     });
-    vm.addFilter(null, null, null, filter);
-    vm.removeFilter(null, null, null, filter);
+    vm.addFilter([null, filter]);
+    vm.removeFilter([null, filter]);
     expect(vm.filters.length).toEqual(0);
 });
 

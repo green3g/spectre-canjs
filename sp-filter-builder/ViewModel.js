@@ -32,14 +32,6 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
         value: 'filter'
     },
     /**
-     * An optional object template to derive field options from. If it is provided,
-     * sp-filter-builder will extract the field names and the field types and use that to create
-     * filter options.
-     * @property {can.Map} sp-filter-builder.ViewModel.ObjectTemplate
-     * @parent sp-filter-builder.ViewModel.props
-     */
-    ObjectTemplate: '*',
-    /**
      * A list of filterObjects currently used in this widget
      * @property {Array<sp-filter-builder.Filter>} sp-filter-builder.ViewModel.filters
      * @parent sp-filter-builder.ViewModel.props
@@ -55,7 +47,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      */
     nameField: {
         get () {
-            return this.fieldOptions.length > 1 ? {
+            return this.fieldOptions.length ? {
                 formatter: makeSentenceCase,
                 name: 'name',
                 alias: 'Field Name',
@@ -71,31 +63,21 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
         }
     },
     /**
-     * An array of field options to display for the field selection dropdown. If not provided, the
-     * viewModel will look for the ObjectTemplate property and display its keys.
-     * <br />TODO: If this property does
-     * not exist, the field select will be replaced with a simple text field.
+     * An array of field options to display for the field selection dropdown.
      * @property {Array<sp-form/fields/sp-select-field.SelectOption>} sp-filter-builder.ViewModel.fieldOptions
      * @parent sp-filter-builder.ViewModel.props
      */
     fieldOptions: {
         get () {
             if (this.fields.length) {
-                var mapped = this.fields.map((f) => {
+                return this.fields.map((f) => {
                     return {
                         value: f.name,
                         label: f.alias
                     };
                 });
-
-                return mapped.serialize();
             }
-            return this.ObjectTemplate ? Object.keys(new this.ObjectTemplate().map((key) => {
-                return {
-                    value: key,
-                    label: makeSentenceCase(key)
-                };
-            })) : [];
+            return [];
         }
     },
     /**

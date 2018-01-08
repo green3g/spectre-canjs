@@ -32,6 +32,9 @@ test('onAccept', () => {
     });
     vm.onAccept();
     expect(vm.active).toBeFalsy();
+    promise.then((result) => {
+        expect(result).toBeTruthy();
+    });
 });
 
 
@@ -45,4 +48,7 @@ test('onReject', () => {
     });
     vm.onReject();
     expect(vm.active).toBeFalsy();
+    promise.then((result) => {
+        expect(result).toBeFalsy();
+    });
 });

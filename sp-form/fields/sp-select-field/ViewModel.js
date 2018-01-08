@@ -1,8 +1,49 @@
 
 import Base from 'spectre-canjs/util/field/base/FieldInputMap';
-import dev from 'can-util/js/dev/dev';
+import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 
-const DEFAULT_OPTION = {label: 'Choose a value...', value: ''};
+/**
+ * the select option type - used to display <option> tags values/labels
+ */
+export const SelectOption = DefineMap.extend('SelectOption', {
+    value: 'string',
+    label: {
+        type: 'string',
+        get (label) {
+            if (label) {
+                return label;
+            }
+            return this.value;
+        }
+    }
+});
+
+/**
+ * list to coerce select options
+ */
+export const SelectOptionList = DefineList.extend('SelectOptionList', {
+    '#': SelectOption
+});
+
+/**
+ * select field properties
+ */
+export const SelectProperties = DefineMap.extend('SelectProperties', {seal: false}, {
+    defaultLabel: {type: 'string', value: 'Choose a value...'},
+    options: {Type: SelectOptionList, Value: SelectOptionList},
+    optionsPromise: {
+        set (promise) {
+            if (promise) {
+                promise.then((options) => {
+                    this.options = options;
+                });
+            }
+            return promise;
+        }
+    }
+});
+
 /**
  * @constructor sp-form/fields/sp-select-field.ViewModel ViewModel
  * @parent sp-form/fields/sp-select-field
@@ -21,25 +62,7 @@ export default Base.extend('SelectField', {
      * @parent sp-select-field.ViewModel.props
      * @property {sp-select-field.types.SelectFieldProperty} sp-form/fields/sp-select-field.ViewModel.properties properties
      */
-    properties: {
-        value: {
-            options: [DEFAULT_OPTION]
-        }
-    },
-    options: {
-        get (val, set) {
-            const props = this.properties;
-            if (props.optionsPromise) {
-                props.optionsPromise.then((options) => {
-                    set([DEFAULT_OPTION].concat(options.get ? options.get() : options));
-                });
-            } else if (props.options && props.options.length) {
-                set([DEFAULT_OPTION].concat(props.options.get ? props.options.get() : props.options));
-            } else {
-                dev.warn('sp-select-field::no options passed');
-            }
-        }
-    },
+    properties: {Type: SelectProperties, Value: SelectProperties},
     /**
      * Determines whether a value is the currently selected value
      * @function isSelected

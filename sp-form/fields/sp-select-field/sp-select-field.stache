@@ -1,23 +1,25 @@
-<div class="form-group {{#if error}}has-error{{/if}}">
+<div class="form-group {{#if(error)}}has-error{{/if}} {{#if(properties.optionsPromise.isPending)}}has-icon-right{{/if}}">
     {{#if properties.inline}}
     <select el:value:bind="value" class="form-select form-control" name="{{properties.name}}">
-        {{#each options}}
+        <option value="">{{properties.defaultLabel}}</option>
+        {{#each properties.options}}
         <option value="{{value}}">{{label}}</option>
         {{/each}}
     </select>
-
     {{else}}
     <div class="col-4">
         <label class="form-label" for="{{properties.name}}">{{properties.alias}}</label>
     </div>
     <div class="col-8">
         <select el:value:bind="value" class="form-select form-control" name="{{properties.name}}">
-            {{#each options}}
+        <option value="">{{properties.defaultLabel}}</option>
+            {{#each properties.options}}
             <option value="{{value}}">{{label}}</option>
             {{/each}}
         </select>
 
     </div>
-    {{/if}} {{#if error}}
-    <span class="form-input-hint">{{ error}}</span>{{/if}}
+    {{/if}}
+    {{#if(properties.optionsPromise.isPending)}}<i class="form-icon loading"></i>{{/if}} 
+    {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
 </div>

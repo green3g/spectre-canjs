@@ -29,7 +29,7 @@
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",
-    "postversion": "npm run export && npm publish && git push origin master && git push --tags && npm run changelog",
+    "postversion": "npm publish && git push origin master && git push --tags && npm run changelog",
     "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
   },
   "author": "roemhildtg",
@@ -51,7 +51,8 @@
     "regenerator-runtime": "^0.11.1",
     "steal-css": "^1.3.1",
     "steal-less": "^1.2.2",
-    "steal-stache": "^3.1.3"
+    "steal-stache": "^3.1.3",
+    "steal-tools": "^1.10.2"
   },
   "dependencies": {
     "animate.css": "^3.5.2",

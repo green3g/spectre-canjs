@@ -23,10 +23,14 @@ test('value set() invalid date', () => {
 });
 
 test('value get()', () => {
-    vm.value = new Date();
-    expect(vm.value.getDate()).toEqual(new Date().getDate());
-    expect(vm.value.getMonth()).toEqual(new Date().getMonth());
-    expect(vm.value.getFullYear()).toEqual(new Date().getFullYear());
+    vm.assign({
+        day: 1,
+        month: 2,
+        year: 2000
+    });
+    expect(vm.value.getDate()).toEqual(1);
+    expect(vm.value.getMonth()).toEqual(2);
+    expect(vm.value.getFullYear()).toEqual(2000);
 });
 
 test('value get() invalid date', () => {

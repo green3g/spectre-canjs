@@ -11,10 +11,10 @@
             </label>
           </div>
         </th>
-        {{/if}} {{#each fields}}
-        <th {{#is name currentSort.field}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}{{#if ./sort}} on:el:click="setSort(name)"{{/if}}>
-          {{alias}} {{#is name currentSort.field}}
-          <i class="fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>
+        {{/if}} {{#each(fields)}}
+        <th {{#is(name currentSort.field)}} class="text-bold {{#if(classes)}}{{classes}}{{/if}}" {{/is}}{{#if ./sort}} on:el:click="setSort(name)"{{/if}}>
+          {{alias}} {{#is(name currentSort.field)}}
+          <i class="fa fa-sort-{{#is(currentSort.type 'desc')}}desc{{else}}asc{{/is}}"></i>
           <i class="fa fa-times float-right" on:el:click="setSort('', %event)" title="Clear Sort"></i>{{/is}}
         </th>
         {{/each}}
@@ -22,7 +22,7 @@
     </thead>
 
     <tbody>
-      {{#each objects object=value}}
+      {{#each(objects object=value)}}
       <tr {{#if isSelected(object)}} class="selected" {{/if}}>
         {{#if(selectable)}}
         <td class="checkbox-cell">
@@ -33,8 +33,8 @@
             </label>
           </div>
         </td>
-        {{/if}} {{#each fields field=value}}
-        <td {{#if classes}}class="{{classes}}" {{/if}}>
+        {{/if}} {{#each(fields field=value)}}
+        <td {{#if(classes)}}class="{{classes}}" {{/if}}>
           {{ >field.displayComponent}}
         </td>
         {{/each}}

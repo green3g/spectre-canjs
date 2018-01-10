@@ -1,12 +1,12 @@
-<div class="form-group {{#if error}}has-error{{/if}}">
-{{#with properties}}
-    <label {{#if inline}} class="hide" {{/if}} for="{{name}}">{{alias}}</label>
+<div class="form-group {{#if(error)}}has-error{{/if}}">
+{{#with(properties)}}
+    <label {{#if(inline)}} class="hide" {{/if}} for="{{name}}">{{alias}}</label>
     <div class="input-group">
         <sp-select-field value:bind="day" properties:from="dayProperties" class="float-left" on:fieldchange="onChange" />
         <sp-select-field value:bind="month" properties:from="monthProperties" class="float-left" on:fieldchange="onChange" />
         <sp-select-field value:bind="year" properties:from="yearProperties" class="float-left" on:fieldchange="onChange" />
     </div>
     <div class="clear"></div>
-    {{#if error}}<span class="form-input-hint">{{error}}</span>{{/if}}
+    {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 {{/with}}
 </div>

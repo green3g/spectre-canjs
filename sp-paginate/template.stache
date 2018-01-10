@@ -15,7 +15,7 @@
     </li>
     {{/hidePrevious}}
     {{^hidePages}}
-    {{#each visiblePages}}
+    {{#each(visiblePages)}}
       <li class="{{#if isActive(.)}}active{{/if}} page-item"><a on:el:click="gotoPage(.)">{{.}}</a></li>
     {{/each}}
     {{/hidePages}}

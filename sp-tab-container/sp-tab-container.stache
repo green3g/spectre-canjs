@@ -1,7 +1,7 @@
 <ul class="tab">
-    {{#each pages}}
-      <li class="tab-item {{#is . ../activePage}}active{{/is}}{{#if loading}} loading{{/if}} {{classes}}" on:el:click="makeActive(.)">
-          <a {{#if href}}href="{{href}}"{{/if}}>
+    {{#each(pages)}}
+      <li class="tab-item {{#is . ../activePage}}active{{/is}}{{#if(loading)}} loading{{/if}} {{classes}}" on:el:click="makeActive(.)">
+          <a {{#if(href)}}href="{{href}}"{{/if}}>
               {{label}}
           </a>
       </li>

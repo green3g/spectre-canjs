@@ -12,7 +12,7 @@
         <sp-list-table vm:selectedObjects:to="selectedObjects" vm:objects:from="objects" on:vm:up="voteUp" vm:fields:from="fields" on:vm:down="voteDown" id-prop="_cid" />
 
 
-        <p>You chose: {{#if selectedObjects.length}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
+        <p>You chose: {{#if(selectedObjects.length)}} {{#each(selectedObjects)}} {{name}}, {{/each}} {{else}} No one {{/if}}
         </p>
     </div>
 </script>

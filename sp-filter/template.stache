@@ -1,7 +1,7 @@
 {{#with(filter)}}
 <div class="clearfix pt-10">
   <form class="form" on:el:submit="noOp(scope.event)">
-    {{#if pinned}}
+    {{#if(pinned)}}
     <span class="filter-fixed">{{alias}} {{operatorField.alias}}</span>
     {{else}}
     <button type="button" class="btn block float-left" on:el:click="dispatchEvent('remove')">

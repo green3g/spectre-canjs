@@ -1,8 +1,8 @@
 <div class="form-group {{#if(error)}}has-error{{/if}} {{#if(properties.optionsPromise.isPending)}}has-icon-right{{/if}}">
-    {{#if properties.inline}}
+    {{#if(properties.inline)}}
     <select el:value:bind="value" class="form-select form-control" name="{{properties.name}}">
         <option value="">{{properties.defaultLabel}}</option>
-        {{#each properties.options}}
+        {{#each(properties.options)}}
         <option value="{{value}}">{{label}}</option>
         {{/each}}
     </select>
@@ -13,7 +13,7 @@
     <div class="col-8">
         <select el:value:bind="value" class="form-select form-control" name="{{properties.name}}">
         <option value="">{{properties.defaultLabel}}</option>
-            {{#each properties.options}}
+            {{#each(properties.options)}}
             <option value="{{value}}">{{label}}</option>
             {{/each}}
         </select>
@@ -21,5 +21,5 @@
     </div>
     {{/if}}
     {{#if(properties.optionsPromise.isPending)}}<i class="form-icon loading"></i>{{/if}} 
-    {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
+    {{#if(error)}}<span class="form-input-hint">{{ error}}</span>{{/if}}
 </div>

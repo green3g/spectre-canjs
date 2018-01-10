@@ -126,9 +126,9 @@
                 </form>
             </sp-tab-page>
 
-            {{#if people.isResolved}}
+            {{#if(people.isResolved)}}
             <sp-tab-page label="User cards">
-                {{#each people.value}}
+                {{#each(people.value)}}
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">{{name}}</h4>

@@ -1,10 +1,10 @@
-<div class="{{#if backdrop}}modal{{else}}sp-modal-no-backdrop{{/if}}{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
-    {{#if backdrop}}
+<div class="{{#if(backdrop)}}modal{{else}}sp-modal-no-backdrop{{/if}}{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
+    {{#if(backdrop)}}
         <div class="modal-overlay"></div>
     {{/if}}
     <div class="modal-container">
 
-        {{#if customBody}}
+        {{#if(customBody)}}
             <content />
         {{else}}
             <div class="modal-header">

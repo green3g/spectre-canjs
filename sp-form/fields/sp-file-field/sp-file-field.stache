@@ -1,18 +1,18 @@
-<div class="form-group {{#if error}}has-error{{/if}}">
+<div class="form-group {{#if(error)}}has-error{{/if}}">
 
     {{#with(properties)}}
     <ul class="menu">
         <li class="menu-item">
             <div class="input-group">
-                <label {{#if inline}} class="hide" {{/if}} for="{{name}}">{{alias}}</label>
+                <label {{#if(inline)}} class="hide" {{/if}} for="{{name}}">{{alias}}</label>
                 <input on:el:change="onChange(scope.element)" 
                     type="file" class="form-control form-input" 
-                    name="{{name}}" {{#if multiple}} multiple {{/if}} />
+                    name="{{name}}" {{#if(multiple)}} multiple {{/if}} />
             </div>
 
-            {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
+            {{#if(error)}}<span class="form-input-hint">{{ error}}</span>{{/if}}
         </li>
-        {{#if state.isPending}}
+        {{#if(state.isPending)}}
             <li class="menu-item loading"></li>
         {{/if}}
         {{#if ../value.length}}
@@ -26,7 +26,7 @@
                 <!-- menu item -->
                 <li class="menu-item clear">                   
                     <button type="button" 
-                        class="btn ml-10 float-left {{#if removing}}loading{{else}}tooltip tooltip-right{{/if}}" 
+                        class="btn ml-10 float-left {{#if(removing)}}loading{{else}}tooltip tooltip-right{{/if}}" 
                         on:el:click="removeFile(.)"
                         data-tooltip="Delete {{name}}"><i class="fa fa-trash"></i></button>
                     <a href="{{path}}" target="_blank" class="filename">

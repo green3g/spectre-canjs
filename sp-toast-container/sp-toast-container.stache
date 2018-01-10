@@ -1,6 +1,6 @@
 
 <div class="toasts">
-    {{#each toasts}}
+    {{#each(toasts)}}
         <sp-toast on:vm:hide="removeToast(.)"
           severity="{{severity}}"
           visible="{{visible}}"

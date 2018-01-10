@@ -1,13 +1,13 @@
 <div class="sp-filter-builder container-fluid">
-  {{#each filters}}
-    {{#if visible}}
+  {{#each(filters)}}
+    {{#if(visible)}}
       <sp-filter filter:from="." on:remove="removeFilter(.)" />
     {{/if}}
   {{/each}}
 
   <br />
 
-  {{#unless disableCreate}}
+  {{#unless(disableCreate)}}
     <sp-select-field properties:from="nameField" on:fieldchange="addFilter(scope.arguments)" value:bind="fieldValue" inline />
   {{/unless}}
 

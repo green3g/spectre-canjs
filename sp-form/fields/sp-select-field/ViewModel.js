@@ -1,5 +1,6 @@
 
 import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Field from '../../../util/field/Field';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 
@@ -29,9 +30,11 @@ export const SelectOptionList = DefineList.extend('SelectOptionList', {
 /**
  * select field properties
  */
-export const SelectProperties = DefineMap.extend('SelectProperties', {seal: false}, {
+export const SelectProperties = Field.extend('SelectProperties', {seal: false}, {
     defaultLabel: {type: 'string', value: 'Choose a value...'},
     options: {Type: SelectOptionList, Value: SelectOptionList},
+
+    // a promise that resolves to options
     optionsPromise: {
         set (promise) {
             if (promise) {

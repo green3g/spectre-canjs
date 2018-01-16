@@ -41,7 +41,7 @@
     "babel-jest": "^22.0.4",
     "babel-preset-es2015": "^6.24.1",
     "can-connect": "^1.5.14",
-    "can-fixture": "github:roemhildtg/can-fixture",
+    "can-fixture": "^1.2.2",
     "eslint": "^4.14.0",
     "http-server": "^0.10.0",
     "jest": "^22.0.4",

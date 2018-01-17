@@ -57,6 +57,10 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     object: {
         get () {
+            // if length changes, update this getter
+            this.objects.get('length');
+
+            // return the first object
             return this.objects[0] || {};
         }
     },

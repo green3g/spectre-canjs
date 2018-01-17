@@ -170,7 +170,8 @@ const fields = [{
 }, {
     name: 'field4',
     alias: 'A date field',
-    ui: 'datepicker'
+    ui: 'datepicker',
+    placeholder: 'Enter a date...'
 }, {
     name: 'field5',
     alias: 'A file field',

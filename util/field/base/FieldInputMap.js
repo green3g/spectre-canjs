@@ -2,7 +2,7 @@
 import DefineMap from 'can-define/map/map';
 import canEvent from 'can-event';
 import assign from 'can-util/js/assign/assign';
-
+import Field from '../Field';
 /**
  * @constructor util/field/base/FieldInputMap FieldInputMap
  * @parent util/field.types
@@ -16,7 +16,7 @@ export const ViewModel = DefineMap.extend('FieldInput', {
      * @property {DefineMap} FieldInputMap.props.properties properties
      * @parent FieldInputMap.props
      */
-    properties: {Value: DefineMap},
+    properties: {Value: Field, Type: Field},
     /**
      * The field error string
      * @property {String} FieldInputMap.props.error error

@@ -53,7 +53,7 @@ const ViewModel = DefineMap.extend('ToastItem', {
     severity: {
         value: 'info',
         type: function (val) {
-            var allowed = ['primary', 'info', 'success', 'warning', 'danger'],
+            var allowed = ['primary', 'info', 'success', 'warning', 'error'],
                 isValid = allowed.indexOf(val) > -1;
 
             return isValid ? val : allowed[0];

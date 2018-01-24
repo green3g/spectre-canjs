@@ -1,7 +1,7 @@
 {{#if(object)}}
 
   <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:el:submit="submitForm">
-      <can-slot name="fields">
+      <can-slot this:from="this" name="fields">
         {{#each(fields)}}
           {{>editComponent}}
         {{/each}}
@@ -12,7 +12,7 @@
       {{#if(isSaving)}}
         <div class="loading"></div>
       {{else}}
-        <can-slot name="submit">
+        <can-slot this:from="this" name="submit">
           <div class="btn-group" role="group" aria-label="Form Buttons">
               <button type="button" class="btn btn-primary" on:el:click="dispatchEvent('submit')">
                 <i class="fa fa-floppy-o"></i> Submit</button>            

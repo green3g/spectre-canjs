@@ -80,6 +80,9 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     object: {
         Type: DefineMap,
         set (obj) {
+            if (!obj) {
+                return obj;
+            }
             const Constructor = obj.constructor ? obj.constructor : DefineMap;
             this.dirtyObject = new Constructor(obj.get());
             return obj;

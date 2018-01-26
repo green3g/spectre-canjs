@@ -15,30 +15,46 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 
 // this example uses fixtures to catch requests and simulate
-// file upload experience
+// file upload server
+function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+    //   console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+    return reader;
+ }
+
 fixture.delay = 2000;
 fixture({
     method: 'POST',
-    url: '/api/upload'
+    url: '/upload'
 }, function (request, response, headers, ajaxSettings) {
     try {
-        const files = Array.from(request.data.entries()).map(file => {
-            return `path/to/webserver/${file[1].name}`;
-        })
-        return {
-            uploads: files
-        };
+        const fields = Array.from(request.data.entries());
+        const fileField = fields.filter(f => {
+            return f[0] === 'uri';
+        });
+        const file = fileField[0][1];
+        const reader = getBase64(file);
+        reader.onload = function(){
+            response({
+                uri: reader.result,
+                id: file.name
+            }, {'content-type': 'application/json'});
+                
+        }
     }  catch(e){
         dev.warn(e);
     }
-    return {
-        uploads: ['/path/to/file/fake_upload_filename']
-    };
 });
 
 fixture({
     method: 'DELETE',
-    url: '/upload'
+    url: '/upload/{id}'
 }, function () {
     return {
         result: 'Success'
@@ -158,8 +174,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
     field5: {
         name: 'field5',
         alias: 'A file field',
-        multiple: true,
-        fieldTag: 'sp-file-field',
+        fieldTag: 'sp-dropzone-field',
         url: '/upload',
         Value: DefineList,
 
@@ -169,7 +184,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
                 return '';
             }
             return val.map(file => {
-                return file.name;
+                return file.id;
             }).join(',')
         }
     },

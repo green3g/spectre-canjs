@@ -32,7 +32,10 @@ export const ViewModel = DefineMap.extend('FieldInput', {
         type: '*',
         set (val) {
             if (this.value !== val) {
-                this.dispatch('fieldchange', [val, this.properties]);
+                this.dispatch('fieldchange', [{
+                    value: this.value, 
+                    name: this.name
+                }]);
             }
             return val;
         }

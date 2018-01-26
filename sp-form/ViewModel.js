@@ -222,16 +222,16 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @signature
      * @param {Array} arguments an array with 3 arguments, event, value (field value) and field<Field> object
      */
-    checkField ([, value, field]) {
+    checkField ([, field]) {
 
         // check for valid field value and don't update if it's not
-        this.validationErrors[field.name] = this.getValidationError(field, value);
+        this.validationErrors[field.name] = this.getValidationError(field, field.value);
 
         // update and dispatch field change event
         // if the value is different
         this.dispatch('fieldchange', [{
             name: field.name,
-            value: value,
+            value: field.value,
             dirty: this.dirtyObject,
             current: this.object
         }]);

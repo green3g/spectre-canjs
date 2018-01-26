@@ -40,6 +40,13 @@ export const Field = DefineMap.extend('Field', {
             return makeSentenceCase(this.name);
         }
     },
+    properties: {
+        set (props) {
+            console.log(props);
+            this.assign(props);
+            return;
+        }
+    },
     /**
      * The type of the form field to use when editing this field. These types
      * are defined in the `util/field.TEMPLATES` constant. This should be
@@ -50,6 +57,26 @@ export const Field = DefineMap.extend('Field', {
     fieldTag: {
         type: 'string',
         value: 'sp-text-field'
+    },
+    /**
+     * The field error string
+     * @property {String} FieldInputMap.props.error error
+     * @parent FieldInputMap.props
+     */
+    error: 'string',
+    /**
+     * The current field value
+     * @property {Object} FieldInputMap.props.value value
+     * @parent FieldInputMap.props
+     */
+    value: {
+        type: '*',
+        set (val) {
+            if (this.value !== val) {
+                this.dispatch('fieldchange', [this]);
+            }
+            return val;
+        }
     },
     /**
      * The form field template to use when editing this field in the sp-form. This should be
@@ -205,6 +232,13 @@ export const Field = DefineMap.extend('Field', {
      * @parent util/field/Field.props
      */
     classes: 'string'
+    /**
+     * If field component implements this method, it will be called 
+     * when the component is inserted, with the input element
+     * It can be used to customize the input, like adding a date picker
+     * 
+     */
+    // onInsert (element) {flatpicker(element);}
 });
 
 

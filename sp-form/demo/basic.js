@@ -3,15 +3,8 @@ import '../fields/sp-text-field/sp-text-field';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import stache from 'can-stache';
-
-
-// import jquery ui functionality for datepicker
-import 'jquery';
-import 'jquery-ui';
-import 'jquery-ui/ui/widgets/datepicker';
-import 'jquery-ui/themes/base/core.css';
-import 'jquery-ui/themes/base/theme.css';
-import 'jquery-ui/themes/base/datepicker.css';
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css'
 
 // validator function
 function required(props){
@@ -32,6 +25,9 @@ const Task = DefineMap.extend('Task', {
         validate: required
     },
     dateCompleted: {
+        onInsert(element){
+            flatpickr(element);
+        },
         alias: 'Date Completed',
         validate: required,
 

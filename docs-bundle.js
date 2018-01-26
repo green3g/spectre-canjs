@@ -2,7 +2,7 @@ var stealTools = require('steal-tools');
 var path = require('path');
 
 stealTools.build({
-    main: 'docs-main',
+    main: 'index',
     config: path.join(__dirname, 'package.json!npm'),
     bundle: [
         'spectre-canjs/sp-dropdown/demo/dropdown',

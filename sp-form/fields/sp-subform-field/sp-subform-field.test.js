@@ -17,7 +17,7 @@ afterEach(() => {
 
 test('formFields get()', () => {
     vm.properties = {
-        ObjectTemplate: TestObject
+        Type: TestObject
     };
 
     expect(vm.formFields.length).toEqual(2);

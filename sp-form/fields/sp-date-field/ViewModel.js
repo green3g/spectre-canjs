@@ -1,4 +1,4 @@
-import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Base from 'spectre-canjs/util/field/Field';
 import {MONTH_OPTIONS, YEAR_OPTIONS} from './constants';
 
 /**
@@ -24,10 +24,7 @@ export default Base.extend('DateField', {
         type: 'date',
         set (date) {
             if (this.value !== date) {
-                this.dispatch('fieldchange', [{
-                    value: date,
-                    name: this.properties.name
-                }]);
+                this.dispatch('fieldchange', [this]);
             }
 
             // if the value is falsey, return it

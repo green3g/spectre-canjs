@@ -1,13 +1,13 @@
 import Component from 'can-component';
 import template from './template.stache';
-import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Field from 'spectre-canjs/util/field/Field';
 
-export const ViewModel = Base.extend('CheckboxField', {
+export const ViewModel = Field.extend('CheckboxField', {
     value: {
         type: 'boolean',
         set (val) {
             if (val !== this.value) { 
-                this.dispatch('fieldchange', [val, this.properties]); 
+                this.dispatch('fieldchange', [this]); 
             }
             return val;
         }

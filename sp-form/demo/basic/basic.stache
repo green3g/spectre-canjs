@@ -1,5 +1,4 @@
-<script type="text/stache" id="app">
-    <div class="container" style="width: 400px; margin:0 auto;">
+<div class="container" style="width: 400px; margin:0 auto;">
     <sp-form object:from="current" on:submit="onSubmit(scope.arguments)" showSaving:from="isSaving"></sp-form>
     <div class="divider" />
     {{#if(tasks.length)}}
@@ -12,12 +11,4 @@
             <button class="btn btn-primary" on:click="clear()"><i class="fa fa-trash"></i> Delete Tasks</button>
         </div>
     {{/if}}
-    </div>
-</script>
-
-
-<script src="../../node_modules/steal/steal.js" main="spectre-canjs/index" id="demo-source">
-    // <script src="../../../docs/can-admin/steal.production.js" main="can-admin/index">
-      steal.import('spectre-canjs/sp-form/demo/basic');
-    </script>
-    
+</div>

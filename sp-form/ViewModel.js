@@ -1,5 +1,7 @@
 import DefineMap from 'can-define/map/map';
 import FieldIteratorMap from 'spectre-canjs/util/field/base/FieldIteratorMap';
+import {getEditComponent} from '../util/field/fieldComponents';
+
 
 /**
  * @constructor sp-form.ViewModel ViewModel
@@ -204,7 +206,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
             this.isSaving = true;
         }
 
-        this.object.assign(this.dirtyObject.get());
+        this.object.assign(this.dirtyObject);
         this.dispatch('submit', [this.object]);
         return false;
     },
@@ -250,6 +252,16 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
             dirty: this.dirtyObject,
             current: this.object
         }) : '') || '';
+    },
+    getEditComponent (scope, options) {
+        const field = scope._context.value;
+        const helpers = scope.templateContext.helpers;
+        // use edit component if its a renderer
+        if (typeof field.editComponent === 'function') {
+            return field.editComponent;
+        }
+
+        return getEditComponent(field)(scope, helpers, options.nodeList);
     }
 });
 

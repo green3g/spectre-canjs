@@ -1,4 +1,3 @@
-import Field from '../Field';
 // eslint-disable-next-line
 /**
  * Converts an array of strings or field json objects into Field objects
@@ -18,10 +17,8 @@ export default function parseFieldArray (fields) {
             };
         }
         // add additional props with field constructor
-        return new Field(f);
+        return f;
 
         // filter fields to exclude any '__' hidden props
-    }).filter((f) => {
-        return f.name.indexOf('__') === -1;
     });
 }

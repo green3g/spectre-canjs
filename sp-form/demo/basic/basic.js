@@ -1,14 +1,14 @@
-import '../sp-form';
-import '../fields/sp-text-field/sp-text-field';
+import 'spectre-canjs/sp-form/';
+import 'spectre-canjs/sp-form/fields/sp-text-field/';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import stache from 'can-stache';
+import render from './basic.stache';
 import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/flatpickr.min.css';
 
 // validator function
-function required(props){
-    if(!props.value){
+function required (props) {
+    if (!props.value) {
         return 'This value is required';
     }
 }
@@ -25,7 +25,7 @@ const Task = DefineMap.extend('Task', {
         validate: required
     },
     dateCompleted: {
-        onInsert(element){
+        onInsert (element) {
             flatpickr(element);
         },
         alias: 'Date Completed',
@@ -41,34 +41,34 @@ const Task = DefineMap.extend('Task', {
 const TaskList = DefineList.extend({
     '#': Task,
     hours: {
-        get(){
+        get () {
             return this.reduce((current, item) => {
                 return item.hours + current;
             }, 0);
         }
     }
-})
+});
 const currentTasks = new TaskList(localStorage.tasks ? JSON.parse(localStorage.tasks) : []);
 
 const app = new DefineMap({
-    current: new Task,
+    current: new Task(),
     tasks: currentTasks,
     isSaving: false,
-    onSubmit([ev, task]){
+    onSubmit ([ev, task]) {
         this.tasks.push(task);
-        this.current = new Task;
+        this.current = new Task();
         this.isSaving = false;
     },
-    persist(){
+    persist () {
         localStorage.tasks = JSON.stringify(this.tasks.serialize());
         alert('Tasks Saved!');
     },
-    clear(){
+    clear () {
         this.tasks.replace([]);
         this.persist();
     }
 });
 
-document.body.appendChild(
-    stache.from('app')(app)
-);
+export default function () {
+    document.body.appendChild(render(app));
+}

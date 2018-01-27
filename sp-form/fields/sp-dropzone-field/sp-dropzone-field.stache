@@ -1,10 +1,11 @@
 <can-import from="spectre-canjs/sp-file-list/" />
+<label class="form-label">{{alias}}</label>
 <form action="{{url}}"
     on:inserted="createDropzone(scope.element)"
     class="dropzone"></form>
 
 <div class="container">
-    <sp-file-list files:from="value">
+    <sp-file-list files:from="value"> 
         <can-template name="actions">
             <button type="button"
                 class="btn btn-warning {{#if(file.isDeleting)}}loading{{else}}tooltip tooltip-left{{/if}}" 

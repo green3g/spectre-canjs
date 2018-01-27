@@ -1,4 +1,3 @@
-import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 import parseFieldArray from '../parseFieldArray/parseFieldArray';
 const RESERVED = [
@@ -32,15 +31,14 @@ export default function mapToFields (defineMap) {
         const fType = typeof props[prop].type === 'function' ? props[prop].type.name : props[prop].type;
 
         // remove reserved properties if any
-        const clone = assign({}, props[prop]);
+        const clone = Object.assign({}, props[prop]);
         RESERVED.forEach((r) => {
             delete clone[r];
         });
 
-        return assign({}, {
+        return Object.assign({}, {
             name: prop,
-            type: 'string',
-            fieldType: 'text'
+            type: 'string'
         }, clone, {
             type: fType
         });

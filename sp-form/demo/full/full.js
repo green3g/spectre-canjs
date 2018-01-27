@@ -4,60 +4,17 @@ import 'spectre-canjs/sp-form/fields/sp-select-field/';
 import 'spectre-canjs/sp-form/fields/sp-dropzone-field/';
 import 'spectre-canjs/sp-form/fields/sp-subform-field/';
 import 'spectre-canjs/sp-form/fields/sp-check-field/';
-import fixture from 'can-fixture';
 import render from './full.stache';
-import DefineMap from 'can-define/map/map';
 import dev from 'can-util/js/dev/dev';
 import jsonMarkup from 'json-pretty-html';
 import './full.less';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 
-// this example uses fixtures to catch requests and simulate
-// file upload server
-function getBase64 (file) { 
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onerror = function (error) {
-        console.log('Error: ', error);
-    };
-    return reader;
-}
+// mock a server
+import './fixtures.js';
 
-fixture.delay = 2000;
-fixture({
-    method: 'POST',
-    url: '/upload'
-}, function (request, response, headers, ajaxSettings) {
-    try {
-        const fields = Array.from(request.data.entries());
-        const fileField = fields.filter((f) => {
-            return f[0] === 'uri';
-        });
-        const file = fileField[0][1];
-        const reader = getBase64(file);
-        reader.onload = function () {
-            response({
-                uri: reader.result,
-                id: file.name
-            }, {'content-type': 'application/json'});
-                
-        };
-    } catch (e) {
-        dev.warn(e);
-    }
-});
-
-fixture({
-    method: 'DELETE',
-    url: '/upload/{id}'
-}, function () {
-    return {
-        result: 'Success'
-    };
-});
-
-
+// a child sub-form object
 const ChildObject = DefineMap.extend('ChildDemoObject', {
     json_field_1: 'string',
     json_field_2: {
@@ -100,7 +57,6 @@ const ChildObject = DefineMap.extend('ChildDemoObject', {
         }
     }
 });
-
 
 const DemoObject = DefineMap.extend('DemoObject', {
     field1: {

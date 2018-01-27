@@ -1,17 +1,7 @@
 import Component from 'can-component';
-import DefineMap from 'can-define/map/';
-import DefineList from 'can-define/list/';
 import './sp-file-list.less';
 import view from './sp-file-list.stache';
-
-const img = new RegExp('(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|jpeg|gif|png)', 'i');
-
-export const ViewModel = DefineMap.extend({
-    files: DefineList,
-    isImage (file) {
-        return img.test(file.id);
-    }
-});
+import ViewModel from './ViewModel';
 
 export default Component.extend({
     tag: 'sp-file-list',

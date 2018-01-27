@@ -70,7 +70,6 @@
     "dropzone": "^5.3.0",
     "flatpickr": "^4.2.4",
     "font-awesome": "^4.7.0",
-    "object-assign": "^4.1.1",
     "spectre.css": "^0.5.0",
     "steal": "^1.6.4"
   },

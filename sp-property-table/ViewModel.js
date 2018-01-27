@@ -1,7 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
 import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
-import assign from 'object-assign';
 
 /**
  * @constructor sp-property-table.ViewModel ViewModel
@@ -108,5 +107,5 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
     }
 });
 
-assign(ViewModel.prototype, CanEvent);
+Object.assign(ViewModel.prototype, CanEvent);
 export default ViewModel;

@@ -1,7 +1,6 @@
 import data from './tasks.json';
 import fixture from 'can-fixture';
 import DefineList from 'can-define/list/list';
-import assign from 'object-assign';
 import dev from 'can-util/js/dev/dev';
 
 let index = 1000;
@@ -67,7 +66,7 @@ fixture({
     },
     'POST /tasks' (params, response) {
         const newId = index++;
-        const newObj = assign({
+        const newObj = Object.assign({
             id: newId
         }, params.data);
         data.push(newObj);
@@ -96,7 +95,7 @@ fixture({
         item = item[0];
         const idx = data.indexOf(item);
         if (idx !== -1) {
-            data[idx] = assign(item, params.data);
+            data[idx] = Object.assign(item, params.data);
             response(data);
         } else {
             response(404, 'Not Found');

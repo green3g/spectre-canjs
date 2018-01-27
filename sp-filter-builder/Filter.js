@@ -144,7 +144,7 @@ export const Filter = DefineMap.extend('Filter', {
                 alias: 'is',
                 inline: true,
                 placeholder: 'Choose an operator',
-                fieldTag: 'sp-select-field',
+                editTag: 'sp-select-field',
                 options: options
             }, fieldProps || {}));
         }
@@ -203,7 +203,7 @@ export const Filter = DefineMap.extend('Filter', {
                 inline: true,
                 name: this.name,
                 alias: 'Value',
-                fieldTag: 'sp-text-field',
+                editTag: 'sp-text-field',
                 placeholder: 'Enter a filter value'
             };
             return new Field(fieldProps);
@@ -215,7 +215,7 @@ export const Filter = DefineMap.extend('Filter', {
             if (typeof renderer === 'function') {
                 return renderer;
             }
-            return stache(`<${this.valueField.fieldTag} 
+            return stache(`<${this.valueField.editTag} 
                 properties:from="valueField" 
                 value:bind="value" />`);
         }

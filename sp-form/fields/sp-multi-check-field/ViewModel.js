@@ -1,15 +1,12 @@
-import FieldInputMap from 'spectre-canjs/sp-form/fields/sp-select-field/ViewModel';
+import SelectField from 'spectre-canjs/sp-form/fields/sp-select-field/ViewModel';
 import DefineList from 'can-define/list/list';
 
-export default FieldInputMap.extend('CheckboxMulti', {
+export default SelectField.extend('CheckboxMulti', {
     value: {
         Type: DefineList,
         Value: DefineList
     },
     onChange () {
-        this.dispatch('fieldchange', [{
-            value: this.value, 
-            name: this.properties.name
-        }]);
+        this.dispatch('fieldchange', [this]);
     }
 });

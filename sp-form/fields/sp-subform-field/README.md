@@ -3,7 +3,7 @@
 @parent sp-form.fields
 
 @option {String} fieldType This should be set to `subform`
-@option {can.Map} ObjectTemplate The object to use as the form object template
+@option {can.Map} Type The object to use as the form object template
 @option {Array<String|util/field/Field>} formFields The form fields to use in the form
 
 @description
@@ -17,7 +17,7 @@ objects as opposed to json strings.
 
 ```javascript
 {
-  ObjectTemplate: DefineMap.extend({
+  Type: DefineMap.extend({
     //object properties
     field1: 'string',
     field2: 'number'

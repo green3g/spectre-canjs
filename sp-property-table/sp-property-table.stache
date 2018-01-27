@@ -11,7 +11,12 @@
                 <tr>
                     <td>{{field.alias}}</td>
                     <td class="{{field.classes}}">
-                      {{>field.displayComponent}}
+                        {{!TODO: use slots}}
+                        {{#if(field.displayComponent}}
+                            {{>field.displayComponent}}
+                        {{else}}
+                            {{object[field.name]}}
+                        {{/if}}
                     </td>
                 </tr>
             {{/each}}

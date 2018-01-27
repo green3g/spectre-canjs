@@ -1,9 +1,7 @@
 import {makeSentenceCase} from '../string/string';
-import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 
-const displayComponent = stache('{{object[field.name]}}');
 
 /**
  * @constructor util/field/Field Field
@@ -40,91 +38,29 @@ export const Field = DefineMap.extend('Field', {
             return makeSentenceCase(this.name);
         }
     },
-    /**
-     * The type of the form field to use when editing this field. These types
-     * are defined in the `util/field.TEMPLATES` constant. This should be
-     * omitted if a custom template is used.
-     * @property {String} util/field/Field.props.fieldTag fieldTag
-     * @parent util/field/Field.props
-     */
-    fieldTag: {
-        type: 'string',
-        value: 'sp-text-field'
-    },
-    /**
-     * The form field template to use when editing this field in the sp-form. This should be
-     * a template renderer. By default, this value is set to the
-     * template for the given `fieldTag` property.
-     *
-     * The default renderers are provided as a constant, and may be referenced
-     * by passing the `field.fieldTag` parameter. For instance, passing
-     * `fieldTag: 'select'` will set `editComponent` to the registered
-     * template for a `sp-select-field` component.
-     *
-     * Custom templates can be created to add various field types and functionality
-     * to the form widget.
-     *
-     * The custom templates will have the following useful properties in their scope:
-     *  - `this`: (alias `.` is the current `this` object) the field properties object
-     *  - `setField`: the function to call when the field changes
-     *  - `object`: the form object
-     *  - `validationErrors`: An object with keys referencing the field name, and a string referencing a validation error
-     *
-     * For example:
-     * @property {Renderer} util/field/Field.props.editComponent editComponent
-     * @parent util/field/Field.props
-     */
-    editComponent: {
-        type: '*',
-        get (renderer) {
-            if (typeof renderer === 'function') {
-                return renderer;
-            }
-            return stache(`<${this.fieldTag} 
-                properties:from="." 
-                value:bind="../dirtyObject[name]" 
-                error:bind="../validationErrors[name]"
-                on:fieldchange="checkField(scope.arguments)" />`);
+    properties: {
+        set (props) {
+            this.assign(props);
+            return;
         }
     },
     /**
-     * @body
-     * Formats the field into a renderer in the list and details view of the
-     * data-admin component. The renderer has the scope of the
-     * sp-list-table or property table. The simplest displayComponent value would be
-     * the default, which is `object[field.name]`. (make sure to surround values with brackets)
-     *
-     * In this example,
-     * the scope of the table components provide access to each row as `object` and the
-     * current field as `field`.
-     *
-     * In addition, other properties can be accessed and combined by providing it
-     * `{{object.other_prop_name}}`. Custom helpers and other methods may also be
-     * registered and utilized. For instance, if we created a global helper
-     * `capitalize(property)` we could access it with `capitalize object.prop_name`.
-     *
-     * For a local helper, an additional method could be added to the field, like
-     * ```javascript
-     * {
-     * name: 'prop',
-     * alias: 'Property',
-     * capitalize: function(val){
-     *     return val.toUpperCase();
-     * }
-     * }
-     * ```
-     *
-     * In a stache template, this could be rendered using `field.capitalize(object.prop)`
-     * @property {Renderer} util/field/Field.props.displayTemlpate displayComponent
-     * @parent util/field/Field.props
+     * The field error string
+     * @property {String} FieldInputMap.props.error error
+     * @parent FieldInputMap.props
      */
-    displayComponent: {
-        value: function () {
-            return displayComponent;
-        },
-        type (val) {
-            if (typeof val === 'string') {
-                return stache(val);
+    error: 'string',
+    /**
+     * The current field value
+     * @property {Object} FieldInputMap.props.value value
+     * @parent FieldInputMap.props
+     */
+    value: {
+        value: '',
+        type: '*',
+        set (val) {
+            if (this.value !== val) {
+                this.dispatch('fieldchange', [this]);
             }
             return val;
         }
@@ -204,7 +140,18 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field/Field.props.classes classes
      * @parent util/field/Field.props
      */
-    classes: 'string'
+    classes: 'string',
+
+    // placeholder props to overwrite the display template of edit or table components
+    editComponent: {},
+    displayComponent: {}
+    /**
+     * If field component implements this method, it will be called 
+     * when the component is inserted, with the input element
+     * It can be used to customize the input, like adding a date picker
+     * 
+     */
+    // onInsert (element) {flatpicker(element);}
 });
 
 

@@ -1,5 +1,4 @@
 import parseFieldArray from './parseFieldArray';
-import Field from '../Field';
 let fields;
 
 afterEach(() => {
@@ -14,6 +13,6 @@ test('parseFieldArray', () => {
 
     expect(fields.length).toEqual(2);
     fields.forEach((f) => {
-        expect(f instanceof Field).toBeTruthy();
+        expect(typeof f).toEqual('object');
     });
 });

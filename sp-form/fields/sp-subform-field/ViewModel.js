@@ -1,5 +1,5 @@
 import DefineMap from 'can-define/map/map';
-import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Base from 'spectre-canjs/util/field/Field';
 import parseFieldArray from 'spectre-canjs/util/field/parseFieldArray/parseFieldArray';
 import mapToFields from 'spectre-canjs/util/field/mapToFields/mapToFields';
 
@@ -22,11 +22,12 @@ export default Base.extend('SubformField', {
      */
     value: {
         Value: DefineMap,
+        Type: DefineMap,
         set (val) {
             if (this.value !== val) {
                 this.dispatch('fieldchange', [{
                     value: val,
-                    name: this.properties.name
+                    name: this.name
                 }]);
             }
             return val;
@@ -41,10 +42,10 @@ export default Base.extend('SubformField', {
      */
     formFields: {
         get () {
-            if (this.properties.fields && this.properties.fields.length) {
-                return parseFieldArray(this.properties.fields);
+            if (this.fields && this.fields.length) {
+                return parseFieldArray(this.fields);
             }
-            return mapToFields(this.properties.ObjectTemplate);
+            return mapToFields(this.Type);
         }
     },
     /**
@@ -59,6 +60,6 @@ export default Base.extend('SubformField', {
      */
     saveField ([, props]) {
         this.value.assign(props.dirty.get());
-        this.dispatch('fieldchange', [this.value, this.properties]);
+        this.dispatch('fieldchange', [this]);
     }
 });

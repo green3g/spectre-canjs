@@ -1,0 +1,14 @@
+<div class="container" style="width: 400px; margin:0 auto;">
+    <sp-form object:from="current" on:submit="onSubmit(scope.arguments)" showSaving:from="isSaving"></sp-form>
+    <div class="divider" />
+    {{#if(tasks.length)}}
+        <h5>Current Tasks ({{tasks.hours}} Hours):</h5>
+        {{#each(tasks)}}
+            <p><strong>{{name}}</strong> - Hours: {{hours}}</p>
+        {{/each}}
+        <div class="btn-group btn-group-block">
+            <button class="btn btn-primary" on:click="persist()"><i class="fa fa-hdd-o"></i> Store Tasks</button>
+            <button class="btn btn-primary" on:click="clear()"><i class="fa fa-trash"></i> Delete Tasks</button>
+        </div>
+    {{/if}}
+</div>

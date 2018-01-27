@@ -1,4 +1,4 @@
-import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Base from 'spectre-canjs/util/field/Field';
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
 import dev from 'can-util/js/dev/dev';
@@ -35,8 +35,8 @@ export default Base.extend('FileField', {
      */
     /**
      * The current field value
-     * @property {Object} FieldInputMap.props.value value
-     * @parent FieldInputMap.props
+     * @property {Object} Field.props.value value
+     * @parent Field.props
      */
     value: {
         Type: FileList,
@@ -73,7 +73,7 @@ export default Base.extend('FileField', {
      */
     onChange (element) {
         if (element.files) {
-            if (!this.properties.multiple && this.value.length) {
+            if (!this.multiple && this.value.length) {
                 this.removeFile(this.value[0]).then(() => {
                     this.uploadFiles(element.files);
                 }).catch((error) => {
@@ -99,7 +99,7 @@ export default Base.extend('FileField', {
         this.state = new Promise((resolve, reject) => {
 
             const req = new XMLHttpRequest();
-            req.open('POST', this.properties.url, true);
+            req.open('POST', this.url, true);
             req.onload = function () {
                 if (req.status === 200) {
                     resolve(JSON.parse(req.responseText));
@@ -130,7 +130,7 @@ export default Base.extend('FileField', {
                 this.value.push(file);
             });
             
-            this.dispatch('fieldchange', [this.value, this.properties]);
+            this.dispatch('fieldchange', [this]);
         } else {
             // Handle errors here
             dev.warn('ERRORS: ', data.error);
@@ -174,7 +174,7 @@ export default Base.extend('FileField', {
         file.removing = true;
         this.state = new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
-            req.open('DELETE', this.properties.url, true);
+            req.open('DELETE', this.url, true);
             req.onload = function () {
                 if (req.status === 200) {
                     resolve(JSON.parse(req.responseText));
@@ -198,7 +198,10 @@ export default Base.extend('FileField', {
      */
     removeSuccess (file) {
         this.value.splice(this.value.indexOf(file), 1);
-        this.dispatch('fieldchange', [this.value, this.properties]);
+        this.dispatch('fieldchange', [{
+            value: this.value, 
+            name: this.name
+        }]);
     },
     /**
      * Called if an error occurs deleting the file. If the response is a 404,

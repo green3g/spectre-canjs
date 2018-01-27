@@ -1,5 +1,4 @@
 <fieldset class="mt-10">
-  {{#with(properties)}}
     <legend>{{alias}}</legend>
     {{#each options opt=value}}
       <div class="form-group {{#if(error)}}has-error{{/if}}">
@@ -9,7 +8,6 @@
       </label>
       </div>
     {{/each}}
-  {{/with}}
   {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 
 </fieldset>

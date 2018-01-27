@@ -1,6 +1,5 @@
 <div class="form-group {{#if error}}has-error{{/if}}">
 
-    {{#with(properties)}}
     <ul class="menu">
         <li class="menu-item">
             <div class="input-group">
@@ -36,6 +35,5 @@
             {{/each}}
         {{/if}}
     </ul>
-    {{/with}}
 
 </div>

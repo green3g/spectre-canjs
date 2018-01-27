@@ -1,6 +1,5 @@
 import DefineMap from 'can-define/map/map';
 import CanEvent from 'can-event';
-import assign from 'object-assign';
 
 /**
  * @constructor sp-toast.ViewModel ViewModel
@@ -139,5 +138,5 @@ const ViewModel = DefineMap.extend('ToastItem', {
     }
 });
 
-assign(ViewModel, CanEvent);
+Object.assign(ViewModel, CanEvent);
 export default ViewModel;

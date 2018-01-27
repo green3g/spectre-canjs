@@ -1,42 +1,23 @@
+
 <div class="form-group {{#if error}}has-error{{/if}}">
-    {{#with(properties)}}
-        {{#if inline}}
-            {{#if textarea}}
-                <textarea on:el:keyup="beforeSubmit(scope.element,scope.event)" 
-                    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
-                    class="form-control form-input" 
-                    name:from="name" 
-                    {{#if ui}}on:el:inserted="initElementUI(scope.element)"{{/if}}
-                    value:bind="root.value"></textarea>
-            {{else}}
-                <input on:el:keyup="beforeSubmit(scope.element,scope.event)" 
-                    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
-                    type="{{#if textType}}{{textType}}{{else}}text{{/if}}" 
-                    class="form-control form-input" 
-                    name:from="name" 
-                    {{#if ui}}on:el:inserted="initElementUI(scope.element)"{{/if}}
-                    value:bind="root.value" />
-            {{/if}}
-        {{else}}
-            <label class="form-label" for="{{name}}">{{alias}}</label>
-            {{#if textarea}}
-                <textarea 
-                    on:el:keyup="beforeSubmit(scope.element,scope.event)" 
-                    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
-                    class="form-control form-input" 
-                    name="{{name}}" 
-                    {{#if ui}}on:el:inserted="initElementUI(scope.element)"{{/if}}
-                    el:value:bind="root.value"></textarea>
-            {{else}}
-                <input on:el:keyup="beforeSubmit(scope.element,scope.event)" 
-                    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
-                    type="{{#if textType}}{{textType}}{{else}}text{{/if}}" 
-                    class="form-control form-input" 
-                    name="{{name}}" 
-                    {{#if ui}}on:el:inserted="initElementUI(scope.element)"{{/if}}
-                    el:value:bind="root.value" />
-            {{/if}}
-        {{/if}}
-    {{/with}}
-    {{#if error}}<span class="form-input-hint">{{ error}}</span>{{/if}}
+    {{#unless(inline)}}
+        <label class="form-label" for="{{name}}">{{alias}}</label>
+    {{/unless}}
+    {{#if(textarea)}}
+        <textarea on:el:keyup="beforeSubmit(scope.element,scope.event)" 
+            {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
+            class="form-control form-input" 
+            name:from="name" 
+            on:el:inserted="onInsert(scope.element)"
+            value:bind="root.value"></textarea> 
+    {{else}}
+        <input on:el:keyup="beforeSubmit(scope.element,scope.event)" 
+            {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
+            type="{{textType}}" 
+            class="form-control form-input" 
+            name:from="name" 
+            on:el:inserted="onInsert(scope.element)"
+            value:bind="root.value" />
+    {{/if}}
+    {{#if error}}<span class="form-input-hint">{{error}}</span>{{/if}}
 </div>

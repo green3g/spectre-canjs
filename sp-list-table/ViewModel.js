@@ -2,7 +2,6 @@ import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import CanEvent from 'can-event';
-import assign from 'object-assign';
 import makeArray from 'can-util/js/make-array/make-array';
 
 /**
@@ -226,5 +225,5 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
         });
     }
 });
-assign(ViewModel.prototype, CanEvent);
+Object.assign(ViewModel.prototype, CanEvent);
 export default ViewModel;

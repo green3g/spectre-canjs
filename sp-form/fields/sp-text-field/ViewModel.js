@@ -1,6 +1,5 @@
-import $ from 'can-jquery';
 import canEvent from 'can-event';
-import Base from 'spectre-canjs/util/field/base/FieldInputMap';
+import Field from 'spectre-canjs/util/field/Field';
 
 /**
  * @constructor sp-form/fields/sp-text-field.ViewModel ViewModel
@@ -9,7 +8,12 @@ import Base from 'spectre-canjs/util/field/base/FieldInputMap';
  *
  * @description A `<sp-text-field />` component's ViewModel
  */
-export default Base.extend('TextField', {
+export default Field.extend('TextField', {
+    /**
+     * The type of input to create, for example input type="number".
+     * The default is 'text'
+     */
+    textType: {value: 'text', type: 'string'},
     /**
      * Checks for the enter keypress and triggers a change event on the input
      * The enter key press triggers a submit event on the form, but before the
@@ -25,9 +29,5 @@ export default Base.extend('TextField', {
             canEvent.trigger(element, 'change');
         }
         return true;
-    },
-    initElementUI (element) {
-        const props = this.properties;
-        $(element)[props.ui](props.uiOptions);
     }
 });

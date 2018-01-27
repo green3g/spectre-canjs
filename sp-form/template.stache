@@ -1,9 +1,9 @@
 {{#if(object)}}
 
   <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:el:submit="submitForm">
-      <can-slot this:from="this" name="fields">
-        {{#each(fields)}}
-          {{>editComponent}}
+      <can-slot this:bind="this" name="fields">
+        {{#each(fields, field=value)}}
+          {{>getEditComponent}}
         {{/each}}
       </can-slot>
 

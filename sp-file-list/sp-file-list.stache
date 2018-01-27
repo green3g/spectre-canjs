@@ -1,0 +1,22 @@
+{{#if(files.length)}}
+{{#each(files, file=value)}}
+<div class="tile">
+    <div class="tile-icon">
+    {{#if(scope.root.isImage(file))}}
+    <figure class="avatar avatar-lg">
+        <img src="{{file.uri}}" alt="Upload">
+    </figure>
+    {{else}}
+        <i class="fa fa-3x fa-file"></i>
+    {{/if}}
+    </div>
+    <div class="tile-content">
+    <p class="tile-subtitle text-gray text-ellipsis">{{file.id}}</p>
+    </div>
+    <div class="tile-action">
+        <can-slot name="actions" file:bind="file"></can-slot>
+    </div>
+</div>
+<div class="divider"></div>
+{{/each}}
+{{/if}}

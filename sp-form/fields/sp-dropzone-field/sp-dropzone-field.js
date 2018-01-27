@@ -63,7 +63,7 @@ export const ViewModel = Field.extend('DropZoneField', {
         file.isDeleting = true;
         axios.delete(this.url + '/' + file.id, {
             headers: this.headers
-        }).then((result) => {
+        }).then(() => {
             // remove the file from our store on successful delete
             this.value.splice(this.value.indexOf(file), 1);
             this.dispatch('fieldchange', [this]);

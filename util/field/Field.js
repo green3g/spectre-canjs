@@ -42,7 +42,6 @@ export const Field = DefineMap.extend('Field', {
     },
     properties: {
         set (props) {
-            console.log(props);
             this.assign(props);
             return;
         }

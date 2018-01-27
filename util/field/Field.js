@@ -1,9 +1,7 @@
 import {makeSentenceCase} from '../string/string';
-import stache from 'can-stache';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 
-const displayComponent = stache('{{object[field.name]}}');
 
 /**
  * @constructor util/field/Field Field
@@ -47,17 +45,6 @@ export const Field = DefineMap.extend('Field', {
         }
     },
     /**
-     * The type of the form field to use when editing this field. These types
-     * are defined in the `util/field.TEMPLATES` constant. This should be
-     * omitted if a custom template is used.
-     * @property {String} util/field/Field.props.editTag editTag
-     * @parent util/field/Field.props
-     */
-    editTag: {
-        type: 'string',
-        value: 'sp-text-field'
-    },
-    /**
      * The field error string
      * @property {String} FieldInputMap.props.error error
      * @parent FieldInputMap.props
@@ -74,48 +61,6 @@ export const Field = DefineMap.extend('Field', {
         set (val) {
             if (this.value !== val) {
                 this.dispatch('fieldchange', [this]);
-            }
-            return val;
-        }
-    },
-    /**
-     * @body
-     * Formats the field into a renderer in the list and details view of the
-     * data-admin component. The renderer has the scope of the
-     * sp-list-table or property table. The simplest displayComponent value would be
-     * the default, which is `object[field.name]`. (make sure to surround values with brackets)
-     *
-     * In this example,
-     * the scope of the table components provide access to each row as `object` and the
-     * current field as `field`.
-     *
-     * In addition, other properties can be accessed and combined by providing it
-     * `{{object.other_prop_name}}`. Custom helpers and other methods may also be
-     * registered and utilized. For instance, if we created a global helper
-     * `capitalize(property)` we could access it with `capitalize object.prop_name`.
-     *
-     * For a local helper, an additional method could be added to the field, like
-     * ```javascript
-     * {
-     * name: 'prop',
-     * alias: 'Property',
-     * capitalize: function(val){
-     *     return val.toUpperCase();
-     * }
-     * }
-     * ```
-     *
-     * In a stache template, this could be rendered using `field.capitalize(object.prop)`
-     * @property {Renderer} util/field/Field.props.displayTemlpate displayComponent
-     * @parent util/field/Field.props
-     */
-    displayComponent: {
-        value: function () {
-            return displayComponent;
-        },
-        type (val) {
-            if (typeof val === 'string') {
-                return stache(val);
             }
             return val;
         }
@@ -195,7 +140,11 @@ export const Field = DefineMap.extend('Field', {
      * @property {String} util/field/Field.props.classes classes
      * @parent util/field/Field.props
      */
-    classes: 'string'
+    classes: 'string',
+
+    // placeholder props to overwrite the display template of edit or table components
+    editComponent: {},
+    displayComponent: {}
     /**
      * If field component implements this method, it will be called 
      * when the component is inserted, with the input element

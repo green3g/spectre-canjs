@@ -1,5 +1,4 @@
 import parseFieldArray from './parseFieldArray';
-import Field from '../Field';
 let fields;
 
 afterEach(() => {

@@ -4,7 +4,7 @@ dist/*
 # docs and demos
 docs/*
 docs-site/*
-**/demo/*.js
+**/demo/**/*.js
 coverage/*
 
 # build scripts

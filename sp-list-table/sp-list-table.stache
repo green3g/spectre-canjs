@@ -35,7 +35,13 @@
         </td>
         {{/if}} {{#each fields field=value}}
         <td {{#if classes}}class="{{classes}}" {{/if}}>
-          {{ >field.displayComponent}}
+        
+          {{!TODO: use slots}}
+          {{#if(field.displayComponent}}
+            {{>field.displayComponent}}
+          {{else}}
+            {{object[field.name]}}
+          {{/if}}
         </td>
         {{/each}}
       </tr>

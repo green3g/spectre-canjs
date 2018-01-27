@@ -2,11 +2,13 @@ import stache from 'can-stache';
 
 // cache pre-compiled templates
 export const components = {
-    edit: {},
-    display: {}
+    edit: {}
 };
 
 export function getEditComponent (field) {
+    if (typeof field.editComponent === 'function') {
+        return field.editComponent;
+    }
     const tag = field.editTag || 'sp-text-field';
     if (!components.edit[tag]) {
         components.edit[tag] = stache(`<${tag} properties:from="." 
@@ -18,11 +20,3 @@ export function getEditComponent (field) {
     return components.edit[tag];
 }
 
-export function getDisplayComponent (field) {
-    const tag = field.displayTag || 'default';
-    if (!components.display[tag]) {
-        components.display[tag] = stache('{{object[field.name]}}');
-    }
-
-    return components.display[tag];
-}

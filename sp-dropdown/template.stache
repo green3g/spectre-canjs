@@ -1,8 +1,13 @@
 <div class="dropdown-wrapper">
     {{#each primaryButtons button=value}}
-      <a href="#" on:el:click="onPrimaryClick(button, %event)" class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
+      <a href="#" 
+        on:el:click="onPrimaryClick(button, scope.event)" 
+        class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
     {{/each}}
-    <a href="#" class="{{buttonClass}}" role="button" aria-haspopup="true" aria-expanded="false" on:el:click="toggle(%event)">
+    <a href="#" 
+        class="{{buttonClass}}" role="button" 
+        aria-haspopup="true" aria-expanded="false" 
+        on:el:click="toggle(scope.event)">
       {{text}} <i class="{{iconClass}}"></i>
     </a>
 

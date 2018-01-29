@@ -62,7 +62,7 @@
     "can-ajax": "^1.1.4",
     "can-assign": "^1.1.1",
     "can-component": "^3.3.8",
-    "can-define": "^1.5.4",
+    "can-define": "^1.5.5",
     "can-event": "^3.7.6",
     "can-jquery": "^3.2.5",
     "can-namespace": "^1.0.0",

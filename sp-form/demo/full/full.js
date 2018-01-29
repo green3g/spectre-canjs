@@ -64,6 +64,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
         type: 'string', 
         value: 'Default Value',
         name: 'field1',
+        alias: 'Please enter at least 50 characters',
         validate (props) {
 
             // since this function is run whenever field1 changes, we can use 

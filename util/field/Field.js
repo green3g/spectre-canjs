@@ -26,7 +26,15 @@ export const Field = DefineMap.extend('Field', {
      * @type {String} 
      * @memberof Field.prototype
      */
-    name: 'string',
+    name: {
+        type: 'string',
+        set (name) {
+            if (!this.alias && name) {
+                this.alias = makeSentenceCase(this.name);
+            }
+            return name;
+        }
+    },
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
@@ -34,13 +42,7 @@ export const Field = DefineMap.extend('Field', {
      * @memberof Field.prototype
      */
     alias: {
-        type: 'string',
-        get (alias) {
-            if (alias) {
-                return alias;
-            }
-            return makeSentenceCase(this.name);
-        }
+        type: 'string'
     },
     properties: {
         set (props) {
@@ -136,7 +138,10 @@ export const Field = DefineMap.extend('Field', {
     classes: 'string',
 
     // placeholder props to overwrite the display template of edit or table components
-    editTag: {value: 'sp-text-field', type: 'string'},
+    editTag: {
+        value: 'sp-text-field', 
+        type: 'string'
+    },
     editComponent: {
         get (comp) {
             

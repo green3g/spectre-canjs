@@ -255,10 +255,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     getEditComponent (scope, options) {
         const field = scope._context.value;
         const helpers = scope.templateContext.helpers;
-        // use edit component if its a renderer
-        if (typeof field.editComponent === 'function') {
-            return field.editComponent;
-        }
 
         return getEditComponent(field)(scope, helpers, options.nodeList);
     }

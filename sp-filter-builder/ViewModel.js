@@ -104,11 +104,11 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      * Adds a new filter or set of filters to the list of filters in this widget.
      * <br />TODO: A `filterFactory` may be defined on the field which may return one filter or an array of
      * filters.
-     * @param  {string} arguments the array of arguments from the fieldchange event
+     * @param  {string} args the array of arguments from the fieldchange event
      * @return {Boolean} returns false to prevent event propagation from links
      */
     addFilter () {
-        const [, name] = arguments;
+        const name = this.fieldValue;
 
         if (!name || name === '') {
             return false;

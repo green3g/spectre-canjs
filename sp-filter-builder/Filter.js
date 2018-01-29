@@ -193,7 +193,7 @@ export const Filter = DefineMap.extend('Filter', {
     valueField: {
         serialize: false,
         get () {
-            const fieldProps = this.field ? assign(assign({}, this.field), {inline: true, textarea: false}) : {
+            const fieldProps = this.field ? Object.assign({editTag: 'sp-text-field'}, this.field.get(), {inline: true, textarea: false}) : {
                 inline: true,
                 name: this.name,
                 alias: 'Value',

@@ -3,12 +3,17 @@ import stache from 'can-stache';
 import parseFieldArray from 'spectre-canjs/util/field/parseFieldArray/parseFieldArray';
 import DefineMap from 'can-define/map/map';
 import jsonMarkup from 'json-pretty-html';
-import '../../sp-form/demo/full.less';
+import '../../sp-form/demo/full/full.less';
+import 'spectre-canjs/sp-form/fields/sp-check-field/sp-check-field';
 
 const render = stache.from('demo-html');
-document.body.appendChild(render(new DefineMap({
+document.body.appendChild(render({
     filters: null,
-    fields: parseFieldArray(['field_1', 'field_2', 'field_3', { filter: false, name: 'excluded'}]),
+    fields: [{name: 'field_1', type: 'number', textType: 'number'}, 'field_2', {
+        name: 'field_3',
+        editTag: 'sp-check-field',
+        type: 'boolean'
+    }, { filter: false, name: 'excluded'}],
     disableCreate: false,
     stringify (filters) {
         if(filters){
@@ -29,7 +34,7 @@ document.body.appendChild(render(new DefineMap({
         filter.visible = !filter.visible;
       });
     }
-})));
+}));
 
 
 window.DEMO_SOURCE = `

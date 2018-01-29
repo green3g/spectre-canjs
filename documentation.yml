@@ -1,0 +1,10 @@
+toc:
+  - Components
+  - name: "Components"
+    description: CanJS custom elements
+  - sp-accordion
+  - sp-accordion-page
+  - sp-dropdown
+  - sp-form
+  - sp-tab-page
+  - sp-tab-container

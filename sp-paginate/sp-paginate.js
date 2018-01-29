@@ -1,6 +1,6 @@
 import Component from 'can-component';
-import template from './template.stache!';
-import './sp-paginate.less!';
+import template from './template.stache';
+import './sp-paginate.less';
 import ViewModel from './ViewModel';
 
 export default Component.extend({

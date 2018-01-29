@@ -1,6 +1,6 @@
 
 import Component from 'can-component';
-import template from './sp-text-field.stache!';
+import template from './sp-text-field.stache';
 import ViewModel from './ViewModel';
 
 

@@ -1,4 +1,4 @@
-import template from './sp-confirm.stache!';
+import template from './sp-confirm.stache';
 import Component from 'can-component';
 import ViewModel from './ViewModel';
 

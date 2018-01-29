@@ -2,14 +2,30 @@ import NavPageComponent from '../sp-tab-page/sp-tab-page';
 import NavComponent from '../sp-tab-container/sp-tab-container';
 import page from './sp-accordion-page.stache';
 import container from './sp-accordion.stache';
-import './accordion.less';
+import './sp-accordion.less';
 
+/**
+ * A form component useful for validation, data updating, and dirty checking
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * @module sp-accordion-page 
+ * @extends sp-tab-page
+ * @example 
+ * <sp-accordion-page /> 
+ */
 export const AccordionPageComponent = NavPageComponent.extend({
-    tag: 'sp-sp-accordion-page',
+    tag: 'sp-accordion-page',
     view: page
 });
 
+/**
+ * A form component useful for validation, data updating, and dirty checking
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * @module sp-accordion
+ * @extends sp-tab-container
+ * @example 
+ * <sp-accordion />
+ */
 export const AccordionComponent = NavComponent.extend({
     tag: 'sp-accordion',
     view: container
-});
+}); 

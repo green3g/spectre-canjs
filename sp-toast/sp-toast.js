@@ -1,5 +1,5 @@
-import template from './sp-toast.stache!';
-import './sp-toast.less!';
+import template from './sp-toast.stache';
+import './sp-toast.less';
 import Component from 'can-component';
 import ViewModel from './ViewModel';
 

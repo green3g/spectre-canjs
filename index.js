@@ -1,18 +1,24 @@
 import 'spectre.css/dist/spectre.css';
 import 'font-awesome/css/font-awesome.css';
-import 'spectre-canjs/sp-form/';
-import 'spectre-canjs/sp-form/fields/sp-text-field/';
-import 'spectre-canjs/sp-form/fields/sp-select-field/';
-import 'spectre-canjs/sp-form/fields/sp-check-field/';
-import 'spectre-canjs/sp-form/fields/sp-multi-check-field/';
-import 'spectre-canjs/sp-form/fields/sp-subform-field/';
-import 'spectre-canjs/util/field/Field'; 
-
-// !steal-remove-start
-import reload from 'live-reload';
-reload(() => {
-    for (let i = 0; i < document.body.children.length; i ++) { 
-        document.body.children[i].remove(); 
-    }
-});
-// !steal-remove-end
+import './sp-form/sp-form';
+import './sp-form/fields/sp-text-field/sp-text-field';
+import './sp-form/fields/sp-select-field/sp-select-field';
+import './sp-form/fields/sp-check-field/sp-check-field';
+import './sp-form/fields/sp-multi-check-field/sp-multi-check-field';
+import './sp-form/fields/sp-subform-field/sp-subform-field';
+import './util/field/Field'; 
+import './sp-accordion/sp-accordion';
+import './sp-confirm/sp-confirm';
+import './sp-dropdown/sp-dropdown';
+import './sp-file-list/sp-file-list';
+import './sp-filter/sp-filter';
+import './sp-filter-builder/sp-filter-builder';
+import './sp-list-table/sp-list-table';
+import './sp-menu/sp-menu';
+import './sp-modal/sp-modal';
+import './sp-paginate/sp-paginate';
+import './sp-property-table/sp-property-table';
+import './sp-tab-container/sp-tab-container';
+import './sp-tab-page/sp-tab-page';
+import './sp-toast/sp-toast';
+import './sp-toast-container/sp-toast-container';

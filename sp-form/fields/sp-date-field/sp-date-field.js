@@ -3,8 +3,8 @@ import Component from 'can-component';
 
 import '../sp-select-field/sp-select-field';
 
-import template from './sp-date-field.stache!';
-import './sp-date-field.less!';
+import template from './sp-date-field.stache';
+import './sp-date-field.less';
 
 
 // !steal-remove-start

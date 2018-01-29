@@ -2,7 +2,7 @@ import Component from 'can-component';
 import ViewModel from './ViewModel';
 
 import './sp-file-field.less';
-import template from './sp-file-field.stache!';
+import template from './sp-file-field.stache';
 
 
 // !steal-remove-start

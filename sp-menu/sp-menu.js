@@ -1,8 +1,8 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import template from './sp-menu.stache!';
-import './sp-menu.less!';
+import template from './sp-menu.stache';
+import './sp-menu.less';
 import {TYPES} from './constants';
 
 export const NavPage = DefineMap.extend('NavPage', {

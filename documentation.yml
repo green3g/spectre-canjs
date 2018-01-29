@@ -1,15 +1,12 @@
 toc:
   - Components
-  - name: "Components"
-    description: CanJS custom elements
+  - name: "UI Components"
+    description: "Components for building user interfaces"
   - sp-accordion
   - sp-accordion-page
+  - sp-confirm
   - sp-dropdown
-  - sp-form
   - sp-file-list
-  - sp-filter
-  - sp-filter-builder
-  - sp-list-table
   - sp-menu
   - sp-modal
   - sp-paginate
@@ -17,3 +14,33 @@ toc:
   - sp-tab-container
   - sp-toast
   - sp-toast-container
+
+  - Data
+  - name: "Data components"
+    description: "Components for managing and viewing data"
+  - sp-filter
+  - sp-filter-builder
+  - sp-list-table
+  - sp-property-table
+
+  - Field Components
+  - name: "Field/Form Components"
+    description: "Field components for modifying and creating data. Use with sp-form."
+  - sp-form
+  - sp-check-field
+  - sp-date-field
+  - sp-dropzone-field
+  - sp-file-field
+  - sp-multi-check-field
+  - sp-select-field
+  - sp-subform-field
+  - sp-text-field
+
+  - Utilities
+  - name: "Utilities"
+    description: "Utility functions and classes"
+  - Field
+  - FieldIteratorMap
+  - mapToFields
+  - parseFieldArray  
+  - makeSentenceCase

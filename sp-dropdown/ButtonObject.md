@@ -1,5 +1,5 @@
 @typedef {Object} sp-dropdown.ButtonObject ButtonObject
-@parent sp-dropdown.types
+@memberof sp-dropdown.types
 @option {String} text The title to display on the button
 @option {Function(ButtonObject)} onClick A click handler to call with the object.
 @option {String} iconClass The class to use for the button icon

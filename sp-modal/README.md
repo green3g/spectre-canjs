@@ -1,6 +1,6 @@
 <!--
 @module {can.Component} sp-modal <sp-modal />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 -->
 
 ## Description

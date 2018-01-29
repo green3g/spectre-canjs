@@ -5,9 +5,23 @@ import DefineList from 'can-define/list/list';
 
 /**
  * the select option type - used to display <option> tags values/labels
+ * @class SelectOption
+ * @extends Field
+ * @memberof sp-select-field
  */
 export const SelectOption = DefineMap.extend('SelectOption', {
+    /** @lends sp-select-field.SelectOption.prototype */
+    /**
+     * The value to set when option is selected
+     * @type {*}
+     * @memberof sp-select-field.SelectOption.prototype
+     */
     value: 'string',
+    /**
+     * The label to display to the user
+     * @type {String} 
+     * @memberof sp-select-field.SelectOption.prototype
+     */
     label: {
         type: 'string',
         get (label) {
@@ -19,29 +33,35 @@ export const SelectOption = DefineMap.extend('SelectOption', {
     }
 });
 
-/**
- * list to coerce select options
- */
 export const SelectOptionList = DefineList.extend('SelectOptionList', {
     '#': SelectOption
 });
 
 
 /**
- * @constructor sp-form/fields/sp-select-field.ViewModel ViewModel
- * @parent sp-form/fields/sp-select-field
- * @group sp-select-field.ViewModel.props Properties
- *
- * @description A `<sp-select-field />` component's ViewModel
+ * A `<sp-select-field />` component's ViewModel
+ * @class ViewModel
+ * @memberof sp-select-field
  */
 export default Field.extend('SelectField', {
+    /** @lends sp-select-field.ViewModel.prototype */
     /**
-     * @prototype
+     * The default label when no items are selected
+     * @type {String}
+     * @memberof sp-select-field.ViewModel.prototype
      */
     defaultLabel: {type: 'string', value: 'Choose a value...'},
+    /**
+     * The array of options to display in the dropdown
+     * @type {Array<sp-select-field.SelectOption>}
+     * @memberof sp-select-field.ViewModel.prototype
+     */
     options: {Type: SelectOptionList, Value: SelectOptionList},
-
-    // a promise that resolves to options
+    /**
+     * A promise that resolves to the array of options
+     * @type {Promise<Array>}
+     * @memberof sp-select-field.ViewModel.prototype
+     */
     optionsPromise: {
         set (promise) {
             if (promise) {
@@ -54,8 +74,6 @@ export default Field.extend('SelectField', {
     },
     /**
      * Determines whether a value is the currently selected value
-     * @function isSelected
-     * @signature
      * @param {String} value The value to check
      * @return {Boolean} whether or not it is selected
      */

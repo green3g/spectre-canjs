@@ -1,5 +1,5 @@
 @typedef {Object} sp-form.FieldChangeEventObject FieldChangeEventObject
-@parent sp-form.types
+@memberof sp-form.types
 @option {String} name The name of the field
 @option {Any} value The current value of the field, this can be any type
 @option {Object} current (sp-form event only) The current saved values that were passed to the form. This has not been updated yet from any form changes that occurred since the last submit

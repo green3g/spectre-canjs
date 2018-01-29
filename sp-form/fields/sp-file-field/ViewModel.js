@@ -23,20 +23,17 @@ export const FileList = DefineList.extend({
 });
 
 /**
- * @constructor sp-form/fields/sp-file-field.ViewModel ViewModel
- * @parent sp-form/fields/sp-file-field
- * @group sp-file-field.ViewModel.props Properties
- *
- * @description A `<sp-file-field />` component's ViewModel. <mark>This is experimental!</mark>
+ * A `<sp-file-field />` component's ViewModel. <mark>This is experimental!</mark>
+ * @class ViewModel ViewModel
+ * @memberof sp-file-field
+ * @extends Field
  */
 export default Base.extend('FileField', {
-    /**
-     * @prototype
-     */
+    /** @lends sp-file-field.ViewModel.prototype */
     /**
      * The current field value
-     * @property {Object} Field.props.value value
-     * @parent Field.props
+     * @type {Object}
+     * @memberof sp-file-field.ViewModel.prototype
      */
     value: {
         Type: FileList,
@@ -44,8 +41,8 @@ export default Base.extend('FileField', {
     },
     /**
      * The current state of any pending file uploads
-     * @property {Promise} sp-file-field.ViewModel.props.state state
-     * @parent sp-file-field.ViewModel.props
+     * @type {Promise}
+     * @memberof sp-file-field.ViewModel.prototype
      */
     state: {
         value: {
@@ -56,8 +53,8 @@ export default Base.extend('FileField', {
      * The current progress of a set of file uploads.
      * This is not currently implemented and is a placeholder for
      * potential future enhancements.
-     * @property {Number} sp-file-field.ViewModel.props.progress progress
-     * @parent sp-file-field.ViewModel.props
+     * @type {Number}
+     * @memberof sp-file-field.ViewModel.prototype
      */
     progress: {
         type: 'number',
@@ -67,8 +64,6 @@ export default Base.extend('FileField', {
      * Called when the element's value is changed. This automatically triggers
      * the existing files to be deleted if multiple uploads are not allowed and
      * a file upload via post to the viewmodel's url with one or many files.
-     * @function onChange
-     * @signature
      * @param {DomElement} element the file input element
      */
     onChange (element) {
@@ -86,8 +81,6 @@ export default Base.extend('FileField', {
     },
     /**
      * Uploads an array of files to the viewmodel's url via post
-     * @function uploadFiles
-     * @signature
      * @param {Array<File>} files the array of files to upload
      */
     uploadFiles (files) {
@@ -115,8 +108,6 @@ export default Base.extend('FileField', {
     /**
      * Called when the upload successfully completes, and adds the uploaded
      * file to the array of current files
-     * @function uploadSuccess
-     * @signature
      * @param {Object} data the upload data, should contain an `uploads` property
      * which is an array of file paths
      */
@@ -139,7 +130,6 @@ export default Base.extend('FileField', {
     /**
      * Called when an error occurs during an upload. Logs an error message
      * when in dev mode
-     * @function uploadError
      * @param {Object} response the xhr response object
      * @param {String} textStatus the status text
      * @param {Error} errorThrown the error object
@@ -155,8 +145,6 @@ export default Base.extend('FileField', {
     /**
      * Removes a file from the server by sending a `DELETE` request to the server
      * url.
-     * @function removeFile
-     * @signature
      * @param {Object} file The file properties and path to delete
      * @return {Promise} the promise resolved when the delete result is complete
      */
@@ -192,8 +180,6 @@ export default Base.extend('FileField', {
     /**
      * Called when the remove file is successful, and updates the current files
      * by removing the one that was deleted.
-     * @function removeSuccess
-     * @signature
      * @param {String} file the file that was removed
      */
     removeSuccess (file) {
@@ -207,8 +193,6 @@ export default Base.extend('FileField', {
      * Called if an error occurs deleting the file. If the response is a 404,
      * the file is removed from this viewmodel's field value, otherwise the
      * error is just logged to the console because we're not sure what happened
-     * @function removeError
-     * @signature
      * @param {String} file The file path that the delete was attempted on
      * @param {Object} response The xhr response object
      */

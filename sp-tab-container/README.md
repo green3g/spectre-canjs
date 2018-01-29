@@ -1,6 +1,6 @@
 <!--
 @module {can.Component} sp-tab-container <sp-tab-container />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 
 -->
 

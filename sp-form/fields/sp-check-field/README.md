@@ -1,6 +1,6 @@
 
 @module {can.Component} sp-form/fields/sp-check-field <sp-check-field />
-@parent sp-form.fields
+@memberof sp-form.fields
 
 @option {String} fieldType This should be set to `checkbox` to use this template in the form widget
 @option {String} style Checkbox style, this can be `checkbox` or `switch`

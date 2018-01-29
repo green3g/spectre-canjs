@@ -1,6 +1,6 @@
 
 @typedef {can.Event} sp-form.ViewModel.events.formSubmit submit
-@parent sp-form.ViewModel.events
+@memberof sp-form.ViewModel.events
 @option {can.Map} object The form object that is saved
 @description
 

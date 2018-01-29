@@ -17,7 +17,6 @@ const ViewModel = DefineMap.extend('DropdownMenu', {
      * The default is a font-awesome caret `fa fa-fw fa-caret-down`
      * @type {string} Icon to display next to the dropdown text
      * @memberof sp-dropdown.ViewModel
-     * @instance
      * @example iconClass:from="'fa fa-fw fa-table'"
      */
     iconClass: {value: 'fa fa-fw fa-caret-down', type: 'string'},
@@ -25,22 +24,19 @@ const ViewModel = DefineMap.extend('DropdownMenu', {
      * The text to display in the dropdown button
      * @type {String} 
      * @memberof sp-dropdown.ViewModel
-     * @instance
      */
     text: 'string',
     /**
      * The current state of the dropdown menu
-     * @property {Boolean} sp-dropdown.ViewModel.visible visible
+     * @type {Boolean}
      * @memberof sp-dropdown.ViewModel
-     * @instance
      */
     visible: 'boolean',
     /**
      * The button class to apply to the button dropdown. The default is `btn btn-link`.
      * See the spectre.css styles for details on more button classes available
-     * @property {String} sp-dropdown.ViewModel.buttonClass buttonClass
+     * @type {String}
      * @memberof sp-dropdown.ViewModel
-     * @instance
      */
     buttonClass: {
         type: 'string',
@@ -49,17 +45,15 @@ const ViewModel = DefineMap.extend('DropdownMenu', {
     /**
      * An array of buttons to display next to the dropdown button. This creates a split
      * dropdown menu button group
-     * @property {Array<sp-dropdown.ButtonObject>} sp-dropdown.ViewModel.primaryButtons primaryButtons
+     * @type {Array<sp-dropdown.ButtonObject>}
      * @memberof sp-dropdown.ViewModel
-     * @instance
      */
     primaryButtons: DefineList,
     /**
      * Whether or not to align this dropdown menu on the right hand side of
      * the button.
-     * @property {HTMLBoolean} sp-dropdown.ViewModel.right right
+     * @type {HTMLBoolean}
      * @memberof sp-dropdown.ViewModel
-     * @instance
      */
     right: 'htmlbool',
     /**

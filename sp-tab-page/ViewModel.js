@@ -13,36 +13,31 @@ const ViewModel = DefineMap.extend('NavPage', {
     /**
    * The display state of the page. If true, the page content will be shown
    * @type {Boolean} 
-   * @instance
-   * @memberof sp-tab-page.ViewModel
+   * @memberof sp-tab-page.ViewModel.prototype
    */
     active: {type: 'boolean', value: false},
     /**
      * Add custom classes to the navigation containers nav tab.
      * @type {String} 
-      * @instance
-     * @memberof sp-tab-page.ViewModel
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     classes: 'string',
     /**
      * The label to display in the memberof container tab
      * @type {String} 
-      * @instance
-     * @memberof sp-tab-page.ViewModel
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     label: 'string',
     /**
      * Whether or not this page is currently loading
      * @type {HTMLBoolean} 
-      * @instance
-     * @memberof sp-tab-page.ViewModel
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     loading: {type: 'htmlbool', value: false},
     /**
      * A unique id to identify this page. The default is automatically provided.
      * @type {String} 
-     * @instance
-     * @memberof sp-tab-page.ViewModel
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     pageId: {
         value: function () {
@@ -52,8 +47,7 @@ const ViewModel = DefineMap.extend('NavPage', {
     /**
      * The parent containers view model
      * @type {DefineMap} 
-     * @instance
-     * @memberof sp-tab-page.ViewModel
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     parent: '*'
 });

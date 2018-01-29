@@ -10,16 +10,44 @@ import get from 'can-util/js/get/get';
 import dev from 'can-util/js/dev/dev';
 // !steal-remove-end
 
+/**
+ * File type for dropzone field and file list 
+ * @class File
+ * @memberof sp-dropzone-field
+ */
 const FileMap = DefineMap.extend('File', {seal: false}, {
+    /** @lends sp-dropzone-field.File.prototype */
+    /**
+     * Whether or not this file is being processed for deletion
+     * @type {Boolean}
+     * @memberof sp-dropzone-field.File.prototype
+     */
     isDeleting: 'boolean',
+    /**
+     * The ID (filename) for this file 
+     * @type {String}
+     * @memberof sp-dropzone-field.File.prototype
+     */
     id: 'string',
+    /**
+     * The data uri or url for this file 
+     * @type {String}
+     * @memberof sp-dropzone-field.File.prototype
+     */
     uri: 'string'
 });
 const FileMapList = DefineList.extend('FileList', {
     '#': FileMap
 });
 
+/**
+ * The `<sp-dropzone-field />` component viewmodel 
+ * @class ViewModel
+ * @extends Field
+ * @memberof sp-dropzone-field
+ */
 const ViewModel = Field.extend('DropZoneField', {
+    /** @lends sp-dropzone-field.ViewModel.prototype */
     value: {Value: FileMapList, Type: FileMapList},
     dropzone: '*',
     url: {type: 'string', value: '/api/uploads'},

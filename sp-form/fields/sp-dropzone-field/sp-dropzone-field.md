@@ -1,4 +1,4 @@
-@parent public
+@memberof public
 @module {can.Component} public/components/sp-dropzone-field <sp-dropzone-field>
 
 A short description of the sp-dropzone-field component

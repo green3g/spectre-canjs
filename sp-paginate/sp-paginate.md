@@ -1,7 +1,7 @@
 <!--
 
 @module {can.Component} sp-paginate <sp-paginate />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 
 -->
 

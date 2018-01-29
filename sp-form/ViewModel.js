@@ -16,7 +16,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     * from this classes fields. The default is `'edit'`.
     * @type {String} sp-form.ViewModel.excludeFieldKey excludeFieldKey
     * @memberof sp-form.ViewModel
-    * @instance
     */
     excludeFieldKey: {
         value: 'edit'
@@ -25,14 +24,12 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * Whether or not to show the saving icon when the submit button is clickered.
      * @type {HTMLBoolean} sp-form.ViewModel.object object 
      * @memberof sp-form.ViewModel
-    * @instance
      */
     showSaving: {type: 'htmlbool', value: true},
     /**
      * Whether or not this form should be an inline (horizontal) form
      * @type {Boolean} sp-form.ViewModel.inline
      * @memberof sp-form.ViewModel
-    * @instance
      */
     inline: {
         type: 'boolean',
@@ -44,7 +41,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @type {can-connect} sp-form.ViewModel.connection
      * @link https://canjs.com/doc/can-connect.html can-connect
      * @memberof sp-form.ViewModel
-    * @instance
      */
     connection: {
         value: null
@@ -54,7 +50,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * will be made to the connection object with the specified id.
      * @type {Number} sp-form.ViewModel.objectId
      * @memberof sp-form.ViewModel
-    * @instance
      */
     objectId: {
         type: 'number',
@@ -67,7 +62,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * The pending promise if the object is being retrieved or null
      * @type {Promise}  sp-form.ViewModel.promise
      * @memberof sp-form.ViewModel
-    * @instance
      */
     promise: {
         value: null
@@ -79,7 +73,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * state of the form, use [sp-form.ViewModel.dirtyObject].
      * @type {DefineMap} sp-form.ViewModel.object
      * @memberof sp-form.ViewModel
-    * @instance
      */
     object: {
         Type: DefineMap,
@@ -96,7 +89,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * An object set with current form values
      * @type {DefineMap} sp-form.ViewModel.dirtyObject dirtyObject
      * @memberof sp-form.ViewModel
-    * @instance
      */
     dirtyObject: DefineMap,
     /**
@@ -109,7 +101,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * ```
      * @type {Object} sp-form.ViewModel.validationErrors
      * @memberof sp-form.ViewModel
-    * @instance
      */
     validationErrors: {
         get (val) {
@@ -129,7 +120,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * Instead, it will dispatch a `submit-fail` event
      * @type {Boolean} sp-form.ViewModel.isValid isValid
      * @memberof sp-form.ViewModel
-    * @instance
      */
     isValid: {
         get () {
@@ -158,7 +148,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * It sets the save button to a loading state
      * @type {Boolean} sp-form.ViewModel.isSaving
      * @memberof sp-form.ViewModel
-    * @instance
      */
     isSaving: {
         value: false,

@@ -5,13 +5,14 @@ import ModalViewModel from '../sp-modal/ViewModel';
  * 
  * @class ViewModel
  * @memberof sp-confirm
+ * @extends sp-modal.ViewModel
  */
 const ViewModel = ModalViewModel.extend('ConfirmDialog', {
+    /** @lends sp-confirm.ViewModel.prototype */
     /**
      * The text to display in the accept confirmation button. The default is `'Ok'`
      * @type {String} 
-     * @instance
-     * @memberof sp-confirm.ViewModel
+     * @memberof sp-confirm.ViewModel.prototype
      */
     acceptText: {
         value: 'Ok'
@@ -19,8 +20,7 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * The text to display in the reject confirmation button. The default is `'Cancel'`
      * @type {String} 
-     * @instance
-     * @memberof sp-confirm.ViewModel
+     * @memberof sp-confirm.ViewModel.prototype
      */
     rejectText: {
         value: 'Cancel'
@@ -32,8 +32,7 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * A promise resolved or rejected when the modal is confirmed or rejected.
      * @type {Promise} 
-     * @instance
-     * @memberof sp-confirm.ViewModel
+     * @memberof sp-confirm.ViewModel.prototype
      */
     actionPromise: {
         get () {
@@ -49,7 +48,6 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * Called when the accept button is clicked. Resolves the `actionPromise`.
      * In addition, the `accept` event is dispatched on the component element.
-     * @instance
      */
     onAccept () {
         if (this._resolveAction) {
@@ -61,7 +59,6 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
     /**
      * Called when the reject button is clicked. Rejects the `actionPromise`.
      * In addition, the `reject` event is dispatched on the component element.
-     * @instance
      */
     onReject () {
         if (this._resolveAction) {

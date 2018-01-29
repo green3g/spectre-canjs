@@ -13,14 +13,12 @@ const ViewModel = DefineMap.extend('SPFilter', {
     /**
      * The filter object to modify 
      * @type {FilterObject} 
-     * @instance
-     * @memberof sp-filter.ViewModel
+     * @memberof sp-filter.ViewModel.prototype
      */
     filter: Filter,
     /**
      * A no operation function 
-     * @instance
-     * @memberof sp-filter.ViewModel
+     * @memberof sp-filter.ViewModel.prototype
      * @param {Event} event the event to preventDefault on
      * @return {False} return false to prevent page navigation from occuring
      */
@@ -30,8 +28,7 @@ const ViewModel = DefineMap.extend('SPFilter', {
     },
     /**
      * Dispatches an event with the filter object
-     * @instance
-     * @memberof sp-filter.ViewModel
+     * @memberof sp-filter.ViewModel.prototype
      * @param {String} event The event name to dispatch 
      */
     dispatchEvent (event) {

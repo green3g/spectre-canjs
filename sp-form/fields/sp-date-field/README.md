@@ -1,6 +1,6 @@
 
 @module {can.Component} sp-form/fields/sp-date-field <sp-date-field />
-@parent sp-form.fields
+@memberof sp-form.fields
 
 @option {String} type This should be set to `date` for the form widget to use this template
 

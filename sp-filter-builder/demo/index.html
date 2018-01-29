@@ -2,9 +2,7 @@
   <div class="container">
     <h1>Filter Widget Demo</h1>
 
-    <p><button class="btn" type="button" on:el:click="toggleAdd"><i class="fa fa-search"></i>Toggle Add Form</button></p>
-
-    <sp-filter-builder fields:from="fields" filters:to="filters" {{#disableCreate}}disable-create{{/disableCreate}} />
+    <sp-filter-builder fields:from="fields" filters:to="filters" />
 
     <h2>Current filters: </h2>
     <div class="json">{{{stringify(filters)}}}</div>

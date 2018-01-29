@@ -3,20 +3,16 @@ import DefineList from 'can-define/list/list';
 import Toast from '../sp-toast/ViewModel';
 
 /**
- * @constructor sp-toast-container.ViewModel ViewModel
- * @parent sp-toast-container
- * @group sp-toast-container.ViewModel.props Properties
- *
- * @description A `<sp-toast-container />` component's ViewModel
+ * A `<sp-toast-container />` component's ViewModel
+ * @class sp-toast-container.ViewModel ViewModel
+ * @memberof sp-toast-container
  */
 export default DefineMap.extend('ToastContainer', {
-    /**
-   * @prototype
-   */
+    /** @lends sp-toast-container.ViewModel.prototype */
     /**
      * An array of alert toasts
-     * @property {Array<sp-toast.ViewModel>} sp-toast-container.ViewModel.props.toasts toasts
-     * @parent sp-toast-container.ViewModel.props
+     * @type {Array<sp-toast.ViewModel>}
+     * @memberof sp-toast-container.ViewModel.prototype
      */
     toasts: {
         Value: DefineList.extend('ToastList', {
@@ -25,8 +21,6 @@ export default DefineMap.extend('ToastContainer', {
     },
     /**
    * adds a new toast
-   * @function addToast
-   * @signature `addToast(properties)`
    * @param {sp-toast.ViewModel} toast the toast options or toast object to add
    */
     addToast (toast) {
@@ -37,8 +31,6 @@ export default DefineMap.extend('ToastContainer', {
     },
     /**
      * Removes a toast
-     * @function removeToast
-     * @signature `removeToast(toast)`
      * @param  {sp-toast.ViewModel} toast the toast object to remove
      */
     removeToast: function (toast) {

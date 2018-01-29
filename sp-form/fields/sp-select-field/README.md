@@ -1,6 +1,6 @@
 
 @module {can.Component} sp-form/fields/sp-select-field <sp-select-field />
-@parent sp-form.fields
+@memberof sp-form.fields
 @group sp-select-field.types types
 
 @option {String} fieldType This should be set to `select` to use this template in the form widget

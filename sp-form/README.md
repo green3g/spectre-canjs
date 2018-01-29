@@ -1,6 +1,6 @@
 <!--
 @module {can.Component} sp-form <sp-form />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 @group sp-form.fields Field Types
 @group sp-form.types Types
 -->

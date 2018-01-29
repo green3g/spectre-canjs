@@ -1,6 +1,6 @@
 
 @module {can.Component} sp-form/fields/sp-text-field <sp-text-field />
-@parent sp-form.fields
+@memberof sp-form.fields
 
 @option {String} textType The type of textbox, this can be any html input type. The default is `text`
 @option {String} fieldType This is set to `text` by default and does not need to be provided

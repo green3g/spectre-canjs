@@ -1,34 +1,43 @@
 <script type="text/stache" id="demo-html">
 <sp-accordion>
-<sp-accordion-page label="Test">
+<sp-accordion-page label="1 Paragraph">
 <p> lots of content</p>
 </sp-accordion-page>
 
-<sp-accordion-page label="Test">
-<p> lots of content</p>
+<sp-accordion-page label="Headings">
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
 </sp-accordion-page>
 
-<sp-accordion-page label="Test">
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
+<sp-accordion-page label="Tables">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+            <th>name</th>
+            <th>genre</th>
+            <th>release date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+            <td>The Shawshank Redemption</td>
+            <td>Crime, Drama</td>
+            <td>14 October 1994</td>
+            </tr>
+        </tbody>
+    </table>
 </sp-accordion-page>
 
-<sp-accordion-page label="Test">
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
-<p> lots of content</p>
+<sp-accordion-page label="Buttons">
+    <button class="btn btn-success">success button</button>
+    <button class="btn btn-error">error button</button>
 </sp-accordion-page>
 
 </sp-accordion>
 </script>
 
-<script src="../node_modules/steal/steal.js" main="@loader">
+<script src="../node_modules/steal/steal.js" main="docs-main">
 import stache from 'can-stache';
 import 'spectre.css';
 import 'animate.css';

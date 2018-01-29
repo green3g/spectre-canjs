@@ -1,21 +1,16 @@
 import Component from 'can-component';
-import template from './template.stache';
-import Field from 'spectre-canjs/util/field/Field';
+import view from './template.stache';
+import ViewModel from './ViewModel';
 
-export const ViewModel = Field.extend('CheckboxField', {
-    value: {
-        type: 'boolean',
-        set (val) {
-            if (val !== this.value) { 
-                this.dispatch('fieldchange', [this]); 
-            }
-            return val;
-        }
-    }
-});
-
+/**
+ * A boolean field that can be used as a switch or a checkbox
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * @module sp-check-field
+ * @example 
+ * <sp-check-field /> 
+ */
 export default Component.extend({
     tag: 'sp-check-field',
-    ViewModel: ViewModel,
-    view: template
+    ViewModel,
+    view
 });

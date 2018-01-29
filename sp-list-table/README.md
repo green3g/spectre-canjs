@@ -1,6 +1,6 @@
 <!--
 @module {can.Component} sp-list-table <sp-list-table />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 -->
 
 ## Description

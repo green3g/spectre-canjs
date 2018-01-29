@@ -2,23 +2,21 @@ import Base from 'spectre-canjs/util/field/Field';
 import {MONTH_OPTIONS, YEAR_OPTIONS} from './constants';
 
 /**
- * @constructor sp-form/fields/sp-date-field.ViewModel ViewModel
- * @parent sp-form/fields/sp-date-field
- * @group sp-date-field.ViewModel.props Properties
- *
- * @description A `<sp-date-field />` component's ViewModel
+ * A `<sp-date-field />` component's ViewModel
+ * 
+ * @class ViewModel
+ * @memberof sp-date-field
+ * @extends Field
  */
 export default Base.extend('DateField', {
-    /**
-     * @prototype
-     */
+    /** @lends sp-date-field.ViewModel.prototype */
     /**
      * The current value in the date picker field. This value is
      * a virtual property based on the month, day, and year properties
      * of this viewmodel. When it is set, it also updates the month, day,
      * and year properties of this viewmodel.
-     * @property {Date} sp-date-field.ViewModel.props.value value
-     * @parent sp-date-field.ViewModel.props
+     * @type {Date}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     value: {
         type: 'date',
@@ -61,8 +59,8 @@ export default Base.extend('DateField', {
     /**
      * The current day of the month stored in the viewmodel. The default
      * is the current day.
-     * @property {Number} sp-date-field.ViewModel.props.day day
-     * @parent sp-date-field.ViewModel.props
+     * @type {Number}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     day: {
         type: 'number'
@@ -70,8 +68,8 @@ export default Base.extend('DateField', {
     /**
      * The current month index stored in the viewmodel. The default is the
      * current month. Note: Months are 0 indexed.
-     * @property {Number} sp-date-field.ViewModel.props.month month
-     * @parent sp-date-field.ViewModel.props
+     * @type {Number}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     month: {
         type: 'number'
@@ -79,8 +77,8 @@ export default Base.extend('DateField', {
     /**
      * The current year value stored in the viewmodel. The default is the
      * current year
-     * @property {Number} sp-date-field.ViewModel.props.year year
-     * @parent sp-date-field.ViewModel.props
+     * @type {Number}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     year: {
         type: 'number'
@@ -88,8 +86,8 @@ export default Base.extend('DateField', {
     /**
      * The properties object for the day picker dropdown. This is created
      * dynamically based on the currently selected month and year.
-     * @property {Object} sp-date-field.ViewModel.props.dayProperties dayProperties
-     * @parent sp-date-field.ViewModel.props
+     * @type {Object}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     dayProperties: {
         get () {
@@ -110,8 +108,8 @@ export default Base.extend('DateField', {
     /**
      * The properties object for the month picker dropdown. The default is
      * to show the 12 months.
-     * @property {Object} sp-date-field.ViewModel.props.monthProperties monthProperties
-     * @parent sp-date-field.ViewModel.props
+     * @type {Object}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     monthProperties: {
         value: {
@@ -123,8 +121,8 @@ export default Base.extend('DateField', {
     /**
      * The properties object for the year picker dropdown. The default starts at
      * 1900 and shows up till the current year.
-     * @property {Object} sp-date-field.ViewModel.props.yearProperties yearProperties
-     * @parent sp-date-field.ViewModel.props
+     * @type {Object}
+     * @memberof sp-date-field.ViewModel.prototype
      */
     yearProperties: {
         value: {

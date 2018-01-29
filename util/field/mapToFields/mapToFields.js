@@ -16,7 +16,7 @@ export function getDefinedProps (defineMap) {
  * Converts a DefineMap to an array of Field objects using the property definitions
  * property or the keys
  * @function util/field/mapToFields/mapToFields mapToFields
- * @parent util/field.methods
+ * @memberof util/field.methods
  * @signature `mapToFields(defineMap)`
  * @param  {Constructor} defineMap The extended map/constructor to parse
  * @return {Array<util/field/Field>} The array of fields

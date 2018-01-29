@@ -9,7 +9,7 @@
 
 
 <div class="form-group {{#if(error)}}has-error{{/if}} {{#if(optionsPromise.isPending)}}has-icon-right{{/if}}">
-    {{#if inline}}
+    {{#if(inline)}}
         {{>select}}
     {{else}}
     <div class="col-4">

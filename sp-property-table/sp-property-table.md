@@ -1,7 +1,7 @@
 <!--
 
 @module {can.Component} sp-property-table <sp-property-table />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 -->
 
 ## Description

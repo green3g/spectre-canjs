@@ -30,7 +30,7 @@ export const Field = DefineMap.extend('Field', {
         type: 'string',
         set (name) {
             if (!this.alias && name) {
-                this.alias = makeSentenceCase(this.name);
+                this.alias = makeSentenceCase(name);
             }
             return name;
         }

@@ -3,38 +3,36 @@ import {makeSentenceCase} from '../util/string/string';
 import {Filter, FilterList} from './Filter';
 
 /**
- * @constructor sp-filter-builder.ViewModel ViewModel
- * @parent sp-filter-builder
- * @group sp-filter-builder.ViewModel.props Properties
- *
- * @description A `<sp-filter-builder />` component's ViewModel.
- * extends the [util/field/base/FieldIteratorMap FieldIteratorMap]'s properties
+ * A `<sp-filter-builder />` component's ViewModel.
+ * 
+ * @class ViewModel
+ * @memberof sp-filter-builder
  */
 const ViewModel = FieldIteratorMap.extend('FilterWidget', {
-    /**
-     * @prototype
-     */
+    /** @lends sp-filter-builder.ViewModel.prototype */
     /**
      * Disabled the add new form if true
-     * @property {Boolean} sp-filter-builder.ViewModel.disableCreate
-     * @parent sp-filter-builder.ViewModel.props
-     * @inherits {util/field/base/FieldIteratorMap} FieldIteratorMap
+     * @type {Boolean} 
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
 
      */
     disableCreate: 'htmlbool',
     /**
-       * A string referencing a field property that will exclude that field
+       * A string referencing a field type that will exclude that field
        * from this classes fields. The default is 'list'.
-       * @property {String} sp-list-table.ViewModel.props.excludeFieldKey excludeFieldKey
-       * @parent sp-list-table.ViewModel.props
+       * @type {String} 
+       * @instance
+       * @memberof sp-list-table.ViewModel.props
        */
     excludeFieldKey: {
         value: 'filter'
     },
     /**
      * A list of filterObjects currently used in this widget
-     * @property {Array<sp-filter-builder.Filter>} sp-filter-builder.ViewModel.filters
-     * @parent sp-filter-builder.ViewModel.props
+     * @type {Array<sp-filter-builder.Filter>} 
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      */
     filters: {
         Type: FilterList,
@@ -42,8 +40,9 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     },
     /**
      * The field properties for the field name dropdown
-     * @property {Object} sp-filter-builder.ViewModel.nameField nameField
-     * @parent sp-filter-builder.ViewModel
+     * @type {Object} 
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      */
     nameField: {
         get () {
@@ -64,8 +63,9 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     },
     /**
      * An array of field options to display for the field selection dropdown.
-     * @property {Array<sp-form/fields/sp-select-field.SelectOption>} sp-filter-builder.ViewModel.fieldOptions
-     * @parent sp-filter-builder.ViewModel.props
+     * @type {Array<sp-form/fields/sp-select-field.SelectOption>} 
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      */
     fieldOptions: {
         get () {
@@ -82,8 +82,9 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     },
     /**
      * The selected field dropdown value
-     * @property {String} sp-filter-builder.ViewModel.fieldValue fieldValue
-     * @parent sp-filter-builder.ViewModel
+     * @type {String} 
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      */
     fieldValue: {
         type: 'string',
@@ -91,8 +92,8 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     },
     /**
      * Removes a filter from the list of filters
-     * @function removeFilter
-     * @signature
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      * @param  {sp-filter-builder.Filter} obj  The object to remove. This is the only argument used by the function, the rest may be null.
      * @return {undefined}
      */
@@ -102,8 +103,8 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
     },
     /**
      * Replaces the filter array with an empty array, clearing all existing filters
-     * @function removeFilters
-     * @signature
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      * @return {undefined}
      */
     removeFilters () {
@@ -113,12 +114,13 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      * Adds a new filter or set of filters to the list of filters in this widget.
      * <br />TODO: A `filterFactory` may be defined on the field which may return one filter or an array of
      * filters.
-     * @function addFilter
-     * @signature
+     * @instance
+     * @memberof sp-filter-builder.ViewModel
      * @param  {string} arguments the array of arguments from the fieldchange event
      * @return {Boolean} returns false to prevent event propagation from links
      */
-    addFilter ([, name]) {
+    addFilter () {
+        const [, name] = arguments;
 
         if (!name || name === '') {
             return false;

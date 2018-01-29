@@ -6,5 +6,14 @@ toc:
   - sp-accordion-page
   - sp-dropdown
   - sp-form
+  - sp-file-list
+  - sp-filter
+  - sp-filter-builder
+  - sp-list-table
+  - sp-menu
+  - sp-modal
+  - sp-paginate
   - sp-tab-page
   - sp-tab-container
+  - sp-toast
+  - sp-toast-container

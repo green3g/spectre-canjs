@@ -1,0 +1,1 @@
+<sp-multi-check-field on:vm:fieldchange="setField" value="{{object[name]}}" vm:errors:from="validationErrors" vm:properties:from="." />

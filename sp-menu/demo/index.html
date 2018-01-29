@@ -1,0 +1,16 @@
+<script type="text/stache" id="demo-html">
+    <h1>Navigation Demo</h1>
+
+    <h2>Default Style</h2>
+    <sp-menu vm:pages:from="pages" vm:active:to="current" />
+
+    <p>{{current.label}}</p>
+
+    <h2>Breadcrumbs</h2>
+    <sp-menu vm:pages:from="pages" type="breadcrumb"/>
+</script>
+
+<!-- <script src="../../../docs/spectre-canjs/steal.production.js" main="spectre-canjs/index"> -->
+  <script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
+  steal.import('spectre-canjs/sp-menu/demo/navList');
+</script>

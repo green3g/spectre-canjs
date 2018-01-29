@@ -1,0 +1,11 @@
+<div class="form-group">
+  <fieldset>
+    <legend>{{alias}}</legend>
+    <sp-form vm:inline:from="inline" 
+      object:bind="value" 
+      on:fieldchange="saveField(scope.arguments)" 
+      fields:from="formFields">
+      <can-template name="submit"><i /></can-template>
+    </sp-form>
+  </fieldset>
+</div>

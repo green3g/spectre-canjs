@@ -1,6 +1,0 @@
-<div class="form-group">
-    <label class="form-{{#if properties.style}}{{properties.style}}{{else}}checkbox{{/if}}">
-        <input type="checkbox" {($checked)}="value" name="{{properties.name}}" />
-        <i class="form-icon"></i> {{properties.alias}}
-    </label>
-</div>

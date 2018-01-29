@@ -1,0 +1,4 @@
+<span style="user-select:none; cursor:pointer;">
+<i on:el:click="dispatchEvent('up', object)" class="fa fa-2x fa-thumbs-up"></i>
+<i on:el:click="dispatchEvent('down', object)" class="fa fa-2x fa-thumbs-down"></i>
+</span>

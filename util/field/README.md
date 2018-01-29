@@ -1,6 +1,6 @@
 <!--
 @module {Module} util/field field
-@parent spectre.util
+@memberof spectre-canjs.util
 @group util/field.methods Utility Methods
 @group util/field.types Types
 @group util/field.guides Guides

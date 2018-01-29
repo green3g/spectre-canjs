@@ -12,7 +12,7 @@
         "no-console": 2,
         "no-constant-condition": 2,
         "no-control-regex": 2,
-        "no-debugger": 1,
+        "no-debugger": 0,
         "no-dupe-args": 2,
         "no-dupe-keys": 2,
         "no-duplicate-case": 2,
@@ -238,7 +238,8 @@
     "env": {
         "amd": true,
         "es6": true,
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "globals": {
         "define": true,

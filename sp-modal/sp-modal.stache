@@ -1,0 +1,25 @@
+<div class="{{#if backdrop}}modal{{else}}sp-modal-no-backdrop{{/if}}{{#active}} active{{/active}}{{#small}} modal-sm{{/small}}">
+    {{#if backdrop}}
+        <div class="modal-overlay"></div>
+    {{/if}}
+    <div class="modal-container">
+
+        {{#if customBody}}
+            <content />
+        {{else}}
+            <div class="modal-header">
+                <button on:el:click="hide" class="btn btn-clear float-right"></button>
+                <div class="modal-title">{{title}}</div>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <content />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button on:el:click="hide" class="btn btn-link">Close</button>
+            </div>
+        {{/if}}
+    </div>
+</div>

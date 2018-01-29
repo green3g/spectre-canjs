@@ -1,11 +1,101 @@
+0.31.3 / 2017-07-20
+===================
+
+  * 0.31.3
+  * ff 53
+  * canjs 3.9 packages
+
+0.31.2 / 2017-07-20
+===================
+
+  * 0.31.2
+  * update packages - roll back can-define
+  * changelog
+
+0.31.1 / 2017-07-03
+===================
+
+  * 0.31.1
+  * FIX: toast imports and demo
+  * changelog
+
+0.31.0 / 2017-07-03
+===================
+
+  * 0.31.0
+  * 0.30.1
+  * update packages
+  * add missing dependency
+  * ignore vscode files
+  * TEST: add missing test
+  * DOCS: update demos
+
+0.30.1 / 2017-06-26
+===================
+
+  * log errors
+  * 0.30.0
+  * LINT
+  * Using npm 5
+  * using NPM 5
+  * FIX indent
+  * FIX: move `object` to widget viewmodels
+  * FIX: .map returns plain array now
+  * ENH: (experimental) add a new multi-field checkbox type that uses a list as a value
+  * ENH: add a toggle method and allow inheriting widgets like accordions to hide pages
+  * ENH: separate sp-select-field component from viewmodel
+  * ENH: add nicer looking accordion styles
+  * fix travis npm 5 build
+  * TEST: update firefox
+  * TEST: debug travis
+
+0.30.0 / 2017-06-13
+===================
+
+  * DOCS
+  * ENH: add the ability to add custom classes to a nav container
+  * FIX: add extra space between filters/picker
+  * ENH: filter widget - make add filter inline, and place it below the existing filters for better ux
+  * ENH: separate modular utility classes where possible
+  * ENH: better code organization - separate component from view model modules
+  * FIX: removes test files for data-admin
+  * FIX: removes other data-admin component test
+  * FIX: remove data-admin tests, etc.
+  * CHG: move data-admin components to spectre-canjs-app
+  * FIX: format comments
+  * ENH: hide header tools on printouts
+  * ENH: pass field name in form validation functions
+  * FIX: disable sort on actions field and hide on printout
+
+0.29.2 / 2017-06-02
+===================
+
+  * 0.25.2
+  * FIX: demo contains invalid characters
+  * DOCS: add experimental note
+  * ENH: implement additional properties on filter objects to restrict editing `pinned: true` and hide completely `visible: false`
+  * cleanup
+  * FIX: sp-file-field value updating
+  * ENH: add default sp-list-table sorting mechanism
+    - ENH: field.classes property to list and property tables
+  * FIX: field update handling in field widgets and filter
+  * ENH: add fade effect to data-admin loading state
+    - fix sort with new sp-list-table sorting
+    - minor cleanup
+  * ENH: tighten the lint rules
+  * CHG: rename FieldComponentMap to a better described FieldIteratorMap
+    - a class that iterates and builds field lists
+  * ENH: move bulk of field widget code into parent class FieldInputMap
+
 0.29.1 / 2017-05-19
 ===================
 
+  * changelog
   * 0.29.1
   * FIX: cell width issue
-  * ENH: move redundant detail page title into nav-page header
+  * ENH: move redundant detail page title into sp-tab-page header
   * FIX: issue with field serialization
-  * ENH: add basic accordion-container
+  * ENH: add basic sp-accordion
 
 0.29.0 / 2017-05-16
 ===================
@@ -14,14 +104,14 @@
   * FIX: replacing all instances of sort.fieldName with sort.field
   * FIX: lint
   * DOCS: reorganizing and updating docs
-  * CHG: list-table sorting `fieldName` becomes `field`
+  * CHG: sp-list-table sorting `fieldName` becomes `field`
   * DOCS
   * TEST: fix ignore
   * DOCS: documents field templates properties better
   * ENH: automatically convert string templates to renderers
   * TEST: tests
   * TEST: paginate and manage components
-  * TEST: add missing nav-container tests
+  * TEST: add missing sp-tab-container tests
   * TEST: add generated codeclimate.yml
   * TEST: missing addTemplate test
   * TEST: fix misnamed modules
@@ -48,33 +138,6 @@
   * FIX: numerous path fixes and modifications
   * TEST: enhancements
   * Add some custom behaviors to can-connect to get totalItems and convert parameters
-  * FIX: show cursor when buttons are hovered
-  * FIX: minor typo
-  * DOCS: fix demo list-table
-  * TEST: adds test coverage reporting
-  * CHG: cleans up button madness and replaces `manageButtons` with `actions` in viewMap configs
-  * CHG: replaces field.formatter with field.displayTemplate
-    https://github.com/roemhildtg/spectre-canjs/issues/50
-    - a partial template to render the field when it is displayed (list-table, property-table)
-    - list-table no longer has buttons since they can be
-    rendered with the field template
-  * FIX: adds missing tests
-  * FIX: fixing management buttons and actions
-  * FIX: bug with menu item headers
-  * ENH: cleaning up buttons and data-admin modularization
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-    https://github.com/roemhildtg/spectre-canjs/issues/50
-  * ENH: replace list view templates with new components and clean up css
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create manage-toolbar component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create search-control component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-  * ENH: create paginate-footer component
-    https://github.com/roemhildtg/spectre-canjs/issues/20
-
-0.28.5 / 2017-05-08
-===================
 
   * 0.28.5
   * ENH: minor efficiency improvement
@@ -87,3 +150,4 @@
     - enhance the promise to reload if the active property changes
   * changelog
 
+=======

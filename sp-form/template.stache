@@ -1,0 +1,28 @@
+{{#if(object)}}
+
+  <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:el:submit="submitForm">
+      <can-slot this:bind="this" name="fields">
+        {{#each(fields, field=value)}}
+          {{>field.editComponent}}
+        {{/each}}
+      </can-slot>
+
+      <br />
+
+      {{#if(isSaving)}}
+        <div class="loading"></div>
+      {{else}}
+        <can-slot this:from="this" name="submit">
+          <div class="btn-group" role="group" aria-label="Form Buttons">
+              <button type="button" class="btn btn-primary" on:el:click="dispatchEvent('submit')">
+                <i class="fa fa-floppy-o"></i> Submit</button>            
+                <button type="button" class="btn btn-primary" on:el:click="dispatchEvent('cancel')">
+                <i class="fa fa-ban"></i> Cancel</button>
+          </div>
+        </can-slot>
+      {{/if}}
+  </form>
+
+{{else}}
+  <p>The form could not be displayed. The object was not found.</p>
+{{/if}}

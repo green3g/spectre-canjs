@@ -10,6 +10,7 @@ import jsonMarkup from 'json-pretty-html';
 import './full.less';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
+import DefineMap from 'can-define/map/';
 
 // mock a server
 import './fixtures.js';

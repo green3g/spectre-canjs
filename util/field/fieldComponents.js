@@ -6,9 +6,6 @@ export const components = {
 };
 
 export function getEditComponent (field) {
-    if (typeof field.editComponent === 'function') {
-        return field.editComponent;
-    }
     const tag = field.editTag || 'sp-text-field';
     if (!components.edit[tag]) {
         components.edit[tag] = stache(`<${tag} properties:from="." 

@@ -1,11 +1,9 @@
-// eslint-disable-next-line
+import Field from '../Field';
+
 /**
  * Converts an array of strings or field json objects into Field objects
- * @function util/field/parseFieldArray/parseFieldArray parseFieldArray
- * @memberof util/field.methods
- * @signature `parseFieldArray(fields)`
- * @param  {Array<util/field/Field | String>} fields An array of either strings or JSON like objects representing Field object properties
- * @return {Array<util/field/Field>} The array of fields
+ * @param  {Array<Field | String>} fields An array of either strings or JSON like objects representing Field object properties
+ * @return {Array<Field>} The array of fields
  */
 export default function parseFieldArray (fields) {
     // create field objects
@@ -17,8 +15,6 @@ export default function parseFieldArray (fields) {
             };
         }
         // add additional props with field constructor
-        return f;
-
-        // filter fields to exclude any '__' hidden props
+        return new Field(f);
     });
 }

@@ -3,7 +3,7 @@
   <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:el:submit="submitForm">
       <can-slot this:bind="this" name="fields">
         {{#each(fields, field=value)}}
-          {{>getEditComponent}}
+          {{>field.editComponent}}
         {{/each}}
       </can-slot>
 

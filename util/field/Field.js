@@ -1,6 +1,7 @@
 import {makeSentenceCase} from '../string/string';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
+import {getEditComponent} from './fieldComponents';
 
 /**
  * @typedef ValidationObject
@@ -135,7 +136,16 @@ export const Field = DefineMap.extend('Field', {
     classes: 'string',
 
     // placeholder props to overwrite the display template of edit or table components
-    editComponent: {},
+    editTag: {value: 'sp-text-field', type: 'string'},
+    editComponent: {
+        get (comp) {
+            
+            if (typeof comp === 'function') {
+                return comp;
+            }
+            return getEditComponent(this);
+        }
+    },
     displayComponent: {},
     /**
      * If field component implements this method, it will be called 

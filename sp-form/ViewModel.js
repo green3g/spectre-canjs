@@ -1,7 +1,5 @@
 import DefineMap from 'can-define/map/map';
 import FieldIteratorMap from 'spectre-canjs/util/field/base/FieldIteratorMap';
-import {getEditComponent} from '../util/field/fieldComponents';
-
 
 /**
  * Form View Model
@@ -245,18 +243,6 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
             dirty: this.dirtyObject,
             current: this.object
         }) : '') || '';
-    },
-    /**
-     * A can-stache helper function to get a renderer for a particular field
-     * @param {Object} scope The curent scope of the context
-     * @param {Object} options The scope options for a renderer
-     * @return {function} The renderer for the field
-     */
-    getEditComponent (scope, options) {
-        const field = scope._context.value;
-        const helpers = scope.templateContext.helpers;
-
-        return getEditComponent(field)(scope, helpers, options.nodeList);
     }
 });
 

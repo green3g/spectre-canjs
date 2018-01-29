@@ -48,14 +48,11 @@ export default Base.extend('SubformField', {
     },
     /**
      * Called whenever a field changes its value to update this form's json
-     * string value. Dispatche sthe `change` event with the serialized form object
-     * @param  {Object} scope The viewmodel of this object
-     * @param  {DomElement} dom   The dom element that changed
-     * @param  {Event} event The dom event on the input element
-     * @param  {Object} props   The change event properties
+     * string value. Dispatches the `fieldchange` event with the serialized form object
+     * @param  {Array} args the arguments dispatched from the event
      */
-    saveField () {
-        const [, props] = arguments;
+    saveField (args) {
+        const [, props] = args;
         this.value.assign(props.dirty.get());
         this.dispatch('fieldchange', [this]);
     }

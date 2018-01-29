@@ -215,10 +215,10 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * Runs the field validation and updates the validation object.
      * If the validation succeeds (returns no validation error) then a fieldchange event is dispatched
-     * @param {Array} arguments an array with 3 arguments, event, value (field value) and field<Field> object
+     * @param {Array} args an array with 3 arguments, event, value (field value) and field<Field> object
      */
-    checkField () {
-        const [, field] = arguments;
+    checkField (args) {
+        const [, field] = args;
 
         // check for valid field value and don't update if it's not
         this.validationErrors[field.name] = this.getValidationError(field, field.value);

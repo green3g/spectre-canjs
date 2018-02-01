@@ -25,11 +25,9 @@ test('isImage(filename)', () => {
     ];
 
     images.forEach((img) => {
-        dev.log('testing', img);
         expect(vm.isImage({id: img})).toBe(true);
     });
     notImages.forEach((img) => {
-        dev.log('testing', img);
         expect(vm.isImage({id: img})).toBe(false);
     });
 });

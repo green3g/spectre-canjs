@@ -1,5 +1,4 @@
 import DefineMap from 'can-define/map/map';
-import canViewModel from 'can-view-model';
 
 /**
  * A `<sp-toast />` component's ViewModel

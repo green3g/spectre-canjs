@@ -1,7 +1,6 @@
 import ViewModel from './ViewModel';
 import Component from 'can-component';
 import pageTemplate from './sp-tab-page.stache';
-import canViewModel from 'can-view-model';
 
 /**
  * Tab page component used in the sp-tab-container for navigation

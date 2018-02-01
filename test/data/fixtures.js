@@ -31,17 +31,20 @@ fixture({
                     break;
                 default:
                     if (f.operator !== 'like') {
-                        dev.warn(f.operator, 'operator not implemented in fixture, like will be used instead!');
+                        // eslint-disable-next-line
+                        console.warn(f.operator, 'operator not implemented in fixture, like will be used instead!');
                     }
                     if (typeof f.value !== 'string') {
-                        dev.warn('ignoring filter on non-string value');
+                        // eslint-disable-next-line
+                        console.warn('ignoring filter on non-string value');
                     } else {
                         tempData = tempData.filter((d) => {
                             return d[f.name].toUpperCase().indexOf(f.value.toUpperCase()) !== -1;
                         });
                     }
                 }
-                dev.warn('found ' + tempData.length + ' items after filtering');
+                // eslint-disable-next-line
+                console.warn('found ' + tempData.length + ' items after filtering');
                 totalItems = tempData.length;
             }
         }

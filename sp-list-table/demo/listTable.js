@@ -4,7 +4,7 @@ import DefineList from 'can-define/list/list';
 import actionTemplate from './templates/actionCell.stache';
 import voteTemplate from './templates/voteTemplate.stache';
 
-stache.registerSimpleHelper('voteColor', function(val){
+stache.registerHelper('voteColor', function(val){
   if(val < 0){
     return 'red';
   } else if(val === 0){
@@ -55,10 +55,12 @@ document.body.appendChild(render({
 
   // observable list enables sorting
   objects: new DefineList(data),
-  voteUp(vm, el, ev, name, obj) {
+  voteUp(args) {
+    const [ev, obj] = args;
     obj.votes++;
   },
-  voteDown(vm, el, ev, name, obj) {
+  voteDown(args) {
+    const [ev, obj] = args;
     obj.votes--;
   }
 }));

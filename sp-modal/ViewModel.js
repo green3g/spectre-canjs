@@ -21,7 +21,7 @@ export default DefineMap.extend('ModalDialog', {
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    customBody: {value: false, type: 'htmlbool'},
+    custom: {value: false, type: 'htmlbool'},
     /**
      * Flag to make this modal a small (`modal-sm`) modal. The default is `false`
      * @type {HTMLBoolean}

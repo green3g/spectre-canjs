@@ -12,13 +12,13 @@ var viewModel = new DefineMap({
     modal3: false,
     modal4: false,
     confirm1: false,
-    onAccept () {
+    onAccept (args) {
         console.log('----- Confirmation Accepted ------');
-        console.log(arguments);
+        console.log(args);
     },
-    onReject () {
+    onReject (args) {
         console.log('----- Confirmation Rejected ------');
-        console.log(arguments);
+        console.log(args);
     },
     showModal (name) {
         this[name] = true;

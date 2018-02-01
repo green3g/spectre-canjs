@@ -10,7 +10,7 @@ export const img = new RegExp(/.*\.(?:jpg|jpeg|gif|png)/, 'i');
  * @class ViewModel
  * @memberof sp-file-list
  */
-export const ViewModel = DefineMap.extend({
+export default DefineMap.extend('SPFileList', {
     /** @lends sp-file-list.ViewModel.prototype */
     /**
      * A list of file objects

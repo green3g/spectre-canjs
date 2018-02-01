@@ -6,41 +6,43 @@
         <th class="checkbox-heading">
           <div class="form-group">
             <label class="form-checkbox">
-              <input type="checkbox" on:el:change="toggleSelectAll" el:checked:from="_allSelected" />
+              <input type="checkbox" on:el:change="toggleSelectAll" checked:from="_allSelected" />
               <i class="form-icon"></i>
             </label>
           </div>
         </th>
-        {{/if}} {{#each fields}}
-        <th {{#is name currentSort.field}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}{{#if ./sort}} on:el:click="setSort(name)"{{/if}}>
-          {{alias}} {{#is name currentSort.field}}
-          <i class="fa fa-sort-{{#is currentSort.type 'desc'}}desc{{else}}asc{{/is}}"></i>
-          <i class="fa fa-times float-right" on:el:click="setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
+        {{/if}} 
+        {{#each(fields)}}
+        <th {{#is(name, scope.root.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}{{#if(sort)}} on:el:click="setSort(name)"{{/if}}>
+          {{alias}} {{#is(name, scope.root.currentSort.field)}}
+          <i class="fa fa-sort-{{#is(scope.root.currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
+          <i class="fa fa-times float-right" on:el:click="scope.root.setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
         </th>
         {{/each}}
       </tr>
     </thead>
 
     <tbody>
-      {{#each objects object=value}}
-      <tr {{#if isSelected(object)}} class="selected" {{/if}}>
-        {{#if(selectable)}}
+      {{#each(objects, object=value)}}
+      <tr {{#if(scope.root.isSelected(object))}} class="selected" {{/if}}>
+        {{#if(scope.root.selectable)}}
         <td class="checkbox-cell">
           <div class="form-group d-inline-block">
             <label class="form-checkbox">
-              <input type="checkbox" on:el:change="toggleSelected(object)" el:checked:from="isSelected(object)" />
+              <input type="checkbox" on:change="scope.root.toggleSelected(object)" checked:from="scope.root.isSelected(object)" />
               <i class="form-icon"></i>
             </label>
           </div>
         </td>
-        {{/if}} {{#each fields field=value}}
-        <td {{#if classes}}class="{{classes}}" {{/if}}>
+        {{/if}} 
+        {{#each(scope.root.fields, field=value)}}
+        <td {{#if(classes)}}class="{{classes}}" {{/if}}>
         
           {{!TODO: use slots}}
           {{#if(field.displayComponent}}
             {{>field.displayComponent}}
           {{else}}
-            {{object[field.name]}}
+            {{../object[field.name]}}
           {{/if}}
         </td>
         {{/each}}

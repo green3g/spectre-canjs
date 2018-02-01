@@ -52,6 +52,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "axios": "^0.17.1",
+    "can-3-4-compat": "^1.0.0",
     "can-component": "^4.0.1",
     "can-define": "^2.0.1",
     "can-stache": "^4.0.2",

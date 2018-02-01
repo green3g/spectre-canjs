@@ -1,4 +1,5 @@
 import DefineMap from 'can-define/map/map';
+import canViewModel from 'can-view-model';
 
 /**
  * A `<sp-toast />` component's ViewModel
@@ -17,6 +18,7 @@ export default DefineMap.extend('ToastItem', {
         type: 'boolean',
         value: true
     },
+    timer: {},
     /**
      * the time to autohide this sp-toast. Set to 0 to disable auto hide
      * @type {Number}
@@ -24,7 +26,18 @@ export default DefineMap.extend('ToastItem', {
      */
     autoHide: {
         type: 'number',
-        value: 5000
+        value: 5000,
+        set (autohide) {
+            if (autohide) {
+                if (this.timer) {
+                    window.clearTimeout(this.timer);
+                }
+                this.timer = setTimeout(() => {
+                    this.hide();
+                }, autohide);
+            }
+            return autohide;
+        }
     },
     /**
      * Whether or not to use the content tag, that will display whatever
@@ -33,7 +46,7 @@ export default DefineMap.extend('ToastItem', {
      * @type {Boolean}
      * @memberof sp-toast.ViewModel.prototype
      */
-    useContentTag: {
+    custom: {
         type: 'boolean',
         value: false
     },
@@ -113,6 +126,7 @@ export default DefineMap.extend('ToastItem', {
         type: 'number',
         value: 1000
     },
+    element: '*',
     /**
      * Hide this sp-toast
      */

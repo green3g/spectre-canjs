@@ -20,16 +20,16 @@
         <sp-toast-container id="sp-toast-container"></sp-toast-container>
 
         <p>Heading:
-            <input class="form-input" type="text" el:value:bind="heading" />
+            <input class="form-input" type="text" value:bind="heading" />
         </p>
         <p>Detail:
-            <input class="form-input" type="text" el:value:bind="body" />
+            <input class="form-input" type="text" value:bind="body" />
         </p>
         <p>Timeout:
-            <input class="form-input" type="number" el:value:bind="autoHide" />
+            <input class="form-input" type="number" value:bind="autoHide" />
         </p>
         <p>Severity:
-            <select el:value:bind="severity" class="form-select">
+            <select value:bind="severity" class="form-select">
                 <option value="">None</option>
                     <option value="success">success</option>
                 <option value="error">error</option>
@@ -39,7 +39,7 @@
             </select>
         </p>
         <p>Dismissable:
-            <select el:value:bind="dismissable" class="form-select" >
+            <select value:bind="dismissable" class="form-select" >
                 <option value="true">true</option>
                 <option value="false">false</option>
             </select>

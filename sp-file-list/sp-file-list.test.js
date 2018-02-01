@@ -1,4 +1,4 @@
-import {ViewModel} from './ViewModel';
+import ViewModel from './ViewModel';
 let vm;
 
 

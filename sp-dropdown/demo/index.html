@@ -1,7 +1,7 @@
 <script type="text/stache" id="demo-html">
     <h1>Dropdown Demo</h1>
 
-    <sp-dropdown class="block float-left" text="Card" button-class="btn btn-sm btn-primary" vm:primaryButtons:from="primary">
+    <sp-dropdown class="block float-left" text="'Card'" buttonClass:from="'btn btn-sm btn-primary'" primaryButtons:from="primary">
         <div class="card" style="width:300px;">
             <div class="card-header">
                 <h4 class="card-title">Google</h4>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </sp-dropdown>
-    <sp-dropdown class="block float-left" text="Menu" icon-class="fa fa-fw fa-home">
+    <sp-dropdown class="block float-left" text:from="'Menu'" iconClass:from="'fa fa-fw fa-home'">
         <ul class="menu">
             <!-- menu header -->
             <li class="menu-header">
@@ -48,7 +48,7 @@
             </li>
         </ul>
     </sp-dropdown>
-    <sp-dropdown class="block float-left" text="Right aligned Menu" icon-class="fa fa-fw fa-home" right>
+    <sp-dropdown class="block float-left" text:from="'Right aligned Menu'" iconClass:from="'fa fa-fw fa-home'" right:from="true">
         <ul class="menu">
             <!-- menu header -->
             <li class="menu-header">

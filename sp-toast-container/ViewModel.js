@@ -21,13 +21,14 @@ export default DefineMap.extend('ToastContainer', {
     },
     /**
    * adds a new toast
-   * @param {sp-toast.ViewModel} toast the toast options or toast object to add
+   * @param {sp-toast.ViewModel} toastProps the toast options or toast object to add
    */
-    addToast (toast) {
-        if (!(toast instanceof Toast)) {
-            toast = new Toast(toast);
-        }
-        this.toasts.push(toast);
+    addToast (toastProps) {
+        this.toasts.push(toastProps);
+        const newToast = this.toasts[this.toasts.length - 1];
+        newToast.on('hide', (event, toastItem) => {
+            this.removeToast(toastItem);
+        });
     },
     /**
      * Removes a toast

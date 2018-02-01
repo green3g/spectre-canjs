@@ -1,12 +1,11 @@
 import DefineMap from 'can-define/map/map';
-import CanEvent from 'can-event';
 
 /**
  * A `<sp-toast />` component's ViewModel
  * @class ViewModel
  * @memberof sp-toast
  */
-const ViewModel = DefineMap.extend('ToastItem', {
+export default DefineMap.extend('ToastItem', {
     /** @lends sp-toast.ViewModel.prototype */
     /**
    * whether or not to fade the sp-toast out using animate.css
@@ -18,6 +17,7 @@ const ViewModel = DefineMap.extend('ToastItem', {
         type: 'boolean',
         value: true
     },
+    timer: {},
     /**
      * the time to autohide this sp-toast. Set to 0 to disable auto hide
      * @type {Number}
@@ -25,7 +25,18 @@ const ViewModel = DefineMap.extend('ToastItem', {
      */
     autoHide: {
         type: 'number',
-        value: 5000
+        value: 5000,
+        set (autohide) {
+            if (autohide) {
+                if (this.timer) {
+                    window.clearTimeout(this.timer);
+                }
+                this.timer = setTimeout(() => {
+                    this.hide();
+                }, autohide);
+            }
+            return autohide;
+        }
     },
     /**
      * Whether or not to use the content tag, that will display whatever
@@ -34,7 +45,7 @@ const ViewModel = DefineMap.extend('ToastItem', {
      * @type {Boolean}
      * @memberof sp-toast.ViewModel.prototype
      */
-    useContentTag: {
+    custom: {
         type: 'boolean',
         value: false
     },
@@ -114,6 +125,7 @@ const ViewModel = DefineMap.extend('ToastItem', {
         type: 'number',
         value: 1000
     },
+    element: '*',
     /**
      * Hide this sp-toast
      */
@@ -131,6 +143,3 @@ const ViewModel = DefineMap.extend('ToastItem', {
         }
     }
 });
-
-Object.assign(ViewModel, CanEvent);
-export default ViewModel;

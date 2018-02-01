@@ -1,5 +1,4 @@
 import DefineMap from 'can-define/map/map';
-import CanEvent from 'can-event';
 import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 
 /**
@@ -9,7 +8,7 @@ import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
  * @memberof sp-property-table
  *
  */
-const ViewModel = FieldIteratorMap.extend('PropertyTable', {
+export default FieldIteratorMap.extend('PropertyTable', {
     /** @lends sp-property-table.ViewModel.prototype */
     /**
     * A string referencing a field property that will exclude that field
@@ -101,6 +100,3 @@ const ViewModel = FieldIteratorMap.extend('PropertyTable', {
         return def;
     }
 });
-
-Object.assign(ViewModel.prototype, CanEvent);
-export default ViewModel;

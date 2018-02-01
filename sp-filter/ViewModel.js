@@ -1,6 +1,5 @@
 import DefineMap from 'can-define/map/map';
 import Filter from '../sp-filter-builder/Filter';
-import canEvent from 'can-event';
 
 /**
  * A `<sp-filter />` component's ViewModel
@@ -8,7 +7,7 @@ import canEvent from 'can-event';
  * @class ViewModel
  * @memberof sp-filter
  */
-const ViewModel = DefineMap.extend('SPFilter', {
+export default DefineMap.extend('SPFilter', {
     /** @lends sp-filter.ViewModel.prototype */
     /**
      * The filter object to modify 
@@ -35,7 +34,3 @@ const ViewModel = DefineMap.extend('SPFilter', {
         this.dispatch(event, [this.filter]);
     }
 });
-
-Object.assign(ViewModel.prototype, canEvent);
-
-export default ViewModel;

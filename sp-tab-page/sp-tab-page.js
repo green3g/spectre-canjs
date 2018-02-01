@@ -1,7 +1,6 @@
 import ViewModel from './ViewModel';
 import Component from 'can-component';
 import pageTemplate from './sp-tab-page.stache';
-import canViewModel from 'can-view-model';
 
 /**
  * Tab page component used in the sp-tab-container for navigation
@@ -15,13 +14,7 @@ export default Component.extend({
     view: pageTemplate,
     ViewModel: ViewModel,
     events: {
-        inserted: function () {
-            this.viewModel.parent = canViewModel(this.element.parentNode);
-            if (this.viewModel.parent && this.viewModel.parent.addPage) {
-                this.viewModel.parent.addPage(this.viewModel);
-            }
-        },
-        removed: function () {
+        '{element} beforeremove': function () {
             if (this.viewModel.parent && this.viewModel.parent.removePage) {
                 this.viewModel.parent.removePage(this.viewModel);
             }

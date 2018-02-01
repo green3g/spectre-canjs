@@ -7,11 +7,11 @@
         <button type="button" class="btn btn-default" on:el:click="showModal('confirm1')">Confirm Dialog</button>
         <button type="button" class="btn btn-default" on:el:click="showModal('modal4')">No Backdrop Modal</button>
 
-        <sp-modal title="A simple dialog with content" vm:active:bind="modal1">
+        <sp-modal title:from="'A simple dialog with content'" active:bind="modal1">
 
         This is the content inside the modal. By default, modals come with
         a close button and a titlebar. This can be completely overridden by
-        setting custom-body="true"
+        setting custom:from="true"
 
         <h3>Lorem ipsum
         </h3>
@@ -43,7 +43,7 @@
         </div>
         </sp-modal>
 
-        <sp-modal custom-body="true" vm:active:bind="modal2">
+        <sp-modal custom:from="true" active:bind="modal2">
         <p>This modals content is created from scratch so there will not be any
         buttons unless you add them to the body</p>
 
@@ -51,7 +51,7 @@
 
         </sp-modal>
 
-        <sp-modal title="A small modal" vm:active:bind="modal3">
+        <sp-modal title:from="'A small modal'" active:bind="modal3">
             <form>
             <!-- form input control -->
             <div class="form-group">
@@ -101,7 +101,7 @@
         </form>
         </sp-modal>
 
-        <sp-modal id="modal4" vm:active:bind="modal4" backdrop="false" title="Modal without backdrop">
+        <sp-modal id="modal4" active:bind="modal4" backdrop:from="false" title:from="'Modal without backdrop'">
         <p>This modal demonstrates the ability to generate a modal that allows the user to interact with elements behind a modal.</p>
 
         <p>Combine this with a library such as
@@ -127,7 +127,10 @@
         }
         </style>
 
-        <sp-confirm small title="Delete Task" vm:active:bind="confirm1" on:vm:accept="onAccept" on:vm:reject="onReject">
+        <sp-confirm small:from="true" title:from="'Delete Task'" 
+            active:bind="confirm1" 
+            on:accept="onAccept(scope.arguments)" 
+            on:reject="onReject(scope.arguments)">
 
             <h3><i class="fa fa-exclamation"></i> Warning!</h3>
             <p>This action is very dangerous and you should be sure you want to proceed.</p>

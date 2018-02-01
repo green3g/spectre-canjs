@@ -52,7 +52,7 @@ export default Base.extend('SubformField', {
      * @param  {Array} args the arguments dispatched from the event
      */
     saveField (args) {
-        const [, props] = args;
+        const [props] = args;
         this.value.assign(props.dirty.get());
         this.dispatch('fieldchange', [this]);
     }

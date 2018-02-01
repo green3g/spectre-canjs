@@ -1,23 +1,24 @@
 <div class="dropdown-wrapper">
-    {{#each primaryButtons button=value}}
-      <a href="#" 
-        on:el:click="scope.root.onPrimaryClick(button, scope.event)" 
-        class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
-    {{/each}}
-    <a href="#" 
-        class="{{buttonClass}}" role="button" 
-        aria-haspopup="true" aria-expanded="false" 
-        on:el:click="scope.root.toggle(scope.event)">
-      {{text}} <i class="{{iconClass}}"></i>
-    </a>
+    <div class="btn-group">
+        {{#each(primaryButtons, button=value)}}
+        <a href="#" 
+            on:click="scope.root.onPrimaryClick(button, scope.event)" 
+            class="{{scope.root.buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
+        {{/each}}
+        <a href="#" 
+            class="{{buttonClass}}" role="button" 
+            aria-haspopup="true" aria-expanded="false" 
+            on:click="toggle(scope.event)">{{text}} <i class="{{iconClass}}"></i>
+        </a>
+    </div>
 
-    {{#if visible}}
-        <div class="dropdown-content {{#right}}right{{/right}}">
+    {{#if(visible)}}
+        <div class="dropdown-content {{#if(right)}}right{{/if}}">
             <content />
         </div>
     {{/if}}
 </div>
 
-{{#if visible}}
-    <div class="dropdown-underlay" on:el:click="hideAll()"></div>
+{{#if(visible)}}
+    <div class="dropdown-underlay" on:click="hideAll()"></div>
 {{/if}}

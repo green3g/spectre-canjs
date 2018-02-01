@@ -44,6 +44,6 @@ test('saveField()', () => {
 
     vm.value = obj;
 
-    vm.saveField([{event: 'event'}, {dirty: expected}]);
+    vm.saveField([{dirty: expected}]);
     expect(vm.value.get()).toEqual(expected.get());
 });

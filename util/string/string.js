@@ -1,5 +1,6 @@
-import string from 'can-util/js/string/string';
-
+function capitalize (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 /**
  * Formats the field by replacing underscores with spaces and capitalizing the first letter
  * @memberof util/string
@@ -10,7 +11,7 @@ import string from 'can-util/js/string/string';
  */
 export function makeSentenceCase (text) {
     text = String(text);
-    return string.capitalize(String.prototype.trim.call(
+    return capitalize(String.prototype.trim.call(
         text.split('_')
             .join(' ')
             .toLowerCase()

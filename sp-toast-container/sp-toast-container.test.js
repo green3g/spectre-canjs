@@ -11,10 +11,11 @@ afterEach (() => {
 });
 
 test('addToast(message)', () => {
+    const length = vm.toasts.length;
     vm.addToast({
         body: 'alert!'
     });
-    expect(vm.toasts.length).toEqual(1);
+    expect(vm.toasts.length).toEqual(length + 1);
 });
 
 test('removeToast(message)', () => {

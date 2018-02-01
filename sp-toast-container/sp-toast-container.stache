@@ -1,13 +1,6 @@
-
+<can-import from="spectre-canjs/sp-toast/sp-toast.stache" value:to="scope.vars.toast" />
 <div class="toasts">
-    {{#each toasts}}
-        <sp-toast on:vm:hide="removeToast(.)"
-          severity="{{severity}}"
-          visible="{{visible}}"
-          heading="{{heading}}"
-          use-content-tag="false"
-          auto-hide="{{autoHide}}"
-          body="{{body}}"
-          dismissable="{{dismissable}}" />
+    {{#each(toasts)}}
+        {{>scope.vars.toast}}
     {{/each}}
 </div>

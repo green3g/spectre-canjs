@@ -1,7 +1,6 @@
 import data from './tasks.json';
 import fixture from 'can-fixture';
 import DefineList from 'can-define/list/list';
-import dev from 'can-util/js/dev/dev';
 
 let index = 1000;
 
@@ -17,8 +16,10 @@ fixture({
 
         // filter it
         if (params.data.filters && params.data.filters.length) {
+            
             // lets just handle one filter for testing
-            dev.warn('only the first filter is going to be used!');
+            // eslint-disable-next-line
+            console.warn('only the first filter is going to be used!');
             const f = params.data.filters[0];
             const exclusions = [null, '', undefined];
             if (exclusions.indexOf(f.value === -1)) {
@@ -31,17 +32,20 @@ fixture({
                     break;
                 default:
                     if (f.operator !== 'like') {
-                        dev.warn(f.operator, 'operator not implemented in fixture, like will be used instead!');
+                        // eslint-disable-next-line
+                        console.warn(f.operator, 'operator not implemented in fixture, like will be used instead!');
                     }
                     if (typeof f.value !== 'string') {
-                        dev.warn('ignoring filter on non-string value');
+                        // eslint-disable-next-line
+                        console.warn('ignoring filter on non-string value');
                     } else {
                         tempData = tempData.filter((d) => {
                             return d[f.name].toUpperCase().indexOf(f.value.toUpperCase()) !== -1;
                         });
                     }
                 }
-                dev.warn('found ' + tempData.length + ' items after filtering');
+                // eslint-disable-next-line
+                console.warn('found ' + tempData.length + ' items after filtering');
                 totalItems = tempData.length;
             }
         }

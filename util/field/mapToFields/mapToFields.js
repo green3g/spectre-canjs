@@ -1,4 +1,3 @@
-import dev from 'can-util/js/dev/dev';
 import parseFieldArray from '../parseFieldArray/parseFieldArray';
 const RESERVED = [
     'get',
@@ -23,7 +22,11 @@ export function getDefinedProps (defineMap) {
  */
 export default function mapToFields (defineMap) {
     if (!defineMap) {
-        dev.warn('map is undefined, so no fields will be generated');
+        
+        // !steal-remove-start
+        // eslint-disable-next-line
+        console.warn('map is undefined, so no fields will be generated');
+        // !steal-remove-end
         return [];
     }
     const props = getDefinedProps(defineMap);

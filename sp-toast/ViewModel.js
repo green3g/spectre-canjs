@@ -1,12 +1,11 @@
 import DefineMap from 'can-define/map/map';
-import CanEvent from 'can-event';
 
 /**
  * A `<sp-toast />` component's ViewModel
  * @class ViewModel
  * @memberof sp-toast
  */
-const ViewModel = DefineMap.extend('ToastItem', {
+export default DefineMap.extend('ToastItem', {
     /** @lends sp-toast.ViewModel.prototype */
     /**
    * whether or not to fade the sp-toast out using animate.css
@@ -131,6 +130,3 @@ const ViewModel = DefineMap.extend('ToastItem', {
         }
     }
 });
-
-Object.assign(ViewModel, CanEvent);
-export default ViewModel;

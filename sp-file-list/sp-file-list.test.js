@@ -1,5 +1,4 @@
 import {ViewModel} from './ViewModel';
-import dev from 'can-util/js/dev/dev';
 let vm;
 
 

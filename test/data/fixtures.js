@@ -1,7 +1,6 @@
 import data from './tasks.json';
 import fixture from 'can-fixture';
 import DefineList from 'can-define/list/list';
-import dev from 'can-util/js/dev/dev';
 
 let index = 1000;
 
@@ -18,7 +17,8 @@ fixture({
         // filter it
         if (params.data.filters && params.data.filters.length) {
             // lets just handle one filter for testing
-            dev.warn('only the first filter is going to be used!');
+            // eslint-disable-next-line
+            console.warn('only the first filter is going to be used!');
             const f = params.data.filters[0];
             const exclusions = [null, '', undefined];
             if (exclusions.indexOf(f.value === -1)) {

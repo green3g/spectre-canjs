@@ -6,14 +6,15 @@
         <th class="checkbox-heading">
           <div class="form-group">
             <label class="form-checkbox">
-              <input type="checkbox" on:el:change="toggleSelectAll" checked:from="_allSelected" />
+              <input type="checkbox" on:el:change="toggleSelectAll()" checked:from="_allSelected" />
               <i class="form-icon"></i>
             </label>
           </div>
         </th>
         {{/if}} 
         {{#each(fields)}}
-        <th {{#is(name, scope.root.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}{{#if(sort)}} on:el:click="setSort(name)"{{/if}}>
+        <th {{#is(name, scope.root.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}
+          {{#if(sort)}} on:el:click="../setSort(name)"{{/if}}>
           {{alias}} {{#is(name, scope.root.currentSort.field)}}
           <i class="fa fa-sort-{{#is(scope.root.currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
           <i class="fa fa-times float-right" on:el:click="scope.root.setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
@@ -29,7 +30,7 @@
         <td class="checkbox-cell">
           <div class="form-group d-inline-block">
             <label class="form-checkbox">
-              <input type="checkbox" on:change="scope.root.toggleSelected(object)" checked:from="scope.root.isSelected(object)" />
+              <input type="checkbox" on:change="../toggleSelected(object)" checked:from="../isSelected(object)" />
               <i class="form-icon"></i>
             </label>
           </div>

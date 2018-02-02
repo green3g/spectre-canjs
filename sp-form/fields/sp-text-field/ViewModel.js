@@ -27,7 +27,7 @@ export default Field.extend('TextField', {
      */
     beforeSubmit (element, event) {
         if (event.keyCode === 13) {
-            // canEvent.trigger(element, 'change');
+            element.dispatchEvent(new Event('change'));
         }
         return true;
     }

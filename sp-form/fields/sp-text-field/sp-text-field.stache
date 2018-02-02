@@ -4,14 +4,14 @@
         <label class="form-label" for="{{name}}">{{alias}}</label>
     {{/unless}}
     {{#if(textarea)}}
-        <textarea on:keyup="beforeSubmit(scope.element,scope.event)" 
+        <textarea on:keydown="beforeSubmit(scope.element,scope.event)" 
             {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
             class="form-control form-input" 
             name:from="name" 
             on:inserted="onInsert(scope.element)"
             value:bind="value"></textarea> 
     {{else}}
-        <input on:keyup="beforeSubmit(scope.element,scope.event)" 
+        <input on:keydown="beforeSubmit(scope.element,scope.event)" 
             {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
             type="{{textType}}" 
             class="form-control form-input" 

@@ -30,7 +30,9 @@ export default function mapToFields (defineMap) {
         return [];
     }
     const props = getDefinedProps(defineMap);
-    const fields = Object.keys(props).map((prop) => {
+    const fields = Object.keys(props).filter((prop) => {
+        return prop.substr(0, 1) !== '_';
+    }).map((prop) => {
         const fType = typeof props[prop].type === 'function' ? props[prop].type.name : props[prop].type;
 
         // remove reserved properties if any

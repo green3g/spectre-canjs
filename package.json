@@ -30,7 +30,8 @@
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",
-    "postversion": "npm publish && git push origin master && git push --tags",
+    "dist": "npm publish && git push origin master && git push --tags",
+    "dist-beta": "npm publish --tag beta && git push origin master && git push --tags",
     "changelog": "changelog spectre-canjs all > CHANGELOG.md && git add . && git commit . -m changelog && git push origin master"
   },
   "author": "roemhildtg",

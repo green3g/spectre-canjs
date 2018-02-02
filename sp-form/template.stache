@@ -1,6 +1,6 @@
 {{#if(object)}}
 
-  <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:submit="submitForm">
+  <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:submit="submitForm(scope.event)">
       <can-slot this:bind="this" name="fields">
         {{#each(fields, field=value)}}
           {{>field.editComponent}}

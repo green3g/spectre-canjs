@@ -3,22 +3,20 @@ import Base from 'spectre-canjs/util/field/Field';
 import parseFieldArray from 'spectre-canjs/util/field/parseFieldArray/parseFieldArray';
 import mapToFields from 'spectre-canjs/util/field/mapToFields/mapToFields';
 
-/**
- * @constructor sp-form/fields/sp-subform-field.ViewModel ViewModel
- * @parent sp-form/fields/sp-subform-field
- * @group sp-subform-field.ViewModel.props Properties
+/** 
+ * A <sp-subform-field /> component's ViewModel
+ * @class ViewModel
+ * @extends Field
+ * @memberof sp-subform-field
  *
- * @description A `<sp-subform-field />` component's ViewModel
  */
 export default Base.extend('SubformField', {
-    /**
-     * @prototype
-     */
+    /** @lends sp-subform-field.ViewModel.prototype */
     /**
      * The current value of the field. This is a json serialized value
      * paths.
-     * @property {String} sp-subform-field.ViewModel.props.value value
-     * @parent sp-subform-field.ViewModel.props
+     * @type {String}
+     * @memberof sp-subform-field.ViewModel.prototype
      */
     value: {
         Value: DefineMap,
@@ -37,8 +35,8 @@ export default Base.extend('SubformField', {
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `subobject`
      * if `fields` is not provided.
-     * @property {Array<util/field/Field>} sp-subform-field.ViewModel.props.formFields formFields
-     * @parent sp-subform-field.ViewModel.props
+     * @type {Array<Field>}
+     * @memberof sp-subform-field.ViewModel.prototype
      */
     formFields: {
         get () {
@@ -50,15 +48,11 @@ export default Base.extend('SubformField', {
     },
     /**
      * Called whenever a field changes its value to update this form's json
-     * string value. Dispatche sthe `change` event with the serialized form object
-     * @function saveField
-     * @signature
-     * @param  {Object} scope The viewmodel of this object
-     * @param  {DomElement} dom   The dom element that changed
-     * @param  {Event} event The dom event on the input element
-     * @param  {Object} props   The change event properties
+     * string value. Dispatches the `fieldchange` event with the serialized form object
+     * @param  {Array} args the arguments dispatched from the event
      */
-    saveField ([, props]) {
+    saveField (args) {
+        const [props] = args;
         this.value.assign(props.dirty.get());
         this.dispatch('fieldchange', [this]);
     }

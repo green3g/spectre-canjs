@@ -2,36 +2,27 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Page from '../sp-tab-page/ViewModel';
 
-/**
- * An extended DefineList with type set to a nav page ViewModel
- * @constructor sp-tab-page/PageList PageList
- * @parent sp-tab-page
- */
 const PageList = DefineList.extend('NavPageList', {
     '#': Page
 });
 
 /**
- * @constructor sp-tab-container.ViewModel ViewModel
- * @parent sp-tab-container
- * @group sp-tab-container.ViewModel.props Properties
- *
- * @description A `<sp-tab-container />` component's ViewModel
+ * A `<sp-tab-container />` component's ViewModel
+ * @class ViewModel
+ * @memberof sp-tab-container
  */
 const ViewModel = DefineMap.extend('NavContainer', {
-    /**
-   * @prototype
-   */
+    /** @lends sp-tab-container.ViewModel.prototype */
     /**
      * An array of pages currently displayed in this sp-tab-container
-     * @parent sp-tab-container.ViewModel.props
-     * @property {Array<sp-tab-page.ViewModel>} sp-tab-container.ViewModel.props.pages pages
+     * @memberof sp-tab-container.ViewModel.prototype
+     * @type {Array<sp-tab-page.ViewModel>}
      */
     pages: {Value: PageList},
     /**
      * The currently active page
-     * @property {sp-tab-page.ViewModel} sp-tab-container.ViewModel.props.activePage activePage
-     * @parent sp-tab-container.ViewModel.props
+     * @type {sp-tab-page.ViewModel}
+     * @memberof sp-tab-container.ViewModel.prototype
      */
     activePage: {
         get () {
@@ -63,14 +54,13 @@ const ViewModel = DefineMap.extend('NavContainer', {
     /**
      * The id of the page that is currently active. This value should be
      * set to change the activePage
-     * @parent sp-tab-container.ViewModel.props
-     * @property {String} sp-tab-container.ViewModel.props.activeId activeId
+     * @memberof sp-tab-container.ViewModel.prototype
+     * @type {String}
      */
     activeId: 'string',
     /**
      *  When a `<sp-tab-page>` element is inserted into the document, it calls this
      *  method to add the page's scope to thepages array.
-     *  @function addPage
      *  @param {sp-tab-page.ViewModel} page the page view model that was added
      *
      */
@@ -80,8 +70,6 @@ const ViewModel = DefineMap.extend('NavContainer', {
     /**
      * When a `<page>` element is removed from the document, it calls this
      * method to remove the page's scope from the pages array.
-     * @function removePage
-     * @signature `removePage(page)`
      * @param {sp-tab-page.ViewModel} page the page view model to remove
      */
     removePage (page) {
@@ -98,8 +86,6 @@ const ViewModel = DefineMap.extend('NavContainer', {
     },
     /**
      * Sets a page to the currently selected/active page
-     * @function makeActive
-     * @signature `makeActive(page)`
      * @param {sp-tab-page.ViewModel} page The page to set as the active page
      */
     makeActive (page) {
@@ -123,8 +109,6 @@ const ViewModel = DefineMap.extend('NavContainer', {
     },
     /**
      * Used to check whether the current page is the active page
-     * @function isActive
-     * @signature `isActive(page)`
      * @param {sp-tab-page.ViewModel} page The page to check whether is active
      * @return {Boolean} whether or not the page is active
      */

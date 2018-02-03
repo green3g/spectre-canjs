@@ -1,50 +1,57 @@
 import DefineMap from 'can-define/map/map';
-import CanEvent from 'can-event';
 
 /**
- * @constructor sp-toast.ViewModel ViewModel
- * @parent sp-toast
- * @group sp-toast.ViewModel.props Properties
- *
- * @description A `<sp-toast />` component's ViewModel
+ * A `<sp-toast />` component's ViewModel
+ * @class ViewModel
+ * @memberof sp-toast
  */
-const ViewModel = DefineMap.extend('ToastItem', {
-    /**
-   * @prototype
-   */
+export default DefineMap.extend('ToastItem', {
+    /** @lends sp-toast.ViewModel.prototype */
     /**
    * whether or not to fade the sp-toast out using animate.css
-   * @property {Boolean} sp-toast.viewModel.props.fade fade
-   * @parent sp-toast.ViewModel.props
+   * @type {Boolean}
+   * @memberof sp-toast.ViewModel.prototype
    *
    */
     fade: {
         type: 'boolean',
         value: true
     },
+    timer: {},
     /**
      * the time to autohide this sp-toast. Set to 0 to disable auto hide
-     * @property {Number} sp-toast.viewModel.props.autoHide autoHide
-     * @parent sp-toast.ViewModel.props
+     * @type {Number}
+     * @memberof sp-toast.ViewModel.prototype
      */
     autoHide: {
         type: 'number',
-        value: 5000
+        value: 5000,
+        set (autohide) {
+            if (autohide) {
+                if (this.timer) {
+                    window.clearTimeout(this.timer);
+                }
+                this.timer = setTimeout(() => {
+                    this.hide();
+                }, autohide);
+            }
+            return autohide;
+        }
     },
     /**
      * Whether or not to use the content tag, that will display whatever
      * is inside the `<sp-toast></sp-toast>` tags. This overrides the
      * body property of this sp-toast
-     * @property {Boolean} sp-toast.viewModel.props.useContentTag useContentTag
-     * @parent sp-toast.ViewModel.props
+     * @type {Boolean}
+     * @memberof sp-toast.ViewModel.prototype
      */
-    useContentTag: {
+    custom: {
         type: 'boolean',
         value: false
     },
     /**
-     * @property {string} sp-toast.viewModel.severity severity
-     * @parent sp-toast.ViewModel.props
+     * @type {string}
+     * @memberof sp-toast.ViewModel.prototype
      * @description The class that gives the sp-toast context. Must be either
      * info, success, warning, or danger.
      * @option {string} Defaults to `info`.
@@ -60,8 +67,8 @@ const ViewModel = DefineMap.extend('ToastItem', {
     },
 
     /**
-     * @property {boolean} sp-toast.viewModel.dismissable dismissable
-     * @parent sp-toast.ViewModel.props
+     * @type {boolean}
+     * @memberof sp-toast.ViewModel.prototype
      * @description Marks the sp-toast as dismissable, which adds a "close" icon to the sp-toast.
      * The default is true
      */
@@ -70,8 +77,8 @@ const ViewModel = DefineMap.extend('ToastItem', {
         type: 'boolean'
     },
     /**
-     * @property {boolean} sp-toast.viewModel.iconClass iconClass
-     * @parent sp-toast.ViewModel.props
+     * @type {boolean}
+     * @memberof sp-toast.ViewModel.prototype
      * @description Displays a helpful icon next to the toast text
      * Set to `null` or empty string to exclude icon completely. The default is
      * `icon icon-error_outline`
@@ -82,8 +89,8 @@ const ViewModel = DefineMap.extend('ToastItem', {
     },
 
     /**
-     * @property {boolean} sp-toast.viewModel.visible visible
-     * @parent sp-toast.ViewModel.props
+     * @type {boolean}
+     * @memberof sp-toast.ViewModel.prototype
      * @description Toggles visiblity of the sp-toast. The default is false.
      */
     visible: {
@@ -92,8 +99,8 @@ const ViewModel = DefineMap.extend('ToastItem', {
     },
 
     /**
-     * @property {string} sp-toast.viewModel.body body
-     * @parent sp-toast/viewModal
+     * @type {string}
+     * @memberof sp-toast.ViewModal.prototype
      * @description The content displayed in the toast. The default is an empty string.
      */
     body: {
@@ -101,8 +108,8 @@ const ViewModel = DefineMap.extend('ToastItem', {
         type: 'string'
     },
     /**
-     * @property {string} sp-toast.viewModel.props.heading heading
-     * @parent sp-toast.ViewModel.props
+     * @type {string}
+     * @memberof sp-toast.ViewModel.prototype
      * @description Optional. The title of the sp-toast. The default is an empty string.
      */
     heading: {
@@ -111,17 +118,16 @@ const ViewModel = DefineMap.extend('ToastItem', {
     },
     /**
      * Time in miliseconds to fade out this sp-toast
-     * @parent sp-toast.ViewModel.props
-     * @property {Number} sp-toast.viewModel.props.fadeTime fadeTime
+     * @memberof sp-toast.ViewModel.prototype
+     * @type {Number}
      */
     fadeTime: {
         type: 'number',
         value: 1000
     },
+    element: '*',
     /**
      * Hide this sp-toast
-     * @function hide
-     * @signature `hide()`
      */
     hide () {
         if (!this.visible) {
@@ -137,6 +143,3 @@ const ViewModel = DefineMap.extend('ToastItem', {
         }
     }
 });
-
-Object.assign(ViewModel, CanEvent);
-export default ViewModel;

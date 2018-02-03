@@ -1,43 +1,44 @@
 import DefineMap from 'can-define/map/map';
+import canViewModel from 'can-view-model';
 
 let pageId = 0;
 
 /**
- * @constructor sp-tab-page.ViewModel ViewModel
- * @parent sp-tab-page
- * @group sp-tab-page.ViewModel.props Properties
+ * A `<sp-tab-page />` component's ViewModel
+ * @class ViewModel
+ * @memberof sp-tab-page
  *
- * @description A `<sp-tab-page />` component's ViewModel
  */
 const ViewModel = DefineMap.extend('NavPage', {
+    /** @lends sp-tab-page.ViewModel.prototype */
     /**
    * The display state of the page. If true, the page content will be shown
-   * @property {Boolean} sp-tab-page.ViewModel.props.active active
-   * @parent sp-tab-page.ViewModel.props
+   * @type {Boolean} 
+   * @memberof sp-tab-page.ViewModel.prototype
    */
     active: {type: 'boolean', value: false},
     /**
      * Add custom classes to the navigation containers nav tab.
-     * @type {String} sp-tab-page.ViewModel.props.classes classes
-     * @parent sp-tab-page.ViewModel.props
+     * @type {String} 
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     classes: 'string',
     /**
-     * The label to display in the parent container tab
-     * @property {String} sp-tab-page.ViewModel.props.label label
-     * @parent sp-tab-page.ViewModel.props
+     * The label to display in the memberof container tab
+     * @type {String} 
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     label: 'string',
     /**
      * Whether or not this page is currently loading
-     * @property {HTMLBoolean} sp-tab-page.ViewModel.props.loading loading
-     * @parent sp-tab-page.ViewModel.props
+     * @type {HTMLBoolean} 
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     loading: {type: 'htmlbool', value: false},
     /**
      * A unique id to identify this page. The default is automatically provided.
-     * @property {String} sp-tab-page.ViewModel.props.pageId pageId
-     * @parent sp-tab-page.ViewModel.props
+     * @type {String} 
+     * @memberof sp-tab-page.ViewModel.prototype
      */
     pageId: {
         value: function () {
@@ -46,10 +47,21 @@ const ViewModel = DefineMap.extend('NavPage', {
     },
     /**
      * The parent containers view model
-     * @property {DefineMap} sp-tab-page.ViewModel.props.parent parent
-     * @parent sp-tab-page.ViewModel.props
+     * @type {DefineMap} 
+     * @memberof sp-tab-page.ViewModel.prototype
      */
-    parent: '*'
+    parent: '*',
+    /**
+     * When the viewmodel is connected to an element, 
+     * register this viewmodel with the parent
+     * @param {Element} el This component's element
+     */
+    connectedCallback (el) {
+        this.parent = canViewModel(el.parentNode);
+        if (this.parent && this.parent.addPage) {
+            this.parent.addPage(this);
+        }
+    }
 });
 
 

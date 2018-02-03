@@ -1,7 +1,7 @@
 
 <!--
 @module {can.Component} sp-confirm <sp-confirm />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 -->
 
 ## Description

@@ -1,14 +1,9 @@
-import string from 'can-util/js/string/string';
-
-/**
- * @module {{}} util/string string
- * @parent spectre-canjs.util
- * @description a collection of string utilities
- */
-
+function capitalize (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 /**
  * Formats the field by replacing underscores with spaces and capitalizing the first letter
- * @parent util/string
+ * @memberof util/string
  * @function makeSentenceCase
  * @signature `makeSentenceCase(text)`
  * @param  {String} text The name of the field
@@ -16,7 +11,7 @@ import string from 'can-util/js/string/string';
  */
 export function makeSentenceCase (text) {
     text = String(text);
-    return string.capitalize(String.prototype.trim.call(
+    return capitalize(String.prototype.trim.call(
         text.split('_')
             .join(' ')
             .toLowerCase()

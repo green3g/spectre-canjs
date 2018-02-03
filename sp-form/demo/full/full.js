@@ -5,11 +5,11 @@ import 'spectre-canjs/sp-form/fields/sp-dropzone-field/';
 import 'spectre-canjs/sp-form/fields/sp-subform-field/';
 import 'spectre-canjs/sp-form/fields/sp-check-field/';
 import render from './full.stache';
-import dev from 'can-util/js/dev/dev';
 import jsonMarkup from 'json-pretty-html';
 import './full.less';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
+import DefineMap from 'can-define/map/';
 
 // mock a server
 import './fixtures.js';
@@ -63,6 +63,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
         type: 'string', 
         value: 'Default Value',
         name: 'field1',
+        alias: 'Please enter at least 50 characters',
         validate (props) {
 
             // since this function is run whenever field1 changes, we can use 

@@ -1,6 +1,6 @@
 
 @module {can.Component} sp-form/fields/sp-subform-field <sp-subform-field />
-@parent sp-form.fields
+@memberof sp-form.fields
 
 @option {String} fieldType This should be set to `subform`
 @option {can.Map} Type The object to use as the form object template

@@ -1,12 +1,18 @@
 import {makeSentenceCase} from '../string/string';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-
+import {getEditComponent} from './fieldComponents';
 
 /**
- * @constructor util/field/Field Field
- * @parent util/field
- * @group util/field/Field.props Properties
+ * @typedef ValidationObject
+ * @name ValidationObject
+ * @property {Object} object the form object that was set on the form
+ * @property {Object} dirty the updated object currently set by the user in the form
+ * @property {*} value the current field's value (dirty). Same as `dirty[field.name]` but provided for easy access
+ */
+
+/**
+ * @class Field
  * @description Constructs a new field
  */
 export const Field = DefineMap.extend('Field', {
@@ -14,29 +20,29 @@ export const Field = DefineMap.extend('Field', {
     // allow extra properties on this type
     seal: false
 }, {
+    /** @lends Field.prototype */
     /**
-     * @prototype
+     * The name of the type on the object, this field's name
+     * @type {String} 
+     * @memberof Field.prototype
      */
-    /**
-     * The name of the property on the object, this field's name
-     * @property {String} util/field/Field.props.name name
-     * @parent util/field/Field.props
-     */
-    name: 'string',
+    name: {
+        type: 'string',
+        set (name) {
+            if (!this.alias && name) {
+                this.alias = makeSentenceCase(name);
+            }
+            return name;
+        }
+    },
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
-     * @property {String} util/field/Field.props.alias alias
-     * @parent util/field/Field.props
+     * @type {String} Field.prototype.alias alias
+     * @memberof Field.prototype
      */
     alias: {
-        type: 'string',
-        get (alias) {
-            if (alias) {
-                return alias;
-            }
-            return makeSentenceCase(this.name);
-        }
+        type: 'string'
     },
     properties: {
         set (props) {
@@ -46,14 +52,14 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * The field error string
-     * @property {String} FieldInputMap.props.error error
-     * @parent FieldInputMap.props
+     * @type {String}
+     * @memberof Field.prototype
      */
     error: 'string',
     /**
      * The current field value
-     * @property {Object} FieldInputMap.props.value value
-     * @parent FieldInputMap.props
+     * @type {Object}
+     * @memberof Field.prototype
      */
     value: {
         value: '',
@@ -67,8 +73,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the list view in the data-admin
-     * @property {Boolean} util/field/Field.props.list list
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.list list
+     * @memberof Field.prototype
      */
     list: {
         type: 'boolean',
@@ -76,8 +82,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the details view in the data-admin
-     * @property {Boolean} util/field/Field.props.detail detail
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.detail detail
+     * @memberof Field.prototype
      */
     detail: {
         type: 'boolean',
@@ -85,8 +91,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the edit view in the data-admin
-     * @property {Boolean} util/field/Field.props.edit edit
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.edit edit
+     * @memberof Field.prototype
      */
     edit: {
         type: 'boolean',
@@ -94,8 +100,8 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the filter widget's fields.
-     * @property {Boolean} util/field/Field.props.filter filter
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.filter filter
+     * @memberof Field.prototype
      */
     filter: {
         type: 'boolean',
@@ -103,48 +109,49 @@ export const Field = DefineMap.extend('Field', {
     },
     /**
      * Includes this field in the sorting capability
-     * @property {Boolean} util/field/Field.props.sort sort
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.sort sort
+     * @memberof Field.prototype
      */
     sort: {
         type: 'boolean',
         value: true
     },
     /**
-     * Validates a property and returns a string if the field is invalid
-     * @property {Function} util/field/Field.props.validate validate
-     * @signature `validate(props)`
-     * @param {util/field.ValidationObject} props A special object consisting of information about the current value and dirty state of the form object
-     * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
-     * @parent util/field/Field.props
-     */
-    validate: {
-        value: null
-    },
-    /**
      * A boolean flag to display form field inline with others and hide labels
-     * @property {Boolean} util/field/Field.props.inline inline
-     * @parent util/field/Field.props
+     * @type {Boolean} Field.prototype.inline inline
+     * @memberof Field.prototype
      */
     inline: 'boolean',
     /**
      * Text to display when the field is empty (like a textbox). Doesn't apply to
      * some fields, like select or date fields.
-     * @property {String} util/field/Field.props.placeholder placeholder
-     * @parent util/field/Field.props
+     * @type {String} Field.prototype.placeholder placeholder
+     * @memberof Field.prototype
      */
     placeholder: 'string',
     /**
      * Adds css classes to the table cells and headings. Selectors should use
      * `th.classname` and `td.classname`
-     * @property {String} util/field/Field.props.classes classes
-     * @parent util/field/Field.props
+     * @type {String} Field.prototype.classes classes
+     * @memberof Field.prototype
      */
     classes: 'string',
 
     // placeholder props to overwrite the display template of edit or table components
-    editComponent: {},
-    displayComponent: {}
+    editTag: {
+        value: 'sp-text-field', 
+        type: 'string'
+    },
+    editComponent: {
+        get (comp) {
+            
+            if (typeof comp === 'function') {
+                return comp;
+            }
+            return getEditComponent(this);
+        }
+    },
+    displayComponent: {},
     /**
      * If field component implements this method, it will be called 
      * when the component is inserted, with the input element
@@ -152,6 +159,14 @@ export const Field = DefineMap.extend('Field', {
      * 
      */
     // onInsert (element) {flatpicker(element);}
+    /**
+     * Validates a type and returns a string if the field is invalid
+     * @param {ValidationObject} props A special object consisting of information about the current value and dirty state of the form object
+     * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
+     */
+    validate: {
+        value: null
+    }
 });
 
 

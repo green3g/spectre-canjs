@@ -1,5 +1,5 @@
 <div class="form-group {{#if(error)}}has-error{{/if}}">
-        <label class="form-{{#if style}}{{style}}{{else}}checkbox{{/if}}">
+        <label class="form-{{#if(style)}}{{style}}{{else}}checkbox{{/if}}">
             <input type="checkbox" el:checked:bind="value" name:from="name" />
             <i class="form-icon"></i> {{alias}}
         </label>

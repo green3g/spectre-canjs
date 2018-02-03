@@ -1,7 +1,7 @@
 <!--
 
 @module {can.Component} sp-toast-container <sp-toast-container />
-@parent spectre-canjs.components
+@memberof spectre-canjs.components
 @outline 3
 
 -->

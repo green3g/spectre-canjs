@@ -7,7 +7,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each fields as field}}
+            {{#each(fields, field=value)}}
                 <tr>
                     <td>{{field.alias}}</td>
                     <td class="{{field.classes}}">
@@ -15,7 +15,7 @@
                         {{#if(field.displayComponent}}
                             {{>field.displayComponent}}
                         {{else}}
-                            {{object[field.name]}}
+                            {{../object[field.name]}}
                         {{/if}}
                     </td>
                 </tr>

@@ -1,37 +1,37 @@
 <div class="sp-paginate">
   <ul class="pagination">
-    {{^hideFirst}}
-    <li class="{{^hasPrevious}}disabled{{/hasPrevious}} page-item">
-      <a aria-label="First" on:el:click="gotoFirst()">
+    {{#unless(hideFirst)}}
+    <li class="{{#unless(hasPrevious)}}disabled{{/unless}} page-item">
+      <a aria-label="First" on:click="gotoFirst()">
         <span aria-hidden="true">&laquo;&laquo;</span>
       </a>
     </li>
-    {{/hideFirst}}
-    {{^hidePrevious}}
-    <li class="{{^hasPrevious}}disabled{{/hasPrevious}} page-item">
+    {{/unless}}
+    {{#unless(hidePrevious)}}
+    <li class="{{#unless(hasPrevious)}}disabled{{/unless}} page-item">
       <a aria-label="Previous" on:el:click="gotoPrevious()">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    {{/hidePrevious}}
-    {{^hidePages}}
-    {{#each visiblePages}}
-      <li class="{{#if isActive(.)}}active{{/if}} page-item"><a on:el:click="gotoPage(.)">{{.}}</a></li>
+    {{/unless}}
+    {{#unless(hidePages)}}
+    {{#each(visiblePages)}}
+      <li class="{{#if(../isActive(.))}}active{{/if}} page-item"><a on:el:click="../gotoPage(.)">{{.}}</a></li>
     {{/each}}
-    {{/hidePages}}
-    {{^hideNext}}
-    <li class="{{^hasNext}}disabled{{/hasNext}} page-item">
-      <a aria-label="Next" on:el:click="gotoNext">
+    {{/unless}}
+    {{#unless(hideNext)}}
+    <li class="{{#unless(hasNext)}}disabled{{/unless}} page-item">
+      <a aria-label="Next" on:click="gotoNext()">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
-    {{/hideNext}}
-    {{^hideLast}}
-    <li class="{{^hasNext}}disabled{{/hasNext}} page-item">
-      <a aria-label="Last" on:el:click="gotoLast">
+    {{/unless}}
+    {{#unless(hideLast)}}
+    <li class="{{#unless(hasNext)}}disabled{{/unless}} page-item">
+      <a aria-label="Last" on:click="gotoLast()">
         <span aria-hidden="true">&raquo;&raquo;</span>
       </a>
     </li>
-    {{/hideLast}}
+    {{/unless}}
   </ul>
 </div>

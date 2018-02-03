@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://github.com/roemhildtg/spectre-canjs",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": {

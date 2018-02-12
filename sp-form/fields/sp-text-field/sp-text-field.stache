@@ -9,7 +9,7 @@
             class="form-control form-input" 
             name:from="name" 
             on:inserted="onInsert(scope.element)"
-            value:bind="value"></textarea> 
+            value:bind="value" {{attributes}}></textarea> 
     {{else}}
         <input on:keydown="beforeSubmit(scope.element,scope.event)" 
             {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
@@ -17,7 +17,7 @@
             class="form-control form-input" 
             name:from="name" 
             on:inserted="onInsert(scope.element)"
-            value:bind="value" />
+            value:bind="value" {{attributes}} />
     {{/if}}
     {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 </div>

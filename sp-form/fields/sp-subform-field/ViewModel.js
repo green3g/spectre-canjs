@@ -32,6 +32,14 @@ export default Base.extend('SubformField', {
         }
     },
     /**
+     * An alternative property to using Type. Since Type is a DefineMap keyword, 
+     * subType is provided to allow for customizability between the field and
+     * the map
+     * @type {Constructor} 
+     * @memberof sp-subform-field.ViewModel.prototype
+     */
+    subType: '*',
+    /**
      * The field properties to set up the form fields functionality, this is
      * set up automatically from the `fields` property or the `subobject`
      * if `fields` is not provided.
@@ -43,7 +51,9 @@ export default Base.extend('SubformField', {
             if (this.fields && this.fields.length) {
                 return parseFieldArray(this.fields);
             }
-            return mapToFields(this.Type);
+
+            const type = this.subType || this.Type;
+            return mapToFields(type);
         }
     },
     /**

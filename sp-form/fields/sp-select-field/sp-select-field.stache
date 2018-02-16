@@ -1,5 +1,5 @@
 {{<select}}
-<select value:bind="value" class="form-select form-control" name="{{name}}">
+<select value:bind="value" class="form-select form-control" name="{{name}}"  {{attributes}}>
     <option value="">{{defaultLabel}}</option>
     {{#each(options)}}
     <option value="{{value}}">{{label}}</option>

@@ -1,6 +1,6 @@
-<sp-modal custom-body vm:active:bind="active"{{#small}} small{{/small}}>
+<sp-modal custom:from="true" active:bind="active"{{#if(small)}} small:from="true"{{/if}}>
   <div class="modal-header">
-      <button on:el:click="onReject()" class="btn btn-clear float-right"></button>
+      <button on:click="onReject()" class="btn btn-clear float-right"></button>
       <div class="modal-title">{{title}}</div>
   </div>
   <div class="modal-body">

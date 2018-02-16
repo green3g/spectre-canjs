@@ -1,6 +1,4 @@
 import DefineMap from 'can-define/map/map';
-import canEvent from 'can-event';
-import assign from 'can-util/js/assign/assign';
 
 /**
  * @class ViewModel
@@ -8,7 +6,7 @@ import assign from 'can-util/js/assign/assign';
  *
  * @description A `<sp-modal />` component's ViewModel
  */
-const ViewModel = DefineMap.extend('ModalDialog', {
+export default DefineMap.extend('ModalDialog', {
     /** @lends sp-modal.ViewModel.prototype */
     /**
      * Whether or not this modal is currently active. The default is `false`
@@ -23,13 +21,19 @@ const ViewModel = DefineMap.extend('ModalDialog', {
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    customBody: {value: false, type: 'htmlbool'},
+    custom: {value: false, type: 'htmlbool'},
     /**
      * Flag to make this modal a small (`modal-sm`) modal. The default is `false`
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
     small: {value: false, type: 'htmlbool'},
+    /**
+     * The title displayed in the modal header
+     * @type {String}
+     * @memberof sp-modal.ViewModel.prototype
+     */
+    title: {type: 'string'},
     /**
      * Whether or not to display this modals backdrop. The default is `true`.
      * @type {Boolean}
@@ -62,6 +66,3 @@ const ViewModel = DefineMap.extend('ModalDialog', {
         }
     }
 });
-
-assign(ViewModel.prototype, canEvent);
-export default ViewModel;

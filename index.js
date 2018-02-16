@@ -1,4 +1,5 @@
 import 'spectre.css/dist/spectre.css';
+import 'animate.css';
 import 'font-awesome/css/font-awesome.css';
 import './sp-form/sp-form';
 import './sp-form/fields/sp-text-field/sp-text-field';
@@ -14,7 +15,6 @@ import './sp-file-list/sp-file-list';
 import './sp-filter/sp-filter';
 import './sp-filter-builder/sp-filter-builder';
 import './sp-list-table/sp-list-table';
-import './sp-menu/sp-menu';
 import './sp-modal/sp-modal';
 import './sp-paginate/sp-paginate';
 import './sp-property-table/sp-property-table';

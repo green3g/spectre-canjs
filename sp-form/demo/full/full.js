@@ -5,7 +5,6 @@ import 'spectre-canjs/sp-form/fields/sp-dropzone-field/';
 import 'spectre-canjs/sp-form/fields/sp-subform-field/';
 import 'spectre-canjs/sp-form/fields/sp-check-field/';
 import render from './full.stache';
-import dev from 'can-util/js/dev/dev';
 import jsonMarkup from 'json-pretty-html';
 import './full.less';
 import flatpickr from 'flatpickr';

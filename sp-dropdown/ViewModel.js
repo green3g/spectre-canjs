@@ -1,8 +1,6 @@
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import canViewModel from 'can-view-model';
-import canEvent from 'can-event';
-import assign from 'can-util/js/assign/assign';
 
 /**
  * Dropdown View Model
@@ -10,7 +8,7 @@ import assign from 'can-util/js/assign/assign';
  * @class ViewModel
  * @memberof sp-dropdown
  */
-const ViewModel = DefineMap.extend('DropdownMenu', {
+export default DefineMap.extend('DropdownMenu', {
     /** @lends sp-dropdown.ViewModel.prototype */
     /**
      * The icon class to display next to the dropdown. <br />
@@ -107,6 +105,3 @@ const ViewModel = DefineMap.extend('DropdownMenu', {
         return false;
     }
 });
-
-assign(ViewModel.prototype, canEvent);
-export default ViewModel;

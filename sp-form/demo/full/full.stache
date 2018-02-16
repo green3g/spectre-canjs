@@ -11,7 +11,7 @@
         </div>
         <div class="col-6 col-sm12 container">
         
-        <p>Default form object values: </p>
+        <p>Model object values: </p>
         <div class="json">{{{stringify (object)}}}</div>
         <div class="divider" />
 

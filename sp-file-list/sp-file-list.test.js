@@ -1,5 +1,4 @@
-import {ViewModel} from './ViewModel';
-import dev from 'can-util/js/dev/dev';
+import ViewModel from './ViewModel';
 let vm;
 
 
@@ -26,11 +25,9 @@ test('isImage(filename)', () => {
     ];
 
     images.forEach((img) => {
-        dev.log('testing', img);
         expect(vm.isImage({id: img})).toBe(true);
     });
     notImages.forEach((img) => {
-        dev.log('testing', img);
         expect(vm.isImage({id: img})).toBe(false);
     });
 });

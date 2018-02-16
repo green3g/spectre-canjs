@@ -3,7 +3,7 @@
         <h1>Navigation Demo</h1>
 
         <sp-tab-container>
-            <sp-tab-page label="Tables">
+            <sp-tab-page label:from="'Tables'">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -23,7 +23,7 @@
                     </tbody>
                 </table>
             </sp-tab-page>
-            <sp-tab-page label="Forms">
+            <sp-tab-page label:from="'Forms'">
                 <form class="form-horizontal" action="#forms" _lpchecked="1">
                     <div class="form-group">
                         <div class="col-3">
@@ -126,9 +126,9 @@
                 </form>
             </sp-tab-page>
 
-            {{#if people.isResolved}}
-            <sp-tab-page label="User cards">
-                {{#each people.value}}
+            {{#if(../people.isResolved)}}
+            <sp-tab-page label:from="'User cards'">
+                {{#each(../people.value)}}
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">{{name}}</h4>

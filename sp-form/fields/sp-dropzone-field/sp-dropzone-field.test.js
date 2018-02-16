@@ -1,6 +1,5 @@
 import ViewModel from './ViewModel';
 import '../../demo/full/fixtures';
-import 'can-vdom';
 let vm;
 
 beforeEach (() => {

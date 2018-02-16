@@ -1,6 +1,6 @@
 <div class="form-group {{#if(error)}}has-error{{/if}}">
-        <label class="form-{{#if style}}{{style}}{{else}}checkbox{{/if}}">
-            <input type="checkbox" el:checked:bind="value" name:from="name" />
+        <label class="form-{{#if(style)}}{{style}}{{else}}checkbox{{/if}}">
+            <input type="checkbox" el:checked:bind="value" name:from="name" {{attributes}} />
             <i class="form-icon"></i> {{alias}}
         </label>
     {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}

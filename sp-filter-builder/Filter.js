@@ -2,7 +2,6 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Field from '../util/field/Field';
 import {makeSentenceCase} from '../util/string/string';
-import assign from 'can-assign';
 import define from 'can-define';
 import stache from 'can-stache';
 
@@ -132,7 +131,7 @@ export const Filter = DefineMap.extend('Filter', {
             const options = field ? FilterOptions.filter((filter) => {
                 return !field.type || field.type === 'observable' || !filter.types || filter.types.indexOf(field.type) > -1;
             }) : FilterOptions;
-            return new Field(assign({
+            return new Field(Object.assign({
                 name: 'operator',
                 value: options[0].value,
                 alias: 'is',

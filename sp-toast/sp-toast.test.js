@@ -21,6 +21,7 @@ test('hide()', (done) => {
     vm.visible = true;
     vm.on('hide', (event, viewmodel) => {
         expect(viewmodel).toBeTruthy();
+        expect(viewmodel.visible).toBeFalsy();
         done();
     });
     vm.hide();

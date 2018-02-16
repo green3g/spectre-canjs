@@ -11,17 +11,7 @@ import ViewModel from './ViewModel';
 Component.extend({
     tag: 'sp-toast',
     view: template,
-    ViewModel: ViewModel,
-    events: {
-        inserted () {
-            const vm = this.viewModel;
-            if (vm.autoHide) {
-                setTimeout(() => {
-                    vm.hide();
-                }, vm.autoHide);
-            }
-        }
-    }
+    ViewModel: ViewModel
 });
 
 export default ViewModel;

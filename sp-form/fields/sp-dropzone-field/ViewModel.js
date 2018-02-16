@@ -3,12 +3,6 @@ import axios from 'axios';
 import Field from 'spectre-canjs/util/field/Field';
 import DefineList from 'can-define/list/list';
 import DefineMap from 'can-define/map/map';
-import canEvent from 'can-event';
-import get from 'can-util/js/get/get';
-
-// !steal-remove-start
-import dev from 'can-util/js/dev/dev';
-// !steal-remove-end
 
 /**
  * File type for dropzone field and file list 
@@ -46,7 +40,7 @@ const FileMapList = DefineList.extend('FileList', {
  * @extends Field
  * @memberof sp-dropzone-field
  */
-const ViewModel = Field.extend('DropZoneField', {
+export default Field.extend('DropZoneField', {
     /** @lends sp-dropzone-field.ViewModel.prototype */
     value: {Value: FileMapList, Type: FileMapList},
     dropzone: '*',
@@ -92,7 +86,8 @@ const ViewModel = Field.extend('DropZoneField', {
         file.isDeleting = true;
         
         // !steal-remove-start
-        dev.warn('deleting file using url', this.url, file.id);
+        // eslint-disable-next-line
+        console.warn('deleting file using url', this.url, file.id);
         // !steal-remove-end
 
         return axios.delete(this.url + '/' + file.id, {
@@ -104,15 +99,13 @@ const ViewModel = Field.extend('DropZoneField', {
         }).catch((e) => {
             // if status is a 404, the file wasn't found anyways, so we 
             // should remove it from the store and perhaps log a warning
-            if (get(e, 'request.status') === 404) {
+            if (e.request && e.request.status === 404) {
                 this.value.splice(this.value.indexOf(file), 1);
             }
             // !steal-remove-start
-            dev.warn('error occurred when deleting file', file, e);
+            // eslint-disable-next-line
+            console.warn('error occurred when deleting file', file, e);
             // !steal-remove-end
         });
     }
 });
-
-Object.assign(ViewModel.prototype, canEvent);
-export default ViewModel;

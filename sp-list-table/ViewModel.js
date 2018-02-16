@@ -1,8 +1,6 @@
 import FieldIteratorMap from '../util/field/base/FieldIteratorMap';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
-import CanEvent from 'can-event';
-import makeArray from 'can-util/js/make-array/make-array';
 
 /**
  * A `<sp-list-table />` component's ViewModel.
@@ -10,7 +8,7 @@ import makeArray from 'can-util/js/make-array/make-array';
  * @class ViewModel
  * @memberof sp-list-table
  */
-const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
+export default FieldIteratorMap.extend('ListTable', {seal: false}, {
     /** @lends sp-list-table.ViewModel.prototype */
     /**
      * A string referencing a field type that will exclude that field
@@ -144,7 +142,7 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
      * @param  {String} event The name of the event to dispatch
      */
     dispatchEvent (event) {
-        this.dispatch(event, makeArray(arguments));
+        this.dispatch(event, Array.from(arguments));
     },
     /**
      * Helps the template the currentSort value
@@ -231,5 +229,3 @@ const ViewModel = FieldIteratorMap.extend('ListTable', {seal: false}, {
         });
     }
 });
-Object.assign(ViewModel.prototype, CanEvent);
-export default ViewModel;

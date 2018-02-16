@@ -172,12 +172,15 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * Called when the form is submitted. The object is updated by calling
      * it's `save` method. The event `submit` is dispatched.
-     * @param {Object} vm The scope of the form (this view model)
-     * @param {Form} form the dom form
      * @param {Event} event the dom form event
      * @return {Boolean} returns false to prevent form submissions
      */
-    submitForm () {
+    submitForm (event) {
+
+        // don't let the form actually submit
+        if (event && event.preventDefault) {
+            event.preventDefault();
+        }
 
         // we're currently saving
         if (this.isSaving) {
@@ -216,7 +219,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @param {Array} args an array with 3 arguments, event, value (field value) and field<Field> object
      */
     checkField (args) {
-        const [, field] = args;
+        const [field] = args;
 
         // check for valid field value and don't update if it's not
         this.validationErrors[field.name] = this.getValidationError(field, field.value);

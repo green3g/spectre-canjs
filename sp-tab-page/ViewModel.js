@@ -1,4 +1,5 @@
 import DefineMap from 'can-define/map/map';
+import canViewModel from 'can-view-model';
 
 let pageId = 0;
 
@@ -49,7 +50,18 @@ const ViewModel = DefineMap.extend('NavPage', {
      * @type {DefineMap} 
      * @memberof sp-tab-page.ViewModel.prototype
      */
-    parent: '*'
+    parent: '*',
+    /**
+     * When the viewmodel is connected to an element, 
+     * register this viewmodel with the parent
+     * @param {Element} el This component's element
+     */
+    connectedCallback (el) {
+        this.parent = canViewModel(el.parentNode);
+        if (this.parent && this.parent.addPage) {
+            this.parent.addPage(this);
+        }
+    }
 });
 
 

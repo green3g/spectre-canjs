@@ -85,10 +85,12 @@ export default Field.extend('DropZoneField', {
     delete (file) {
         file.isDeleting = true;
         
-        // !steal-remove-start
+        // eslint-disable-next-line
+        //!steal-remove-start
         // eslint-disable-next-line
         console.warn('deleting file using url', this.url, file.id);
-        // !steal-remove-end
+        // eslint-disable-next-line
+        //!steal-remove-end
 
         return axios.delete(this.url + '/' + file.id, {
             headers: this.headers
@@ -102,10 +104,12 @@ export default Field.extend('DropZoneField', {
             if (e.request && e.request.status === 404) {
                 this.value.splice(this.value.indexOf(file), 1);
             }
-            // !steal-remove-start
+            // eslint-disable-next-line
+            //!steal-remove-start
             // eslint-disable-next-line
             console.warn('error occurred when deleting file', file, e);
-            // !steal-remove-end
+            // eslint-disable-next-line
+            //!steal-remove-end
         });
     }
 });

@@ -24,7 +24,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
        * @memberof sp-filter-builder.ViewModel.prototype
        */
     excludeFieldKey: {
-        value: 'filter'
+        default: 'filter'
     },
     /**
      * A list of filterObjects currently used in this widget
@@ -33,7 +33,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      */
     filters: {
         Type: FilterList,
-        Value: FilterList
+        Default: FilterList
     },
     /**
      * The field properties for the field name dropdown
@@ -82,7 +82,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
      */
     fieldValue: {
         type: 'string',
-        value: '_'
+        default: '_'
     },
     /**
      * Removes a filter from the list of filters

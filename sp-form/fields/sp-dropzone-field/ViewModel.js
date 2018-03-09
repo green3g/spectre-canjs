@@ -42,16 +42,19 @@ const FileMapList = DefineList.extend('FileList', {
  */
 export default Field.extend('DropZoneField', {
     /** @lends sp-dropzone-field.ViewModel.prototype */
-    value: {Value: FileMapList, Type: FileMapList},
+    value: {Default: FileMapList, Type: FileMapList},
     dropzone: '*',
-    url: {type: 'string', value: '/api/uploads'},
-    paramName: {type: 'string', value: 'uri'},
-    headers: {type: '*', value () { 
-        return {
+    url: {type: 'string', default: '/api/uploads'},
+    paramName: {type: 'string', default: 'uri'},
+    headers: {
+        type: '*', 
+        default () { 
+            return {
             // Authorization: localStorage['feathers-jwt'],
             // withCredentials: true
-        };
-    }},
+            };
+        }
+    },
     createDropzone (element) {
         this.dropzone = new Dropzone(element, {
             url: this.url,

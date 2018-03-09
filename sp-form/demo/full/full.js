@@ -21,7 +21,7 @@ const ChildObject = DefineMap.extend('ChildDemoObject', {
         validate (props) {
             return props.value != 2 ? 'The value must be 2' : undefined;
         },
-        value: 2,
+        default: 2,
         editTag: 'sp-select-field',
         defaultLabel: 'These values are loading asynchronously!',
         // async load options
@@ -61,7 +61,7 @@ const ChildObject = DefineMap.extend('ChildDemoObject', {
 const DemoObject = DefineMap.extend('DemoObject', {
     field1: {
         type: 'string', 
-        value: 'Default Value',
+        default: 'Default Value',
         name: 'field1',
         alias: 'Please enter at least 50 characters',
         validate (props) {
@@ -93,7 +93,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
     },
     field3: {
         type: 'number',
-        value: 1,
+        default: 1,
         name: 'field3',
         alias: 'A select dropdown',
         editTag: 'sp-select-field',
@@ -144,7 +144,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
         name: 'field6',
         alias: 'A Subform Field',
         editTag: 'sp-subform-field',
-        Value: ChildObject,
+        Default:  ChildObject,
         ObjectTemplate: ChildObject
     },
     field1Length: {edit: false, type: 'number'},
@@ -153,7 +153,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
         name: 'field7',
         alias: 'A checkbox',
         editTag: 'sp-check-field',
-        value: false
+        default: false
     }
 });
 

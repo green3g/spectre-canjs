@@ -16,7 +16,7 @@ export default Field.extend('TextField', {
      * @memberof sp-text-field.ViewModel.prototype
      * @type {String}
      */
-    textType: {value: 'text', type: 'string'},
+    textType: {default: 'text', type: 'string'},
     /**
      * Checks for the enter keypress and triggers a change event on the input
      * The enter key press triggers a submit event on the form, but before the

@@ -18,6 +18,6 @@ export default DefineMap.extend({seal: false}, {
      */
     style: {
         type: 'string',
-        value: 'checkbox'
+        default: 'checkbox'
     }
 });

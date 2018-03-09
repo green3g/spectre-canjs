@@ -15,7 +15,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     pages: {
         type: 'number',
-        value: 10
+        default: 10
     },
     /**
      * The active page index
@@ -23,7 +23,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      * @memberof sp-paginate.ViewModel.prototype
      */
     activePageIndex: {
-        value: 0,
+        default: 0,
         type: 'number'
     },
     /**
@@ -32,7 +32,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      * @memberof sp-paginate.ViewModel.prototype
      */
     activeOffset: {
-        value: 3,
+        default: 3,
         type: 'number'
     },
     /**
@@ -92,7 +92,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     hideFirst: {
         type: 'htmlbool',
-        value: false
+        default: false
     },
     /**
      * Hides the last button
@@ -102,7 +102,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     hideLast: {
         type: 'htmlbool',
-        value: false
+        default: false
     },
     /**
      * Hides the previous button
@@ -112,7 +112,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     hidePrevious: {
         type: 'htmlbool',
-        value: false
+        default: false
     },
     /**
      * Hides the next button
@@ -122,7 +122,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     hideNext: {
         type: 'htmlbool',
-        value: false
+        default: false
     },
     /**
      * Hides the list of pages
@@ -132,7 +132,7 @@ const ViewModel = DefineMap.extend('PaginateWidget', {
      */
     hidePages: {
         type: 'htmlbool',
-        value: false
+        default: false
     },
     /**
      * Navigates to the next page

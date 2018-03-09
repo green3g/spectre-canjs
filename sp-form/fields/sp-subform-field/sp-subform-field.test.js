@@ -3,7 +3,7 @@ import DefineMap from 'can-define/map/map';
 // eslint-disable-next-line
 let vm;
 const TestObject = DefineMap.extend({
-    field1: {value: 'test', type: 'string'},
+    field1: {default: 'test', type: 'string'},
     field2: 'string'
 });
 

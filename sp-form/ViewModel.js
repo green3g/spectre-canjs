@@ -16,14 +16,14 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     * @memberof sp-form.ViewModel
     */
     excludeFieldKey: {
-        value: 'edit'
+        default: 'edit'
     },
     /**
      * Whether or not to show the saving icon when the submit button is clickered.
      * @type {HTMLBoolean} sp-form.ViewModel.object object 
      * @memberof sp-form.ViewModel
      */
-    showSaving: {type: 'htmlbool', value: true},
+    showSaving: {type: 'htmlbool', default: true},
     /**
      * Whether or not this form should be an inline (horizontal) form
      * @type {Boolean} sp-form.ViewModel.inline
@@ -31,7 +31,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      */
     inline: {
         type: 'boolean',
-        value: false
+        default: false
     },
     /**
      * The connection info for this form's data. If this is provided, the
@@ -41,7 +41,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @memberof sp-form.ViewModel
      */
     connection: {
-        value: null
+        default: null
     },
     /**
      * The object id of the item to retrieve. If this and [sp-form.ViewModel.connection] is provided, a request
@@ -62,7 +62,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @memberof sp-form.ViewModel
      */
     promise: {
-        value: null
+        default: null
     },
     /**
      * An object representing the current state of the values passed to the form.
@@ -148,7 +148,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * @memberof sp-form.ViewModel
      */
     isSaving: {
-        value: false,
+        default: false,
         type: 'boolean'
     },
     /**

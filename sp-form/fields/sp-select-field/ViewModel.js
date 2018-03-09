@@ -50,13 +50,13 @@ export default Field.extend('SelectField', {
      * @type {String}
      * @memberof sp-select-field.ViewModel.prototype
      */
-    defaultLabel: {type: 'string', value: 'Choose a value...'},
+    defaultLabel: {type: 'string', default: 'Choose a value...'},
     /**
      * The array of options to display in the dropdown
      * @type {Array<sp-select-field.SelectOption>}
      * @memberof sp-select-field.ViewModel.prototype
      */
-    options: {Type: SelectOptionList, Value: SelectOptionList},
+    options: {Type: SelectOptionList, Default: SelectOptionList},
     /**
      * A promise that resolves to the array of options
      * @type {Promise<Array>}

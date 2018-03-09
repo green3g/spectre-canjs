@@ -17,7 +17,7 @@ export default FieldIteratorMap.extend('PropertyTable', {
     * @memberof sp-property-table.ViewModel.prototype
     */
     excludeFieldKey: {
-        value: 'details'
+        default: 'details'
     },
     /**
      * A flag to allow editing (Not yet implemented)
@@ -27,7 +27,7 @@ export default FieldIteratorMap.extend('PropertyTable', {
      */
     edit: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * A flag to allow deleting (Not yet implemented)
@@ -37,7 +37,7 @@ export default FieldIteratorMap.extend('PropertyTable', {
      */
     delete: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * The ID value of the object that should be retrieved. This value along with the connection object will be used to retrieve an object from a RESTful service

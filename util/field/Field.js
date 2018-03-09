@@ -62,7 +62,7 @@ export const Field = DefineMap.extend('Field', {
      * @memberof Field.prototype
      */
     value: {
-        value: '',
+        default: '',
         type: '*',
         set (val) {
             if (this.value !== val) {
@@ -78,7 +78,7 @@ export const Field = DefineMap.extend('Field', {
      */
     list: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * Includes this field in the details view in the data-admin
@@ -87,7 +87,7 @@ export const Field = DefineMap.extend('Field', {
      */
     detail: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * Includes this field in the edit view in the data-admin
@@ -96,7 +96,7 @@ export const Field = DefineMap.extend('Field', {
      */
     edit: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * Includes this field in the filter widget's fields.
@@ -105,7 +105,7 @@ export const Field = DefineMap.extend('Field', {
      */
     filter: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * Includes this field in the sorting capability
@@ -114,7 +114,7 @@ export const Field = DefineMap.extend('Field', {
      */
     sort: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * A boolean flag to display form field inline with others and hide labels
@@ -139,7 +139,7 @@ export const Field = DefineMap.extend('Field', {
 
     // placeholder props to overwrite the display template of edit or table components
     editTag: {
-        value: 'sp-text-field', 
+        default: 'sp-text-field', 
         type: 'string'
     },
     editComponent: {
@@ -165,7 +165,7 @@ export const Field = DefineMap.extend('Field', {
      * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
      */
     validate: {
-        value: null
+        default: null
     }
 });
 

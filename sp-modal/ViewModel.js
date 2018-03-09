@@ -13,7 +13,7 @@ export default DefineMap.extend('ModalDialog', {
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    active: {value: false, type: 'htmlbool'},
+    active: {default: false, type: 'htmlbool'},
     /**
      * Whether or not to use a custom body content for the modal. The default is `false`.
      * This overrides the title property and modal-body divs displayed by displaying
@@ -21,19 +21,19 @@ export default DefineMap.extend('ModalDialog', {
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    custom: {value: false, type: 'htmlbool'},
+    custom: {default: false, type: 'htmlbool'},
     /**
      * Flag to make this modal a small (`modal-sm`) modal. The default is `false`
      * @type {HTMLBoolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    small: {value: false, type: 'htmlbool'},
+    small: {default: false, type: 'htmlbool'},
     /**
      * Whether or not to display this modals backdrop. The default is `true`.
      * @type {Boolean}
      * @memberof sp-modal.ViewModel.prototype
      */
-    backdrop: {value: true, type: 'boolean'},
+    backdrop: {default: true, type: 'boolean'},
     /**
      * Shows this modal
      */

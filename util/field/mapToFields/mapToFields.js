@@ -18,10 +18,12 @@ const RESERVED = [
 export default function mapToFields (defineMap) {
     if (!defineMap) {
         
-        // !steal-remove-start
+        // eslint-disable-next-line
+        //!steal-remove-start
         // eslint-disable-next-line
         console.warn('map is undefined, so no fields will be generated');
-        // !steal-remove-end
+        // eslint-disable-next-line
+        //!steal-remove-end
         return [];
     }
     

@@ -1,6 +1,6 @@
 import mapToFields from './mapToFields';
 import DefineMap from 'can-define/map/map';
-
+import Field from '../Field';
 
 test('mapToFields', () => {
     const MyMap = DefineMap.extend({
@@ -9,19 +9,24 @@ test('mapToFields', () => {
     });
 
     const ExtendedMyMap = MyMap.extend({
-        field1: 'number',
-        field2: 'string'
+        field3: 'number',
+        field4: 'string'
     });
 
-    const results = [
-        mapToFields(MyMap),
-        mapToFields(new MyMap()),
-        mapToFields(ExtendedMyMap)
-    ];
-    results.forEach((r) => {
-        expect(r.length).toEqual(2);
-        r.forEach((f) => {
-            expect(typeof f).toEqual('object');
+    const tests = [{
+        test: mapToFields(MyMap),
+        length: 2
+    }, {
+        test: mapToFields(new MyMap()),
+        length: 2
+    }, {
+        test: mapToFields(ExtendedMyMap),
+        length: 4
+    }];
+    tests.forEach((r) => {
+        expect(r.test.length).toEqual(r.length);
+        r.test.forEach((f) => {
+            expect(f instanceof Field).toBeTruthy();
         });
     });
 });

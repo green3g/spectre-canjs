@@ -29,6 +29,12 @@ export default DefineMap.extend('ModalDialog', {
      */
     small: {default: false, type: 'htmlbool'},
     /**
+     * The title displayed in the modal header
+     * @type {String}
+     * @memberof sp-modal.ViewModel.prototype
+     */
+    title: {type: 'string'},
+    /**
      * Whether or not to display this modals backdrop. The default is `true`.
      * @type {Boolean}
      * @memberof sp-modal.ViewModel.prototype

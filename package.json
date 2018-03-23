@@ -57,7 +57,7 @@
     "axios": "^0.18.0",
     "can-3-4-compat": "^1.0.0",
     "can-component": "^4.0.6",
-    "can-define": "^2.0.3",
+    "can-define": "^2.0.4",
     "can-stache": "^4.2.5",
     "can-stache-converters": "^4.0.2",
     "can-view-model": "^4.0.1",

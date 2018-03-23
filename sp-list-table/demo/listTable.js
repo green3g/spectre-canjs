@@ -3,6 +3,7 @@ import stache from 'can-stache';
 import DefineList from 'can-define/list/list';
 import actionTemplate from './templates/actionCell.stache';
 import voteTemplate from './templates/voteTemplate.stache';
+import 'can-debug';
 
 stache.registerHelper('voteColor', function(val){
   if(val < 0){
@@ -50,7 +51,7 @@ document.body.appendChild(render({
   }, 'name', 'favorite_food', {
     name: 'age',
     classes: 'text-italic',
-    displayComponent: stache('{{object.name}} is {{object.age}} years old')
+    displayComponent: stache('{{../object.name}} is {{../object.age}} years old')
   }, { name: 'votes', displayComponent: voteTemplate }],
 
   // observable list enables sorting

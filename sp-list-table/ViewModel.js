@@ -216,16 +216,27 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     sort (sortInfo) {
         const field = sortInfo.field;
+        
+        let gt, lt;
+        if (sortInfo.type === 'asc') {
+            gt = 1;
+            lt = -1;
+        } else {
+            gt = -1;
+            lt = 1;
+        }
+
         this.objects.sort((a, b) => {
-            return sortInfo.type === 'asc'
 
-                // if ascending
-                ? (a[field] === b[field] ? 0
-                    : a[field] > b[field] ? 1 : -1)
+            if (a[field] === b[field]) {
+                return 0;
+            }
 
-                // if descending
-                : (a[field] === b[field] ? 0
-                    : a[field] > b[field] ? -1 : 1);
+            if (a[field] > b[field]) {
+                return gt;
+            } else {
+                return lt;
+            }
         });
     }
 });

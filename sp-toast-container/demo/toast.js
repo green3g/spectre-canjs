@@ -3,6 +3,7 @@ import 'spectre-canjs/sp-toast/sp-toast';
 import DefineMap from 'can-define/map/map';
 import stache from 'can-stache';
 import canViewModel from 'can-view-model';
+import './styles.less'
 
 const AppViewModel = new DefineMap({
     heading: 'Title Here',

@@ -6,7 +6,6 @@ import DefineList from 'can-define/list/list';
 /**
  * the select option type - used to display <option> tags values/labels
  * @class SelectOption
- * @extends Field
  * @memberof sp-select-field
  */
 export const SelectOption = DefineMap.extend('SelectOption', {
@@ -56,7 +55,23 @@ export default Field.extend('SelectField', {
      * @type {Array<sp-select-field.SelectOption>}
      * @memberof sp-select-field.ViewModel.prototype
      */
-    options: {Type: SelectOptionList, Default: SelectOptionList},
+    options: {        
+        Type: SelectOptionList,
+        Default: SelectOptionList,  
+        get (options, set) {
+            if (this.object && typeof this.getOptions === 'function') {
+                const result = this.getOptions(this.object);
+                if (result.then) {
+                    result.then(((opts) => {
+                        set(new SelectOptionList(opts));
+                    }));
+                } else {
+                    return new SelectOptionList(result) || options;
+                }
+            }
+            return options;
+        }  
+    },
     /**
      * A promise that resolves to the array of options
      * @type {Promise<Array>}
@@ -81,5 +96,12 @@ export default Field.extend('SelectField', {
         // coerce check into this value type
         // eslint-disable-next-line eqeqeq
         return value == this.value;
-    }
+    },
+    /**
+     * An optional function to return options from a form object...ie cascading dropdowns 
+     * @param {Object} formObject the form object
+     * @param {Object} formObject the form object
+     * @returns {Array<sp-select-field.SelectOption>} the filtered array of select options
+     */
+    getOptions: {}
 });

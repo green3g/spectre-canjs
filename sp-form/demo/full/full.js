@@ -175,7 +175,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
                 'Toyota': [{value: 'Prius'}, {value: 'Corolla'}, {value: 'Camry'}],
             }
 
-            return options[obj.cascade_1] || [{value: '', label: 'Choose a make first...'}];
+            return options[obj.cascade_1] || [{value: 'None', label: 'Choose a make first...'}];
         },
         validate(props){
             if(!props.dirty.cascade_1){

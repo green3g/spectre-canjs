@@ -15,7 +15,7 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
      * @memberof sp-confirm.ViewModel.prototype
      */
     acceptText: {
-        value: 'Ok'
+        default: 'Ok'
     },
     /**
      * The text to display in the reject confirmation button. The default is `'Cancel'`
@@ -23,7 +23,7 @@ const ViewModel = ModalViewModel.extend('ConfirmDialog', {
      * @memberof sp-confirm.ViewModel.prototype
      */
     rejectText: {
-        value: 'Cancel'
+        default: 'Cancel'
     },
     /**
      * Called when the accept button is clicked. Resolves the `actionPromise`.

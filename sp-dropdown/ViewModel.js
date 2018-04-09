@@ -17,7 +17,7 @@ export default DefineMap.extend('DropdownMenu', {
      * @memberof sp-dropdown.ViewModel
      * @example iconClass:from="'fa fa-fw fa-table'"
      */
-    iconClass: {value: 'fa fa-fw fa-caret-down', type: 'string'},
+    iconClass: {default: 'fa fa-fw fa-caret-down', type: 'string'},
     /**
      * The text to display in the dropdown button
      * @type {String} 
@@ -38,7 +38,7 @@ export default DefineMap.extend('DropdownMenu', {
      */
     buttonClass: {
         type: 'string',
-        value: 'btn btn-link'
+        default: 'btn btn-link'
     },
     /**
      * An array of buttons to display next to the dropdown button. This creates a split

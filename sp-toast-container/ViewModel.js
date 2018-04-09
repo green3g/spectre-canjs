@@ -15,7 +15,7 @@ export default DefineMap.extend('ToastContainer', {
      * @memberof sp-toast-container.ViewModel.prototype
      */
     toasts: {
-        Value: DefineList.extend('ToastList', {
+        Default: DefineList.extend('ToastList', {
             '#': Toast
         })
     },

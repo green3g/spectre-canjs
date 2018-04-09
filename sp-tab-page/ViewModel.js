@@ -16,7 +16,7 @@ const ViewModel = DefineMap.extend('NavPage', {
    * @type {Boolean} 
    * @memberof sp-tab-page.ViewModel.prototype
    */
-    active: {type: 'boolean', value: false},
+    active: {type: 'boolean', default: false},
     /**
      * Add custom classes to the navigation containers nav tab.
      * @type {String} 
@@ -34,14 +34,14 @@ const ViewModel = DefineMap.extend('NavPage', {
      * @type {HTMLBoolean} 
      * @memberof sp-tab-page.ViewModel.prototype
      */
-    loading: {type: 'htmlbool', value: false},
+    loading: {type: 'htmlbool', default: false},
     /**
      * A unique id to identify this page. The default is automatically provided.
      * @type {String} 
      * @memberof sp-tab-page.ViewModel.prototype
      */
     pageId: {
-        value: function () {
+        default () {
             return 'page-' + pageId++;
         }
     },

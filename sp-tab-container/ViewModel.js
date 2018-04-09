@@ -18,7 +18,7 @@ const ViewModel = DefineMap.extend('NavContainer', {
      * @memberof sp-tab-container.ViewModel.prototype
      * @type {Array<sp-tab-page.ViewModel>}
      */
-    pages: {Value: PageList},
+    pages: {Default: PageList},
     /**
      * The currently active page
      * @type {sp-tab-page.ViewModel}

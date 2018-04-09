@@ -54,7 +54,8 @@ const app = new DefineMap({
     current: new Task(),
     tasks: currentTasks,
     isSaving: false,
-    onSubmit ([ev, task]) {
+    onSubmit (args) {
+        const [task] = args;
         this.tasks.push(task);
         this.current = new Task();
         this.isSaving = false;

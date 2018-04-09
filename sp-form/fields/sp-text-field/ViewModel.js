@@ -16,7 +16,15 @@ export default Field.extend('TextField', {
      * @memberof sp-text-field.ViewModel.prototype
      * @type {String}
      */
-    textType: {value: 'text', type: 'string'},
+    textType: {default: 'text', type: 'string'},
+    /**
+     * Show or hide the clear input addon button 
+     * @example
+     * showClear="true"
+     * @memberof sp-text-field.ViewModel.prototype
+     * @type {Boolean}
+     */
+    showClear: {default: false, type: 'boolean'},
     /**
      * Checks for the enter keypress and triggers a change event on the input
      * The enter key press triggers a submit event on the form, but before the
@@ -30,5 +38,8 @@ export default Field.extend('TextField', {
             element.dispatchEvent(new Event('change'));
         }
         return true;
+    },
+    clearValue () {
+        this.value = '';
     }
 });

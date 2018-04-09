@@ -29,7 +29,7 @@ export default DefineMap.extend({
    * @memberof FieldIteratorMap.prototype
    */
     fields: {
-        Value: DefineList,
+        Default: DefineList,
         Type: DefineList,
         get (fields) {
             fields = fields || [];

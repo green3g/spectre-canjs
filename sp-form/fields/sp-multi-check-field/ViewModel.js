@@ -4,7 +4,7 @@ import DefineList from 'can-define/list/list';
 export default SelectField.extend('CheckboxMulti', {
     value: {
         Type: DefineList,
-        Value: DefineList
+        Default: DefineList
     },
     onChange () {
         this.dispatch('fieldchange', [this]);

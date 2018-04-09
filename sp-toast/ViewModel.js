@@ -15,7 +15,7 @@ export default DefineMap.extend('ToastItem', {
    */
     fade: {
         type: 'boolean',
-        value: true
+        default: true
     },
     timer: {},
     /**
@@ -25,7 +25,7 @@ export default DefineMap.extend('ToastItem', {
      */
     autoHide: {
         type: 'number',
-        value: 5000,
+        default: 5000,
         set (autohide) {
             if (autohide) {
                 if (this.timer) {
@@ -47,7 +47,7 @@ export default DefineMap.extend('ToastItem', {
      */
     custom: {
         type: 'boolean',
-        value: false
+        default: false
     },
     /**
      * @type {string}
@@ -57,7 +57,7 @@ export default DefineMap.extend('ToastItem', {
      * @option {string} Defaults to `info`.
      */
     severity: {
-        value: 'info',
+        default: 'info',
         type: function (val) {
             var allowed = ['primary', 'info', 'success', 'warning', 'error'],
                 isValid = allowed.indexOf(val) > -1;
@@ -73,7 +73,7 @@ export default DefineMap.extend('ToastItem', {
      * The default is true
      */
     dismissable: {
-        value: true,
+        default: true,
         type: 'boolean'
     },
     /**
@@ -85,7 +85,7 @@ export default DefineMap.extend('ToastItem', {
      */
     iconClass: {
         type: 'string',
-        value: 'icon icon-error_outline'
+        default: 'icon icon-error_outline'
     },
 
     /**
@@ -94,7 +94,7 @@ export default DefineMap.extend('ToastItem', {
      * @description Toggles visiblity of the sp-toast. The default is false.
      */
     visible: {
-        value: true,
+        default: true,
         type: 'boolean'
     },
 
@@ -104,7 +104,7 @@ export default DefineMap.extend('ToastItem', {
      * @description The content displayed in the toast. The default is an empty string.
      */
     body: {
-        value: '',
+        default: '',
         type: 'string'
     },
     /**
@@ -113,7 +113,7 @@ export default DefineMap.extend('ToastItem', {
      * @description Optional. The title of the sp-toast. The default is an empty string.
      */
     heading: {
-        value: '',
+        default: '',
         type: 'string'
     },
     /**
@@ -123,7 +123,7 @@ export default DefineMap.extend('ToastItem', {
      */
     fadeTime: {
         type: 'number',
-        value: 1000
+        default: 1000
     },
     element: '*',
     /**

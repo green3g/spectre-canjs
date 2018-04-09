@@ -19,7 +19,7 @@ export default Base.extend('SubformField', {
      * @memberof sp-subform-field.ViewModel.prototype
      */
     value: {
-        Value: DefineMap,
+        Default: DefineMap,
         Type: DefineMap,
         set (val) {
             if (this.value !== val) {

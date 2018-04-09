@@ -18,7 +18,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      * @memberof sp-list-table.ViewModel
      */
     excludeFieldKey: {
-        value: 'list'
+        default: 'list'
     },
     /**
      * Optional promise or deferred object that will resolve to an object. Once
@@ -43,7 +43,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      * @instance
      */
     objects: {
-        Value: DefineList
+        Default: DefineList
     },
     /**
      * A virtual type that retrieves this table's first object
@@ -71,7 +71,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      * @instance
      */
     idProp: {
-        value: 'id'
+        default: 'id'
     },
     /**
      * Whether rows can be selectable using a checkbox
@@ -81,7 +81,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     selectable: {
         type: 'boolean',
-        value: true
+        default: true
     },
     /**
      * A list of the currently selected objects in the table
@@ -91,7 +91,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     selectedObjects: {
         Type: DefineList,
-        Value: DefineList
+        Default: DefineList
     },
     /**
      * An array of ids for the selected objects. This is a virtual type
@@ -127,7 +127,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     currentSort: {
         Type: DefineMap,
-        value: function () {
+        default () {
             return {
                 field: null,
                 type: 'asc'
@@ -216,16 +216,27 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     sort (sortInfo) {
         const field = sortInfo.field;
+        
+        let gt, lt;
+        if (sortInfo.type === 'asc') {
+            gt = 1;
+            lt = -1;
+        } else {
+            gt = -1;
+            lt = 1;
+        }
+
         this.objects.sort((a, b) => {
-            return sortInfo.type === 'asc'
 
-                // if ascending
-                ? (a[field] === b[field] ? 0
-                    : a[field] > b[field] ? 1 : -1)
+            if (a[field] === b[field]) {
+                return 0;
+            }
 
-                // if descending
-                : (a[field] === b[field] ? 0
-                    : a[field] > b[field] ? -1 : 1);
+            if (a[field] > b[field]) {
+                return gt;
+            } else {
+                return lt;
+            }
         });
     }
 });

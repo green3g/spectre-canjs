@@ -154,6 +154,35 @@ const DemoObject = DefineMap.extend('DemoObject', {
         alias: 'A checkbox',
         editTag: 'sp-check-field',
         default: false
+    },
+    cascade_1: {
+        type: 'string',
+        name: 'cascade_1',
+        alias: 'Car Make - (cascade dropdown 1)',
+        defaultLabel: 'First choose a make...',
+        options: [{value: 'Ford'}, {value: 'Chevy'}, {value: 'Toyota'}],
+        editTag: 'sp-select-field'
+    },
+    cascade_2: {
+        type: 'string',
+        name: 'cascade_2',
+        alias: 'Car Model - (cascade dropdown 2)',
+        defaultLabel: 'Then choose a model...',
+        getOptions(obj){
+            const options = {
+                'Ford': [{value: 'Fiesta'}, {value: 'Focus'}, {value: 'Taurus'}],
+                'Chevy': [{value: 'Spark'}, {value: 'Sonic'}, {value: 'Bolt'}],
+                'Toyota': [{value: 'Prius'}, {value: 'Corolla'}, {value: 'Camry'}],
+            }
+
+            return options[obj.cascade_1] || [{value: 'None', label: 'Choose a make first...'}];
+        },
+        validate(props){
+            if(!props.dirty.cascade_1){
+                return 'You need to choose a make first';
+            }
+        },
+        editTag: 'sp-select-field'
     }
 });
 

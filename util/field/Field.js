@@ -57,6 +57,12 @@ export const Field = DefineMap.extend('Field', {
      */
     error: 'string',
     /**
+     * The form object. Passed to fields so they can use it in cascading dropdowns...etc 
+     * @type {Object}
+     * @memberof Field.prototype
+     */
+    object: DefineMap,
+    /**
      * The current field value
      * @type {Object}
      * @memberof Field.prototype

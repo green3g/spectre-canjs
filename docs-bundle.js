@@ -5,9 +5,11 @@ stealTools.build({
     main: 'index',
     config: path.join(__dirname, 'package.json!npm'),
     bundle: [
+        'spectre-canjs/sp-accordion/sp-accordion',
         'spectre-canjs/sp-dropdown/demo/dropdown',
         'spectre-canjs/sp-filter-builder/demo/filter',
-        'spectre-canjs/sp-form/demo/form',
+        'spectre-canjs/sp-form/demo/full/full',
+        'spectre-canjs/sp-form/demo/basic/basic',
         'spectre-canjs/sp-list-table/demo/listTable',
         'spectre-canjs/sp-modal/demo/dialog',
         'spectre-canjs/sp-tab-container/demo/nav',

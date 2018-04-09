@@ -5,11 +5,11 @@ import './widget.less';
 
 /**
  * A form component useful for validation, data updating, and dirty checking
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="../sp-form/demo/basic/basic.html" style="border: 1px solid #ccc; width:33%; height:300px;"></iframe>
+ * <iframe src="../sp-form/demo/full/full.html" style="border: 1px solid #ccc; width:66%; height:300px;"></iframe>
  * @class sp-form
- * @deprecated 
  * @example 
- * <sp-dropdown />
+ * <sp-form />
  */
 export default Component.extend({
     tag: 'sp-form',

@@ -23,7 +23,7 @@
     "test": "jest",
     "build": "steal-tools",
     "live": "steal-tools live-reload --main spectre-canjs/docs-main",
-    "docs": "documentjs -d -f",
+    "docs": "documentation build --config documentation.yml -o docs -f html",
     "postdocs": "node docs-bundle",
     "prepublish-docs": "git checkout gh-pages && git merge master",
     "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages -f && git checkout master",

@@ -10,7 +10,7 @@ import '../sp-form/fields/sp-select-field/sp-select-field';
 
 /**
  * A component for allowing users to create complex filters
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="../sp-filter-builder/demo/index.html" style="border: 1px solid #ccc; width:100%; height:300px;"></iframe>
  * @module sp-filter-builder
  * @example 
  * <sp-filter-builder /> 

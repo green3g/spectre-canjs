@@ -4,7 +4,7 @@ import ViewModel from './ViewModel';
 
 /**
  * A two column table for displaying Field:value object pairs
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="../sp-property-table/demo/index.html" style="border: 1px solid #ccc; width:100%; height:300px;"></iframe>
  * @module sp-property-table
  * @example 
  * <sp-property-table /> 

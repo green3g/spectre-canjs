@@ -1,4 +1,4 @@
-<div class="container" style="width: 400px; margin:0 auto;">
+<div class="container">
     <sp-form object:from="current" on:submit="onSubmit(scope.arguments)" showSaving:from="isSaving"></sp-form>
     <div class="divider" />
     {{#if(tasks.length)}}

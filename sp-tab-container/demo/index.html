@@ -128,6 +128,7 @@
 
             {{#if(../people.isResolved)}}
             <sp-tab-page label:from="'User cards'">
+                <h2>These were loaded via ajax!</h2>
                 {{#each(../people.value)}}
                 <div class="card">
                     <div class="card-header">
@@ -149,7 +150,7 @@
 
 </script>
 
-<!-- <script src="../../../docs/spectre-canjs/steal.production.js" main="spectre-canjs/index"> -->
-<script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
+<script src="../../docs/spectre/steal.production.js" main="index">
+// <script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
     steal.import('spectre-canjs/sp-tab-container/demo/nav');
 </script>

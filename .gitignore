@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules/
+!docs/spectre/node_modules/
 
 #custom apps and modules
 custom/

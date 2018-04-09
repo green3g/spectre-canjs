@@ -1,0 +1,33 @@
+<div class="hidden-print sp-paginate-footer">
+  <div class="columns">
+    <div class="column">
+      {{#if perPageOptions.length}}
+        <div class="per-page-form">
+          <div class="form-group">
+            <label class="form-label perPageSelect"></label>
+
+            <div class="input-group">
+                <span class="input-group-addon">Per page:</span>
+                <select el:value:bind="perPage" class="form-select">
+                    {{#each perPageOptions}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{/each}}
+                </select>
+              </div>
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if showPaginate}}
+        <sp-paginate vm:activePageIndex:bind="pageIndex" vm:pages:from="totalPages"></sp-paginate>
+      {{/if}}
+
+    </div>
+    <div class="divider-vert"></div>
+    <div class="column">
+      {{#if total}}
+        <h5>{{itemFrom}} - {{itemTo}} of {{total}}</h5>
+      {{/if}}
+    </div>
+  </div>
+</div>

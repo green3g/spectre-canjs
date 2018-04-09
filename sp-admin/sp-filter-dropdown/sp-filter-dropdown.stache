@@ -1,0 +1,12 @@
+<div class="dropdown inline dropdown-right">
+  <a class="btn dropdown-toggle {{#if(params[field.name]))}}tooltip text-bold{{/if}}" data-tooltip="{{params[field.name])}}" tabindex="0">
+    {{field.alias}} <i class="fa fa-caret-down"></i>
+  </a>
+  <!-- menu component -->
+  <ul class="menu">
+      {{#each(field.options)}}
+        <li class="menu-item"><a href="" on:click="../setFilter(value, scope.event)">
+          {{#is(../params[../field.name], value)}}<i class="float-left fa fa-check"></i>{{/is}} {{#if(label)}}{{label}}{{else}}{{value}}{{/if}}</a></li>
+      {{/each}}
+  </ul>
+</div>

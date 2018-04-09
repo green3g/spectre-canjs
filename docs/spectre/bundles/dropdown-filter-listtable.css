@@ -1,0 +1,2 @@
+sp-dropdown .dropdown-wrapper{position:relative}sp-dropdown .dropdown-content{position:absolute;top:1.5rem;left:.5rem;z-index:100;width:17.5rem}sp-dropdown .dropdown-content a{cursor:pointer}sp-dropdown .dropdown-content.right{left:auto;right:1.5rem}sp-dropdown .dropdown-underlay{z-index:1;position:absolute;top:0;bottom:0;left:0;right:0}sp-list-table th{cursor:pointer}sp-list-table .sort-icon{float:right}
+/*# sourceMappingURL=dropdown-filter-listtable.css.map */

@@ -1,0 +1,2 @@
+define("spectre-canjs@2.3.0#sp-dropdown/demo/dropdown",["can-stache","can-define/map/map","spectre-canjs/sp-dropdown/sp-dropdown"],function(e,t){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}var d=a(e),n=a(t),o=d.default.from("demo-html"),p=new n.default({pages:[{label:"List"},{label:"Create",active:!0},{label:"Other Options"}],primary:[{text:"Important!"}]});document.body.appendChild(o(p))});
+//# sourceMappingURL=dropdown.js.map

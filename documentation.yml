@@ -27,9 +27,7 @@ toc:
     description: "Field components for modifying and creating data. Use with sp-form."
   - sp-form
   - sp-check-field
-  - sp-date-field
   - sp-dropzone-field
-  - sp-file-field
   - sp-multi-check-field
   - sp-select-field
   - sp-subform-field
@@ -41,5 +39,14 @@ toc:
   - Field
   - FieldIteratorMap
   - mapToFields
-  - parseFieldArray  
+  - parseFieldArray
   - makeSentenceCase
+
+  - Types
+  - name: "Types"
+    description: "Internal and CanJS Object types"
+  - ValidationObject
+  - HTMLBoolean
+  - Dropzone
+  - DefineMap
+  - DefineList

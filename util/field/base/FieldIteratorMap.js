@@ -5,7 +5,6 @@ import Field from '../Field';
 import DefineList from 'can-define/list/list';
 
 /**
- * @class FieldIteratorMap
  * A base class for widgets that need to iterate through a set or subset
  * of fields.
  * ViewModels inheriting this map should define a excludeFieldKey which
@@ -13,6 +12,7 @@ import DefineList from 'can-define/list/list';
  * instance, if we are designing an edit widget, an appropriate way to exclude
  * fields from the widget would be to use the key `edit: false` and set
  * `excludeFieldKey: 'edit'` in this class.
+ * @class FieldIteratorMap
  */
 export default DefineMap.extend({
     /** @lends FieldIteratorMap.prototype */

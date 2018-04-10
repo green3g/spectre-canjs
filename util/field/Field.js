@@ -13,7 +13,8 @@ import {getEditComponent} from './fieldComponents';
 
 /**
  * @class Field
- * @description Constructs a new field
+ * @description Constructs a new field. Used throughout spectre-canjs to 
+ * define displays of properties, aka fields. 
  */
 export const Field = DefineMap.extend('Field', {
 
@@ -38,12 +39,19 @@ export const Field = DefineMap.extend('Field', {
     /**
      * A friendly name for the field used to display to the user
      * The default is to capitalize the name and remove underscores
-     * @type {String} Field.prototype.alias alias
+     * @type {String}
      * @memberof Field.prototype
      */
     alias: {
         type: 'string'
     },
+    /**
+     * A virtual property that is used as a shorthand for setting all
+     * properties on this field. This value doesn't actually get set 
+     * and will never return anything.
+     * @type {Object}
+     * @memberof Field.prototype
+     */
     properties: {
         set (props) {
             this.assign(props);
@@ -164,15 +172,13 @@ export const Field = DefineMap.extend('Field', {
      * It can be used to customize the input, like adding a date picker
      * 
      */
-    // onInsert (element) {flatpicker(element);}
+    onInsert: {}, // (element) {flatpicker(element);}
     /**
      * Validates a type and returns a string if the field is invalid
      * @param {ValidationObject} props A special object consisting of information about the current value and dirty state of the form object
      * @return {String|falsey} a string error message if the value is not valid or undefined if there is no error message
      */
-    validate: {
-        default: null
-    }
+    validate: { }
 });
 
 

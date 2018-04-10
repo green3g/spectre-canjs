@@ -7,9 +7,7 @@ import ViewModel from './ViewModel';
 
 
 /**
- * A file upload field using dropzone
- * @see http://www.dropzonejs.com/
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * A file upload field using dropzone. See {@link http://www.dropzonejs.com/}
  * @module sp-dropzone-field
  * @example 
  * <sp-dropzone-field /> 

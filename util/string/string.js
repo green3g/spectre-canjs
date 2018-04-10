@@ -3,7 +3,6 @@ function capitalize (string) {
 }
 /**
  * Formats the field by replacing underscores with spaces and capitalizing the first letter
- * @memberof util/string
  * @function makeSentenceCase
  * @signature `makeSentenceCase(text)`
  * @param  {String} text The name of the field

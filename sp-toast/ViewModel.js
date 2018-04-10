@@ -100,7 +100,7 @@ export default DefineMap.extend('ToastItem', {
 
     /**
      * @type {string}
-     * @memberof sp-toast.ViewModal.prototype
+     * @memberof sp-toast.ViewModel.prototype
      * @description The content displayed in the toast. The default is an empty string.
      */
     body: {

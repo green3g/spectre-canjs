@@ -1,4 +1,4 @@
-import get from 'can-util/js/get/get';
+import get from 'can-util/js/get/';
 
 export default {
     total: {

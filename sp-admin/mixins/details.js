@@ -1,10 +1,10 @@
-import dev from 'can-util/js/dev/dev';
+import dev from 'can-util/js/dev/';
 import debounce from '../util/debounce';
 
 // a details page view mixin
 export default {
     detailsId: {type: 'number'},
-    getItem: {},
+    getFunc: {},
     detailsPromise: {
         get () {
             if (this.setDetailsObject) {
@@ -35,10 +35,9 @@ export default {
         }
     },
     showDetails (object) {
-        this.assign({
-            detailsId: this.model.connection.id(object),
-            setDetailsObject: object
-        });
+    // set `setDetailsObject` first
+        this.setDetailsObject = object;
+        this.detailsId = this.model.connection.id(object);
     },
     showDetailsFromEvent (args) {
         const [, object] = args;

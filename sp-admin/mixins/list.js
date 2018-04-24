@@ -39,7 +39,7 @@ export default {
             if (!this.getList) {
                 this.getList = debounce(this.model.getList, 200);
             }
-            return this.getList(this.params.serialize());
+            return this.getList(this.params ? this.params.serialize() : {});
         }
     },
     objects: {
@@ -49,6 +49,7 @@ export default {
             promise.then((data) => {
                 val.replace(data);
             }).catch((err) => {
+                console.log(err);
                 if (err.message) {
                     swal({
                         type: 'error',

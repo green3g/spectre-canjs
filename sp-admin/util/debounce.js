@@ -8,7 +8,7 @@ export default function debounce (inner, ms = 100) {
     let timer = null;
     let resolves = [];
     return function (...args) {
-    // Run the function after a certain amount of time
+        // Run the function after a certain amount of time
         clearTimeout(timer);
         timer = setTimeout(() => {
             // Get the result of the inner function, then apply it to the resolve function of

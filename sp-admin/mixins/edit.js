@@ -41,8 +41,8 @@ export default {
         setTimeout(() => {
             const modal = document.querySelector('.modal-body');
             if (modal) {
-                modal.scrollTop = 0; 
-            }
+ modal.scrollTop = 0; 
+}
         }, 200);
     },
     save (object) {

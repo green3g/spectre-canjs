@@ -10,15 +10,16 @@ const ViewModel = DefineMap.extend(Object.assign({model: '*'}, details));
 
 // a basic can-connect implementation
 const MyModel = DefineMap.extend({id: 'number'});
-const List = DefineList.extend({'#': Map});
+const List = DefineList.extend({'#': MyModel});
 MyModel.connection = connect([constructor, map], {
     getList () {
         return [];
     },
     get (id) {
+        debugger;
         return {id};
     },
-    Map,
+    Map: MyModel,
     List
 });
 
@@ -46,7 +47,10 @@ test('detailsPromise get() detailsId', () => {
     expect.assertions(1);
 
     vm.detailsId = 1;
-    return vm.detailsPromise.then((data) => expect(data.id).toEqual(1));
+    return vm.detailsPromise.then((data) => {
+        expect(data.id).toEqual(1);
+        return data;
+    });
 });
 
 test('showDetails(obj)', () => {
@@ -65,6 +69,6 @@ test('clearDetails()', () => {
     vm.showDetails(obj);
     vm.clearDetails();
 
-    expect(vm.detailsId.toEqual(null));
-    return expect(vm.detailsPromise).resolves.toEqual(null);
+    expect(vm.detailsId).toEqual(null);
+    return expect(vm.detailsPromise).toEqual(null);
 });

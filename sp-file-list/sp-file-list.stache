@@ -2,7 +2,7 @@
 {{#each(files, file=value)}}
 <div class="tile">
     <div class="tile-icon">
-    {{#if(scope.root.isImage(file))}}
+    {{#if(scope.vm.isImage(file))}}
     <figure class="avatar avatar-lg">
         <img src="{{file.uri}}" alt="Upload">
     </figure>

@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "2.3.0",
+  "version": "2.4.1",
   "homepage": "https://github.com/roemhildtg/spectre-canjs",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": {
@@ -23,10 +23,11 @@
     "test": "jest",
     "build": "steal-tools",
     "live": "steal-tools live-reload --main spectre-canjs/docs-main",
-    "docs": "documentjs -d -f",
+    "serve-docs": "documentation serve --config documentation.yml --watch",
+    "docs": "documentation build --config documentation.yml -o docs -f html",
     "postdocs": "node docs-bundle",
-    "prepublish-docs": "git checkout gh-pages && git merge master",
-    "publish-docs": "npm run docs && git add docs -f && git commit -m docs && git push origin gh-pages -f && git checkout master",
+    "prepublish-docs": "git checkout gh-pages && git merge master && npm run docs",
+    "publish-docs": "git add docs -f && git commit -m docs && git push origin gh-pages -f && git checkout master",
     "export": "node build.js",
     "lint": "eslint . --fix",
     "preversion": "npm run test",
@@ -56,16 +57,17 @@
     "animate.css": "^3.6.1",
     "axios": "^0.18.0",
     "can-3-4-compat": "^1.0.0",
-    "can-component": "^4.0.6",
-    "can-define": "^2.0.4",
-    "can-stache": "^4.2.5",
+    "can-component": "^4.0.8",
+    "can-define": "^2.3.1",
+    "can-dom-data": "^1.0.1",
+    "can-stache": "^4.4.0",
     "can-stache-converters": "^4.0.2",
     "can-view-model": "^4.0.1",
     "dropzone": "^5.4.0",
     "flatpickr": "^4.3.2",
     "font-awesome": "^4.7.0",
     "spectre.css": "^0.5.1",
-    "steal": "^1.11.0"
+    "steal": "^1.11.6"
   },
   "steal": {
     "configDependencies": [

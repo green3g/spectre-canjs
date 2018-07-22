@@ -4,7 +4,7 @@
 
         <h2>Simple:</h2>
         <!-- id-prop is required for selection -->
-        <sp-list-table vm:objects:from="objects" id-prop="_cid" />
+        <sp-list-table vm:objects:from="objects" idProp:raw="name" />
 
         <br />
 
@@ -14,7 +14,7 @@
             on:up="voteUp(scope.arguments)" 
             on:down="voteDown(scope.arguments)" 
             fields:from="fields"
-            id-prop="_cid" />
+            idProp:raw="name" />
 
 
         <p>You chose: {{#if(selectedObjects.length)}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
@@ -27,7 +27,7 @@
 }
 </style>
 
-<!-- <script src="../../../docs/spectre-canjs/steal.production.js" main="spectre-canjs/index"> -->
-<script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
+<script src="../../docs/spectre/steal.production.js" main="index">
+// <script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
     steal.import('spectre-canjs/sp-list-table/demo/listTable');
 </script>

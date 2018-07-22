@@ -12,12 +12,12 @@ export const SelectOption = DefineMap.extend('SelectOption', {
     /** @lends sp-select-field.SelectOption.prototype */
     /**
      * The value to set when option is selected
-     * @type {*}
+     * @type {Any} 
      * @memberof sp-select-field.SelectOption.prototype
      */
     value: 'string',
     /**
-     * The label to display to the user
+     * The label to display to the user. If not provided, `value` is used
      * @type {String} 
      * @memberof sp-select-field.SelectOption.prototype
      */
@@ -101,7 +101,7 @@ export default Field.extend('SelectField', {
      * An optional function to return options from a form object...ie cascading dropdowns 
      * @param {Object} formObject the form object
      * @param {Object} formObject the form object
-     * @returns {Array<sp-select-field.SelectOption>} the filtered array of select options
+     * @returns {Array<SelectOption>} the filtered array of select options
      */
     getOptions: {}
 });

@@ -1,3 +1,25 @@
+/**
+ * By providing the required attribute to a component, this 
+ * value will evaluate to true.
+ * See {@link https://canjs.com/doc/can-define.types.html}
+ * @example <element active />
+ * @typedef {Boolean} HTMLBoolean
+ */
+
+/**
+ * An observable maplike constructor object
+ * See {@link https://canjs.com/doc/can-define/map/map.html}
+ * @typedef {Object} DefineMap
+ */
+
+ 
+/**
+ * An observable array like list
+ * See {@link https://canjs.com/doc/can-define/list/list.html}
+ * @typedef {Object} DefineList
+ */
+
+
 import 'spectre.css/dist/spectre.css';
 import 'animate.css';
 import 'font-awesome/css/font-awesome.css';
@@ -7,6 +29,8 @@ import './sp-form/fields/sp-select-field/sp-select-field';
 import './sp-form/fields/sp-check-field/sp-check-field';
 import './sp-form/fields/sp-multi-check-field/sp-multi-check-field';
 import './sp-form/fields/sp-subform-field/sp-subform-field';
+import './sp-form/fields/sp-dropzone-field/sp-dropzone-field';
+import './sp-form/fields/sp-multi-check-field/sp-multi-check-field';
 import './util/field/Field'; 
 import './sp-accordion/sp-accordion';
 import './sp-confirm/sp-confirm';

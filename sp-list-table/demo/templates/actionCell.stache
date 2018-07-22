@@ -1,4 +1,4 @@
 <span style="user-select:none; cursor:pointer;">
-<i on:click="scope.root.dispatchEvent('up', ../object)" class="fa fa-2x fa-thumbs-up"></i>
-<i on:click="scope.root.dispatchEvent('down', ../object)" class="fa fa-2x fa-thumbs-down"></i>
+<i on:click="scope.vm.dispatchEvent('up', ../object)" class="fa fa-2x fa-thumbs-up"></i>
+<i on:click="scope.vm.dispatchEvent('down', ../object)" class="fa fa-2x fa-thumbs-down"></i>
 </span>

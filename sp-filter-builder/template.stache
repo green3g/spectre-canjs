@@ -1,7 +1,7 @@
 <div class="sp-filter-builder container-fluid">
   {{#each(filters)}}
     {{#if(visible)}}
-      <sp-filter filter:from="." on:remove="scope.root.removeFilter(.)" />
+      <sp-filter filter:from="." on:remove="scope.vm.removeFilter(.)" />
     {{/if}}
   {{/each}}
 

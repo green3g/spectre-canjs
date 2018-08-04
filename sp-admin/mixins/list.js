@@ -37,7 +37,7 @@ export default {
                 return Promise.reject(new Error('No model was found'));
             }
             if (!this.getList) {
-                this.getList = debounce(this.model.getList, 200);
+                this.getList = debounce(this.model, this.model.getList, 200);
             }
             return this.getList(this.params ? this.params.serialize() : {});
         }

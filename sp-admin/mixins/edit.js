@@ -16,8 +16,7 @@ export default {
     addNew () {
         this.assign({
             editActive: true,
-            // eslint-disable-next-line
-      editObject: new this.model()
+            editObject: new this.model.Map()
         });
     },
     showEdit (object) {
@@ -41,8 +40,8 @@ export default {
         setTimeout(() => {
             const modal = document.querySelector('.modal-body');
             if (modal) {
- modal.scrollTop = 0; 
-}
+                modal.scrollTop = 0; 
+            }
         }, 200);
     },
     save (object) {

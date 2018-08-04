@@ -1,3 +1,1 @@
-<can-import from="spectre-canjs/sp-admin/sp-admin" />
-
-<sp-admin model:from="model"></sp-admin>
+<sp-admin this:from="props"></sp-admin>

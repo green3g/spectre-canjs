@@ -14,7 +14,7 @@ export default {
                 return Promise.reject(new Error('No model found'));
             }
             if (!this.getItem) {
-                this.getItem = debounce(this.model.get, 200);
+                this.getItem = debounce(this.model, this.model.get, 200);
             }
             if (this.detailsId) {
                 return this.getItem(this.detailsId);

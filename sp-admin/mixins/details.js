@@ -3,7 +3,7 @@ import debounce from '../util/debounce';
 // a details page view mixin
 export default {
     detailsId: {type: 'number'},
-    getFunc: {},
+    getItem: {},
     detailsPromise: {
         get () {
             if (this.setDetailsObject) {

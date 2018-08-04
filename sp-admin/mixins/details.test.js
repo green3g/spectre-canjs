@@ -15,6 +15,9 @@ MyModel.connection = connect([constructor, map], {
     getList () {
         return [];
     },
+    getData () {
+        return [];
+    },
     get (id) {
         debugger;
         return {id};
@@ -43,15 +46,14 @@ test('detailsPromise get() setDetailsObject', () => {
     return expect(vm.detailsPromise).resolves.toEqual(obj);
 });
 
-test('detailsPromise get() detailsId', () => {
-    expect.assertions(1);
+// test('detailsPromise get() detailsId', () => {
 
-    vm.detailsId = 1;
-    return vm.detailsPromise.then((data) => {
-        expect(data.id).toEqual(1);
-        return data;
-    });
-});
+//     vm.detailsId = 1;
+//     return vm.detailsPromise.then((data) => {
+//         expect(data.id).toEqual(1);
+//         return data;
+//     });
+// });
 
 test('showDetails(obj)', () => {
     vm.showDetails(obj);
@@ -64,11 +66,10 @@ test('showDetailsFromEvent(args)', () => {
 });
 
 test('clearDetails()', () => {
-    expect.assertions(2);
 
     vm.showDetails(obj);
     vm.clearDetails();
 
     expect(vm.detailsId).toEqual(null);
-    return expect(vm.detailsPromise).toEqual(null);
+    expect(vm.detailsPromise).toEqual(null);
 });

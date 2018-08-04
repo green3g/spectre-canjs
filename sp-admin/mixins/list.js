@@ -8,8 +8,7 @@ export default {
     // required!
     model: '*',
 
-    getList: {
-    },
+    getList: {},
 
     // options
     title: {

@@ -49,7 +49,10 @@ export default {
             promise.then((data) => {
                 val.replace(data);
             }).catch((err) => {
-                console.log(err);
+                if (process.env.NODE_ENV !== 'production') {
+                    // eslint-disable-next-line
+                    console.log(err);
+                }
                 if (err.message) {
                     swal({
                         type: 'error',

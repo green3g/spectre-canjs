@@ -85,7 +85,7 @@
         "no-new": 2,
         "no-octal-escape": 2,
         "no-octal": 2,
-        "no-process-env": 2,
+        "no-process-env": "off",
         "no-proto": 2,
         "no-redeclare": 2,
         "no-return-assign": 2,
@@ -236,6 +236,7 @@
 
     },
     "env": {
+        "node": true,
         "amd": true,
         "es6": true,
         "browser": true,

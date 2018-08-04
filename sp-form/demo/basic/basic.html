@@ -1,16 +1,8 @@
 <!-- <script src="../../../node_modules/steal/steal.js" main="spectre-canjs/docs-main" id="demo-source"> -->
-<script src="../../../docs/spectre/steal.production.js" main="index">
+<script src="../../../docs/spectre/steal.production.js" main="spectre-canjs/index">
     Promise.all([
         steal.import('spectre-canjs/sp-form/demo/basic/basic'),
-        steal.import('live-reload')
-    ]).then(function([form, reload]){
+    ]).then(function([form]){
         form.default();
-        reload(function () {
-            const children = Array.from(document.body.children);
-            children.forEach((child) => {
-                child.remove();
-            });
-            form.default();
-        });
     });
 </script>

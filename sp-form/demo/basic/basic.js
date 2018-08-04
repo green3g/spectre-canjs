@@ -1,4 +1,4 @@
-import 'spectre-canjs/sp-form/';
+import 'spectre-canjs/sp-form/sp-form';
 import 'spectre-canjs/sp-form/fields/sp-text-field/';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';

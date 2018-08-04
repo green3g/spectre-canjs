@@ -1,6 +1,6 @@
-import superMap from 'can-connect/can/super-map/super-map';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
+import realtimeRestModel from 'can-realtime-rest-model';
 
 // import fake ajax services
 import './fixtures';
@@ -14,12 +14,11 @@ export const TaskList = DefineList.extend({
     '#': TaskMap
 });
 
-const C = superMap({
-    idProp: 'id',
+TaskMap.List = TaskList;
+
+const C = realtimeRestModel({
     Map: TaskMap,
-    List: TaskList,
-    url: '/tasks',
-    name: 'task'
+    url: '/tasks'
 });
 
 C.metadata = {};

@@ -1,4 +1,3 @@
-import dev from 'can-util/js/dev/';
 import debounce from '../util/debounce';
 
 // a details page view mixin
@@ -29,7 +28,10 @@ export default {
                 this.detailsPromise.then((object) => {
                     set(object);
                 }).catch((e) => {
-                    dev.warn(e);
+                    if (process.env.NODE_ENV !== 'production') {
+                        // eslint-disable-next-line
+                        console.warn(e);
+                    }
                 });
             }
         }

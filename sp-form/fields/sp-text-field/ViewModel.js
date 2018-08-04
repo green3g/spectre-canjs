@@ -41,5 +41,14 @@ export default Field.extend('TextField', {
     },
     clearValue () {
         this.value = '';
+    },
+    connectedCallback (element) {
+        if (this.onInsert) {
+            const el = element.querySelector('input,textarea');
+            if (el) {
+                return this.onInsert(el);
+            }
+        }
+        return null;
     }
 });

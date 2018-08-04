@@ -4,7 +4,7 @@
 
         <h2>Simple:</h2>
         <!-- id-prop is required for selection -->
-        <sp-list-table vm:objects:from="objects" id-prop="_cid" />
+        <sp-list-table vm:objects:from="objects" idProp:raw="name" />
 
         <br />
 
@@ -14,7 +14,7 @@
             on:up="voteUp(scope.arguments)" 
             on:down="voteDown(scope.arguments)" 
             fields:from="fields"
-            id-prop="_cid" />
+            idProp:raw="name" />
 
 
         <p>You chose: {{#if(selectedObjects.length)}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}

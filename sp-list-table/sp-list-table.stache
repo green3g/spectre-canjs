@@ -13,11 +13,11 @@
         </th>
         {{/if}} 
         {{#each(fields)}}
-        <th {{#is(name, scope.root.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}
+        <th {{#is(name, scope.vm.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}
           {{#if(sort)}} on:el:click="../setSort(name)"{{/if}}>
-          {{alias}} {{#is(name, scope.root.currentSort.field)}}
-          <i class="fa fa-sort-{{#is(scope.root.currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
-          <i class="fa fa-times float-right" on:el:click="scope.root.setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
+          {{alias}} {{#is(name, scope.vm.currentSort.field)}}
+          <i class="fa fa-sort-{{#is(scope.vm.currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
+          <i class="fa fa-times float-right" on:el:click="scope.vm.setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
         </th>
         {{/each}}
       </tr>
@@ -25,8 +25,8 @@
 
     <tbody>
       {{#each(objects, object=value)}}
-      <tr {{#if(scope.root.isSelected(object))}} class="selected" {{/if}}>
-        {{#if(scope.root.selectable)}}
+      <tr {{domData('object', object)}} class="{{#if(../isSelected(object))}}selected {{/if}}row-{{object[scope.vm.idProp]}}">
+        {{#if(scope.vm.selectable)}}
         <td class="checkbox-cell">
           <div class="form-group d-inline-block">
             <label class="form-checkbox">
@@ -36,7 +36,7 @@
           </div>
         </td>
         {{/if}} 
-        {{#each(scope.root.fields, field=value)}}
+        {{#each(scope.vm.fields, field=value)}}
         <td {{#if(classes)}}class="{{classes}}" {{/if}}>
         
           {{!TODO: use slots}}

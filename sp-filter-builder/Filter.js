@@ -149,7 +149,7 @@ export const Filter = DefineMap.extend('Filter', {
      */
     visible: {
         type: 'boolean',
-        value: true,
+        default: true,
         serialize: false,
         set (val) {
             return val;
@@ -164,7 +164,7 @@ export const Filter = DefineMap.extend('Filter', {
      */
     pinned: {
         type: 'boolean',
-        value: false,
+        default: false,
         serialize: false
     },
     /**

@@ -33,6 +33,9 @@ export const Field = DefineMap.extend('Field', {
             if (!this.alias && name) {
                 this.alias = makeSentenceCase(name);
             }
+            if (!this.classes && name) {
+                this.classes = 'cell-' + name;
+            }
             return name;
         }
     },

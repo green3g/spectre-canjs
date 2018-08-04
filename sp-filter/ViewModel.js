@@ -1,5 +1,5 @@
 import DefineMap from 'can-define/map/map';
-import Filter from '../sp-filter-builder/Filter';
+import {Filter} from '../sp-filter-builder/Filter';
 
 /**
  * A `<sp-filter />` component's ViewModel

@@ -8,7 +8,9 @@
         </thead>
         <tbody>
             {{#each(fields, field=value)}}
-                <tr>
+                <tr {{domData('value', ../object[field.name])}}
+                    {{domData('field', field.name)}} 
+                    class="field-{{field.name}}">
                     <td>{{field.alias}}</td>
                     <td class="{{field.classes}}">
                         {{!TODO: use slots}}

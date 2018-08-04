@@ -3,9 +3,6 @@ import Component from 'can-component';
 import template from './sp-text-field.stache';
 import ViewModel from './ViewModel';
 
-// inserted/removed events
-import 'can-3-4-compat/dom-mutation-events';
-
 
 /**
  * A basic text field configureable to be formatted as different HTML5 input types or HTML textarea elements

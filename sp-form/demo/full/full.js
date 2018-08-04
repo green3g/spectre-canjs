@@ -117,7 +117,10 @@ const DemoObject = DefineMap.extend('DemoObject', {
         },
         name: 'field4',
         onInsert (element) {
-            flatpickr(element);
+            const picker = flatpickr(element);
+            return function(){
+                picker.destroy();
+            }
         },
         alias: 'A date field',
         ui: 'datepicker',

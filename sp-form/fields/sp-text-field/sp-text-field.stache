@@ -5,10 +5,8 @@
     class="form-control form-input" 
     name:from="name" 
     value:bind="value"
-    {{#if(onInsert)}}on:inserted="onInsert(scope.element)"{{/if}}
     {{attributes}} />
 {{/input}}
-
 <div class="form-group {{#if error}}has-error{{/if}}">
     {{#unless(inline)}}
         <label class="form-label" for="{{name}}">{{alias}}</label>
@@ -19,7 +17,6 @@
             class="form-control form-input" 
             name:from="name" 
             value:bind="value"
-            {{#if(onInsert)}}on:inserted="onInsert(scope.element)"{{/if}}
             {{attributes}}></textarea> 
     {{else}}
         {{#if(showClear)}}

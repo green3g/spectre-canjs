@@ -17,10 +17,20 @@ export default SelectField.extend('CheckboxMulti', {
      * @description The current value of this field. Can be string or a list. 
      */
     value: {
-        set(val){
-            if(typeof val === 'string'){
-                this.valueType === 'string';
-                this.selectedValues = val.split(',');
+        value (props) {
+            props.listenTo(this.selectedValues, 'length', () => {
+                if (this.valueType === 'string') {
+                    props.resolve(this.selectedValues.join(this.valueSeparator));
+                } else {
+                    props.resolve(this.selectedValues);
+                }
+                this.dispatch('fieldchange', [this]);
+            });
+        },
+        set (val) {
+            if (typeof val === 'string') {
+                this.valueType = 'string';
+                this.selectedValues.replace(val.split(','));
             }
 
             return val;
@@ -35,17 +45,7 @@ export default SelectField.extend('CheckboxMulti', {
      */
     selectedValues: {
         Type: DefineList,
-        Default: DefineList,
-        set(list){
-            list.on('length', () => {
-                let value = list;
-                if(this.valueType === 'string'){
-                    value = value.join(this.valueSeparator);
-                }
-                this.value = value;
-            });
-            return list;
-        }
+        Default: DefineList
     },
     /**
      * @type {Array<Any>}
@@ -61,11 +61,5 @@ export default SelectField.extend('CheckboxMulti', {
     valueSeparator: {
         type: 'string',
         default: ','
-    },
-    /**
-     * Dispatches the `fieldchange` event
-     */
-    onChange () {
-        this.dispatch('fieldchange', [this]);
     }
 });

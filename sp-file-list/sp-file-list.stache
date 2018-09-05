@@ -41,9 +41,6 @@
         {{/each}}
     {{/if}}
 
-    {{#if(isDragOver)}}
-        isDragOver
-    {{/if}}
     {{#if(isMouseOver)}}
         <div class="mouseover-tooltip" on:click="uploadClick(scope.event)">
             <i class="fa fa-upload"></i> Drag files or click to Browse...

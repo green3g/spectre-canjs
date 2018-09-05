@@ -1,0 +1,109 @@
+<div class="columns container">
+    <div class="column col-6 col-sm-12">
+        <h4>{{title}} {{#if(detailsId)}}Details{{else}}List{{/if}}</h4>
+        <p class="text-gray">{{subTitle}}</p>
+    </div>
+    <div class="column col-6 col-sm-12 hidden-print">
+        <div class="text-right">
+            {{#if(detailsId)}}
+                <can-slot this:from="this" name="detailsActions">
+                    <button class="btn btn-primary" on:click="clearDetails()"><i class="fa fa-caret-left"></i> Back to List</button>
+                    <button class="btn btn-primary" on:click="showEdit(detailsObject)"><i class="fa fa-pencil"></i> Edit</button>
+                    <button class="btn btn-error" on:click="deleteSingle(detailsObject)"><i class="fa fa-trash"></i> Delete</button>
+                </can-slot>
+            {{else}}
+                <can-slot this:from="this" name="listActions">
+                    <button class="btn btn-success" on:click="addNew()"><i class="fa fa-plus"></i> Add New</button>
+                    {{#if(selected.length)}}
+                        <button class="btn btn-error {{#if(isDeleting.isPending)}}loading{{/if}}" on:click="delete(selected)"><i class="fa fa-trash"></i> Delete</button>
+                    {{/if}}
+                    <button class="btn btn-default" on:click="refresh()"><i class="fa fa-refresh"></i></button>
+                </can-slot>
+                {{#if(filterFields.length)}}
+                <can-slot this:from="this" name="filters">
+                    {{#each(filterFields, field=value)}}
+                        <sp-filter-dropdown class="inline" params:from="../params" field:from="field"></sp-filter-dropdown>
+                    {{/each}}
+                </can-slot>
+                {{/if}}
+                {{#if(searchFields.length)}}
+                    <div class="divider"></div>
+                    <div class="search-wrapper"><sp-text-field properties:from="searchFieldProps" value:bind="searchValue" on:value="search(scope.arguments)" /></div>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="divider" />
+{{#if(detailsId)}}
+    {{#if(detailsObject)}}
+        <can-slot this:from="this" name="details">
+        <sp-property-table 
+            object:from="detailsObject" 
+            fields:from="detailsFields"></sp-property-table>
+        </can-slot>
+    {{else}}
+        {{#if(detailsPromise.isPending)}}
+            <div class="loading" />
+        {{/if}}
+    {{/if}}
+{{else}}
+<div class="{{#if(objectsPromise.isPending)}}faded{{/if}}">
+    {{#if(objects.length)}}
+    <can-slot this:from="this" name="list">
+    <sp-list-table 
+        objects:from="objects" 
+        fields:from="listFields"
+        on:edit="showEditFromEvent(scope.arguments)"
+        on:details="showDetailsFromEvent(scope.arguments)"
+        on:sort="setSort(scope.arguments)"
+        sort:from="noop"
+        selectedObjects:to="selected"></sp-list-table>
+    </can-slot>
+    {{else}}
+        {{#if(objectsPromise.isResolved)}}
+        <div class="empty">
+              <div class="empty-icon">
+                <i class="fa fa-3x fa-table"></i>
+              </div>
+              <p class="empty-title h5">No objects were found</p>
+              <p class="empty-subtitle">Try changing your search parameters or adding new data</p>
+              <div class="empty-action">
+                <button class="btn btn-success" on:click="addNew()"><i class="fa fa-plus"></i> Add New</button>
+              </div>
+            </div>
+        {{else}}
+            {{#if(objectsPromise.isPending)}}
+                <div class="loading"></div>
+            {{else}}
+                <sp-toast severity:from="'error'" body:from="'Error: {{objectsPromise.reason}}'"></sp-toast>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+    
+    <br />
+    <can-slot this:from="this" name="paginate">
+    <sp-admin-paginate 
+        total:from="total"
+        perPage:bind="perPage"
+        pageIndex:bind="pageIndex"></sp-admin-paginate>
+    </can-slot>
+    
+</div>
+{{/if}}
+
+
+
+<sp-modal title:from="'{{#if(editObject.isNew()}}Add New{{else}}Edit{{/if}} {{title}}'" active:bind="editActive">
+    {{#if(error)}}<sp-toast body:from="error" severity="error"></sp-toast>{{/if}}
+    {{#if(editObject)}}
+    <can-slot this:from="this" name="edit">
+    <sp-form object:from="editObject" 
+        fields:from="editFields" 
+        on:submit="save(editObject)" 
+        on:cancel="hideEdit()"
+        isSaving:bind="isSaving"></sp-form>
+    </can-slot>
+    {{/if}}
+</sp-modal>

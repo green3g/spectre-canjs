@@ -8,8 +8,8 @@
             on:submit="onSubmit(scope.arguments)" 
             isSaving:bind="formSaving"
             on:cancel="onCancel"></sp-form>
-        </div>
-        <div class="col-6 col-sm12 container">
+    </div>
+    <div class="col-6 col-sm12 container">
         
         <p>Model object values: </p>
         <div class="json">{{{stringify (object)}}}</div>

@@ -8,6 +8,8 @@ let index = 1000;
 fixture.delay = 200;
 fixture({
     'GET /tasks' (params) {
+        // eslint-disable-next-line
+        console.log('Query REST Params: ',params);
         const perPage = params.data.perPage || 10;
         const page = params.data.page || 0;
         const sortInfo = params.data.sort;

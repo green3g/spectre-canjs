@@ -32,6 +32,14 @@ export default Base.extend('SubformField', {
         }
     },
     /**
+     * The type of object to use for this form object. If you'd like
+     * to use a different type, than the Type defined in define map,
+     * you can provide a `subType` instead. This will override the Type.
+     * @type {Constructor} 
+     * @memberof sp-subform-field.ViewModel.prototype
+     */
+    Type: '*',
+    /**
      * An alternative property to using Type. Since Type is a DefineMap keyword, 
      * subType is provided to allow for customizability between the field and
      * the map

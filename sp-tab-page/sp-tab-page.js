@@ -4,7 +4,7 @@ import pageTemplate from './sp-tab-page.stache';
 
 /**
  * Tab page component used in the sp-tab-container for navigation
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;resize:both;"></iframe>
  * @module sp-tab-page 
  * @example 
  * <sp-tab-page /> 

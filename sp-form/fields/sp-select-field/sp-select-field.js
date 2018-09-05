@@ -4,7 +4,7 @@ import ViewModel from './ViewModel';
 
 /**
  * A select dropdown
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;resize:both;"></iframe>
  * @module sp-select-field
  * @example 
  * <sp-select-field /> 

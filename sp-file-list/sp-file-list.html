@@ -18,10 +18,8 @@
   </div>
 </script>
 
-<script src="../../docs/spectre/steal.production.js" main="can-view-autorender">
+<script src="../../docs/spectre/steal.production.js">
   require('spectre-canjs/sp-file-list/sp-file-list');
-  require('font-awesome/css/font-awesome.css');
-  require('spectre.css');
   const app = require('can-stache').from('app');
   document.body.appendChild(app({
     log(args){

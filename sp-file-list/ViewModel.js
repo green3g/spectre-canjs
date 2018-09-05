@@ -15,6 +15,12 @@ export const img = new RegExp(/.*\.(?:jpg|jpeg|gif|png)/, 'i');
 export const FileMap = DefineMap.extend('FileMap', {
     /** @lends sp-file-list.FileMap.prototype */
     /**
+     * A reference to the File object
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {File}
+     */
+    file: '*',
+    /**
      * A string to display for the file name
      * @memberof sp-file-list.FileMap.prototype
      * @type {String}
@@ -126,6 +132,7 @@ export default DefineMap.extend('SPFileList', {
         files = Array.from(files).map((file) => {
             const url = window.URL.createObjectURL(file);
             return {
+                file,
                 id: file.name,
                 uri: url,
                 isObjectURL: true

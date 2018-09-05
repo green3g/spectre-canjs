@@ -4,7 +4,7 @@ import view from './template.stache';
 
 /**
  * A filter component for creating complex filters
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;resize:both;"></iframe>
  * @module sp-filter
  * @example 
  * <sp-filter /> 

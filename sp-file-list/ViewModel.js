@@ -12,7 +12,7 @@ export const img = new RegExp(/.*\.(?:jpg|jpeg|gif|png)/, 'i');
  * @type {DefineMap}
  * @example `import {FileMap} from 'spectre-canjs/sp-file-list/ViewModel';
  */
-export const FileMap = DefineMap.extend('FileMap', {
+export const FileMap = DefineMap.extend('FileMap',{seal: false}, {
     /** @lends sp-file-list.FileMap.prototype */
     /**
      * A reference to the File object
@@ -104,8 +104,8 @@ export default DefineMap.extend('SPFileList', {
      * @param {FileObject} file The file object
      * @return {Boolean} whether or not the `file.id` name is a file
      */
-    isImage (file) {
-        return img.test(file.id);
+    isImage (filename) {
+        return filename && img.test(filename);
     },
     /**
      * Removes an individual file from the list
@@ -131,12 +131,12 @@ export default DefineMap.extend('SPFileList', {
         this.isDragOver = false;
         files = Array.from(files).map((file) => {
             const url = window.URL.createObjectURL(file);
-            return {
+            return new FileMap({
                 file,
                 id: file.name,
                 uri: url,
                 isObjectURL: true
-            };
+            });
         });
         files.forEach((file) => {
             this.files.push(file);

@@ -6,7 +6,7 @@ import ViewModel from './ViewModel';
 /**
  * A formatted list of files with slots for actions. 
  * Images are displayed if available.
- * <iframe src="https://google.com" style="border: 1px solid #ccc; width:100%;"></iframe>
+ * <iframe src="../sp-file-list/sp-file-list.html" style="border: 1px solid #ccc; width:100%;"></iframe>
  * @module sp-file-list
  * @example 
  * <sp-file-list /> 

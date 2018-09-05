@@ -25,7 +25,7 @@
                     role="progressbar" 
                     style="width:{{file.progress}}%;"
                     aria-valuenow="{{file.progress}}"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+                    aria-valuemin="0" aria-valuemax="{{scope.vm.maxProgressValue}}"></div>
             </div>
             {{/if}}
             </div>

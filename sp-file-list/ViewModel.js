@@ -13,9 +13,30 @@ export const img = new RegExp(/.*\.(?:jpg|jpeg|gif|png)/, 'i');
  * @example `import {FileMap} from 'spectre-canjs/sp-file-list/ViewModel';
  */
 export const FileMap = DefineMap.extend('FileMap', {
+    /** @lends sp-file-list.FileMap.prototype */
+    /**
+     * A string to display for the file name
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {String}
+     */
     id: 'string',
+    /**
+     * A string to use for the file url
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {String}
+     */
     uri: 'string',
+    /**
+     * Whether or not the url is a global object uri
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {Boolean}
+     */
     isObjectURL: 'boolean',
+    /**
+     * A (optional) upload progress bar percentage to display to the user
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {Number}
+     */
     progress: 'number'
 });
 

@@ -11,7 +11,10 @@
 
 <script type="text/stache" id="app">
   <div class="container app-container">
-    <sp-file-list files:from="files"></sp-file-list>
+    <sp-file-list 
+      files:from="files"
+      on:add="log(scope.arguments)"
+      on:remove="log(scope.arguments)"></sp-file-list>
   </div>
 </script>
 
@@ -22,6 +25,9 @@
   require('spectre.css');
   const app = require('can-stache').from('app');
   document.body.appendChild(app({
+    log(args){
+      console.log(args);
+    },
     files: [{
       uri: 'https://www.bing.com/th?id=OIP.oGaVdRuA7nrngmJMxx5VywHaE8&w=250&h=167&c=7&o=5&pid=1.7',
       id: 'test.png'

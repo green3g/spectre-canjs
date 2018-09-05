@@ -52,6 +52,7 @@ export default DefineMap.extend('SPFileList', {
         }
         const index = this.files.indexOf(file);
         this.files.splice(index, 1);
+        this.dispatch('remove', [file]);
     },
     addFiles (files, ev) {
         if (ev) {
@@ -68,6 +69,7 @@ export default DefineMap.extend('SPFileList', {
             };
         });
         this.files.replace(this.files.concat(files));
+        files.forEach((file) => this.dispatch('add', [file]));
     },
     dragover (ev, isDragOver) {
         ev.preventDefault();

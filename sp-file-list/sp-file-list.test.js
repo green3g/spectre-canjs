@@ -4,9 +4,11 @@ let vm, file;
 
 beforeEach (() => {
     vm = new ViewModel();
+    file = new FileMap();
 });
 afterEach (() => {
     vm = null;
+    file = null;
 });
 
 test('file.isImage()', () => {

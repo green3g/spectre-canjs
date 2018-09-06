@@ -43,7 +43,15 @@ export const FileMap = DefineMap.extend('FileMap', {seal: false}, {
      * @memberof sp-file-list.FileMap.prototype
      * @type {Number}
      */
-    progress: 'number'
+    progress: 'number',
+    /**
+     * Tests a file objects `id` property for image type extension
+     * @memberof sp-file-list.FileMap.prototype
+     * @return {Boolean} whether or not the `file.id` name is a file
+     */
+    isImage () {
+        return this.id && img.test(this.id);
+    }
 });
 
 /**
@@ -98,15 +106,6 @@ export default DefineMap.extend('SPFileList', {
      * @type {Boolean}
      */
     el: '*',
-    /**
-     * Tests a file objects `id` property for image type extension
-     * @memberof sp-file-list.ViewModel.prototype
-     * @param {String} filename The file object
-     * @return {Boolean} whether or not the `file.id` name is a file
-     */
-    isImage (filename) {
-        return filename && img.test(filename);
-    },
     /**
      * Removes an individual file from the list
      * @param {FileMap} file The file to remove from the list

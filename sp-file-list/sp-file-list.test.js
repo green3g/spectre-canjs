@@ -1,15 +1,17 @@
-import ViewModel from './ViewModel';
-let vm;
+import {FileMap} from './ViewModel';
+let file;
 
 
 beforeEach (() => {
-    vm = new ViewModel();
+    // vm = new ViewModel();
+    file = new FileMap();
 });
 afterEach (() => {
-    vm = null;
+    // vm = null;
+    file = null;
 });
 
-test('isImage(filename)', () => {
+test('file.isImage()', () => {
     const images = [
         'file.jpg',
         'file.JPG',
@@ -25,9 +27,11 @@ test('isImage(filename)', () => {
     ];
 
     images.forEach((img) => {
-        expect(vm.isImage({id: img})).toBe(true);
+        file.id = img;
+        expect(file.isImage()).toBe(true);
     });
     notImages.forEach((img) => {
-        expect(vm.isImage({id: img})).toBe(false);
+        file.id = img;
+        expect(file.isImage()).toBe(false);
     });
 });

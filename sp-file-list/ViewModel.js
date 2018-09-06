@@ -12,7 +12,7 @@ export const img = new RegExp(/.*\.(?:jpg|jpeg|gif|png)/, 'i');
  * @type {DefineMap}
  * @example `import {FileMap} from 'spectre-canjs/sp-file-list/ViewModel';
  */
-export const FileMap = DefineMap.extend('FileMap',{seal: false}, {
+export const FileMap = DefineMap.extend('FileMap', {seal: false}, {
     /** @lends sp-file-list.FileMap.prototype */
     /**
      * A reference to the File object
@@ -101,7 +101,7 @@ export default DefineMap.extend('SPFileList', {
     /**
      * Tests a file objects `id` property for image type extension
      * @memberof sp-file-list.ViewModel.prototype
-     * @param {FileObject} file The file object
+     * @param {String} filename The file object
      * @return {Boolean} whether or not the `file.id` name is a file
      */
     isImage (filename) {

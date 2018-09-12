@@ -1,13 +1,13 @@
-import ViewModel, {FileMap} from './ViewModel';
-let vm, file;
+import {FileMap} from './ViewModel';
+let file;
 
 
 beforeEach (() => {
-    vm = new ViewModel();
+    // vm = new ViewModel();
     file = new FileMap();
 });
 afterEach (() => {
-    vm = null;
+    // vm = null;
     file = null;
 });
 

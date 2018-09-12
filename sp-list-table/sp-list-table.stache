@@ -12,43 +12,45 @@
           </div>
         </th>
         {{/if}} 
-        {{#each(fields)}}
-        <th {{#is(name, scope.vm.currentSort.field)}} class="text-bold {{#if classes}}{{classes}}{{/if}}" {{/is}}
-          {{#if(sort)}} on:el:click="../setSort(name)"{{/if}}>
-          {{alias}} {{#is(name, scope.vm.currentSort.field)}}
-          <i class="fa fa-sort-{{#is(scope.vm.currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
-          <i class="fa fa-times float-right" on:el:click="scope.vm.setSort('', scope.event)" title="Clear Sort"></i>{{/is}}
+        {{#for(field of fields)}}
+        <th {{#is(field.name, currentSort.field)}} class="text-bold {{#if field.classes}}{{field.classes}}{{/if}}" {{/is}}
+          {{#if(sort)}} on:el:click="setSort(name)"{{/if}}>
+          {{field.alias}} 
+          {{#is(field.name, currentSort.field)}}
+          <i class="fa fa-sort-{{#is(currentSort.type, 'desc')}}desc{{else}}asc{{/is}}"></i>
+          <i class="fa fa-times float-right" on:el:click="setSort('', scope.event)" title="Clear Sort"></i>
+          {{/is}}
         </th>
-        {{/each}}
+        {{/for}}
       </tr>
     </thead>
 
     <tbody>
-      {{#each(objects, object=value)}}
-      <tr {{domData('object', object)}} class="{{#if(../isSelected(object))}}selected {{/if}}row-{{object[scope.vm.idProp]}}">
-        {{#if(scope.vm.selectable)}}
+      {{#for(object of objects)}}
+      <tr {{domData('object', object)}} class="{{#if(isSelected(object))}}selected {{/if}}row-{{object[idProp]}}">
+        {{#if(selectable)}}
         <td class="checkbox-cell">
           <div class="form-group d-inline-block">
             <label class="form-checkbox">
-              <input type="checkbox" on:change="../toggleSelected(object)" checked:from="../isSelected(object)" />
+              <input type="checkbox" on:change="toggleSelected(object)" checked:from="isSelected(object)" />
               <i class="form-icon"></i>
             </label>
           </div>
         </td>
         {{/if}} 
-        {{#each(scope.vm.fields, field=value)}}
-        <td {{#if(classes)}}class="{{classes}}" {{/if}}>
+        {{#for(field of fields)}}
+        <td class="{{#if(field.classes)}}{{field.classes}} {{/if}}cell-{{field.name}}">
         
           {{!TODO: use slots}}
           {{#if(field.displayComponent}}
             {{>field.displayComponent}}
           {{else}}
-            {{../object[field.name]}}
+            {{object[field.name]}}
           {{/if}}
         </td>
-        {{/each}}
+        {{/for}}
       </tr>
-      {{/each}}
+      {{/for}}
     </tbody>
   </table>
 </div>

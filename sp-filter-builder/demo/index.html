@@ -4,8 +4,12 @@
 
     <sp-filter-builder fields:from="fields" filters:to="filters" />
 
+    {{#if(filters.length)}}
     <h2>Current filters: </h2>
     <div class="json">{{{stringify(filters)}}}</div>
+    {{else}}
+    <p>Choose a field to add a filter</p>
+    {{/if}}
 
   <div class="divider"></div>
   <h2>Pinned</h2>

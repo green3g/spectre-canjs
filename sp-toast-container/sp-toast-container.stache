@@ -1,6 +1,8 @@
 <can-import from="spectre-canjs/sp-toast/sp-toast.stache" value:to="scope.vars.toast" />
 <div class="toasts">
-    {{#each(toasts)}}
+    {{#for(toast of toasts)}}
+        {{#with(toast)}}
         {{>scope.vars.toast}}
-    {{/each}}
+        {{/with}}
+    {{/for}}
 </div>

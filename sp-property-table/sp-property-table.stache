@@ -7,8 +7,8 @@
             </tr>
         </thead>
         <tbody>
-            {{#each(fields, field=value)}}
-                <tr {{domData('value', ../object[field.name])}}
+            {{#for(field of fields)}}
+                <tr {{domData('value', object[field.name])}}
                     {{domData('field', field.name)}} 
                     class="field-{{field.name}}">
                     <td>{{field.alias}}</td>
@@ -17,11 +17,11 @@
                         {{#if(field.displayComponent}}
                             {{>field.displayComponent}}
                         {{else}}
-                            {{../object[field.name]}}
+                            {{object[field.name]}}
                         {{/if}}
                     </td>
                 </tr>
-            {{/each}}
+            {{/for}}
         </tbody>
     </table>
 </div>

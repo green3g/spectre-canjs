@@ -126,22 +126,22 @@ const DemoObject = DefineMap.extend('DemoObject', {
         ui: 'datepicker',
         placeholder: 'Enter a date...'
     },
-    field5: {
-        name: 'field5',
-        alias: 'A file field',
-        editTag: 'sp-dropzone-field',
-        url: '/upload',
+    // field5: {
+    //     name: 'field5',
+    //     alias: 'A file field',
+    //     editTag: 'sp-dropzone-field',
+    //     url: '/upload',
 
-        // convert file list type back to list
-        serialize (val) {
-            if (!val) {
-                return '';
-            }
-            return val.map((file) => {
-                return file.id;
-            }).join(',');
-        }
-    },
+    //     // convert file list type back to list
+    //     serialize (val) {
+    //         if (!val) {
+    //             return '';
+    //         }
+    //         return val.map((file) => {
+    //             return file.id;
+    //         }).join(',');
+    //     }
+    // },
     field6: {
         Type: ChildObject,
         name: 'field6',

@@ -21,9 +21,9 @@
                 </can-slot>
                 {{#if(filterFields.length)}}
                 <can-slot this:from="this" name="filters">
-                    {{#each(filterFields, field=value)}}
-                        <sp-filter-dropdown class="inline" params:from="../params" field:from="field"></sp-filter-dropdown>
-                    {{/each}}
+                    {{#for(field of filterFields)}}
+                        <sp-filter-dropdown class="inline" params:from="params" field:from="field"></sp-filter-dropdown>
+                    {{/for}}
                 </can-slot>
                 {{/if}}
                 {{#if(searchFields.length)}}

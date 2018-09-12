@@ -1,13 +1,16 @@
 <fieldset class="mt-10">
     <legend>{{alias}}</legend>
-    {{#each options opt=value}}
+    {{#for(option of options)}}
       <div class="form-group {{#if(error)}}has-error{{/if}}">
         <label class="form-{{#if style}}{{style}}{{else}}checkbox{{/if}}">
-          <input type="checkbox" el:checked:bind="boolean-to-inList(opt.value, ../selectedValues)" name="{{opt.value}}" on:el:change="../onChange()"  {{attributes}} />
-          <i class="form-icon"></i> {{opt.label}}
+          <input type="checkbox" 
+            el:checked:bind="boolean-to-inList(option.value, selectedValues)" 
+              name="{{option.value}}"
+            on:el:change="onChange()"  {{attributes}} />
+          <i class="form-icon"></i> {{option.label}}
       </label>
       </div>
-    {{/each}}
+    {{/for}}
   {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 
 </fieldset>

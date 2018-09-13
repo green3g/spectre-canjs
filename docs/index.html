@@ -8550,9 +8550,10 @@ field template</p>
     
       
       <pre class='p1 overflow-auto round fill-light'>&lt;!-- stache template --&gt; 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">sp-list-table</span> <span class="hljs-attr">fields:from</span>=<span class="hljs-string">"fields"</span> <span class="hljs-attr">objects:from</span>=<span class="hljs-string">"objects"</span> /&gt;</span> 
-
-// viewmodel data:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">sp-list-table</span> <span class="hljs-attr">fields:from</span>=<span class="hljs-string">"fields"</span> <span class="hljs-attr">objects:from</span>=<span class="hljs-string">"objects"</span> /&gt;</span></span></pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>/// viewmodel data
 {
  objects: [{
      field_name: 'test data',
@@ -8560,9 +8561,9 @@ field template</p>
  }],
  fields: ['field_name', {
      name: 'other_name',
-     displayComponent: '<span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>{{object[field.name]}}<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+     displayComponent: '&lt;strong&gt;{{object[field.name]}}&lt;/strong&gt;
  }]
-}</span></pre>
+}</pre>
     
   
 

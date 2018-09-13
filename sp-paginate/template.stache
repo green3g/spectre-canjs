@@ -9,15 +9,15 @@
     {{/unless}}
     {{#unless(hidePrevious)}}
     <li class="{{#unless(hasPrevious)}}disabled{{/unless}} page-item">
-      <a aria-label="Previous" on:el:click="gotoPrevious()">
+      <a aria-label="Previous" on:click="gotoPrevious()">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     {{/unless}}
     {{#unless(hidePages)}}
-    {{#each(visiblePages)}}
-      <li class="{{#if(../isActive(.))}}active{{/if}} page-item"><a on:el:click="../gotoPage(.)">{{.}}</a></li>
-    {{/each}}
+    {{#for(page of visiblePages)}}
+      <li class="{{#if(isActive(page))}}active{{/if}} page-item"><a on:click="gotoPage(page)">{{page}}</a></li>
+    {{/for}}
     {{/unless}}
     {{#unless(hideNext)}}
     <li class="{{#unless(hasNext)}}disabled{{/unless}} page-item">

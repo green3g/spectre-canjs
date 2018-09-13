@@ -6,39 +6,42 @@
     on:mouseleave="mouseover(scope.event, false)">
 
     {{#if(files.length)}}
-        {{#each(files, file=value)}}
+        {{#for(row of files)}}
         <div class="tile">
             <div class="tile-icon">
-            {{#if(scope.vm.isImage(file))}}
+            {{#if(row.isImage())}}
             <figure class="avatar avatar-lg">
-                <img src="{{file.uri}}" alt="Upload">
+                <img src="{{row.uri}}" alt="Upload">
             </figure>
             {{else}}
                 <i class="fa fa-3x fa-file"></i>
             {{/if}}
             </div>
             <div class="tile-content">
-            <p class="tile-subtitle text-gray text-ellipsis">{{file.id}}</p>
-            {{#if(scope.vm.showProgress(file.progress))}}
+            <p class="tile-subtitle text-gray text-ellipsis">{{row.id}}</p>
+            {{#if(showProgress(row.progress))}}
             <div class="bar bar-sm">
                 <div class="bar-item" 
                     role="progressbar" 
-                    style="width:{{file.progress}}%;"
-                    aria-valuenow="{{file.progress}}"
-                    aria-valuemin="0" aria-valuemax="{{scope.vm.maxProgressValue}}"></div>
+                    style="width:{{row.progress}}%;"
+                    aria-valuenow="{{row.progress}}"
+                    aria-valuemin="0" aria-valuemax="{{maxProgressValue}}"></div>
             </div>
             {{/if}}
             </div>
             <div class="tile-action">
-                <can-slot name="actions" file:bind="file">
-                    <button class="btn btn-primary" type="button" on:click="scope.vm.remove(file)">
+                <can-slot name="actions" row:bind="row">
+                    <button class="btn btn-primary" type="button" on:click="scope.top.remove(row)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </can-slot>
             </div>
         </div>
         <div class="divider"></div>
-        {{/each}}
+        {{/for}}
+
+    {{else}}
+        <p>Drag and drop files here...</p>
     {{/if}}
 
     {{#if(isMouseOver)}}

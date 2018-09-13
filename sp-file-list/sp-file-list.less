@@ -7,10 +7,12 @@ sp-file-list {
 	}
 
 	.drop-container {
+		position:relative;
 		height: 100%;
 
 		&.drag-over {
-			background: rgb(224, 222, 222);
+			background: rgba(0, 0, 0, 0.7);
+			color: #fff !important;
 		}
 	}
 
@@ -29,5 +31,6 @@ sp-file-list {
 		background: rgba(0,0,0, 0.7);
 		color: #fff;
 		cursor: pointer;
+		z-index: 50;
 	}
 }

@@ -1,14 +1,13 @@
 import 'spectre-canjs/sp-filter-builder/sp-filter-builder';
 import stache from 'can-stache';
-import parseFieldArray from 'spectre-canjs/util/field/parseFieldArray/parseFieldArray';
 import DefineMap from 'can-define/map/map';
 import jsonMarkup from 'json-pretty-html';
 import '../../sp-form/demo/full/full.less';
 import 'spectre-canjs/sp-form/fields/sp-check-field/sp-check-field';
 
 const render = stache.from('demo-html');
-document.body.appendChild(render({
-    filters: null,
+document.body.appendChild(render(new DefineMap({
+    filters: [],
     fields: [{name: 'field_1', type: 'number', textType: 'number'}, 'field_2', {
         name: 'field_3',
         editTag: 'sp-check-field',
@@ -34,7 +33,7 @@ document.body.appendChild(render({
         filter.visible = !filter.visible;
       });
     }
-}));
+})));
 
 
 window.DEMO_SOURCE = `

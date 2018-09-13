@@ -129,20 +129,20 @@
             {{#if(../people.isResolved)}}
             <sp-tab-page label:from="'User cards'">
                 <h2>These were loaded via ajax!</h2>
-                {{#each(../people.value)}}
+                {{#for(person of ../people.value)}}
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{name}}</h4>
-                        <h6 class="card-meta">{{email}}</h6>
+                        <h4 class="card-title">{{person.name}}</h4>
+                        <h6 class="card-meta">{{person.email}}</h6>
                     </div>
                     <div class="card-body">
-                        {{address.street}} {{address.suite}}<br /> {{address.city}} {{address.zipcode}}
+                        {{person.address.street}} {{person.address.suite}}<br /> {{person.address.city}} {{person.address.zipcode}}
                     </div>
                     <div class="card-footer">
-                        <a href="mailto:{{email}}" class="btn btn-primary">Contact</a>
+                        <a href="mailto:{{person.email}}" class="btn btn-primary">Contact</a>
                     </div>
                 </div>
-                {{/each}}
+                {{/for}}
             </sp-tab-page>
             {{/if}}
         </sp-tab-container>

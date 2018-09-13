@@ -2,9 +2,9 @@
 
   <form class="form{{#if(inline)}}-horizontal form-inline{{/if}}" on:submit="submitForm(scope.event)">
       <can-slot this:bind="this" name="fields">
-        {{#each(fields, field=value)}}
+        {{#for(field of fields)}}
           {{>field.editComponent}}
-        {{/each}}
+        {{/for}}
       </can-slot>
 
       <br />

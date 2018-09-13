@@ -4,9 +4,10 @@
   </a>
   <!-- menu component -->
   <ul class="menu">
-      {{#each(field.options)}}
-        <li class="menu-item"><a href="" on:click="../setFilter(value, scope.event)">
-          {{#is(../params[../field.name], value)}}<i class="float-left fa fa-check"></i>{{/is}} {{#if(label)}}{{label}}{{else}}{{value}}{{/if}}</a></li>
-      {{/each}}
+      {{#for(option of field.options)}}
+        <li class="menu-item"><a href="#" on:click="setFilter(option.value, scope.event)">
+          {{#is(params[field.name], option.value)}}<i class="float-left fa fa-check"></i>{{/is}} 
+          {{#if(option.label)}}{{option.label}}{{else}}{{option.value}}{{/if}}</a></li>
+      {{/for}}
   </ul>
 </div>

@@ -209,8 +209,8 @@ export const Filter = DefineMap.extend('Filter', {
                 return renderer;
             }
             return stache(`<${this.valueField.editTag} 
-                properties:from="valueField" 
-                value:bind="value" />`);
+                properties:from="filter.valueField" 
+                value:bind="filter.value" />`);
         }
     },
     /**

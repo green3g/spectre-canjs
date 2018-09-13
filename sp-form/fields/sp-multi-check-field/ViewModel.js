@@ -20,7 +20,7 @@ export default SelectField.extend('CheckboxMulti', {
         value (props) {
             props.listenTo(this.selectedValues, 'length', () => {
                 if (this.valueType === 'string') {
-                    props.resolve(this.selectedValues.join(this.valueSeparator));
+                    props.resolve(this.selectedValues.filter((val) => Boolean(val)).join(this.valueSeparator));
                 } else {
                     props.resolve(this.selectedValues);
                 }

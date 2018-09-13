@@ -17,7 +17,16 @@
             idProp:raw="name" />
 
 
-        <p>You chose: {{#if(selectedObjects.length)}} {{#each selectedObjects}} {{name}}, {{/each}} {{else}} No one {{/if}}
+        <p>You chose: 
+        {{#is(selectedObjects.length, objects.length)}}
+            Everyone
+        {{else}}
+            {{#if(selectedObjects.length)}} 
+            {{#for(object of selectedObjects)}}{{object.name}}, {{/for}} 
+        {{else}} 
+            No one 
+        {{/if}}
+        {{/is}}
         </p>
     </div>
 </script>

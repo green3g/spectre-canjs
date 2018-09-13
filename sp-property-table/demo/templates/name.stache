@@ -1,3 +1,2 @@
 This is a formatted property. We can also show and format other properties, like favorite food.<br />
-<strong>{{../object[field.name]}} likes </strong> <mark><i class="fa fa-cutlery"></i> 
-{{../object.favorite_food}}</mark>
+<strong>{{object[field.name]}} likes </strong> <i class="fa fa-cutlery"></i> {{object.favorite_food}}

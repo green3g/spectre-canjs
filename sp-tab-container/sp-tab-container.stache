@@ -1,10 +1,10 @@
 <ul class="tab">
-    {{#each(pages)}}
-      <li class="tab-item {{#is(., ../activePage)}}active{{/is}}{{#if loading}} loading{{/if}} {{classes}}" on:click="../makeActive(.)">
-          <a {{#if(href)}}href="{{href}}"{{/if}}>
-              {{label}}
+    {{#for(page of pages)}}
+      <li class="tab-item {{#is(page, activePage)}}active{{/is}}{{#if loading}} loading{{/if}} {{classes}}" on:click="makeActive(page)">
+          <a {{#if(page.href)}}href="{{page.href}}"{{/if}}>
+              {{page.label}}
           </a>
       </li>
-    {{/each}}
+    {{/for}}
 </ul>
 <content />

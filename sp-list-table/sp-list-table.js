@@ -15,7 +15,8 @@ import 'can-dom-data';
  * <!-- stache template --> 
  * <sp-list-table fields:from="fields" objects:from="objects" /> 
  * 
- * // viewmodel data:
+ * @example
+ * /// viewmodel data
  * {
  *  objects: [{
  *      field_name: 'test data',

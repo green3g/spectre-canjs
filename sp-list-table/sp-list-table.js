@@ -11,8 +11,16 @@ import 'can-dom-data';
  * <iframe src="../sp-list-table/demo/index.html" style="border: 1px solid #ccc; width:100%; height:300px;"></iframe>
  * @module sp-list-table
  * @example 
+ * 
+ * <!-- stache template --> 
  * <sp-list-table fields:from="fields" objects:from="objects" /> 
+ * 
+ * // viewmodel data:
  * {
+ *  objects: [{
+ *      field_name: 'test data',
+ *      other_name: 'more data',
+ *  }],
  *  fields: ['field_name', {
  *      name: 'other_name',
  *      displayComponent: '<strong>{{object[field.name]}}</strong>

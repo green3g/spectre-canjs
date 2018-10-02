@@ -45,6 +45,13 @@ export const FileMap = DefineMap.extend('FileMap', {seal: false}, {
      */
     progress: 'number',
     /**
+     * A user friendly error message to display if something happens 
+     * while the file is being uploaded or added to the file list.
+     * @memberof sp-file-list.FileMap.prototype
+     * @type {String}
+     */
+    error: 'string',
+    /**
      * Tests a file objects `id` property for image type extension
      * @memberof sp-file-list.FileMap.prototype
      * @return {Boolean} whether or not the `file.id` name is a file

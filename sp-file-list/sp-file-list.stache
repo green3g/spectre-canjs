@@ -1,3 +1,4 @@
+{{debugger()}}
 <div class="drop-container container {{#if(isDragOver)}}drag-over{{/if}}"
     on:drop="addFiles(scope.event.dataTransfer.files, scope.event)"
     on:dragover="dragover(scope.event, true)"
@@ -19,14 +20,18 @@
             </div>
             <div class="tile-content">
             <p class="tile-subtitle text-gray text-ellipsis">{{row.id}}</p>
-            {{#if(showProgress(row.progress))}}
-            <div class="bar bar-sm">
-                <div class="bar-item" 
-                    role="progressbar" 
-                    style="width:{{row.progress}}%;"
-                    aria-valuenow="{{row.progress}}"
-                    aria-valuemin="0" aria-valuemax="{{maxProgressValue}}"></div>
-            </div>
+            {{#if(row.error)}}
+            <p class="text-error">{{row.error}}</p>
+            {{else}}
+                {{#if(showProgress(row.progress))}}
+                <div class="bar bar-sm">
+                    <div class="bar-item" 
+                        role="progressbar" 
+                        style="width:{{row.progress}}%;"
+                        aria-valuenow="{{row.progress}}"
+                        aria-valuemin="0" aria-valuemax="{{maxProgressValue}}"></div>
+                </div>
+                {{/if}}
             {{/if}}
             </div>
             <div class="tile-action">

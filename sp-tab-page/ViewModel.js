@@ -46,11 +46,25 @@ const ViewModel = DefineMap.extend('NavPage', {
         }
     },
     /**
+     * A virtual property to determine if this page is active or not
+     * @type {Boolean}
+     */
+    isActive: {
+        get () {
+            if (process.env.NODE_ENV !== 'production' && !this.parent) {
+                // eslint-disable-next-line
+                console.warn('sp-tab-page: No parent found. This component belongs inside a container component');
+            }
+            return this.parent && this.parent.isActive(this);
+        }
+    },
+    /**
      * The parent containers view model
      * @type {DefineMap} 
      * @memberof sp-tab-page.ViewModel.prototype
      */
     parent: '*',
+
     /**
      * When the viewmodel is connected to an element, 
      * register this viewmodel with the parent

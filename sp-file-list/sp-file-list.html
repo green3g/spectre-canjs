@@ -12,22 +12,54 @@
 <script type="text/stache" id="app">
   <div class="container app-container">
     <sp-file-list 
-      files:from="files"
-      on:add="log(scope.arguments)"
-      on:remove="log(scope.arguments)"></sp-file-list>
+      files:from="this.files"
+      on:add="simulateUpload(scope.arguments)"
+      on:remove="simulateDelete(scope.arguments)" />
+    <sp-toast-container addToast:to="alert" />
+    {{console.log(addToast)}}
   </div>
 </script>
 
-<script src="../../docs/spectre/steal.production.js">
-  require('spectre-canjs/sp-file-list/sp-file-list');
-  const app = require('can-stache').from('app');
-  document.body.appendChild(app({
-    log(args){
-      console.log(args);
+<script src="../../node_modules/steal/steal.js" main="spectre-canjs/index">
+// <script src="../../docs/spectre/steal.production.js">
+  require('can-debug');
+  const DefineMap = require('can-define/map/map');
+
+  const config = new DefineMap({
+    simulateUpload([file]){
+      if(file.id.length > 8){
+        file.error = 'File name is too long';
+        return;
+      }
+      file.progress = 0;
+      const interval = setInterval(() => {
+        if(file.progress < 100){
+          file.progress ++;
+        } else {
+          window.clearInterval(interval);
+          this.addToast({
+            type: 'success',
+            header: 'Success!',
+            body: 'Upload succeeded!'
+          });
+        }
+      });
+    },
+    simulateDelete([file]){
+        this.addToast({
+          type: 'success',
+          header: 'Success!',
+          body: 'File was removed!'
+        });
     },
     files: [{
       uri: 'https://www.bing.com/th?id=OIP.oGaVdRuA7nrngmJMxx5VywHaE8&w=250&h=167&c=7&o=5&pid=1.7',
       id: 'test.png'
     }]
-  }))
+  });
+
+  console.log(config);
+  const render = require('can-stache').from('app');
+
+  document.body.appendChild(render(config));
 </script>

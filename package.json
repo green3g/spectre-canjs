@@ -1,6 +1,6 @@
 {
   "name": "spectre-canjs",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "homepage": "https://github.com/roemhildtg/spectre-canjs",
   "description": "A js component library built on the Spectre.css framework enabled with CanJS",
   "repository": {
@@ -59,10 +59,10 @@
   "dependencies": {
     "animate.css": "^3.6.1",
     "axios": "^0.18.0",
-    "can-component": "^4.3.0",
+    "can-component": "^4.4.2",
     "can-define": "^2.5.3",
     "can-dom-data": "^1.0.1",
-    "can-stache": "^4.11.0",
+    "can-stache": "^4.12.0",
     "can-stache-converters": "^4.2.0",
     "can-util": "^3.12.0",
     "can-view-model": "^4.0.1",

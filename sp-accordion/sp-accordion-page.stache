@@ -1,10 +1,8 @@
-
-{{#with(parent.isActive(this), isActive=value)}}
 <div class="accordion">
   <div class="accordion-item {{#if(isActive)}}active{{/if}}">
-    <label class="accordion-header hand" on:click="parent.toggle(this)">
+  <label class="accordion-header hand" on:click="parent.toggle(scope.vm)">
     <i class="fa fa-caret-{{#if(isActive)}}down{{else}}right{{/if}}"></i> {{label}}
-</label>
+  </label>
   {{#if(isActive)}}
     <div class="container accordion-body animated fadeIn">
       <content />
@@ -12,4 +10,3 @@
   {{/if}}
   </div>
 </div>
-{{/with}}

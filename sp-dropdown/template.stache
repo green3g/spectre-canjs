@@ -1,16 +1,17 @@
 <div class="dropdown-wrapper">
-    <div class="btn-group">
-        {{#for(button of primaryButtons)}}
-        <a href="#" 
-            on:click="onPrimaryClick(button, scope.event)" 
-            class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
-        {{/for}}
-        <a href="#" 
-            class="{{buttonClass}}" role="button" 
-            aria-haspopup="true" aria-expanded="false" 
-            on:click="toggle(scope.event)">{{text}} <i class="{{iconClass}}"></i>
-        </a>
-    </div>
+    <can-slot name="buttons" this:from="this">
+        <div class="btn-group">
+            {{#for(button of primaryButtons)}}
+            <a href="#" on:click="onPrimaryClick(button, scope.event)" 
+                class="{{buttonClass}}"><i class="{{button.iconClass}}"></i> {{button.text}}</a>
+            {{/for}}
+            <a href="#" 
+                class="{{buttonClass}}" role="button" 
+                aria-haspopup="true" aria-expanded="false" 
+                on:click="toggle(scope.event)">{{text}} <i class="{{iconClass}}"></i>
+            </a>
+        </div>
+    </can-slot>
 
     {{#if(visible)}}
         <div class="dropdown-content {{#if(right)}}right{{/if}}">

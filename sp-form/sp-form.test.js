@@ -23,6 +23,11 @@ test('objectId set()', (done) => {
     });
 });
 
+test('inline get()', () => {
+    vm.fields = [{name: 'test', inline: true}];
+    expect(vm.inline).toBeTruthy();
+});
+
 test('fields get()', () => {
     vm.fields = ['yes', {edit: false, name: 'no'}];
     expect(vm.fields.length).toEqual(1);

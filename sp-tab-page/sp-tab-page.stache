@@ -1,4 +1,4 @@
-{{#if(parent.isActive(this))}}
+{{#if(isActive)}}
     <div class="container pt-10 fadeIn animated">
         <content />
     </div>

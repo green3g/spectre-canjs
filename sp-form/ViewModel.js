@@ -25,13 +25,27 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      */
     showSaving: {type: 'htmlbool', default: true},
     /**
-     * Whether or not this form should be an inline (horizontal) form
+     * Whether or not this form should be an inline (horizontal) form.
+     * This value is always true if one or more fields have `inline: true`
      * @type {Boolean} sp-form.ViewModel.inline
      * @memberof sp-form.ViewModel
      */
     inline: {
         type: 'boolean',
-        default: false
+        default: false,
+        get (inline) {
+            if (inline) {
+                return inline;
+            }
+
+            for (const field of this.fields) {
+                if (field.inline) {
+                    return true;
+                }
+            }
+
+            return inline;
+        }
     },
     /**
      * The connection info for this form's data. If this is provided, the

@@ -110,6 +110,26 @@ const DemoObject = DefineMap.extend('DemoObject', {
             label: 'Option 2'
         }]
     },
+    field3inline: {
+        type: 'number',
+        default: 1,
+        name: 'field3inline',
+        alias: 'Inline dropdown',
+        editTag: 'sp-select-field',
+        inline: true,
+        validate (props) {
+            if (props.value != 1) {
+                return 'This field must be 1';
+            }
+        },
+        options: [{
+            value: 1,
+            label: 'Option 1'
+        }, {
+            value: 2,
+            label: 'Option 2'
+        }]
+    },
     field4: {
         type: 'date', 
         serialize (date) {

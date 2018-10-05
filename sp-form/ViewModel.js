@@ -12,23 +12,20 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
     * A string referencing a field type that will exclude that field
     * from this classes fields. The default is `'edit'`.
-    * @type {String} sp-form.ViewModel.excludeFieldKey excludeFieldKey
-    * @memberof sp-form.ViewModel
+    * @type {String} 
     */
     excludeFieldKey: {
         default: 'edit'
     },
     /**
      * Whether or not to show the saving icon when the submit button is clickered.
-     * @type {HTMLBoolean} sp-form.ViewModel.object object 
-     * @memberof sp-form.ViewModel
+     * @type {HTMLBoolean} 
      */
     showSaving: {type: 'htmlbool', default: true},
     /**
      * Whether or not this form should be an inline (horizontal) form.
      * This value is always true if one or more fields have `inline: true`
-     * @type {Boolean} sp-form.ViewModel.inline
-     * @memberof sp-form.ViewModel
+     * @type {Boolean} 
      */
     inline: {
         type: 'boolean',
@@ -50,9 +47,8 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * The connection info for this form's data. If this is provided, the
      * object will be fetched using the objectId type
-     * @type {can-connect} sp-form.ViewModel.connection
-     * @link https://canjs.com/doc/can-connect.html can-connect
-     * @memberof sp-form.ViewModel
+     * See [can-connect](https://canjs.com/doc/can-connect.html) 
+     * @type {can-connect} 
      */
     connection: {
         default: null
@@ -60,8 +56,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * The object id of the item to retrieve. If this and [sp-form.ViewModel.connection] is provided, a request
      * will be made to the connection object with the specified id.
-     * @type {Number} sp-form.ViewModel.objectId
-     * @memberof sp-form.ViewModel
+     * @type {Number} 
      */
     objectId: {
         type: 'number',
@@ -72,8 +67,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     },
     /**
      * The pending promise if the object is being retrieved or null
-     * @type {Promise}  sp-form.ViewModel.promise
-     * @memberof sp-form.ViewModel
+     * @type {Promise}  
      */
     promise: {
         default: null
@@ -83,8 +77,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * If the fields have changed, this object will be updated when the submit
      * button is pressed and the validations have passed. To capture current
      * state of the form, use [sp-form.ViewModel.dirtyObject].
-     * @type {DefineMap} sp-form.ViewModel.object
-     * @memberof sp-form.ViewModel
+     * @type {DefineMap} 
      */
     object: {
         Type: DefineMap,
@@ -99,20 +92,18 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     },
     /**
      * An object set with current form values
-     * @type {DefineMap} sp-form.ViewModel.dirtyObject dirtyObject
-     * @memberof sp-form.ViewModel
+     * @type {DefineMap} 
      */
     dirtyObject: DefineMap,
     /**
      * An object consisting of validation error strings
-     * ```javascript
+     * @example
      *{
      *    field: 'error message',
      *    otherfield: 'another error message'
      *}
-     * ```
-     * @type {Object} sp-form.ViewModel.validationErrors
-     * @memberof sp-form.ViewModel
+     
+     * @type {Object} 
      */
     validationErrors: {
         get (val) {
@@ -130,8 +121,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
      * Whether or not this form is valid and can be submitted. If this is
      * false, the form will not dispatch the `submit` event when it is submitted.
      * Instead, it will dispatch a `submit-fail` event
-     * @type {Boolean} sp-form.ViewModel.isValid isValid
-     * @memberof sp-form.ViewModel
+     * @type {Boolean}
      */
     isValid: {
         get () {
@@ -158,8 +148,7 @@ const ViewModel = FieldIteratorMap.extend('FormWidget', {
     /**
      * This type is set to true when the save button is clicked.
      * It sets the save button to a loading state
-     * @type {Boolean} sp-form.ViewModel.isSaving
-     * @memberof sp-form.ViewModel
+     * @type {Boolean}
      */
     isSaving: {
         default: false,

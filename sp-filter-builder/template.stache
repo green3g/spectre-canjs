@@ -5,8 +5,6 @@
     {{/if}}
   {{/for}}
 
-  <br />
-
   {{#unless(disableCreate)}}
     <sp-select-field properties:from="nameField" on:fieldchange="addFilter(scope.arguments)" value:bind="fieldValue" inline:from="true" />
   {{/unless}}

@@ -1,12 +1,12 @@
 <div class="clearfix pt-10">
-  <form class="form" on:submit="noOp(scope.event)">
+  <form class="form form-horizontal" on:submit="noOp(scope.event)">
     {{#if(filter.pinned)}}
     <span class="filter-fixed">{{filter.alias}} {{filter.operatorField.alias}}</span>
     {{else}}
-    <button type="button" class="btn block float-left" on:click="dispatchEvent('remove')">
+    <button type="button" class="btn block float-left tooltip tooltip-right ml-1 mt-1" data-tooltip="Remove Filter" on:click="dispatchEvent('remove')">
       <i class="fa fa-trash"></i> {{filter.alias}}</button>
-    <sp-select-field class="float-left" properties:from="filter.operatorField" value:bind="filter.operator" inline:from="true" /> {{/if}}
-    <div class="d-inline-block">
+    <sp-select-field class="float-left ml-1 mt-1" properties:from="filter.operatorField" value:bind="filter.operator" inline:raw="true" /> {{/if}}
+    <div class="d-inline-block ml-1 mt-1">
       {{>filter.valueComponent}}
     </div>
   </form>

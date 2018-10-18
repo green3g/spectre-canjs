@@ -134,7 +134,7 @@ export const Filter = DefineMap.extend('Filter', {
             return new Field(Object.assign({
                 name: 'operator',
                 value: options[0].value,
-                alias: 'is',
+                alias: null,
                 inline: true,
                 placeholder: 'Choose an operator',
                 editTag: 'sp-select-field',
@@ -192,13 +192,18 @@ export const Filter = DefineMap.extend('Filter', {
     valueField: {
         serialize: false,
         get () {
-            const fieldProps = this.field ? Object.assign({editTag: 'sp-text-field'}, this.field.get(), {inline: true, textarea: false}) : {
-                inline: true,
-                name: this.name,
-                alias: 'Value',
-                editTag: 'sp-text-field',
-                placeholder: 'Enter a filter value'
-            };
+            const fieldProps = this.field 
+                ? Object.assign({editTag: 'sp-text-field'}, this.field.get(), {
+                    inline: true, 
+                    textarea: false,
+                    alias: null
+                }) : {
+                    inline: true,
+                    name: this.name,
+                    alias: null,
+                    editTag: 'sp-text-field',
+                    placeholder: 'Enter a filter value'
+                };
             return new Field(fieldProps);
         }
     },

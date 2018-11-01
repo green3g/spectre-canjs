@@ -1,6 +1,6 @@
 <div class="form-group">
   <fieldset>
-    <legend>{{alias}}</legend>
+    {{#if(alias}}<legend>{{alias}}</legend>{{/if}}
     <sp-form inline:from="inline" 
       object:bind="value" 
       on:fieldchange="saveField(scope.arguments)" 

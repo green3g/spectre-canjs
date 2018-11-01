@@ -1,9 +1,10 @@
 import 'spectre-canjs/sp-form/sp-form';
 import 'spectre-canjs/sp-form/fields/sp-text-field/';
 import 'spectre-canjs/sp-form/fields/sp-select-field/';
-import 'spectre-canjs/sp-form/fields/sp-dropzone-field/';
 import 'spectre-canjs/sp-form/fields/sp-subform-field/';
 import 'spectre-canjs/sp-form/fields/sp-check-field/';
+// TODO implement file field
+// import 'specre-canjs/sp-form/fields/sp-file-field/sp-file-field';
 import render from './full.stache';
 import jsonMarkup from 'json-pretty-html';
 import './full.less';
@@ -149,8 +150,7 @@ const DemoObject = DefineMap.extend('DemoObject', {
     // field5: {
     //     name: 'field5',
     //     alias: 'A file field',
-    //     editTag: 'sp-dropzone-field',
-    //     url: '/upload',
+    //     editTag: 'sp-file-field',
 
     //     // convert file list type back to list
     //     serialize (val) {

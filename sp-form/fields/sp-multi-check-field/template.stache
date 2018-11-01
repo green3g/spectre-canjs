@@ -1,5 +1,5 @@
 <fieldset class="mt-10">
-    <legend>{{alias}}</legend>
+    {{#if(alias)}}<legend>{{alias}}</legend>{{/if}}
     {{#for(option of options)}}
       <div class="form-group {{#if(error)}}has-error{{/if}}">
         <label class="form-{{#if style}}{{style}}{{else}}checkbox{{/if}}">

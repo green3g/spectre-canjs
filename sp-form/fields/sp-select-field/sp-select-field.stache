@@ -10,14 +10,16 @@
 
 <div class="form-group {{#if(error)}}has-error{{/if}} {{#if(optionsPromise.isPending)}}has-icon-right{{/if}}">
     {{#if(inline)}}
+        {{#if(alias)}}
         <div class="col-4 col-sm-12">
             <label class="form-label" for="{{name}}">{{alias}}</label>
         </div>
-        <div class="col-8 col-sm-12">
+        {{/if}}
+        <div class="{{#if(alias)}}col-8{{else}}col-12{{/if}} col-sm-12">
             {{>select}}
         </div>
     {{else}}
-        <label class="form-label" for="{{name}}">{{alias}}</label>
+        {{#if(alias)}}<label class="form-label" for="{{name}}">{{alias}}</label>{{/if}}
         {{>select}}
     {{/if}}
     {{#if(optionsPromise.isPending)}}<i class="form-icon loading"></i>{{/if}} 

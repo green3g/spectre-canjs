@@ -12,7 +12,15 @@ document.body.appendChild(render(new DefineMap({
         name: 'field_3',
         editTag: 'sp-check-field',
         type: 'boolean'
-    }, { filter: false, name: 'excluded'}],
+    }, { filter: false, name: 'excluded'}, {
+        name: 'field_4',
+        editTag: 'sp-select-field',
+        options: [{
+            value: 'Option 1',
+        }, {
+            value: 'Option 2'
+        }]
+    }],
     disableCreate: false,
     stringify (filters) {
         if(filters){

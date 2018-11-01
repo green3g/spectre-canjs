@@ -1,21 +1,23 @@
-<h1>Form Widget Demo</h1>
-<div class="columns">
-    <div class="col-6 col-sm-12 container">
-        <sp-form 
-            object:bind="object" 
-            dirtyObject:to="dirtyObject" 
-            actions:from="actions"
-            on:submit="onSubmit(scope.arguments)" 
-            isSaving:bind="formSaving"
-            on:cancel="onCancel"></sp-form>
-    </div>
-    <div class="col-6 col-sm12 container">
-        
-        <p>Model object values: </p>
-        <div class="json">{{{stringify (object)}}}</div>
-        <div class="divider" />
+<div class="container">
+    <h1>Form Widget Demo</h1>
+    <div class="columns">
+        <div class="col-6 col-sm-12 container">
+            <sp-form 
+                object:bind="object" 
+                dirtyObject:to="dirtyObject" 
+                actions:from="actions"
+                on:submit="onSubmit(scope.arguments)" 
+                isSaving:bind="formSaving"
+                on:cancel="onCancel"></sp-form>
+        </div>
+        <div class="col-6 col-sm12 container">
+            
+            <p>Model object values: </p>
+            <div class="json">{{{stringify (object)}}}</div>
+            <div class="divider" />
 
-        <p>Dirty field values</p>
-        <div class="json">{{{stringify (dirtyObject)}}}</div>
+            <p>Dirty field values</p>
+            <div class="json">{{{stringify (dirtyObject)}}}</div>
+        </div>
     </div>
 </div>

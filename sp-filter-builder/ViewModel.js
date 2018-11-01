@@ -45,7 +45,7 @@ const ViewModel = FieldIteratorMap.extend('FilterWidget', {
             return this.fieldOptions.length ? {
                 formatter: makeSentenceCase,
                 name: 'name',
-                alias: 'Field Name',
+                alias: 'Add filter',
                 fieldType: 'select',
                 options: this.fieldOptions,
                 defaultLabel: 'Add a filter',

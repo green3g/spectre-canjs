@@ -1,19 +1,7 @@
 {{<input}}
-<input on:keydown="beforeSubmit(scope.element,scope.event)" 
-    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
-    type="{{textType}}" 
-    class="form-control form-input" 
-    name:from="name" 
-    value:bind="value"
-    {{attributes}} />
-{{/input}}
-<div class="form-group {{#if error}}has-error{{/if}}">
-    {{#unless(inline)}}
-        <label class="form-label" for="{{name}}">{{alias}}</label>
-    {{/unless}}
     {{#if(textarea)}}
         <textarea on:keydown="beforeSubmit(scope.element,scope.event)" 
-            {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
+            {{#if(placeholder)}}placeholder="{{placeholder}}"{{/if}} 
             class="form-control form-input" 
             name:from="name" 
             value:bind="value"
@@ -21,14 +9,43 @@
     {{else}}
         {{#if(showClear)}}
             <div class="input-group">
-                {{>input}}
+                <input on:keydown="beforeSubmit(scope.element,scope.event)" 
+                    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
+                    type="{{textType}}" 
+                    class="form-control form-input" 
+                    name:from="name" 
+                    value:bind="value"
+                    {{attributes}} />
                 <button class="btn input-group-btn btn-primary tooltip" {{#unless(value)}}disabled{{/unless}}
                     on:click="clearValue()" data-tooltip="Clear Search"><i class="fa fa-times-circle-o"></i>
                 </button>
             </div>
         {{else}}
-            {{>input}}
+            <input on:keydown="beforeSubmit(scope.element,scope.event)" 
+                {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} 
+                type="{{textType}}" 
+                class="form-control form-input" 
+                name:from="name" 
+                value:bind="value"
+                {{attributes}} />
         {{/if}}
+    {{/if}}
+{{/input}}
+
+
+<div class="form-group {{#if error}}has-error{{/if}}">    
+    {{#if(inline)}}
+        {{#if(alias)}}
+        <div class="col-4 col-sm-12">
+            <label class="form-label" for="{{name}}">{{alias}}</label>
+        </div>
+        {{/if}}
+        <div class="{{#if(alias)}}col-8{{else}}col-12{{/if}} col-sm-12">
+            {{>input}}
+        </div>
+    {{else}}
+        {{#if(alias)}}<label class="form-label" for="{{name}}">{{alias}}</label>{{/if}}
+        {{>input}}
     {{/if}}
     {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 </div>

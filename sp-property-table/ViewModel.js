@@ -87,11 +87,11 @@ export default FieldIteratorMap.extend('PropertyTable', {
      * @type {Object}
      */
     headers: {
-        default(){
+        default () {
             return {
                 field: 'Field',
                 value: 'Value'
-            }
+            };
         }
     },
     /**

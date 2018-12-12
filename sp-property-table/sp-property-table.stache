@@ -1,11 +1,13 @@
 <div class="sp-property-table">
     <table class="table table-striped table-condensed">
+        {{#if(headers)}}
         <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th>{{headers.field}}</th>
+                <th>{{headers.value}}</th>
             </tr>
         </thead>
+        {{/if}}
         <tbody>
             {{#for(field of fields)}}
                 <tr {{domData('value', object[field.name])}}

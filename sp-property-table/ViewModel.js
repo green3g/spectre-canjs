@@ -79,6 +79,22 @@ export default FieldIteratorMap.extend('PropertyTable', {
      */
     objectPromise: {},
     /**
+     * Header names mapped to an object.
+     * ```
+     * field: 'Field',
+     * value: 'Value'
+     * ```
+     * @type {Object}
+     */
+    headers: {
+        default(){
+            return {
+                field: 'Field',
+                value: 'Value'
+            }
+        }
+    },
+    /**
      * Asynchronously fetches an object using a can-connect model and an id
      * @see [can-connect](https://connect.canjs.com/) for futher information
      * @param  {can-connect} con The connection object to an api resource. The model must have a `get(id)` method.

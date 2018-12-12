@@ -43,8 +43,11 @@ Now open a web browser in the `./docs/` folder
 
 ## Tests
 
-Tests are not completed and are a work in progress. Browsing to `./tests/` will
-run the tests.
+Running the tests is as easy as:
+
+```
+npm run test
+```
 
 ## Contributing
 

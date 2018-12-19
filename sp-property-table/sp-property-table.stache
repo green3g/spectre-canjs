@@ -14,8 +14,7 @@
                     {{domData('field', field.name)}} 
                     class="field-{{field.name}}">
                     <td>{{field.alias}}</td>
-                    <td class="{{field.classes}}">
-                        {{!TODO: use slots}}
+                    <td class="{{field.classes}} text-right">
                         {{#if(field.displayComponent}}
                             {{>field.displayComponent}}
                         {{else}}

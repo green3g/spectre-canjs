@@ -1,5 +1,5 @@
 import Component from 'can-component';
-import DefineMap from 'can-define/map/';
+import DefineMap from 'can-define/map/map';
 import './sp-filter-dropdown.less';
 import view from './sp-filter-dropdown.stache';
 import Field from 'spectre-canjs/sp-form/fields/sp-select-field/ViewModel';

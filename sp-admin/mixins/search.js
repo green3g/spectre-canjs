@@ -1,4 +1,4 @@
-import DefineMap from 'can-define/map/';
+import DefineMap from 'can-define/map/map';
 
 // search functionality for the admin component
 export default {

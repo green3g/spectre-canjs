@@ -116,7 +116,12 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
     _allSelected: {
         type: 'boolean',
         get () {
-            return this.selectedObjects.length === this.objects.length;
+            for (let i = 0; i < this.objects.length; i ++) {
+                if (this.selectedObjects.indexOf(this.objects[i]) < 0) {
+                    return false;
+                }
+            }
+            return true;
         }
     },
     /**
@@ -190,11 +195,7 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      * @instance
      */
     toggleSelectAll () {
-        if (this.selectedObjects.length < this.objects.length) {
-            this.selectedObjects.replace(this.objects);
-        } else {
-            this.selectedObjects.replace([]);
-        }
+        this.objects.forEach((obj) => this.toggleSelected(obj));
     },
     /**
      * Determines whether or not the provided object is selected by comparing

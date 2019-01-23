@@ -84,10 +84,10 @@
     
     <br />
     <can-slot this:from="this" name="paginate">
-    <sp-admin-paginate 
+    <sp-paginate-footer 
         total:from="total"
         perPage:bind="perPage"
-        pageIndex:bind="pageIndex"></sp-admin-paginate>
+        pageIndex:bind="pageIndex"></sp-paginate-footer>
     </can-slot>
     
 </div>

@@ -10,7 +10,7 @@ export default {
         set (num) {
             this.params.page.assign({
                 start: num * this.perPage,
-                end: (num + 1) * this.perPage,
+                end: (num + 1) * this.perPage
             });
             return num;
         }
@@ -19,7 +19,7 @@ export default {
         set (count) {
             this.params.page.assign({
                 start: this.pageIndex * count,
-                end: (this.pageIndex + 1) * count,
+                end: (this.pageIndex + 1) * count
             });
             return count;
         }

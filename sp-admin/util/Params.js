@@ -8,5 +8,5 @@ export const Page = DefineMap.extend('PageQuery', {
 export default DefineMap.extend('Query', {
     filter: {Type: DefineMap, Default: DefineMap},
     sort: 'string',
-    page: {Type: Page, Default: Page},
+    page: {Type: Page, Default: Page}
 });

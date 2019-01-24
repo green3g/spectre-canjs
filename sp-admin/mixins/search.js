@@ -31,12 +31,14 @@ export default {
 
     // logic to add and restore search props
     search ([searchVal]) {
-        const filters = this.params.filters.$or ? this.params.filters.$or.get() : {};
+        let filters = this.params.filters.$or ? this.params.filters.$or.get() : {};
         if (searchVal) {
             if (!this._originalFilters) {
                 this._originalFilters = new DefineMap(filters);
             }
-            this.searchFields.forEach(field => filters[field] = searchVal);
+            this.searchFields.forEach((field) => {
+                filters[field] = searchVal; 
+            });
         } else {
             filters = this._originalFilters ? this._originalFilters.get() : {};
         }

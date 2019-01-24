@@ -16,6 +16,7 @@ var callbacksOnce = require('can-connect/constructor/callbacks-once/callbacks-on
 var GLOBAL = require('can-util/js/global/global');
 var totalResourceCount = require('./totalResourceCount').default;
 
+// eslint-disable-next-line
 var $ = GLOBAL().$;
 
 module.exports = function (options) {

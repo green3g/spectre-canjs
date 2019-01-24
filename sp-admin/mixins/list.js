@@ -1,5 +1,3 @@
-// define properties mixin for listing data
-import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import debounce from '../util/debounce';
 import swal from 'sweetalert2';

@@ -9,9 +9,9 @@ import map from 'can-connect/can/map/map';
 const ViewModel = DefineMap.extend(Object.assign({model: '*'}, details));
 
 // a basic can-connect implementation
-const MyModel = DefineMap.extend({id: 'number'});
-const List = DefineList.extend({'#': MyModel});
-MyModel.connection = connect([constructor, map], {
+const MyMap = DefineMap.extend({id: 'number'});
+const List = DefineList.extend({'#': MyMap});
+const model = connect([constructor, map], {
     getList () {
         return [];
     },
@@ -19,17 +19,16 @@ MyModel.connection = connect([constructor, map], {
         return [];
     },
     get (id) {
-        debugger;
         return {id};
     },
-    Map: MyModel,
+    Map: MyMap,
     List
 });
 
 let vm, obj;
 beforeEach (() => {
     vm = new ViewModel({
-        model: MyModel
+        model: model
     });
     obj = new DefineMap({
         id: 1

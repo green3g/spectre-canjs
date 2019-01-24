@@ -2,7 +2,7 @@ import debounce from '../util/debounce';
 
 // a details page view mixin
 export default {
-    detailsId: {type: 'number'},
+    detailsId: {},
     getItem: {},
     detailsPromise: {
         get () {
@@ -39,7 +39,7 @@ export default {
     showDetails (object) {
     // set `setDetailsObject` first
         this.setDetailsObject = object;
-        this.detailsId = this.model.connection.id(object);
+        this.detailsId = this.model.id(object);
     },
     showDetailsFromEvent (args) {
         const [, object] = args;

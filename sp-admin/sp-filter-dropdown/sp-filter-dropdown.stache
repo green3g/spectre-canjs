@@ -1,12 +1,13 @@
 <div class="dropdown inline dropdown-right">
-  <a class="btn dropdown-toggle {{#if(params[field.name]))}}tooltip text-bold{{/if}}" data-tooltip="{{params[field.name])}}" tabindex="0">
+  <a class="btn dropdown-toggle {{#if(params.filter[field.name]))}}tooltip text-bold{{/if}}" 
+    data-tooltip="{{params.filter[field.name])}}" tabindex="0">
     {{field.alias}} <i class="fa fa-caret-down"></i>
   </a>
   <!-- menu component -->
   <ul class="menu">
       {{#for(option of field.options)}}
         <li class="menu-item"><a href="#" on:click="setFilter(option.value, scope.event)">
-          {{#is(params[field.name], option.value)}}<i class="float-left fa fa-check"></i>{{/is}} 
+          {{#is(params.filter[field.name], option.value)}}<i class="float-left fa fa-check"></i>{{/is}} 
           {{#if(option.label)}}{{option.label}}{{else}}{{option.value}}{{/if}}</a></li>
       {{/for}}
   </ul>

@@ -20,7 +20,7 @@ export const ViewModel = DefineMap.extend({
             event.preventDefault();
         }
 
-        const search = this.params.get() || {};
+        const search = this.params.filter.get() || {};
         if (value !== search[this.field.name]) {
             search[this.field.name] = value;
         } else if (value !== this.oldSearch[this.field.name]) {
@@ -29,7 +29,7 @@ export const ViewModel = DefineMap.extend({
             delete search[this.field.name];
         }
 
-        this.params.update(search);
+        this.params.filter.update(search);
 
         return false;
     }

@@ -22,12 +22,7 @@ export default {
             });
         }
     },
-    localDetailsObject: {
-        set (obj) {
-            debugger;
-            return obj;
-        }
-    },
+    localDetailsObject: {},
     detailsObject: {
         get (val, set) {
             if (this.detailsPromise) {

@@ -6,22 +6,28 @@ export default {
     getItem: {},
     detailsPromise: {
         get () {
-            if (this.setDetailsObject) {
-                return Promise.resolve(this.setDetailsObject);
-            }
-            if (!this.model) {
-                return Promise.reject(new Error('No model found'));
-            }
             if (!this.getItem) {
                 this.getItem = debounce(this.model, this.model.get, 200);
             }
-            if (this.detailsId) {
-                return this.getItem(this.detailsId);
-            }
-            return null;
+            return new Promise((resolve, reject) => {
+                if (this.localDetailsObject) {
+                    resolve(this.localDetailsObject);
+                } else if (!this.model) {
+                    reject(new Error('No model found'));
+                } else if (this.detailsId) {
+                    this.getItem(this.detailsId).then(resolve);
+                } else {
+                    resolve(null);
+                }
+            });
         }
     },
-    setDetailsObject: {},
+    localDetailsObject: {
+        set (obj) {
+            debugger;
+            return obj;
+        }
+    },
     detailsObject: {
         get (val, set) {
             if (this.detailsPromise) {
@@ -37,8 +43,8 @@ export default {
         }
     },
     showDetails (object) {
-    // set `setDetailsObject` first
-        this.setDetailsObject = object;
+    // set `localDetailsObject` first
+        this.localDetailsObject = object;
         this.detailsId = this.model.id(object);
     },
     showDetailsFromEvent (args) {
@@ -48,7 +54,7 @@ export default {
     clearDetails () {
         this.assign({
             detailsId: null,
-            setDetailsObject: null
+            localDetailsObject: null
         });
     }
 };

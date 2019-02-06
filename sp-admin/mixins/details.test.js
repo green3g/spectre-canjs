@@ -19,7 +19,7 @@ const model = connect([constructor, map], {
         return [];
     },
     get (id) {
-        return {id};
+        return id ? {id} : null;
     },
     Map: MyMap,
     List
@@ -38,10 +38,10 @@ afterEach (() => {
     vm = null;
 });
 
-test('detailsPromise get() setDetailsObject', () => {
+test('detailsPromise get() localDetailsObject', () => {
     expect.assertions(1);
 
-    vm.setDetailsObject = obj;
+    vm.localDetailsObject = obj;
     return expect(vm.detailsPromise).resolves.toEqual(obj);
 });
 
@@ -70,5 +70,5 @@ test('clearDetails()', () => {
     vm.clearDetails();
 
     expect(vm.detailsId).toEqual(null);
-    expect(vm.detailsPromise).toEqual(null);
+    expect(vm.detailsPromise).resolves.toEqual(null);
 });

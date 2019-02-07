@@ -40,8 +40,8 @@ afterEach (() => {
 
 test('detailsPromise get() localDetailsObject', () => {
     expect.assertions(1);
-
-    vm.localDetailsObject = obj;
+    
+    vm.showDetails(obj);
     return expect(vm.detailsPromise).resolves.toEqual(obj);
 });
 

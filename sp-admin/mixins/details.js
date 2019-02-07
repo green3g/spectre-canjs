@@ -9,25 +9,26 @@ export default {
             if (!this.getItem) {
                 this.getItem = debounce(this.model, this.model.get, 200);
             }
-            return new Promise((resolve, reject) => {
-                if (this.localDetailsObject) {
-                    resolve(this.localDetailsObject);
-                } else if (!this.model) {
-                    reject(new Error('No model found'));
-                } else if (this.detailsId) {
-                    this.getItem(this.detailsId).then(resolve);
-                } else {
-                    resolve(null);
-                }
-            });
+            if (this.localDetailsObject) {
+                return Promise.resolve(this.localDetailsObject);
+            } else if (!this.model) {
+                return Promise.reject(new Error('No model found'));
+            } else if (this.detailsId) {
+                return this.getItem(this.detailsId);
+            } else {
+                return Promise.resolve(null);
+            }
         }
     },
     localDetailsObject: {},
     detailsObject: {
-        get (val, set) {
+        value ({resolve}) {
+            if (this.localDetailsObject) {
+                resolve(this.localDetailsObject);
+            }
             if (this.detailsPromise) {
                 this.detailsPromise.then((object) => {
-                    set(object);
+                    resolve(object);
                 }).catch((e) => {
                     if (process.env.NODE_ENV !== 'production') {
                         // eslint-disable-next-line

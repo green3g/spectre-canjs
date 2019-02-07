@@ -31,7 +31,7 @@ export default {
 
     // logic to add and restore search props
     search ([searchVal]) {
-        let filters = this.params.filters.$or ? this.params.filters.$or.get() : {};
+        let filters = this.params.filter.$or ? this.params.filter.$or.get() : {};
         if (searchVal) {
             if (!this._originalFilters) {
                 this._originalFilters = new DefineMap(filters);
@@ -42,6 +42,6 @@ export default {
         } else {
             filters = this._originalFilters ? this._originalFilters.get() : {};
         }
-        this.params.filters.assign({$or: filters});
+        this.params.filter.assign({$or: filters});
     }
 };

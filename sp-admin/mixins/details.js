@@ -1,5 +1,4 @@
 import debounce from '../util/debounce';
-
 // a details page view mixin
 export default {
     detailsId: {},
@@ -9,39 +8,43 @@ export default {
             if (!this.getItem) {
                 this.getItem = debounce(this.model, this.model.get, 200);
             }
-            if (this.localDetailsObject) {
-                return Promise.resolve(this.localDetailsObject);
-            } else if (!this.model) {
-                return Promise.reject(new Error('No model found'));
-            } else if (this.detailsId) {
-                return this.getItem(this.detailsId);
-            } else {
+
+            if (!this.detailsId) {
                 return Promise.resolve(null);
             }
+
+            if (this.localDetailsObject && this.model.id(this.localDetailsObject) === this.detailsId) {
+                return Promise.resolve(this.localDetailsObject);
+            }
+
+            if (!this.model) {
+                return Promise.reject('Connection to server not configured.');
+            }
+
+            if (this.detailsId) {
+                return this.getItem(this.detailsId);
+            }
+
+            return Promise.resolve(null);
         }
     },
     localDetailsObject: {},
     detailsObject: {
-        value ({resolve}) {
-            if (this.localDetailsObject) {
-                resolve(this.localDetailsObject);
+        get (val, resolve) {
+            const promise = this.detailsPromise;
+            if (!promise) {
+                return;
             }
-            if (this.detailsPromise) {
-                this.detailsPromise.then((object) => {
-                    resolve(object);
-                }).catch((e) => {
-                    if (process.env.NODE_ENV !== 'production') {
-                        // eslint-disable-next-line
-                        console.warn(e);
-                    }
-                });
-            }
+            promise.then((obj) => {
+                resolve(obj);
+            });
         }
     },
     showDetails (object) {
-    // set `localDetailsObject` first
-        this.localDetailsObject = object;
-        this.detailsId = this.model.id(object);
+        this.assign({
+            detailsId: this.model.id(object),
+            localDetailsObject: object
+        });
     },
     showDetailsFromEvent (args) {
         const [, object] = args;

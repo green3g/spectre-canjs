@@ -13,20 +13,14 @@ afterEach (() => {
 test('onAccept', () => {
     vm.active = true;
 
-    vm.on('accept', function (resolved) {
-        expect(resolved).toBeTruthy();
-    });
-    vm.onAccept();
-    expect(vm.active).toBeFalsy();
+    vm.accept();
+    expect(vm.promise).resolves.toBeFalsy();
 });
 
 
-test('onReject', () => {
+test('reject', () => {
     vm.active = true;
 
-    vm.on('reject', function (resolved) {
-        expect(resolved).toBeTruthy();
-    });
-    vm.onReject();
-    expect(vm.active).toBeFalsy();
+    vm.reject();
+    expect(vm.promise).resolves.toBeFalsy();
 });

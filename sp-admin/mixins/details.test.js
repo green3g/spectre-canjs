@@ -15,9 +15,6 @@ const model = connect([constructor, map], {
     getList () {
         return [];
     },
-    getData () {
-        return [];
-    },
     get (id) {
         return id ? {id} : null;
     },
@@ -48,10 +45,7 @@ test('detailsPromise get() localDetailsObject', () => {
 // test('detailsPromise get() detailsId', () => {
 
 //     vm.detailsId = 1;
-//     return vm.detailsPromise.then((data) => {
-//         expect(data.id).toEqual(1);
-//         return data;
-//     });
+//     return expect(vm.detailsPromise).resolves.toEqual(obj);
 // });
 
 test('showDetails(obj)', () => {

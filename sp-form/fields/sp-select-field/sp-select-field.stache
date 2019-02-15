@@ -1,6 +1,6 @@
 {{<select}}
 <select value:bind="value" class="form-select form-control" name="{{name}}"  {{attributes}}>
-    <option value="">{{defaultLabel}}</option>
+    <option value="">{{#if(optionsPromise.isPending)}}Loading...{{else}}{{defaultLabel}}{{/if}}</option>
     {{#for(option of options)}}
         <option value="{{option.value}}">{{option.label}}</option>
     {{/for}}
@@ -8,7 +8,7 @@
 {{/select}}
 
 
-<div class="form-group {{#if(error)}}has-error{{/if}} {{#if(optionsPromise.isPending)}}has-icon-right{{/if}}">
+<div class="form-group {{#if(error)}}has-error{{/if}}">
     {{#if(inline)}}
         {{#if(alias)}}
         <div class="col-4 col-sm-12">
@@ -22,6 +22,5 @@
         {{#if(alias)}}<label class="form-label" for="{{name}}">{{alias}}</label>{{/if}}
         {{>select}}
     {{/if}}
-    {{#if(optionsPromise.isPending)}}<i class="form-icon loading"></i>{{/if}} 
     {{#if(error)}}<span class="form-input-hint">{{error}}</span>{{/if}}
 </div>

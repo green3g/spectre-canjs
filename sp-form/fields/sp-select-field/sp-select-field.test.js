@@ -2,6 +2,11 @@ import ViewModel from './ViewModel';
 
 let vm;
 
+const options = {
+    0: [{value: 'zero'}],
+    1: [{value: 'one'}]
+};
+
 beforeEach(() => {
     vm = new ViewModel();
 });
@@ -15,20 +20,14 @@ test('isSelected(values)', () => {
     expect(vm.isSelected('1')).toBeTruthy();
 });
 
-test('options get() with getOptions(obj)', () => {
-    vm.assign({
-        object: {val: 0},
-        getOptions: function (obj) {
-            const options = {
-                0: [{value: 'zero'}],
-                1: [{value: 'one'}]
-            };
-            return options[obj.val];
-        }
-    });
+test('optionsPromise get() with getOptions(obj)', async () => {
+    vm.getOptions = function (obj) {
+        return options[obj.val];
+    };
 
-    expect(vm.options[0].value).toEqual('zero');
+    vm.object = {val: 0};
+    expect(vm.optionsPromise).resolves.toMatchObject(options[0]);
 
     vm.object.val = 1;
-    expect(vm.options[0].value).toEqual('one');
+    expect(vm.optionsPromise).resolves.toMatchObject(options[1]);
 });

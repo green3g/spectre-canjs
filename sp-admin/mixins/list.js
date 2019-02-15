@@ -1,8 +1,7 @@
-// define properties mixin for listing data
-import DefineMap from 'can-define/map/';
-import DefineList from 'can-define/list/';
+import DefineList from 'can-define/list/list';
 import debounce from '../util/debounce';
 import swal from 'sweetalert2';
+import Params from 'spectre-canjs/sp-admin/util/Params';
 
 export default {
     // required!
@@ -25,7 +24,7 @@ export default {
     // params to serialize to the server, this can
     // be overridden with a different map
     // to change parameter names
-    params: {Default: DefineMap},
+    params: {Default: Params, Type: Params},
 
     // internal
     requestCount: {default: 0, type: 'number'},
@@ -72,11 +71,8 @@ export default {
     },
     setSort (args) {
         const sort = args[0];
-        this.params.assign({
-            $sort: {
-                [sort.field]: sort.type === 'asc' ? 1 : -1
-            }
-        });
+        const symbol = sort.type === 'desc' ? '-' : '';
+        this.params.sort = symbol + sort.field;
     },
     noop () {}
 };

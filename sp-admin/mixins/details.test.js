@@ -9,27 +9,23 @@ import map from 'can-connect/can/map/map';
 const ViewModel = DefineMap.extend(Object.assign({model: '*'}, details));
 
 // a basic can-connect implementation
-const MyModel = DefineMap.extend({id: 'number'});
-const List = DefineList.extend({'#': MyModel});
-MyModel.connection = connect([constructor, map], {
+const MyMap = DefineMap.extend({id: 'number'});
+const List = DefineList.extend({'#': MyMap});
+const model = connect([constructor, map], {
     getList () {
         return [];
     },
-    getData () {
-        return [];
-    },
     get (id) {
-        debugger;
-        return {id};
+        return id ? {id} : null;
     },
-    Map: MyModel,
+    Map: MyMap,
     List
 });
 
 let vm, obj;
 beforeEach (() => {
     vm = new ViewModel({
-        model: MyModel
+        model: model
     });
     obj = new DefineMap({
         id: 1
@@ -39,20 +35,17 @@ afterEach (() => {
     vm = null;
 });
 
-test('detailsPromise get() setDetailsObject', () => {
+test('detailsPromise get() localDetailsObject', () => {
     expect.assertions(1);
-
-    vm.setDetailsObject = obj;
+    
+    vm.showDetails(obj);
     return expect(vm.detailsPromise).resolves.toEqual(obj);
 });
 
 // test('detailsPromise get() detailsId', () => {
 
 //     vm.detailsId = 1;
-//     return vm.detailsPromise.then((data) => {
-//         expect(data.id).toEqual(1);
-//         return data;
-//     });
+//     return expect(vm.detailsPromise).resolves.toEqual(obj);
 // });
 
 test('showDetails(obj)', () => {
@@ -71,5 +64,5 @@ test('clearDetails()', () => {
     vm.clearDetails();
 
     expect(vm.detailsId).toEqual(null);
-    expect(vm.detailsPromise).toEqual(null);
+    expect(vm.detailsPromise).resolves.toEqual(null);
 });

@@ -1,4 +1,4 @@
-import view from './sp-confirm.stache';
+import view from '../sp-modal/sp-modal.stache';
 import Component from 'can-component';
 import ViewModel from './ViewModel';
 

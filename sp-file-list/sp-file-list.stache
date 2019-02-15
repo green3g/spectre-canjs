@@ -1,4 +1,3 @@
-{{debugger()}}
 <div class="drop-container container {{#if(isDragOver)}}drag-over{{/if}}"
     on:drop="addFiles(scope.event.dataTransfer.files, scope.event)"
     on:dragover="dragover(scope.event, true)"

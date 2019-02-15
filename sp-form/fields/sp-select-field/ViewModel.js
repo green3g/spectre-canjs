@@ -57,34 +57,27 @@ export default Field.extend('SelectField', {
      */
     options: {        
         Type: SelectOptionList,
-        Default: SelectOptionList,  
-        get (options, set) {
-            if (this.object && typeof this.getOptions === 'function') {
-                const result = this.getOptions(this.object);
-                if (result.then) {
-                    result.then(((opts) => {
-                        set(new SelectOptionList(opts));
-                    }));
-                } else {
-                    return new SelectOptionList(result) || options;
-                }
+        Default: SelectOptionList,
+        get (list) {
+            if (this.optionsPromise) {
+                this.optionsPromise.then((options) => list.replace(options));
             }
-            return options;
-        }  
+
+            return list;
+        }
     },
     /**
-     * A promise that resolves to the array of options
+     * A promise that resolves to the array of options. 
      * @type {Promise<Array>}
      * @memberof sp-select-field.ViewModel.prototype
      */
     optionsPromise: {
-        set (promise) {
-            if (promise) {
-                promise.then((options) => {
-                    this.options = options;
-                });
+        get () {
+            if (typeof this.getOptions === 'function') {
+                const data = this.object ? this.object.get() : {};
+                return Promise.resolve(this.getOptions(data));
             }
-            return promise;
+            return null;
         }
     },
     /**
@@ -100,8 +93,7 @@ export default Field.extend('SelectField', {
     /**
      * An optional function to return options from a form object...ie cascading dropdowns 
      * @param {Object} formObject the form object
-     * @param {Object} formObject the form object
-     * @returns {Array<SelectOption>} the filtered array of select options
+     * @returns {SelectOption[]|Promise<SelectOption[]>} the filtered array of select options
      */
     getOptions: {}
 });

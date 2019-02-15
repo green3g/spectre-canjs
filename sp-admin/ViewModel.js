@@ -1,5 +1,5 @@
 
-import DefineMap from 'can-define/map/';
+import DefineMap from 'can-define/map/map';
 import edit from './mixins/edit';
 import list from './mixins/list';
 import search from './mixins/search';

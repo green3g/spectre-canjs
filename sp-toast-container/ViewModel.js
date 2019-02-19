@@ -21,7 +21,7 @@ export default DefineMap.extend('ToastContainer', {
      */
     toasts: {
         Type: ToastList,
-        Default: ToastList,
+        Default: ToastList
     },
     /**
    * adds a new toast

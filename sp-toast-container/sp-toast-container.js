@@ -4,7 +4,7 @@ import template from './sp-toast-container.stache';
 import toast from 'spectre-canjs/sp-toast/sp-toast.stache';
 
 const TemplatedViewModel = ViewModel.extend({
-    toastTemplate: toast
+    toastTemplate: {default: () => toast}
 });
 
 /**

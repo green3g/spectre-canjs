@@ -2,6 +2,11 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Toast from '../sp-toast/ViewModel';
 
+
+export const ToastList = DefineList.extend('ToastList', {
+    '#': Toast
+});
+
 /**
  * A `<sp-toast-container />` component's ViewModel
  * @class sp-toast-container.ViewModel ViewModel
@@ -15,9 +20,8 @@ export default DefineMap.extend('ToastContainer', {
      * @memberof sp-toast-container.ViewModel.prototype
      */
     toasts: {
-        Default: DefineList.extend('ToastList', {
-            '#': Toast
-        })
+        Type: ToastList,
+        Default: ToastList,
     },
     /**
    * adds a new toast

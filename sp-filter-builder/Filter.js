@@ -83,7 +83,7 @@ export const Filter = DefineMap.extend('Filter', {
      */
     value: {
         type (newVal) {
-            const type = this.valueField && this.valueField.type ? this.valueField.type : '*';
+            const type = this.valueField && this.valueField.type ? this.valueField.type : 'any';
             return canDefine.types[type](newVal);
         }
     },

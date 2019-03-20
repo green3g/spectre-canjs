@@ -46,6 +46,11 @@ export const SelectOptionList = DefineList.extend('SelectOptionList', {
 export default Field.extend('SelectField', {
     /** @lends sp-select-field.ViewModel.prototype */
     init () {
+        if(this.optionsPromise){
+            this.optionsPromise.then((result) => {
+                this.options = result;
+            });
+        }
         this.listenTo('optionsPromise', (event, newPromise) => {
             if (!newPromise) {
                 return;

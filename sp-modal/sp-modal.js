@@ -10,7 +10,7 @@ import ViewModel from './ViewModel';
  * @example 
  * <sp-modal /> 
  */
-Component.extend({
+export default Component.extend({
     ViewModel: ViewModel,
     view: template,
     tag: 'sp-modal'

@@ -2,6 +2,7 @@
 import Field from '../../../util/field/Field';
 import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
+import debounce from '../../../sp-admin/util/debounce';
 
 /**
  * the select option type - used to display <option> tags values/labels
@@ -44,6 +45,21 @@ export const SelectOptionList = DefineList.extend('SelectOptionList', {
  */
 export default Field.extend('SelectField', {
     /** @lends sp-select-field.ViewModel.prototype */
+    init () {
+        if (this.optionsPromise) {
+            this.optionsPromise.then((result) => {
+                this.options = result;
+            });
+        }
+        this.listenTo('optionsPromise', (event, newPromise) => {
+            if (!newPromise) {
+                return;
+            }
+            newPromise.then((result) => { 
+                this.options = result; 
+            });
+        });
+    },
     /**
      * The default label when no items are selected
      * @type {String}
@@ -57,14 +73,7 @@ export default Field.extend('SelectField', {
      */
     options: {        
         Type: SelectOptionList,
-        Default: SelectOptionList,
-        get (list) {
-            if (this.optionsPromise) {
-                this.optionsPromise.then((options) => list.replace(options));
-            }
-
-            return list;
-        }
+        Default: SelectOptionList
     },
     /**
      * A promise that resolves to the array of options. 
@@ -95,5 +104,12 @@ export default Field.extend('SelectField', {
      * @param {Object} formObject the form object
      * @returns {SelectOption[]|Promise<SelectOption[]>} the filtered array of select options
      */
-    getOptions: {}
+    getOptions: {
+        set (getter) {
+            if (getter) {
+                getter = debounce(this, getter);
+            }
+            return getter;
+        }
+    }
 });

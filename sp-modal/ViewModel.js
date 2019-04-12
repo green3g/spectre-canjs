@@ -29,11 +29,11 @@ export default DefineMap.extend('ModalDialog', {
      */
     custom: {default: false, type: 'htmlbool'},
     /**
-     * Flag to make this modal a small (`modal-sm`) modal. The default is `false`
-     * @type {HTMLBoolean}
+     * Option to add additional class to the modal (modal-sm , modal-lg etc.)
+     * @type {String}
      * 
      */
-    small: {default: false, type: 'htmlbool'},
+    className: {type: 'string'},
     /**
      * The title displayed in the modal header
      * @type {String}

@@ -1,6 +1,11 @@
 import Component from 'can-component';
 import ViewModel from './ViewModel';
 import template from './sp-toast-container.stache';
+import toast from 'spectre-canjs/sp-toast/sp-toast.stache';
+
+const TemplatedViewModel = ViewModel.extend({
+    toastTemplate: {default: () => toast}
+});
 
 /**
  * A controller that adds and removes toasts from the dom
@@ -12,6 +17,6 @@ import template from './sp-toast-container.stache';
  */
 Component.extend({
     tag: 'sp-toast-container',
-    ViewModel: ViewModel,
+    ViewModel: TemplatedViewModel,
     view: template
 });

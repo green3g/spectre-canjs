@@ -2,7 +2,7 @@ import DefineMap from 'can-define/map/map';
 import DefineList from 'can-define/list/list';
 import Field from '../util/field/Field';
 import {makeSentenceCase} from '../util/string/string';
-import define from 'can-define';
+import canDefine from 'can-define';
 import stache from 'can-stache';
 
 
@@ -83,8 +83,9 @@ export const Filter = DefineMap.extend('Filter', {
      */
     value: {
         type (newVal) {
-            const type = this.valueField && this.valueField.type ? this.valueField.type : '*';
-            return define.types[type](newVal);
+            const type = this.valueField && this.valueField.type ? this.valueField.type : 'any';
+            const cast = canDefine.types[type];
+            return cast ? cast(newVal) : newVal;
         }
     },
     /**

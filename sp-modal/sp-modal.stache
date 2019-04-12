@@ -1,4 +1,4 @@
-<div class="{{#if(backdrop)}}modal{{else}}sp-modal-no-backdrop{{/if}}{{#if(active)}} active{{/if}}{{#if(small)}} modal-sm{{/if}}">
+<div class="{{#if(backdrop)}}modal{{else}}sp-modal-no-backdrop{{/if}}{{#if(active)}} active{{/if}} {{className}}">
     {{#if(backdrop)}}
     <div class="modal-overlay"></div>
     {{/if}}

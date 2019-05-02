@@ -53,5 +53,24 @@ export default DefineMap.extend({
                 return f[this.excludeFieldKey] !== false;
             });
         }
+    },
+    /**
+     * This object's fields mapped to key:value pairs. The key will be 
+     * set to the field name, and the object will be the field.
+     * @type {Object}
+     */
+    fieldsMap: {
+        get () {
+            const fields = this.fields;
+            if (!fields) {
+                return {};
+            }
+            const map = {};
+            for (let i = 0; i < fields.length; i ++) {
+                map[fields[i].name] = fields[i];
+            }
+
+            return map;
+        }
     }
 });

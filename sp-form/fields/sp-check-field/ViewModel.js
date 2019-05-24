@@ -30,5 +30,5 @@ export default Field.extend('CheckboxField', {
      * @type {String} 
      * @memberof sp-check-field.ViewModel.prototype
      */
-    style: {type: 'string', default: 'checkbox'},
+    style: {type: 'string', default: 'checkbox'}
 });

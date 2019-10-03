@@ -17,7 +17,14 @@ export default DefineMap.extend('ToastItem', {
         type: 'boolean',
         default: true
     },
-    timer: {},
+    timer: {
+        set (timer) {
+            if (this.timer) {
+                window.clearTimeout(this.timer);
+            }
+            return timer;
+        }
+    },
     /**
      * the time to autohide this sp-toast. Set to 0 to disable auto hide
      * @type {Number}
@@ -28,9 +35,6 @@ export default DefineMap.extend('ToastItem', {
         default: 5000,
         set (autohide) {
             if (autohide) {
-                if (this.timer) {
-                    window.clearTimeout(this.timer);
-                }
                 this.timer = setTimeout(() => {
                     this.hide();
                 }, autohide);
@@ -95,7 +99,13 @@ export default DefineMap.extend('ToastItem', {
      */
     visible: {
         default: true,
-        type: 'boolean'
+        type: 'boolean',
+        set (visible) {
+            if (!visible) {
+                this.timer = null;
+            }
+            return visible;
+        }
     },
 
     /**

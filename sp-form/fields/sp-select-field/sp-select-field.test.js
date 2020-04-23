@@ -20,7 +20,7 @@ test('isSelected(values)', () => {
     expect(vm.isSelected('1')).toBeTruthy();
 });
 
-test('optionsPromise get() with getOptions(obj)', async () => {
+test('optionsPromise get() with getOptions(obj)', () => {
     vm.getOptions = function (obj) {
         return options[obj.val];
     };

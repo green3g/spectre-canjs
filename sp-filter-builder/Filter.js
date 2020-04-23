@@ -97,9 +97,6 @@ export const Filter = DefineMap.extend('Filter', {
         type: 'string',
         get (name) {
             return this.field ? this.field.name : name;
-        },
-        serialize (name) {
-            return name;
         }
     },
     /**
@@ -111,9 +108,6 @@ export const Filter = DefineMap.extend('Filter', {
         type: 'string',
         get (val) {
             return typeof val === 'undefined' ? this.operatorField.value : val;
-        },
-        serialize (val) {
-            return val;
         }
     },
     /**
@@ -151,7 +145,6 @@ export const Filter = DefineMap.extend('Filter', {
     visible: {
         type: 'boolean',
         default: true,
-        serialize: false,
         set (val) {
             return val;
         }
@@ -165,8 +158,7 @@ export const Filter = DefineMap.extend('Filter', {
      */
     pinned: {
         type: 'boolean',
-        default: false,
-        serialize: false
+        default: false
     },
     /**
      * A virtual property to provide the field alias. If the
@@ -179,8 +171,7 @@ export const Filter = DefineMap.extend('Filter', {
     alias: {
         get () {
             return this.field ? this.field.alias : makeSentenceCase(this.name);
-        },
-        serialize: false
+        }
     },
     /**
      * A field object that defines the value field properties.
@@ -191,7 +182,6 @@ export const Filter = DefineMap.extend('Filter', {
      * @memberof sp-filter-builder.Filter.prototype
      */
     valueField: {
-        serialize: false,
         get () {
             const fieldProps = this.field 
                 ? Object.assign({editTag: 'sp-text-field'}, this.field.get(), {
@@ -228,8 +218,7 @@ export const Filter = DefineMap.extend('Filter', {
      * @memberof sp-filter-builder.Filter.prototype
      */
     field: {
-        Type: Field,
-        serialize: false
+        Type: Field
     },
     /**
      * A virtual property that creates a dummmy form object for use with the
@@ -238,7 +227,6 @@ export const Filter = DefineMap.extend('Filter', {
      * @memberof sp-filter-builder.Filter.prototype
      */
     object: {
-        serialize: false,
         get () {
             const obj = {};
             obj[this.name] = this.value;

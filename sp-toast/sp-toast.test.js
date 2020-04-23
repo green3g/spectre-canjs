@@ -28,3 +28,16 @@ test('hide()', (done) => {
 
     expect(vm.visible).toBeFalsy();
 });
+
+test('hide() clears the timer', (done) => {
+    vm.visible = true;
+    vm.autoHide = Infinity;
+    expect(vm.timer).toBeTruthy();
+
+    vm.on('hide', (event, viewmodel) => {
+        expect(viewmodel.timer).toBeFalsy();
+        done();
+    });
+
+    vm.hide();
+});

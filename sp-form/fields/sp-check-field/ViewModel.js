@@ -23,5 +23,12 @@ export default Field.extend('CheckboxField', {
             }
             return val;
         }
-    }
+    },
+    /**
+     * The checkbox style. Specify `checkbox` or `switch`. 
+     * 
+     * @type {String} 
+     * @memberof sp-check-field.ViewModel.prototype
+     */
+    style: {type: 'string', default: 'checkbox'}
 });

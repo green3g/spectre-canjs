@@ -29,6 +29,9 @@ export default FieldIteratorMap.extend('ListTable', {seal: false}, {
      */
     promise: {
         set (newVal) {
+            if (!newVal) {
+                return newVal;
+            }
             newVal.then((objects) => {
                 this.objects.replace(objects);
             });
